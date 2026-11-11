@@ -75,7 +75,7 @@ const q=(el,s)=>el.querySelector(s),qa=(el,s)=>[...el.querySelectorAll(s)];
 const SUP={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
 const sup=n=>String(n).split('').map(c=>SUP[c]||c).join('');
 function fm(x,dp){if(typeof x!=='number'||!isFinite(x))return '—';dp=dp==null?2:dp;const a=Math.abs(x);
- if(a!==0&&(a>=1e6||a<1e-3)){let e=Math.floor(Math.log10(a)),m=x/Math.pow(10,e);m=Math.round(m*100)/100;if(Math.abs(m)>=10){m/=10;e++}return `${m.toFixed(2)} × 10${sup(e)}`.replace(/^-/,'−')}
+ if(a!==0&&(a>=1e6||a<0.01)){let e=Math.floor(Math.log10(a)),m=x/Math.pow(10,e);m=Math.round(m*100)/100;if(Math.abs(m)>=10){m/=10;e++}return `${m.toFixed(2)} × 10${sup(e)}`.replace(/^-/,'−')}
  const p=Math.pow(10,dp);let r=Math.round(x*p)/p;if(Object.is(r,-0)||r===0)r=0;return r.toFixed(dp).replace(/^-/,'−')}
 /* الصيغة نفسها لكن بنص LaTeX (للحلول المكتوبة بـ KaTeX) */
 function tx(x,dp){const s=fm(x,dp);return s.replace(/ × 10([⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)/,(m,e)=>'\\times 10^{'+e.split('').map(c=>Object.keys(SUP).find(k=>SUP[k]===c)).join('')+'}').replace('−','-')}
@@ -170,7 +170,7 @@ const seg=(attr,items,cur)=>`<div class="seg" role="group">${items.map(([v,l])=>
 const segBind=(el,attr,fn)=>qa(el,`[data-${attr}]`).forEach(b=>b.addEventListener('click',()=>{qa(el,`[data-${attr}]`).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));fn(b.dataset[attr])}));
 const facts=list=>`<div class="pk-facts">${list.map(([l,v,c])=>`<div class="${c||''}"><span>${l}</span><b>${v}</b></div>`).join('')}</div>`;
 /* قيمة خطوة حل: رقم عادي، أو نص بالصيغة العلمية للأرقام الكبيرة جداً والصغيرة جداً */
-const ev=x=>{const a=Math.abs(x);return (a!==0&&(a>=1e6||a<1e-3))?fm(x):x};
+const ev=x=>{const a=Math.abs(x);return (a!==0&&(a>=1e6||a<0.01))?fm(x):x};
 /* رسم بياني بسيط: {w,h,xr:[a,b],yr:[a,b],xl,yl,series:[{pts:[[x,y]],col,dash,w}],dots:[[x,y,col,label]],extra:(X,Y)=>svg,xt,yt} */
 function plot(o){const W=o.w||520,H=o.h||260,L=o.left||46,Rm=14,Tm=16,Bm=34,[x0,x1]=o.xr,[y0,y1]=o.yr;
  const X=x=>L+(x-x0)/((x1-x0)||1)*(W-L-Rm),Y=y=>H-Bm-(y-y0)/((y1-y0)||1)*(H-Tm-Bm),f=v=>(+v).toFixed(1);
