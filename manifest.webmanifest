@@ -1,0 +1,17 @@
+{
+  "name": "المكتبة الرقمية لقسم التقنية الكهربائية",
+  "short_name": "مكتبة الكهرباء",
+  "description": "كتب مقررات قسم التقنية الكهربائية تفاعلية مع محاكاة حية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f5",
+  "theme_color": "#123A2B",
+  "icons": [
+    {"src": "shared/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "shared/icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "shared/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
