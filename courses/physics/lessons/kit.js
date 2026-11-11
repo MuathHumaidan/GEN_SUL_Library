@@ -63,7 +63,7 @@ const css=`
 .tt th,.tt td{border:1px solid var(--line);padding:6px 8px;text-align:center}
 .tt th{background:var(--surface-2)}
 .tt td.l{font-family:var(--mono);direction:ltr}
-.tbx{overflow-x:auto;max-width:100%}
+.tbx{overflow-x:auto;max-width:100%;contain:paint}
 .theory .katex-display,.stations .katex-display,.ex .katex-display{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0}
 .st-hero>div,.sb .prose{min-width:0}
 `;
@@ -171,5 +171,20 @@ const segBind=(el,attr,fn)=>qa(el,`[data-${attr}]`).forEach(b=>b.addEventListene
 const facts=list=>`<div class="pk-facts">${list.map(([l,v,c])=>`<div class="${c||''}"><span>${l}</span><b>${v}</b></div>`).join('')}</div>`;
 /* قيمة خطوة حل: رقم عادي، أو نص بالصيغة العلمية للأرقام الكبيرة جداً والصغيرة جداً */
 const ev=x=>{const a=Math.abs(x);return (a!==0&&(a>=1e6||a<1e-3))?fm(x):x};
-G.PHK={ev,css,lt,fm,tx,sup,tf,sort,cases,order,calc,num,C,art,T,TL,arrowS,Qd,loopOn,sl,seg,segBind,facts,q,qa,fin};
+/* رسم بياني بسيط: {w,h,xr:[a,b],yr:[a,b],xl,yl,series:[{pts:[[x,y]],col,dash,w}],dots:[[x,y,col,label]],extra:(X,Y)=>svg,xt,yt} */
+function plot(o){const W=o.w||520,H=o.h||260,L=o.left||46,Rm=14,Tm=16,Bm=34,[x0,x1]=o.xr,[y0,y1]=o.yr;
+ const X=x=>L+(x-x0)/((x1-x0)||1)*(W-L-Rm),Y=y=>H-Bm-(y-y0)/((y1-y0)||1)*(H-Tm-Bm),f=v=>(+v).toFixed(1);
+ const tk=(a,b)=>{const sp=(b-a)||1,e=Math.pow(10,Math.floor(Math.log10(sp/4))),st=[1,2,2.5,5,10].map(k=>k*e).find(k=>sp/k<=6.01);const r=[];for(let v=Math.ceil(a/st-1e-9)*st;v<=b+1e-9;v+=st)r.push(+v.toFixed(10));return r};
+ const xt=o.xt||tk(x0,x1),yt=o.yt||tk(y0,y1);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.aria||'رسم بياني'}">`;
+ yt.forEach(v=>{s+=`<path d="M${L} ${f(Y(v))}H${W-Rm}" stroke="var(--line)"/><text x="${L-6}" y="${f(Y(v)+4)}" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--mono)">${+v.toFixed(3)}</text>`});
+ xt.forEach(v=>{s+=`<path d="M${f(X(v))} ${Tm}V${H-Bm}" stroke="var(--line)" stroke-dasharray="3 3"/><text x="${f(X(v))}" y="${H-Bm+15}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${+v.toFixed(3)}</text>`});
+ s+=`<path d="M${L} ${Tm}V${H-Bm}H${W-Rm}" stroke="var(--fg)" fill="none" stroke-width="1.4"/>`;
+ if(y0<0&&y1>0)s+=`<path d="M${L} ${f(Y(0))}H${W-Rm}" stroke="var(--fg)" stroke-width="1"/>`;
+ if(o.xl)s+=`<text x="${W-Rm}" y="${H-4}" text-anchor="end" font-size="12" fill="var(--fg)" direction="rtl">${o.xl}</text>`;
+ if(o.yl)s+=`<text x="${L+6}" y="${Tm+10}" text-anchor="start" font-size="12" fill="var(--fg)" direction="rtl">${o.yl}</text>`;
+ (o.series||[]).forEach(se=>{if(!se.pts.length)return;s+=`<path d="${se.pts.map((p,i)=>(i?'L':'M')+f(X(p[0]))+' '+f(Y(Math.max(y0-(y1-y0),Math.min(y1+(y1-y0),p[1]))))).join('')}" fill="none" stroke="${se.col||'var(--blue)'}" stroke-width="${se.w||2.6}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`});
+ (o.dots||[]).forEach(d=>{s+=`<circle cx="${f(X(d[0]))}" cy="${f(Y(d[1]))}" r="${d[4]||4.5}" fill="${d[2]||'var(--live)'}" stroke="var(--surface)" stroke-width="1.5"/>`+(d[3]?`<text x="${f(X(d[0])+7)}" y="${f(Y(d[1])-7)}" font-size="12" font-weight="700" fill="${d[2]||'var(--live)'}" font-family="var(--mono)">${d[3]}</text>`:'')});
+ if(o.extra)s+=o.extra(X,Y);
+ return s+'</svg>'}
+G.PHK={plot,ev,css,lt,fm,tx,sup,tf,sort,cases,order,calc,num,C,art,T,TL,arrowS,Qd,loopOn,sl,seg,segBind,facts,q,qa,fin};
 })(window);
