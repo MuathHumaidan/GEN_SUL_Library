@@ -200,7 +200,7 @@ function renderStations(L,body){
   let h='<article class="theory stations">';
   (L.theory||[]).forEach(b=>{
     if(b.intro){
-      h+=`<div class="legend"><b>كيف تقرأ هذا الدرس؟</b><div class="lg">
+      h+=B.COURSE.legend?`<div class="legend"><b>كيف تقرأ هذا الدرس؟</b><div class="lg">${B.COURSE.legend(tagH)}</div></div>`:`<div class="legend"><b>كيف تقرأ هذا الدرس؟</b><div class="lg">
         <div>${tagH('book')}<br>منقول من المذكرة كما هو، مع رقم الصفحة.</div>
         <div>${tagH('tip')}<br>شرح مبسّط منا لتقريب الفكرة، وليس من الكتاب.</div>
         <div>${tagH('add')}<br>مثال من الواقع أو معلومة تساعد على الفهم.</div>
@@ -225,7 +225,7 @@ function renderStations(L,body){
       const inside=(a,b)=>b&&a!==b&&b.x>=a.x-1&&b.y>=a.y-1&&b.x+b.width<=a.x+a.width+1&&b.y+b.height<=a.y+a.height+1;
       ts.forEach((t,i)=>{const b=bx[i];if(!b||bx.some(o=>inside(b,o)))return;const pd=6,r=document.createElementNS(NS,'rect');
         r.setAttribute('x',b.x-pd);r.setAttribute('y',b.y-pd);r.setAttribute('width',b.width+2*pd);r.setAttribute('height',b.height+2*pd);
-        r.setAttribute('fill','#000');r.setAttribute('fill-opacity','0');r.setAttribute('class','tip-hit');
+        r.setAttribute('fill','#000');r.setAttribute('fill-opacity','0');r.setAttribute('stroke','none');r.setAttribute('class','tip-hit');
         if(t.tagName==='g')t.insertBefore(r,t.firstChild);else{r.dataset.tip=t.dataset.tip;t.parentNode.insertBefore(r,t)}})}catch(e){}
     const tp=document.createElement('div');tp.className='art-tip';tp.hidden=true;fig.appendChild(tp);let cur=null;
     const place=e=>{const R=fig.getBoundingClientRect(),x=e.clientX-R.left,y=e.clientY-R.top,w=tp.offsetWidth,h=tp.offsetHeight;

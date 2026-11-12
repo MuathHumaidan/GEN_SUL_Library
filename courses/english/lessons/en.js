@@ -1,0 +1,115 @@
+/* أدوات مقرر الإنجليزية التقنية (انجل-102): الجمل الإنجليزية، النطق بصوت الجهاز، جداول الكلمات، تمارين الكتاب وإجاباتها،
+   خانات الصوتيات، وأدوات «املأ الفراغ» و«اكتب الجملة». يُحمَّل بعد kit.js (window.ENK).
+   مبدأ المقرر: الشرح بالعربي، والأمثلة والجمل بالإنجليزي، والكلمات الجديدة مع ترجمتها. لا يُنسخ نص الكتاب ولا حواراته ولا صوره:
+   كل الأمثلة والحوارات هنا جديدة، وتمارين الكتاب يُحال إليها برقمها وصفحتها. */
+(function(G){
+"use strict";
+const K=G.PHK;
+const css=`
+.en{direction:ltr;unicode-bidi:isolate;font-family:var(--font-la,var(--font));}
+p.en,div.en,li.en{display:block;text-align:left}
+.enb{direction:ltr;text-align:left;unicode-bidi:isolate;background:var(--surface-2);border-radius:10px;padding:8px 12px;margin:8px 0;line-height:1.9}
+.enb p{margin:0}
+.say{font:inherit;border:0;background:none;cursor:pointer;padding:0 4px;vertical-align:-2px;color:var(--blue-ink);font-size:15px;line-height:1}
+.say:hover{color:var(--blue)}
+.say[hidden]{display:none}
+.vt{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+.vt[dir=ltr] th,.vt[dir=ltr] td{text-align:left}
+.vt th,.vt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:start;vertical-align:top}
+.vt th{background:var(--surface-2);font-weight:600}
+.vt td.en{white-space:nowrap;font-weight:600}
+.vt td.v2{white-space:normal;font-weight:400;text-align:left}
+.vt td.nt{color:var(--muted);font-size:13px}
+.ebk{border:1px solid var(--line);border-inline-start:4px solid #8a5a2b;border-radius:12px;padding:10px 14px;margin:10px 0;background:var(--surface)}
+.ebk .eh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+.ebk .eh .tg{background:#f3e7d8;color:#6b4320;border-radius:999px;padding:1px 9px;font-size:12px;font-weight:700}
+.ebk .eh b{font-size:15px}
+.ebk .eh .ref{color:var(--muted);font-size:13px}
+.ebk p{margin:4px 0;line-height:1.85}
+.ebk details{margin-top:6px}
+.ebk summary{cursor:pointer;color:var(--blue-ink);font-weight:600;font-size:14px}
+.ebk ol.ans{direction:ltr;text-align:left;margin:6px 0 0;padding-left:26px;line-height:1.9}
+.ebk .ans-n{font-size:12.5px;color:var(--muted);margin-top:4px}
+.aud{border:1px solid var(--line);border-inline-start:4px solid var(--blue);border-radius:12px;padding:10px 14px;margin:10px 0;background:var(--surface)}
+.aud .eh{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.aud .eh .tg{background:var(--blue-soft);color:var(--blue-ink);border-radius:999px;padding:1px 9px;font-size:12px;font-weight:700}
+.aud audio{width:100%;margin-top:8px}
+.aud .miss{margin-top:6px;font-size:13.5px;color:var(--muted)}
+.gp .gp-s{direction:ltr;text-align:left;line-height:2.1;margin:0}
+.gp select{font:inherit;font-size:15px;padding:3px 8px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);direction:ltr;max-width:100%}
+.gp select.ok{border-color:var(--on);background:var(--on-soft)}
+.gp select.no{border-color:var(--stop);background:var(--stop-soft)}
+.ty input{font:inherit;font-size:15px;width:100%;padding:6px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);direction:ltr;text-align:left}
+.ty .pk-why .en{display:inline}
+.card-ab{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin:8px 0}
+.card-ab>div{border:1.5px dashed var(--line);border-radius:12px;padding:10px 12px;background:var(--surface)}
+.card-ab h4{margin:0 0 6px;font-size:15px}
+.dlg{direction:ltr;text-align:left;margin:8px 0;padding:0;list-style:none}
+.dlg li{margin:4px 0;line-height:1.8}
+.dlg li b{display:inline-block;min-width:5.5em;color:var(--muted);font-weight:600}
+.upd{border:1px solid var(--line);border-inline-start:4px solid #b7791f;border-radius:12px;padding:8px 12px;margin:10px 0;background:#fff8ec;font-size:14px;line-height:1.8}
+[data-theme="dark"] .upd{background:#2b2418}
+.upd b:first-child{color:#8a5a00}
+.phl .btn,.pk .pk-b,.phl .seg button{unicode-bidi:plaintext}
+`;
+const addCss=()=>{if(typeof document==='undefined'||document.getElementById('enk-css'))return;const s=document.createElement('style');s.id='enk-css';s.textContent=css;document.head.appendChild(s)};
+addCss();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const plain=s=>String(s).replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').replace(/___+/g,' blank ');
+/* ---- النطق بصوت الجهاز (إنجليزي بريطاني إن وُجد) ---- */
+const hasTTS=()=>typeof speechSynthesis!=='undefined';
+let voice=null;
+function pickVoice(){if(!hasTTS())return;const vs=speechSynthesis.getVoices();voice=vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
+if(hasTTS()){pickVoice();try{speechSynthesis.addEventListener('voiceschanged',pickVoice)}catch(e){}}
+function speak(t){if(!hasTTS())return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(plain(t));u.lang=voice?voice.lang:'en-GB';if(voice)u.voice=voice;u.rate=0.9;speechSynthesis.speak(u)}
+if(typeof document!=='undefined')document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-say]');if(!b)return;e.preventDefault();speak(b.dataset.say)});
+const sp=t=>hasTTS()?`<button type="button" class="say" data-say="${esc(plain(t))}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`:'';
+/* جملة إنجليزية داخل النص العربي */
+const e=s=>`<span class="en" lang="en">${s}</span>`;
+/* فقرة/أمثلة إنجليزية: سطر لكل جملة مع زر نطق */
+const eb=lines=>`<div class="enb" lang="en">${(Array.isArray(lines)?lines:[lines]).map(l=>`<p>${l} ${sp(l)}</p>`).join('')}</div>`;
+/* حوار جديد (ليس من الكتاب): [[المتحدث, الجملة]] */
+const dl=rows=>`<ul class="dlg" lang="en">${rows.map(([w,t])=>`<li><b>${w}:</b> ${t} ${sp(t)}</li>`).join('')}</ul>`;
+/* جدول كلمات: [[إنجليزي, عربي, ملاحظة]] */
+const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td class="en" lang="en">${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt">${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+/* تمرين في الكتاب: يُحال إليه برقمه وصفحته، مع المطلوب بالعربي وإجابات البنود (للمراجعة) */
+const bk=(n,ref,task,ans,note)=>`<div class="ebk"><div class="eh"><span class="tg">في كتابك</span><b>تمرين ${n}</b><span class="ref">${ref}</span></div><p>${task}</p>${ans?`<details><summary>${Array.isArray(ans)?'الإجابات (بأرقام البنود)':'الإجابة'}</summary>${Array.isArray(ans)?`<ol class="ans" lang="en">${ans.map(a=>`<li>${a}</li>`).join('')}</ol>`:`<p>${ans}</p>`}${note?`<p class="ans-n">${note}</p>`:''}</details>`:''}</div>`;
+/* مقطع من صوتيات الكتاب: يُرفع الملف إلى courses/english/audio/track-NN.mp3 */
+const au=(track,ref,task)=>`<div class="aud"><div class="eh"><span class="tg">استمع</span><b>المقطع ${track}</b><span class="ref" style="color:var(--muted);font-size:13px">${ref}</span></div><p style="margin:4px 0">${task}</p>
+ <audio controls preload="metadata" src="audio/track-${String(track).padStart(2,'0')}.mp3" onerror="this.hidden=true;this.nextElementSibling.hidden=false"></audio><p class="miss" hidden>مقطع الصوت ${track} من صوتيات الكتاب لم يُرفع بعد، وسيضيفه المدرب. شغّله الآن من قرص الكتاب إن توفّر.</p></div>`;
+/* معلومة محدّثة: ما في الكتاب صحيح وقت طباعته وتغيّر بعدها */
+const upd=html=>`<div class="upd"><b>معلومة محدّثة (إضافة من خارج الكتاب):</b> ${html}</div>`;
+/* بطاقتا الطالب أ والطالب ب لمهمة ثنائية (بيانات جديدة من عندنا) */
+const ab=(a,b)=>`<div class="card-ab"><div><h4>الطالب أ</h4>${a}</div><div><h4>الطالب ب</h4>${b}</div></div>`;
+
+/* ---- املأ الفراغ بالاختيار: items [{s:'... ___ ...', o:[خيارات], a:رقم الصحيح, why}] (الجملة إنجليزية) ---- */
+function gaps(el,B,o){el.classList.add('pk','gp');
+ let h=o.intro?`<p class="pk-in">${o.intro}</p>`:'';
+ h+=o.items.map((it,i)=>`<div class="pk-it" data-i="${i}"><p class="gp-s" lang="en">${(o.items.length>1?`<b>${i+1}.</b> `:'')+it.s.replace('___',`<select aria-label="اختر الكلمة"><option value="">…</option>${it.o.map((x,j)=>`<option value="${j}">${x}</option>`).join('')}</select>`)}</p><div class="pk-why" hidden></div></div>`).join('');
+ h+='<div class="pk-score" hidden></div>';el.innerHTML=h;const done={};
+ el.querySelectorAll('.pk-it').forEach(box=>{const i=+box.dataset.i,it=o.items[i],sel=box.querySelector('select'),w=box.querySelector('.pk-why');
+  sel.onchange=()=>{if(sel.value==='')return;const ok=+sel.value===it.a;sel.classList.toggle('ok',ok);sel.classList.toggle('no',!ok);
+   const full=it.s.replace('___',`<b>${it.o[it.a]}</b>`);
+   w.innerHTML=ok?`<b>صحيح.</b> ${it.why||''}<div class="enb" lang="en"><p>${full} ${sp(full)}</p></div>`:`<b>ليس هذا.</b> ${it.hint||'جرّب كلمة أخرى.'}`;w.hidden=false;
+   if(ok)done[i]=1;if(Object.keys(done).length===o.items.length){const s=el.querySelector('.pk-score');s.innerHTML='أكملت الجمل كلها.';s.hidden=false}}})}
+/* ---- اكتب الجملة: items [{q:'المطلوب', a:['إجابة مقبولة', …], hint}] — التصحيح يتجاهل حالة الأحرف والمسافات الزائدة والنقطة الأخيرة والاختصارات الشائعة ---- */
+const norm=s=>String(s).toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g,' ').replace(/\s*([?.!,])\s*/g,'$1').replace(/[.!]+$/,'').trim()
+ .replace(/\bit is\b/g,"it's").replace(/\bthey are\b/g,"they're").replace(/\bi have\b/g,"i've").replace(/\bhas not\b/g,"hasn't").replace(/\bhave not\b/g,"haven't").replace(/\bdo not\b/g,"don't").replace(/\bdoes not\b/g,"doesn't").replace(/\bwill not\b/g,"won't").replace(/\bmust not\b/g,"mustn't").replace(/\bthere is\b/g,"there's").replace(/\bis not\b/g,"isn't").replace(/\bare not\b/g,"aren't").replace(/\bdid not\b/g,"didn't").replace(/\bthey will\b/g,"they'll").replace(/\bit will\b/g,"it'll").replace(/\bwe will\b/g,"we'll").replace(/\bi will\b/g,"i'll").replace(/\bhe has\b/g,"he's").replace(/\bshe has\b/g,"she's").replace(/\bwe have\b/g,"we've").replace(/\bthey have\b/g,"they've").replace(/\byou have\b/g,"you've").replace(/\bwas not\b/g,"wasn't").replace(/\bwere not\b/g,"weren't");
+function typ(el,B,o){el.classList.add('pk','ty');
+ let h=o.intro?`<p class="pk-in">${o.intro}</p>`:'';
+ h+=o.items.map((it,i)=>`<div class="pk-it" data-i="${i}"><p>${o.items.length>1?`<b>${i+1}.</b> `:''}${it.q}</p><input type="text" lang="en" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="اكتب الجملة"><div class="pk-row"><button type="button" class="pk-b" data-c>تحقّق</button><button type="button" class="pk-b" data-s>أظهر الإجابة</button></div><div class="pk-why" hidden></div></div>`).join('');
+ el.innerHTML=h;
+ el.querySelectorAll('.pk-it').forEach(box=>{const it=o.items[+box.dataset.i],inp=box.querySelector('input'),w=box.querySelector('.pk-why');
+  const show=ok=>{w.innerHTML=(ok===true?'<b>صحيح.</b> ':ok===false?`<b>ليس بعد.</b> ${it.hint||'راجع القاعدة وحاول مرة أخرى.'} `:'<b>الإجابة:</b> ')+(ok===false?'':`<div class="enb" lang="en"><p>${it.a[0]} ${sp(it.a[0])}</p></div>${it.why?`<span>${it.why}</span>`:''}`);w.hidden=false};
+  const chk=()=>{if(!inp.value.trim())return;show(it.a.some(a=>norm(a)===norm(inp.value)))};
+  box.querySelector('[data-c]').onclick=chk;inp.addEventListener('keydown',ev=>{if(ev.key==='Enter')chk()});box.querySelector('[data-s]').onclick=()=>show(null)})}
+
+/* نسخ من أدوات kit تلف الجمل الإنجليزية الخالصة باتجاه من اليسار إلى اليمين */
+const isEn=s=>/^[\x20-\x7E’‘…–—]+$/.test(String(s).replace(/<[^>]+>/g,''));
+const W=s=>isEn(s)?e(s):s;
+const cases=(el,B,o)=>K.cases(el,B,{...o,cases:o.cases.map(c=>({...c,q:W(c.q),opts:c.opts.map(x=>[W(x[0]),x[1],x[2]])}))});
+const tf=(el,B,o)=>K.tf(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
+const sort=(el,B,o)=>K.sort(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
+const order=(el,B,o)=>K.order(el,B,{...o,steps:o.steps.map(x=>Array.isArray(x)?[W(x[0]),x[1]]:W(x))});
+G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,gaps,typ,norm,esc,cases,tf,sort,order,W};
+})(window);
