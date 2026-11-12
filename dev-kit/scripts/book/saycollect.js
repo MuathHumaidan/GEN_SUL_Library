@@ -11,6 +11,11 @@ for(const st of ['formal','stations']){await p.goto(url);await p.evaluate(s=>loc
      for(const s of await p.$$('#view select')){const n=await s.$$eval('option',o=>o.length);for(let i=0;i<n;i++){await s.selectOption({index:i}).catch(()=>{});await p.waitForTimeout(40);(await p.$$eval('[data-say]',x=>x.map(e=>e.dataset.say))).forEach(v=>all.add(v))}}
      for(const bt of await p.$$('#view .phl button:not(.say)')){await bt.click().catch(()=>{});await p.waitForTimeout(40);(await p.$$eval('[data-say]',x=>x.map(e=>e.dataset.say))).forEach(v=>all.add(v))}}
    (await p.$$eval('[data-say]',x=>x.map(e=>e.dataset.say))).forEach(v=>all.add(v))}}}
+const extra=await p.evaluate(()=>{const o=[];const pl=t=>String(t).replace(/<[^>]+>/g,'');
+ Object.values(BX.data).forEach(X=>X.forEach(x0=>{[x0,x0.then].filter(Boolean).forEach(x=>{
+  if(x.kind==='gaps')x.items.forEach(it=>o.push(pl(it.s.replace('___',it.o[it.a]))));
+  if(x.kind==='typ')x.items.forEach(it=>o.push(pl(it.a[0])));
+  if(x.kind==='listen')o.push(pl(x.text));})}));return o});extra.forEach(v=>all.add(v));
 const W=await p.evaluate(()=>PLCBOOK.WORDS);Object.values(W).forEach(ls=>ls.forEach(w=>{all.add(w[0]);all.add(w[2])}));
 const arr=[...all].map(s=>s.replace(/\s+/g,' ').trim()).filter(Boolean);fs.writeFileSync('/home/claude/tts/say.json',JSON.stringify([...new Set(arr)],null,0));
 console.log('unique',new Set(arr).size);await b.close()})();
