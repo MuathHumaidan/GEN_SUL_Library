@@ -20,6 +20,8 @@ B.lesson=L=>{B.LESSONS.push(L)};
 B.ACTS={};
 /* self-study data (study.js) and «اكتشف الخطأ» variants (errors.js) per course */
 const artTips=[];addEventListener('scroll',()=>artTips.forEach(t=>t.hide()),{passive:true,capture:true});
+/* كلمات الدرس (words.js): B.WORDS[<درس>] = [[الكلمة, الترجمة, مثال, ترجمة المثال], ...] */
+B.WORDS={};B.words=o=>{Object.assign(B.WORDS,o||{})};
 B.STUDY={units:{},lessons:{}};B.study=o=>{o=o||{};Object.assign(B.STUDY.units,o.units||{});Object.assign(B.STUDY.lessons,o.lessons||{})};
 B.ERRS={};B.errs=o=>{Object.assign(B.ERRS,o||{})};
 /* «اكتشف العطل» و«تحدي المحاكاة» (courses/<id>/challenge.js، اختياري): لكل درس فيه مختبر
@@ -261,7 +263,31 @@ function fixSvgBidi(root){const NS='http://www.w3.org/2000/svg',re=/(\(\d+-\d+\)
  root.querySelectorAll('svg text').forEach(t=>{if(t.children.length)return;const txt=t.textContent;if(!/[\u0600-\u06FF]/.test(txt)||!/\d/.test(txt))return;
   const parts=txt.split(re);if(parts.length<2)return;t.textContent='';
   parts.forEach((p,i)=>{if(!p)return;if(i%2){const ts=document.createElementNS(NS,'tspan');ts.setAttribute('direction','ltr');ts.setAttribute('unicode-bidi','embed');ts.textContent=p;t.appendChild(ts)}else t.appendChild(document.createTextNode(p))})})}
-function renderTheory(L,body){
+/* «كلمات الدرس» أول الدرس بالأسلوبين؛ المرور على الكلمة (أو لمسها) يُظهر الترجمة ومثالاً من الحياة اليومية */
+let lwPop=null,lwHide=0;
+function wordsBlock(L,body){const W=B.WORDS[L.id];if(!Array.isArray(W)||!W.length)return;
+  const esc2=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+  const say=t=>`<button type="button" class="say" data-say="${esc2(t)}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`;
+  const sec=document.createElement('section');sec.className='lw';
+  sec.innerHTML=`<header class="lw-h"><h2>كلمات الدرس</h2><p class="sub">مرّر المؤشر على الكلمة (أو المسها) لترى معناها ومثالاً من الحياة اليومية.</p></header><div class="lw-grid">${W.map((w,i)=>`<button type="button" class="lw-w" data-lw="${i}" lang="en" dir="ltr" aria-haspopup="true">${esc2(w[0])}</button>`).join('')}</div>`;
+  body.insertBefore(sec,body.firstChild);
+  if(!lwPop){lwPop=document.createElement('div');lwPop.className='lw-pop';lwPop.hidden=true;document.body.appendChild(lwPop);
+    lwPop.addEventListener('mouseenter',()=>clearTimeout(lwHide));lwPop.addEventListener('mouseleave',()=>{lwHide=setTimeout(hidePop,250)});
+    addEventListener('scroll',()=>{if(!lwPop.hidden&&!lwPop.contains(document.activeElement))hidePop()},{passive:true,capture:true});
+    document.addEventListener('click',e=>{if(!lwPop.hidden&&!lwPop.contains(e.target)&&!e.target.closest('.lw-w'))hidePop()})}
+  function hidePop(){lwPop.hidden=true;document.querySelectorAll('.lw-w.on').forEach(x=>x.classList.remove('on'))}
+  const show=bt=>{clearTimeout(lwHide);const w=W[+bt.dataset.lw];document.querySelectorAll('.lw-w.on').forEach(x=>x.classList.remove('on'));bt.classList.add('on');
+    lwPop.innerHTML=`<div class="lw-top"><b lang="en" dir="ltr">${esc2(w[0])}</b>${say(w[0])}<span class="lw-ar">${esc2(w[1])}</span></div>${w[2]?`<div class="lw-ex"><span class="lw-tag">مثال</span><p lang="en" dir="ltr">${esc2(w[2])} ${say(w[2])}</p>${w[3]?`<p class="lw-tr">${esc2(w[3])}</p>`:''}</div>`:''}`;
+    lwPop.hidden=false;B.bidi&&B.bidi(lwPop);const r=bt.getBoundingClientRect(),pw=lwPop.offsetWidth,ph=lwPop.offsetHeight,VW=document.documentElement.clientWidth;
+    lwPop.style.left=Math.max(8,Math.min(VW-pw-8,r.left+r.width/2-pw/2))+'px';lwPop.style.top=(r.bottom+8+ph>innerHeight&&r.top-ph-8>0?r.top-ph-8:r.bottom+8)+'px'};
+  sec.querySelectorAll('.lw-w').forEach(bt=>{
+    bt.addEventListener('mouseenter',e=>{if(matchMedia('(hover:hover)').matches)show(bt)});
+    bt.addEventListener('mouseleave',()=>{lwHide=setTimeout(hidePop,250)});
+    bt.addEventListener('click',()=>{if(!lwPop.hidden&&bt.classList.contains('on')&&!matchMedia('(hover:hover)').matches)hidePop();else show(bt)});
+    bt.addEventListener('focus',()=>{if(bt.matches(':focus-visible'))show(bt)})});
+}
+function renderTheory(L,body){const r=renderTheory0(L,body);try{wordsBlock(L,body)}catch(e){console.error(e)}return r}
+function renderTheory0(L,body){
   /* أسلوب الشرح يختاره المستخدم من الزر في الأعلى: «رسمي» أو «التفاعلي». L.stations = مصفوفة محتوى المحطات */
   if(B.styleMode()==='stations'){
     if(Array.isArray(L.stations)&&L.stations.length){const r=renderStations(Object.assign({},L,{theory:L.stations}),body);fixSvgBidi(body);return r}

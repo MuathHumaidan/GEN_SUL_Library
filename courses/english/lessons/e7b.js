@@ -57,7 +57,7 @@ B.lesson({
  summary:'الاسم المعدود وغير المعدود، و some/any، والسؤال بـ How many و How much، وعبوات البيع (tin, tube, bag, packet)، وأسئلة المواصفات عن مبنى.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 54–55',html:`<ol><li>تفرّق بين الاسم <b>المعدود</b> ${e('screws')} و<b>غير المعدود</b> ${e('cement')}.</li><li>تسأل عن الكمية بـ ${e('How many')} و ${e('How much')}.</li><li>تطلب مواد من محل: الكمية والنوع والمقاس واللون والعبوة.</li><li>تقرأ أسئلة وأجوبة عن مواصفات مبنى عالٍ.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 54–55',html:vt(VOC72)},
+  {h:'جدول المفردات كاملاً',ref:'ص 54–55',html:vt(VOC72)},
   {h:'المعدود وغير المعدود',ref:'ص 55',html:`<p><b>المعدود</b> له مفرد وجمع، فنقول ${e('a screw')} و ${e('ten screws')}. <b>غير المعدود</b> مفرد دائماً ولا نضع قبله ${e('a')} ولا رقماً مباشرة، بل نعدّ عبواته:</p>
    ${eb(['I need <b>a</b> screw. I need <b>fifty</b> screws.','I need <b>some</b> cement. I need <b>two bags of</b> cement.'])}
    <p>في السؤال نستعمل ${e('any')}، وفي الطلب الإيجابي ${e('some')}:</p>${eb(['Do you need <b>any</b> nails?','Yes, I need <b>some</b> nails.'])}`},
@@ -173,7 +173,7 @@ B.lesson({
  summary:'التوقع بـ will و won\'t، والسؤال بـ When will…? و Will…? وأجوبته القصيرة، وجدول مواصفات مشروع مستقبلي، وجدول تنفيذ المشروع بالسنوات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 56–57',html:`<ol><li>تتوقع حقيقة أو حدثاً في المستقبل بـ ${e("will / 'll / won't")}.</li><li>تسأل ${e('When will…?')} و ${e('Will…?')} وتجيب باختصار.</li><li>تقرأ مواصفات مشروع لم يُبنَ بعد، وتحوّلها إلى جدول.</li><li>تتكلم عن جدول تنفيذ مشروع بالسنوات.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 56–57',html:vt(VOC73)},
+  {h:'جدول المفردات كاملاً',ref:'ص 56–57',html:vt(VOC73)},
   {h:'will و won\'t للتوقع',ref:'ص 56',html:`<p>للتوقع في المستقبل: الفاعل + ${e('will')} (أو ${e("'ll")}) + الفعل في صورته الأصلية. والنفي ${e("won't")} (= ${e('will not')}):</p>
    ${eb(["The engineers <b>will</b> finish the tunnel in 2035.","They<b>'ll</b> use steel and concrete.","The trains <b>won't</b> use diesel."])}
    <p>السؤال: ${e('When will they build it?')} والسؤال بنعم/لا: ${e('Will they build it in 2035?')} — ${e("Yes, they will. / No, they won't.")}</p>`},

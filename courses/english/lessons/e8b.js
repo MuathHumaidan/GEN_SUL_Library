@@ -49,7 +49,7 @@ B.lesson({
  summary:'الماضي البسيط (المنتظم والشاذ) للأحداث في وقت محدد، والسؤال When did…? والتواريخ (on the 5th of October، in May، in 2005)، و ago، ومكالمة إصلاح جهاز.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 62–63',html:`<ol><li>تتكلم عن أحداث في وقت محدد بالماضي البسيط: ${e('They launched it in 1957.')}</li><li>تسأل ${e('When did…?')} وتجيب بتاريخ.</li><li>تقرأ التواريخ وتكتبها، وتستعمل ${e('ago')}.</li><li>تفرّق بين الماضي البسيط والمضارع التام.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 62–63',html:vt(VOC83)},
+  {h:'جدول المفردات كاملاً',ref:'ص 62–63',html:vt(VOC83)},
   {h:'الماضي البسيط',ref:'ص 62',html:`<p>المنتظم بـ ${e('-ed')}، والشاذ يُحفظ. ونستعمله مع وقت محدد: ${e('yesterday, last year, in 2007, when…?')}</p>${vt(PASTV.map(v=>[`${v[0]} → ${v[1]}`,v[2]]),['Base → Past','المعنى'])}
    ${eb(['NASA <b>sent</b> a telescope into space in 1990.','<b>When did</b> they <b>launch</b> it?',"They <b>didn't</b> go there in 2006."])}<p>في السؤال والنفي: ${e('did / didn\'t')} + الفعل الأصلي (لا ${e('did they launched')}).</p>`},
   {h:'التواريخ و ago',ref:'ص 62–63',html:`<ul><li>اليوم بالتحديد: ${e('on the 14th of May 2005')} ونقرؤها ${e('on the fourteenth of May')}.</li><li>الشهر أو السنة: ${e('in May 2005 · in 2005')}.</li><li>${e('ago')} = قبل الآن: إذا كان اليوم 15 نوفمبر فـ ${e('two days ago')} = 13 نوفمبر. وإذا كانت الساعة 10.15 فـ ${e('an hour ago')} = 9.15.</li></ul>`},

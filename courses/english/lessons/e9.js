@@ -41,7 +41,7 @@ B.lesson({
  summary:'وظائف أجزاء الآلة بالمضارع البسيط (What does it do? It drives…)، وصيغ الغرض والوظيفة (The purpose of … is to …)، وأفعال التثبيت attached to / connected to / mounted on / suspended from.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 68–69',html:`<ol><li>تشرح وظيفة كل جزء في آلة: ${e('The engine drives the fan.')}</li><li>تسأل ${e('What does … do?')} و ${e('Does … ?')} وتجيب.</li><li>تكتب الوظيفة بثلاث صيغ: ${e('purpose / function / job')}.</li><li>تصف كيف يُثبّت جزء على آخر.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 68–69',html:vt(VOC91)},
+  {h:'جدول المفردات كاملاً',ref:'ص 68–69',html:vt(VOC91)},
   {h:'الوظيفة بالمضارع البسيط',ref:'ص 68',html:`<p>نصف ما يفعله الجزء دائماً بالمضارع البسيط: المفرد يأخذ ${e('-s')}، والجمع لا:</p>${eb(['The fan <b>pulls</b> the air in.','The levers <b>control</b> the speed.','<b>What does</b> the engine <b>do</b>? It drives the fan.','<b>Does</b> the fan <b>cool</b> the engine? No, it <b>doesn\'t</b>.'])}`},
   {h:'الغرض والوظيفة',ref:'ص 69',html:`${eb(['The handlebar steers the board.','= The <b>purpose</b> of the handlebar <b>is to steer</b> the board.','= The <b>job</b> of the handlebar <b>is to steer</b> the board.'])}<p>بعد ${e('is to')} الفعل الأصلي بلا ${e('s')}.</p>`},
   {h:'التثبيت',ref:'ص 69',html:`${vt([['X is attached to Y','X مثبّت على Y (ملتصق به)','a handle attached to a door'],['X is connected to Y','X موصول بـ Y (سلك أو أنبوب)','a charger connected to a socket'],['X is mounted on Y','X مركّب فوق Y','a camera mounted on a stand'],['X is suspended from Y','X معلّق من Y','a lamp suspended from the ceiling']])}`},
@@ -134,7 +134,7 @@ B.lesson({
  summary:'لغة المكالمة مع خط الدعم الفني، وتوصيل الراوتر والمودم والكمبيوتر، والأجوبة القصيرة بكل الأفعال المساعدة (is, are, do, does, have, did, can).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 70–71',html:`<ol><li>تتصل بخط الدعم وتشرح المشكلة.</li><li>تسأل وتجيب عن التوصيلات: ${e('Is the router connected to the modem?')}</li><li>تجيب إجابات قصيرة بالفعل المساعد الصحيح.</li><li>تقارن مخططي توصيل وتصف الفرق.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 70–71',html:vt(VOC92)},
+  {h:'جدول المفردات كاملاً',ref:'ص 70–71',html:vt(VOC92)},
   {h:'لغة المكالمة',ref:'ص 70',html:dl([['Technician',"Hello, you've reached the computer hotline. This is Sam speaking."],['Technician','How can I help you?'],['Customer',"My printer doesn't work."],['Technician',"OK. I'll talk you through it. Look at the back. Is the cable connected to the printer?"]])+'<p class="pk-ill">عبارات المكالمة في حوار جديد من عندنا.</p>'},
   {h:'الأجوبة القصيرة',ref:'ص 71',html:`<p>الجواب القصير يعيد <b>الفعل المساعد</b> الذي في السؤال:</p><div class="tbx"><table class="vt" dir="ltr"><thead><tr><th>Question</th><th>✓</th><th>✗</th></tr></thead><tbody>${SHORT.map(r=>`<tr><td class="en">${r[0]}</td><td class="en">${r[1]}</td><td class="en">${r[2]}</td></tr>`).join('')}</tbody></table></div>`},
   {note:'<b>توضيح للمتدرب:</b> إذا سألك <span class="en">Do you…?</span> فأجب بـ <span class="en">do</span>، وإذا سألك <span class="en">Are you…?</span> فأجب بـ <span class="en">am</span>: <span class="en">Are you sitting at the computer? — Yes, I am.</span>'},
@@ -217,7 +217,7 @@ B.lesson({
  summary:'تعليمات حل الأعطال بجمل If (If the light is off, press the button)، وقراءة مخطط السير ورسمه، وكتابة دليل أعطال من حوار، والأجوبة القصيرة في التعارف.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 72–73',html:`<ol><li>تكتب تعليمات بشرط: ${e('If …, do ….')}</li><li>تقرأ مخطط سير (Yes / No) وترسمه من نص.</li><li>تحوّل حوار دعم فني إلى دليل أعطال مكتوب.</li><li>تجيب إجابات قصيرة في حديث اجتماعي.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 72–73',html:vt(VOC93)},
+  {h:'جدول المفردات كاملاً',ref:'ص 72–73',html:vt(VOC93)},
   {h:'If + الحالة، ثم الأمر',ref:'ص 72',html:`<p>الجزء الأول ${e('If')} + المضارع البسيط (الحالة)، والثاني أمر يبدأ بالفعل الأصلي:</p>${eb(["If the car doesn't start, check the battery.","If the light is off, press the power button.","If there is a disk in the drive, take it out."])}<p>وتُكتب الجملة مع فاصلة بعد الجزء الأول.</p>`},
   {h:'مخطط السير',ref:'ص 72–73',html:`<p>المستطيل خطوة (أمر)، والمعيّن سؤال جوابه Yes أو No. كل فرع من السؤال يصير جملة If:</p>${eb(['Does the car start? — Yes → Drive away.',"If the car starts, drive away.","If the car doesn't start, check the battery."])}`},
   {h:'تمارين الكتاب',ref:'ص 72–73',html:

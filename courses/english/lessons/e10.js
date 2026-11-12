@@ -45,7 +45,7 @@ B.lesson({
  summary:'قواعد السلامة بـ must / mustn\'t / always / never / do not، وأنواع لوحات السلامة الثلاثة بألوانها وأشكالها، والنتائج المحتملة للخطر بـ might و could.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 74–75',html:`<ol><li>تكتب قواعد السلامة: ${e('You must wear a hard hat.')}</li><li>تميّز لوحات التحذير والمنع والإلزام.</li><li>تحوّل اللوحة إلى جملة: ${e('Do not smoke here.')}</li><li>تقول النتيجة المحتملة للخطر: ${e('You might burn your arm.')}</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 74–75',html:vt(VOC101)},
+  {h:'جدول المفردات كاملاً',ref:'ص 74–75',html:vt(VOC101)},
   {h:'القواعد',ref:'ص 75',html:`<div class="tbx"><table class="vt" dir="ltr"><thead><tr><th>Do this ✓</th><th>Don't do this ✗</th></tr></thead><tbody><tr><td class="en">Wear a hard hat here.</td><td class="en">Do not / Don't touch the machine.</td></tr><tr><td class="en">Always wear a hard hat here.</td><td class="en">Never touch the machine.</td></tr><tr><td class="en">You must wear a hard hat here.</td><td class="en">You must not / mustn't touch the machine.</td></tr></tbody></table></div><p>بعد ${e('must / mustn\'t / always / never / don\'t')} الفعل الأصلي.</p>`},
   {h:'أنواع لوحات السلامة (معيار ISO)',ref:'ص 74',html:`${vt([['Warning signs','تحذير: مثلث أصفر بإطار أسود','There is a danger. Be careful.'],['Prohibition signs','منع: دائرة حمراء وبيضاء وسوداء بخط مائل','Do not do this.'],['Mandatory action signs','إلزام: دائرة زرقاء وبيضاء','You must do this.']],['النوع','الشكل واللون','المعنى'])}<div class="sb sb-add" style="margin-top:8px"><div class="sb-h"><span class="tg t-add">إضافة من خارج الكتاب</span></div><div class="prose">في المعيار نفسه نوعان آخران: <b>لوحات الحالة الآمنة</b> خضراء (مثل مخرج الطوارئ ${e('fire exit')})، و<b>لوحات معدات الحريق</b> حمراء مربعة (مثل طفاية الحريق).</div></div>`},
   {h:'النتيجة المحتملة: might و could',ref:'ص 75',html:`${eb(['Be careful. The surface is hot. You <b>might</b> burn your hand.','Danger. Lasers. You <b>could</b> injure your eyes.'])}<p>${e('might')} و ${e('could')} هنا بمعنى واحد تقريباً: «قد».</p>`},
@@ -136,7 +136,7 @@ B.lesson({
  summary:'التحذير من الخطر ونتيجته، ووصف مخاطر ورشة بـ There is / There are، وتحويلها إلى الماضي There was / There were و was / were في تقرير التفتيش، وكتابة قواعد للورشة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 76–77',html:`<ol><li>تحذّر من خطر وتذكر نتيجته: ${e("Look out! There's a low beam. You could injure your head.")}</li><li>تصف ما تراه في ورشة: ${e('There are some boxes on the stairs.')}</li><li>تكتب تقرير تفتيش بالماضي: ${e('There were some boxes on the stairs.')}</li><li>تكتب قواعد سلامة للورشة.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 76–77',html:vt(VOC102)},
+  {h:'جدول المفردات كاملاً',ref:'ص 76–77',html:vt(VOC102)},
   {h:'There is / are ← There was / were',ref:'ص 77',html:`<div class="tbx"><table class="vt" dir="ltr"><thead><tr><th>Now</th><th>Report (past)</th></tr></thead><tbody><tr><td class="en">There's some liquid on the floor.</td><td class="en">There was some liquid on the floor.</td></tr><tr><td class="en">There are some boxes on the stairs.</td><td class="en">There were some boxes on the stairs.</td></tr><tr><td class="en">The fire exit is locked.</td><td class="en">The fire exit was locked.</td></tr><tr><td class="en">Some cables are coiled.</td><td class="en">Some cables were coiled.</td></tr></tbody></table></div><p>المفرد وغير المعدود: ${e('is → was')}، والجمع: ${e('are → were')}. وللنفي: ${e('There were no fire extinguishers.')}</p>`},
   {h:'تمارين الكتاب',ref:'ص 76–77',html:
    bk(3,'ص 76','قل التحذيرات ونتائجها المحتملة، كما في المثال.',null,'القالب: Look out! There\'s … . You could / might … .')+
@@ -209,7 +209,7 @@ B.lesson({
  summary:'تحديد الاتجاه بالساعة (at two o\'clock)، وتحذير برج المراقبة، وأسئلة التحقيق بالماضي (Where were…? When did… happen?)، وتقرير الحادثة، والدعوة والاعتذار في الحديث الاجتماعي.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 78–79',html:`<ol><li>تحدد اتجاه شيء بالنسبة إليك بالساعة: ${e("Unknown traffic at two o'clock.")}</li><li>تقرأ خبراً عن حادثة وتملأ تقريرها.</li><li>تسأل أسئلة التحقيق بالماضي وتجيب.</li><li>تدعو زميلاً أو تعتذر بلباقة.</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 78–79',html:vt(VOC103)},
+  {h:'جدول المفردات كاملاً',ref:'ص 78–79',html:vt(VOC103)},
   {h:'الاتجاه بالساعة',ref:'ص 78',html:`<p>تخيّل ساعة حولك: <b>12</b> أمامك تماماً، و<b>3</b> يمينك، و<b>6</b> خلفك، و<b>9</b> يسارك:</p>${eb(["There's a plane at two o'clock. (أمامك يميناً)","Turn left. Heading 270."])}`},
   {h:'أسئلة التحقيق بالماضي',ref:'ص 79',html:`${eb(['Where <b>were</b> the planes? — They were 3500 m above the city.','When <b>did</b> the incident <b>happen</b>? — It happened at 22.17.','How far <b>was</b> the jet from the plane?','How many passengers <b>were</b> on the plane?'])}<p>مع ${e('be')}: ${e('was / were')} في السؤال. ومع بقية الأفعال: ${e('did')} + الفعل الأصلي.</p>`},
   {h:'تمارين الكتاب',ref:'ص 78–79',html:

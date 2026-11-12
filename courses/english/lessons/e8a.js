@@ -44,7 +44,7 @@ B.lesson({
  summary:'المضارع التام (have/has + التصريف الثالث) للأفعال الحديثة، والأفعال الشاذة، وسؤال Have you…? وجوابه القصير، ولماذا لا يأتي المضارع التام مع yesterday و in 2005.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 58–59',html:`<ol><li>تبلّغ عن مشكلة حدثت للتو: ${e('My car has broken down.')}</li><li>تكوّن المضارع التام بـ ${e('have / has')} + التصريف الثالث.</li><li>تعرف التصريف الثالث للأفعال المنتظمة والشاذة.</li><li>تسأل ${e('Have you checked…?')} وتجيب ${e("Yes, I have. / No, I haven't.")}</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 58–59',html:vt(VOC81)},
+  {h:'جدول المفردات كاملاً',ref:'ص 58–59',html:vt(VOC81)},
   {h:'المضارع التام',ref:'ص 58',html:`<p>نكوّنه بـ ${e('have')} (مع I/you/we/they) أو ${e('has')} (مع he/she/it) ثم <b>التصريف الثالث</b>:</p>${eb(["I<b>'ve changed</b> the tyre.","The machine <b>has broken</b> down.","Someone <b>has taken</b> my laptop."])}
    <p>نستعمله لحدث <b>قريب</b> ما زالت نتيجته أمامنا، دون ذكر وقت محدد.</p>`},
   {h:'متى لا نستعمله؟',ref:'ص 58',html:`<p>لا نضع المضارع التام مع وقت محدد في الماضي مثل ${e('yesterday, a week ago, in 2005')}؛ معها نستعمل الماضي البسيط:</p>${eb(['I <b>have lost</b> my key. ✔','I <b>lost</b> my key yesterday. ✔','I have lost my key yesterday. ✘'])}`},
@@ -159,7 +159,7 @@ B.lesson({
  summary:'أفعال التلف (bend, break, burn, crack, cut, dent, scratch, tear) وتصريفها، ووصف الضرر بالتركيز على الفعل أو على النتيجة، و There\'s a dent in…، والإبلاغ عن شيء مفقود، وأجزاء السيارة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 60–61',html:`<ol><li>تصف الضرر في جهاز أو سيارة بثماني أفعال.</li><li>تفرّق بين ${e('I have dented it')} (الفعل) و ${e("It's dented")} (النتيجة).</li><li>تستعمل ${e("There's a … / There are some …")} لوصف الضرر.</li><li>تبلّغ عن شيء ناقص: ${e("The manual is missing. / There's no manual.")}</li></ol>`},
-  {h:'كلمات الدرس',ref:'ص 60–61',html:vt(VOC82,['English','المعنى','الاسم / ملاحظة'])},
+  {h:'جدول المفردات كاملاً',ref:'ص 60–61',html:vt(VOC82,['English','المعنى','الاسم / ملاحظة'])},
   {h:'التركيز على الفعل أم على النتيجة',ref:'ص 61',html:`<p><b>الفعل:</b> من فعل الضرر، بالمضارع التام. <b>النتيجة:</b> حالة الشيء الآن، بـ ${e('is / are')} + التصريف الثالث كصفة:</p>${eb(['I<b> have scratched</b> the screen.','The screen <b>is scratched</b>.','He <b>has broken</b> the speakers.','The speakers <b>are broken</b>.'])}`},
   {h:"There's a … / There are some …",ref:'ص 60–61',html:`${eb(["<b>There's a</b> dent in the side of the box.","<b>There are some</b> scratches on the lenses.","<b>There's no</b> plug on the cable."])}<p>ومع الناقص: ${e("The manual is missing. · There's no manual in the box. · The cable doesn't have a plug.")}</p>`},
   {note:'<b>توضيح للمتدرب:</b> ثلاثة أفعال تصريفها شاذ: <span class="en">bend → bent</span>، <span class="en">break → broken</span>، <span class="en">tear → torn</span>. و <span class="en">burn → burnt</span> (أو <span class="en">burned</span> بالأمريكية).'},

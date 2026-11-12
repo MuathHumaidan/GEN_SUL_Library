@@ -38,3 +38,8 @@ Allowed HTML: <sub> <sup> <b> <br> (+ <svg> in circuit cards). KaTeX \( \) allow
 - Validate in node with stubs (global.PLCBOOK={acts,study,errs}): every lesson id present in activities.js; counts; options; c in range; no duplicate options/cards; lengths sane; arithmetic of every errors.js variant recomputed by a script. Then a second careful technical review pass over everything.
 - Run `cd /home/claude/book && COURSE=<course> node test2.js` → all ok.
 - Report briefly: counts, skipped items, and items the specialists should double-check (lesson id + one line each).
+
+
+## words.js — «كلمات الدرس» (language courses; user decision, Nov 2026)
+`PLCBOOK.words({ '<lessonId>':[[word, translation, everyday example (own wording, not from the book), example translation], ...] })`.
+Shown as the first block of the lesson in BOTH styles (formal and interactive) as word chips; hovering (or tapping) a chip shows the translation and the example with 🔊 buttons. 8–13 key words per lesson; review lessons repeat the unit's most important words. Add `words.js` to the course's file list (make_course.py ACT_FILES does it when the file exists).
