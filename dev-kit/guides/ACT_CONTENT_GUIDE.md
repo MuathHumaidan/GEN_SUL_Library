@@ -42,4 +42,9 @@ Allowed HTML: <sub> <sup> <b> <br> (+ <svg> in circuit cards). KaTeX \( \) allow
 
 ## words.js — «كلمات الدرس» (language courses; user decision, Nov 2026)
 `PLCBOOK.words({ '<lessonId>':[[word, translation, everyday example (own wording, not from the book), example translation], ...] })`.
-Shown as the first block of the lesson in BOTH styles (formal and interactive) as word chips; hovering (or tapping) a chip shows the translation and the example with 🔊 buttons. 8–13 key words per lesson; review lessons repeat the unit's most important words. Add `words.js` to the course's file list (make_course.py ACT_FILES does it when the file exists).
+Shown as the first block of the lesson in BOTH styles (formal and interactive) as word chips with the translation visible under each word; hovering (or tapping) a chip shows the everyday example and its translation with 🔊 buttons. 8–13 key words per lesson; review lessons repeat the unit's most important words. Add `words.js` to the course's file list (make_course.py ACT_FILES does it when the file exists).
+
+
+## Recorded pronunciation (English course; user decision, Nov 2026)
+Every 🔊 plays a recording made with the open-source Kokoro voice `am_michael` (American male, speed 0.9 — the coordinator rejected a slower speed as sounding artificial). Files: `courses/english/audio/tts/<key>.mp3`, where key = FNV-1a 32-bit hex of the spoken text (spaces collapsed); `courses/english/tts.js` lists the recorded keys. A sentence without a recording (e.g. lab sentences built from the trainee's choices) falls back to the device voice.
+After adding or changing English sentences: run `dev-kit/scripts/book/saycollect.js` (collects every 🔊 text and the words) then `python3 dev-kit/scripts/book/tts_gen.py` (needs `pip install kokoro-onnx soundfile`, the model files kokoro-v1.0.onnx + voices-v1.0.bin from github.com/thewh1teagle/kokoro-onnx releases, and ffmpeg). It records only missing sentences and rewrites tts.js. `speakable()` in it expands units (km → kilometers) and drops symbols before recording.

@@ -59,9 +59,16 @@ const plain=s=>String(s).replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').replace(/
 /* ---- النطق بصوت الجهاز (إنجليزي بريطاني إن وُجد) ---- */
 const hasTTS=()=>typeof speechSynthesis!=='undefined';
 let voice=null;
-function pickVoice(){if(!hasTTS())return;const vs=speechSynthesis.getVoices();voice=vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
+function pickVoice(){if(!hasTTS())return;const vs=speechSynthesis.getVoices();voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/natural|neural|premium|enhanced|google/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
 if(hasTTS()){pickVoice();try{speechSynthesis.addEventListener('voiceschanged',pickVoice)}catch(e){}}
-function speak(t){if(!hasTTS())return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(plain(t));u.lang=voice?voice.lang:'en-GB';if(voice)u.voice=voice;u.rate=0.9;speechSynthesis.speak(u)}
+/* النطق: تسجيل جاهز (صوت واضح موحّد على كل الأجهزة) إن وُجد للجملة، وإلا صوت الجهاز */
+const ttsKey=s=>{let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return ('0000000'+h.toString(16)).slice(-8)};
+let TTSSET=null,cur=null;
+function devSpeak(t){if(!hasTTS())return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=voice?voice.lang:'en-US';if(voice)u.voice=voice;u.rate=0.9;speechSynthesis.speak(u)}
+function speak(t){const s=plain(t).replace(/\s+/g,' ').trim();if(!TTSSET)TTSSET=new Set(String(G.ENG_TTS||'').split(' ').filter(Boolean));
+  if(cur){try{cur.pause()}catch(e){}cur=null}if(hasTTS())speechSynthesis.cancel();
+  const k=ttsKey(s);if(TTSSET.has(k)){const a=new Audio('audio/tts/'+k+'.mp3');cur=a;a.play().catch(()=>devSpeak(s));return}
+  devSpeak(s)}
 if(typeof document!=='undefined')document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-say]');if(!b)return;e.preventDefault();speak(b.dataset.say)});
 const sp=t=>hasTTS()?`<button type="button" class="say" data-say="${esc(plain(t))}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`:'';
 /* جملة إنجليزية داخل النص العربي */

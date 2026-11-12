@@ -269,7 +269,7 @@ function wordsBlock(L,body){const W=B.WORDS[L.id];if(!Array.isArray(W)||!W.lengt
   const esc2=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
   const say=t=>`<button type="button" class="say" data-say="${esc2(t)}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`;
   const sec=document.createElement('section');sec.className='lw';
-  sec.innerHTML=`<header class="lw-h"><h2>كلمات الدرس</h2><p class="sub">مرّر المؤشر على الكلمة (أو المسها) لترى معناها ومثالاً من الحياة اليومية.</p></header><div class="lw-grid">${W.map((w,i)=>`<button type="button" class="lw-w" data-lw="${i}" lang="en" dir="ltr" aria-haspopup="true">${esc2(w[0])}</button>`).join('')}</div>`;
+  sec.innerHTML=`<header class="lw-h"><h2>كلمات الدرس</h2><p class="sub">مرّر المؤشر على الكلمة (أو المسها) لترى مثالاً من الحياة اليومية.</p></header><div class="lw-grid">${W.map((w,i)=>`<button type="button" class="lw-w" data-lw="${i}" aria-haspopup="true"><span class="lw-en" lang="en" dir="ltr">${esc2(w[0])}</span><span class="lw-mean">${esc2(w[1])}</span></button>`).join('')}</div>`;
   body.insertBefore(sec,body.firstChild);
   if(!lwPop){lwPop=document.createElement('div');lwPop.className='lw-pop';lwPop.hidden=true;document.body.appendChild(lwPop);
     lwPop.addEventListener('mouseenter',()=>clearTimeout(lwHide));lwPop.addEventListener('mouseleave',()=>{lwHide=setTimeout(hidePop,250)});
