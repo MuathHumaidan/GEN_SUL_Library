@@ -750,3 +750,13 @@ html[data-wide] .theory.stations{max-width:none}
 .ex-pin{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
 .ex-pin input{width:9em;max-width:100%;font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:inherit;direction:ltr;text-align:left}
 .ex-pfb{margin-top:6px}.ex-pfb .ok{color:var(--on)}.ex-pfb .no{color:var(--stop)}
+
+/* الأمثلة: زر «غيّر القيم» في زاوية السؤال، والمعطيات بعلامات استفهام */
+.ex header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ex header .ex-chg{margin-inline-start:auto;font-size:.9em}
+.ex-q .gv{color:var(--accent,#1f7a55);font-weight:700}
+.ex-givens ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+.ex-givens ul li{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ex-qm{min-width:2em;height:1.9em;border-radius:8px;border:1.5px dashed var(--line,#bbb);background:var(--surface-2,#f3f3ef);font-weight:700;cursor:pointer;color:inherit;font-size:1em}
+.ex-qm:hover,.ex-qm:focus-visible{border-style:solid;border-color:var(--accent,#1f7a55)}
+
+.ltrw{direction:ltr;unicode-bidi:isolate}

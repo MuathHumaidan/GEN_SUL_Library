@@ -85,3 +85,6 @@ M 0.1 / T1 and PLC terms (LAD, FBD, STL) too.
   /home/claude/book/shots).
 - Report (short, English): stations per lesson, and ONLY important doubts (e.g. a book error you are unsure how to
   show, a place where you could not avoid a non-book number). Don't list routine additions.
+
+## Numbers, units and signs in Arabic text (automatic, Nov 2026)
+shared/app.js `B.bidi` runs on everything shown in the page (and in hover tips): every Latin run that contains a number — «7 m», «−4», «20 m/s²», «4.8 × 10⁻¹³», «30 °C», «(9 km long)» — is locked left-to-right in a `.ltr` span, and a non-Arabic text with a number (a quiz option «4 m», an English sentence) is wrapped whole in `.ltrw`. You no longer need to hand-wrap numbers in `<span class="ltr">`; it is still harmless. It skips math (\( \) $$), SVG text (check those with svgbidi.js), inputs and `[dir=ltr]`. Check with `node geoscan.js <course>` (measures that every number sits left of its unit and right of its sign).

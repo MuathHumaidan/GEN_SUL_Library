@@ -235,7 +235,7 @@ function renderStations(L,body){
       if(!e||e.pointerType!=='mouse'||x==null){const r=el.getBoundingClientRect();x=r.left+r.width/2;y=r.top}
       const w=tp.offsetWidth,h=tp.offsetHeight,W=document.documentElement.clientWidth;
       tp.style.left=Math.max(8,Math.min(W-w-8,x-w/2))+'px';tp.style.top=(y-h-14<8?y+22:y-h-14)+'px'};
-    const show=(el,e)=>{if(cur&&cur!==el)cur.classList.remove('tip-on');cur=el;el.classList.add('tip-on');tp.innerHTML=B.ltrU(el.dataset.tip.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])).replace(/⟦(.*?)⟧/g,'<span class="ltr">$1</span>');tp.hidden=false;place(e,el)};
+    const show=(el,e)=>{if(cur&&cur!==el)cur.classList.remove('tip-on');cur=el;el.classList.add('tip-on');tp.innerHTML=B.ltrU(el.dataset.tip.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])).replace(/⟦(.*?)⟧/g,'<span class="ltr">$1</span>');tp.hidden=false;B.bidi&&B.bidi(tp);place(e,el)};
     const hide=()=>{if(cur)cur.classList.remove('tip-on');cur=null;tp.hidden=true};
     fig.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const el=e.target.closest('[data-tip]');if(el)show(el,e);else hide()});
     fig.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
@@ -491,31 +491,50 @@ const fmtN=(v,dp)=>{if(typeof v!=='number'||!isFinite(v))return v==null?'':Strin
 B.fmtN=fmtN;
 /* ---------------- WORKED EXAMPLES ----------------
  L.examples=[{title,ref,q:html,given:[{id,label,sym,unit,value,step,min,max}],solve:(g,B)=>[{t:html,f:latex,v:number|string,unit,dp,final:bool}],note}] */
+/* عدد + معدود بالعربي: B.arN(2,['دقيقة','دقيقتين','دقائق','دقيقة']) */
+B.arN=(n,w)=>n===1?w[0]:n===2?w[1]:(Number.isInteger(n)&&n>=3&&n<=10?`<span class="ltr">${n}</span> ${w[2]}`:`<span class="ltr">${n}</span> ${w[3]}`);
+/* نص السؤال يتبع القيم: q دالة (g)=>html، أو نص تُربط فيه كل قيمة معطاة تظهر فيه مرة واحدة بالضبط فتتغير معها */
+const exQ=(x,g)=>{if(typeof x.q==='function')return x.q(g);let q=String(x.q||'');if(!x.given)return q;
+  const parts=q.split(/(\$\$[\s\S]*?\$\$|\\\([\s\S]*?\\\)|<[^>]*>)/);
+  x.given.forEach(G=>{const v=String(G.value),vs=v[0]==='-'?[v,'−'+v.slice(1)]:[v];let hits=[];
+    parts.forEach((pt,k)=>{if(k%2&&pt[0]==='<')return;vs.forEach(sv=>{const re=new RegExp('(?<![\\d.])'+sv.replace(/[.\-]/g,'\\$&')+'(?![\\d.])','g');let m;while((m=re.exec(pt)))hits.push([k,m.index,sv])})});
+    if(hits.length!==1||g[G.id]===G.value&&false)return;const [k,ix,sv]=hits[0],cur=g[G.id],math=k%2===1;
+    const txt=math?String(cur):(cur<0?'−'+String(-cur):String(cur));
+    if(math){parts[k]=parts[k].slice(0,ix)+txt+parts[k].slice(ix+sv.length);return}
+    /* الرقم ووحدته اللاحقة في قطعة واحدة من اليسار لليمين */
+    const rest=parts[k].slice(ix+sv.length),um=rest.match(/^(?:\s|&nbsp;)?(?:°[CF]|[A-Za-zΩµμ%][A-Za-zΩµμ%\/²³⁻¹·]*)?/)[0];
+    parts[k]=parts[k].slice(0,ix)+`<span class="ltr"><b class="gv" data-gv="${G.id}">${txt}</b>${um}</span>`+rest.slice(um.length)});
+  return parts.join('')};
 function renderExamples(L,body){
-  body.innerHTML='<div class="exs">'+L.examples.map((x,i)=>`<section class="ex" data-i="${i}"><header><h2>${x.title}</h2>${x.ref?`<span class="ref">${x.ref}</span>`:''}</header>
-   <div class="ex-q">${x.q||''}</div>
-   ${x.given&&x.given.length?`<div class="ex-given"><div class="ex-gh"><b>المعطيات</b><span class="sub">غيّر الأرقام وشاهد الحل يتغير</span><button class="btn" data-reset>قيم الكتاب</button></div><div class="ex-grid">${x.given.map(g=>`<label class="ex-in"><span>${g.label}${g.sym?` <span class="ltr">${B.tex(g.sym)}</span>`:''}</span><span class="ex-inbox"><input type="number" inputmode="decimal" step="${g.step||'any'}" ${g.min!=null?`min="${g.min}"`:''} ${g.max!=null?`max="${g.max}"`:''} data-g="${g.id}" value="${g.value}" id="ex${i}-${g.id}"><em>${g.unit||''}</em></span></label>`).join('')}</div></div>`:''}
-   <ol class="ex-steps"></ol><div class="ex-ctl"></div><div class="ex-pred" hidden></div>${x.note?`<div class="callout">${x.note}</div>`:''}</section>`).join('')+'</div>';
+  body.innerHTML='<div class="exs">'+L.examples.map((x,i)=>{const hasG=x.given&&x.given.length;return `<section class="ex" data-i="${i}"><header><h2>${x.title}</h2>${x.ref?`<span class="ref">${x.ref}</span>`:''}${hasG?'<button class="btn ex-chg" type="button" data-chg aria-expanded="false">غيّر القيم</button>':''}</header>
+   <div class="ex-q"></div>
+   ${hasG?`<div class="ex-given" hidden><div class="ex-gh"><b>غيّر القيم</b><span class="sub">يتغير السؤال والحل معها</span><button class="btn" data-reset>قيم الكتاب</button></div><div class="ex-grid">${x.given.map(g=>`<label class="ex-in"><span>${g.label}${g.sym?` <span class="ltr">${B.tex(g.sym)}</span>`:''}</span><span class="ex-inbox"><input type="number" inputmode="decimal" step="${g.step||'any'}" ${g.min!=null?`min="${g.min}"`:''} ${g.max!=null?`max="${g.max}"`:''} data-g="${g.id}" value="${g.value}" id="ex${i}-${g.id}"><em>${g.unit||''}</em></span></label>`).join('')}</div></div>`:''}
+   <ol class="ex-steps"></ol><div class="ex-ctl"></div><div class="ex-pred" hidden></div>${x.note?`<div class="callout">${x.note}</div>`:''}</section>`}).join('')+'</div>';
   $$('.ex',body).forEach(sec=>{const x=L.examples[+sec.dataset.i];
-    /* الحل مخفي ويُكشف خطوة خطوة؛ «اعرض الحل كاملاً» يكشفه مرة واحدة؛ «توقّع» يقارن توقع المتدرب بناتج الخطوة التالية بعد التقريب */
-    let shown=0,steps=[],book=true,beats=[];
+    /* الحل مخفي ويُكشف خطوة خطوة: المعطيات أولاً بعلامات استفهام ثم قيمها واحدة واحدة (أو بالضغط على «؟»)،
+       ثم كل خطوة على مراحل: الشرح ← القانون ← التعويض ← الناتج. «اعرض الحل كاملاً» يكشفه مرة واحدة؛ «توقّع» للناتج */
+    let shown=0,steps=[],book=true,beats=[],gv={};const gOpen=new Set();
+    const G=x.given||[];
     const ctl=$('.ex-ctl',sec),pred=$('.ex-pred',sec);
     const decs=s=>{const m=String(s).trim().match(/\.(\d+)$/);return m?m[1].length:0};
-    /* كل خطوة تُكشف على مراحل: الشرح والمعطيات ← القانون ← التعويض ← الناتج */
     const eqParts=f=>{const out=[];let d=0,cur='';for(const ch of String(f)){if(ch==='{')d++;else if(ch==='}')d--;if(ch==='='&&d===0){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out};
     const fLevels=st=>{if(!st.f)return 0;const n=eqParts(st.f).length;return n<=2?1:n-1};
-    const mkBeats=()=>{beats=[];steps.forEach((st,k)=>{if(st.t)beats.push({k,w:'t'});for(let j=1;j<=fLevels(st);j++)beats.push({k,w:'f',j});if(st.v!=null)beats.push({k,w:'v'});if(!st.t&&!st.f&&st.v==null)beats.push({k,w:'t'})})};
-    const draw=()=>{const N=beats.length;if(shown>N)shown=N;
-      const lv=steps.map(()=>({t:0,f:0,v:0,any:0}));beats.slice(0,shown).forEach(b=>{const o=lv[b.k];o.any=1;if(b.w==='f')o.f=b.j;else o[b.w]=1});
+    const mkBeats=()=>{beats=[];if(G.length){beats.push({w:'G'});G.forEach((q,i)=>beats.push({w:'g',i}))}
+      steps.forEach((st,k)=>{if(st.t)beats.push({k,w:'t'});for(let j=1;j<=fLevels(st);j++)beats.push({k,w:'f',j});if(st.v!=null)beats.push({k,w:'v'});if(!st.t&&!st.f&&st.v==null)beats.push({k,w:'t'})})};
+    const skip=()=>{while(beats[shown]&&beats[shown].w==='g'&&gOpen.has(beats[shown].i))shown++};
+    const draw=()=>{skip();const N=beats.length;if(shown>N)shown=N;
+      const done=beats.slice(0,shown);const gList=done.some(b=>b.w==='G');done.forEach(b=>{if(b.w==='g')gOpen.add(b.i)});
+      const lv=steps.map(()=>({t:0,f:0,v:0,any:0}));done.forEach(b=>{if(b.k==null)return;const o=lv[b.k];o.any=1;if(b.w==='f')o.f=b.j;else o[b.w]=1});
       const fTex=(st,j)=>{const P=eqParts(st.f);return P.length<=2?st.f:P.slice(0,j+1).join('=')};
-      $('.ex-steps',sec).innerHTML=steps.map((st,k)=>{const o=lv[k];return `<li class="${st.final?'final':''}${o.any?'':' ex-hid'}">${st.t&&o.t?`<div class="ex-t">${st.t}</div>`:''}${st.f&&o.f?`<div class="ex-f">${B.tex(fTex(st,o.f),true)}</div>`:''}${st.v!=null&&o.v?`<div class="ex-v"><span class="ltr">${fmtN(st.v,st.dp)} ${st.unit||''}</span></div>`:''}</li>`}).join('')+(book||!shown?'':'<li class="ex-mine"><div class="ex-t">الأرقام الآن من عندك وليست من الكتاب.</div></li>');
-      const nb=beats[shown],nx=nb&&steps[nb.k],canP=nb&&nb.w!=='t'&&lv[nb.k].any&&typeof nx.v==='number'&&isFinite(nx.v)&&!lv[nb.k].v;
+      const gHtml=G.length?`<li class="ex-givens${gList?'':' ex-hid'}"><div class="ex-t">المعطيات:</div><ul>${G.map((q,i)=>`<li><span>${q.label}</span> <span class="ltr">${q.sym?B.tex(q.sym)+' = ':''}${gOpen.has(i)?`<b>${fmtN(gv[q.id])}</b>${q.unit?' '+q.unit:''}`:`<button type="button" class="ex-qm" data-qm="${i}" aria-label="اكشف قيمة ${q.label}">?</button>`}</span></li>`).join('')}</ul></li>`:'';
+      $('.ex-steps',sec).innerHTML=gHtml+steps.map((st,k)=>{const o=lv[k];return `<li class="${st.final?'final':''}${o.any?'':' ex-hid'}">${st.t&&o.t?`<div class="ex-t">${st.t}</div>`:''}${st.f&&o.f?`<div class="ex-f">${B.tex(fTex(st,o.f),true)}</div>`:''}${st.v!=null&&o.v?`<div class="ex-v"><span class="ltr">${fmtN(st.v,st.dp)} ${st.unit||''}</span></div>`:''}</li>`}).join('')+(book||!shown?'':'<li class="ex-mine"><div class="ex-t">الأرقام الآن من عندك وليست من الكتاب.</div></li>');
+      const nb=beats[shown],nx=nb&&nb.k!=null&&steps[nb.k],canP=nx&&nb.w!=='t'&&lv[nb.k].any&&typeof nx.v==='number'&&isFinite(nx.v)&&!lv[nb.k].v;
       ctl.innerHTML=shown<N?`<button class="btn pri" data-next>الخطوة التالية <span class="sub">(${shown+1} من ${N})</span></button>${canP?'<button class="btn" data-pred>توقّع الناتج</button>':''}<button class="btn" data-all>اعرض الحل كاملاً</button>${shown?'<button class="btn" data-hide>إخفاء الحل</button>':''}`:(N?'<button class="btn" data-hide>إخفاء الحل</button>':'');
       if(!canP||shown>=N)pred.hidden=true;
       const q=s=>$(s,ctl);
       q('[data-next]')&&q('[data-next]').addEventListener('click',()=>{shown++;pred.hidden=true;draw()});
       q('[data-all]')&&q('[data-all]').addEventListener('click',()=>{shown=N;pred.hidden=true;draw()});
-      q('[data-hide]')&&q('[data-hide]').addEventListener('click',()=>{shown=0;pred.hidden=true;draw()});
+      q('[data-hide]')&&q('[data-hide]').addEventListener('click',()=>{shown=0;gOpen.clear();pred.hidden=true;draw()});
       q('[data-pred]')&&q('[data-pred]').addEventListener('click',()=>{
         pred.hidden=false;
         pred.innerHTML=`<div class="ex-pq"><b>توقّع ناتج هذه الخطوة</b> قبل أن تراه:</div><div class="ex-pin"><input type="number" inputmode="decimal" step="any" aria-label="توقعك"><em>${nx.unit||''}</em><button class="btn pri" data-chk>تحقّق</button></div><div class="ex-pfb"></div>`;
@@ -530,13 +549,18 @@ function renderExamples(L,body){
       });
       B.math&&B.math($('.ex-steps',sec));
     };
-    const run=()=>{const g={};$$('[data-g]',sec).forEach(inp=>{g[inp.dataset.g]=parseFloat(inp.value)});
+    /* «؟» بجانب أي معطى يكشف قيمته مباشرة */
+    $('.ex-steps',sec).addEventListener('click',e=>{const b=e.target.closest('[data-qm]');if(!b)return;const i=+b.dataset.qm;gOpen.add(i);
+      const gi=beats.findIndex(t=>t.w==='G');if(shown<=gi)shown=gi+1;draw()});
+    const run=()=>{const g={};$$('[data-g]',sec).forEach(inp=>{g[inp.dataset.g]=parseFloat(inp.value)});gv=g;
       book=x.given?x.given.every(q=>g[q.id]===q.value):true;steps=[];
       try{steps=x.solve(g,B,book)||[]}catch(e){steps=[{t:'تعذّر الحساب بهذه القيم.'}]}
-      mkBeats();draw();
+      const qe=$('.ex-q',sec);try{qe.innerHTML=exQ(x,g)}catch(e){qe.innerHTML=typeof x.q==='string'?x.q:''}B.math&&B.math(qe);
+      const nb0=beats.length;mkBeats();if(beats.length!==nb0&&nb0)shown=Math.min(shown,beats.length);draw();
     };
     $$('[data-g]',sec).forEach(inp=>inp.addEventListener('input',run));
     const rb=$('[data-reset]',sec);if(rb)rb.addEventListener('click',()=>{x.given.forEach(q=>{$(`[data-g="${q.id}"]`,sec).value=q.value});run()});
+    const cb=$('[data-chg]',sec);if(cb)cb.addEventListener('click',()=>{const pn=$('.ex-given',sec);pn.hidden=!pn.hidden;cb.setAttribute('aria-expanded',String(!pn.hidden));cb.textContent=pn.hidden?'غيّر القيم':'إغلاق';if(!pn.hidden){const f=$('[data-g]',pn);f&&f.focus()}});
     run();});
 }
 
@@ -593,12 +617,12 @@ function renderActs(L,body){
   }
   /* ---- للمذاكرة الذاتية ---- */
   const SD=B.STUDY||{units:{},lessons:{}},uid=studyUnit(L.id),U0=(SD.units||{})[uid],SL=(SD.lessons||{})[L.id]||{};
-  /* بطاقات الوحدة حتى هذا الدرس فقط: البطاقة التي فيها l (رقم درسها) لا تظهر قبل أن يصل المتدرب إلى درسها */
-  const lno=id=>{const m=String(id||'').match(/-l(\d+)/);return m?+m[1]:0},here=lno(L.id);
-  const U=U0&&Array.isArray(U0.cards)?Object.assign({},U0,{cards:U0.cards.filter(c=>!c.l||lno(c.l)<=here)}):U0;
-  const cardsAll=U&&U0&&U.cards.length===U0.cards.length;
+  /* بطاقات هذا الدرس فقط (قرار المنسق): البطاقة فيها l = رقم درسها. الدرس الذي ليس له بطاقات (ورقة العمل/المراجعة) يعرض بطاقات الوحدة كلها */
+  const own=U0&&Array.isArray(U0.cards)?U0.cards.filter(c=>c.l===L.id):[];
+  const U=own.length?Object.assign({},U0,{cards:own}):U0;
+  const cardsAll=!own.length;
   const blocks=[];
-  if(!off.has('cards')&&U&&Array.isArray(U.cards)&&U.cards.length)blocks.push({k:'cards',t:'بطاقات المراجعة',d:`${cardsAll?'بطاقات الوحدة':'بطاقات الوحدة حتى هذا الدرس'}${U.title?`: ${U.title}`:''}. اقرأ الوجه، وتذكّر الجواب، ثم اقلب البطاقة.`});
+  if(!off.has('cards')&&U&&Array.isArray(U.cards)&&U.cards.length)blocks.push({k:'cards',t:'بطاقات المراجعة',d:`${cardsAll?`بطاقات الوحدة${U.title?`: ${U.title}`:''}`:'بطاقات هذا الدرس'}. اقرأ الوجه، وتذكّر الجواب، ثم اقلب البطاقة.`});
   if(!off.has('order')&&Array.isArray(SL.order)&&SL.order.length)blocks.push({k:'order',t:'رتّب خطوات التجربة',d:'رتّب الخطوات كما يجب أن تُنفَّذ، ثم اضغط «تحقّق».'});
   if(!off.has('match')&&Array.isArray(SL.match)&&SL.match.length)blocks.push({k:'match',t:'وصّل أطراف الدائرة',d:'صِل كل عنصر في العمود الأول بما يقابله في العمود الثاني.'});
   if(!off.has('prepost')&&Array.isArray(L.quiz)&&L.quiz.length)blocks.push({k:'prepost',t:'اختبار قبل وبعد الدرس',d:'اختياري: نفس الأسئلة قبل الدرس وبعده، لترى كم تحسّن فهمك.',side:1});
@@ -894,3 +918,43 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 })();
 B.start=function(){window.addEventListener('hashchange',route);route()};
 })(window);
+
+/* ---------------- اتجاه الأرقام والوحدات والإشارات داخل النص العربي ----------------
+   كل مقطع لاتيني فيه رقم (مثل «7 m» أو «−4» أو «20 m/s²» أو «4.8 × 10⁻¹³» أو «30 °C» أو «g = −9.8 m/s²»)
+   يُثبَّت من اليسار إلى اليمين حتى لا تنقلب الوحدة أو الإشارة إلى الجهة الخطأ من الرقم.
+   يعمل تلقائياً على كل ما يُعرض داخل الصفحة؛ لا يلمس المعادلات ولا الرسوم ولا النصوص الإنجليزية الكاملة. */
+(function(){
+  const B=window.PLCBOOK;if(!B)return;
+  const RUN=/[0-9A-Za-zΩµμΔΣθπ°%²³⁰¹⁴⁵⁶⁷⁸⁹⁻⁺·.,\-−+×÷=\/^()≈±≤≥   ]+/g;
+  const OKW=new Set('kg km cm mm nm µm μm min mol rpm kWh kHz MHz GHz Hz mA kV kW MW mph ft lb in Pa kPa cd eV mi mL sin cos tan log ln max kJ MJ mg mV µC μC nC pC µF μF nF pF mF kΩ MΩ Req eq'.split(' '));
+  const okTok=w=>w.length<=2||OKW.has(w);
+  const SKIP='.ltr,.ltrw,.katex,.katex-display,svg,script,style,textarea,input,select,option,code,pre,[dir="ltr"],[lang="en"],.en,.no-bidi,[contenteditable]';
+  const clean=p=>{p=p.replace(/^[\s .,:;)]+|[\s .,:;(]+$/g,'');
+    if(/^\([^()]*\)$/.test(p))p=p.slice(1,-1).trim();
+    if(p.startsWith('(')&&!p.includes(')'))p=p.slice(1).trim();if(p.endsWith(')')&&!p.includes('('))p=p.slice(0,-1).trim();return p};
+  /* يُثبَّت المقطع إذا كانت كلماته اللاتينية وحدات ورموزاً، أو بدأ برقم/إشارة (مثل «9 km long» بعد كلام عربي) */
+  const want=p=>/\d/.test(p)&&!/^[\d.,]+$/.test(p)&&((p.match(/[A-Za-zΩµμ]+/g)||[]).every(okTok)||/^[\d−\-+]/.test(p));
+  function fixNode(tn){const t=tn.nodeValue;if(!t||!/\d/.test(t)||/[\\$]/.test(t))return;
+    /* نص إنجليزي خالص (لا عربي في عنصره): اتجاهه سليم كما هو */
+    const pe=tn.parentElement;if(pe&&!/[\u0600-\u06FF]/.test(pe.textContent)){
+      /* نص لاتيني كامل فيه رقم داخل عنصر عربي الاتجاه (مثل خيار «4 m» أو جملة إنجليزية): يُثبَّت كله من اليسار لليمين */
+      if(!t.trim()||pe.childNodes.length>1&&pe.closest('.ltrw'))return;const a=t.search(/\S/),z=t.replace(/\s+$/,'').length;
+      const sp=document.createElement('span');sp.className='ltrw';sp.textContent=t.slice(a,z).replace(/-(?=\d)/g,'−');
+      const fr=document.createDocumentFragment();if(a)fr.appendChild(document.createTextNode(t.slice(0,a)));fr.appendChild(sp);if(z<t.length)fr.appendChild(document.createTextNode(t.slice(z)));tn.parentNode.replaceChild(fr,tn);return}
+    const segs=[];let last=0,m;RUN.lastIndex=0;
+    while((m=RUN.exec(t))){const raw=m[0];let off=m.index;
+      /* قطع القوائم: «5 m, 8 m» قطعتان */
+      raw.split(/(,\s+)/).forEach(pc=>{if(/^,\s+$/.test(pc)){off+=pc.length;return}
+        const c=clean(pc);if(c&&want(c)){const i=off+pc.indexOf(c);segs.push([i,i+c.length])}off+=pc.length})}
+    if(!segs.length)return;const fr=document.createDocumentFragment();
+    segs.forEach(([a,b])=>{if(a>last)fr.appendChild(document.createTextNode(t.slice(last,a)));const sp=document.createElement('span');sp.className='ltr';sp.textContent=t.slice(a,b).replace(/-(?=\d)/g,'−');fr.appendChild(sp);last=b});
+    if(last<t.length)fr.appendChild(document.createTextNode(t.slice(last)));tn.parentNode.replaceChild(fr,tn)}
+  B.bidi=root=>{if(!root)return;if(root.nodeType===3){const p=root.parentElement;if(p&&!p.closest(SKIP)&&getComputedStyle(p).direction==='rtl')fixNode(root);return}
+    if(root.nodeType!==1||root.closest(SKIP))return;
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;return !p||p.closest(SKIP)||!/\d/.test(n.nodeValue)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
+    const list=[];while(w.nextNode())list.push(w.currentNode);
+    list.forEach(n=>{try{if(getComputedStyle(n.parentElement).direction==='rtl')fixNode(n)}catch(e){}})};
+  const start=()=>{const v=document.getElementById('view')||document.querySelector('main');if(!v)return;B.bidi(v);
+    new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.isConnected)B.bidi(n)}))).observe(v,{childList:true,subtree:true})};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
