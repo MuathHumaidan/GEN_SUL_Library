@@ -31,7 +31,7 @@ const css=`
 .pk .pk-facts,.phl .pk-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:12px}
 .pk-facts div{background:var(--surface-2);border-radius:12px;padding:8px 10px;min-width:0}
 .pk-facts span{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
-.pk-facts b{display:block;font-family:var(--mono);font-size:17px;direction:ltr;text-align:end;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk-facts b{display:block;font-family:var(--mono);font-size:17px;direction:ltr;text-align:end;unicode-bidi:plaintext;white-space:normal;overflow-wrap:anywhere}
 .pk-facts div.hi{background:var(--blue-soft)}
 .pk-facts div.bad{background:var(--stop-soft)}
 .pk .pk-pic,.phl .pk-pic{margin-top:10px;max-width:560px;margin-inline:auto}
@@ -180,8 +180,8 @@ function plot(o){const W=o.w||520,H=o.h||260,L=o.left||46,Rm=14,Tm=16,Bm=34,[x0,
  xt.forEach(v=>{s+=`<path d="M${f(X(v))} ${Tm}V${H-Bm}" stroke="var(--line)" stroke-dasharray="3 3"/><text x="${f(X(v))}" y="${H-Bm+15}" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--mono)">${+v.toFixed(3)}</text>`});
  s+=`<path d="M${L} ${Tm}V${H-Bm}H${W-Rm}" stroke="var(--fg)" fill="none" stroke-width="1.4"/>`;
  if(y0<0&&y1>0)s+=`<path d="M${L} ${f(Y(0))}H${W-Rm}" stroke="var(--fg)" stroke-width="1"/>`;
- if(o.xl)s+=`<text x="${W-Rm}" y="${H-4}" text-anchor="end" font-size="12" fill="var(--fg)" direction="rtl">${o.xl}</text>`;
- if(o.yl)s+=`<text x="${L+6}" y="${Tm+10}" text-anchor="start" font-size="12" fill="var(--fg)" direction="rtl">${o.yl}</text>`;
+ if(o.xl)s+=`<text x="${W-Rm}" y="${H-6}" text-anchor="start" font-size="12" fill="var(--fg)" direction="rtl">${o.xl}</text>`;
+ if(o.yl)s+=`<text x="${L+6}" y="${Tm+10}" text-anchor="end" font-size="12" fill="var(--fg)" direction="rtl">${o.yl}</text>`;
  (o.series||[]).forEach(se=>{if(!se.pts.length)return;s+=`<path d="${se.pts.map((p,i)=>(i?'L':'M')+f(X(p[0]))+' '+f(Y(Math.max(y0-(y1-y0),Math.min(y1+(y1-y0),p[1]))))).join('')}" fill="none" stroke="${se.col||'var(--blue)'}" stroke-width="${se.w||2.6}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`});
  (o.dots||[]).forEach(d=>{s+=`<circle cx="${f(X(d[0]))}" cy="${f(Y(d[1]))}" r="${d[4]||4.5}" fill="${d[2]||'var(--live)'}" stroke="var(--surface)" stroke-width="1.5"/>`+(d[3]?`<text x="${f(X(d[0])+7)}" y="${f(Y(d[1])-7)}" font-size="12" font-weight="700" fill="${d[2]||'var(--live)'}" font-family="var(--mono)">${d[3]}</text>`:'')});
  if(o.extra)s+=o.extra(X,Y);

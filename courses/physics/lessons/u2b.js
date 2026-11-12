@@ -4,7 +4,7 @@ const K=window.PHK,{lt,fm,tx,C,art,T,TL,arrowS,facts,seg,segBind,sl,plot}=K;
 const R=String.raw;
 const symF=()=>`<div class="tbx"><table class="tt"><thead><tr><th></th><th>القوة</th><th>الشغل</th><th>القدرة</th><th>الطاقة</th></tr></thead><tbody><tr><td>الرمز</td><td class="l">F</td><td class="l">W</td><td class="l">P</td><td class="l">E</td></tr><tr><td>وحدة القياس</td><td class="l">N</td><td class="l">J</td><td class="l">Watt</td><td class="l">J</td></tr></tbody></table></div>`;
 /* صندوق وقوى أفقية: forces [[مقدار موجب، اتجاه +1 يمين / −1 يسار، اسم]] */
-function boxSVG(forces,o){o=o||{};const W=520,H=200,cx=260,cy=110,s=4.2;let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="صندوق وقوى">`;
+function boxSVG(forces,o){o=o||{};const W=520,H=222,cx=260,cy=110,s=4.2;let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="صندوق وقوى">`;
  g+=`<path d="M20 160H500" stroke="var(--fg)" stroke-width="1.6"/><rect x="${cx-40}" y="${cy-36}" width="80" height="86" rx="6" fill="var(--surface-2)" stroke="var(--fg)" stroke-width="2"/>`;
  let ly={'1':cy-20,'-1':cy-20};
  forces.forEach(([m,d,n])=>{if(!m)return;const y=ly[d];ly[d]+=26;const x0=d>0?cx+42:cx-42,x1=x0+d*Math.max(16,Math.min(170,m*s));
@@ -118,7 +118,7 @@ function lab25(el,B){
  const $=s=>el.querySelector(s);let sf='s',x=0,v=0,run=false,push=true;
  const get=()=>{const F=push?+$('#lf').value:0,m=+$('#lm').value,fr=sf==='r'?+$('#lr').value:0;['lf','lm','lr'].forEach(k=>$('#'+k+'-v').textContent=$('#'+k).value+(k==='lm'?' kg':' N'));
   let fr_=0;if(sf==='r'){if(v>1e-6)fr_=fr;else fr_=Math.min(fr,F)}return {F,m,fr:fr_,frMax:fr,net:F-fr_,a:(F-fr_)/m}};
- const draw=()=>{const q=get();const W=640,H=150;const px=40+((x*14)%560+560)%560;let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="عربة"><path d="M10 110H630" stroke="var(--fg)" stroke-width="1.6"/>${sf==='r'?'<path d="M10 113H630" stroke="var(--live)" stroke-width="4" stroke-dasharray="2 4"/>':''}`;
+ const draw=()=>{const q=get();const W=640,H=150;const px=92+((x*14)%380+380)%380;let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="عربة"><path d="M10 110H630" stroke="var(--fg)" stroke-width="1.6"/>${sf==='r'?'<path d="M10 113H630" stroke="var(--live)" stroke-width="4" stroke-dasharray="2 4"/>':''}`;
   s+=`<rect x="${px}" y="70" width="70" height="36" rx="7" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="2"/><text x="${px+35}" y="93" text-anchor="middle" font-size="12" fill="var(--fg)" font-family="var(--mono)">${q.m} kg</text>`;
   if(q.F)s+=arrowS(px-60,88,px-4,88,'var(--blue)',3.4)+`<text x="${px-62}" y="80" font-size="12" font-weight="700" fill="var(--blue-ink)" font-family="var(--mono)">F=${q.F}N</text>`;
   if(q.fr>0)s+=arrowS(px+74,100,px+74+Math.min(80,q.fr),100,'var(--live)',3)+`<text x="${px+80}" y="128" font-size="12" font-weight="700" fill="var(--live)" font-family="var(--mono)">f=${q.fr}N</text>`;
