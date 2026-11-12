@@ -563,7 +563,7 @@ body::before{background:var(--hero1)}
 .st-art{position:relative}
 .st-art [data-tip]{cursor:help;transition:filter .15s}
 .st-art [data-tip]:hover,.st-art [data-tip].tip-on{filter:brightness(1.18) drop-shadow(0 0 3px rgba(255,255,255,.9))}
-.art-tip{position:absolute;z-index:5;max-width:240px;background:#1f3b32;color:#fff;font-size:13px;line-height:1.7;padding:7px 11px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.18);pointer-events:none}
+.art-tip{position:fixed;z-index:60;max-width:240px;background:#1f3b32;color:#fff;font-size:13px;line-height:1.7;padding:7px 11px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.18);pointer-events:none}
 .art-tip[hidden]{display:none}
 .st-art svg text{pointer-events:none}
 .st-art rect[fill="transparent"]:hover,.st-art rect[fill="transparent"].tip-on{fill:rgba(18,133,90,.14)}

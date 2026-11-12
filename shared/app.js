@@ -19,6 +19,7 @@ B.lesson=L=>{B.LESSONS.push(L)};
    يُدمج حسب رقم الدرس؛ المقرر الذي ليس له ملف لا يكون فيه محتوى جاهز. */
 B.ACTS={};
 /* self-study data (study.js) and «اكتشف الخطأ» variants (errors.js) per course */
+const artTips=[];addEventListener('scroll',()=>artTips.forEach(t=>t.hide()),{passive:true,capture:true});
 B.STUDY={units:{},lessons:{}};B.study=o=>{o=o||{};Object.assign(B.STUDY.units,o.units||{});Object.assign(B.STUDY.lessons,o.lessons||{})};
 B.ERRS={};B.errs=o=>{Object.assign(B.ERRS,o||{})};
 /* «اكتشف العطل» و«تحدي المحاكاة» (courses/<id>/challenge.js، اختياري): لكل درس فيه مختبر
@@ -217,6 +218,7 @@ function renderStations(L,body){
   });
   h+='</article>';
   body.innerHTML=h;
+  artTips.splice(0).forEach(t=>t.tp.remove());
   $$('.st-art',body).forEach(fig=>{
     if(!fig.querySelector('[data-tip]'))return;
     /* مساحة لمس شفافة حول كل عنصر له شرح، حتى يظهر الشرح عند المرور على أي جزء منه لا على الخطوط الرفيعة فقط */
@@ -227,14 +229,18 @@ function renderStations(L,body){
         r.setAttribute('x',b.x-pd);r.setAttribute('y',b.y-pd);r.setAttribute('width',b.width+2*pd);r.setAttribute('height',b.height+2*pd);
         r.setAttribute('fill','#000');r.setAttribute('fill-opacity','0');r.setAttribute('stroke','none');r.setAttribute('class','tip-hit');
         if(t.tagName==='g')t.insertBefore(r,t.firstChild);else{r.dataset.tip=t.dataset.tip;t.parentNode.insertBefore(r,t)}})}catch(e){}
-    const tp=document.createElement('div');tp.className='art-tip';tp.hidden=true;fig.appendChild(tp);let cur=null;
-    const place=e=>{const R=fig.getBoundingClientRect(),x=e.clientX-R.left,y=e.clientY-R.top,w=tp.offsetWidth,h=tp.offsetHeight;
-      tp.style.left=Math.max(8,Math.min(R.width-w-8,x-w/2))+'px';tp.style.top=(y-h-12<0?y+18:y-h-12)+'px'};
-    const show=(el,e)=>{if(cur&&cur!==el)cur.classList.remove('tip-on');cur=el;el.classList.add('tip-on');tp.innerHTML=B.ltrU(el.dataset.tip.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])).replace(/⟦(.*?)⟧/g,'<span class="ltr">$1</span>');tp.hidden=false;place(e)};
+    /* الشرح يُثبَّت على الشاشة نفسها (خارج منطقة الدرس المكبَّرة بحجم الخط) حتى يظهر بجانب المؤشر تماماً في كل المتصفحات */
+    const tp=document.createElement('div');tp.className='art-tip';tp.hidden=true;document.body.appendChild(tp);let cur=null;
+    const place=(e,el)=>{let x=e&&e.clientX,y=e&&e.clientY;
+      if(!e||e.pointerType!=='mouse'||x==null){const r=el.getBoundingClientRect();x=r.left+r.width/2;y=r.top}
+      const w=tp.offsetWidth,h=tp.offsetHeight,W=document.documentElement.clientWidth;
+      tp.style.left=Math.max(8,Math.min(W-w-8,x-w/2))+'px';tp.style.top=(y-h-14<8?y+22:y-h-14)+'px'};
+    const show=(el,e)=>{if(cur&&cur!==el)cur.classList.remove('tip-on');cur=el;el.classList.add('tip-on');tp.innerHTML=B.ltrU(el.dataset.tip.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])).replace(/⟦(.*?)⟧/g,'<span class="ltr">$1</span>');tp.hidden=false;place(e,el)};
     const hide=()=>{if(cur)cur.classList.remove('tip-on');cur=null;tp.hidden=true};
     fig.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const el=e.target.closest('[data-tip]');if(el)show(el,e);else hide()});
     fig.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
     fig.addEventListener('click',e=>{const el=e.target.closest('[data-tip]');if(el&&el!==cur)show(el,e);else hide()});
+    artTips.push({tp,hide});
   });
   $$('.sw-host',body).forEach(el=>{try{W[+el.dataset.w](el,B)}catch(e){console.error(e)}});
   $$('.stmap button',body).forEach(bt=>bt.addEventListener('click',()=>{const t=document.getElementById('st-'+bt.dataset.go);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
@@ -492,12 +498,18 @@ function renderExamples(L,body){
    <ol class="ex-steps"></ol><div class="ex-ctl"></div><div class="ex-pred" hidden></div>${x.note?`<div class="callout">${x.note}</div>`:''}</section>`).join('')+'</div>';
   $$('.ex',body).forEach(sec=>{const x=L.examples[+sec.dataset.i];
     /* الحل مخفي ويُكشف خطوة خطوة؛ «اعرض الحل كاملاً» يكشفه مرة واحدة؛ «توقّع» يقارن توقع المتدرب بناتج الخطوة التالية بعد التقريب */
-    let shown=0,steps=[],book=true;
+    let shown=0,steps=[],book=true,beats=[];
     const ctl=$('.ex-ctl',sec),pred=$('.ex-pred',sec);
     const decs=s=>{const m=String(s).trim().match(/\.(\d+)$/);return m?m[1].length:0};
-    const draw=()=>{const N=steps.length;if(shown>N)shown=N;
-      $('.ex-steps',sec).innerHTML=steps.map((st,k)=>`<li class="${st.final?'final':''}${k>=shown?' ex-hid':''}">${st.t?`<div class="ex-t">${st.t}</div>`:''}${st.f?`<div class="ex-f">${B.tex(st.f,true)}</div>`:''}${st.v!=null?`<div class="ex-v"><span class="ltr">${fmtN(st.v,st.dp)} ${st.unit||''}</span></div>`:''}</li>`).join('')+(book||!shown?'':'<li class="ex-mine"><div class="ex-t">الأرقام الآن من عندك وليست من الكتاب.</div></li>');
-      const nx=steps[shown],canP=nx&&typeof nx.v==='number'&&isFinite(nx.v);
+    /* كل خطوة تُكشف على مراحل: الشرح والمعطيات ← القانون ← التعويض ← الناتج */
+    const eqParts=f=>{const out=[];let d=0,cur='';for(const ch of String(f)){if(ch==='{')d++;else if(ch==='}')d--;if(ch==='='&&d===0){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out};
+    const fLevels=st=>{if(!st.f)return 0;const n=eqParts(st.f).length;return n<=2?1:n-1};
+    const mkBeats=()=>{beats=[];steps.forEach((st,k)=>{if(st.t)beats.push({k,w:'t'});for(let j=1;j<=fLevels(st);j++)beats.push({k,w:'f',j});if(st.v!=null)beats.push({k,w:'v'});if(!st.t&&!st.f&&st.v==null)beats.push({k,w:'t'})})};
+    const draw=()=>{const N=beats.length;if(shown>N)shown=N;
+      const lv=steps.map(()=>({t:0,f:0,v:0,any:0}));beats.slice(0,shown).forEach(b=>{const o=lv[b.k];o.any=1;if(b.w==='f')o.f=b.j;else o[b.w]=1});
+      const fTex=(st,j)=>{const P=eqParts(st.f);return P.length<=2?st.f:P.slice(0,j+1).join('=')};
+      $('.ex-steps',sec).innerHTML=steps.map((st,k)=>{const o=lv[k];return `<li class="${st.final?'final':''}${o.any?'':' ex-hid'}">${st.t&&o.t?`<div class="ex-t">${st.t}</div>`:''}${st.f&&o.f?`<div class="ex-f">${B.tex(fTex(st,o.f),true)}</div>`:''}${st.v!=null&&o.v?`<div class="ex-v"><span class="ltr">${fmtN(st.v,st.dp)} ${st.unit||''}</span></div>`:''}</li>`}).join('')+(book||!shown?'':'<li class="ex-mine"><div class="ex-t">الأرقام الآن من عندك وليست من الكتاب.</div></li>');
+      const nb=beats[shown],nx=nb&&steps[nb.k],canP=nb&&nb.w!=='t'&&lv[nb.k].any&&typeof nx.v==='number'&&isFinite(nx.v)&&!lv[nb.k].v;
       ctl.innerHTML=shown<N?`<button class="btn pri" data-next>الخطوة التالية <span class="sub">(${shown+1} من ${N})</span></button>${canP?'<button class="btn" data-pred>توقّع الناتج</button>':''}<button class="btn" data-all>اعرض الحل كاملاً</button>${shown?'<button class="btn" data-hide>إخفاء الحل</button>':''}`:(N?'<button class="btn" data-hide>إخفاء الحل</button>':'');
       if(!canP||shown>=N)pred.hidden=true;
       const q=s=>$(s,ctl);
@@ -506,13 +518,13 @@ function renderExamples(L,body){
       q('[data-hide]')&&q('[data-hide]').addEventListener('click',()=>{shown=0;pred.hidden=true;draw()});
       q('[data-pred]')&&q('[data-pred]').addEventListener('click',()=>{
         pred.hidden=false;
-        pred.innerHTML=`<div class="ex-pq"><b>توقّع ناتج الخطوة التالية:</b> ${nx.t||''}${nx.f?`<div class="ex-f">${B.tex(nx.f,true)}</div>`:''}</div><div class="ex-pin"><input type="number" inputmode="decimal" step="any" aria-label="توقعك"><em>${nx.unit||''}</em><button class="btn pri" data-chk>تحقّق</button></div><div class="ex-pfb"></div>`;
-        B.math&&B.math(pred);const inp=$('input',pred);inp.focus();
+        pred.innerHTML=`<div class="ex-pq"><b>توقّع ناتج هذه الخطوة</b> قبل أن تراه:</div><div class="ex-pin"><input type="number" inputmode="decimal" step="any" aria-label="توقعك"><em>${nx.unit||''}</em><button class="btn pri" data-chk>تحقّق</button></div><div class="ex-pfb"></div>`;
+        const inp=$('input',pred);inp.focus();
         const chk=()=>{const raw=inp.value;if(raw.trim()==='')return;const p=parseFloat(raw);if(!isFinite(p))return;
           const shownTxt=fmtN(nx.v,nx.dp),d=Math.min(decs(raw),decs(shownTxt));
           const ok=B.round(p,d)===B.round(parseFloat(shownTxt),d);
           $('.ex-pfb',pred).innerHTML=ok?`<b class="ok">توقعك صحيح.</b> الناتج <span class="ltr">${shownTxt} ${nx.unit||''}</span>`:`<b class="no">ليس هذا.</b> توقعك <span class="ltr">${raw} ${nx.unit||''}</span> والناتج الصحيح <span class="ltr">${shownTxt} ${nx.unit||''}</span>`;
-          const fb=$('.ex-pfb',pred).innerHTML;shown++;draw();pred.hidden=false;pred.innerHTML=`<div class="ex-pfb">${fb}</div>`;};
+          const fb=$('.ex-pfb',pred).innerHTML;const vi=beats.findIndex(b=>b.k===nb.k&&b.w==='v');shown=Math.max(shown,vi+1);draw();pred.hidden=false;pred.innerHTML=`<div class="ex-pfb">${fb}</div>`;};
         $('[data-chk]',pred).addEventListener('click',chk);
         inp.addEventListener('keydown',e=>{if(e.key==='Enter')chk()});
       });
@@ -521,7 +533,7 @@ function renderExamples(L,body){
     const run=()=>{const g={};$$('[data-g]',sec).forEach(inp=>{g[inp.dataset.g]=parseFloat(inp.value)});
       book=x.given?x.given.every(q=>g[q.id]===q.value):true;steps=[];
       try{steps=x.solve(g,B,book)||[]}catch(e){steps=[{t:'تعذّر الحساب بهذه القيم.'}]}
-      draw();
+      mkBeats();draw();
     };
     $$('[data-g]',sec).forEach(inp=>inp.addEventListener('input',run));
     const rb=$('[data-reset]',sec);if(rb)rb.addEventListener('click',()=>{x.given.forEach(q=>{$(`[data-g="${q.id}"]`,sec).value=q.value});run()});
@@ -580,9 +592,13 @@ function renderActs(L,body){
     h+='</section>';
   }
   /* ---- للمذاكرة الذاتية ---- */
-  const SD=B.STUDY||{units:{},lessons:{}},uid=studyUnit(L.id),U=(SD.units||{})[uid],SL=(SD.lessons||{})[L.id]||{};
+  const SD=B.STUDY||{units:{},lessons:{}},uid=studyUnit(L.id),U0=(SD.units||{})[uid],SL=(SD.lessons||{})[L.id]||{};
+  /* بطاقات الوحدة حتى هذا الدرس فقط: البطاقة التي فيها l (رقم درسها) لا تظهر قبل أن يصل المتدرب إلى درسها */
+  const lno=id=>{const m=String(id||'').match(/-l(\d+)/);return m?+m[1]:0},here=lno(L.id);
+  const U=U0&&Array.isArray(U0.cards)?Object.assign({},U0,{cards:U0.cards.filter(c=>!c.l||lno(c.l)<=here)}):U0;
+  const cardsAll=U&&U0&&U.cards.length===U0.cards.length;
   const blocks=[];
-  if(!off.has('cards')&&U&&Array.isArray(U.cards)&&U.cards.length)blocks.push({k:'cards',t:'بطاقات المراجعة',d:`بطاقات الوحدة${U.title?`: ${U.title}`:''}. اقرأ الوجه، وتذكّر الجواب، ثم اقلب البطاقة.`});
+  if(!off.has('cards')&&U&&Array.isArray(U.cards)&&U.cards.length)blocks.push({k:'cards',t:'بطاقات المراجعة',d:`${cardsAll?'بطاقات الوحدة':'بطاقات الوحدة حتى هذا الدرس'}${U.title?`: ${U.title}`:''}. اقرأ الوجه، وتذكّر الجواب، ثم اقلب البطاقة.`});
   if(!off.has('order')&&Array.isArray(SL.order)&&SL.order.length)blocks.push({k:'order',t:'رتّب خطوات التجربة',d:'رتّب الخطوات كما يجب أن تُنفَّذ، ثم اضغط «تحقّق».'});
   if(!off.has('match')&&Array.isArray(SL.match)&&SL.match.length)blocks.push({k:'match',t:'وصّل أطراف الدائرة',d:'صِل كل عنصر في العمود الأول بما يقابله في العمود الثاني.'});
   if(!off.has('prepost')&&Array.isArray(L.quiz)&&L.quiz.length)blocks.push({k:'prepost',t:'اختبار قبل وبعد الدرس',d:'اختياري: نفس الأسئلة قبل الدرس وبعده، لترى كم تحسّن فهمك.',side:1});

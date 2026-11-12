@@ -19,6 +19,7 @@ const TP = B.params(hostEl, 'u1-l3', [
 - `id` = lesson id (e.g. 'u2-l3'); if a lab has two independent simulations you may use two panels with ids
   'u2-l3-a', 'u2-l3-b' (each host div placed just above its own panel, inside the grid as `<div class="c12" id=..>`).
 - Replace every use of the hard-coded constant with `TP.v.k`. Loop-based sims (loopOn) just read TP.v each frame.
+- Animations started by a button: `K.loopOn(el,fn,'key')` — a new run with the same key stops the previous one (so «أعد التجربة» always works), and `return false` from fn ends the loop. Never start a keyless loop inside a click handler: every press would add another endless loop.
   Event-driven sims must redraw in the onChange callback.
 - Choose min/max so nothing breaks (no division by zero, no negative where impossible, no NaN). Guard formulas
   that could explode with Math.max(…, tiny). Auto-scale axes if a plot's range was tuned to the old constant.

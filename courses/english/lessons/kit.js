@@ -164,7 +164,9 @@ function arrowS(x1,y1,x2,y2,col,w,head){w=w||3;const a=Math.atan2(y2-y1,x2-x1),L
 /* سؤال كتاب بإجابة مقترحة */
 const Qd=(n,qs,ans)=>`<details class="ph-q"><summary>${n}: ${qs}</summary><div class="ph-ans"><b>إجابة مقترحة (ليست من الكتاب):</b> ${ans}</div></details>`;
 /* حلقة رسم تتوقف عند مغادرة الصفحة */
-function loopOn(el,fn){let last=performance.now();const f=now=>{if(!document.body.contains(el))return;const dt=Math.min(0.05,Math.max(0,(now-last)/1000));last=now;try{fn(dt)}catch(e){console.error(e);return}requestAnimationFrame(f)};requestAnimationFrame(f)}
+/* key: تشغيل جديد بنفس المفتاح يوقف السابق (حتى تعمل «إعادة التجربة» دائماً)؛ وإرجاع false من fn يوقف الحلقة */
+function loopOn(el,fn,key){let last=performance.now();const tok={};if(key)(el._loops||(el._loops={}))[key]=tok;const f=now=>{if(!document.body.contains(el))return;if(key&&el._loops[key]!==tok)return;const dt=Math.min(0.05,Math.max(0,(now-last)/1000));last=now;let r;try{r=fn(dt)}catch(e){console.error(e);return}if(r===false){if(key&&el._loops[key]===tok)delete el._loops[key];return}requestAnimationFrame(f)};requestAnimationFrame(f)}
+function loopStop(el,key){if(el._loops)delete el._loops[key]}
 const sl=(id,label,min,max,step,val)=>`<label class="pk-sl"><span class="pk-h"><span>${label}</span><b id="${id}-v"></b></span><input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}" aria-label="${label.replace(/<[^>]+>/g,'')}"></label>`;
 const seg=(attr,items,cur)=>`<div class="seg" role="group">${items.map(([v,l])=>`<button type="button" data-${attr}="${v}" aria-pressed="${String(v)===String(cur)}">${l}</button>`).join('')}</div>`;
 const segBind=(el,attr,fn)=>qa(el,`[data-${attr}]`).forEach(b=>b.addEventListener('click',()=>{qa(el,`[data-${attr}]`).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));fn(b.dataset[attr])}));
@@ -186,5 +188,5 @@ function plot(o){const W=o.w||520,H=o.h||260,L=o.left||46,Rm=14,Tm=16,Bm=34,[x0,
  (o.dots||[]).forEach(d=>{s+=`<circle cx="${f(X(d[0]))}" cy="${f(Y(d[1]))}" r="${d[4]||4.5}" fill="${d[2]||'var(--live)'}" stroke="var(--surface)" stroke-width="1.5"/>`+(d[3]?`<text x="${f(X(d[0])+7)}" y="${f(Y(d[1])-7)}" font-size="12" font-weight="700" fill="${d[2]||'var(--live)'}" font-family="var(--mono)">${d[3]}</text>`:'')});
  if(o.extra)s+=o.extra(X,Y);
  return s+'</svg>'}
-G.PHK={plot,ev,css,lt,fm,tx,sup,tf,sort,cases,order,calc,num,C,art,T,TL,arrowS,Qd,loopOn,sl,seg,segBind,facts,q,qa,fin};
+G.PHK={plot,ev,css,lt,fm,tx,sup,tf,sort,cases,order,calc,num,C,art,T,TL,arrowS,Qd,loopOn,loopStop,sl,seg,segBind,facts,q,qa,fin};
 })(window);
