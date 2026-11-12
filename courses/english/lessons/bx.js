@@ -17,6 +17,7 @@ const css=`
 .bx-mt select{font:inherit;padding:4px 8px;border-radius:8px;border:1.5px solid var(--line)}
 .bx-mt select.ok{border-color:#2e9d6a;background:#e4f5ec}.bx-mt select.no{border-color:#c4553f;background:#fbe9e4}
 .bx-opts{display:grid;gap:4px;margin:8px 0;padding:8px 12px;background:var(--surface-2);border-radius:10px}
+.bx-sp table{display:block;max-width:100%;overflow-x:auto}
 .bx-sp ol{margin:6px 0 10px;padding-inline-start:22px}.bx-sp .ul{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
 .bx-sp .ul span{background:var(--surface-2);border-radius:8px;padding:3px 9px}
 .bx-sp details{margin-top:8px}.bx-sp summary{cursor:pointer;font-weight:700}

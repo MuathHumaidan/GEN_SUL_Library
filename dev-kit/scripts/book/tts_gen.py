@@ -1,7 +1,9 @@
 # يولّد تسجيلاً لكل جملة في say.json بصوت am_michael (سرعة 0.9) — ملف لكل جملة باسم بصمتها (FNV-1a)
 import json,re,os,subprocess,sys,soundfile as sf
 from kokoro_onnx import Kokoro
-OUT='/home/claude/lib/courses/english/audio/tts'; os.makedirs(OUT,exist_ok=True)
+import os as _o
+COURSE=_o.environ.get('COURSE','english')
+OUT=f'/home/claude/lib/courses/{COURSE}/audio/tts'; os.makedirs(OUT,exist_ok=True)
 def key(s):
   h=0x811c9dc5
   for c in s: h^=ord(c); h=(h*0x01000193)&0xffffffff
@@ -24,16 +26,19 @@ def speakable(s):
   t=t.replace('≠',', or ').replace('→',', ').replace(' = ',', ').replace('·','. ').replace('—',', ').replace(' / ',', ').replace('…','...')
   return t
 k=Kokoro('/home/claude/tts/kokoro-v1.0.onnx','/home/claude/tts/voices-v1.0.bin')
-texts=[norm(x) for x in json.load(open('/home/claude/tts/say.json'))]
+texts=[norm(x) for x in json.load(open(_o.environ.get('SAY','/home/claude/tts/say.json')))]
 done=0
 for s in texts:
   f=f'{OUT}/{key(s)}.mp3'
   if os.path.exists(f): continue
+  src=f'/home/claude/lib/courses/english/audio/tts/{key(s)}.mp3'
+  if COURSE!='english' and os.path.exists(src):
+    import shutil;shutil.copy(src,f);continue
   try:
     a,sr=k.create(speakable(s),voice='am_michael',speed=0.9,lang='en-us');sf.write('/tmp/t.wav',a,sr)
     subprocess.run(['ffmpeg','-y','-loglevel','error','-i','/tmp/t.wav','-ac','1','-b:a','48k',f],check=True);done+=1
   except Exception as e: print('FAIL',s,e,file=sys.stderr)
   if done%25==0: print(done,flush=True)
 keys=sorted({key(s) for s in texts if os.path.exists(f'{OUT}/{key(s)}.mp3')})
-open('/home/claude/lib/courses/english/tts.js','w').write('/* تسجيلات النطق (صوت Kokoro am_michael) — بصمات الجمل المسجلة في audio/tts/ */\nwindow.ENG_TTS="'+' '.join(keys)+'";\n')
+open(f'/home/claude/lib/courses/{COURSE}/tts.js','w').write('/* تسجيلات النطق (صوت Kokoro am_michael) — بصمات الجمل المسجلة في audio/tts/ */\nwindow.ENG_TTS="'+' '.join(keys)+'";\n')
 print('DONE',len(keys))
