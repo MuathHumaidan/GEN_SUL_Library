@@ -46,7 +46,7 @@ Shown as the first block of the lesson in BOTH styles (formal and interactive) a
 
 
 ## Recorded pronunciation (English course; user decision, Nov 2026)
-Every 🔊 plays a recording made with the open-source Kokoro voice `am_michael` (American male, speed 0.9 — the coordinator rejected a slower speed as sounding artificial). Files: `courses/english/audio/tts/<key>.mp3`, where key = FNV-1a 32-bit hex of the spoken text (spaces collapsed); `courses/english/tts.js` lists the recorded keys. A sentence without a recording (e.g. lab sentences built from the trainee's choices) falls back to the device voice.
+Every 🔊 plays a recording made with the open-source Kokoro voice `am_michael` (American male, speed 0.9 — the coordinator rejected a slower speed as sounding artificial). Files: `courses/english/audio/tts/<key>.mp3`, where key = FNV-1a 32-bit hex of the spoken text (spaces collapsed); `courses/english/tts.js` lists the recorded keys. A sentence without a recording (e.g. lab sentences built from the trainee's choices) falls back to the device voice. A 🔊 is drawn only when the text has more Latin letters than Arabic ones (`latinT` in en.js), so Arabic match items, Arabic table cells and symbols (⊗, ↶) get no button; Arabic left-hand match items are shown right-to-left.
 After adding or changing English sentences: run `dev-kit/scripts/book/saycollect.js` (collects every 🔊 text and the words) then `python3 dev-kit/scripts/book/tts_gen.py` (needs `pip install kokoro-onnx soundfile`, the model files kokoro-v1.0.onnx + voices-v1.0.bin from github.com/thewh1teagle/kokoro-onnx releases, and ffmpeg). It records only missing sentences and rewrites tts.js. `speakable()` in it expands units (km → kilometers) and drops symbols before recording.
 
 
