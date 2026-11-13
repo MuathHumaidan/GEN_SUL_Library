@@ -62,6 +62,47 @@ const VOC=[['specifications','المواصفات','جدول المواصفات =
 const DIMS=[['long','طويل','length','الطول'],['wide','عريض','width','العرض'],['high','مرتفع / عالٍ','height','الارتفاع'],['deep','عميق','depth','العمق']];
 const dimTable=`<div class="tbx"><table class="vt"><thead><tr><th>Adjective الصفة</th><th>المعنى</th><th>Noun الاسم</th><th>المعنى</th></tr></thead><tbody>${DIMS.map(r=>`<tr><td class="en">${r[0]} ${sp(r[0])}</td><td>${r[1]}</td><td class="en">${r[2]} ${sp(r[2])}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table></div>`;
 
+const R_u7_l1=N.rule({title:'الأبعاد: الصفة والاسم، والسؤال بـ How، وكتابة الوحدات',ref:'ص 52–53',
+ intro:`نشرح وصف الأبعاد في ثلاث خطوات مرتبة: الصفة والاسم لكل بُعد ومكان كل منهما في الجملة، ثم السؤال عن البُعد وجوابه، ثم كتابة الوحدات وقراءتها.`,
+ parts:[
+ {t:'الصفة والاسم للأبعاد',short:'صفة أم اسم؟',old:[2],q:'أيهما صحيح: The road is 6 m wide أم The road is 6 m width؟',ref:'ص 53',
+  lead:`عندما نصف منشأة نذكر أبعادها: الطول والعرض والارتفاع والعمق. ولكل بُعد كلمتان، صفة واسم، ولكل منهما مكانه في الجملة؛ فإذا وضعت إحداهما مكان الأخرى صارت الجملة خطأ.`,
+  points:[`<b>الصفة</b> تأتي بعد الرقم والوحدة، فيكون الترتيب: الرقم ← الوحدة ← الصفة.<br>${e('The tunnel is 9 km long.')}`,
+   `<b>الاسم</b> يأتي بعد ${e('The')} ويتبعه ${e('of')} ثم الشيء، ويكون الرقم في آخر الجملة.<br>${e('The length of the tunnel is 9 km.')}`,
+   `الجملتان بالمعنى نفسه، فاستعمل أيّهما شئت.`],
+  grid:{head:['البُعد','الصفة','الاسم','مثال بالصفة'],rows:[['الطول','long','length','9 km long'],['العرض','wide','width','30 m wide'],['الارتفاع','high','height','150 m high'],['العمق','deep','depth','45 m deep']]},
+  ex:['The bridge is 2.5 km <b>long</b>.','The <b>length</b> of the bridge is 2.5 km.'],
+  pairs:[['The road is 6 m width.','The road is 6 m wide.','بعد الرقم والوحدة تأتي الصفة.'],['The long of the bridge is 2 km.','The length of the bridge is 2 km.','بعد The يأتي الاسم.']],
+  art:art(`${[['long','length',70],['wide','width',130],['high','height',190],['deep','depth',250]].map(([a,n,y])=>`<g data-tip="${a} صفة تأتي بعد الرقم والوحدة، و ${n} اسم يأتي بعد The."><rect x="40" y="${y-26}" width="120" height="36" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100,y-3,a,{fs:16,w:700})}${arrowS(166,y-8,196,y-8,C.ink,2.5,8)}<rect x="200" y="${y-26}" width="120" height="36" rx="8" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(260,y-3,n,{fs:16,w:700})}</g>`).join('')}
+    ${T(100,290,'صفة',{ar:1,w:700})}${T(260,290,'اسم',{ar:1,w:700})}`,'أربع صفات وأسماؤها: long length، wide width، high height، deep depth'),cap:'كل صفة واسمها. مرّر المؤشر على أي زوج لتعرف مكان كل كلمة في الجملة.',lab:{title:'صفة أم اسم',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة (أمثلة جديدة من عندنا):',items:[
+     {s:'The tunnel is 9 km ___.',o:['long','length'],a:0,why:'بعد الرقم والوحدة: صفة.'},
+     {s:'The ___ of the tower is 150 m.',o:['high','height'],a:1,why:'بعد The: اسم.'},
+     {s:'The lake has a ___ of 20 m.',o:['deep','depth'],a:1,why:'بعد a: اسم.'},
+     {s:'The new bridge is 30 m ___.',o:['wide','width'],a:0,why:'بعد الرقم والوحدة: صفة.'}]})}},
+ {t:'السؤال عن الأبعاد وجوابه',short:'How high…?',old:[3],q:'كيف تسأل عن طول الكوابل؟ ولماذا are وليست is؟',ref:'ص 53',
+  lead:`إذا أردت أن تعرف بُعداً لا تعرفه، تسأل عنه بـ ${e('How')} مع الصفة نفسها التي تستعملها في الوصف.`,
+  subs:[{h:'السؤال',points:[`<b>القالب:</b> ${e('How')} + الصفة + ${e('is')} أو ${e('are')} + الشيء؟`,`${e('is')} مع المفرد:<br>${e('How high is the tower?')}`,`${e('are')} مع الجمع:<br>${e('How long are the cables?')}`]},
+   {h:'الجواب',points:[`نبدأ بـ ${e("It's")} للمفرد و ${e("They're")} للجمع، ثم الرقم والوحدة والصفة:<br>${e("It's 150 metres high.")}<br>${e("They're 60 metres long.")}`]}],
+  grid:{head:['','السؤال','الجواب'],rows:[['مفرد','How high is the tower?',"It's 150 metres high."],['جمع','How long are the cables?',"They're 60 metres long."]]},
+  html:`<p><small>(إضافة من خارج الكتاب)</small> ويمكن أن تسأل بالاسم أيضاً: ${e('What is the length of the bridge?')}</p>`,
+  pairs:[['How high are the tower?','How high is the tower?','tower مفرد، فنستعمل is.'],["It's 150 metres height.","It's 150 metres high.",'بعد الرقم والوحدة تأتي الصفة.']],
+  art:art(`<g data-tip="How + صفة: How high / How long / How wide / How deep."><rect x="30" y="70" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,'How long are the cables?',{fs:17,w:700})}</g>
+    <g data-tip="للجمع They're، وللمفرد It's، ثم الرقم والوحدة والصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,"They're 60 metres long.",{fs:17,w:700})}</g>${arrowS(180,130,180,174,C.ink,3)}`,'سؤال How long are the cables وجوابه They are 60 metres long'),cap:'السؤال وجوابه. مرّر المؤشر على كل منهما لترى القاعدة.',lab:{title:'اكتب السؤال',w:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال الذي جوابه بين القوسين:',items:[
+     {q:`الجواب: ${e("It's 6 m wide.")} (the road)`,a:['How wide is the road?'],hint:'How + wide + is + the road?'},
+     {q:`الجواب: ${e("They're 87 m high.")} (the pylons)`,a:['How high are the pylons?'],hint:'الجمع: are.'},
+     {q:`الجواب: ${e("It's 300 m deep.")} (the sea)`,a:['How deep is the sea?'],hint:'How deep …?'}]})}},
+ {t:'كتابة الوحدات وقراءتها',short:'الوحدات',q:'كيف تكتب «مئة متر» مختصرة؟ وكيف تقرؤها؟',ref:'ص 52',
+  lead:`الأبعاد في جداول المواصفات تُكتب بأرقام ووحدات مختصرة، لكننا نقرؤها كلمات كاملة.`,
+  points:[`<b>الاختصار لا يُجمع:</b> نكتب ${e('100 m')} و ${e('100 km')}، ولا نكتب ${e('100 ms')}.`,
+   `<b>عند القراءة نجمع الوحدة</b> إذا كان الرقم أكثر من واحد:<br>${e('100 m = one hundred metres')}<br>${e('1 m = one metre')}`,
+   `<b>الإملاء:</b> البريطانية ${e('metre, centimetre, millimetre')}، والأمريكية ${e('meter, centimeter, millimeter')}، وكلاهما صحيح.`],
+  grid:{head:['الاختصار','الكلمة','مثال'],rows:[['mm','millimetre','5 mm = five millimetres'],['cm','centimetre','30 cm = thirty centimetres'],['m','metre','100 m = one hundred metres'],['km','kilometre','2.46 km = two point four six kilometres']]},
+  pairs:[['100 ms','100 m','لا نضيف s إلى الاختصار.'],['one hundred metre','one hundred metres','عند القراءة نجمع الوحدة.']],
+  lab:{title:'الوحدات',intro:'اختر الصحيح:',items:[
+   {s:'The deck is 32 ___ wide.',o:['m','ms'],a:0,why:'الاختصار لا يُجمع.'},
+   {s:'We read 342 m as: three hundred and forty-two ___.',o:['metre','metres'],a:1,why:'عند القراءة نجمع الوحدة لأن الرقم أكثر من واحد.'},
+   {s:'We read 1 km as: one ___.',o:['kilometre','kilometres'],a:0,why:'الرقم واحد، فالوحدة مفردة.'}]}}
+ ]});
 B.lesson({
  id:'u7-l1',unit:7,order:1,pages:'52–53',
  title:'Dimensions — الأبعاد',
@@ -69,15 +110,8 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 52–53',html:`<p>في هذا الدرس تصف <b>أبعاد منشأة</b> مثل جسر: كم طوله؟ كم ارتفاعه؟ كم عرض سطحه؟ ستتعلم:</p><ol><li>أسماء أجزاء الجسر بالإنجليزي.</li><li>الصفة والاسم لكل بُعد، ومتى تستعمل كلاً منهما.</li><li>السؤال عن الأبعاد بـ ${e('How + صفة')} وطريقة الإجابة.</li><li>قراءة <b>جدول مواصفات</b> ${e('specification chart')} وتعبئته.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 52',html:vt(VOC)},
-  {h:'الصفة والاسم للأبعاد',ref:'ص 53',html:`<p>لكل بُعد كلمتان: <b>صفة</b> تأتي بعد الرقم والوحدة، و<b>اسم</b> يأتي بعد ${e('The')} ويتبعه ${e('of')}.</p>${dimTable}
-   <p>الجملتان التاليتان بالمعنى نفسه (أمثلة من عندنا):</p>${eb(['The tunnel is 9 km <b>long</b>.','The <b>length</b> of the tunnel is 9 km.'])}
-   <p>انتبه: مع الصفة الترتيب <b>رقم ← وحدة ← صفة</b> (${e('9 km long')})، ومع الاسم نضع الرقم في آخر الجملة.</p>`},
-  {h:'السؤال عن الأبعاد: How + صفة',ref:'ص 53',html:`<p>نسأل بـ ${e('How')} ثم <b>الصفة</b> ثم ${e('is')} للمفرد أو ${e('are')} للجمع ثم الشيء:</p>
-   ${eb(['How <b>high</b> is the tower?','How <b>long</b> are the cables?'])}
-   <p>ونجيب بـ ${e("It's")} للمفرد و ${e("They're")} للجمع، ثم الرقم والوحدة والصفة:</p>
-   ${eb(["<b>It's</b> 150 metres high.","<b>They're</b> 60 metres long."])}`},
+  ...R_u7_l1.theory,
   {note:'<b>توضيح للمتدرب:</b> لا تقل <span class="en">How height is…?</span> فبعد <span class="en">How</span> تأتي الصفة دائماً، لا الاسم. والجواب قد يكون تقريبياً: <span class="en">It\'s <b>about</b> 50 m wide.</span> أو <span class="en"><b>over / more than</b> 80 m high</span>.'},
-  {h:'كتابة الوحدات وقراءتها',ref:'ص 52',html:`<ul><li>البريطانية تكتب ${e('metre, millimetre, centimetre')} والأمريكية ${e('meter, millimeter, centimeter')}.</li><li>لا تضف ${e('-s')} إلى الاختصار: نكتب ${e('100 m')} و ${e('100 km')} (لا ${e('100 ms')})، ونقرؤها ${e('one hundred metres')}.</li></ul>`},
   {h:'تمارين الكتاب',ref:'ص 52–53',html:
    bk(1,'ص 52','أجب عن أسئلة الصورة: ما اسم الجسر؟ أين هو؟ كم ارتفاعه؟',['Millau Viaduct (Millau Bridge)','In the south of France, over the Tarn valley near Millau','About 343 m at the top of the highest pylon'],'هذه حقائق عامة عن الجسر؛ تحقق من أرقام التسجيل في التمرين 2.')+
    bk(3,'ص 52','اعمل مع زميلك: أي الكلمات الخمس تراها في الصورة؟ (cable، deck، pier، pylon، span)',null)+
@@ -102,27 +136,7 @@ B.lesson({
      {q:'The part of the bridge for cars and trucks.',opts:[['deck',1,'السطح هو الطريق نفسه.'],['pier',0,''],['pylon',0,'']]},
      {q:'The distance between two piers.',opts:[['cable',0,''],['span',1,'البحر = المسافة بين ركيزتين.'],['deck',0,'']]},
      {q:'The tall post above the deck. The cables hang from it.',opts:[['pylon',1,'البرج يعلو السطح وتتصل به الكوابل.'],['pier',0,'الركيزة تحت السطح، لا فوقه.'],['span',0,'']]}]}),title:'مختبر مصغّر: ما اسم الجزء؟'}]},
-  {st:2,short:'صفة أم اسم؟',title:'الصفة والاسم للأبعاد',q:'أيهما صحيح: The road is 6 m wide أم The road is 6 m width؟',ref:'ص 53',
-   art:art(`${[['long','length',70],['wide','width',130],['high','height',190],['deep','depth',250]].map(([a,n,y])=>`<g data-tip="${a} صفة تأتي بعد الرقم والوحدة، و ${n} اسم يأتي بعد The."><rect x="40" y="${y-26}" width="120" height="36" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100,y-3,a,{fs:16,w:700})}${arrowS(166,y-8,196,y-8,C.ink,2.5,8)}<rect x="200" y="${y-26}" width="120" height="36" rx="8" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(260,y-3,n,{fs:16,w:700})}</g>`).join('')}
-    ${T(100,290,'صفة',{ar:1,w:700})}${T(260,290,'اسم',{ar:1,w:700})}`,'أربع صفات وأسماؤها: long length، wide width، high height، deep depth'),
-   cap:'كل صفة واسمها. مرّر المؤشر على أي زوج لتعرف مكان كل كلمة في الجملة.',
-   side:[{tip:`بعد الرقم والوحدة تأتي <b>الصفة</b>: ${e('6 m wide')}. وبعد ${e('The … of')} يأتي <b>الاسم</b>: ${e('The width of the road')}.`}],
-   body:[{predict:{q:'اختر الجملة الصحيحة:',opts:[['<span class="en">The road is 6 m wide.</span>',true,'بعد الرقم والوحدة نضع الصفة wide.'],['<span class="en">The road is 6 m width.</span>',false,'width اسم، ومكانه بعد The: The width of the road is 6 m.'],['<span class="en">The wide of the road is 6 m.</span>',false,'بعد The … of نحتاج الاسم width لا الصفة wide.']]}},
-    {widget:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة (أمثلة جديدة من عندنا):',items:[
-     {s:'The tunnel is 9 km ___.',o:['long','length'],a:0,why:'بعد الرقم والوحدة: صفة.'},
-     {s:'The ___ of the tower is 150 m.',o:['high','height'],a:1,why:'بعد The: اسم.'},
-     {s:'The lake has a ___ of 20 m.',o:['deep','depth'],a:1,why:'بعد a: اسم.'},
-     {s:'The new bridge is 30 m ___.',o:['wide','width'],a:0,why:'بعد الرقم والوحدة: صفة.'}]}),title:'مختبر مصغّر: صفة أم اسم'}]},
-  {st:3,short:'How + صفة',title:'السؤال عن الأبعاد وجوابه',q:'كيف تسأل عن طول الكوابل؟ ولماذا are وليست is؟',ref:'ص 53',
-   art:art(`<g data-tip="How + صفة: How high / How long / How wide / How deep."><rect x="30" y="70" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,'How long are the cables?',{fs:17,w:700})}</g>
-    <g data-tip="للجمع They're، وللمفرد It's، ثم الرقم والوحدة والصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,"They're 60 metres long.",{fs:17,w:700})}</g>${arrowS(180,130,180,174,C.ink,3)}`,'سؤال How long are the cables وجوابه They are 60 metres long'),
-   cap:'السؤال وجوابه. مرّر المؤشر على كل منهما لترى القاعدة.',
-   side:[{tip:`القالب: ${e('How + adjective + is/are + the …?')} والجواب: ${e("It's / They're + number + unit + adjective.")}`}],
-   body:[{html:dl([['Presenter','How high is the main tower?'],['Engineer',"It's about 180 metres high."],['Presenter','And how long are the cables?'],['Engineer',"They're over 300 metres long."]])+'<p class="pk-ill">حوار جديد من عندنا للتمثيل.</p>'},
-    {widget:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال الذي جوابه بين القوسين:',items:[
-     {q:`الجواب: ${e("It's 6 m wide.")} (the road)`,a:['How wide is the road?'],hint:'How + wide + is + the road?'},
-     {q:`الجواب: ${e("They're 87 m high.")} (the pylons)`,a:['How high are the pylons?'],hint:'الجمع: are.'},
-     {q:`الجواب: ${e("It's 300 m deep.")} (the sea)`,a:['How deep is the sea?'],hint:'How deep …?'}]}),title:'مختبر مصغّر: اكتب السؤال'}]},
+  ...R_u7_l1.stations,
   {st:4,short:'جدول المواصفات',title:'قراءة جدول مواصفات',q:'في جدول المواصفات: كيف تحوّل السطر «Length of deck 2.46 km» إلى جملة؟',ref:'ص 52–53',
    art:art(`<rect x="40" y="50" width="280" height="220" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,78,'Specifications',{fs:16,w:700})}
     ${[['Structure','cable-stayed'],['Piers','7'],['Length of deck','2.46 km'],['Width of deck','32 m'],['Pylons above deck','87 m']].map(([a,b],i)=>`<g data-tip="${a}: ${b}"><line x1="50" x2="310" y1="${98+i*34}" y2="${98+i*34}" stroke="${C.mut}"/>${TL(56,120+i*34,a,{fs:12,a:'start'})}${TL(304,120+i*34,b,{fs:12,a:'end',w:700})}</g>`).join('')}`,'جدول مواصفات فيه نوع المنشأة وعدد الركائز والطول والعرض والارتفاع'),
@@ -132,7 +146,7 @@ B.lesson({
      {s:'Width of deck: 32 m → The deck is 32 m ___.',o:['wide','width','long'],a:0},
      {s:'Pylons above deck: 87 m → The pylons are 87 m ___ above the deck.',o:['high','height','deep'],a:0},
      {s:'Number of piers: 7 → The bridge ___ seven piers.',o:['has','is','are'],a:0,why:'العدد: The bridge has seven piers.'}]}),title:'مختبر مصغّر: من الجدول إلى الجملة'}]},
-  {recap:['أجزاء الجسر: deck السطح، pier الركيزة، pylon البرج، cable الكابل، span البحر بين ركيزتين.','الصفة بعد الرقم والوحدة (9 km long)، والاسم بعد The … of (The length of …).','السؤال: How + صفة + is/are …? والجواب: It\'s / They\'re + رقم + وحدة + صفة.','لا تضف s إلى الاختصار: 100 m وتُقرأ one hundred metres.']}
+  {recap:["أجزاء الجسر: deck السطح، pier الركيزة، pylon البرج، cable الكابل، span البحر بين ركيزتين.", "الصفة بعد الرقم والوحدة (9 km long)، والاسم بعد The … of (The length of the tunnel is 9 km).", "السؤال: How + صفة + is للمفرد أو are للجمع؟ والجواب: It's أو They're + رقم + وحدة + صفة.", "الاختصار لا يُجمع (100 m)، لكننا نقرؤه بالجمع: one hundred metres."]}
  ],
  lab:lab71,
  examples:[

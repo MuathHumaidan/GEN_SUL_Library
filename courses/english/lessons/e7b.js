@@ -51,6 +51,56 @@ function lab72(el,B){
 
 const VOC72=[['quantity','الكمية',''],['countable noun','اسم معدود','له مفرد وجمع: screw → screws'],['uncountable noun','اسم غير معدود','لا جمع له: cement, oil, sand'],['screw','برغي',''],['nail','مسمار',''],['bolt / nut','مسمار بصامولة / صامولة',''],['concrete','خرسانة',''],['cement','أسمنت',''],['sand','رمل',''],['glue','غراء',''],['tin','علبة معدنية','six tins of paint'],['tube','أنبوب (عبوة)','two tubes of glue'],['bag','كيس','twenty bags of cement'],['packet','علبة كرتون صغيرة','two packets of nails'],['storey','طابق','How many storeys does it have?'],['elevator / lift','مصعد','elevator أمريكية و lift بريطانية'],['footprint','مساحة قاعدة المبنى على الأرض',''],['tonne','طن (1000 كجم)',''],['reinforced concrete','خرسانة مسلّحة','']];
 
+/* ===== مختبرات «شرح القاعدة» 7.2: يختار المتدرب فتتكوّن الجملة بقطع ملونة ويتغير الرسم ===== */
+const NOUNS72={screw:{c:true,pl:'screws',ar:['برغي','براغٍ'],ic:'scr'},nail:{c:true,pl:'nails',ar:['مسمار','مسامير'],ic:'nail'},bottle:{c:true,pl:'bottles',ar:['زجاجة','زجاجات'],ic:'bot'},
+ cement:{c:false,ar:'أسمنت',ic:'heap',box:'bags'},sand:{c:false,ar:'رمل',ic:'heap',box:'bags'},oil:{c:false,ar:'زيت',ic:'liq',box:'litres'},paint:{c:false,ar:'دهان',ic:'liq',box:'tins'}};
+const ico72=(k,x,y)=>({scr:`<g transform="translate(${x} ${y})"><rect x="-9" y="-30" width="18" height="7" rx="2" fill="${C.ink}"/><path d="M-3 -23 V12 L0 18 L3 12 V-23" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.5"/><path d="M-5 -14 L5 -11 M-5 -6 L5 -3 M-5 2 L5 5" stroke="${C.ink}" stroke-width="1.2"/></g>`,
+ nail:`<g transform="translate(${x} ${y})"><rect x="-8" y="-30" width="16" height="5" rx="2" fill="${C.ink}"/><path d="M-2 -25 V14 L0 20 L2 14 V-25" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.3"/></g>`,
+ bot:`<g transform="translate(${x} ${y})"><rect x="-5" y="-30" width="10" height="9" fill="${C.ink}"/><path d="M-5 -21 Q-13 -14 -13 -4 V18 H13 V-4 Q13 -14 5 -21 Z" fill="#cfe6f5" stroke="${C.ink}" stroke-width="2"/></g>`,
+ heap:`<g transform="translate(${x} ${y})"><path d="M-60 18 Q-40 -26 0 -30 Q40 -26 60 18 Z" fill="#d9d2c3" stroke="${C.ink}" stroke-width="2"/><circle cx="-20" cy="0" r="2" fill="${C.ink}"/><circle cx="10" cy="-12" r="2" fill="${C.ink}"/><circle cx="25" cy="6" r="2" fill="${C.ink}"/></g>`,
+ liq:`<g transform="translate(${x} ${y})"><path d="M-62 18 Q-60 -2 -30 -6 Q0 -12 30 -5 Q62 0 60 18 Z" fill="#e07b39" opacity=".85" stroke="${C.ink}" stroke-width="2"/></g>`})[k];
+const scene72=(k,n)=>{const ic=NOUNS72[k].ic;let g='';if(ic==='heap'||ic==='liq'){g=ico72(ic,280,70)}else{const xs=n===1?[280]:n===3?[230,280,330]:[170,210,250,290,330,370,410];xs.forEach(x=>{g+=ico72(ic,x,70)})}
+ return `<svg viewBox="0 0 560 110" aria-hidden="true"><rect x="0" y="0" width="560" height="110" rx="14" fill="${C.bg}"/>${g}</svg>`};
+const LAB72A={title:'معدود أم غير معدود؟',w:(el,B)=>N.labB(el,B,{intro:'اختر اسماً ثم اختر الصيغة، وشاهد كيف تتكوّن الكلمة. الأخضر هو الاسم، والأصفر هو ما يأتي قبله.',
+ controls:[{k:'n',label:'الاسم',opts:Object.keys(NOUNS72).map(k=>[k,k])},{k:'f',label:'الصيغة',opts:[['one','واحد'],['many','أكثر من واحد'],['num','مع رقم (3)'],['q','السؤال عن الكمية']]}],
+ out:({n,f})=>{const x=NOUNS72[n];
+  if(x.c){if(f==='one')return{svg:scene72(n,1),pieces:[['a','k','واحد'],[n,'n','اسم معدود مفرد']],say:'a '+n,ar:`${x.ar[0]} واحد.`,why:'الاسم المعدود المفرد يسبقه a (أو an إذا بدأ بصوت متحرك).'};
+   if(f==='many')return{svg:scene72(n,7),pieces:[['some','k','بعض'],[x.pl,'n','اسم معدود جمع']],say:'some '+x.pl,ar:`بعض ال${x.ar[1]}.`,why:`المعدود له جمع: ${n} ← ${x.pl}، ويمكن أن يسبقه some عندما لا نذكر العدد.`};
+   if(f==='num')return{svg:scene72(n,3),pieces:[['three','k','رقم'],[x.pl,'n','اسم معدود جمع']],say:'three '+x.pl,ar:`ثلاثة ${x.ar[1]}.`,why:'المعدود يأتي قبله رقم مباشرة، والاسم بعده بالجمع.'};
+   return{svg:scene72(n,7),pieces:[['How many','q','كم عدد'],[x.pl,'n','جمع'],['do you need?','x','']],say:'How many '+x.pl+' do you need?',ar:`كم ${x.ar[0]} تحتاج؟`,why:'نسأل عن عدد المعدود بـ How many، والاسم بعدها بالجمع.'}}
+  if(f==='one')return{svg:scene72(n),bad:`✘ لا نقول a ${n}: الاسم غير المعدود لا يسبقه a.`,pieces:[['some','k','شيء من'],[n,'n','اسم غير معدود']],say:'some '+n,ar:`شيء من ال${x.ar}.`,why:`نقول ${n} وحدها أو some ${n}.`};
+  if(f==='many')return{svg:scene72(n),pieces:[['some','k','شيء من'],[n,'n','بلا s']],say:'some '+n,ar:`شيء من ال${x.ar}.`,why:`غير المعدود لا يُجمع: نقول some ${n} لا some ${n}s.`};
+  if(f==='num')return{svg:scene72(n),bad:`✘ لا نقول three ${n}s: الاسم غير المعدود لا يأتي معه رقم.`,pieces:[['three','k','رقم'],[x.box,'q','العبوة تُجمع'],['of','x',''],[n,'n','المادة لا تُجمع']],say:`three ${x.box} of ${n}`,why:'الصحيح أن نعدّ العبوة: رقم + العبوة + of + المادة. وهذا ما يشرحه الجزء الثاني.'};
+  return{svg:scene72(n),pieces:[['How much','q','كم كمية'],[n,'n','مفرد'],['do you need?','x','']],say:`How much ${n} do you need?`,ar:`كم تحتاج من ال${x.ar}؟`,why:'نسأل عن كمية غير المعدود بـ How much، والاسم بعدها مفرد.'}}})};
+const BOX72={paint:['tin','tins','علبة','علب','دهان'],glue:['tube','tubes','أنبوب','أنابيب','غراء'],cement:['bag','bags','كيس','أكياس','أسمنت'],nails:['packet','packets','كيس','أكياس','مسامير']};
+const NUM72={1:'one',2:'two',5:'five',20:'twenty'};
+const pkg72=(m,n)=>{const d=n>5?5:n,w=60,x0=280-(d-1)*w/2;let g='';
+ const one=(x)=>({paint:`<g transform="translate(${x} 0)"><ellipse cx="0" cy="40" rx="20" ry="6" fill="#cfd4d6" stroke="${C.ink}" stroke-width="1.5"/><path d="M-20 40 V82 a20 6 0 0 0 40 0 V40" fill="#b9c0c3" stroke="${C.ink}" stroke-width="1.5"/><ellipse cx="0" cy="40" rx="15" ry="4" fill="#e07b39"/></g>`,
+  glue:`<g transform="translate(${x} 0) rotate(-30 0 62)"><path d="M-12 42 h24 l-2 40 h-20 z" fill="#f3f1ec" stroke="${C.ink}" stroke-width="1.5"/><rect x="-5" y="32" width="10" height="10" rx="2" fill="${C.red}" stroke="${C.ink}" stroke-width="1.2"/></g>`,
+  cement:`<g transform="translate(${x} 0)"><path d="M-20 36 q20 -5 40 0 l4 50 q-24 6 -48 0 z" fill="#e6c76a" stroke="${C.ink}" stroke-width="1.5"/></g>`,
+  nails:`<g transform="translate(${x} 0)"><rect x="-15" y="36" width="30" height="50" fill="#7fb36a" stroke="${C.ink}" stroke-width="1.5"/><path d="M-6 46 v22 M0 46 v22 M6 46 v22" stroke="${C.ink}" stroke-width="1.6"/></g>`})[m];
+ for(let i=0;i<d;i++)g+=one(x0+i*w);
+ return `<svg viewBox="0 0 560 110" aria-hidden="true"><rect x="0" y="0" width="560" height="110" rx="14" fill="${C.bg}"/>${g}${n>5?`<text x="${x0+d*w-10}" y="66" font-family="monospace" font-weight="700" font-size="22" fill="${C.ink}">… ×${n}</text>`:''}</svg>`};
+const LAB72B={title:'ركّب الطلب بالعبوة',w:(el,B)=>N.labB(el,B,{intro:'اختر المادة والعدد، وشاهد العبوات وكيف تتكوّن الجملة. لاحظ أن العبوة هي التي تُجمع.',
+ controls:[{k:'m',label:'المادة',opts:Object.keys(BOX72).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','1'],['2','2'],['5','5'],['20','20']]}],
+ out:({m,n})=>{n=+n;const b=BOX72[m],one=n===1;
+  return{svg:pkg72(m,n),pieces:[[one?'a':NUM72[n],'k',one?'واحد':'العدد'],[one?b[0]:b[1],'q',one?'العبوة':'العبوة بالجمع'],['of','x',''],[m,'n',m==='nails'?'المحتوى':'المادة كما هي']],say:`${one?'a':NUM72[n]} ${one?b[0]:b[1]} of ${m}`,
+   ar:one?`${b[2]} ${b[4]} واحد.`:`${n} من ${b[3]} ال${b[4]}.`,why:one?`مع العبوة الواحدة نقول a ${b[0]} of ${m}.`:`العبوة صارت ${b[1]} بالجمع، أما ${m} فلم تتغير.`}}})};
+const LAB72C={title:'some أم any أم a؟',w:(el,B)=>N.labB(el,B,{intro:'اختر نوع الجملة ونوع الاسم، وشاهد الكلمة التي تناسبهما.',
+ controls:[{k:'t',label:'نوع الجملة',opts:[['pos','مثبتة'],['neg','منفية'],['req','سؤال عرض أو طلب'],['q','سؤال عام']]},{k:'n',label:'الاسم',opts:[['nails','nails (جمع معدود)'],['cement','cement (غير معدود)'],['hammer','hammer (مفرد معدود)']]}],
+ out:({t,n})=>{const one=n==='hammer',w=one?'a':(t==='pos'||t==='req'?'some':'any');
+  const lbl=one?'مفرد معدود ← a':w==='some'?(t==='pos'?'مثبتة ← some':'عرض أو طلب ← some'):(t==='neg'?'منفية ← any':'سؤال عام ← any');
+  const P={pos:[['I need','x','']],neg:[["We don't have",'x','نفي']],req:[['Can I have','x','طلب']],q:[['Do you have','x','سؤال']]}[t];
+  const tail={pos:'.',neg:'.',req:', please?',q:'?'}[t];
+  const ar={pos:'أحتاج',neg:'ليس عندنا',req:'هل يمكن أن آخذ',q:'هل عندكم'}[t];
+  const sent=`${P[0][0]} ${w} ${n}${tail}`;
+  return{pieces:[...P,[w,'k',lbl],[n+tail,'n',one?'مفرد':n==='nails'?'جمع':'غير معدود']],say:sent,ar:`${ar} ${{nails:'مسامير',cement:'أسمنت',hammer:'مطرقة'}[n]}${t==='req'||t==='q'?'؟':'.'}`,
+   why:one?'المفرد المعدود يسبقه a في كل أنواع الجمل، ولا يأتي معه some ولا any.':{pos:'الجملة المثبتة تأخذ some.',neg:'الجملة المنفية تأخذ any.',req:'سؤال العرض أو الطلب يأخذ some، لأننا نتوقع «نعم».',q:'السؤال العام، الذي لا نعرف جوابه، يأخذ any.'}[t]}}})};
+const QN72={bolts:['How many','Sixty, please.','معدود جمع'],screws:['How many','Two hundred.','معدود جمع'],oil:['How much','Fifteen litres.','غير معدود'],paint:['How much','Two tins.','غير معدود'],cement:['How much','Twenty bags.','غير معدود'],'tins of paint':['How many','Three.','عبوة تُعدّ']};
+const LAB72D={title:'How many أم How much؟',w:(el,B)=>N.labB(el,B,{intro:'اختر ما تسأل عنه، وشاهد السؤال والجواب.',
+ controls:[{k:'n',label:'تسأل عن',opts:Object.keys(QN72).map(k=>[k,k])}],
+ out:({n})=>{const x=QN72[n];return{pieces:[[x[0],'q',x[0]==='How many'?'للمعدود':'لغير المعدود'],[n,'n',x[2]],['do you need?','x','']],say:`${x[0]} ${n} do you need? ${x[1]}`,
+  ar:`الجواب: ${x[1]}`,why:x[0]==='How many'?`${n} تُعدّ، فنسأل بـ How many، والاسم بعدها بالجمع.`:`${n} لا يُعدّ، فنسأل بـ How much، والاسم بعدها مفرد.`}}})};
 const R72=N.rule({title:'المعدود وغير المعدود، و some و any، و How many و How much',ref:'ص 55',
  intro:`في هذا الدرس تطلب مواد للورشة وتسأل عن كمياتها. ولكي تتكلم عن الكمية بشكل صحيح تحتاج أربعة أشياء مترابطة، نشرحها بالترتيب: أن تميّز الاسم المعدود من غير المعدود، ثم كيف تعدّ غير المعدود بالعبوات، ثم متى تستعمل some ومتى any، ثم كيف تسأل عن الكمية.`,
  parts:[
@@ -65,8 +115,7 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
   pairs:[['two cements','two bags of cement','cement غير معدود، فنعدّ الأكياس.'],['a sand','some sand','sand غير معدود، فلا يسبقه a.']],
   art:art(`<g data-tip="screws: معدود، نقول ten screws."><rect x="40" y="70" width="120" height="90" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${[0,1,2,3,4].map(i=>`<g transform="translate(${62+i*20},90)"><rect x="-3" y="0" width="6" height="40" fill="${C.mut}"/><rect x="-7" y="-4" width="14" height="6" rx="2" fill="${C.ink}"/></g>`).join('')}${TL(100,182,'screws',{fs:14,w:700})}</g>
     <g data-tip="cement: غير معدود، نعدّ الأكياس: two bags of cement."><path d="M210 80 h100 l-8 90 h-84z" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(260,130,'CEMENT',{fs:13,w:700})}${TL(260,192,'a bag of cement',{fs:13,w:700})}</g>
-    <g data-tip="How many مع المعدود، و How much مع غير المعدود.">${TL(100,250,'How many?',{fs:16,w:700,c:C.blue})}${TL(260,250,'How much?',{fs:16,w:700,c:C.red})}</g>`,'براغٍ معدودة وكيس أسمنت غير معدود'),cap:'المعدود وغير المعدود. مرّر المؤشر على كل منهما.',lab:{title:'صنّف',w:(el,B)=>N.sort(el,B,{intro:'صنّف كل كلمة:',cats:['معدود','غير معدود'],items:[['bolt',0,'bolt → bolts.'],['oil',1,'نقول two litres of oil.'],['bottle',0,'bottle → bottles.'],['sand',1,'نقول a bag of sand.'],['nail',0,'nail → nails.'],['concrete',1,'نقول 150,000 m³ of concrete.']]})}},
-,
+    <g data-tip="How many مع المعدود، و How much مع غير المعدود.">${TL(100,250,'How many?',{fs:16,w:700,c:C.blue})}${TL(260,250,'How much?',{fs:16,w:700,c:C.red})}</g>`,'براغٍ معدودة وكيس أسمنت غير معدود'),cap:'المعدود وغير المعدود. مرّر المؤشر على كل منهما.',labs:[LAB72A,{title:'صنّف',w:(el,B)=>N.sort(el,B,{intro:'صنّف كل كلمة:',cats:['معدود','غير معدود'],items:[['bolt',0,'bolt → bolts.'],['oil',1,'نقول two litres of oil.'],['bottle',0,'bottle → bottles.'],['sand',1,'نقول a bag of sand.'],['nail',0,'nail → nails.'],['concrete',1,'نقول 150,000 m³ of concrete.']]})}]},
  {t:'العبوات: كيف نعدّ غير المعدود؟',short:'العبوات',old:[3],q:'كيف تطلب دهاناً؟ وكيف تطلب غراءً؟',ref:'ص 55',
   lead:`الأسمنت لا يُعدّ، لكنك تحتاج في العمل أن تطلب منه كمية محددة. والحل أن تعدّ العبوة التي يوضع فيها، مثل الكيس أو العلبة أو الأنبوب.`,
   points:[`<b>القالب:</b> رقم + العبوة + ${e('of')} + المادة.<br>${e('twenty bags of cement')}`],
@@ -105,11 +154,10 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
   <path d="M296 118 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 M296 214 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6" fill="none" stroke="${C.ink}" stroke-width="1.5"/>
   <rect x="304" y="140" width="30" height="40" rx="3" fill="#f4f8ef" stroke="${C.ink}" stroke-width="1.2"/>
   <path d="M312 148 v22 m-3 -22 h6 M320 148 v22 m-3 -22 h6 M328 148 v22 m-3 -22 h6" stroke="${C.ink}" stroke-width="1.6"/>
-  ${TL(319,234,'a packet',{fs:13,w:700})}${TL(319,251,'of nails',{fs:11})}</g>`,'أربع عبوات: علبة دهان وأنبوب غراء وكيس أسمنت وكيس مسامير'),cap:'أربع عبوات من رسمنا. مرّر المؤشر على كل واحدة.',lab:{title:'اختر العبوة',w:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
+  ${TL(319,234,'a packet',{fs:13,w:700})}${TL(319,251,'of nails',{fs:11})}</g>`,'أربع عبوات: علبة دهان وأنبوب غراء وكيس أسمنت وكيس مسامير'),cap:'أربع عبوات من رسمنا. مرّر المؤشر على كل واحدة.',labs:[LAB72B,{title:'اختر العبوة',w:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
      {q:'Three ___ of superglue, please.',opts:[['tubes',1,'الغراء يباع في أنابيب.'],['bags',0,''],['tins',0,'']]},
      {q:'We need forty ___ of cement.',opts:[['packets',0,''],['bags',1,'الأسمنت يباع في أكياس.'],['tubes',0,'']]},
-     {q:'Two large ___ of black paint, please.',opts:[['tins',1,'الدهان يباع في علب معدنية.'],['tubes',0,''],['packets',0,'']]}]})}},
-,
+     {q:'Two large ___ of black paint, please.',opts:[['tins',1,'الدهان يباع في علب معدنية.'],['tubes',0,''],['packets',0,'']]}]})}]},
  {t:'some و any',short:'some / any',q:'Do you need some nails أم Do you need any nails؟',ref:'ص 55',
   lead:`كثيراً ما نطلب شيئاً أو نسأل عنه دون أن نذكر عدده بالضبط، كأن تقول «أحتاج مسامير» أو «هل عندكم أسمنت؟». هنا نستعمل ${e('some')} أو ${e('any')}، ومعناهما «بعض» أو «أي». ويأتيان مع الجمع المعدود (${e('nails')}) ومع غير المعدود (${e('cement')})، ويتحدد أيهما نستعمل حسب نوع الجملة.`,
   subs:[{h:'أولاً: في الجملة العادية (ليست سؤالاً)',points:[`<b>الجملة المثبتة</b> تأخذ ${e('some')}:<br>${e('I need some nails.')}<br>${e('We have some cement.')}`,`<b>الجملة المنفية</b> تأخذ ${e('any')}:<br>${e("We don't have any nails.")}<br>${e("There isn't any cement.")}`]},
@@ -118,13 +166,12 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
   grid:{head:['نوع الجملة','الكلمة','مثال'],rows:[['مثبتة','some','I need some oil.'],['منفية','any',"We don't have any sand."],['سؤال عرض أو طلب','some','Can I have some glue?'],['سؤال عام','any','Do you have any glue?']]},
   html:`<p><small>(الكتاب يذكر some في الطلب و any في السؤال، وأضفنا النفي والعرض والمفرد من خارج الكتاب)</small></p>`,
   pairs:[['I need some hammer.','I need a hammer.','hammer مفرد معدود، فيسبقه a.'],['Do you have some bolts?','Do you have any bolts?','سؤال عام لا نعرف جوابه، فنستعمل any.'],["We don't have some sand.","We don't have any sand.",'الجملة المنفية تأخذ any.']],
-  lab:{title:'some أم any أم a؟',intro:'اختر الصحيح:',items:[
+  labs:[LAB72C,{title:'اختر الصحيح',intro:'اختر الصحيح:',items:[
    {s:'I need ___ screws, please.',o:['some','any','a'],a:0,why:'جملة طلب مثبتة مع جمع: some.'},
    {s:'Do you have ___ glue?',o:['some','any','a'],a:1,why:'سؤال: any.'},
    {s:"We don't have ___ sand.",o:['some','any','a'],a:1,why:'نفي: any.'},
    {s:'Can I have ___ spanner?',o:['some','any','a'],a:2,why:'spanner مفرد معدود: a.'},
-   {s:'I need ___ white paint.',o:['some','any','a'],a:0,why:'غير معدود في طلب مثبت: some.'}]}},
-,
+   {s:'I need ___ white paint.',o:['some','any','a'],a:0,why:'غير معدود في طلب مثبت: some.'}]}]},
  {t:'How many و How much',short:'How many / much',old:[2],q:'أيهما تقول: How many paint أم How much paint؟',ref:'ص 55',
   lead:`عند الشراء يسألك البائع عن الكمية التي تريدها، وتسأل أنت عنها كذلك. وكلمة السؤال تتغير حسب نوع الاسم الذي تسأل عنه.`,
   points:[`<b>${e('How many')}</b> للاسم المعدود، ويأتي الاسم بعدها بصيغة الجمع:<br>${e('How many bolts do you need?')}`,
@@ -136,11 +183,11 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
   html:`<p><small>(إضافة من خارج الكتاب)</small> ونسأل عن السعر بـ ${e('How much')} أيضاً: ${e("How much is it? — It's 20 riyals.")}</p>`,
   pairs:[['How many screw?','How many screws?','بعد How many يأتي الاسم بالجمع.'],['How much nails?','How many nails?','nails معدودة، فنستعمل How many.']],
   art:art(`<g data-tip="How many + اسم معدود بالجمع"><rect x="30" y="80" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.blue}" stroke-width="3"/>${TL(180,117,'How many nuts do you need?',{fs:16,w:700})}</g>
-    <g data-tip="How much + اسم غير معدود"><rect x="30" y="180" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,217,'How much oil do you need?',{fs:16,w:700})}</g>`,'سؤالان عن الكمية'),cap:'القالبان. مرّر المؤشر على كل سؤال.',lab:{title:'املأ الفراغ',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة:',items:[
+    <g data-tip="How much + اسم غير معدود"><rect x="30" y="180" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,217,'How much oil do you need?',{fs:16,w:700})}</g>`,'سؤالان عن الكمية'),cap:'القالبان. مرّر المؤشر على كل سؤال.',labs:[LAB72D,{title:'املأ الفراغ',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة:',items:[
      {s:'___ tubes of glue do you need?',o:['How many','How much'],a:0,why:'tubes معدودة.'},
      {s:'___ cement do you need?',o:['How many','How much'],a:1,why:'cement غير معدود.'},
      {s:'Do you have ___ bolts?',o:['any','a','much'],a:0,why:'في السؤال: any.'},
-     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'جملة طلب مثبتة مع اسم غير معدود: some.'}]})}}
+     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'جملة طلب مثبتة مع اسم غير معدود: some.'}]})}]}
  ]});
 B.lesson({
  id:'u7-l2',unit:7,order:2,pages:'54–55',

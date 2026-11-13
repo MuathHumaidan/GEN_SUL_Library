@@ -51,6 +51,22 @@ p.en,div.en,li.en{display:block;text-align:left}
 [data-theme="dark"] .upd{background:#2b2418}
 .upd b:first-child{color:#8a5a00}
 .phl .btn,.pk .pk-b,.phl .seg button{unicode-bidi:plaintext}
+.lb-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.lb-l{font-weight:700;min-width:6.5em;color:var(--muted);font-size:14px}
+.lb-btns{display:flex;gap:6px;flex-wrap:wrap}
+.lb-btns button{font:inherit;font-size:15px;padding:6px 14px;border-radius:10px;border:2px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;unicode-bidi:plaintext}
+.lb-btns button[aria-pressed=true]{border-color:var(--blue);background:var(--blue);color:#fff}
+.lb-svg svg{width:100%;max-width:560px;height:auto;display:block;margin:8px auto 0}
+.lb-out{background:var(--surface-2);border-radius:14px;padding:14px;margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.lb-sent{display:flex;flex-wrap:wrap;gap:10px 6px;direction:ltr;align-items:flex-start}
+.lb-p{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+.lb-p .pc{font-weight:700;font-size:19px;padding:6px 12px;border-radius:10px;font-family:var(--font-la,var(--font));text-align:center;white-space:nowrap}
+.pc.n{background:#00875a;color:#fff}.pc.k{background:#f2a900;color:#3a2a00}.pc.q{background:#1f5fd1;color:#fff}.pc.x{background:var(--surface);color:var(--fg);border:1px solid var(--line)}.pc.r{background:#d2452f;color:#fff;text-decoration:line-through}
+.lb-p small{font-size:12px;direction:rtl;border-top:3px solid currentColor;padding-top:3px;text-align:center;color:var(--muted);font-family:var(--font)}
+.lb-p.n small{color:#00875a}.lb-p.k small{color:#a87500}.lb-p.q small{color:#1f5fd1}.lb-p.r small{color:#d2452f}
+.lb-why{font-weight:600;line-height:1.8}
+.lb-bad{background:var(--stop-soft);color:var(--stop);border-radius:10px;padding:8px 12px;font-weight:700;line-height:1.8}
+.lb-ar{color:var(--muted)}
 `;
 const addCss=()=>{if(typeof document==='undefined'||document.getElementById('enk-css'))return;const s=document.createElement('style');s.id='enk-css';s.textContent=css;document.head.appendChild(s)};
 addCss();
@@ -150,6 +166,20 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
       (G.PLCBOOK.stMap=G.PLCBOOK.stMap||{})[L.id]=M}
     return ol(L)}}
 
+/* ===== مختبر التركيب: يختار المتدرب من أزرار، فتتكوّن الجملة أمامه بقطع ملوّنة تحت كل قطعة وظيفتها،
+   مع رسم يتغير، وسطر يشرح السبب، وتنبيه إذا كان التركيب خطأً.
+   labB(el,B,{intro,controls:[{k,label,opts:[[v,نص]]}],out:s=>({svg,pieces:[[نص,لون n|k|q|x|r,وظيفة]],say,ar,why,bad})}) */
+const labB=(el,B,o)=>{const s={};o.controls.forEach(c=>{s[c.k]=c.init!=null?c.init:c.opts[0][0]});
+  el.innerHTML=`${o.intro?`<p class="pk-i">${o.intro}</p>`:''}<div class="lb-c"></div><div class="lb-svg"></div><div class="lb-out" aria-live="polite"></div>`;
+  const C=el.querySelector('.lb-c'),SV=el.querySelector('.lb-svg'),OUT=el.querySelector('.lb-out');
+  o.controls.forEach(c=>{const r=document.createElement('div');r.className='lb-row';
+    r.innerHTML=`<span class="lb-l">${c.label}</span><div class="lb-btns">${c.opts.map(([v,t])=>`<button type="button" data-v="${esc(v)}">${t}</button>`).join('')}</div>`;
+    r.querySelectorAll('button').forEach(b=>b.onclick=()=>{s[c.k]=b.dataset.v;draw()});C.appendChild(r);c._r=r});
+  function draw(){o.controls.forEach(c=>c._r.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===String(s[c.k]))));
+    const r=o.out(s)||{};SV.innerHTML=r.svg||'';
+    OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${r.ar}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;
+    if(B&&B.ltrU)try{B.ltrU(OUT)}catch(e){}}
+  draw()};
 /* ===== «شرح القاعدة»: قسم شامل واحد يدمج شرح قاعدة الدرس =====
    const R=ENK.rule({title,ref,intro,parts:[{t,short,q,ref,add,text,head,rows,ex,html,watch,art,cap,dlg,lab:{title,w|intro+items}}]})
    ثم في الدرس: theory:[…ماذا ستتعلم، ...R.theory, …]  و stations:[{intro:true}, ...R.stations, …]
@@ -169,10 +199,10 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
     const hasW=p.watch||(p.pairs&&p.pairs.length);
     theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3><div class="rbody">${body(p)}</div>${tbl}${ex}${dlg}${p.html||''}`});
     if(hasW)theory.push({note:`<b>انتبه: الخطأ والصحيح</b>${watchH(p)}`});
-    if(p.lab){theory.push({html:`<p><b>مختبر مصغّر: ${p.lab.title}</b></p>`});theory.push({widget:labW(p.lab)})}
+    (p.labs||(p.lab?[p.lab]:[])).forEach(l=>{theory.push({html:`<p><b>مختبر مصغّر: ${l.title}</b></p>`});theory.push({widget:labW(l)})});
     const sb=body(p);const side=sb?[p.add?{add:sb}:{tip:sb}]:[];
     stations.push({st:0,_old:p.old||[],short:p.short||p.t,title:p.t,q:p.q,ref:p.ref,...(p.art?{art:p.art,cap:p.cap}:{}),side,
-      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.lab?[{widget:labW(p.lab),title:'مختبر مصغّر: '+p.lab.title}]:[])]})});
+      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.labs||(p.lab?[p.lab]:[])).map(l=>({widget:labW(l),title:'مختبر مصغّر: '+l.title}))]})});
   return {theory,stations}};
-G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule};
+G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
