@@ -15,30 +15,5 @@ const BE=(ex)=>({title:'الفعل be مع الضمائر',short:'الضمائر
   {s:'___ you a student?',o:['Am','Is','Are'],a:2,why:'مع you نستعمل are، وفي السؤال تأتي قبل الضمير.'},
   {s:'It ___ a spanner.',o:['am','is','are'],a:1,why:'مع it نستعمل is.'},
   {s:"He ___ a teacher. He's a student.",o:["isn't","aren't","am not"],a:0,why:"مع he النفي isn't (= is not)."}]}});
-N.gram('u1-l1',BE(["I'm a student.","You're an engineer.","He's from Egypt.","She's a technician.","It's a screwdriver.","We're students.","They're from Jordan.","Are you a student? — Yes, I am.","Is he an engineer? — No, he isn't."]));
 
-N.gram('u2-l2',{title:'a و some مع المفرد والجمع',short:'a و some',q:'متى نقول a washer ومتى some washers؟',
- intro:`مع شيء واحد نستعمل ${e('a')} أو ${e('an')}: ${e('a washer')}. ومع أكثر من واحد نضيف ${e('s')} للاسم، ونستعمل ${e('some')} (بعض) إذا لم نذكر العدد: ${e('some washers')}. وإذا عرفنا العدد نذكره: ${e('twenty washers')}. ونسأل عن العدد بـ ${e('How many…?')} والاسم بعده جمع.`,
- head:['واحد','بعض (عدد غير محدد)','عدد محدد'],
- rows:[['a washer','some washers','twenty washers'],['a nut','some nuts','six nuts'],['an axle','some axles','two axles']],
- ex:['I need a screwdriver.','I need some screws, please.','How many screws? — Ten, please.'],
- lab:{title:'a أم an أم some؟',intro:'اختر الصحيح:',items:[
-  {s:'I need ___ spanner.',o:['a','some'],a:0,why:'spanner مفرد فنقول a.'},
-  {s:'I need ___ bolts, please.',o:['a','some'],a:1,why:'bolts جمع فنقول some.'},
-  {s:'I need ___ adapter.',o:['a','an'],a:1,why:'adapter تبدأ بصوت متحرك فنقول an.'},
-  {s:'How many ___ do you need?',o:['nut','nuts'],a:1,why:'بعد How many يكون الاسم جمعاً.'}]}});
-
-N.gram('u3-l2',{title:'المضارع البسيط مع كل الضمائر',short:'المضارع البسيط',q:'لماذا نقول I work لكن He works؟',
- intro:`نستعمل المضارع البسيط لعمل نقوم به دائماً أو كل يوم، ولوظيفة جهاز. مع ${e('I, you, we, they')} يبقى الفعل كما هو: ${e('I work')}. ومع ${e('he, she, it')} نضيف ${e('s')}: ${e('he works')}، ${e('it measures')}. وفي السؤال والنفي نستعمل ${e('do')} أو ${e('does')}، ويعود الفعل بعدها بلا ${e('s')}.`,
- head:['مع','الفعل','مثال'],
- rows:[['I / you / we / they','work','I work in Jeddah.'],['he / she / it','works','He works in a factory.'],['السؤال','Do / Does + الفعل','Where do you work? · Where does he work?'],['النفي',"don't / doesn't + الفعل","I don't work at night. · It doesn't measure speed."]],
- ex:['I study at a technical college.','She studies electronics.','What does Ahmed do? — He works at a car company.'],
- note:[`إملاء ${e('s')}: الفعل المنتهي بـ ${e('s, sh, ch, x, o')} نضيف له ${e('es')}: ${e('watch → watches')}، ${e('go → goes')}. والمنتهي بحرف ساكن + ${e('y')} نحذف ${e('y')} ونضيف ${e('ies')}: ${e('study → studies')}.`],
- lab:{title:'الفعل مع s أم بدونها؟',intro:'اختر الصحيح:',items:[
-  {s:'I ___ at a factory.',o:['work','works'],a:0,why:'مع I يبقى الفعل كما هو.'},
-  {s:'He ___ at a factory.',o:['work','works'],a:1,why:'مع he نضيف s.'},
-  {s:'The compass ___ North.',o:['find','finds'],a:1,why:'the compass = it، فنضيف s.'},
-  {s:'Where ___ you work?',o:['do','does'],a:0,why:'مع you نستعمل do.'},
-  {s:'___ she study English?',o:['Do','Does'],a:1,why:'مع she نستعمل does، والفعل بعدها بلا s.'},
-  {s:'Ali ___ electronics.',o:['studys','studies'],a:1,why:'حرف ساكن + y: نحذف y ونضيف ies.'}]}});
 })(window.ENK);

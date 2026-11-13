@@ -22,16 +22,70 @@ function lab61(el,B){kcss();
   $('#o').innerHTML=eb([`I'm ${ING(t)} ${obj}.`,`Is it ${ING(v)}?`,y?`Yes, it is. It's ${ING(v)}.`:`No, it isn't. It isn't ${ING(v)}.`])};
  $('#m').addEventListener('input',()=>{fill();sh()});$('#t').addEventListener('input',sh);fill();sh();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 6 ===== */
+const S61={I:['I','am',"'m"],you:['You','are',"'re"],he:['He','is',"'s"],it:['The machine','is',"'s"],they:['They','are',"'re"]};
+const V61={pull:['pull','نضيف ing'],strike:['strike','نحذف e ثم ing'],drop:['drop','نضاعف p ثم ing'],cut:['cut','نضاعف t ثم ing'],stretch:['stretch','نضيف ing']};
+const LAB61A={title:'المضارع المستمر',w:(el,B)=>N.labB(el,B,{intro:'اختر الفاعل والفعل ونوع الجملة، وشاهد am / is / are مع الفعل + ing.',
+ controls:[{k:'s',label:'الفاعل',opts:Object.keys(S61).map(k=>[k,k==='it'?'it (الآلة)':k])},{k:'v',label:'الفعل',opts:Object.keys(V61).map(k=>[k,k])},{k:'f',label:'الجملة',opts:[['pos','إثبات'],['neg','نفي'],['q','سؤال']]}],
+ out:({s,v,f})=>{const [S,b]=S61[s],g=ING(v),o=v==='pull'||v==='stretch'?'the rope':'the bar',Sl=S==='I'?'I':S.replace('The','the').replace(/^(You|He|They)$/,m=>m.toLowerCase());
+  const neg={am:"'m not",is:" isn't",are:" aren't"}[b];
+  if(f==='pos')return{pieces:[[S,'n','الفاعل'],[b,'q','be'],[g,'k',V61[v][1]],[o+'.','x','']],say:`${S} ${b} ${g} ${o}.`,why:`المضارع المستمر: ${e('am · is · are')} + الفعل + ${e('ing')}، لما يحدث الآن.`};
+  if(f==='neg')return{pieces:[[S,'n','الفاعل'],[b+' not','r',neg.trim()],[g,'k',V61[v][1]],[o+'.','x','']],say:`${S}${neg} ${g} ${o}.`,why:`النفي: ${e('not')} بعد ${e('am · is · are')}.`};
+  return{pieces:[[b[0].toUpperCase()+b.slice(1),'q','نقدّم be'],[Sl,'n','الفاعل'],[g,'k',V61[v][1]],[o+'?','x','']],say:`${b[0].toUpperCase()+b.slice(1)} ${Sl} ${g} ${o}?`,why:`السؤال: نقدّم ${e('am · is · are')} على الفاعل.`}}})};
+const LAB61B={title:'البسيط أم المستمر؟',w:(el,B)=>N.labB(el,B,{intro:'اختر: هل نتكلم عن عادة وعمل دائم، أم عن شيء يحدث الآن؟',
+ controls:[{k:'t',label:'الوقت',opts:[['always','دائماً / كل يوم'],['now','الآن']]}],
+ out:({t})=>t==='always'?{pieces:[['The machine','n','الفاعل'],['tests','k','مضارع بسيط: + s'],['materials','x',''],['every day.','q','عادة']],say:'The machine tests materials every day.',why:'للعادة والعمل الدائم: المضارع البسيط.'}
+  :{pieces:[['The machine','n','الفاعل'],['is testing','k','مضارع مستمر'],['the rope','x',''],['now.','q','الآن']],say:'The machine is testing the rope now.',why:'لما يحدث الآن: المضارع المستمر.'}})};
+const OB62={helmet:['helmet','polycarbonate',0],rope:['ropes','nylon',1],frame:['frame','aluminium',0],tyres:['tyres','rubber',1]};
+const LAB62A={title:"What's it made of?",w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء، وشاهد السؤال عن مادته وجوابه.',
+ controls:[{k:'o',label:'الشيء',opts:Object.keys(OB62).map(k=>[k,OB62[k][0]])}],
+ out:({o})=>{const [n,m,pl]=OB62[o];return pl?{pieces:[['What are those','q','جمع'],[n,'n',''],['made of?','x',''],["They're made of",'q',''],[m+'.','k','المادة']],say:`What are those ${n} made of? They're made of ${m}.`,why:`مع الجمع: ${e('What are … made of?')} والجواب ${e("They're made of …")}`}
+  :{pieces:[["What's this",'q','مفرد'],[n,'n',''],['made of?','x',''],["It's made of",'q',''],[m+'.','k','المادة']],say:`What's this ${n} made of? It's made of ${m}.`,why:`مع المفرد: ${e("What's … made of?")} والجواب ${e("It's made of …")}، والمادة بلا ${e('a')}.`}}})};
+const PR62={tough:['tough','brittle',"It doesn't break if you strike it.",'It breaks easily.'],hard:['hard','soft',"It doesn't scratch easily.",'It scratches easily.'],rigid:['rigid','flexible',"It doesn't bend.",'It bends easily.'],heat:['heat-resistant','',"It doesn't burn or melt if you heat it.",'']};
+const LAB62B={title:'الخاصية وضدها',w:(el,B)=>N.labB(el,B,{intro:'اختر الخاصية، ثم اختر الصفة أو ضدها، وشاهد جملة تشرحها.',
+ controls:[{k:'p',label:'الخاصية',opts:Object.keys(PR62).map(k=>[k,PR62[k][0]])},{k:'f',label:'',opts:[['a','الصفة'],['b','ضدها']]}],
+ out:({p,f})=>{const P=PR62[p];if(f==='b'&&!P[1])return{bad:`${e(P[0])} ليس لها ضد في الكتاب.`,pieces:[["It's",'x',''],[P[0]+'.','k','']],say:`It's ${P[0]}.`};
+  const a=f==='a';return{pieces:[["It's",'x',''],[(a?P[0]:P[1])+'.','k',a?'الصفة':'الضد'],[a?P[2]:P[3],'n','المعنى']],say:`It's ${a?P[0]:P[1]}. ${a?P[2]:P[3]}`,why:`نصف المادة بـ ${e("It's")} + صفة، ثم نشرحها بالمضارع البسيط.`}}})};
+const EM63={a:'ali_salem@tech.com',b:'www.site.com/sales-team',c:'k.omar-21@mail.net'};
+const LAB63A={title:'اقرأ البريد والموقع',w:(el,B)=>N.labB(el,B,{intro:'اختر العنوان، وشاهد كيف نقرأ كل رمز فيه.',
+ controls:[{k:'a',label:'العنوان',opts:Object.keys(EM63).map(k=>[k,EM63[k]])}],
+ out:({a})=>{const parts=EM63[a].split(/([@._\/-])/).filter(Boolean),M={'@':'at','.':'dot','_':'underscore','-':'dash','/':'forward slash'};
+  const pieces=parts.map(x=>M[x]?[M[x],'k',x]:[x==='www'?'www':x,'n','']);return{pieces,say:pieces.map(x=>x[0]).join(' '),why:`${e('@ = at')}، و ${e('. = dot')}، و ${e('_ = underscore')}، و ${e('- = dash')}، و ${e('/ = forward slash')}`}}})};
+const TN63={13:['thirteen','thirTEEN','one three'],30:['thirty','THIRty','three oh'],16:['sixteen','sixTEEN','one six'],60:['sixty','SIXty','six oh'],17:['seventeen','sevenTEEN','one seven'],70:['seventy','SEVenty','seven oh']};
+const LAB63B={title:'teen أم ty؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الرقم، وشاهد مكان النبر، وكيف نوضحه إذا لم يسمعنا الطرف الآخر.',
+ controls:[{k:'n',label:'الرقم',opts:Object.keys(TN63).map(k=>[k,k])}],
+ out:({n})=>{const [w,st,d]=TN63[n];return{pieces:[[w,'n','نكتب'],[st,'k','النبر'],[`${w}, ${d}`,'q','للتوضيح']],say:`${w}. ${w}, ${d}.`,ar:`إذا لم تسمع جيداً اسأل: Is that ${n<20?w:TN63[{30:13,60:16,70:17}[n]][0]} or ${n<20?TN63[{13:30,16:60,17:70}[n]][0]:w}?`,why:`في ${e('-teen')} النبر على آخر الكلمة، وفي ${e('-ty')} على أولها.`}}})};
+const R61=N.rule({title:'أفعال اختبار المواد، والمضارع المستمر',ref:'ص 42–43',
+ intro:`في هذا الدرس نشاهد اختبارات للمواد ونصف ما يحدث أثناء الاختبار. نحتاج أفعال الاختبار، ثم المضارع المستمر لما يحدث الآن، ثم الفرق بينه وبين المضارع البسيط.`,
+ parts:[
+ {t:'أفعال اختبار المواد',short:'أفعال الاختبار',old:[1],q:'ما الفرق بين bend و break؟',ref:'ص 42',
+  lead:`لنختبر مادة نفعل بها شيئاً ونرى ماذا يحدث لها. ولكل عمل فعل.`,
+  points:[`ما نفعله بالمادة: ${e('strike · stretch · bend · compress · drop · cut · heat · scratch')}`,`وما قد يحدث لها: ${e('break')} تنكسر، و ${e('melt')} تذوب، و ${e('bend')} تنثني.`],
+  html:vt([['strike','يضرب'],['stretch','يمطّ (يشدّ فيطول)'],['bend','يثني'],['compress','يضغط'],['drop','يُسقط'],['cut','يقطع'],['heat','يسخّن'],['scratch','يخدش'],['break','ينكسر / ينقطع'],['melt','يذوب']],['English','المعنى']),
+  art:art(`${[['strike','يضرب'],['stretch','يمطّ'],['compress','يضغط'],['bend','يثني'],['drop','يُسقط'],['heat','يسخّن']].map((x,i)=>`<g data-tip="${x[0]} — ${x[1]}"><rect x="${40+(i%2)*150}" y="${50+Math.floor(i/2)*76}" width="130" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(105+(i%2)*150,86+Math.floor(i/2)*76,x[0],{fs:15,w:700})}</g>`).join('')}`,'أفعال الاختبار'),cap:'ستة أفعال لاختبار المواد. مرّر المؤشر على كل منها.',labs:[{title:'الفعل',w:(el,B)=>N.cases(el,B,{intro:'ما الفعل؟',cases:[{q:'تضرب المادة بمطرقة.',opts:[['strike',1],['stretch',0]]},{q:'تشدّ المطاط فيطول.',opts:[['stretch',1],['compress',0]]},{q:'تضع المادة على النار.',opts:[['heat',1],['drop',0]]}]})}]},
+ {t:'المضارع المستمر',short:'am / is / are + ing',old:[2],q:'كيف تقول «أنا أسحب الحبل الآن»؟',ref:'ص 42–43',
+  lead:`عندما نصف ما يحدث أمامنا الآن ونحن نتكلم نستعمل المضارع المستمر. وهو مكون من جزأين: الفعل ${e('be')} الذي تعلمناه، والفعل مع ${e('ing')}.`,
+  points:[`<b>البناء:</b> ${e('am · is · are')} + الفعل + ${e('ing')}: ${e("I'm pulling the rope.")}`,`<b>${e('be')} يتغير حسب الفاعل</b> كما تعلمنا: ${e('I am · he is · they are')}`,
+   `<b>النفي:</b> ${e('not')} بعد ${e('be')}: ${e("The rope isn't breaking.")}`,`<b>السؤال:</b> نقدّم ${e('be')}: ${e('Is the rope breaking?')} والجواب ${e("Yes, it is. / No, it isn't.")}، و ${e('What are you doing?')}`,
+   `<b>إملاء ing:</b><br>الفعل المنتهي بـ ${e('e')} نحذفها: ${e('strike → striking')}<br>الفعل القصير المنتهي بساكن بعد متحرك نضاعف آخره: ${e('drop → dropping · cut → cutting')}<br>وغير ذلك نضيف ${e('ing')}: ${e('stretch → stretching')}`],
+  grid:{head:['الجملة','مثال'],rows:[['إثبات',"I'm pulling the rope."],['نفي',"The rope isn't breaking."],['سؤال','Is the rope breaking?'],['جواب قصير',"Yes, it is. / No, it isn't."],['سؤال بـ What','What are you doing?']]},
+  pairs:[['I pulling the rope.',"I'm pulling the rope.",'لا ننسى am.'],['He is strikeing the bar.','He is striking the bar.','نحذف e قبل ing.'],['They are droping it.','They are dropping it.','نضاعف p.']],
+  art:art(`<g data-tip="I + am ('m) + الفعل + ing."><rect x="30" y="56" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,87,"I'm pulling the rope.",{fs:15,w:700})}</g>
+    <g data-tip="النفي: isn't + ing."><rect x="30" y="124" width="300" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,155,"The rope isn't breaking.",{fs:15,w:700})}</g>
+    <g data-tip="السؤال: Is / Are في البداية."><rect x="30" y="192" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,223,'Is the rope breaking?',{fs:15,w:700})}</g>`,'present continuous'),cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',labs:[LAB61A,{title:'المستمر',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I ___ heating the plastic.",o:["'m","'s"],a:0},{s:"The plate ___ bending.",o:["isn't","aren't"],a:0},{s:'What ___ you doing?',o:['are','is'],a:0},{s:'He is ___ the plate.',o:['striking','strikeing'],a:0}]})}]},
+ {t:'البسيط أم المستمر؟',short:'البسيط أم المستمر',q:'ما الفرق بين The machine tests و The machine is testing؟',ref:'ص 42',
+  lead:`الآن عندنا زمنان للمضارع، ولكل منهما استعمال.`,
+  points:[`<b>المضارع البسيط</b> للعادة والعمل الدائم والحقيقة: ${e('The machine tests materials.')}`,`<b>المضارع المستمر</b> لما يحدث الآن: ${e('The machine is testing the rope now.')}`,`كلمات مثل ${e('every day · always')} تدل على البسيط، وكلمات مثل ${e('now · at the moment')} تدل على المستمر.`],
+  grid:{head:['متى','مثال','الزمن'],rows:[['حقيقة أو عملية تتكرر','The hammer strikes the material.','المضارع البسيط'],['شيء يحدث الآن','The hammer is striking the bar now.','المضارع المستمر']]},
+  labs:[LAB61B]}
+ ]});
 B.lesson({
  id:'u6-l1',unit:6,order:1,pages:'42–43',
  title:'Materials testing — اختبار المواد',
  summary:'اختبار المواد (strike، stretch، bend، compress، drop، cut، heat، scratch)، والمضارع المستمر (am/is/are + ing) لوصف ما يحدث الآن في الإثبات والنفي والسؤال، وتغيّر الإملاء مع ing (striking، dropping، cutting)، ووصف صورة لأشخاص يتحركون.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 42–43',html:`<p>تصف تجربة تحدث أمامك الآن. ستتعلم:</p><ol><li>أفعال اختبار المواد.</li><li>المضارع المستمر: ${e("I'm pulling the rope.")}</li><li>تغيّر الإملاء مع ${e('ing')}.</li></ol>`},
-  {h:'أفعال اختبار المواد',ref:'ص 42',html:vt([['strike','يضرب'],['stretch','يمطّ (يشدّ فيطول)'],['bend','يثني'],['compress','يضغط'],['drop','يُسقط'],['cut','يقطع'],['heat','يسخّن'],['scratch','يخدش'],['break','ينكسر / ينقطع'],['melt','يذوب']],['English','المعنى'])},
-  {h:'المضارع المستمر',ref:'ص 42',html:`${vt([["I'm (am) pulling the rope.",'إثبات'],["The rope isn't (is not) breaking.",'نفي'],['What are you doing?','سؤال بـ What'],['Is the rope breaking?','سؤال بـ Is'],["Yes, it is. / No, it isn't.",'جواب قصير']],['English','القاعدة'])}<p>نستعمله لما يحدث <b>الآن</b> ونحن نتكلم: ${e('am / is / are')} + الفعل + ${e('ing')}.</p>`},
-  {note:'<b>توضيح للمتدرب:</b> قارن: <span class="en">The machine tests materials.</span> (عادة وعمل دائم) و <span class="en">The machine is testing the rope now.</span> (الآن).'},
-  {h:'تغيّر الإملاء',ref:'ص 43',html:vt([['strike','striking','نحذف e الأخيرة'],['drop','dropping','نضاعف الحرف الأخير'],['cut','cutting','نضاعف الحرف الأخير'],['stretch','stretching','نضيف ing']],['الفعل','+ ing','القاعدة'])},
+  ...R61.theory,
   {h:'تمارين الكتاب',ref:'ص 42–43',html:
    bk(1,'ص 42','مع زميلك: من أي مادة الخوذة والحبل؟ صمّم اختبارات لهما.',null)+
    bk(2,'ص 42','استمع وأجب.',['1 nylon','2 He\'s pulling (stretching) the rope. (اختبار قوة الشد)','3 No, it isn\'t.'])+
@@ -45,16 +99,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أفعال الاختبار',title:'كيف نختبر مادة؟',q:'ما الفرق بين stretch و compress؟',ref:'ص 42',
-   art:art(`${[['strike','يضرب'],['stretch','يمطّ'],['compress','يضغط'],['bend','يثني'],['drop','يُسقط'],['heat','يسخّن']].map((x,i)=>`<g data-tip="${x[0]} — ${x[1]}"><rect x="${40+(i%2)*150}" y="${50+Math.floor(i/2)*76}" width="130" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(105+(i%2)*150,86+Math.floor(i/2)*76,x[0],{fs:15,w:700})}</g>`).join('')}`,'أفعال الاختبار'),
-   cap:'ستة أفعال لاختبار المواد. مرّر المؤشر على كل منها.',side:[{tip:`${e('stretch')} يطيل المادة، و ${e('compress')} يضغطها فتقصر.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الفعل؟',cases:[{q:'تضرب المادة بمطرقة.',opts:[['strike',1],['stretch',0]]},{q:'تشدّ المطاط فيطول.',opts:[['stretch',1],['compress',0]]},{q:'تضع المادة على النار.',opts:[['heat',1],['drop',0]]}]}),title:'مختبر مصغّر: الفعل'}]},
-  {st:2,short:'am/is/are + ing',title:'المضارع المستمر',q:'كيف تقول «أنا أسحب الحبل الآن»؟',ref:'ص 42',
-   art:art(`<g data-tip="I + am ('m) + الفعل + ing."><rect x="30" y="56" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,87,"I'm pulling the rope.",{fs:15,w:700})}</g>
-    <g data-tip="النفي: isn't + ing."><rect x="30" y="124" width="300" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,155,"The rope isn't breaking.",{fs:15,w:700})}</g>
-    <g data-tip="السؤال: Is / Are في البداية."><rect x="30" y="192" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,223,'Is the rope breaking?',{fs:15,w:700})}</g>`,'present continuous'),
-   cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',side:[{tip:`${e('am')} مع I، و ${e('is')} مع he/she/it، و ${e('are')} مع you/we/they.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I ___ heating the plastic.",o:["'m","'s"],a:0},{s:"The plate ___ bending.",o:["isn't","aren't"],a:0},{s:'What ___ you doing?',o:['are','is'],a:0},{s:'He is ___ the plate.',o:['striking','strikeing'],a:0}]}),title:'مختبر مصغّر: المستمر'}]},
+  ...R61.stations,
   {recap:['strike, stretch, compress, bend, drop, cut, heat, scratch.','am / is / are + ing لما يحدث الآن.','Is it breaking? — No, it isn\'t.','strike → striking، drop → dropping، cut → cutting.']}
  ],
  lab:lab61,
@@ -88,16 +133,30 @@ function lab62(el,B){kcss();
  el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>sh(+b.dataset.p));sh(0);
  const ws=()=>{const p=PROP[+$('#w').value],[a,b]=p[0].split(' ≠ ');$('#wo').innerHTML=`${eb(`${a} ≠ ${b}`)}<p class="sub">${p[1]}</p>`};$('#w').addEventListener('input',ws);ws();
 }
+const R62=N.rule({title:'المواد، و What\'s it made of?، وخصائص المواد',ref:'ص 44–45',
+ intro:`في هذا الدرس نتكلم عن مواد معدات التسلق وسيارة السباق: أسماء المواد، ثم السؤال عن مادة الشيء، ثم خصائص المواد وأضدادها.`,
+ parts:[
+ {t:'المواد و What\'s it made of?',short:'made of',old:[1],q:'كيف تسأل عن مادة الخوذة؟',ref:'ص 44',
+  lead:`لكل قطعة مادة صُنعت منها. وللسؤال عن المادة عبارة ثابتة.`,
+  points:[`<b>المفرد:</b> ${e("What's this helmet made of? — It's made of polycarbonate.")}`,`<b>الجمع:</b> ${e("What are those ropes made of? — They're made of nylon.")}`,`<b>اسم المادة بلا ${e('a')}:</b> ${e('made of steel')} لا ${e('made of a steel')}`,`${e('fibreglass · aluminium')} بالبريطانية = ${e('fiberglass · aluminum')} بالأمريكية.`],
+  html:vt(MATS,['English','المعنى']),
+  pairs:[["It's made of a nylon.","It's made of nylon.",'اسم المادة بلا a.'],["What's those ropes made of?",'What are those ropes made of?','للجمع: What are.']],
+  art:art(`<g data-tip="مفرد: What's … made of? — It's made of …"><rect x="20" y="60" width="320" height="56" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,86,"What's this helmet made of?",{fs:14,w:700})}${TL(180,106,"It's made of polycarbonate.",{fs:13})}</g>
+    <g data-tip="جمع: What are … made of? — They're made of …"><rect x="20" y="140" width="320" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,166,'What are these ropes made of?',{fs:14,w:700})}${TL(180,186,"They're made of nylon.",{fs:13})}</g>`,'made of'),cap:'السؤال والجواب للمفرد والجمع. مرّر المؤشر على كل منهما.',labs:[LAB62A,{title:'made of',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"What ___ these sunglasses made of?",o:['are','is'],a:0},{s:"It's made ___ steel.",o:['of','from in'],a:0},{s:"___ made of rubber. (the tyres)",o:["They're","It's"],a:0}]})}]},
+ {t:'خصائص المواد وأضدادها',short:'الخصائص',old:[2],q:'ما ضد tough؟',ref:'ص 45',
+  lead:`نختار المادة حسب خصائصها: هل هي قوية؟ خفيفة؟ تقاوم الحرارة؟ والخصائص تُحفظ أزواجاً متضادة.`,
+  points:[`${e('tough ≠ brittle')}: لا تنكسر بسهولة ≠ هشة.`,`${e('hard ≠ soft')}، و ${e('rigid ≠ flexible')}، و ${e('strong ≠ weak')}، و ${e('light ≠ heavy')}`,`نشرح الخاصية بجملة: ${e("It's tough. It doesn't break if you strike it.")}`,
+   `${e('alloy')} سبيكة: خليط من معدنين أو أكثر. و ${e('composite')} مادة مركبة: خليط من نوعين من المواد، مثل ${e('fibreglass = plastic + ceramic')}`],
+  html:vt(PROP,['English','المعنى']),
+  art:art(`${PROP.slice(0,5).map((p,i)=>`<g data-tip="${p[0]} — ${p[1]}"><rect x="30" y="${36+i*52}" width="300" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,62+i*52,p[0],{fs:15,w:700})}</g>`).join('')}`,'الخصائص'),cap:'خمس خصائص مع أضدادها. مرّر المؤشر على كل منها.',labs:[LAB62B,{title:'الخاصية',w:(el,B)=>N.cases(el,B,{intro:'ما الخاصية؟',cases:[{q:"It doesn't break if you drop it.",opts:[['tough',1],['brittle',0]]},{q:'You can bend it easily.',opts:[['flexible',1],['rigid',0]]},{q:"It doesn't rust in water.",opts:[['corrosion-resistant',1],['heat-resistant',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u6-l2',unit:6,order:2,pages:'44–45',
  title:'Properties — خصائص المواد',
  summary:'أسماء المواد (aluminium، ceramic، fibreglass، nylon، polycarbonate، steel…) والنبر في نطقها، والسؤال What\'s it made of? / What are they made of?، وخصائص المواد وأضدادها (tough ≠ brittle، rigid ≠ flexible، heat-resistant، corrosion-resistant)، والسبيكة والمادة المركبة، وقراءة وصف مواد سيارة سباق.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 44–45',html:`<p>تصف ممّ صُنع شيء ولماذا. ستتعلم:</p><ol><li>أسماء المواد ونطقها.</li><li>${e('What\'s it made of? It\'s made of …')}</li><li>خصائص المواد وأضدادها.</li></ol>`},
-  {h:'المواد',ref:'ص 44',html:`${vt(MATS,['English','المعنى'])}<p>${e('fibreglass, aluminium')} بالبريطانية = ${e('fiberglass, aluminum')} بالأمريكية.</p>`},
-  {h:'What\'s it made of?',ref:'ص 44',html:`${vt([["What's this helmet made of?","It's made of polycarbonate."],['What are those ropes made of?',"They're made of nylon."]],['السؤال','الجواب'])}`},
-  {h:'خصائص المواد',ref:'ص 45',html:`${vt(PROP,['English','المعنى'])}${eb(["It's heat-resistant. It doesn't burn or melt if you heat it.","It's tough. It doesn't break if you strike it."])}`},
-  {h:'سبيكة ومادة مركبة',ref:'ص 45',html:`${vt([['alloy','خليط من معدنين أو أكثر','cromoly (steel alloy)'],['composite','خليط من نوعين من المواد','fibreglass = plastic + ceramic']],['الكلمة','المعنى','مثال'])}`},
+  ...R62.theory,
   {h:'تمارين الكتاب',ref:'ص 44–45',html:
    bk(1,'ص 44','ما أهم خصائص هذه المواد؟ ناقش زميلك.',null)+
    bk(2,'ص 44','طابق الصور بالمواد.',['1 ceramic','2 polycarbonate','3 polystyrene','4 fibreglass','5 graphite','6 titanium','7 rubber','8 nylon','9 aluminium','10 steel'],'من قراءتنا للصور.')+
@@ -110,15 +169,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'What\'s it made of?',title:'ممّ صُنع؟',q:'كيف تسأل عن مادة النظارة؟',ref:'ص 44',
-   art:art(`<g data-tip="مفرد: What's … made of? — It's made of …"><rect x="20" y="60" width="320" height="56" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,86,"What's this helmet made of?",{fs:14,w:700})}${TL(180,106,"It's made of polycarbonate.",{fs:13})}</g>
-    <g data-tip="جمع: What are … made of? — They're made of …"><rect x="20" y="140" width="320" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,166,'What are these ropes made of?',{fs:14,w:700})}${TL(180,186,"They're made of nylon.",{fs:13})}</g>`,'made of'),
-   cap:'السؤال والجواب للمفرد والجمع. مرّر المؤشر على كل منهما.',side:[{tip:`لا تنسَ ${e('of')} في آخر السؤال: ${e('made of?')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"What ___ these sunglasses made of?",o:['are','is'],a:0},{s:"It's made ___ steel.",o:['of','from in'],a:0},{s:"___ made of rubber. (the tyres)",o:["They're","It's"],a:0}]}),title:'مختبر مصغّر: made of'}]},
-  {st:2,short:'الخصائص',title:'خصائص المواد وأضدادها',q:'هل الزجاج tough أم brittle؟',ref:'ص 45',
-   art:art(`${PROP.slice(0,5).map((p,i)=>`<g data-tip="${p[0]} — ${p[1]}"><rect x="30" y="${36+i*52}" width="300" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,62+i*52,p[0],{fs:15,w:700})}</g>`).join('')}`,'الخصائص'),
-   cap:'خمس خصائص مع أضدادها. مرّر المؤشر على كل منها.',side:[{tip:`${e('hard')} لا يُخدش، و ${e('tough')} لا ينكسر. الزجاج ${e('hard')} لكنه ${e('brittle')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الخاصية؟',cases:[{q:"It doesn't break if you drop it.",opts:[['tough',1],['brittle',0]]},{q:'You can bend it easily.',opts:[['flexible',1],['rigid',0]]},{q:"It doesn't rust in water.",opts:[['corrosion-resistant',1],['heat-resistant',0]]}]}),title:'مختبر مصغّر: الخاصية'}]},
+  ...R62.stations,
   {recap:['aluminium, ceramic, fibreglass, nylon, polycarbonate, steel…','What\'s it made of? — It\'s made of …','tough ≠ brittle، hard ≠ soft، rigid ≠ flexible، strong ≠ weak، light ≠ heavy.','heat-resistant، corrosion-resistant.','alloy = معادن، composite = مادتان مختلفتان.']}
  ],
  lab:lab62,
@@ -154,16 +205,29 @@ function lab63(el,B){kcss();
  const NW={13:'thirTEEN',30:'THIRty',14:'fourTEEN',40:'FORty',15:'fifTEEN',50:'FIFty',16:'sixTEEN',60:'SIXty',17:'sevenTEEN',70:'SEVenty'};
  el.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{const w=NW[b.dataset.n];$('#no').innerHTML=eb(w);N.speak(w.toLowerCase())});
 }
+const R63=N.rule({title:'نطق البريد والموقع، ولغة المكالمة',ref:'ص 46–47',
+ intro:`في هذا الدرس تأخذ طلباً بالهاتف: تسمع بريداً إلكترونياً وموقعاً وأرقاماً، وتتأكد منها. نشرح قراءة الرموز، ثم عبارات التأكد في المكالمة.`,
+ parts:[
+ {t:'نطق البريد والموقع',short:'@ . _ / -',old:[1],q:'كيف تقول ali_salem@tech.com؟',ref:'ص 46',
+  lead:`البريد والموقع فيهما رموز، ولكل رمز كلمة نقولها.`,
+  points:[`${e('@ = at')}، و ${e('. = dot')}، و ${e('_ = underscore')}`,`${e('- = dash')}، و ${e('/ = forward slash')}`,`والرقمان المتشابهان ${e('double')}: ${e('66 = double six')}`],
+  html:vt(SAY,['نكتب','نقول']),
+  art:art(`<rect x="20" y="70" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,102,'ali_salem@tech-college.com',{fs:16,w:700})}
+    ${[['_','underscore',96],['@','at',158],['-','dash',226],['.','dot',282]].map((x,i)=>`<g data-tip="${x[0]} = ${x[1]}"><rect x="${x[2]-34}" y="150" width="68" height="40" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(x[2],176,x[1],{fs:12,w:700})}</g>`).join('')}`,'email'),cap:'بريد من إعدادنا ونطق رموزه. مرّر المؤشر على كل رمز.',labs:[LAB63A,{title:'الرموز',w:(el,B)=>N.cases(el,B,{intro:'كيف تنطق؟',cases:[{q:'@',opts:[['at',1],['and',0]]},{q:'.',opts:[['dot',1],['point',0]]},{q:'-',opts:[['dash',1],['underscore',0]]}]})}]},
+ {t:'التأكد في المكالمة',short:'التأكد',old:[2],q:'كيف تتأكد هل الرقم 16 أم 60؟',ref:'ص 46–47',
+  lead:`في الهاتف يسهل أن نخطئ في السماع، خصوصاً في الأرقام المتشابهة. لذلك نستعمل عبارات للتأكد.`,
+  points:[`<b>لطلب الإعادة:</b> ${e('Could you repeat that, please?')} و ${e('Could you spell that, please?')}`,`<b>للتأكد من رقم:</b> ${e('Is that sixteen or sixty?')}`,`<b>النبر:</b> في ${e('-teen')} على آخر الكلمة (${e('sevenTEEN')})، وفي ${e('-ty')} على أولها (${e('SEVenty')}). وللتوضيح قل الرقمين: ${e('seventeen, one seven')}`,
+   `<b>بداية المكالمة:</b> ${e('Is that Khalid?')} و ${e("Yes, it's me.")} و ${e("I'm phoning to …")}`,`${e('no. = # = number')}`],
+  html:vt([["What's your name / phone number / email address?",'ما اسمك / رقمك / بريدك؟'],['Could you repeat that, please?','هل تعيد من فضلك؟'],['Could you spell that, please?','هل تتهجاه من فضلك؟'],['Is that sixteen or sixty?','هل هو 16 أم 60؟'],["What's the product name / number?",'ما اسم المنتج / رقمه؟'],['What colour / size / material would you like?','أي لون / مقاس / مادة تريد؟'],['How many would you like?','كم قطعة تريد؟']],['English','المعنى'])+dl([['A','Hello?'],['B','Hello. Is that Khalid?'],['A','Yes. Is that Omar?'],['B',"Yes, it's me. How are you?"],['A','Fine, thanks. How about you?'],['B',"I'm fine. I'm phoning to …"]]),
+  art:art(`${[['Could you repeat that, please?','أعد من فضلك'],['Could you spell that, please?','تهجّه من فضلك'],['Is that T or D?','T أم D؟'],['Is that 17 or 70?','17 أم 70؟']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${40+i*60}" width="320" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*60,x[0],{fs:14,w:700})}</g>`).join('')}`,'repeat spell'),cap:'أربع جمل للتأكد. مرّر المؤشر على كل منها.',labs:[LAB63B,{title:'التأكد',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Could you ___ that, please? (أعد)',o:['repeat','spell'],a:0},{s:'Could you ___ that, please? (تهجّه)',o:['spell','repeat'],a:0},{s:'___ that sixteen or sixty?',o:['Is','Are'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u6-l3',unit:6,order:3,pages:'46–47',
  title:'Buying — الشراء',
  summary:'الشراء بالهاتف: نطق أرقام الهاتف (double oh)، والبريد الإلكتروني وعناوين المواقع (at، dot، underscore، dash، forward slash)، وطلب الإعادة والتهجئة (Could you repeat / spell that?)، والتمييز بين ‑teen و ‑ty، وتعبئة نموذج طلب، وبداية المكالمة الهاتفية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 46–47',html:`<p>تطلب منتجاً بالهاتف. ستتعلم:</p><ol><li>نطق الأرقام والعناوين.</li><li>طلب الإعادة والتهجئة.</li><li>${e('-teen')} و ${e('-ty')}.</li><li>بداية المكالمة.</li></ol>`},
-  {h:'نطق البريد والموقع',ref:'ص 46',html:`${vt(SAY,['نكتب','نقول'])}${eb(['ali_salem@tech.com = ali underscore salem at tech dot com','www.site.com/sales-team = www dot site dot com forward slash sales dash team'])}`},
-  {h:'لغة مفيدة في المكالمة',ref:'ص 46–47',html:`${vt([["What's your name / phone number / email address?",'ما اسمك / رقمك / بريدك؟'],['Could you repeat that, please?','هل تعيد من فضلك؟'],['Could you spell that, please?','هل تتهجاه من فضلك؟'],['Is that sixteen or sixty?','هل هو 16 أم 60؟'],["What's the product name / number?",'ما اسم المنتج / رقمه؟'],['What colour / size / material would you like?','أي لون / مقاس / مادة تريد؟'],['How many would you like?','كم قطعة تريد؟']],['English','المعنى'])}<p>${e('no. = # = number')}</p>`},
-  {note:'<b>توضيح للمتدرب:</b> في ‑teen يكون النبر على آخر الكلمة (seven<b>TEEN</b>)، وفي ‑ty على أولها (<b>SEV</b>enty). وللتوضيح قل الرقمين: <span class="en">seventeen, one seven</span>.'},
-  {h:'بداية المكالمة',ref:'ص 47',html:dl([['A','Hello?'],['B','Hello. Is that Khalid?'],['A','Yes. Is that Omar?'],['B',"Yes, it's me. How are you?"],['A','Fine, thanks. How about you?'],['B',"I'm fine. I'm phoning to …"]])},
+  ...R63.theory,
   {h:'تمارين الكتاب',ref:'ص 46–47',html:
    bk(1,'ص 46','استمع وأكمل نموذج المكالمة.',['Name: Manuel Vargas','Phone number: 00 34 94 66 389','<span style="overflow-wrap:anywhere">Email address: mvargas17@xtreme_sports.co.es</span>','Message: Please send your catalogue of sports equipment.'])+
    bk(2,'ص 46','استمع واكتب العناوين.',['1 waleed@sports.com (مثال)','2 adam@city.co.uk','<span style="overflow-wrap:anywhere">3 theowalcott@goalfeast.com</span>','<span style="overflow-wrap:anywhere">4 c.ronaldo@back-of-the.net</span>','<span style="overflow-wrap:anywhere">5 www.toyota.com/customer-support</span>','<span style="overflow-wrap:anywhere">6 www.orascom.com.eg/sales_one</span>'])+
@@ -177,15 +241,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'at · dot · dash',title:'نطق البريد الإلكتروني',q:'كيف تنطق _ في البريد؟',ref:'ص 46',
-   art:art(`<rect x="20" y="70" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,102,'ali_salem@tech-college.com',{fs:16,w:700})}
-    ${[['_','underscore',96],['@','at',158],['-','dash',226],['.','dot',282]].map((x,i)=>`<g data-tip="${x[0]} = ${x[1]}"><rect x="${x[2]-34}" y="150" width="68" height="40" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(x[2],176,x[1],{fs:12,w:700})}</g>`).join('')}`,'email'),
-   cap:'بريد من إعدادنا ونطق رموزه. مرّر المؤشر على كل رمز.',side:[{tip:`${e('/')} = ${e('forward slash')}، و ${e('www')} نقرؤها حرفاً حرفاً.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'كيف تنطق؟',cases:[{q:'@',opts:[['at',1],['and',0]]},{q:'.',opts:[['dot',1],['point',0]]},{q:'-',opts:[['dash',1],['underscore',0]]}]}),title:'مختبر مصغّر: الرموز'}]},
-  {st:2,short:'repeat · spell',title:'التأكد في المكالمة',q:'لم تسمع الاسم جيداً. ماذا تقول؟',ref:'ص 46',
-   art:art(`${[['Could you repeat that, please?','أعد من فضلك'],['Could you spell that, please?','تهجّه من فضلك'],['Is that T or D?','T أم D؟'],['Is that 17 or 70?','17 أم 70؟']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${40+i*60}" width="320" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*60,x[0],{fs:14,w:700})}</g>`).join('')}`,'repeat spell'),
-   cap:'أربع جمل للتأكد. مرّر المؤشر على كل منها.',side:[{tip:`للتوضيح قل حرفاً بكلمة: ${e('T for teacher')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Could you ___ that, please? (أعد)',o:['repeat','spell'],a:0},{s:'Could you ___ that, please? (تهجّه)',o:['spell','repeat'],a:0},{s:'___ that sixteen or sixty?',o:['Is','Are'],a:0}]}),title:'مختبر مصغّر: التأكد'}]},
+  ...R63.stations,
   {recap:['@ at · . dot · _ underscore · - dash · / forward slash.','00 = double oh.','Could you repeat / spell that, please?','seventeen (النبر آخراً) ≠ seventy (النبر أولاً).','Hello? — Is that …? — Yes, it\'s me.']}
  ],
  lab:lab63,

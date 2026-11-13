@@ -30,16 +30,69 @@ function lab51(el,B){kcss();
  const EX=['The water flows into the tank.','The water goes out of the tank.','The water passes through the pipes.','The water goes around the solar panel.','The water flows to the outlet.','The water comes from the inlet.'];
  const ps=()=>{const k=+$('#pp').value;$('#po').innerHTML=`${eb(EX[k])}<p class="sub">${PREP[k][0]} = ${PREP[k][1]}</p>`};$('#pp').addEventListener('input',ps);ps();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 5 ===== */
+const pr51=p=>{const tank='<rect x="150" y="40" width="110" height="80" rx="8" fill="#e8f1f8" stroke="#555" stroke-width="3"/><text x="205" y="135" font-size="11" fill="#666" text-anchor="middle">tank</text>';
+ const pipe='<rect x="20" y="70" width="360" height="22" fill="#e8f1f8" stroke="#555" stroke-width="3"/><text x="200" y="115" font-size="11" fill="#666" text-anchor="middle">pipe</text>';
+ const A={into:tank+AR(40,80,170,80,'#1f5fd1'),'out of':tank+AR(230,80,360,80,'#1f5fd1'),through:pipe+AR(30,81,370,81,'#1f5fd1',4),around:'<rect x="150" y="45" width="100" height="70" rx="8" fill="#f3e3c1" stroke="#555" stroke-width="3"/><text x="200" y="85" font-size="11" fill="#666" text-anchor="middle">panel</text><path d="M130 130 L130 30 L270 30 L270 130" fill="none" stroke="#1f5fd1" stroke-width="5"/>'+AR(270,110,270,135,'#1f5fd1')}[p];
+ return `<svg viewBox="0 0 400 150" width="380">${A}</svg>`};
+const LAB51A={title:'حروف الجر مع الحركة',w:(el,B)=>N.labB(el,B,{intro:'اختر حرف الجر والفعل، وشاهد مسار الماء والجملة.',
+ controls:[{k:'p',label:'الحركة',opts:[['into','into'],['out of','out of'],['through','through'],['around','around']]},{k:'v',label:'الفعل',opts:[['flows','flow'],['goes','go'],['passes','pass']]}],
+ out:({p,v})=>{const o={into:'the tank','out of':'the tank',through:'the pipe',around:'the panel'}[p],ar={into:'إلى داخل','out of':'إلى خارج',through:'عبر','around':'حول'}[p];
+  return{svg:pr51(p),pieces:[['The water','n','مفرد = it'],[v,'k',v==='flows'?'نضيف s':'نضيف es'],[p,'q',ar],[o+'.','x','']],say:`The water ${v} ${p} ${o}.`,why:`مع المفرد نضيف ${e('s')} للفعل، والفعلان ${e('go')} و ${e('pass')} يأخذان ${e('es')}: ${e('goes · passes')}`}}})};
+const RV51={rise:['rises','goes up','يصعد','The hot water'],sink:['sinks','goes down','ينزل','The cool air'],enter:['enters','goes into','يدخل','Cold water'],leave:['leaves','goes out of','يخرج','The hot air']};
+const LAB51B={title:'فعل واحد أم go + اتجاه؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل، ثم اختر الصيغة: كلمة واحدة أم go مع اتجاه. المعنى واحد.',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(RV51).map(k=>[k,k])},{k:'f',label:'الصيغة',opts:[['1','كلمة واحدة'],['2','go + اتجاه']]}],
+ out:({v,f})=>{const [s,g,ar,S]=RV51[v],o=v==='enter'?' the tank':v==='leave'?' the chimney':'';return{pieces:[[S,'n','الفاعل'],[f==='1'?s:g,'k',ar],[o?o.trim()+'.':'.','x','']],say:`${S} ${f==='1'?s:g}${o}.`,why:`${e(v)} = ${e(g.replace('goes','go'))}. ومع المفرد يأخذ الفعل ${e('s')}.`}}})};
+const IF52={shine:['the Sun shines','the current flows from the panel'],no:["the Sun doesn't shine",'the current flows from the battery'],full:['the battery is full',"the current doesn't flow into the battery"],off:["the lamps aren't on",'the current flows into the battery']};
+const LAB52A={title:'If والنتيجة الدائمة',w:(el,B)=>N.labB(el,B,{intro:'اختر الشرط والترتيب، وشاهد الجملة. لاحظ الفاصلة.',
+ controls:[{k:'c',label:'الشرط',opts:[['shine','الشمس مشرقة'],['no','لا شمس'],['full','البطارية ممتلئة'],['off','المصابيح مطفأة']]},{k:'o',label:'الترتيب',opts:[['1','If أولاً'],['2','النتيجة أولاً']]}],
+ out:({c,o})=>{const [a,b]=IF52[c],B0=b[0].toUpperCase()+b.slice(1);return o==='1'?{pieces:[['If','q','الشرط'],[a+',','k','مضارع + فاصلة'],[b+'.','n','النتيجة: مضارع']],say:`If ${a}, ${b}.`,why:`الفعلان في المضارع البسيط لأن النتيجة تحدث في كل مرة. وبعد جزء ${e('If')} فاصلة.`}
+  :{pieces:[[B0,'n','النتيجة'],['if','q','بلا فاصلة'],[a+'.','k','الشرط']],say:`${B0} if ${a}.`,why:'إذا بدأنا بالنتيجة لا نضع فاصلة.'}}})};
+const LAB53A={title:'سلسيوس وفهرنهايت',w:(el,B)=>N.labB(el,B,{intro:'اختر درجة الحرارة بالسلسيوس، وشاهد التحويل بقانون الكتاب وطريقة القراءة.',
+ controls:[{k:'c',label:'°C',opts:[['-18','−18'],['0','0'],['20','20'],['37','37'],['100','100']]}],
+ out:({c})=>{c=+c;const f=Math.round(c*9/5+32),W={'-18':'minus eighteen',0:'zero',20:'twenty',37:'thirty-seven',100:'one hundred'}[c];
+  return{pieces:[[(c<0?'−':'')+Math.abs(c)+'°C','k',W+' degrees Celsius'],['=','x',''],[f+'°F','n','degrees Fahrenheit']],say:`${W} degrees Celsius`,ar:`الحساب: ${c} × 9 / 5 + 32 = ${f}`,why:`نقرأ ${e('°C')} = ${e('degrees Celsius')}، وتحت الصفر ${e('minus')}.`}}})};
+const WK53={sun:['Sunday','morning','attend lectures'],mon:['Monday','afternoon','do my practical work'],wed:['Wednesday','evening','study in the library']};
+const LAB53B={title:'every أم on … s؟',w:(el,B)=>N.labB(el,B,{intro:'اختر اليوم والصيغة. المعنى واحد: عادة تتكرر كل أسبوع.',
+ controls:[{k:'d',label:'اليوم',opts:Object.keys(WK53).map(k=>[k,WK53[k][0]])},{k:'f',label:'الصيغة',opts:[['e','every'],['o','on … s']]}],
+ out:({d,f})=>{const [D,p,a]=WK53[d],t=f==='e'?`every ${D} ${p}`:`on ${D} ${p}s`;return{pieces:[['I','n',''],[a,'x','العادة'],[t+'.','k',f==='e'?'every + مفرد':'on + جمع']],say:`I ${a} ${t}.`,why:`${e(`every ${D} ${p}`)} = ${e(`on ${D} ${p}s`)}: مع ${e('every')} الاسم مفرد، ومع ${e('on')} يُجمع.`}}})};
+const R51=N.rule({title:'السخان الشمسي، وحروف الجر مع الحركة، وأفعال الصعود والدخول',ref:'ص 36–37',
+ intro:`في هذا الدرس نصف كيف يسري الماء في سخان شمسي. نحتاج لذلك أسماء الأجزاء، ثم حروف الجر التي تصف مسار الحركة، ثم أفعالاً تختصر الحركة في كلمة واحدة.`,
+ parts:[
+ {t:'أجزاء السخان الشمسي',short:'الأجزاء',old:[1],q:'ما الفرق بين inlet و outlet؟',ref:'ص 36',
+  lead:`نبدأ بأسماء الأجزاء التي يمر بها الماء.`,
+  points:[`${e('solar water panel')} لوح التسخين، و ${e('water tank')} الخزان، و ${e('pipes')} الأنابيب.`,`${e('inlet ≠ outlet')} مدخل ≠ مخرج، و ${e('valve')} صمام.`],
+  html:vt([['solar water panel','لوح تسخين شمسي'],['water tank','خزان ماء'],['water pipes','أنابيب'],['inlet ≠ outlet','مدخل ≠ مخرج'],['valve','صمام'],['shower head','رأس الدش']],['English','المعنى']),
+  art:art(`<g transform="translate(0 20)">${heaterIn()}`+`<g data-tip="inlet — المدخل: يدخل منه الماء البارد."><circle cx="60" cy="250" r="14" fill="transparent"/></g><g data-tip="water tank — الخزان: أعلى من اللوح."><rect x="200" y="40" width="70" height="40" fill="transparent"/></g><g data-tip="solar panel — اللوح: الشمس تسخّن الماء فيه."><polygon points="40,150 160,40 200,40 80,150" fill="transparent"/></g><g data-tip="valve — الصمام: افتحه فيخرج الماء الساخن."><rect x="288" y="156" width="24" height="24" fill="transparent"/></g></g>`,'السخان الشمسي'),cap:'سخان شمسي من رسمنا. الأزرق ماء بارد والأحمر ساخن. مرّر المؤشر على الأجزاء.',labs:[{title:'أين؟',w:(el,B)=>N.cases(el,B,{intro:'أين؟',cases:[{q:'The Sun heats the water here.',opts:[['in the panel',1],['in the inlet',0]]},{q:'Hot water stays at the top of …',opts:[['the tank',1],['the valve',0]]},{q:'Cold water enters through …',opts:[['the inlet',1],['the shower head',0]]}]})}]},
+ {t:'حروف الجر مع الحركة',short:'into · through',old:[2],q:'ما الفرق بين in و into؟',ref:'ص 37',
+  lead:`عندما يتحرك الماء أو الهواء نصف مساره بحرف جر: هل يدخل؟ يخرج؟ يمر خلال شيء؟ يدور حوله؟`,
+  points:[`${e('into')} إلى داخل، و ${e('out of')} إلى خارج.`,`${e('through')} عبر شيء من طرف إلى طرف: ${e('through the pipes')}`,`${e('around')} حول، و ${e('from … to')} من … إلى.`,
+   `<b>الجملة:</b> الفاعل + فعل حركة + حرف الجر + المكان: ${e('The water flows into the tank.')}`,`مع المفرد نضيف ${e('s')} للفعل، و ${e('go')} و ${e('pass')} يأخذان ${e('es')}: ${e('goes · passes')}`,
+   `${e('in')} للمكان الثابت (${e('The water is in the tank.')})، و ${e('into')} للحركة إلى الداخل.`],
+  grid:{head:['الفاعل','الفعل','المكان'],rows:[['The water','flows','into the tank.'],['The water','goes','through the pipes.'],['The electron','flows','around the circuit.']]},
+  html:vt(PREP,['English','المعنى']),
+  pairs:[['The water flows in the tank.','The water flows into the tank.','للحركة إلى الداخل: into.'],['The water gos through the pipes.','The water goes through the pipes.','go مع المفرد: goes.']],
+  art:art(`<rect x="120" y="90" width="120" height="100" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>
+    <g data-tip="into — إلى داخل الصندوق">${AR(60,60,135,105,C.blue)}${TL(56,50,'into',{fs:13,w:700})}</g>
+    <g data-tip="out of — إلى خارج الصندوق">${AR(225,105,300,60,C.red)}${TL(306,50,'out of',{fs:13,w:700})}</g>
+    <g data-tip="through — يدخل من جهة ويخرج من الأخرى">${AR(40,150,320,150,C.grn)}${TL(180,215,'through',{fs:13,w:700})}</g>`,'حروف الجر'),cap:'ثلاثة حروف جر للحركة. مرّر المؤشر على كل سهم.',labs:[LAB51A,{title:'حرف الجر',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Water flows ___ the tank.',o:['into','out'],a:0},{s:'The hot water goes ___ the pipes.',o:['through','into of'],a:0},{s:'Electrons flow ___ the circuit.',o:['around','out'],a:0}]})}]},
+ {t:'enter · leave · rise · sink',short:'rise · sink',old:[3],q:'لماذا يصعد الماء الساخن؟',ref:'ص 37',
+  lead:`بدل أن نقول ${e('go up')} أو ${e('go into')} يمكن أن نستعمل فعلاً واحداً بالمعنى نفسه.`,
+  points:[`${e('rise = go up')} يصعد، و ${e('sink = go down')} ينزل.`,`${e('enter = go into')} يدخل، و ${e('leave = go out of')} يخرج.`,`بعد ${e('enter')} و ${e('leave')} لا نضع حرف جر: ${e('Cold water enters the tank.')}`,
+   `الماء الساخن أخف من البارد فيصعد (${e('rises')})، والبارد ينزل (${e('sinks')}). لذلك يكون الخزان أعلى من اللوح، فيدور الماء وحده بلا مضخة.`],
+  grid:{head:['الفعل','= go …','المعنى'],rows:[['rise','go up','يصعد'],['sink','go down','ينزل'],['enter','go into','يدخل'],['leave','go out of','يخرج']]},
+  pairs:[['The water enters into the tank.','The water enters the tank.','بعد enter لا نضع into.']],
+  art:art(`<rect x="110" y="40" width="140" height="210" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="112" y="42" width="136" height="80" rx="12" fill="${C.red}" opacity=".5"/><rect x="112" y="170" width="136" height="78" rx="12" fill="${C.blue}" opacity=".5"/>
+    <g data-tip="rise = go up — الماء الساخن يصعد.">${AR(150,190,150,90,C.red)}${TL(150,70,'rises',{fs:13,w:700})}</g>
+    <g data-tip="sink = go down — الماء البارد ينزل.">${AR(210,90,210,190,C.blue)}${TL(210,230,'sinks',{fs:13,w:700})}</g>`,'rise sink'),cap:'في الخزان: الساخن يصعد والبارد ينزل. مرّر المؤشر على كل سهم.',labs:[LAB51B,{title:'الفعل',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'Water ___ the house through the inlet pipe.',o:['enters','enters into'],a:0},{s:'When you heat the water, the hot water ___.',o:['rises','sinks'],a:0},{s:'When you cool the air, the cool air ___.',o:['sinks','rises'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u5-l1',unit:5,order:1,pages:'36–37',
  title:'Heating system — نظام التسخين',
  summary:'أجزاء السخان الشمسي (solar panel، tank، pipes، inlet، valve، shower head)، ووصف حركة الماء بالمضارع البسيط وحروف الجر (into، out of، through، around، to، from)، وأفعال الحركة (enter، leave، rise، sink)، ومرجع الضمائر it و here، ومخطط تسلسل العملية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 36–37',html:`<p>تشرح كيف يسري الماء في نظام. ستتعلم:</p><ol><li>أجزاء السخان الشمسي.</li><li>حروف الجر مع الحركة.</li><li>${e('enter, leave, rise, sink')}.</li><li>رسم مخطط تسلسل (flow chart).</li></ol>`},
-  {h:'أجزاء السخان الشمسي',ref:'ص 36',html:vt([['solar water panel','لوح تسخين شمسي'],['water tank','خزان ماء'],['water pipes','أنابيب'],['inlet ≠ outlet','مدخل ≠ مخرج'],['valve','صمام'],['shower head','رأس الدش']],['English','المعنى'])},
-  {h:'حروف الجر مع الحركة',ref:'ص 37',html:`${vt(PREP,['English','المعنى'])}${vt([['The water','flows / moves','into the tank. · out of the tank.'],['The water','goes / passes','through the pipes. · around the panel.'],['The electron','flows / goes','around the circuit. · through the cables.']],['الفاعل','الفعل + s / es','المكان'])}<p>${e('go')} و ${e('pass')} تأخذان ${e('es')} مع المفرد: ${e('goes, passes')}.</p>`},
-  {h:'enter · leave · rise · sink',ref:'ص 37',html:`${vt([['rise','go up','يصعد'],['sink','go down','ينزل'],['enter','go in / into','يدخل'],['leave','go out / out of','يخرج']],['الفعل','= go …','المعنى'])}${eb(['When you heat water, the hot water rises.','When you cool air, the cool air sinks.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> الماء الساخن أخف من البارد فيصعد (<span class="en">rises</span>)، والبارد ينزل (<span class="en">sinks</span>). لذلك يكون الخزان أعلى من اللوح، فيدور الماء وحده بلا مضخة.'},
+  ...R51.theory,
   {h:'تمارين الكتاب',ref:'ص 36–37',html:
    bk(1,'ص 36','ارسم أسهماً لاتجاه الماء في النظام.',['inlet → tank → solar panel → tank → valve → shower head'])+
    bk(2,'ص 36','اقرأ النص وتحقق من أسهمك.',null)+
@@ -53,22 +106,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أجزاء النظام',title:'السخان الشمسي',q:'من أين يدخل الماء البارد؟ وأين يخرج؟',ref:'ص 36',art:art(`<g transform="translate(0 20)">${heaterIn()}`+`<g data-tip="inlet — المدخل: يدخل منه الماء البارد."><circle cx="60" cy="250" r="14" fill="transparent"/></g><g data-tip="water tank — الخزان: أعلى من اللوح."><rect x="200" y="40" width="70" height="40" fill="transparent"/></g><g data-tip="solar panel — اللوح: الشمس تسخّن الماء فيه."><polygon points="40,150 160,40 200,40 80,150" fill="transparent"/></g><g data-tip="valve — الصمام: افتحه فيخرج الماء الساخن."><rect x="288" y="156" width="24" height="24" fill="transparent"/></g></g>`,'السخان الشمسي'),cap:'سخان شمسي من رسمنا. الأزرق ماء بارد والأحمر ساخن. مرّر المؤشر على الأجزاء.',
-   side:[{tip:`${e('inlet')} مدخل، و ${e('outlet')} مخرج.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أين؟',cases:[{q:'The Sun heats the water here.',opts:[['in the panel',1],['in the inlet',0]]},{q:'Hot water stays at the top of …',opts:[['the tank',1],['the valve',0]]},{q:'Cold water enters through …',opts:[['the inlet',1],['the shower head',0]]}]}),title:'مختبر مصغّر: أين؟'}]},
-  {st:2,short:'حروف الجر',title:'into · out of · through',q:'كيف تصف الماء وهو يمر في أنبوب؟',ref:'ص 37',
-   art:art(`<rect x="120" y="90" width="120" height="100" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>
-    <g data-tip="into — إلى داخل الصندوق">${AR(60,60,135,105,C.blue)}${TL(56,50,'into',{fs:13,w:700})}</g>
-    <g data-tip="out of — إلى خارج الصندوق">${AR(225,105,300,60,C.red)}${TL(306,50,'out of',{fs:13,w:700})}</g>
-    <g data-tip="through — يدخل من جهة ويخرج من الأخرى">${AR(40,150,320,150,C.grn)}${TL(180,215,'through',{fs:13,w:700})}</g>`,'حروف الجر'),
-   cap:'ثلاثة حروف جر للحركة. مرّر المؤشر على كل سهم.',side:[{tip:`${e('to')} = إلى (الوجهة)، و ${e('into')} = إلى داخل.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Water flows ___ the tank.',o:['into','out'],a:0},{s:'The hot water goes ___ the pipes.',o:['through','into of'],a:0},{s:'Electrons flow ___ the circuit.',o:['around','out'],a:0}]}),title:'مختبر مصغّر: حرف الجر'}]},
-  {st:3,short:'rise · sink',title:'يصعد وينزل ويدخل ويخرج',q:'ماذا يحدث للماء عندما تسخّنه؟',ref:'ص 37',
-   art:art(`<rect x="110" y="40" width="140" height="210" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="112" y="42" width="136" height="80" rx="12" fill="${C.red}" opacity=".5"/><rect x="112" y="170" width="136" height="78" rx="12" fill="${C.blue}" opacity=".5"/>
-    <g data-tip="rise = go up — الماء الساخن يصعد.">${AR(150,190,150,90,C.red)}${TL(150,70,'rises',{fs:13,w:700})}</g>
-    <g data-tip="sink = go down — الماء البارد ينزل.">${AR(210,90,210,190,C.blue)}${TL(210,230,'sinks',{fs:13,w:700})}</g>`,'rise sink'),
-   cap:'في الخزان: الساخن يصعد والبارد ينزل. مرّر المؤشر على كل سهم.',side:[{tip:`${e('enter')} و ${e('leave')} لا تحتاجان حرف جر: ${e('Water enters the tank.')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'Water ___ the house through the inlet pipe.',o:['enters','enters into'],a:0},{s:'When you heat the water, the hot water ___.',o:['rises','sinks'],a:0},{s:'When you cool the air, the cool air ___.',o:['sinks','rises'],a:0}]}),title:'مختبر مصغّر: الفعل'}]},
+  ...R51.stations,
   {recap:['solar panel, tank, pipes, inlet, valve, shower head.','into, out of, through, around, to, from.','rise = go up، sink = go down، enter = go into، leave = go out of.','goes / passes مع المفرد.','it و here تعودان على كلمة قبلها.']}
  ],
  lab:lab51,
@@ -112,16 +150,36 @@ function lab52(el,B){kcss();
   $('#o').innerHTML=eb(L)};
  $('#sun').onclick=()=>{sun=!sun;sh()};$('#lmp').onclick=()=>{on=!on;sh()};$('#bat').onclick=()=>{full=!full;sh()};sh();
 }
+const R52=N.rule({title:'رموز الدائرة، ونظام الطاقة الشمسية، و If للنتيجة الدائمة',ref:'ص 38–39',
+ intro:`في هذا الدرس نقرأ مخطط نظام طاقة شمسية: رموز الدائرة وأجزاء النظام، ثم نصف متى يسري التيار ومن أين بجمل ${e('If')}.`,
+ parts:[
+ {t:'رموز الدائرة ونظام الطاقة الشمسية',short:'الرموز والأجزاء',old:[1],q:'ماذا يفعل الـ controller؟',ref:'ص 38',
+  lead:`المخطط الكهربائي يستعمل رموزاً بدل الرسم، ولكل رمز اسم. ثم نصف وظيفة كل جزء.`,
+  points:[`<b>الرموز:</b> ${e('lamp · battery · switch · fuse · terminal')}`,`<b>الوظيفة</b> بالمضارع البسيط: ${e('The battery stores electricity.')}`,`${e('convert = change')}: ${e("The panel converts the Sun's energy into a DC electric current.")}`,`${e('DC')} تيار مستمر في اتجاه واحد، و ${e('AC')} تيار متردد (كهرباء البيت).`],
+  html:vt(SYM,['English','المعنى'])+vt([['solar panel','يحوّل ضوء الشمس إلى كهرباء'],['controller','يتحكم في سريان التيار'],['battery','تخزن الكهرباء'],['lamps','مصابيح'],['cables (wires)','أسلاك']],['English','المعنى'])+vt(SPEC,['الجزء','المواصفة']),
+  art:art(`<rect x="40" y="50" width="280" height="170" fill="none" stroke="${C.ink}" stroke-width="2.5"/>
+    <g data-tip="lamp — مصباح: دائرة بداخلها علامة ×."><circle cx="180" cy="50" r="16" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><path d="M169 39 L191 61 M191 39 L169 61" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,24,'lamp',{fs:12,w:700})}</g>
+    <g data-tip="fuse — منصهر: مستطيل صغير على السلك يحمي الدائرة."><rect x="80" y="42" width="34" height="16" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(97,24,'fuse',{fs:12,w:700})}</g>
+    <g data-tip="battery — بطارية: خطوط طويلة (+) وقصيرة (−)."><rect x="150" y="205" width="60" height="30" fill="${C.paper}"/><line x1="160" y1="200" x2="160" y2="240" stroke="${C.ink}" stroke-width="3"/><line x1="172" y1="208" x2="172" y2="232" stroke="${C.ink}" stroke-width="5"/><line x1="186" y1="200" x2="186" y2="240" stroke="${C.ink}" stroke-width="3"/><line x1="198" y1="208" x2="198" y2="232" stroke="${C.ink}" stroke-width="5"/>${TL(180,262,'battery  + −',{fs:12,w:700})}</g>
+    <g data-tip="switch — مفتاح: يفتح الدائرة ويغلقها."><rect x="30" y="110" width="20" height="50" fill="${C.paper}"/><line x1="40" y1="110" x2="62" y2="150" stroke="${C.ink}" stroke-width="3"/><circle cx="40" cy="160" r="4" fill="${C.ink}"/>${TL(80,140,'switch',{fs:12,w:700})}</g>
+    <g data-tip="conductor — موصل: السلك الذي يسري فيه التيار.">${TL(290,140,'conductor',{fs:12,w:700})}</g>`,'رموز الدائرة'),cap:'دائرة بسيطة من رسمنا. مرّر المؤشر على كل رمز.',labs:[{title:'الرموز',w:(el,B)=>N.cases(el,B,{intro:'ما الرمز؟',cases:[{q:'⊗',opts:[['lamp',1],['fuse',0]]},{q:'يفتح الدائرة ويغلقها',opts:[['switch',1],['terminal',0]]},{q:'+',opts:[['positive',1],['negative',0]]}]})}]},
+ {t:'If للنتيجة الدائمة',short:'If',old:[2],q:'لماذا نقول If the Sun shines ولا نقول If the Sun will shine؟',ref:'ص 39',
+  lead:`في الأنظمة الآلية تحدث النتيجة نفسها كلما تحقق الشرط. نصف ذلك بجملة من جزأين: الشرط بـ ${e('If')}، ثم النتيجة.`,
+  points:[`<b>الفعلان في المضارع البسيط</b> لأن النتيجة تحدث في كل مرة: ${e('If the Sun shines, the current flows from the panel.')}`,`مع المفرد نضيف ${e('s')}: ${e('the Sun shines · the current flows')}`,
+   `<b>النفي</b> بـ ${e("doesn't")} أو ${e("aren't")}: ${e("If the Sun doesn't shine, the current flows from the battery.")}`,`<b>الفاصلة:</b> إذا بدأنا بـ ${e('If')} نضع فاصلة بعد الشرط، وإذا بدأنا بالنتيجة فلا فاصلة: ${e('The current flows from the battery if the Sun doesn\'t shine.')}`],
+  grid:{head:['الشرط','النتيجة'],rows:[['If the Sun shines,','the current flows from the panel.'],["If the Sun doesn't shine,",'the current flows from the battery.'],['If the battery is full,',"the current doesn't flow into the battery."],["If the lamps aren't on,",'the current flows into the battery.']]},
+  pairs:[['If the Sun shine, the current flow.','If the Sun shines, the current flows.','مع المفرد نضيف s.'],['If the Sun will shine, …','If the Sun shines, …','النتيجة الدائمة: مضارع بسيط في الجزأين.']],
+  art:art(`<g data-tip="الشرط: If + المضارع البسيط، ثم فاصلة."><rect x="20" y="60" width="150" height="70" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,90,"If the Sun",{fs:13,w:700})}${TL(95,112,"doesn't shine,",{fs:13,w:700})}</g>${AR(172,95,196,95,C.ink,3)}
+    <g data-tip="النتيجة: المضارع البسيط أيضاً."><rect x="198" y="60" width="150" height="70" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(273,90,'the current flows',{fs:13,w:700,c:'#fff'})}${TL(273,112,'from the battery.',{fs:13,w:700,c:'#fff'})}</g>
+    <g data-tip="يمكن قلب الجملة بلا فاصلة."><rect x="20" y="160" width="328" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(184,193,'The current flows from the battery if …',{fs:13,w:700})}</g>`,'if'),cap:'الشرط ثم النتيجة. مرّر المؤشر على كل جزء.',labs:[LAB52A,{title:'if',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'If the Sun ___, the current flows from the panel.',o:['shines','shine'],a:0},{s:"If the battery is full, the current ___ flow into it.",o:["doesn't","isn't"],a:0},{s:'If the lamps ___ off, the current flows into the battery.',o:['are','is'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u5-l2',unit:5,order:2,pages:'38–39',
  title:'Electrical circuit — الدائرة الكهربائية',
  summary:'رموز الدائرة الكهربائية (battery، lamp، switch، fuse، conductor، terminal، positive/negative)، ونظام الطاقة الشمسية (solar panel، controller، battery، lamps، cables) ومواصفاته (V، W، A، Ah، DC)، ومسار التيار، وجملة الشرط بـ if للنتيجة الدائمة (If the Sun shines, the current flows from the panel).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 38–39',html:`<p>تشرح مسار التيار في نظام طاقة شمسية. ستتعلم:</p><ol><li>رموز الدائرة الكهربائية.</li><li>أجزاء النظام ومواصفاتها.</li><li>${e('If …, …')} للنتيجة التي تحدث دائماً.</li></ol>`},
-  {h:'رموز الدائرة',ref:'ص 38',html:`${vt(SYM,['English','المعنى'])}<p>الرموز نفسها في مسرد الرموز في ص 109 من الكتاب.</p>`},
-  {h:'نظام الطاقة الشمسية',ref:'ص 38',html:`${vt([['solar panel','يحوّل ضوء الشمس إلى كهرباء'],['controller','يتحكم في سريان التيار'],['battery','تخزن الكهرباء'],['lamps','مصابيح'],['cables (wires)','أسلاك']],['English','المعنى'])}${vt(SPEC,['الجزء','المواصفة'])}<p>${e('convert = change')}: ${e('The panel converts the Sun\'s energy into a DC electric current.')}</p>`},
-  {h:'If للنتيجة الدائمة',ref:'ص 39',html:`${vt([['If the Sun shines,','the current flows from the panel.'],["If the Sun doesn't shine,",'the current flows from the battery.'],['If the battery is full,',"the current doesn't flow into the battery."],["If the lamps aren't on,",'the current flows into the battery.']],['الشرط','النتيجة'])}<p>الفعلان في المضارع البسيط، لأن النتيجة تحدث في كل مرة. ومع المفرد نضيف ${e('s')}: ${e('the Sun shines')}.</p>`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">DC</span> تيار مستمر يسري في اتجاه واحد (البطارية واللوح الشمسي)، و <span class="en">AC</span> تيار متردد (كهرباء البيت).'},
+  ...R52.theory,
   {h:'تمارين الكتاب',ref:'ص 38–39',html:
    bk(1,'ص 38','سمِّ رموز الدائرة.',['(1) lamp','(2) conductor','(3) negative','(4) battery','(5) positive','(6) switch','(7) terminal','(8) fuse'],'من قراءتنا للرسم؛ الإجابات في مسرد ص 109.')+
    bk(2,'ص 38','استمع وسمِّ أجزاء النظام.',['(1) solar panel','(2) controller','(3) cables','(4) lamps','(5) battery'])+
@@ -134,21 +192,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'رموز الدائرة',title:'رموز الدائرة الكهربائية',q:'ما رمز المصباح؟ وما رمز المنصهر؟',ref:'ص 38',
-   art:art(`<rect x="40" y="50" width="280" height="170" fill="none" stroke="${C.ink}" stroke-width="2.5"/>
-    <g data-tip="lamp — مصباح: دائرة بداخلها علامة ×."><circle cx="180" cy="50" r="16" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><path d="M169 39 L191 61 M191 39 L169 61" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,24,'lamp',{fs:12,w:700})}</g>
-    <g data-tip="fuse — منصهر: مستطيل صغير على السلك يحمي الدائرة."><rect x="80" y="42" width="34" height="16" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(97,24,'fuse',{fs:12,w:700})}</g>
-    <g data-tip="battery — بطارية: خطوط طويلة (+) وقصيرة (−)."><rect x="150" y="205" width="60" height="30" fill="${C.paper}"/><line x1="160" y1="200" x2="160" y2="240" stroke="${C.ink}" stroke-width="3"/><line x1="172" y1="208" x2="172" y2="232" stroke="${C.ink}" stroke-width="5"/><line x1="186" y1="200" x2="186" y2="240" stroke="${C.ink}" stroke-width="3"/><line x1="198" y1="208" x2="198" y2="232" stroke="${C.ink}" stroke-width="5"/>${TL(180,262,'battery  + −',{fs:12,w:700})}</g>
-    <g data-tip="switch — مفتاح: يفتح الدائرة ويغلقها."><rect x="30" y="110" width="20" height="50" fill="${C.paper}"/><line x1="40" y1="110" x2="62" y2="150" stroke="${C.ink}" stroke-width="3"/><circle cx="40" cy="160" r="4" fill="${C.ink}"/>${TL(80,140,'switch',{fs:12,w:700})}</g>
-    <g data-tip="conductor — موصل: السلك الذي يسري فيه التيار.">${TL(290,140,'conductor',{fs:12,w:700})}</g>`,'رموز الدائرة'),
-   cap:'دائرة بسيطة من رسمنا. مرّر المؤشر على كل رمز.',side:[{tip:`الخط الطويل في رمز البطارية هو القطب الموجب ${e('positive (+)')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الرمز؟',cases:[{q:'⊗',opts:[['lamp',1],['fuse',0]]},{q:'يفتح الدائرة ويغلقها',opts:[['switch',1],['terminal',0]]},{q:'+',opts:[['positive',1],['negative',0]]}]}),title:'مختبر مصغّر: الرموز'}]},
-  {st:2,short:'If …, …',title:'الشرط والنتيجة الدائمة',q:'إذا غابت الشمس، من أين تأخذ المصابيح الكهرباء؟',ref:'ص 39',
-   art:art(`<g data-tip="الشرط: If + المضارع البسيط، ثم فاصلة."><rect x="20" y="60" width="150" height="70" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,90,"If the Sun",{fs:13,w:700})}${TL(95,112,"doesn't shine,",{fs:13,w:700})}</g>${AR(172,95,196,95,C.ink,3)}
-    <g data-tip="النتيجة: المضارع البسيط أيضاً."><rect x="198" y="60" width="150" height="70" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(273,90,'the current flows',{fs:13,w:700,c:'#fff'})}${TL(273,112,'from the battery.',{fs:13,w:700,c:'#fff'})}</g>
-    <g data-tip="يمكن قلب الجملة بلا فاصلة."><rect x="20" y="160" width="328" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(184,193,'The current flows from the battery if …',{fs:13,w:700})}</g>`,'if'),
-   cap:'الشرط ثم النتيجة. مرّر المؤشر على كل جزء.',side:[{tip:`النفي مع المفرد: ${e("doesn't shine")}، ومع الجمع: ${e("aren't on")}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'If the Sun ___, the current flows from the panel.',o:['shines','shine'],a:0},{s:"If the battery is full, the current ___ flow into it.",o:["doesn't","isn't"],a:0},{s:'If the lamps ___ off, the current flows into the battery.',o:['are','is'],a:0}]}),title:'مختبر مصغّر: if'}]},
+  ...R52.stations,
   {recap:['lamp, switch, fuse, battery, conductor, terminal, + / −.','solar panel → controller → battery / lamps.','W, V, A, Ah, DC.','If + مضارع بسيط, + مضارع بسيط.','convert = change.']}
  ],
  lab:lab52,
@@ -186,16 +230,39 @@ function lab53(el,B){kcss();
 }
 const Q1=`<span class="bkb" data-bk="shw101">1 a) 60°C (140°F)</span><span class="bkf" data-bk="shw101">1 a) 60°C (140°F) هو جواب الكتاب والتسجيل، لكنه حرارة الماء في خزان السخان لا ماء الدش.<span class="fixnote"> ماء الدش المريح نحو 38–42°C، وماء 60°C يحرق الجلد في ثوانٍ.</span></span>`;
 const Q5=`<span class="bkb" data-bk="hot101">5 b) 136°F (58°C) — in Libya</span><span class="bkf" data-bk="hot101">5 b) 136°F (58°C) هو جواب الكتاب والتسجيل (ليبيا).<span class="fixnote"> ألغت المنظمة العالمية للأرصاد هذا الرقم سنة 2012، والرقم المعتمد اليوم 56.7°C (134°F) في وادي الموت بأمريكا.</span></span>`;
+const R53=N.rule({title:'درجات الحرارة، ودورة التبريد، والجدول الأسبوعي',ref:'ص 40–41',
+ intro:`في هذا الدرس نقرأ درجات الحرارة ونحوّلها، ثم نصف دورة الماء في تبريد السيارة والهواء في برج التبريد، ثم نتكلم عن جدولنا الأسبوعي.`,
+ parts:[
+ {t:'درجات الحرارة',short:'°C و °F',old:[1],q:'كيف تقرأ −18°C؟',ref:'ص 40',
+  lead:`درجة الحرارة تُكتب برمز وتُقرأ بكلمات. وهناك نظامان: سلسيوس وفهرنهايت.`,
+  points:[`${e('°C')} نقرؤها ${e('degrees Celsius')}، و ${e('°F')} نقرؤها ${e('degrees Fahrenheit')}.`,`تحت الصفر نقول ${e('minus')}: ${e('−18°C = minus eighteen degrees Celsius')}`,`القانون من الكتاب: ${e('°F = °C × 9 / 5 + 32')}، و ${e('°C = (°F − 32) × 5 / 9')}`],
+  html:vt([['°C','degrees Celsius','سلسيوس'],['°F','degrees Fahrenheit','فهرنهايت'],['−18°C','minus eighteen degrees Celsius','تحت الصفر']],['الرمز','نقرؤه','المعنى']),
+  art:art(`<rect x="160" y="30" width="40" height="200" rx="20" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="168" y="80" width="24" height="150" rx="12" fill="${C.red}"/><circle cx="180" cy="236" r="26" fill="${C.red}" stroke="${C.ink}" stroke-width="2.5"/>
+    <g data-tip="غليان الماء: 100°C = 212°F">${TL(110,64,'100°C',{fs:13,w:700})}${TL(250,64,'212°F',{fs:13,w:700})}<line x1="140" y1="60" x2="220" y2="60" stroke="${C.ink}" stroke-dasharray="4 3"/></g>
+    <g data-tip="تجمّد الماء: 0°C = 32°F">${TL(110,184,'0°C',{fs:13,w:700})}${TL(250,184,'32°F',{fs:13,w:700})}<line x1="140" y1="180" x2="220" y2="180" stroke="${C.ink}" stroke-dasharray="4 3"/></g>`,'ميزان حرارة'),cap:'ميزان من رسمنا بالمقياسين. مرّر المؤشر على العلامتين.',labs:[LAB53A,{title:'الحرارة',w:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'0°C =',opts:[['32°F',1],['0°F',0]]},{q:'100°C =',opts:[['212°F',1],['180°F',0]]},{q:'−18°C نقرؤها:',opts:[['minus eighteen degrees Celsius',1],['eighteen degrees Fahrenheit',0]]}]})}]},
+ {t:'دورة الماء في التبريد',short:'دورة التبريد',old:[2],q:'إلى أين يذهب الماء بعد المشعاع؟',ref:'ص 40–41',
+  lead:`نصف الدورة خطوة خطوة بالمضارع البسيط وحروف الجر مع الحركة التي تعلمناها. وحتى لا نكرر الاسم نستعمل كلمات تعود عليه.`,
+  points:[`كل خطوة: الفاعل + فعل + حرف جر: ${e('The hot water passes through the thermostat.')}`,`${e('it')} و ${e('this')} و ${e('here')} تعود على كلمة قبلها: ${e('It flows through the top hose.')} (it = the water)`,`وفي برج التبريد: ${e('Hot air enters the tower. The cool air sinks. The hot air rises and leaves the chimney.')}`],
+  html:vt([['engine','المحرك'],['water pump','مضخة الماء'],['thermostat','منظم الحرارة'],['top hose','الخرطوم العلوي'],['radiator','المشعاع (الرديتر)'],['bottom hose','الخرطوم السفلي'],['fan blades','ريش المروحة']],['English','المعنى'])+eb(CAR.map(x=>x[0])),
+  art:art(`<g data-tip="engine — المحرك: يسخّن الماء."><rect x="30" y="50" width="120" height="80" rx="10" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(90,95,'engine',{fs:13,w:700})}</g>
+    <g data-tip="thermostat — منظم الحرارة: يتحكم في حرارة المحرك."><rect x="170" y="56" width="40" height="26" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(190,44,'thermostat',{fs:11,w:700})}</g>
+    <g data-tip="top hose — الخرطوم العلوي: يحمل الماء الساخن إلى المشعاع.">${AR(150,70,168,70,C.red,4)}${AR(210,70,280,140,C.red,4)}${TL(270,98,'top hose',{fs:11,w:700})}</g>
+    <g data-tip="radiator — المشعاع: المروحة تبرّد الماء فيه."><rect x="230" y="150" width="110" height="90" rx="8" fill="${C.blue}" opacity=".7" stroke="${C.ink}" stroke-width="2"/>${TL(285,200,'radiator',{fs:13,w:700,c:'#fff'})}</g>
+    <g data-tip="bottom hose + water pump — الخرطوم السفلي والمضخة: يعيدان الماء البارد إلى المحرك.">${AR(228,220,100,220,C.blue,4)}${AR(100,220,100,134,C.blue,4)}${TL(150,250,'bottom hose · pump',{fs:11,w:700})}</g>`,'تبريد السيارة'),cap:'دورة الماء: من المحرك إلى المشعاع ثم العودة. مرّر المؤشر على كل جزء.',labs:[{title:'الأفعال',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The water pump ___ water around the engine.',o:['pushes','cools'],a:0},{s:'The fan blades ___ air onto the radiator.',o:['blow','sink'],a:0},{s:'Cool water ___ to the bottom of the radiator.',o:['sinks','rises'],a:0},{s:'The thermostat ___ the temperature.',o:['controls','connects'],a:0}]})}]},
+ {t:'الجدول الأسبوعي',short:'every / on … s',q:'ما الفرق بين on Monday و every Monday؟',ref:'ص 41',
+  lead:`نستعمل المضارع البسيط أيضاً لجدولنا الذي يتكرر كل أسبوع.`,
+  points:[`${e('every Sunday')} = ${e('on Sundays')} كل أحد.`,`${e('every Monday morning')} = ${e('on Monday mornings')}: مع ${e('every')} مفرد، ومع ${e('on')} جمع.`,`السؤال: ${e('When do you attend lectures?')} و ${e('What do you do on Monday afternoons?')}`],
+  html:dl([['A','When do you attend lectures?'],['B','Every Sunday morning.'],['A','What do you do on Monday afternoons?'],['B','I do my practical work then.']]),
+  pairs:[['every Mondays','every Monday','بعد every مفرد.']],
+  labs:[LAB53B]}
+ ]});
 B.lesson({
  id:'u5-l3',unit:5,order:3,pages:'40–41',
  title:'Cooling system — نظام التبريد',
  summary:'درجات الحرارة بالسلسيوس والفهرنهايت والتحويل بينهما، وأجزاء نظام تبريد السيارة (engine، water pump، thermostat، top hose، radiator، bottom hose، fan) ووصف حركة الماء، ومرجع الضمائر this و it و here، وتبريد البيت بالبرج والمدخنة الشمسية، والجدول الأسبوعي (every Tuesday، on Mondays).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 40–41',html:`<p>تشرح كيف يُبرَّد محرك أو بيت. ستتعلم:</p><ol><li>السلسيوس والفهرنهايت.</li><li>أجزاء نظام تبريد السيارة.</li><li>وصف العملية بالأفعال وحروف الجر.</li><li>الحديث عن جدولك الأسبوعي.</li></ol>`},
-  {h:'درجات الحرارة',ref:'ص 40',html:`${vt([['°C','degrees Celsius','سلسيوس'],['°F','degrees Fahrenheit','فهرنهايت'],['−18°C','minus eighteen degrees Celsius','تحت الصفر']],['الرمز','نقرؤه','المعنى'])}<p>من الكتاب: ${e('°F = °C × 9 / 5 + 32')} و ${e('°C = (°F − 32) × 5 / 9')}.</p>`},
-  {h:'نظام تبريد السيارة',ref:'ص 40',html:`${vt([['engine','المحرك'],['water pump','مضخة الماء'],['thermostat','منظم الحرارة'],['top hose','الخرطوم العلوي'],['radiator','المشعاع (الرديتر)'],['bottom hose','الخرطوم السفلي'],['fan blades','ريش المروحة']],['English','المعنى'])}${eb(CAR.map(x=>x[0]))}`},
-  {h:'تبريد البيت بالبرج',ref:'ص 41',html:`<p>طريقة قديمة في البلاد الحارة: الهواء الحار يدخل البرج، ورذاذ الماء البارد يبرّده فينزل ويدخل البيت، ثم تسخّن الشمس المدخنة فيصعد الهواء ويخرج.</p>${eb(['Hot air enters the tower through the air inlet.','The cold water cools the air. The cool air sinks.','The hot air rises and leaves the chimney.'])}`},
-  {h:'الجدول الأسبوعي',ref:'ص 41',html:`${dl([['A','When do you attend lectures?'],['B','Every Sunday morning.'],['A','What do you do on Monday afternoons?'],['B','I do my practical work then.']])}${vt([['on Mondays','every Monday','كل اثنين'],['on Monday mornings','every Monday morning','كل اثنين صباحاً']],['English','= English','المعنى'])}`},
+  ...R53.theory,
   {h:'تمارين الكتاب',ref:'ص 40–41',html:
    `<p>${B.bkCtl('shw101','حرارة ماء الدش:')} ${B.bkCtl('hot101','أعلى حرارة هواء:')}</p>`+
    bk(1,'ص 40','اختبار: ما درجات الحرارة المعتادة؟',[Q1,'2 b) 40°F (4.5°C)','3 b) −18°C (0°F)','4 a) −89°C (−128°F)',Q5,'6 a) 110°C (230°F)'])+
@@ -211,20 +278,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'°C و °F',title:'السلسيوس والفهرنهايت',q:'الماء يغلي عند 100°C. كم بالفهرنهايت؟',ref:'ص 40',
-   art:art(`<rect x="160" y="30" width="40" height="200" rx="20" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="168" y="80" width="24" height="150" rx="12" fill="${C.red}"/><circle cx="180" cy="236" r="26" fill="${C.red}" stroke="${C.ink}" stroke-width="2.5"/>
-    <g data-tip="غليان الماء: 100°C = 212°F">${TL(110,64,'100°C',{fs:13,w:700})}${TL(250,64,'212°F',{fs:13,w:700})}<line x1="140" y1="60" x2="220" y2="60" stroke="${C.ink}" stroke-dasharray="4 3"/></g>
-    <g data-tip="تجمّد الماء: 0°C = 32°F">${TL(110,184,'0°C',{fs:13,w:700})}${TL(250,184,'32°F',{fs:13,w:700})}<line x1="140" y1="180" x2="220" y2="180" stroke="${C.ink}" stroke-dasharray="4 3"/></g>`,'ميزان حرارة'),
-   cap:'ميزان من رسمنا بالمقياسين. مرّر المؤشر على العلامتين.',side:[{tip:`نقرأ ${e('−18°C')}: ${e('minus eighteen degrees Celsius')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'0°C =',opts:[['32°F',1],['0°F',0]]},{q:'100°C =',opts:[['212°F',1],['180°F',0]]},{q:'−18°C نقرؤها:',opts:[['minus eighteen degrees Celsius',1],['eighteen degrees Fahrenheit',0]]}]}),title:'مختبر مصغّر: الحرارة'}]},
-  {st:2,short:'تبريد السيارة',title:'دورة الماء في تبريد السيارة',q:'لماذا يحتاج المحرك إلى مشعاع؟',ref:'ص 40',
-   art:art(`<g data-tip="engine — المحرك: يسخّن الماء."><rect x="30" y="50" width="120" height="80" rx="10" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(90,95,'engine',{fs:13,w:700})}</g>
-    <g data-tip="thermostat — منظم الحرارة: يتحكم في حرارة المحرك."><rect x="170" y="56" width="40" height="26" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(190,44,'thermostat',{fs:11,w:700})}</g>
-    <g data-tip="top hose — الخرطوم العلوي: يحمل الماء الساخن إلى المشعاع.">${AR(150,70,168,70,C.red,4)}${AR(210,70,280,140,C.red,4)}${TL(270,98,'top hose',{fs:11,w:700})}</g>
-    <g data-tip="radiator — المشعاع: المروحة تبرّد الماء فيه."><rect x="230" y="150" width="110" height="90" rx="8" fill="${C.blue}" opacity=".7" stroke="${C.ink}" stroke-width="2"/>${TL(285,200,'radiator',{fs:13,w:700,c:'#fff'})}</g>
-    <g data-tip="bottom hose + water pump — الخرطوم السفلي والمضخة: يعيدان الماء البارد إلى المحرك.">${AR(228,220,100,220,C.blue,4)}${AR(100,220,100,134,C.blue,4)}${TL(150,250,'bottom hose · pump',{fs:11,w:700})}</g>`,'تبريد السيارة'),
-   cap:'دورة الماء: من المحرك إلى المشعاع ثم العودة. مرّر المؤشر على كل جزء.',side:[{tip:`${e('This')} في النص يعود على ${e('the thermostat')}، و ${e('Here')} على ${e('the radiator')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The water pump ___ water around the engine.',o:['pushes','cools'],a:0},{s:'The fan blades ___ air onto the radiator.',o:['blow','sink'],a:0},{s:'Cool water ___ to the bottom of the radiator.',o:['sinks','rises'],a:0},{s:'The thermostat ___ the temperature.',o:['controls','connects'],a:0}]}),title:'مختبر مصغّر: الأفعال'}]},
+  ...R53.stations,
   {recap:['°F = °C × 9 / 5 + 32.','engine → thermostat → top hose → radiator → bottom hose → pump → engine.','push, cool, control, connect, blow, flow.','This / it / here تعود على كلمة قبلها.','every Tuesday = on Tuesdays.']}
  ],
  lab:lab53,

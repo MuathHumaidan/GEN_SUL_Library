@@ -34,22 +34,111 @@ function lab11(el,B){kcss();
   $('#co').innerHTML=`${eb(txt)}<div class="ph-row" style="margin-top:6px"><button class="btn" type="button" data-d="1">أنفّذ</button><button class="btn" type="button" data-d="0">لا أنفّذ</button></div><p class="sub" id="cr"></p>`;
   el.querySelectorAll('#co [data-d]').forEach(b=>b.onclick=()=>{const ok=(b.dataset.d==='1')===pl;$('#cr').innerHTML=ok?'<b>صحيح.</b> ':'<b>ليس كذلك.</b> ';$('#cr').innerHTML+=pl?'قال please فتنفّذ الأمر.':'لم يقل please فلا تنفّذ.'})};
 }
+/* ===== مختبرات «شرح القاعدة» 1.1 ===== */
+const BE11={I:['am',"I'm","I'm not",'أنا'],you:['are',"You're","You aren't",'أنت'],he:['is',"He's","He isn't",'هو'],she:['is',"She's","She isn't",'هي'],it:['is',"It's","It isn't",'هو/هي لغير الإنسان'],we:['are',"We're","We aren't",'نحن'],they:['are',"They're","They aren't",'هم']};
+const CM11={I:'a student',you:'an engineer',he:'from Egypt',she:'a technician',it:'a screwdriver',we:'students',they:'from Jordan'};
+const LAB11A={title:'am أم is أم are؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الضمير ونوع الجملة، وشاهد صيغة be التي تناسبه.',
+ controls:[{k:'s',label:'الضمير',opts:Object.keys(BE11).map(k=>[k,k])},{k:'t',label:'الجملة',opts:[['pos','مثبتة'],['short','مختصرة'],['neg','منفية'],['q','سؤال']]}],
+ out:({s,t})=>{const x=BE11[s],c=CM11[s],S=s==='I'?'I':s.replace(/^./,m=>m.toUpperCase());
+  if(t==='pos')return{pieces:[[S,'x',x[3]],[x[0],'k',s==='I'?'مع I: am':x[0]==='is'?'مع he/she/it: is':'مع you/we/they: are'],[c+'.','n','']],say:`${S} ${x[0]} ${c}.`,why:'am مع I فقط، و is مع he و she و it، و are مع you و we و they.'};
+  if(t==='short')return{pieces:[[x[1],'k',`${s} + ${x[0]}`],[c+'.','n','']],say:`${x[1]} ${c}.`,why:'في الكلام نختصر: نحذف أول حرف من be ونضع مكانه علامة (\').'};
+  if(t==='neg')return{pieces:[[x[2],'k','نفي: not بعد be'],[c+'.','n','']],say:`${x[2]} ${c}.`,why:"النفي: نضع not بعد be. ومع I نقول I'm not فقط."};
+  const Q=x[0].replace(/^./,m=>m.toUpperCase()),yes=s==='I'?'Yes, you are.':s==='you'?'Yes, I am.':`Yes, ${s} ${x[0]}.`;
+  return{pieces:[[Q,'k','be في أول السؤال'],[s==='I'?'I':s,'x',''],[c+'?','n',''],[yes,'q','جواب قصير']],say:`${Q} ${s==='I'?'I':s} ${c}? ${yes}`,why:'في السؤال نقدّم be على الضمير. وفي جواب «نعم» القصير لا نختصر.'}}})};
+const LAB11B={title:'عرّف بنفسك',w:(el,B)=>N.labB(el,B,{intro:'اختر الاسم وطريقة التعريف، وشاهد التعارف والرد عليه.',
+ controls:[{k:'n',label:'الاسم',opts:[['Faisal','Faisal'],['Omar','Omar'],['Badr','Badr']]},{k:'f',label:'الطريقة',opts:[['im',"I'm …"],['name',"My name's …"],['check','Are you …?']]}],
+ out:({n,f})=>{if(f==='im')return{pieces:[['Hello.','x',''],["I'm",'k','= I am'],[n+'.','n','الاسم'],['Nice to meet you.','q','الرد']],say:`Hello. I'm ${n}. Nice to meet you.`,why:"I'm = I am: أنا. والرد Nice to meet you أو Pleased to meet you."};
+  if(f==='name')return{pieces:[['Hi.','x',''],["My name's",'k','= My name is'],[n+'.','n','الاسم'],['Pleased to meet you.','q','الرد']],say:`Hi. My name's ${n}. Pleased to meet you.`,why:"My name's = My name is: اسمي. والمعنى مثل I'm."};
+  return{pieces:[['Excuse me.','x','للتنبيه بأدب'],['Are you','k','هل أنت'],[n+'?','n',''],['Yes, I am.','q',"أو No, I'm not."]],say:`Excuse me. Are you ${n}? Yes, I am.`,why:'للتأكد من شخص نسأل Are you …? ونجيب بجواب قصير.'}}})};
+const JOB11={technician:'فني',electrician:'كهربائي',engineer:'مهندس',builder:'عامل بناء',student:'طالب',operator:'مشغّل',mechanic:'ميكانيكي',architect:'مهندس معماري'};
+const LAB11C={title:'a أم an؟',w:(el,B)=>N.labB(el,B,{intro:'اختر العمل، وشاهد هل يأتي قبله a أو an، والسبب.',
+ controls:[{k:'j',label:'العمل',opts:Object.keys(JOB11).map(k=>[k,k])}],
+ out:({j})=>{const an=/^[aeiou]/.test(j);
+  return{pieces:[['What do you do?','x','ما عملك؟'],["I'm",'x',''],[an?'an':'a','k',an?'صوت متحرك ← an':'صوت ساكن ← a'],[j+'.','n',JOB11[j]]],say:`What do you do? I'm ${an?'an':'a'} ${j}.`,why:an?`${j} تبدأ بصوت متحرك (a, e, i, o, u)، فنقول an.`:`${j} تبدأ بصوت ساكن، فنقول a.`}}})};
+const IN11=[['stand up','sit down'],['pick up the hammer','put down the hammer'],['start the machine','stop the machine'],['read the text','write the answer'],['raise your hand','lower your hand']];
+const LAB11D={title:'ركّب التعليمة',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل وضده، ومكان please، وشاهد التعليمة.',
+ controls:[{k:'i',label:'الفعل',opts:IN11.map((x,i)=>[String(i),x[0].split(' ')[0]+' / '+x[1].split(' ')[0]])},{k:'w',label:'الاختيار',opts:[['0','الفعل'],['1','ضده']]},{k:'p',label:'please',opts:[['','بدون'],['s','في البداية'],['e','في النهاية']]}],
+ out:({i,w,p})=>{const v=IN11[+i][+w],V=v.replace(/^./,m=>m.toUpperCase());
+  const pieces=p==='s'?[['Please','q','للتهذيب'],[v+'.','n','الفعل أولاً']]:p==='e'?[[V+',','n','الفعل أولاً'],['please.','q','للتهذيب']]:[[V+'.','n','الفعل أولاً']];
+  return{pieces,say:p==='s'?`Please ${v}.`:p==='e'?`${V}, please.`:`${V}.`,ar:`ضده: ${IN11[+i][+w?0:1]}`,why:'التعليمة تبدأ بالفعل مباشرة، ونضيف please في أولها أو آخرها للتهذيب.'}}})};
+const box11=(w)=>{const hm={in:'<g transform="translate(250 66)"><rect x="0" y="0" width="60" height="9" rx="2" fill="#8a5a2b"/><rect x="48" y="-12" width="14" height="30" rx="3" fill="#555"/></g>',on:'<g transform="translate(250 28)"><rect x="0" y="0" width="60" height="9" rx="2" fill="#8a5a2b"/><rect x="48" y="-12" width="14" height="30" rx="3" fill="#555"/></g>',under:'<g transform="translate(250 124)"><rect x="0" y="0" width="60" height="9" rx="2" fill="#8a5a2b"/><rect x="48" y="-12" width="14" height="30" rx="3" fill="#555"/></g>'}[w];
+ const boxb=`<rect x="220" y="44" width="120" height="70" fill="${C.yel}" stroke="${C.ink}" stroke-width="2" opacity="${w==='in'?0.55:1}"/>`;
+ return `<svg viewBox="0 0 560 150" aria-hidden="true"><rect width="560" height="150" rx="14" fill="${C.bg}"/><line x1="140" y1="140" x2="420" y2="140" stroke="${C.ink}" stroke-width="2"/>${w==='under'?'<rect x="230" y="114" width="10" height="26" fill="'+C.ink+'"/><rect x="320" y="114" width="10" height="26" fill="'+C.ink+'"/>':''}${w==='in'?hm+boxb:boxb+hm}</svg>`};
+const LAB11E={title:'in أم on أم under؟',w:(el,B)=>N.labB(el,B,{intro:'اختر مكان المطرقة، وشاهد الرسم والجملة.',
+ controls:[{k:'w',label:'المكان',opts:[['in','داخل'],['on','فوق'],['under','تحت']]}],
+ out:({w})=>({svg:box11(w),pieces:[['The hammer','x',''],['is','x',''],[w,'k',{in:'داخل',on:'فوق (على)',under:'تحت'}[w]],['the box.','n','']],say:`The hammer is ${w} the box.`,why:{in:'in: داخل الشيء.',on:'on: فوقه وملامس له.',under:'under: تحته.'}[w]})})};
+const TL11={screwdriver:['a','screwdrivers','مفك'],spanner:['a','spanners','مفتاح ربط'],saw:['a','saws','منشار'],chisel:['a','chisels','إزميل'],screw:['a','screws','برغي'],bolt:['a','bolts','مسمار بصامولة'],nut:['a','nuts','صامولة'],washer:['a','washers','حلقة (وردة)'],adapter:['an','adapters','محوّل'],aerial:['an','aerials','هوائي']};
+const LAB11F={title:'المفرد والجمع',w:(el,B)=>N.labB(el,B,{intro:'اختر الأداة والعدد، وشاهد a أو an مع المفرد، و s مع الجمع.',
+ controls:[{k:'t',label:'الأداة',opts:Object.keys(TL11).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','واحد'],['2','أكثر']]}],
+ out:({t,n})=>{const x=TL11[t];if(n==='1')return{pieces:[[x[0],'k',x[0]==='an'?'صوت متحرك ← an':'a'],[t,'n',x[2]]],say:`${x[0]} ${t}`,why:'مع الشيء الواحد a أو an.'};
+  return{pieces:[['two','k','رقم'],[x[1],'n','+ s للجمع']],say:`two ${x[1]}`,why:`الجمع: نضيف s: ${t} ← ${x[1]}.`}}})};
+const R11=N.rule({title:'التعارف، والفعل be، والتعليمات، والأماكن، والأدوات',ref:'ص 4–5',
+ intro:`هذا أول درس، ونبني فيه الأساس خطوة خطوة: الفعل ${e('be')} مع الضمائر، ثم التعارف، ثم السؤال عن العمل مع ${e('a')} و ${e('an')}، ثم التعليمات، ثم المكان والحالة، ثم أسماء الأدوات بالمفرد والجمع.`,
+ parts:[
+ {t:'الفعل be مع الضمائر',short:'الضمائر و be',q:'متى نقول am ومتى is ومتى are؟',add:true,
+  lead:`قبل أن نتعارف نحتاج الفعل ${e('be')}، ومعناه «يكون». لا يظهر في الجملة العربية غالباً (نقول «أنا طالب» بلا فعل)، لكنه لازم في الجملة الإنجليزية: ${e('I am a student.')}`,
+  points:[`<b>${e('be')} له ثلاث صيغ في المضارع</b>، ونختار منها حسب الضمير:<br>${e('am')} مع ${e('I')} فقط.<br>${e('is')} مع ${e('he · she · it')}.<br>${e('are')} مع ${e('you · we · they')}.`,
+   `<b>الاختصار</b> يكثر في الكلام: نحذف أول حرف من ${e('be')} ونضع مكانه علامة: ${e("I'm · you're · he's · she's · it's · we're · they're")}`,
+   `<b>النفي:</b> نضع ${e('not')} بعد ${e('be')}: ${e("I'm not · he isn't · they aren't")}`,
+   `<b>السؤال:</b> نقدّم ${e('be')} على الضمير: ${e('You are a student.')} ← ${e('Are you a student?')}`,
+   `<b>الجواب القصير:</b> ${e("Yes, I am. · No, I'm not.")} وفي «نعم» لا نختصر: لا نقول ${e("Yes, I'm.")}`],
+  grid:{head:['الضمير','be','المختصر','المعنى'],rows:[['I','am',"I'm",'أنا'],['you','are',"you're",'أنتَ / أنتِ / أنتم'],['he','is',"he's",'هو'],['she','is',"she's",'هي'],['it','is',"it's",'لغير الإنسان'],['we','are',"we're",'نحن'],['they','are',"they're",'هم / هنّ']]},
+  pairs:[['I is a student.','I am a student.','مع I نستعمل am.'],['They is from Jordan.','They are from Jordan.','مع they نستعمل are.'],["Yes, I'm.",'Yes, I am.','في جواب نعم لا نختصر.']],
+  labs:[LAB11A]},
+ {t:'التعارف',short:'التعارف',old:[1],q:'كيف تعرّف بنفسك؟ وما الفرق بين I\'m و My name\'s؟',ref:'ص 4',
+  lead:`أول ما تحتاجه في أي لغة أن تعرّف بنفسك وترد على من يعرّف بنفسه. وللتعريف صيغتان بالمعنى نفسه.`,
+  points:[`<b>${e("I'm")}</b> + الاسم (= ${e('I am')}): ${e("I'm Fahad.")}`,
+   `<b>${e("My name's")}</b> + الاسم (= ${e('My name is')}): ${e("My name's Omar.")}`,
+   `<b>الرد على التعارف:</b> ${e('Nice to meet you.')} أو ${e('Pleased to meet you.')}`,
+   `<b>للتأكد من شخص</b> نسأل ${e('Are you …?')} ونجيب ${e('Yes, I am.')} أو ${e("No, I'm not.")}، ونبدأ بـ ${e('Excuse me.')} للتنبيه بأدب.`],
+  html:dl([['A',"Hello. I'm Fahad Al-Qahtani."],['B',"Hi, Fahad. My name's Omar."],['A','Nice to meet you, Omar.']])+vt([['I am','I\'m','أنا'],['My name is','My name\'s','اسمي'],['What is','What\'s','ما'],['you are','you\'re','أنت']],['الكاملة','المختصرة','المعنى']),
+  labs:[LAB11B,{title:'أكمل التعارف',w:(el,B)=>N.gaps(el,B,{intro:'أكمل الحوار (أمثلة من عندنا):',items:[{s:'Hello. ___ Nawaf.',o:["I'm","I"],a:0,why:"I'm = I am."},{s:"___ you Mr Hassan? — Yes, I am.",o:['Are','Is'],a:0,why:'مع you نستعمل are.'},{s:"My ___ Sara.",o:["name's","names"],a:0,why:"name's = name is."},{s:"I'm ___ Jordan.",o:['from','in'],a:0,why:'البلد بعد from.'}]})}]},
+ {t:'السؤال عن الاسم والبلد والعمل، و a / an',short:'a أم an',old:[2],q:'أيهما صحيح: I\'m a electrician أم I\'m an electrician؟',ref:'ص 4',
+  lead:`بعد التعارف نسأل عن الاسم والبلد والعمل. وفي جواب العمل نضع قبل اسم المهنة ${e('a')} أو ${e('an')}، ويختلف الاختيار حسب أول صوت في الكلمة.`,
+  points:[`<b>الأسئلة الثلاثة:</b><br>${e("What's your name? — I'm Badr.")}<br>${e("Where are you from? — I'm from Saudi Arabia.")}<br>${e("What do you do? — I'm a technician.")}`,
+   `<b>${e('What do you do?')}</b> معناها «ما عملك؟» وليس «ماذا تفعل الآن؟».`,
+   `<b>${e('a')}</b> قبل الكلمة التي تبدأ بصوت ساكن: ${e('a technician · a builder · a student')}`,
+   `<b>${e('an')}</b> قبل الكلمة التي تبدأ بصوت متحرك (${e('a, e, i, o, u')}): ${e('an electrician · an engineer · an operator')}`,
+   `<b>العبرة بالصوت لا بالحرف</b> <small>(إضافة من خارج الكتاب)</small>: ${e('an hour')} لأن h لا تُنطق، و ${e('a university')} لأنها تُنطق «يو».`],
+  grid:{head:['أول صوت','الكلمة','مثال'],rows:[['ساكن','a',"I'm a technician."],['متحرك','an',"I'm an electrician."]]},
+  pairs:[["I'm a electrician.","I'm an electrician.",'electrician تبدأ بصوت متحرك: an.'],["I'm technician.","I'm a technician.",'لا ننسى a قبل المهنة.']],
+  art:art(`${JOBS.slice(0,6).map((j,i)=>`<g data-tip="${j[1]} ${j[0]}: ${j[1]==='an'?'تبدأ بصوت متحرك فنقول an':'تبدأ بصوت ساكن فنقول a'}"><rect x="${i%2?190:30}" y="${60+Math.floor(i/2)*70}" width="140" height="48" rx="12" fill="${j[1]==='an'?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(i%2?260:100,90+Math.floor(i/2)*70,j[1]+' '+j[0],{fs:13,w:700})}</g>`).join('')}`,'a و an مع أسماء الأعمال'),cap:'الأصفر يبدأ بصوت متحرك (an)، والأبيض بصوت ساكن (a).',labs:[LAB11C,{title:'a أم an',w:(el,B)=>N.cases(el,B,{intro:'اختر a أو an:',cases:[{q:"I'm ___ engineer.",opts:[['a',0],['an',1,'engineer تبدأ بـ e.']]},{q:"He's ___ mechanic.",opts:[['a',1,'mechanic تبدأ بصوت ساكن m.'],['an',0]]},{q:"She's ___ operator.",opts:[['a',0],['an',1,'operator تبدأ بـ o.']]}]})}]},
+ {t:'التعليمات والأضداد',short:'التعليمات',old:[3],q:'كيف تطلب من زميلك أن يضع المفك بأدب؟',ref:'ص 5',
+  lead:`في الصف والورشة نسمع التعليمات طوال الوقت: قف، اجلس، ارفع، ضع. والتعليمة بالإنجليزي سهلة البناء، وكثير منها له ضد.`,
+  points:[`<b>التعليمة تبدأ بالفعل مباشرة</b>، بلا فاعل: ${e('Stand up.')} ${e('Read the text aloud.')}`,
+   `<b>للتهذيب</b> نضيف ${e('please')} في أول الجملة أو آخرها: ${e('Please sit down.')} ${e('Sit down, please.')}`,
+   `<b>الأضداد</b> تُحفظ أزواجاً: ${e('pick up ≠ put down · raise ≠ lower · start ≠ stop · stand ≠ sit · read ≠ write · say ≠ listen')}`],
+  html:vt(OPP.map(o=>[o[0]+' ≠ '+o[1],o[2]]),['الضدان','المعنى']),
+  pairs:[['You stand up.','Stand up.','التعليمة بلا فاعل.'],['Sit down please the chair.','Sit down, please.','please في أول الجملة أو آخرها.']],
+  labs:[LAB11D]},
+ {t:'الحالة والمكان',short:'in / on / under',q:'أين المطرقة إذا كانت in the box؟',ref:'ص 5',
+  lead:`نصف أيضاً أين الشيء وما حالته: هل الجهاز يعمل أم مطفأ؟ هل الباب مفتوح أم مغلق؟ هل المطرقة داخل الصندوق أم فوقه؟`,
+  points:[`<b>الحالة:</b> ${e('on ≠ off')} للجهاز، و ${e('open ≠ closed')} للباب: ${e('The TV is on. The doors are open.')}`,
+   `<b>المكان:</b> ${e('in')} داخل، و ${e('on')} فوق وملامس، و ${e('under')} تحت: ${e('The hammer is in the box.')}`,
+   `<b>الاتجاه:</b> ${e('left ≠ right · in ≠ out · up ≠ down')}`],
+  html:vt(POS,['English','المعنى']),
+  art:art(`<g data-tip="in the box: داخل الصندوق"><rect x="40" y="170" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="62" y="186" width="36" height="10" rx="3" fill="${C.ink}"/>${TL(80,256,'in',{fs:14,w:700})}</g>
+    <g data-tip="on the box: فوق الصندوق"><rect x="140" y="170" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="162" y="154" width="36" height="12" rx="3" fill="${C.ink}"/>${TL(180,256,'on',{fs:14,w:700})}</g>
+    <g data-tip="under the box: تحت الصندوق"><rect x="240" y="150" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="262" y="216" width="36" height="12" rx="3" fill="${C.ink}"/>${TL(280,256,'under',{fs:14,w:700})}</g>
+    <g data-tip="Stand up ≠ Sit down — الوقوف ضد الجلوس">${TL(180,80,'stand ≠ sit',{fs:18,w:700,c:C.blue})}</g><g data-tip="pick up ≠ put down — الرفع (الالتقاط) ضد الوضع">${TL(180,116,'pick up ≠ put down',{fs:16,w:700,c:C.red})}</g>`,'in on under والأضداد'),cap:'ثلاثة مواقع لمطرقة صغيرة، وضدان من الكتاب. مرّر المؤشر على كل منها.',labs:[LAB11E,{title:'الأضداد',w:(el,B)=>N.gaps(el,B,{intro:'اختر الضد:',items:[{s:'raise ≠ ___',o:['lower','start'],a:0},{s:'read ≠ ___',o:['write','listen'],a:0},{s:'start ≠ ___',o:['stop','sit'],a:0},{s:'The light is on. ≠ The light is ___.',o:['off','out'],a:0}]})}]},
+ {t:'أدوات ومثبتات',short:'الأدوات',old:[4],q:'ما الفرق بين screw و bolt و nut؟',ref:'ص 5',
+  lead:`في الورشة تحتاج أسماء الأدوات والمثبتات التي تستعملها كل يوم، بالمفرد والجمع.`,
+  points:[`<b>المفرد</b> يسبقه ${e('a')} أو ${e('an')}: ${e('a screwdriver · an adapter')}`,
+   `<b>الجمع</b> نضيف له ${e('s')}: ${e('screw → screws · nut → nuts')}`,
+   `<b>التمييز:</b> ${e('screw')} له رأس وسن مدبب يدخل الخشب بالمفك، و ${e('bolt')} طرفه مستوٍ يُشد بصامولة ${e('nut')}، و ${e('washer')} حلقة توضع تحت الصامولة.`],
+  html:vt(TOOLS,['English','المعنى']),
+  art:art(`<g data-tip="screw: برغي له رأس وسنّ مدبب، يدخل الخشب بالمفك."><path d="M60 80 l20 0 l-4 10 l0 90 l-6 14 l-6 -14 l0 -90z" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(70,230,'screw',{fs:13,w:700})}</g>
+    <g data-tip="bolt: مسمار ملولب طرفه مستوٍ، يُشد بصامولة nut."><rect x="150" y="80" width="30" height="16" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/><rect x="158" y="96" width="14" height="110" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(165,230,'bolt',{fs:13,w:700})}</g>
+    <g data-tip="nut: صامولة تُلف على الـ bolt."><polygon points="240,120 262,108 284,120 284,144 262,156 240,144" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><circle cx="262" cy="132" r="8" fill="${C.bg}" stroke="${C.ink}"/>${TL(262,180,'nut',{fs:13,w:700})}</g>
+    <g data-tip="washer: حلقة مسطحة توضع تحت الصامولة."><circle cx="262" cy="230" r="20" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/><circle cx="262" cy="230" r="8" fill="${C.bg}" stroke="${C.ink}"/>${TL(262,272,'washer',{fs:13,w:700})}</g>`,'screw bolt nut washer'),cap:'أربعة مثبتات من رسمنا. مرّر المؤشر على كل منها.',labs:[LAB11F,{title:'ما الأداة؟',w:(el,B)=>N.cases(el,B,{intro:'ما الأداة؟',cases:[{q:'You use it to turn a screw.',opts:[['screwdriver',1],['saw',0],['plug',0]]},{q:'You use it to cut wood.',opts:[['chisel',0],['saw',1],['spanner',0]]},{q:'You put it on a bolt.',opts:[['nut',1],['cable',0],['antenna',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u1-l1',unit:1,order:1,pages:'4–5',
  title:'Basics — الأساسيات',
  summary:'التعارف بالفعل be (I\'m، My name\'s، Are you…?)، والسؤال عن الاسم والبلد والعمل مع a و an، والتعليمات بفعل الأمر و please، والأضداد، وكلمات الحالة والمكان، وأسماء أدوات ومثبتات شائعة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 4–5',html:`<p>هذا أول درس في المقرر: تتعرف على الناس بالإنجليزي، وتفهم التعليمات في الورشة والصف. ستتعلم:</p><ol><li>التعريف بنفسك والرد على التعارف.</li><li>السؤال عن الاسم والبلد والعمل.</li><li>التعليمات بفعل الأمر، وأضداد أفعال شائعة.</li><li>كلمات الحالة والمكان مثل ${e('on/off')} و ${e('in/out')}.</li><li>أسماء أدوات ومثبتات تراها كل يوم.</li></ol>`},
-  {h:'التعارف والفعل be',ref:'ص 4',html:`<p>نعرّف بأنفسنا بـ ${e("I'm")} (= ${e('I am')}) أو ${e("My name's")} (= ${e('My name is')}). ونرد بـ ${e('Pleased to meet you.')} أو ${e('Nice to meet you.')}</p>
-   ${dl([['A',"Hello. I'm Fahad Al-Qahtani."],['B',"Hi, Fahad. My name's Omar."],['A','Nice to meet you, Omar.']])}
-   <p>وللتأكد من شخص نسأل بـ ${e('Are you…?')} ونجيب ${e('Yes, I am.')} أو ${e("No, I'm not.")}</p>${eb(['Excuse me. Are you Mr Salem?','Yes, I am.'])}
-   ${vt([['I am','I\'m','أنا'],['My name is','My name\'s','اسمي'],['What is','What\'s','ما'],['you are','you\'re','أنت']],['الكاملة','المختصرة','المعنى'])}`},
-  {h:'السؤال عن الاسم والبلد والعمل',ref:'ص 4',html:`${dl([['A',"What's your name?"],['B',"I'm Badr."],['A','Where are you from?'],['B',"I'm from Saudi Arabia."],['A','What do you do?'],['B',"I'm a technician."]])}
-   <p>${e('What do you do?')} معناها «ما عملك؟». في الجواب نضع ${e('a')} قبل الكلمة التي تبدأ بصوت ساكن، و ${e('an')} قبل الصوت المتحرك:</p>${eb(["I'm <b>a</b> builder.","I'm <b>an</b> electrician.","I'm <b>a</b> student."])}`},
-  {h:'التعليمات والأضداد',ref:'ص 5',html:`<p>التعليمات تبدأ بالفعل مباشرة (فعل الأمر)، ونضيف ${e('please')} للتهذيب:</p>${eb(['Stand up, please.','Please sit down.','Read the text aloud.'])}
-   ${vt(OPP.map(o=>[o[0]+' ≠ '+o[1],o[2]]),['الضدان','المعنى'])}`},
-  {h:'الحالة والمكان',ref:'ص 5',html:`${vt(POS,['English','المعنى'])}${eb(['The TV is on.','The doors are open.','The hammer is in the box.'])}`},
-  {h:'أدوات ومثبتات',ref:'ص 5',html:vt(TOOLS,['English','المعنى'])},
+  ...R11.theory,
   {h:'تمارين الكتاب',ref:'ص 4–5',html:
    bk(1,'ص 4','استمع وأكمل الحوارات الثلاثة بكلمات الصندوق (am، are، I\'m، is، name\'s).',['(1) am (مثال)','(2) is','(3) Are','(4) I\'m','(5) name\'s','(6) I\'m','(7) Are','(8) I\'m'])+
    bk(2,'ص 4','مع زميلك: تدرّب على حوارات التمرين 1، ثم تحدّث عن نفسك.',null)+
@@ -63,30 +152,8 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'التعارف',title:'التعارف والفعل be',q:'كيف تعرّف بنفسك؟ وما الفرق بين I\'m و My name\'s؟',ref:'ص 4',art:greetArt(),cap:'حوار تعارف من رسمنا. مرّر المؤشر على كل جزء (أو المسه في الجوال).',
-   side:[{tip:`${e("I'm")} = ${e('I am')} و ${e("My name's")} = ${e('My name is')}. والمعنى واحد: «أنا…/اسمي…».`}],
-   body:[{html:dl([['A',"Hello. I'm Majed."],['B',"Hi, Majed. My name's Turki."],['A','Pleased to meet you.']])},
-    {widget:(el,B)=>N.gaps(el,B,{intro:'أكمل الحوار (أمثلة من عندنا):',items:[{s:'Hello. ___ Nawaf.',o:["I'm","I"],a:0,why:"I'm = I am."},{s:"___ you Mr Hassan? — Yes, I am.",o:['Are','Is'],a:0,why:'مع you نستعمل are.'},{s:"My ___ Sara.",o:["name's","names"],a:0,why:"name's = name is."},{s:"I'm ___ Jordan.",o:['from','in'],a:0,why:'البلد بعد from.'}]}),title:'مختبر مصغّر: أكمل التعارف'}]},
-  {st:2,short:'العمل و a/an',title:'السؤال عن العمل',q:'أيهما صحيح: I\'m a electrician أم I\'m an electrician؟',ref:'ص 4',
-   art:art(`${JOBS.slice(0,6).map((j,i)=>`<g data-tip="${j[1]} ${j[0]}: ${j[1]==='an'?'تبدأ بصوت متحرك فنقول an':'تبدأ بصوت ساكن فنقول a'}"><rect x="${i%2?190:30}" y="${60+Math.floor(i/2)*70}" width="140" height="48" rx="12" fill="${j[1]==='an'?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(i%2?260:100,90+Math.floor(i/2)*70,j[1]+' '+j[0],{fs:13,w:700})}</g>`).join('')}`,'a و an مع أسماء الأعمال'),
-   cap:'الأصفر يبدأ بصوت متحرك (an)، والأبيض بصوت ساكن (a).',side:[{tip:`نسأل عن العمل بـ ${e('What do you do?')} لا ${e('What is your job?')} فقط؛ الاثنان صحيحان، والأول أكثر استعمالاً في الكلام.`}],
-   body:[{predict:{q:'اختر الصحيح:',opts:[["<span class=\"en\">I'm an electrician.</span>",true,'electrician تبدأ بصوت متحرك e.'],["<span class=\"en\">I'm a electrician.</span>",false,'قبل الصوت المتحرك نقول an.']]}},
-    {widget:(el,B)=>N.cases(el,B,{intro:'اختر a أو an:',cases:[{q:"I'm ___ engineer.",opts:[['a',0],['an',1,'engineer تبدأ بـ e.']]},{q:"He's ___ mechanic.",opts:[['a',1,'mechanic تبدأ بصوت ساكن m.'],['an',0]]},{q:"She's ___ operator.",opts:[['a',0],['an',1,'operator تبدأ بـ o.']]}]}),title:'مختبر مصغّر: a أم an'}]},
-  {st:3,short:'التعليمات والأضداد',title:'التعليمات والأضداد والمكان',q:'ما ضد pick up؟ وأين المطرقة إذا كانت in the box؟',ref:'ص 5',
-   art:art(`<g data-tip="in the box: داخل الصندوق"><rect x="40" y="170" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="62" y="186" width="36" height="10" rx="3" fill="${C.ink}"/>${TL(80,256,'in',{fs:14,w:700})}</g>
-    <g data-tip="on the box: فوق الصندوق"><rect x="140" y="170" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="162" y="154" width="36" height="12" rx="3" fill="${C.ink}"/>${TL(180,256,'on',{fs:14,w:700})}</g>
-    <g data-tip="under the box: تحت الصندوق"><rect x="240" y="150" width="80" height="60" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><rect x="262" y="216" width="36" height="12" rx="3" fill="${C.ink}"/>${TL(280,256,'under',{fs:14,w:700})}</g>
-    <g data-tip="Stand up ≠ Sit down — الوقوف ضد الجلوس">${TL(180,80,'stand ≠ sit',{fs:18,w:700,c:C.blue})}</g><g data-tip="pick up ≠ put down — الرفع (الالتقاط) ضد الوضع">${TL(180,116,'pick up ≠ put down',{fs:16,w:700,c:C.red})}</g>`,'in on under والأضداد'),
-   cap:'ثلاثة مواقع لمطرقة صغيرة، وضدان من الكتاب. مرّر المؤشر على كل منها.',side:[{tip:`الأمر يبدأ بالفعل: ${e('Pick up the hammer.')} — ${e('Put it in the box, please.')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الضد:',items:[{s:'raise ≠ ___',o:['lower','start'],a:0},{s:'read ≠ ___',o:['write','listen'],a:0},{s:'start ≠ ___',o:['stop','sit'],a:0},{s:'The light is on. ≠ The light is ___.',o:['off','out'],a:0}]}),title:'مختبر مصغّر: الأضداد'}]},
-  {st:4,short:'الأدوات',title:'أدوات ومثبتات',q:'ما الفرق بين screw و bolt و nut؟',ref:'ص 5',
-   art:art(`<g data-tip="screw: برغي له رأس وسنّ مدبب، يدخل الخشب بالمفك."><path d="M60 80 l20 0 l-4 10 l0 90 l-6 14 l-6 -14 l0 -90z" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(70,230,'screw',{fs:13,w:700})}</g>
-    <g data-tip="bolt: مسمار ملولب طرفه مستوٍ، يُشد بصامولة nut."><rect x="150" y="80" width="30" height="16" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/><rect x="158" y="96" width="14" height="110" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(165,230,'bolt',{fs:13,w:700})}</g>
-    <g data-tip="nut: صامولة تُلف على الـ bolt."><polygon points="240,120 262,108 284,120 284,144 262,156 240,144" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/><circle cx="262" cy="132" r="8" fill="${C.bg}" stroke="${C.ink}"/>${TL(262,180,'nut',{fs:13,w:700})}</g>
-    <g data-tip="washer: حلقة مسطحة توضع تحت الصامولة."><circle cx="262" cy="230" r="20" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/><circle cx="262" cy="230" r="8" fill="${C.bg}" stroke="${C.ink}"/>${TL(262,272,'washer',{fs:13,w:700})}</g>`,'screw bolt nut washer'),
-   cap:'أربعة مثبتات من رسمنا. مرّر المؤشر على كل منها.',side:[{tip:`الجمع بإضافة ${e('s')}: ${e('screw → screws')}، ${e('nut → nuts')}.`}],
-   body:[{html:vt(TOOLS,['English','المعنى'])},{widget:(el,B)=>N.cases(el,B,{intro:'ما الأداة؟',cases:[{q:'You use it to turn a screw.',opts:[['screwdriver',1],['saw',0],['plug',0]]},{q:'You use it to cut wood.',opts:[['chisel',0],['saw',1],['spanner',0]]},{q:'You put it on a bolt.',opts:[['nut',1],['cable',0],['antenna',0]]}]}),title:'مختبر مصغّر: ما الأداة؟'}]},
-  {recap:['التعارف: I\'m… / My name\'s… والرد: Nice to meet you.','السؤال: What\'s your name? Where are you from? What do you do?','a قبل الصوت الساكن، an قبل المتحرك: an electrician.','الأمر يبدأ بالفعل: Stand up, please.','الأضداد: pick up ≠ put down، raise ≠ lower، start ≠ stop.']}
+  ...R11.stations,
+  {recap:['be: I am · he / she / it is · you / we / they are، والاختصار I\'m, he\'s, they\'re.','التعارف: I\'m … / My name\'s … والرد: Nice to meet you.','What do you do? — I\'m a technician / an electrician: a قبل الصوت الساكن، و an قبل المتحرك.','التعليمة تبدأ بالفعل، و please في أولها أو آخرها.','in داخل، on فوق، under تحت؛ والجمع بإضافة s: screw → screws.']}
  ],
  lab:lab11,
  examples:[
@@ -136,19 +203,60 @@ function lab12(el,B){kcss();
   $('#uo').innerHTML=`<div class="pk-facts"><div><span>الرمز</span><b>${u[0]}</b></div><div class="hi"><span>المعنى</span><b style="font-family:var(--font)">${u[3]}</b></div></div>${eb(`${/[£€]/.test(u[0])?u[0]+v:v+' '+u[0]} = ${NW(v)} ${name}`)}`};
  $('#un').onchange=us;$('#uv').addEventListener('input',us);us();
 }
+/* ===== مختبرات «شرح القاعدة» 1.2 ===== */
+const GC12={three:'#1f5fd1',eight:'#00875a',five:'#b37d00',ten:'#7a3fb0',two:'#c0392b',exc:'#555'};
+const grp12=ch=>Object.keys(ABC).find(g=>ABC[g].includes(ch));
+const LAB12A={title:'تهجّ الاسم',w:(el,B)=>N.labB(el,B,{intro:'اختر اسماً، وشاهد حروفه ملونة حسب مجموعتها الصوتية، وتحت كل حرف مجموعته.',
+ controls:[{k:'n',label:'الاسم',opts:[['OTAIBI','OTAIBI'],['BADR','BADR'],['FAHAD','FAHAD'],['SALEM','SALEM'],['MULLA','MULLA']]}],
+ out:({n})=>{const L=n.split(''),pieces=[];for(let i=0;i<L.length;i++){if(L[i+1]===L[i]){pieces.push(['double '+L[i],'k','حرفان متشابهان']);i++;continue}const g=grp12(L[i]);pieces.push([L[i],'x',g==='exc'?'استثناء':g])}
+  return{pieces,say:pieces.map(p=>p[0]).join(', '),ar:`السؤال: How do you spell your name? والجواب: ${n.split('').join('-')}.`,why:'نقول الحروف حرفاً حرفاً. والحرفان المتكرران نقول لهما double، مثل double L.'}}})};
+const PH12={a:'0556 33 21 08',b:'0112 44 07 90',c:'0503 00 18 66'};
+const rd12=d=>({0:'oh',1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven',8:'eight',9:'nine'})[d];
+const LAB12B={title:'اقرأ رقم الهاتف',w:(el,B)=>N.labB(el,B,{intro:'اختر رقماً، وشاهد كيف نقرؤه: رقماً رقماً، والصفر oh، والمتكرر double.',
+ controls:[{k:'p',label:'الرقم',opts:Object.keys(PH12).map(k=>[k,PH12[k]])}],
+ out:({p})=>{const groups=PH12[p].split(' '),pieces=[];
+  groups.forEach(g=>{const d=g.split('');let w=[];for(let i=0;i<d.length;i++){if(d[i+1]===d[i]){w.push('double '+rd12(d[i]));i++}else w.push(rd12(d[i]))}pieces.push([w.join(' '),w.some(x=>x.startsWith('double'))?'k':(g.includes('0')?'q':'x'),g])});
+  return{pieces,say:pieces.map(x=>x[0]).join(', '),why:'نقرأ الرقم بمجموعاته، والصفر oh، والرقمان المتشابهان المتتاليان double.'}}})};
+const UN12={V:['volt','volts'],W:['watt','watts'],km:['kilometre','kilometres'],kg:['kilogram','kilograms'],L:['litre','litres']};
+const NM12={1:'one','1.5':'one point five',230:'two hundred and thirty',40:'forty',12500:'twelve thousand five hundred'};
+const LAB12C={title:'الرقم مع رمز الوحدة',w:(el,B)=>N.labB(el,B,{intro:'اختر الرقم والوحدة، وقارن بين الكتابة بالرمز والقراءة بالكلمات.',
+ controls:[{k:'n',label:'الرقم',opts:Object.keys(NM12).map(k=>[k,k])},{k:'u',label:'الوحدة',opts:Object.keys(UN12).map(k=>[k,k])}],
+ out:({n,u})=>{const one=n==='1',w=one?UN12[u][0]:UN12[u][1];
+  return{pieces:[[`${n} ${u}`,'k','نكتب: الرمز لا يُجمع'],['=','x',''],[NM12[n],'q',n.includes('.')?'الفاصلة العشرية: point':'الرقم'],[w,'n',one?'مفرد':'جمع']],say:`${NM12[n]} ${w}`,why:one?'الرقم واحد، فالكلمة مفردة.':'بعد رقم غير الواحد نجمع الكلمة عند القراءة، لكن الرمز يبقى كما هو.'}}})};
+const R12=N.rule({title:'الحروف والتهجئة، والهاتف والبريد، والأرقام والوحدات',ref:'ص 6–7',
+ intro:`في هذا الدرس تتعلم أن تتهجّى وتقرأ الأرقام بالإنجليزي، في ثلاث خطوات مرتبة: الحروف ومجموعاتها الصوتية، ثم رقم الهاتف والبريد الإلكتروني، ثم الأرقام الكبيرة والعشرية ورموز الوحدات.`,
+ parts:[
+ {t:'الحروف والتهجئة',short:'الحروف',old:[1],q:'كيف تتهجى اسمك؟ وكيف تقول LL؟',ref:'ص 6',
+  lead:`كثيراً ما يُطلب منك أن تتهجى اسمك أو اسم شركة على الهاتف أو في نموذج. والحروف الإنجليزية أسهل حفظاً إذا جمعناها حسب صوتها.`,
+  points:[`<b>ست مجموعات</b> بحسب الصوت الذي ينتهي به اسم الحرف، كما في الجدول. والحرفان ${e('O')} و ${e('R')} استثناء.`,
+   `<b>السؤال عن التهجئة:</b> ${e('How do you spell …?')} والجواب حرفاً حرفاً: ${e('O-T-A-I-B-I.')}`,
+   `<b>الحرفان المتكرران</b> نقول لهما ${e('double')}: ${e('LL = double L')}`,
+   `<b>إذا لم تسمع جيداً:</b> ${e('Could you repeat that, please?')}`,
+   `${e('Z')} تُنطق «زِد» في البريطانية و«زي» في الأمريكية.`],
+  html:`<p>الكتاب يقسم الحروف حسب صوتها، فتحفظها أسهل:</p>${vt(Object.keys(ABC).map(g=>[g==='exc'?'EXCEPTIONS':g,ABC[g].split('').join(' '),GAR[g]]),['المجموعة','الحروف','الصوت'])}
+   <p>اسأل عن التهجئة بـ ${e('How do you spell…?')}:</p>${dl([['A','How do you spell your surname?'],['B','O-T-A-I-B-I.'],['A','Could you repeat that, please?']])}`,labs:[LAB12A,{title:'صنّف الحروف',w:(el,B)=>N.sort(el,B,{intro:'ضع الحرف في مجموعته:',cats:['three','eight','ten','two'],items:[['G',0],['J',1],['M',2],['W',3],['P',0],['K',1]]})}]},
+ {t:'رقم الهاتف والبريد الإلكتروني',short:'الهاتف والبريد',old:[2],q:'كيف تقرأ 0556 33 21 08؟ وكيف تقرأ @ و _؟',ref:'ص 6',
+  lead:`عند تبادل أرقام الهواتف وعناوين البريد بالإنجليزي لها طريقة قراءة ثابتة، تختلف عن قراءة الأعداد العادية.`,
+  points:[`<b>الهاتف:</b> نقرؤه رقماً رقماً بمجموعاته، لا عدداً واحداً كبيراً.`,`<b>الصفر</b> نقرؤه غالباً ${e('oh')}، و<b>الرقمان المتشابهان المتتاليان</b> ${e('double')}: ${e('33 = double three')}`,
+   `<b>البريد الإلكتروني:</b> ${e('@ = at')}، و ${e('. = dot')}، و ${e('_ = underscore')}، و ${e('- = hyphen')}`],
+  html:`<p>نقرأ رقم الهاتف رقماً رقماً، والصفر ${e('oh')} غالباً، والرقمان المتشابهان ${e('double')}:</p>${eb(['0556 33 21 08 = oh five five six, double three, two one, oh eight.'])}
+   ${vt([['at','@'],['dot','.'],['underscore','_'],['hyphen / dash','-'],['forward slash','/']],['نقرؤه','الرمز'])}${eb(['salem_21@tvtc.com = salem underscore twenty-one at tvtc dot com'])}`,art:art(`<rect x="30" y="90" width="300" height="70" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,132,'ali_7@tvtc.com',{fs:20,w:700})}
+    <g data-tip="_ = underscore">${TL(112,190,'underscore',{fs:12,c:C.red,w:700})}</g><g data-tip="@ = at">${TL(170,212,'at',{fs:13,c:C.blue,w:700})}</g><g data-tip=". = dot">${TL(250,190,'dot',{fs:13,c:C.grn,w:700})}</g>`,'قراءة البريد'),cap:'بريد إلكتروني ورموزه. مرّر المؤشر على اسم كل رمز.',labs:[LAB12B,{title:'الرموز',w:(el,B)=>N.cases(el,B,{intro:'كيف نقرأ الرمز؟',cases:[{q:'@',opts:[['at',1],['dot',0]]},{q:'.',opts:[['dot',1],['point',0,'point للأرقام العشرية فقط.']]},{q:'0 في رقم الهاتف',opts:[['oh',1],['O letter',0]]}]})}]},
+ {t:'الأرقام ورموز الوحدات',short:'الأرقام والوحدات',old:[3],q:'كيف تقرأ 1.2 و 230 V؟',ref:'ص 7',
+  lead:`في العمل الفني تقرأ مواصفات فيها أرقام عشرية وكبيرة ورموز وحدات. ولكل منها قاعدة قراءة.`,
+  points:[`<b>الفاصلة العشرية</b> نقرؤها ${e('point')}: ${e('1.2 = one point two')}`,`<b>الفاصلة في الأعداد الكبيرة</b> للآلاف: ${e('150,000 = a hundred and fifty thousand')}`,
+   `<b>النبرة</b> تفرّق بين ${e('thirTEEN')} و ${e('THIRty')}.`,`<b>الرمز لا يُجمع</b> في الكتابة، لكننا نجمع الكلمة عند القراءة: ${e('230 V = two hundred and thirty volts')}`],
+  html:`${vt([['13 / 30','thirteen / thirty','انتبه للنبرة: thirTEEN و THIRty'],['1.2','one point two','الفاصلة العشرية = point'],['150,000','a hundred and fifty thousand','الفاصلة للآلاف'],['12,500','twelve thousand five hundred',''],['−5','minus five','']],['الرقم','نقرؤه','ملاحظة'])}`+`${vt(UNITS.map(u=>[u[0],u[1],u[3]]),['الرمز','الكلمة','المعنى'])}<p>بعد رقم أكبر من واحد نجمع الكلمة: ${e('230 volts')}، ${e('40 watts')}، لكن الرمز لا يُجمع: ${e('230 V')}.</p>`,
+  pairs:[['230 Vs','230 V','الرمز لا يُجمع.'],['two hundred and thirty volt','two hundred and thirty volts','عند القراءة نجمع الكلمة.']],
+  art:art(`${[['230 V','two hundred and thirty volts'],['1.2 km','one point two kilometres'],['40 W','forty watts'],['89 °C','eighty-nine degrees Celsius']].map((u,i)=>`<g data-tip="${u[1]}"><rect x="40" y="${50+i*62}" width="280" height="48" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,80+i*62,u[0],{fs:18,w:700})}</g>`).join('')}`,'أرقام بوحداتها'),cap:'أربعة أرقام بوحداتها. مرّر المؤشر لترى كيف تُقرأ.',labs:[LAB12C,{title:'اقرأ الرقم',w:(el,B)=>N.cases(el,B,{intro:'اختر القراءة الصحيحة:',cases:[{q:'1.2 km',opts:[['one point two kilometres',1],['one two kilometre',0]]},{q:'13.8 m',opts:[['thirteen point eight metres',1],['thirty point eight metres',0]]},{q:'12,500 rpm',opts:[['twelve thousand five hundred revolutions per minute',1],['one hundred twenty-five rpm',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u1-l2',unit:1,order:2,pages:'6–7',
  title:'Letters and numbers — الحروف والأرقام',
  summary:'نطق الحروف الإنجليزية في ست مجموعات صوتية، والتهجئة (How do you spell…?)، وقراءة الهاتف والبريد (oh، at، dot، underscore)، وقراءة الأرقام الكبيرة والعشرية، ورموز الوحدات مثل km و rpm و °C.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 6–7',html:`<p>في العمل تُملي اسماً أو رقم هاتف أو بريداً إلكترونياً، وتكتب أرقاماً بوحداتها. ستتعلم:</p><ol><li>نطق الحروف وتهجئة الكلمات.</li><li>قراءة أرقام الهاتف والبريد.</li><li>قراءة الأرقام الكبيرة والعشرية.</li><li>معاني رموز الوحدات الشائعة.</li></ol>`},
-  {h:'الحروف في ست مجموعات صوتية',ref:'ص 6',html:`<p>الكتاب يقسم الحروف حسب صوتها، فتحفظها أسهل:</p>${vt(Object.keys(ABC).map(g=>[g==='exc'?'EXCEPTIONS':g,ABC[g].split('').join(' '),GAR[g]]),['المجموعة','الحروف','الصوت'])}
-   <p>اسأل عن التهجئة بـ ${e('How do you spell…?')}:</p>${dl([['A','How do you spell your surname?'],['B','O-T-A-I-B-I.'],['A','Could you repeat that, please?']])}`},
-  {note:'<b>توضيح للمتدرب:</b> الحرف Z يُنطق «زِد» في البريطانية و«زي» في الأمريكية. والحرفان المتكرران نقول لهما double: <span class="en">LL = double L</span>.'},
-  {h:'الهاتف والبريد الإلكتروني',ref:'ص 6',html:`<p>نقرأ رقم الهاتف رقماً رقماً، والصفر ${e('oh')} غالباً، والرقمان المتشابهان ${e('double')}:</p>${eb(['0556 33 21 08 = oh five five six, double three, two one, oh eight.'])}
-   ${vt([['at','@'],['dot','.'],['underscore','_'],['hyphen / dash','-'],['forward slash','/']],['نقرؤه','الرمز'])}${eb(['salem_21@tvtc.com = salem underscore twenty-one at tvtc dot com'])}`},
-  {h:'قراءة الأرقام',ref:'ص 7',html:`${vt([['13 / 30','thirteen / thirty','انتبه للنبرة: thirTEEN و THIRty'],['1.2','one point two','الفاصلة العشرية = point'],['150,000','a hundred and fifty thousand','الفاصلة للآلاف'],['12,500','twelve thousand five hundred',''],['−5','minus five','']],['الرقم','نقرؤه','ملاحظة'])}`},
-  {h:'رموز الوحدات',ref:'ص 7',html:`${vt(UNITS.map(u=>[u[0],u[1],u[3]]),['الرمز','الكلمة','المعنى'])}<p>بعد رقم أكبر من واحد نجمع الكلمة: ${e('230 volts')}، ${e('40 watts')}، لكن الرمز لا يُجمع: ${e('230 V')}.</p>`},
+  ...R12.theory,
   {h:'تمارين الكتاب',ref:'ص 6–7',html:
    bk(1,'ص 6','استمع وصحّح الأخطاء الأربعة في بطاقة العمل.',['Martin → Martyn','89 → 85 (رقم الهاتف)','mart70 → mart17','.com → .co.fr'])+
    bk(2,'ص 6','استمع وأكمل النماذج الثلاثة.',['1: QUAYLE · VOX · pq99@biz.com','2: FIRE · 17 EAST Street · CS4 8NT · MATHERS','3: PIETER BRAUN · 20953 · 67 · GJ 8041'])+
@@ -164,18 +272,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الحروف',title:'الحروف في مجموعات صوتية',q:'لماذا الحروف B و C و D في مجموعة واحدة؟',ref:'ص 6',art:lettersArt(),cap:'ست مجموعات للحروف حسب صوتها. مرّر المؤشر على كل مجموعة.',
-   side:[{tip:`كل حروف المجموعة الأولى تنتهي بصوت «إي» مثل ${e('three')}: بي، سي، دي.`}],
-   body:[{widget:(el,B)=>N.sort(el,B,{intro:'ضع الحرف في مجموعته:',cats:['three','eight','ten','two'],items:[['G',0],['J',1],['M',2],['W',3],['P',0],['K',1]]}),title:'مختبر مصغّر: صنّف الحروف'}]},
-  {st:2,short:'الهاتف والبريد',title:'التهجئة والهاتف والبريد',q:'كيف تقرأ البريد ali_7@tvtc.com؟',ref:'ص 6',
-   art:art(`<rect x="30" y="90" width="300" height="70" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,132,'ali_7@tvtc.com',{fs:20,w:700})}
-    <g data-tip="_ = underscore">${TL(112,190,'underscore',{fs:12,c:C.red,w:700})}</g><g data-tip="@ = at">${TL(170,212,'at',{fs:13,c:C.blue,w:700})}</g><g data-tip=". = dot">${TL(250,190,'dot',{fs:13,c:C.grn,w:700})}</g>`,'قراءة البريد'),
-   cap:'بريد إلكتروني ورموزه. مرّر المؤشر على اسم كل رمز.',side:[{tip:`${e('ali_7@tvtc.com')} = ${e('ali underscore seven at tvtc dot com')}.`}],
-   body:[{html:eb(['ali underscore seven at tvtc dot com'])},{widget:(el,B)=>N.cases(el,B,{intro:'كيف نقرأ الرمز؟',cases:[{q:'@',opts:[['at',1],['dot',0]]},{q:'.',opts:[['dot',1],['point',0,'point للأرقام العشرية فقط.']]},{q:'0 في رقم الهاتف',opts:[['oh',1],['O letter',0]]}]}),title:'مختبر مصغّر: الرموز'}]},
-  {st:3,short:'الأرقام والوحدات',title:'الأرقام ورموز الوحدات',q:'كيف تقرأ 230 V و 1.2 km؟',ref:'ص 7',
-   art:art(`${[['230 V','two hundred and thirty volts'],['1.2 km','one point two kilometres'],['40 W','forty watts'],['89 °C','eighty-nine degrees Celsius']].map((u,i)=>`<g data-tip="${u[1]}"><rect x="40" y="${50+i*62}" width="280" height="48" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,80+i*62,u[0],{fs:18,w:700})}</g>`).join('')}`,'أرقام بوحداتها'),
-   cap:'أربعة أرقام بوحداتها. مرّر المؤشر لترى كيف تُقرأ.',side:[{tip:`الرمز لا يُجمع (${e('230 V')})، أما الكلمة فتُجمع (${e('230 volts')}).`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر القراءة الصحيحة:',cases:[{q:'1.2 km',opts:[['one point two kilometres',1],['one two kilometre',0]]},{q:'13.8 m',opts:[['thirteen point eight metres',1],['thirty point eight metres',0]]},{q:'12,500 rpm',opts:[['twelve thousand five hundred revolutions per minute',1],['one hundred twenty-five rpm',0]]}]}),title:'مختبر مصغّر: اقرأ الرقم'}]},
+  ...R12.stations,
   {recap:['الحروف في ست مجموعات صوتية: three, eight, five, ten, two، والاستثناءان O و R.','How do you spell…? ونكرر بـ Could you repeat that, please?','الهاتف رقماً رقماً، والصفر oh، والمكرر double.','@ at، . dot، _ underscore.','الفاصلة العشرية point، والرمز لا يُجمع: 230 V = two hundred and thirty volts.']}
  ],
  lab:lab12,
@@ -225,17 +322,47 @@ function lab13(el,B){kcss();
   $('#do').innerHTML=`<div class="pk-facts"><div><span>بريطانيا dd/mm/yy</span><b>${pad(d)}/${pad(mi+1)}/${String(y).slice(2)}</b></div><div><span>أمريكا mm/dd/yy</span><b>${pad(mi+1)}/${pad(d)}/${String(y).slice(2)}</b></div><div class="hi"><span>ISO yyyy-mm-dd</span><b>${y}-${pad(mi+1)}-${pad(d)}</b></div></div>${eb([`${ORD(d)} ${MON[mi]} ${y}`,`the ${ORDW[d]} of ${MON[mi]}`])}`};
  ['dd','mo','yy'].forEach(k=>$('#'+k).addEventListener('input',dt));dt();
 }
+/* ===== مختبرات «شرح القاعدة» 1.3 ===== */
+const ORDW13={1:'first',2:'second',3:'third',4:'fourth',5:'fifth',11:'eleventh',12:'twelfth',13:'thirteenth',21:'twenty-first',22:'twenty-second',23:'twenty-third',30:'thirtieth'};
+const suf13=n=>n%100>=11&&n%100<=13?'th':({1:'st',2:'nd',3:'rd'})[n%10]||'th';
+const LAB13A={title:'العدد الترتيبي والتاريخ',w:(el,B)=>N.labB(el,B,{intro:'اختر اليوم والشهر، وشاهد كتابة التاريخ وقراءته. لاحظ نهاية الرقم.',
+ controls:[{k:'d',label:'اليوم',opts:Object.keys(ORDW13).map(k=>[k,k])},{k:'m',label:'الشهر',opts:[[2,'February'],[5,'May'],[9,'September'],[12,'December']].map(([v,t])=>[String(v),t])}],
+ out:({d,m})=>{d=+d;const sx=suf13(d),mn=MON[+m-1];
+  return{pieces:[['the','x',''],[d+sx,'k',sx==='th'&&d%10>=1&&d%10<=3?'11–13: th استثناء':'نهاية '+sx],['of','x',''],[mn,'n','الشهر']],say:`the ${ORDW13[d]} of ${mn}`,ar:`نقرؤه: the ${ORDW13[d]} of ${mn}. وبالأرقام البريطانية: ${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}، والأمريكية: ${String(m).padStart(2,'0')}/${String(d).padStart(2,'0')}.`,why:`${e('1st · 2nd · 3rd')}، وباقي الأرقام ${e('th')}، إلا ${e('11th · 12th · 13th')} فكلها ${e('th')}.`}}})};
+const LAB13B={title:'on Monday أم on Mondays؟',w:(el,B)=>N.labB(el,B,{intro:'اختر اليوم، ثم اختر: مرة واحدة أم كل أسبوع؟',
+ controls:[{k:'d',label:'اليوم',opts:DAYS.map(d=>[d,d])},{k:'f',label:'المعنى',opts:[['one','مرة واحدة'],['every','كل أسبوع']]}],
+ out:({d,f})=>f==='one'?{pieces:[['The meeting is','x',''],['on','k','مع الأيام'],[d+'.','n','مفرد = هذا اليوم']],say:`The meeting is on ${d}.`,why:`on ${d} = يوم ${d} القادم (مرة واحدة).`}:{pieces:[['The bus leaves','x',''],['on','k','مع الأيام'],[d+'s.','n','بالجمع = كل أسبوع']],say:`The bus leaves on ${d}s.`,why:`on ${d}s = كل ${d}.`}})};
+const TM13={a:[7,50],b:[14,40],c:[20,5],d:[9,5],e:[12,0]};
+const w13=n=>['oh','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'][n]||({30:'thirty',40:'forty',50:'fifty'})[n]||(n>20&&n<30?'twenty-'+w13(n-20):'');
+const LAB13C={title:'الوقت بنظامين',w:(el,B)=>N.labB(el,B,{intro:'اختر وقتاً، وشاهده بنظام 24 ساعة و 12 ساعة، وطريقة قراءته.',
+ controls:[{k:'t',label:'الوقت',opts:Object.keys(TM13).map(k=>[k,String(TM13[k][0]).padStart(2,'0')+'.'+String(TM13[k][1]).padStart(2,'0')])}],
+ out:({t})=>{const [h,m]=TM13[t],h12=h%12||12,ap=h<12?'am':(h===12&&m===0?'noon':'pm'),mm=m===0?"o'clock":(m<10?'oh '+w13(m):w13(m));
+  const r24=(h<10?'oh ':'')+w13(h)+' '+(m===0?'hundred':(m<10?'oh '+w13(m):w13(m)));
+  return{pieces:[[String(h).padStart(2,'0')+'.'+String(m).padStart(2,'0'),'k','نظام 24 ساعة'],['=','x',''],[`${h12}.${String(m).padStart(2,'0')} ${ap}`,'n','نظام 12 ساعة']],say:`${w13(h12)} ${m===0?'':mm} ${ap==='noon'?'noon':ap}`,ar:`القراءة بنظام 24: ${r24}.`,why:`${e('am')} قبل الظهر و ${e('pm')} بعده. وفي نظام 24 ساعة نقرأ الصفر ${e('oh')}: ${e('09.05 = oh nine oh five')}`}}})};
+const R13=N.rule({title:'التواريخ والأيام والوقت',ref:'ص 8–9',
+ intro:`نشرح الكلام عن المواعيد في ثلاث خطوات مرتبة: الأعداد الترتيبية وكتابة التاريخ وقراءته، ثم الأيام والأشهر مع ${e('on')}، ثم الوقت بنظامي 24 و 12 ساعة.`,
+ parts:[
+ {t:'الأعداد الترتيبية والتاريخ',short:'1st, 2nd, 3rd',old:[1],q:'كيف تكتب «الحادي عشر» وتقرؤه؟',ref:'ص 8–9',
+  lead:`التاريخ بالإنجليزي يُقرأ بالعدد الترتيبي (الأول، الثاني…) لا بالعدد العادي. ويُكتب بأكثر من صيغة حسب البلد.`,
+  points:[`<b>النهايات:</b> ${e('1st · 2nd · 3rd')}، وباقي الأرقام ${e('th')}: ${e('4th · 20th')}`,`<b>استثناء:</b> ${e('11th · 12th · 13th')} تنتهي بـ ${e('th')} رغم أن آخرها 1 و 2 و 3.`,
+   `<b>القراءة:</b> ${e('the twenty-third of September')}`,`<b>الكتابة بالأرقام:</b> بريطانيا ${e('dd/mm/yy')}، وأمريكا ${e('mm/dd/yy')}، والدولية ${e('yyyy-mm-dd')}. فالتاريخ ${e('03/05')} يعني 3 مايو في بريطانيا و 5 مارس في أمريكا.`],
+  html:`${vt([['-st','1st, 21st, 31st','first, twenty-first'],['-nd','2nd, 22nd','second, twenty-second'],['-rd','3rd, 23rd','third, twenty-third'],['-th','4th–20th, 24th–30th','fourth, eleventh, twelfth, thirteenth…']],['النهاية','الأرقام','القراءة'])}<p>انتبه: ${e('11th, 12th, 13th')} تنتهي بـ ${e('th')} رغم أن آخرها 1 و 2 و 3.</p>`+`${vt([['dd/mm/yy','بريطانيا وأوروبا','23/09/26'],['mm/dd/yy','أمريكا','09/23/26'],['yyyy-mm-dd','ISO 8601 (دولي)','2026-09-23']],['الصيغة','المكان','مثال'])}<p>ونقرؤه: ${e('the twenty-third of September, twenty twenty-six')}.</p>${eb(['the twenty-third of September, twenty twenty-six'])}`,art:art(`${[[1,'st'],[2,'nd'],[3,'rd'],[4,'th'],[12,'th'],[22,'nd']].map((x,i)=>`<g data-tip="${x[0]}${x[1]} = ${ORDW[x[0]]}"><rect x="${i%3*100+30}" y="${70+Math.floor(i/3)*100}" width="90" height="70" rx="12" fill="${x[0]===12?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(i%3*100+75,112+Math.floor(i/3)*100,x[0]+x[1],{fs:22,w:700})}</g>`).join('')}`,'أعداد ترتيبية'),cap:'ستة أعداد ترتيبية. 12th بالأصفر لأنها استثناء. مرّر المؤشر على كل منها.',labs:[LAB13A,{title:'الترتيبية',w:(el,B)=>N.cases(el,B,{intro:'اختر الكتابة الصحيحة:',cases:[{q:'21',opts:[['21st',1],['21th',0]]},{q:'13',opts:[['13rd',0],['13th',1,'13 استثناء.']]},{q:'32? لا يوجد في التاريخ؛ 31',opts:[['31st',1],['31th',0]]}]})}]},
+ {t:'الأيام والأشهر و on',short:'on Mondays',old:[2],q:'ما الفرق بين on Monday و on Mondays؟',ref:'ص 8',
+  lead:`عندما نحدد موعداً نذكر اليوم أو التاريخ، ونستعمل معهما ${e('on')}. وجمع اسم اليوم يغيّر المعنى.`,
+  points:[`<b>${e('on')}</b> مع الأيام والتواريخ: ${e('on Sunday · on the 14th')}`,`<b>${e('on Monday')}</b> = يوم الاثنين هذا (مرة واحدة).`,`<b>${e('on Mondays')}</b> = كل اثنين (عادة تتكرر).`,`أسماء الأيام والأشهر تبدأ دائماً بحرف كبير: ${e('Monday · May')}`],
+  html:`${eb([MON.join(', ')])}${eb([DAYS.join(', ')])}<p>${e('on Monday')} = يوم الاثنين هذا، و ${e('on Mondays')} = كل اثنين:</p>${eb(['The bus leaves on Sundays and Wednesdays.'])}`+dl([['A',"When's the meeting?"],['B',"It's on Sunday."],['A','Is that Sunday the 14th?'],['B',"Yes, that's right."],['A','What time?'],['B','9.30.'],['A','OK. See you then.']]),art:art(`${DAYS.map((d,i)=>`<g data-tip="${d}"><rect x="${30+i*43}" y="110" width="40" height="70" rx="8" fill="${[0,3].includes(i)?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(50+i*43,150,d.slice(0,3),{fs:12,w:700})}</g>`).join('')}${TL(180,220,'on Mondays and Thursdays',{fs:14,w:700,c:C.blue})}`,'أيام الأسبوع'),cap:'الأيام الملونة يتكرر فيها الشيء كل أسبوع.',labs:[LAB13B,{title:'الأيام',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'The flight leaves ___ Fridays.',o:['on','in'],a:0},{s:'The ___ month of the year is March.',o:['third','three'],a:0},{s:'The day after Tuesday is ___.',o:['Wednesday','Thursday'],a:0}]})}]},
+ {t:'الوقت بنظامي 24 و 12 ساعة',short:'الوقت',old:[3],q:'كيف تقول 14.40 بنظام 12 ساعة؟',ref:'ص 9',
+  lead:`جداول الرحلات والعمل تكتب الوقت غالباً بنظام 24 ساعة، والناس يقولونه كثيراً بنظام 12 ساعة. فتحتاج أن تنتقل بينهما.`,
+  points:[`<b>نظام 12 ساعة:</b> ${e('am')} قبل الظهر و ${e('pm')} بعده: ${e('14.40 = 2.40 pm')}`,`<b>القراءة:</b> الساعة ثم الدقائق: ${e('2.40 = two forty')}`,`<b>في نظام 24 ساعة</b> نقرأ الصفر ${e('oh')}: ${e('09.05 = oh nine oh five')}`,`${e('12.00')} = ${e('twelve noon')} أو ${e("twelve o'clock")}`],
+  html:`${vt([['07.50','7.50 am','seven fifty'],['14.40','2.40 pm','fourteen forty / two forty pm'],['20.05','8.05 pm','twenty oh five / eight oh five pm'],['12.00','12 noon','twelve hundred / twelve o\'clock']],['24 ساعة','12 ساعة','القراءة'])}<p>${e('am')} قبل الظهر و ${e('pm')} بعده. وفي نظام 24 ساعة نقرأ الصفر ${e('oh')}: ${e('09.05 = oh nine oh five')}.</p>`,labs:[LAB13C,{title:'حوّل الوقت',w:(el,B)=>N.cases(el,B,{intro:'حوّل:',cases:[{q:'18.15',opts:[['6.15 pm',1],['8.15 pm',0]]},{q:'09.30',opts:[['9.30 am',1],['9.30 pm',0]]},{q:'7.45 pm',opts:[['19.45',1],['17.45',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u1-l3',unit:1,order:3,pages:'8–9',
  title:'Dates and times — التواريخ والأوقات',
  summary:'الأعداد الترتيبية (1st، 2nd، 3rd، 4th) وكتابة التاريخ وقراءته، وأسماء الأشهر والأيام، و on Mondays للتكرار، والوقت بنظامي 24 و 12 ساعة وقراءته، ودعوة بسيطة بالتاريخ والوقت.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 8–9',html:`<p>المواعيد والرحلات ومواعيد التسليم كلها تواريخ وأوقات. ستتعلم:</p><ol><li>الأعداد الترتيبية وكتابة التاريخ وقراءته.</li><li>أسماء الأشهر والأيام، و ${e('on Mondays')}.</li><li>الوقت بنظامي 24 ساعة و 12 ساعة وقراءته.</li></ol>`},
-  {h:'الأعداد الترتيبية',ref:'ص 8',html:`${vt([['-st','1st, 21st, 31st','first, twenty-first'],['-nd','2nd, 22nd','second, twenty-second'],['-rd','3rd, 23rd','third, twenty-third'],['-th','4th–20th, 24th–30th','fourth, eleventh, twelfth, thirteenth…']],['النهاية','الأرقام','القراءة'])}<p>انتبه: ${e('11th, 12th, 13th')} تنتهي بـ ${e('th')} رغم أن آخرها 1 و 2 و 3.</p>`},
-  {h:'الأشهر والأيام',ref:'ص 8',html:`${eb([MON.join(', ')])}${eb([DAYS.join(', ')])}<p>${e('on Monday')} = يوم الاثنين هذا، و ${e('on Mondays')} = كل اثنين:</p>${eb(['The bus leaves on Sundays and Wednesdays.'])}`},
-  {h:'كتابة التاريخ وقراءته',ref:'ص 9',html:`${vt([['dd/mm/yy','بريطانيا وأوروبا','23/09/26'],['mm/dd/yy','أمريكا','09/23/26'],['yyyy-mm-dd','ISO 8601 (دولي)','2026-09-23']],['الصيغة','المكان','مثال'])}<p>ونقرؤه: ${e('the twenty-third of September, twenty twenty-six')}.</p>${eb(['the twenty-third of September, twenty twenty-six'])}`},
-  {h:'الوقت بنظامي 24 و 12 ساعة',ref:'ص 9',html:`${vt([['07.50','7.50 am','seven fifty'],['14.40','2.40 pm','fourteen forty / two forty pm'],['20.05','8.05 pm','twenty oh five / eight oh five pm'],['12.00','12 noon','twelve hundred / twelve o\'clock']],['24 ساعة','12 ساعة','القراءة'])}<p>${e('am')} قبل الظهر و ${e('pm')} بعده. وفي نظام 24 ساعة نقرأ الصفر ${e('oh')}: ${e('09.05 = oh nine oh five')}.</p>`},
-  {h:'دعوة بالتاريخ والوقت',ref:'ص 9',html:dl([['A',"When's the meeting?"],['B',"It's on Sunday."],['A','Is that Sunday the 14th?'],['B',"Yes, that's right."],['A','What time?'],['B','9.30.'],['A','OK. See you then.']])},
+  ...R13.theory,
   {h:'تمارين الكتاب',ref:'ص 8–9',html:
    bk(1,'ص 8','استمع إلى نتائج السباق: أضف المراكز وأكمل الأزمنة.',['(1) 3rd','(2) 3:35.61','(3) 3:34.18','(4) 2nd','(5) 3:36.33','(6) 5th'])+
    bk(2,'ص 8','ضع الأعداد الترتيبية 1st–31st في الجدول واقرأها.',['-st: 1st, 21st, 31st','-nd: 2nd, 22nd','-rd: 3rd, 23rd','-th: 4th–20th, 24th–30th'])+
@@ -254,17 +381,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الترتيبية',title:'الأعداد الترتيبية والتاريخ',q:'لماذا نكتب 22nd لكن 12th؟',ref:'ص 8',
-   art:art(`${[[1,'st'],[2,'nd'],[3,'rd'],[4,'th'],[12,'th'],[22,'nd']].map((x,i)=>`<g data-tip="${x[0]}${x[1]} = ${ORDW[x[0]]}"><rect x="${i%3*100+30}" y="${70+Math.floor(i/3)*100}" width="90" height="70" rx="12" fill="${x[0]===12?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(i%3*100+75,112+Math.floor(i/3)*100,x[0]+x[1],{fs:22,w:700})}</g>`).join('')}`,'أعداد ترتيبية'),
-   cap:'ستة أعداد ترتيبية. 12th بالأصفر لأنها استثناء. مرّر المؤشر على كل منها.',side:[{tip:`11 و 12 و 13 تنتهي دائماً بـ ${e('th')}: ${e('eleventh, twelfth, thirteenth')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر الكتابة الصحيحة:',cases:[{q:'21',opts:[['21st',1],['21th',0]]},{q:'13',opts:[['13rd',0],['13th',1,'13 استثناء.']]},{q:'32? لا يوجد في التاريخ؛ 31',opts:[['31st',1],['31th',0]]}]}),title:'مختبر مصغّر: الترتيبية'}]},
-  {st:2,short:'الأيام والأشهر',title:'الأيام والأشهر و on Mondays',q:'ما الفرق بين on Monday و on Mondays؟',ref:'ص 8',
-   art:art(`${DAYS.map((d,i)=>`<g data-tip="${d}"><rect x="${30+i*43}" y="110" width="40" height="70" rx="8" fill="${[0,3].includes(i)?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(50+i*43,150,d.slice(0,3),{fs:12,w:700})}</g>`).join('')}${TL(180,220,'on Mondays and Thursdays',{fs:14,w:700,c:C.blue})}`,'أيام الأسبوع'),
-   cap:'الأيام الملونة يتكرر فيها الشيء كل أسبوع.',side:[{tip:`${e('on Mondays')} = كل يوم اثنين (تكرار).`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'The flight leaves ___ Fridays.',o:['on','in'],a:0},{s:'The ___ month of the year is March.',o:['third','three'],a:0},{s:'The day after Tuesday is ___.',o:['Wednesday','Thursday'],a:0}]}),title:'مختبر مصغّر: الأيام'}]},
-  {st:3,short:'الوقت',title:'الوقت بنظامي 24 و 12 ساعة',q:'14.40 بنظام 12 ساعة كم؟',ref:'ص 9',art:art(clockArt(14,40)+`${TL(180,282,'14.40 = 2.40 pm',{fs:16,w:700,c:C.blue})}`,'ساعة 2:40'),cap:'الساعة 2:40 بعد الظهر.',
-   side:[{tip:`من 13 إلى 23 اطرح 12 وأضف ${e('pm')}: ${e('14.40 → 2.40 pm')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'حوّل:',cases:[{q:'18.15',opts:[['6.15 pm',1],['8.15 pm',0]]},{q:'09.30',opts:[['9.30 am',1],['9.30 pm',0]]},{q:'7.45 pm',opts:[['19.45',1],['17.45',0]]}]}),title:'مختبر مصغّر: حوّل الوقت'}]},
+  ...R13.stations,
   {recap:['1st 2nd 3rd ثم th، و 11th 12th 13th استثناء.','on Mondays = كل اثنين.','بريطانيا dd/mm/yy، أمريكا mm/dd/yy، ISO yyyy-mm-dd.','نقرأ التاريخ: the twenty-third of September.','الوقت: 14.40 = 2.40 pm، والصفر oh: 09.05 oh nine oh five.']}
  ],
  lab:lab13,

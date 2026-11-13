@@ -47,6 +47,18 @@ Any number with a unit, equation written as text, or equation number like (1-3) 
 M 0.1 / T1 and PLC terms (LAD, FBD, STL) too.
 
 ## Fixed rules
+- «شرح القاعدة» (English courses): one merged section per lesson built with ENK.rule({title,ref,intro,parts:[{t,short,q,ref,old:[old station numbers],
+  lead (an introduction that shows why we need the rule — NO «لماذا نتعلمه؟» label), points:[one idea per line, example on its own line],
+  subs:[{h,points}], grid:{head,rows} (tidy table), ex, pairs:[[wrong,right,why]] (shown side by side), html, art,cap,
+  labs:[builder lab, old quick-check lab]}]}) → theory:[…ماذا ستتعلم, ...R.theory, …] and stations:[{intro:true}, ...R.stations, …].
+  Research the rule in ELT references first, simplify, cover every question a trainee might have. Phrase precisely (e.g. «يمكن أن يسبقه
+  a أو an أو رقم», not a closed list). Update the lesson recap and lab answer notes in the same step.
+- Builder labs: ENK.labB(el,B,{intro,controls:[{k,label,opts:[[v,text]]}],out:s=>({svg,pieces:[[text,'n|k|q|x',role]],say,ar,why,bad})}):
+  coloured sentence pieces with their role under each, a drawing that changes, a reason line, and a red box for a wrong combination.
+  Reuse the same drawings in the explanation and the lab (one source, e.g. PKD in 7.2).
+- Station renumbering: en.js keeps PLCBOOK.stMap[lesson] old→new so book counterpart exercises (bx.js, by original st) stay in place;
+  give each rule part old:[n] for the old station it replaces.
+- Book exercises: never copy their text or pictures; counterparts mirror the structure (same word box, number of gaps, answer order, table shape).
 - «اشرح أولاً» (trainer's standing rule, all courses, all lessons): every rule a lesson needs is EXPLAINED before any
   dialogue, question, example or exercise that uses it — even when the book assumes the trainee already knows it
   (e.g. am/is/are with pronouns before an introductions dialogue). If the book does not explain it, add a short

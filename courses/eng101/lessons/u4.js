@@ -33,16 +33,72 @@ function lab41(el,B){kcss();
  const js=x=>{el.querySelectorAll('[data-j]').forEach(b=>b.classList.toggle('pri',b.dataset.j===x));$('#jo').innerHTML=`${eb(J[x].slice(0,2))}<p class="sub">${J[x][2]}</p>`};
  el.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>js(b.dataset.j));js('wrist');
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 4 ===== */
+const D41={up:[90,'up','إلى الأعلى'],down:[270,'down','إلى الأسفل'],fw:[0,'forwards','إلى الأمام'],bw:[180,'backwards','إلى الخلف'],dup:[45,'diagonally up','مائلاً إلى الأعلى'],ddn:[315,'diagonally down','مائلاً إلى الأسفل']};
+const dsvg41=a=>{const r=a*Math.PI/180,x=110+70*Math.cos(r),y=80-60*Math.sin(r);return `<svg viewBox="0 0 220 160" width="220"><circle cx="110" cy="80" r="8" fill="#555"/>${AR(110,80,x.toFixed(1),y.toFixed(1),'#1f8a5b',6)}</svg>`};
+const LAB41A={title:'الاتجاه',w:(el,B)=>N.labB(el,B,{intro:'اختر الاتجاه، وشاهد السهم والكلمة.',
+ controls:[{k:'d',label:'الاتجاه',opts:Object.keys(D41).map(k=>[k,D41[k][2]])}],
+ out:({d})=>{const [a,w,ar]=D41[d];return{svg:dsvg41(a),pieces:[['It moves','x',''],[w+'.','k',ar]],say:`It moves ${w}.`,why:`${e('straight up')} عمودي تماماً، و ${e('diagonally up')} مائل.`}}})};
+const LAB41B={title:'can أم can\'t؟',w:(el,B)=>N.labB(el,B,{intro:'اختر المركبة والحركة ونوع الجملة. الجملة تُبنى على ما تستطيعه المركبة فعلاً.',
+ controls:[{k:'v',label:'المركبة',opts:[['plane','plane'],['helicopter','helicopter'],['rocket','rocket']]},{k:'m',label:'الحركة',opts:[['backwards','backwards'],['sideways','sideways'],['straight up','straight up'],['forwards','forwards']]},{k:'f',label:'الجملة',opts:[['s','جملة خبرية'],['q','سؤال']]}],
+ out:({v,m,f})=>{const ok=VEH[v].can.includes(m),N0=VEH[v].n,Nc=N0[0].toUpperCase()+N0.slice(1);
+  if(f==='q')return{pieces:[['Can','q','السؤال'],[N0,'n','الفاعل'],['fly','k','الفعل كما هو'],[m+'?','x','']],say:`Can ${N0} fly ${m}?`,ar:ok?'Yes, it can.':"No, it can't.",why:`السؤال: ${e('Can')} + الفاعل + الفعل كما هو. والجواب القصير ${e('Yes, it can.')} أو ${e("No, it can't.")}`};
+  return{pieces:[[Nc,'n','الفاعل'],[ok?'can':"can't",ok?'k':'r',ok?'تستطيع':'لا تستطيع'],['fly','k','الفعل كما هو'],[m+'.','x','']],say:`${Nc} ${ok?'can':"can't"} fly ${m}.`,why:`${e('can')} واحدة مع كل الضمائر، وبعدها الفعل كما هو بلا ${e('s')} ولا ${e('to')}.`}}})};
+const LAB42A={title:'اقرأ السرعة',w:(el,B)=>N.labB(el,B,{intro:'اختر الرقم والوحدة، وشاهد طريقة القراءة.',
+ controls:[{k:'n',label:'الرقم',opts:[['120','120'],['1200','1200'],['9800','9800']]},{k:'u',label:'الوحدة',opts:SP.map(s=>[s[0],s[0]])}],
+ out:({n,u})=>{const W={120:'a hundred and twenty',1200:'one thousand two hundred',9800:'nine thousand eight hundred'}[n],S=SP.find(s=>s[0]===u);
+  return{pieces:[[n+' '+u,'k','نكتب'],['=','x',''],[W,'q','الرقم'],[S[1],'n',S[2]]],say:`${W} ${S[1]}`,why:`الشرطة ${e('/')} نقرؤها ${e('per')} (في كل): ${e('km/h = kilometres per hour')}`}}})};
+const CT42={up:['Push','the joystick','up','away from you'],down:['Pull','the joystick','down','towards you'],left:['Slide','the slider','to the left',''],right:['Slide','the slider','to the right','']};
+const LAB42B={title:'أفعال التحكم',w:(el,B)=>N.labB(el,B,{intro:'اختر الحركة، وشاهد التعليمة.',
+ controls:[{k:'c',label:'الحركة',opts:[['up','ادفع للأعلى'],['down','اسحب للأسفل'],['left','حرّك لليسار'],['right','حرّك لليمين']]}],
+ out:({c})=>{const [v,o,d,x]=CT42[c];return{pieces:[[v,'k',{Push:'ادفع',Pull:'اسحب',Slide:'حرّك بالانزلاق'}[v]],[o,'n','الشيء'],[d+'.','q',x?x:'الاتجاه']],say:`${v} ${o} ${d}.`,why:`${e('push')} بعيداً عنك، و ${e('pull')} نحوك، و ${e('slide')} حركة انزلاق جانبية.`}}})};
+const IT42={a:['Look at the LH stick.','Push it up.','the LH stick'],b:['Take the battery.','Put it in the radio.','the battery'],c:['Slide the stick to the right.','The plane turns right and it goes faster.','the plane']};
+const LAB42C={title:'على من يعود it؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الجملتين، وشاهد على أي اسم يعود it.',
+ controls:[{k:'s',label:'الجمل',opts:[['a','1'],['b','2'],['c','3']]}],
+ out:({s})=>{const [a,b,r]=IT42[s];return{pieces:[[a,'x','الجملة السابقة'],[b,'n','فيها it']],say:`${a} ${b}`,ar:`it = ${r}`,why:`${e('it')} يعود على أقرب اسم مفرد مناسب للمعنى ذُكر قبله.`}}})};
+const AB42={swim:'swim',drive:'drive a truck',fly:'fly a plane',speak:'speak English'};
+const LAB42D={title:'Can you…?',w:(el,B)=>N.labB(el,B,{intro:'اختر المهارة والجواب، وشاهد السؤال والجواب القصير.',
+ controls:[{k:'a',label:'المهارة',opts:Object.keys(AB42).map(k=>[k,AB42[k]])},{k:'y',label:'الجواب',opts:[['y','نعم'],['n','لا']]}],
+ out:({a,y})=>({pieces:[['Can you','q','السؤال'],[AB42[a]+'?','n','الفعل كما هو'],[y==='y'?'Yes, I can.':"No, I can't.",y==='y'?'k':'r','الجواب القصير']],say:`Can you ${AB42[a]}? ${y==='y'?'Yes, I can.':"No, I can't."}`,why:`في الجواب القصير لا نكرر الفعل: ${e('Yes, I can.')}`})})};
+const WH43={b:['push lever B forwards','the fork moves up'],brake:['press the brake pedal','the truck stops'],acc:['press the accelerator','the truck goes faster'],g:['pull the direction lever backwards','the truck reverses']};
+const LAB43A={title:'التعليمة ونتيجتها بـ when',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل، وترتيب الجملة. لاحظ الفاصلة.',
+ controls:[{k:'a',label:'الفعل',opts:Object.keys(WH43).map(k=>[k,WH43[k][0]])},{k:'o',label:'الترتيب',opts:[['1','When أولاً'],['2','النتيجة أولاً']]}],
+ out:({a,o})=>{const [x,r]=WH43[a],R=r[0].toUpperCase()+r.slice(1);return o==='1'?{pieces:[['When you','q','كلما'],[x+',','k','الفعل + فاصلة'],[r+'.','n','النتيجة']],say:`When you ${x}, ${r}.`,why:`إذا بدأت الجملة بـ ${e('When')} نضع فاصلة بعد الجزء الأول.`}
+  :{pieces:[[R,'n','النتيجة'],['when you','q','بلا فاصلة'],[x+'.','k','الفعل']],say:`${R} when you ${x}.`,why:`إذا بدأنا بالنتيجة لا نضع فاصلة.`}}})};
+const R41=N.rule({title:'الاتجاهات، والقدرة بـ can، والدوران',ref:'ص 26–27',
+ intro:`في هذا الدرس نصف كيف تتحرك المركبات والأذرع الآلية: نتعلم كلمات الاتجاه، ثم كيف نقول إن شيئاً «يستطيع» أو «لا يستطيع» الحركة بـ ${e('can')}، ثم الدوران والمفاصل.`,
+ parts:[
+ {t:'الاتجاهات والخطوط',short:'الاتجاهات',old:[1],q:'ما الفرق بين straight up و diagonally up؟',ref:'ص 26',
+  lead:`قبل أن نصف الحركة نحتاج كلمات الاتجاه. وكثير منها أزواج متضادة.`,
+  points:[`${e('up ≠ down')}، و ${e('forwards ≠ backwards')}، و ${e('sideways')} جانبياً.`,`${e('straight up')} عمودياً تماماً، و ${e('diagonally up')} مائلاً.`,`والخطوط: ${e('vertical')} عمودي، و ${e('horizontal')} أفقي، و ${e('diagonal')} مائل.`],
+  html:vt(DIRS,['English','المعنى'])+vt([['vertical line','خط عمودي'],['horizontal line','خط أفقي'],['diagonal line','خط مائل'],['straight up = vertically up','عمودياً إلى الأعلى']],['English','المعنى']),
+  labs:[LAB41A,{title:'الاتجاه',w:(el,B)=>N.cases(el,B,{intro:'ما الاتجاه؟',cases:[{q:'↑',opts:[['up',1],['down',0]]},{q:'↗',opts:[['diagonally up',1],['straight up',0]]},{q:'←  (إلى الخلف)',opts:[['backwards',1],['forwards',0]]}]})}]},
+ {t:'القدرة بـ can و can\'t',short:'can',old:[2],q:'هل تطير الطائرة إلى الخلف؟ كيف تجيب؟',ref:'ص 26',
+  lead:`عندما نقارن المركبات نقول ما تستطيعه وما لا تستطيعه. ونستعمل لذلك ${e('can')}، وهي من أسهل القواعد لأنها لا تتغير.`,
+  points:[`<b>${e('can')} واحدة مع كل الضمائر:</b> ${e('I can · he can · it can · they can')}`,`<b>بعدها الفعل كما هو</b>، بلا ${e('s')} ولا ${e('to')}: ${e('A helicopter can fly backwards.')}`,
+   `<b>النفي:</b> ${e('cannot')} (كلمة واحدة)، واختصارها ${e("can't")}: ${e("A plane can't fly backwards.")}`,`<b>السؤال:</b> نقدّم ${e('can')}: ${e('Can it fly sideways?')} والجواب ${e("Yes, it can. / No, it can't.")}`],
+  grid:{head:['الجملة','مثال'],rows:[['إثبات','It can fly sideways.'],['نفي',"It can't fly sideways."],['سؤال','Can it fly sideways?'],['جواب قصير',"Yes, it can. / No, it can't."]]},
+  pairs:[['It can flies.','It can fly.','بعد can الفعل بلا s.'],['It can to fly.','It can fly.','لا نضع to بعد can.'],['It can not fly.',"It cannot fly. / It can't fly.",'cannot كلمة واحدة.']],
+  art:art(`<g data-tip="can + الفعل كما هو."><rect x="30" y="56" width="300" height="52" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,88,'A helicopter can fly backwards.',{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="can't = cannot."><rect x="30" y="128" width="300" height="52" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,160,"A plane can't fly backwards.",{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="السؤال: Can + الفاعل + الفعل؟"><rect x="30" y="200" width="300" height="52" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,232,"Can it rotate? — Yes, it can.",{fs:14,w:700})}</g>`,'can'),cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',labs:[LAB41B,{title:'can',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'A plane ___ fly sideways.',o:["can't",'can'],a:0},{s:'___ a helicopter fly backwards?',o:['Can','Does'],a:0},{s:'It can ___ on its axis.',o:['rotate','rotates'],a:0},{s:"No, it ___.",o:["can't","doesn't can"],a:0}]})}]},
+ {t:'الدوران والمفاصل',short:'الدوران',old:[3],q:'في كم اتجاهاً يتحرك المرفق؟',ref:'ص 27',
+  lead:`الذراع الآلية تشبه ذراع الإنسان: فيها مفاصل، وكل مفصل يدور حول محور بعدد من الدرجات.`,
+  points:[`${e('rotate')} يدور، و ${e('axis')} المحور، و ${e('pivot')} نقطة الارتكاز.`,`المفاصل: ${e('wrist')} الرسغ، و ${e('elbow')} المرفق، و ${e('shoulder')} الكتف.`,`ونصف حركتها بـ ${e('can')}: ${e('The wrist can move in three directions.')} ${e('The elbow can only move in one direction.')}`],
+  html:vt([['rotate','يدور'],['axis','محور'],['pivot','نقطة ارتكاز (مفصل)'],['wrist','الرسغ'],['elbow','المرفق'],['shoulder','الكتف'],['forearm','الساعد'],['degrees (°)','درجات']],['English','المعنى']),
+  art:art(`<line x1="70" y1="80" x2="180" y2="150" stroke="${C.yel}" stroke-width="22" stroke-linecap="round"/><line x1="180" y1="150" x2="290" y2="110" stroke="${C.yel}" stroke-width="18" stroke-linecap="round"/>
+    <g data-tip="shoulder — الكتف: ثلاث حركات (up and down، sideways، rotate)."><circle cx="70" cy="80" r="16" fill="${C.red}"/>${TL(70,50,'shoulder',{fs:12,w:700})}</g>
+    <g data-tip="elbow — المرفق: حركة واحدة (up and down)."><circle cx="180" cy="150" r="14" fill="${C.red}"/>${TL(180,190,'elbow',{fs:12,w:700})}</g>
+    <g data-tip="wrist — الرسغ: ثلاث حركات."><circle cx="290" cy="110" r="12" fill="${C.red}"/>${TL(300,80,'wrist',{fs:12,w:700})}</g>
+    <g data-tip="pivot — نقطة الارتكاز. للذراع ثلاث نقاط ارتكاز.">${TL(180,250,'3 pivots → 7 directions',{fs:14,w:700})}</g>`,'مفاصل الذراع'),cap:'ذراع من رسمنا بثلاثة مفاصل. مرّر المؤشر على كل مفصل.',labs:[{title:'المفاصل',w:(el,B)=>N.cases(el,B,{intro:'كم اتجاهاً؟',cases:[{q:'the elbow',opts:[['one',1],['three',0]]},{q:'the wrist',opts:[['three',1],['one',0]]},{q:'the whole arm',opts:[['seven',1],['four',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u4-l1',unit:4,order:1,pages:'26–27',
  title:'Directions — الاتجاهات',
  summary:'كلمات الاتجاه (up، down، forwards، backwards، sideways، straight، diagonally)، والخطوط (vertical، horizontal، diagonal)، والقدرة بـ can / can\'t في الإثبات والسؤال والجواب القصير، والدوران rotate حول محور، وحركات الذراع والمفاصل (wrist، elbow، shoulder، pivot).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 26–27',html:`<p>تصف كيف يتحرك شيء: طائرة، مروحية، ذراع روبوت. ستتعلم:</p><ol><li>كلمات الاتجاه.</li><li>${e('can / can\'t')} للقدرة.</li><li>الدوران ${e('rotate')} والمحور ${e('axis')}.</li><li>مفاصل الذراع وحركاتها.</li></ol>`},
-  {h:'كلمات الاتجاه والخطوط',ref:'ص 26',html:`${vt(DIRS,['English','المعنى'])}${vt([['vertical line','خط عمودي'],['horizontal line','خط أفقي'],['diagonal line','خط مائل'],['straight up = vertically up','عمودياً إلى الأعلى']],['English','المعنى'])}`},
-  {h:'can / can\'t',ref:'ص 26',html:`${vt([['It can fly sideways.','إثبات'],["They can't (cannot) fly sideways.",'نفي'],['Can it fly sideways?','سؤال'],["Yes, it can. / No, it can't.",'جواب قصير']],['English','القاعدة'])}<p>${e('can')} واحدة لكل الضمائر، وبعدها الفعل كما هو بلا ${e('s')} ولا ${e('to')}.</p>${eb(['A helicopter can fly backwards.',"A plane can't fly backwards."])}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">cannot</span> تُكتب كلمة واحدة، واختصارها <span class="en">can\'t</span>.'},
-  {h:'الدوران والمفاصل',ref:'ص 27',html:`${vt([['rotate','يدور'],['axis','محور'],['pivot','نقطة ارتكاز (مفصل)'],['wrist','الرسغ'],['elbow','المرفق'],['shoulder','الكتف'],['forearm','الساعد'],['degrees (°)','درجات']],['English','المعنى'])}${eb(['The wrist can move in three directions.','The elbow can only move in one direction.'])}`},
+  ...R41.theory,
   {h:'تمارين الكتاب',ref:'ص 26–27',html:
    bk(1,'ص 26','سمِّ حركات رجل الحقيبة النفاثة بكلمات الصندوق.',['1 up','4 down','2، 3، 5: forwards / backwards / sideways حسب الأسهم في الصورة'],'من قراءتنا للصورة.')+
    bk(2,'ص 26','أي الاتجاهات تطير فيها الطائرة والمروحية؟',['الطائرة: forwards ✓ · backwards ✗ · up and down (مائلاً فقط) · sideways ✗','المروحية: كل الاتجاهات ✓'])+
@@ -59,23 +115,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'كلمات الاتجاه',title:'الاتجاهات',q:'ما الفرق بين straight up و diagonally up؟',ref:'ص 26',art:dirArt(),cap:'أسهم الاتجاهات حولك. مرّر المؤشر على كل سهم.',
-   side:[{tip:`${e('straight up')} عمودي تماماً، و ${e('diagonally up')} مائل.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الاتجاه؟',cases:[{q:'↑',opts:[['up',1],['down',0]]},{q:'↗',opts:[['diagonally up',1],['straight up',0]]},{q:'←  (إلى الخلف)',opts:[['backwards',1],['forwards',0]]}]}),title:'مختبر مصغّر: الاتجاه'}]},
-  {st:2,short:'can / can\'t',title:'القدرة بـ can',q:'هل تطير الطائرة إلى الخلف؟ كيف تجيب؟',ref:'ص 26',
-   art:art(`<g data-tip="can + الفعل كما هو."><rect x="30" y="56" width="300" height="52" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,88,'A helicopter can fly backwards.',{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="can't = cannot."><rect x="30" y="128" width="300" height="52" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,160,"A plane can't fly backwards.",{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="السؤال: Can + الفاعل + الفعل؟"><rect x="30" y="200" width="300" height="52" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,232,"Can it rotate? — Yes, it can.",{fs:14,w:700})}</g>`,'can'),
-   cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',side:[{tip:`لا نضيف ${e('s')} بعد ${e('can')}: ${e('It can fly.')} لا ${e('It can flies.')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'A plane ___ fly sideways.',o:["can't",'can'],a:0},{s:'___ a helicopter fly backwards?',o:['Can','Does'],a:0},{s:'It can ___ on its axis.',o:['rotate','rotates'],a:0},{s:"No, it ___.",o:["can't","doesn't can"],a:0}]}),title:'مختبر مصغّر: can'}]},
-  {st:3,short:'المفاصل',title:'الذراع ومفاصلها',q:'كم اتجاهاً يتحرك المرفق؟',ref:'ص 27',
-   art:art(`<line x1="70" y1="80" x2="180" y2="150" stroke="${C.yel}" stroke-width="22" stroke-linecap="round"/><line x1="180" y1="150" x2="290" y2="110" stroke="${C.yel}" stroke-width="18" stroke-linecap="round"/>
-    <g data-tip="shoulder — الكتف: ثلاث حركات (up and down، sideways، rotate)."><circle cx="70" cy="80" r="16" fill="${C.red}"/>${TL(70,50,'shoulder',{fs:12,w:700})}</g>
-    <g data-tip="elbow — المرفق: حركة واحدة (up and down)."><circle cx="180" cy="150" r="14" fill="${C.red}"/>${TL(180,190,'elbow',{fs:12,w:700})}</g>
-    <g data-tip="wrist — الرسغ: ثلاث حركات."><circle cx="290" cy="110" r="12" fill="${C.red}"/>${TL(300,80,'wrist',{fs:12,w:700})}</g>
-    <g data-tip="pivot — نقطة الارتكاز. للذراع ثلاث نقاط ارتكاز.">${TL(180,250,'3 pivots → 7 directions',{fs:14,w:700})}</g>`,'مفاصل الذراع'),
-   cap:'ذراع من رسمنا بثلاثة مفاصل. مرّر المؤشر على كل مفصل.',side:[{tip:`3 (الرسغ) + 1 (المرفق) + 3 (الكتف) = 7 اتجاهات، كما في نص ص 27.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'كم اتجاهاً؟',cases:[{q:'the elbow',opts:[['one',1],['three',0]]},{q:'the wrist',opts:[['three',1],['one',0]]},{q:'the whole arm',opts:[['seven',1],['four',0]]}]}),title:'مختبر مصغّر: المفاصل'}]},
+  ...R41.stations,
   {recap:['up, down, forwards, backwards, sideways.','straight up (عمودي) ≠ diagonally up (مائل).','can / can\'t + الفعل كما هو.','Can it…? — Yes, it can. / No, it can\'t.','rotate on an axis؛ الذراع: wrist, elbow, shoulder.']}
  ],
  lab:lab41,
@@ -124,17 +164,36 @@ function lab42(el,B){kcss();
   const k=$('#ku').value==='k';const r=k?v/1.609:v*1.609;$('#ko').innerHTML=eb(`${v.toLocaleString('en')} ${k?'km/h':'mph'} = about ${Math.round(r).toLocaleString('en')} ${k?'mph':'km/h'}`)+w};
  ['kv','ku'].forEach(k=>$('#'+k).addEventListener('input',cv));cv();
 }
+const R42=N.rule({title:'السرعة، وأفعال التحكم، والضمير it، و Can you…?',ref:'ص 28–29',
+ intro:`في هذا الدرس نقرأ عن سرعة الطائرات والأقراص، ثم عن جهاز التحكم بطائرة نموذجية. نشرح وحدات السرعة، ثم أفعال التحكم، ثم كيف نعرف على من يعود ${e('it')}، ثم السؤال عن المهارات بـ ${e('Can you…?')}`,
+ parts:[
+ {t:'السرعة ووحداتها',short:'per',old:[1],q:'كيف تقرأ 1200 km/h؟',ref:'ص 28',
+  lead:`السرعة مقدار في وحدة زمن: كم كيلومتراً في الساعة، أو كم دورة في الدقيقة.`,
+  points:[`<b>الشرطة ${e('/')}</b> نقرؤها ${e('per')} أي «في كل»: ${e('km/h = kilometres per hour')}`,`${e('rpm = revolutions per minute')}، و ${e('1 revolution = 360°')}`,`<b>الأرقام الكبيرة</b> بالآلاف: ${e('67,000 = sixty-seven thousand')}`],
+  html:vt(SP,['الرمز','نقرؤه','المعنى'])+eb(['Sound travels at about 1200 kilometres per hour.','A fast CD-ROM can rotate at 9800 revolutions per minute.']),
+  art:art(`${SP.map((x,i)=>`<g data-tip="${x[0]} = ${x[1]} — ${x[2]}"><rect x="30" y="${40+i*58}" width="300" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(80,68+i*58,x[0],{fs:15,w:700})}${TL(225,68+i*58,x[1],{fs:12})}</g>`).join('')}`,'وحدات السرعة'),cap:'أربع وحدات. مرّر المؤشر على كل منها.',labs:[LAB42A,{title:'القراءة',w:(el,B)=>N.cases(el,B,{intro:'كيف نقرأ؟',cases:[{q:'120 km/h',opts:[['a hundred and twenty kilometres per hour',1],['a hundred and twenty kilo hours',0]]},{q:'9800 rpm',opts:[['nine thousand eight hundred revolutions per minute',1],['nine thousand eight hundred rotations per hour',0]]}]})}]},
+ {t:'جهاز التحكم وأفعاله',short:'push · pull · slide',old:[2],q:'ما الفرق بين push و pull؟',ref:'ص 28–29',
+  lead:`تعليمات جهاز التحكم تخبرك أي قطعة تحرك وفي أي اتجاه. ولكل حركة فعل.`,
+  points:[`${e('push')} ادفع (بعيداً عنك)، و ${e('pull')} اسحب (نحوك)، و ${e('slide')} حرّك بالانزلاق.`,`والتعليمة: فعل + الشيء + الاتجاه: ${e('Push the joystick up.')}`,`وأفعال حركة الطائرة أزواج: ${e('accelerate ≠ slow down')}، و ${e('ascend ≠ descend')}.`],
+  html:vt([['joystick','عصا التحكم'],['slider','منزلقة'],['switch','مفتاح'],['push … up (away from you)','ادفع للأعلى (بعيداً عنك)'],['pull … down (towards you)','اسحب للأسفل (نحوك)'],['slide … to the left','حرّك بالانزلاق لليسار'],['accelerate ≠ slow down','يسرّع ≠ يبطئ'],['ascend ≠ descend','يصعد ≠ ينزل'],['roll / tilt','يتدحرج (يميل جانبياً) / يميل']],['English','المعنى']),
+  labs:[LAB42B,{title:'ماذا يحدث؟',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Push the LH stick up and the plane ___.',o:['accelerates','slows down'],a:0},{s:'Pull the RH stick down and the plane ___.',o:['ascends','descends'],a:0},{s:'Slide the LH stick to the left and the plane turns ___.',o:['left','right'],a:0}]})}]},
+ {t:'الضمير it',short:'it',q:'في Push it up، ما معنى it؟',ref:'ص 29',
+  lead:`في التعليمات لا نكرر اسم الشيء في كل جملة، بل نضع مكانه ${e('it')}. ولتفهم التعليمة يجب أن تعرف على ماذا يعود.`,
+  points:[`${e('it')} يعود على اسم مفرد ذُكر قبله.`,`اقرأ الجملة السابقة وابحث عن الاسم المناسب للمعنى: ${e('Look at the LH stick. Push it up.')} هنا ${e('it = the LH stick')}`,`وللجمع نستعمل ${e('them')}: ${e('Take the nuts. Tighten them.')}`],
+  labs:[LAB42C]},
+ {t:'Can you…?',short:'Can you…?',q:'كيف تسأل زميلك هل يستطيع قيادة شاحنة؟',ref:'ص 29',
+  lead:`نستعمل ${e('can')} أيضاً للسؤال عن مهارات الناس.`,
+  points:[`السؤال: ${e('Can you swim?')}`,`الجواب القصير: ${e("Yes, I can. / No, I can't.")}`,`ولنرد السؤال: ${e('Can you?')}`],
+  html:dl([['A','Can you swim?'],['B','Yes, I can. Can you?'],['A','Yes, I can. Can you drive a truck?'],['B',"No, I can't."]]),
+  labs:[LAB42D]}
+ ]});
 B.lesson({
  id:'u4-l2',unit:4,order:2,pages:'28–29',
  title:'Instructions — التعليمات',
  summary:'وحدات السرعة (km/h، mph، m/s، rpm) وقراءة الأرقام الكبيرة، وأجزاء جهاز التحكم بالطائرة (joystick، slider، switch، antenna)، وأفعال الحركة (push، pull، slide، accelerate، slow down، ascend ≠ descend، roll)، والضمير it ومرجعه في النص، وسؤال القدرة Can you…?',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 28–29',html:`<p>تقرأ دليل استعمال جهاز وتتبع تعليماته. ستتعلم:</p><ol><li>وحدات السرعة.</li><li>أجزاء جهاز التحكم.</li><li>أفعال الحركة: ${e('push, pull, slide')}.</li><li>${e('Can you…?')} عن مهاراتك.</li></ol>`},
-  {h:'وحدات السرعة',ref:'ص 28',html:`${vt(SP,['الرمز','نقرؤه','المعنى'])}${eb(['Sound travels at about 1200 kilometres per hour.','A fast CD-ROM can rotate at 9800 revolutions per minute.'])}<p>1 revolution = 1 rotation = 360°.</p>`},
-  {note:'<b>توضيح للمتدرب:</b> الأرقام الكبيرة تُقرأ بالآلاف: <span class="en">67,000 = sixty-seven thousand</span>، و <span class="en">1228 = one thousand two hundred and twenty-eight</span>.'},
-  {h:'جهاز التحكم وأفعاله',ref:'ص 28–29',html:`${vt([['joystick','عصا التحكم'],['slider','منزلقة'],['switch','مفتاح'],['push … up (away from you)','ادفع للأعلى (بعيداً عنك)'],['pull … down (towards you)','اسحب للأسفل (نحوك)'],['slide … to the left','حرّك بالانزلاق لليسار'],['accelerate ≠ slow down','يسرّع ≠ يبطئ'],['ascend ≠ descend','يصعد ≠ ينزل'],['roll / tilt','يتدحرج (يميل جانبياً) / يميل']],['English','المعنى'])}`},
-  {h:'الضمير it',ref:'ص 29',html:`<p>${e('it')} يعود على اسم مفرد ذُكر قبله. اقرأ الجملة السابقة لتعرف ما هو:</p>${eb(['Look at the LH stick. Push it up. (it = the LH stick)','Slide the stick to the right and it turns right. (it = the plane)'])}`},
-  {h:'Can you…?',ref:'ص 29',html:dl([['A','Can you swim?'],['B','Yes, I can. Can you?'],['A','Yes, I can. Can you drive a truck?'],['B',"No, I can't."]])},
+  ...R42.theory,
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
    bk(1,'ص 28','اختبار: ما السرعات؟',['1 b) 9800 rpm','2 b) 1200 km/h (746 mph)','3 a) 1228 km/h (763 mph)','4 a) 154 m/s <span class="sub">(إضافة من خارج الكتاب: الرقم القياسي الرسمي المسجّل منذ 1978 نحو 511 km/h، أي قرابة 142 m/s)</span>','5 a) 1000 mph (1609 km/h)','6 a) 67,000 mph (107,825 km/h)'])+
    bk(2,'ص 28','استمع وتحقق من إجاباتك.',null)+bk(3,'ص 28','مع زميلك: أملِ عليه سرعات.',null)+
@@ -149,13 +208,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'وحدات السرعة',title:'السرعة ووحداتها',q:'كيف تقرأ km/h و rpm؟',ref:'ص 28',
-   art:art(`${SP.map((x,i)=>`<g data-tip="${x[0]} = ${x[1]} — ${x[2]}"><rect x="30" y="${40+i*58}" width="300" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(80,68+i*58,x[0],{fs:15,w:700})}${TL(225,68+i*58,x[1],{fs:12})}</g>`).join('')}`,'وحدات السرعة'),
-   cap:'أربع وحدات. مرّر المؤشر على كل منها.',side:[{tip:`${e('per')} = لكل: ${e('kilometres per hour')} = كيلومترات لكل ساعة.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'كيف نقرأ؟',cases:[{q:'120 km/h',opts:[['a hundred and twenty kilometres per hour',1],['a hundred and twenty kilo hours',0]]},{q:'9800 rpm',opts:[['nine thousand eight hundred revolutions per minute',1],['nine thousand eight hundred rotations per hour',0]]}]}),title:'مختبر مصغّر: القراءة'}]},
-  {st:2,short:'جهاز التحكم',title:'push · pull · slide',q:'ماذا يحدث إذا سحبت العصا اليسرى نحوك؟',ref:'ص 28–29',art:txArt(),cap:'جهاز تحكم من رسمنا. مرّر المؤشر على كل جزء.',
-   side:[{tip:`${e('push')} = ادفع بعيداً عنك، و ${e('pull')} = اسحب نحوك.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Push the LH stick up and the plane ___.',o:['accelerates','slows down'],a:0},{s:'Pull the RH stick down and the plane ___.',o:['ascends','descends'],a:0},{s:'Slide the LH stick to the left and the plane turns ___.',o:['left','right'],a:0}]}),title:'مختبر مصغّر: ماذا يحدث؟'}]},
+  ...R42.stations,
   {recap:['km/h, mph, m/s, rpm.','push (بعيداً) ≠ pull (نحوك)، slide.','accelerate ≠ slow down، ascend ≠ descend.','it يعود على اسم مفرد قبله.','Can you swim? — Yes, I can. / No, I can\'t.']}
  ],
  lab:lab42,
@@ -190,16 +243,35 @@ function lab43(el,B){kcss();
  $('#a').addEventListener('input',sh);sh();
  el.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{$('#dro').innerHTML=eb(b.dataset.x);N.speak(b.dataset.x)});
 }
+const R43=N.rule({title:'أدوات التحكم في الرافعة، و when، وتعليمات القيادة',ref:'ص 30–31',
+ intro:`في هذا الدرس نتعلم تشغيل رافعة شوكية: أدوات التحكم وحركاتها، ثم كيف نصف التعليمة ونتيجتها بـ ${e('when')}، ثم تعليمات القيادة.`,
+ parts:[
+ {t:'أدوات التحكم والحركات',short:'أدوات التحكم',old:[1],q:'ما الفرق بين moves up و tilts up؟',ref:'ص 30',
+  lead:`في الرافعة أدوات باليد وأدوات بالقدم، وكل أداة تحرك جزءاً بطريقة معينة.`,
+  points:[`${e('lever')} ذراع باليد، و ${e('pedal')} دواسة بالقدم، و ${e('steering wheel')} المقود.`,`${e('brake ≠ accelerator')} (الفرامل ≠ دواسة السرعة).`,`${e('moves up')} ترتفع كلها، و ${e('tilts up')} تميل للأعلى.`,`${e('reverses = goes backwards')}، و ${e('turn round')} تستدير.`],
+  html:vt(FK.map(x=>[x[0],x[1],x[2]]),['الحرف في رسم الكتاب','الأداة','ماذا تفعل'])+vt([['moves up / down','ترتفع / تنخفض (كلها)'],['tilts up / down','تميل للأعلى / للأسفل'],['moves forwards','تتقدم'],['reverses = goes backwards','ترجع إلى الخلف'],['turns left / right','تنعطف'],['turn round = do a U-turn','تستدير (دوران كامل)']],['English','المعنى']),
+  art:art(`<g data-tip="steering wheel — المقود: يدير الشاحنة يميناً ويساراً."><circle cx="120" cy="110" r="52" fill="none" stroke="${C.ink}" stroke-width="8"/><circle cx="120" cy="110" r="10" fill="${C.ink}"/>${TL(120,40,'steering wheel',{fs:12,w:700})}</g>
+    <g data-tip="lever — ذراع: تدفعه للأمام أو تسحبه للخلف."><line x1="250" y1="150" x2="250" y2="70" stroke="${C.ink}" stroke-width="6"/><circle cx="250" cy="66" r="12" fill="${C.red}"/>${TL(250,46,'lever',{fs:12,w:700})}</g>
+    <g data-tip="pedal — دواسة: تضغطها بقدمك. اليسرى للفرامل (brake) واليمنى للتسريع (accelerator)."><rect x="80" y="210" width="60" height="30" rx="6" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/><rect x="170" y="200" width="30" height="44" rx="6" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(140,268,'pedals: brake · accelerator',{fs:12,w:700})}</g>`,'أدوات التحكم'),cap:'ثلاث أدوات تحكم من رسمنا. مرّر المؤشر على كل منها.',labs:[{title:'الأداة',w:(el,B)=>N.cases(el,B,{intro:'أي أداة؟',cases:[{q:'You press it with your foot to stop.',opts:[['the brake pedal',1],['the steering wheel',0]]},{q:'It turns the truck left and right.',opts:[['the steering wheel',1],['the accelerator',0]]},{q:'You press it to go faster.',opts:[['the accelerator',1],['the brake',0]]}]})}]},
+ {t:'التعليمة ونتيجتها بـ when',short:'when',old:[2],q:'متى نضع فاصلة في جملة when؟',ref:'ص 31',
+  lead:`دليل التشغيل يربط كل حركة بنتيجتها: إذا فعلت كذا حدث كذا. ونستعمل لذلك ${e('when')} (عندما / كلما).`,
+  points:[`<b>الترتيب الأول:</b> ${e('When you')} + الفعل، ثم <b>فاصلة</b>، ثم النتيجة: ${e('When you press the brake pedal, the truck stops.')}`,`<b>الترتيب الثاني:</b> النتيجة أولاً، ثم ${e('when you')} <b>بلا فاصلة</b>: ${e('The truck stops when you press the brake pedal.')}`,
+   `${e('you')} هنا تعني «أي شخص»، لا شخصاً معيناً.`,`والفعلان في المضارع البسيط، فمع ${e('the truck')} نضيف ${e('s')}: ${e('stops')}`],
+  pairs:[['When you press the pedal the truck stops.','When you press the pedal, the truck stops.','بعد جزء When نضع فاصلة.'],['When you press the pedal, the truck stop.','When you press the pedal, the truck stops.','the truck = it، فنضيف s.']],
+  art:art(`<g data-tip="الجزء الأول: When + you + الحركة، ثم فاصلة."><rect x="20" y="90" width="170" height="70" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(105,120,'When you press',{fs:13,w:700})}${TL(105,142,'the brake pedal,',{fs:13,w:700})}</g>
+    ${AR(192,125,214,125,C.ink,3)}<g data-tip="الجزء الثاني: النتيجة."><rect x="216" y="90" width="130" height="70" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(281,131,'the truck stops.',{fs:13,w:700,c:'#fff'})}</g>`,'when you'),cap:'الحركة ثم النتيجة. مرّر المؤشر على كل جزء.',labs:[LAB43A,{title:'when',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'___ you press the accelerator, the truck goes faster.',o:['When','What'],a:0},{s:'When you pull lever G backwards, the truck ___.',o:['reverses','reverse'],a:0},{s:'When you push lever B forwards, the fork ___ up.',o:['moves','move'],a:0}]})}]},
+ {t:'تعليمات القيادة',short:'التعليمات',old:[3],q:'كيف يعطي المدرب تعليماته؟',ref:'ص 31',
+  lead:`مدرب القيادة يعطي تعليمات قصيرة بفعل الأمر.`,
+  points:[`التعليمة تبدأ بالفعل بلا فاعل: ${e('Drive forwards. Reverse. Slow down. Turn round.')}`],
+  art:art(`${[['Drive forwards.','تقدّم'],['Reverse.','ارجع للخلف'],['Slow down.','خفّف السرعة'],['Turn round.','استدر']].map((x,i)=>`<g data-tip="${x[0]} — ${x[1]}"><rect x="40" y="${40+i*58}" width="280" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,68+i*58,x[0],{fs:15,w:700})}</g>`).join('')}`,'تعليمات القيادة'),cap:'أربع تعليمات بفعل الأمر. مرّر المؤشر على كل منها.',labs:[{title:'التعليمة',w:(el,B)=>N.cases(el,B,{intro:'ما التعليمة؟',cases:[{q:'تريد أن يرجع إلى الخلف.',opts:[['Reverse.',1],['Drive forwards.',0]]},{q:'تريده أن يستدير ويعود.',opts:[['Turn round.',1],['Turn left.',0]]},{q:'السرعة عالية.',opts:[['Slow down.',1],['Go faster.',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u4-l3',unit:4,order:3,pages:'30–31',
  title:'Actions — الأفعال',
  summary:'أدوات التحكم في الرافعة الشوكية (lever، pedal، steering wheel، brake، accelerator، fork)، وحركاتها (moves up/down، tilts up/down، reverses)، وتعليمات القيادة بفعل الأمر (Drive forwards، Slow down، Turn round)، وجمل الشرط والنتيجة بـ when و you.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 30–31',html:`<p>تشرح كيف تُشغَّل آلة. ستتعلم:</p><ol><li>أدوات التحكم في الرافعة الشوكية.</li><li>حركات الشوكة والشاحنة.</li><li>تعليمات القيادة بفعل الأمر.</li><li>${e('When you …, …')}</li></ol>`},
-  {h:'أدوات التحكم',ref:'ص 30',html:`${vt(FK.map(x=>[x[0],x[1],x[2]]),['الحرف في رسم الكتاب','الأداة','ماذا تفعل'])}<p>هذا جدول إجابة التمرين 2 مع وظيفة كل أداة من نص الدليل.</p>`},
-  {h:'الحركات',ref:'ص 30',html:vt([['moves up / down','ترتفع / تنخفض (كلها)'],['tilts up / down','تميل للأعلى / للأسفل'],['moves forwards','تتقدم'],['reverses = goes backwards','ترجع إلى الخلف'],['turns left / right','تنعطف'],['turn round = do a U-turn','تستدير (دوران كامل)']],['English','المعنى'])},
-  {h:'when + you',ref:'ص 31',html:`<p>نصف النتيجة التي تحدث كلما فعلنا شيئاً:</p>${eb(['When you push lever B forwards, the fork moves up.','When you press the brake pedal, the truck stops.'])}<p>إذا بدأت الجملة بـ ${e('When')} نضع فاصلة بعد الجزء الأول. ويمكن قلبها بلا فاصلة: ${e('The truck stops when you press the brake pedal.')}</p>`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">you</span> هنا تعني «أي شخص»، لا شخصاً معيناً.'},
+  ...R43.theory,
   {h:'تمارين الكتاب',ref:'ص 30–31',html:
    bk(1,'ص 30','انظر إلى الرسم وأجب.',['1 two pedals','2 four levers (G, B, C, D)','3 on the left'],'من قراءتنا للرسم.')+
    bk(2,'ص 30','اكتب حروف الرسم بجانب أدوات التحكم.',['1 G','2 A','3 B','4 C','5 D','6 F','7 E'])+
@@ -211,21 +283,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أدوات التحكم',title:'أدوات التحكم في الرافعة',q:'ما الفرق بين الذراع (lever) والدواسة (pedal)؟',ref:'ص 30',
-   art:art(`<g data-tip="steering wheel — المقود: يدير الشاحنة يميناً ويساراً."><circle cx="120" cy="110" r="52" fill="none" stroke="${C.ink}" stroke-width="8"/><circle cx="120" cy="110" r="10" fill="${C.ink}"/>${TL(120,40,'steering wheel',{fs:12,w:700})}</g>
-    <g data-tip="lever — ذراع: تدفعه للأمام أو تسحبه للخلف."><line x1="250" y1="150" x2="250" y2="70" stroke="${C.ink}" stroke-width="6"/><circle cx="250" cy="66" r="12" fill="${C.red}"/>${TL(250,46,'lever',{fs:12,w:700})}</g>
-    <g data-tip="pedal — دواسة: تضغطها بقدمك. اليسرى للفرامل (brake) واليمنى للتسريع (accelerator)."><rect x="80" y="210" width="60" height="30" rx="6" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/><rect x="170" y="200" width="30" height="44" rx="6" fill="${C.mut}" stroke="${C.ink}" stroke-width="2"/>${TL(140,268,'pedals: brake · accelerator',{fs:12,w:700})}</g>`,'أدوات التحكم'),
-   cap:'ثلاث أدوات تحكم من رسمنا. مرّر المؤشر على كل منها.',side:[{tip:`${e('lever')} باليد، و ${e('pedal')} بالقدم.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أي أداة؟',cases:[{q:'You press it with your foot to stop.',opts:[['the brake pedal',1],['the steering wheel',0]]},{q:'It turns the truck left and right.',opts:[['the steering wheel',1],['the accelerator',0]]},{q:'You press it to go faster.',opts:[['the accelerator',1],['the brake',0]]}]}),title:'مختبر مصغّر: الأداة'}]},
-  {st:2,short:'When you…',title:'التعليمة ونتيجتها بـ when',q:'كيف تربط الحركة بنتيجتها في جملة واحدة؟',ref:'ص 31',
-   art:art(`<g data-tip="الجزء الأول: When + you + الحركة، ثم فاصلة."><rect x="20" y="90" width="170" height="70" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(105,120,'When you press',{fs:13,w:700})}${TL(105,142,'the brake pedal,',{fs:13,w:700})}</g>
-    ${AR(192,125,214,125,C.ink,3)}<g data-tip="الجزء الثاني: النتيجة."><rect x="216" y="90" width="130" height="70" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(281,131,'the truck stops.',{fs:13,w:700,c:'#fff'})}</g>`,'when you'),
-   cap:'الحركة ثم النتيجة. مرّر المؤشر على كل جزء.',side:[{tip:`فعل النتيجة مع ${e('the truck / the fork')} يأخذ ${e('s')}: ${e('stops, moves, tilts')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'___ you press the accelerator, the truck goes faster.',o:['When','What'],a:0},{s:'When you pull lever G backwards, the truck ___.',o:['reverses','reverse'],a:0},{s:'When you push lever B forwards, the fork ___ up.',o:['moves','move'],a:0}]}),title:'مختبر مصغّر: when'}]},
-  {st:3,short:'تعليمات القيادة',title:'تعليمات القيادة',q:'كيف يعطي المدرب تعليماته؟',ref:'ص 31',
-   art:art(`${[['Drive forwards.','تقدّم'],['Reverse.','ارجع للخلف'],['Slow down.','خفّف السرعة'],['Turn round.','استدر']].map((x,i)=>`<g data-tip="${x[0]} — ${x[1]}"><rect x="40" y="${40+i*58}" width="280" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,68+i*58,x[0],{fs:15,w:700})}</g>`).join('')}`,'تعليمات القيادة'),
-   cap:'أربع تعليمات بفعل الأمر. مرّر المؤشر على كل منها.',side:[{tip:`فعل الأمر بلا فاعل: ${e('Stop!')} ${e('Turn left.')}`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما التعليمة؟',cases:[{q:'تريد أن يرجع إلى الخلف.',opts:[['Reverse.',1],['Drive forwards.',0]]},{q:'تريده أن يستدير ويعود.',opts:[['Turn round.',1],['Turn left.',0]]},{q:'السرعة عالية.',opts:[['Slow down.',1],['Go faster.',0]]}]}),title:'مختبر مصغّر: التعليمة'}]},
+  ...R43.stations,
   {recap:['lever (باليد)، pedal (بالقدم)، steering wheel.','brake ≠ accelerator.','moves up/down ≠ tilts up/down.','When you + الحركة, + النتيجة.','Drive forwards. Reverse. Slow down. Turn round.']}
  ],
  lab:lab43,

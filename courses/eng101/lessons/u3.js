@@ -28,18 +28,87 @@ function lab31(el,B){kcss();
   const x=a.has.find(p=>!b.has.includes(p)),y=b.has.find(p=>!a.has.includes(p));const L=[];if(x)L.push(`The ${a.n} has ${nm(x)}, but the ${b.n} doesn't.`);if(y)L.push(`The ${b.n} has ${nm(y)}, but the ${a.n} doesn't.`);$('#cp').innerHTML=eb(L.length?L:['They have the same parts.'])};
  ['a1','a2'].forEach(k=>$('#'+k).addEventListener('input',cmp));cmp();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 3 ===== */
+const SB3={I:['I',0],you:['You',0],we:['We',0],they:['They',0],he:['He',1],she:['She',1],it:['The Multi Tool',1]};
+const LAB31A={title:'have أم has؟ do أم does؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الفاعل ونوع الجملة، وشاهد كيف يتغير have.',
+ controls:[{k:'s',label:'الفاعل',opts:Object.keys(SB3).map(k=>[k,k==='it'?'it (الأداة)':k])},{k:'f',label:'الجملة',opts:[['pos','إثبات'],['neg','نفي'],['q','سؤال']]}],
+ out:({s,f})=>{const [S,three]=SB3[s],Sl=S==='I'||S==='The Multi Tool'?S:S.toLowerCase(),obj='a saw';
+  if(f==='pos')return{pieces:[[S,'n','الفاعل'],[three?'has':'have','k',three?'he / she / it':'I / you / we / they'],[obj+'.','x','']],say:`${S} ${three?'has':'have'} ${obj}.`,why:`مع ${e('he · she · it')} نقول ${e('has')}، ومع البقية ${e('have')}.`};
+  if(f==='neg')return{pieces:[[S,'n','الفاعل'],[three?"doesn't":"don't",'r',three?'does + not':'do + not'],['have','k','يعود have'],[obj+'.','x','']],say:`${S} ${three?"doesn't":"don't"} have ${obj}.`,why:`في النفي: ${e("don't")} أو ${e("doesn't")}، وبعدها ${e('have')} دائماً (لا ${e('has')}).`};
+  return{pieces:[[three?'Does':'Do','q',three?'he / she / it':'I / you / we / they'],[Sl,'n','الفاعل'],['have','k','يعود have'],[obj+'?','x','']],say:`${three?'Does':'Do'} ${Sl} have ${obj}?`,ar:(()=>{const P={I:'you',you:'I',we:'we',they:'they',he:'he',she:'she',it:'it'}[s],D=three?'does':'do';return `الجواب القصير: Yes, ${P} ${D}. / No, ${P} ${D}n't.`})(),why:`السؤال يبدأ بـ ${e('Do')} أو ${e('Does')}، وبعد الفاعل ${e('have')}.`}}})};
+const PL3={pliers:['pliers',1,'زردية'],scissors:['scissors',1,'مقص'],hammer:['hammer',0,'مطرقة'],saw:['saw',0,'منشار']};
+const LAB31B={title:'a أم a pair of؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الأداة، وشاهد كيف نطلب واحدة منها.',
+ controls:[{k:'t',label:'الأداة',opts:Object.keys(PL3).map(k=>[k,k])}],
+ out:({t})=>{const [w,pair,ar]=PL3[t];return pair?{pieces:[['I need','x',''],['a pair of','k','للأداة ذات الفكّين'],[w+'.','n','دائماً جمع']],say:`I need a pair of ${w}.`,ar:`أو: I need some ${w}. ولا نقول a ${w.replace(/s$/,'')}.`,why:`${ar} له جزآن متشابهان، فاسمه بالجمع دائماً، ونعدّه بـ ${e('a pair of')}.`}
+  :{pieces:[['I need','x',''],['a','k','مفرد'],[w+'.','n','']],say:`I need a ${w}.`,why:`${ar} اسم مفرد عادي، فنقول ${e('a '+w)}.`}}})};
+const TL3={key:['The Key Tool','a screwdriver','a wrench'],survival:['The Survival Tool','a ruler','a hammer'],multi:['The Multi Tool','a saw','a ruler']};
+const LAB31C={title:'قارن بـ but',w:(el,B)=>N.labB(el,B,{intro:'اختر الأداة، وشاهد جملة تذكر ما فيها وما ليس فيها، يربط بينهما but.',
+ controls:[{k:'t',label:'الأداة',opts:Object.keys(TL3).map(k=>[k,TL3[k][0]])}],
+ out:({t})=>{const [n,h,x]=TL3[t];return{pieces:[[n,'n','الفاعل'],['has '+h+',','k','ما فيها'],['but','q','لكن'],["it doesn't have "+x+'.','r','ما ليس فيها']],say:`${n} has ${h}, but it doesn't have ${x}.`,why:`${e('but')} تربط جملتين متعاكستين: الأولى مثبتة والثانية منفية.`}}})};
+const S32={I:['I',0],you:['You',0],we:['We',0],they:['They',0],he:['He',1],she:['She',1],it:['The thermometer',1]};
+const V32={work:['work','works','in a factory'],study:['study','studies','English'],watch:['watch','watches','the meter'],measure:['measure','measures','temperature']};
+const LAB32A={title:'المضارع البسيط: s أم بدونها؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الفاعل والفعل ونوع الجملة. لاحظ متى تظهر s ومتى تختفي.',
+ controls:[{k:'s',label:'الفاعل',opts:Object.keys(S32).map(k=>[k,k==='it'?'it (الجهاز)':k])},{k:'v',label:'الفعل',opts:Object.keys(V32).map(k=>[k,k])},{k:'f',label:'الجملة',opts:[['pos','إثبات'],['neg','نفي'],['q','سؤال']]}],
+ out:({s,v,f})=>{const [S,three]=S32[s],[b,th,o]=V32[v],Sl=S==='I'||S.startsWith('The')?S.replace('The','the'):S.toLowerCase();
+  const sp=th.endsWith('ies')?'ساكن + y ← ies':th.endsWith('es')?'نضيف es':'نضيف s';
+  if(f==='pos')return{pieces:[[S,'n','الفاعل'],[three?th:b,'k',three?sp:'كما هو'],[o+'.','x','']],say:`${S} ${three?th:b} ${o}.`,why:three?`مع ${e('he · she · it')} نضيف ${e('s')} للفعل في الإثبات.`:`مع ${e('I · you · we · they')} يبقى الفعل كما هو.`};
+  if(f==='neg')return{pieces:[[S,'n','الفاعل'],[three?"doesn't":"don't",'r','النفي'],[b,'k','بلا s'],[o+'.','x','']],say:`${S} ${three?"doesn't":"don't"} ${b} ${o}.`,why:`في النفي نضع ${e(three?"doesn't":"don't")}، ويعود الفعل بلا ${e('s')}.`};
+  return{pieces:[[three?'Does':'Do','q','السؤال'],[Sl,'n','الفاعل'],[b,'k','بلا s'],[o+'?','x','']],say:`${three?'Does':'Do'} ${Sl} ${b} ${o}?`,why:`في السؤال نبدأ بـ ${e(three?'Does':'Do')}، ويعود الفعل بلا ${e('s')}.`}}})};
+const TV32={saw:['A saw','cuts','wood and metal','يقطع'],pliers:['Pliers','grip','wire','تمسك'],hammer:['A hammer','drives in','nails','يدق'],spanner:['A spanner','tightens','nuts','يشد']};
+const LAB32B={title:'ماذا تفعل الأداة؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الأداة، وشاهد جملة وظيفتها. لاحظ الفعل مع المفرد والجمع.',
+ controls:[{k:'t',label:'الأداة',opts:Object.keys(TV32).map(k=>[k,k])}],
+ out:({t})=>{const [a,v,o,ar]=TV32[t];const pl=a==='Pliers';return{pieces:[[a,'n',pl?'جمع = they':'مفرد = it'],[v,'k',ar],[o+'.','x','']],say:`${a} ${v} ${o}.`,why:pl?`${e('pliers')} جمع، فالفعل بلا ${e('s')}.`:`الأداة مفردة (${e('it')})، فنضيف ${e('s')} للفعل.`}}})};
+const JB32={you:['What do you do?',"I'm a mechanic.",'Where do you work?','I work at a car company.'],he:['What does Ahmed do?',"He's a student.",'Where does he study?','He studies at the technical college.'],she:['What does Hind do?',"She's an engineer.",'Where does she work?','She works in a factory.']};
+const LAB32C={title:'السؤال عن العمل والدراسة',w:(el,B)=>N.labB(el,B,{intro:'اختر الشخص والسؤال، وشاهد السؤال وجوابه.',
+ controls:[{k:'p',label:'عن',opts:[['you','أنت'],['he','أحمد'],['she','هند']]},{k:'q',label:'السؤال',opts:[['1','ما عمله؟'],['2','أين يعمل أو يدرس؟']]}],
+ out:({p,q})=>{const J=JB32[p],i=q==='1'?0:2;return{pieces:[[J[i],'q',p==='you'?'do مع you':'does مع he / she'],[J[i+1],'n','الجواب']],say:`${J[i]} ${J[i+1]}`,why:q==='1'?`${e('What do you do?')} معناها «ما عملك؟».`:`مع ${e('he · she')} نسأل بـ ${e('does')}، وفي الجواب يأخذ الفعل ${e('s')}.`}}})};
+const g33=(r,c,clk)=>{let s='<svg viewBox="0 0 240 170" width="260"><rect x="10" y="10" width="220" height="150" rx="8" fill="#fff" stroke="#555" stroke-width="3"/>';for(let i=1;i<3;i++){s+=`<line x1="${10+i*73.3}" y1="10" x2="${10+i*73.3}" y2="160" stroke="#ddd" stroke-dasharray="4"/><line x1="10" y1="${10+i*50}" x2="230" y2="${10+i*50}" stroke="#ddd" stroke-dasharray="4"/>`}
+ s+=`<rect x="${20+c*73.3}" y="${20+r*50}" width="53" height="30" rx="6" fill="#1f8a5b"/><text x="${46+c*73.3}" y="${40+r*50}" font-size="11" fill="#fff" text-anchor="middle">START</text></svg>`;return s};
+const LAB33A={title:'المواقع التسعة',w:(el,B)=>N.labB(el,B,{intro:'اختر الصف والعمود، وشاهد مكان الزر على الشاشة ووصفه.',
+ controls:[{k:'r',label:'الصف',opts:[['0','أعلى'],['1','الوسط'],['2','أسفل']]},{k:'c',label:'العمود',opts:[['0','يسار'],['1','الوسط'],['2','يمين']]}],
+ out:({r,c})=>{r=+r;c=+c;const ph=posPhrase(r,c);return{svg:g33(r,c),pieces:[['The button is','x',''],[ph+'.','k','المكان']],say:`The button is ${ph}.`,why:`${e('at')} مع ${e('the top · the bottom')}، و ${e('on')} مع ${e('the left · the right')}، و ${e('in')} مع ${e('the middle · the centre')}.`}}})};
+const rel33=(p)=>{const W={x:110,y:55};const P={above:[110,18],below:[110,128],left:[40,72],right:[180,72]}[p];
+ return `<svg viewBox="0 0 220 150" width="240"><rect x="85" y="45" width="50" height="55" fill="#cfe6f7" stroke="#555" stroke-width="3"/><line x1="110" y1="45" x2="110" y2="100" stroke="#555" stroke-width="2"/><text x="110" y="115" font-size="10" fill="#666" text-anchor="middle">window</text><circle cx="${P[0]}" cy="${P[1]}" r="14" fill="#fff" stroke="#b37d00" stroke-width="3"/><path d="M${P[0]} ${P[1]}v-8M${P[0]} ${P[1]}h6" stroke="#333" stroke-width="2"/></svg>`};
+const LAB33B={title:'المكان بالنسبة لشيء آخر',w:(el,B)=>N.labB(el,B,{intro:'حرّك الساعة حول النافذة، وشاهد الوصف.',
+ controls:[{k:'p',label:'الساعة',opts:[['above','فوق'],['below','تحت'],['left','يسار'],['right','يمين']]}],
+ out:({p})=>{const w={above:'above',below:'below',left:'to the left of',right:'to the right of'}[p];return{svg:rel33(p),pieces:[['The clock is','x',''],[w,'k','بالنسبة لشيء'],['the window.','n','الشيء']],say:`The clock is ${w} the window.`,why:`${e('on the left')} = في الجهة اليسرى من المكان كله، و ${e('to the left of')} = يسار شيء محدد.`}}})};
+const R31=N.rule({title:'have و has، والسؤال بـ Do / Does، و a pair of، والربط بـ but',ref:'ص 20–21',
+ intro:`في هذا الدرس نصف أداة متعددة الاستعمالات: ماذا فيها، وماذا ليس فيها. نحتاج لذلك الفعل ${e('have')} (يملك / فيه)، ثم أسماء الأجزاء و ${e('a pair of')}، ثم الربط بـ ${e('but')}.`,
+ parts:[
+ {t:'have و has، والسؤال والنفي',short:'have / has',old:[1],q:'لماذا نقول The knife has لكن Does the knife have؟',ref:'ص 20',
+  lead:`لنقول إن أداة «فيها» شفرة أو منشار نستعمل الفعل ${e('have')}. وهو يتغير حسب الفاعل، ويحتاج ${e('do')} أو ${e('does')} في السؤال والنفي.`,
+  points:[`<b>الإثبات:</b> ${e('have')} مع ${e('I · you · we · they')}، و ${e('has')} مع ${e('he · she · it')}: ${e('The knife has a blade.')}`,
+   `<b>السؤال:</b> ${e('Do')} مع ${e('I · you · we · they')}، و ${e('Does')} مع ${e('he · she · it')}، وبعد الفاعل ${e('have')}: ${e('Does the knife have a saw?')}`,
+   `<b>النفي:</b> ${e("don't have")} أو ${e("doesn't have")}: ${e("The Multi Tool doesn't have a ruler.")}`,
+   `<b>بعد does و doesn't</b> يعود الفعل ${e('have')}، ولا نقول ${e('has')}.`,
+   `<b>الجواب القصير:</b> ${e("Yes, it does. / No, it doesn't.")} و ${e("Yes, I do. / No, I don't.")}`],
+  grid:{head:['','I / you / we / they','he / she / it'],rows:[['إثبات','I have a saw.','It has a saw.'],['نفي',"I don't have a saw.","It doesn't have a saw."],['سؤال','Do you have a saw?','Does it have a saw?'],['جواب قصير',"Yes, I do. / No, I don't.","Yes, it does. / No, it doesn't."]]},
+  html:vt(MT,['English','المعنى']),
+  pairs:[['Does it has a saw?','Does it have a saw?','بعد does نقول have.'],["It don't have a ruler.","It doesn't have a ruler.","مع it نستعمل doesn't."]],
+  art:art(`<g data-tip="Does + الشيء + have + …? — السؤال عن مفرد (it)."><rect x="30" y="60" width="300" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,94,'Does it have a saw?',{fs:17,w:700})}</g>
+    <g data-tip="Yes, it does. — جواب قصير بالإيجاب."><rect x="30" y="140" width="140" height="56" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(100,174,'Yes, it does.',{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="No, it doesn't. — جواب قصير بالنفي (doesn't = does not)."><rect x="190" y="140" width="140" height="56" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(260,174,"No, it doesn't.",{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="بعد does يبقى have."><rect x="70" y="224" width="220" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,252,'does + have (not has)',{fs:13,w:700})}</g>`,'Does it have'),cap:'السؤال والجوابان. مرّر المؤشر على كل منها.',labs:[LAB31A,{title:'do أم does؟',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'___ you have a torch?',o:['Do','Does'],a:0},{s:'Does the knife ___ a saw?',o:['have','has'],a:0},{s:"No, it ___.",o:["doesn't","don't"],a:0},{s:'The car ___ a radio.',o:['has','have'],a:0}]})}]},
+ {t:'أجزاء الأداة و a pair of',short:'a pair of',old:[2],q:'لماذا لا نقول a plier؟',ref:'ص 21',
+  lead:`بعد أن عرفنا ما في الأداة نسمّي أجزاءها. وبعض الأدوات لها اسم بالجمع دائماً لأنها مكونة من جزأين متشابهين.`,
+  points:[`<b>الأجزاء:</b> ${e('handle')} المقبض، و ${e('head')} الرأس، و ${e('blade')} الشفرة، و ${e('jaws')} فكّا الزردية.`,
+   `<b>${e('pliers')} و ${e('scissors')}</b> جمع دائماً، فنقول ${e('a pair of pliers')} أو ${e('some pliers')}، ولا نقول ${e('a plier')}.`,
+   `وما دام الاسم جمعاً نقول معه ${e('These are · They have')}: ${e('These are pliers. They have two handles.')}`],
+  html:vt(PARTS,['English','المعنى'])+eb(['This is a hammer. It has a handle and a head.','These are pliers. They have two handles and two jaws.']),
+  pairs:[['I need a scissor.','I need a pair of scissors.','scissors جمع دائماً.'],['This is pliers.','These are pliers.','pliers جمع، فنقول These are.']],
+  labs:[LAB31B,{title:'ما الجزء؟',w:(el,B)=>N.cases(el,B,{intro:'ما الجزء؟',cases:[{q:'You hold it in your hand.',opts:[['handle',1],['blade',0]]},{q:'It cuts.',opts:[['blade',1],['jaws',0]]},{q:'Pliers hold things with them.',opts:[['jaws',1],['head',0]]}]})}]},
+ {t:'المقارنة بـ but',short:'but',q:'كيف تقول إن الأداة فيها مفك لكن ليس فيها مفتاح ربط؟',ref:'ص 21',
+  lead:`عندما نقارن أداتين نذكر ما في الأولى وما ليس فيها، ونربط الجملتين بـ ${e('but')} (لكن).`,
+  points:[`<b>${e('but')}</b> تربط جملتين متعاكستين: الأولى مثبتة والثانية منفية، أو العكس.`,`نضع فاصلة قبل ${e('but')}: ${e("The Key Tool has a screwdriver, but it doesn't have a wrench.")}`,`يمكن أن نختصر الجملة الثانية: ${e("The Survival Tool has a ruler, but the Multi Tool doesn't.")}`],
+  labs:[LAB31C]}
+ ]});
 B.lesson({
  id:'u3-l1',unit:3,order:1,pages:'20–21',
  title:'Tools — الأدوات',
  summary:'أسماء أدوات الأداة المتعددة (hammer، pliers، saw، blade، can opener…)، والفعل have في السؤال والنفي (Does it have…? Yes, it does / No, it doesn\'t)، و a pair of مع pliers و scissors، وأجزاء الأداة (handle، shaft، head، blade، jaws)، والمقارنة بـ but.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 20–21',html:`<p>تصف أداة: ماذا فيها وماذا ليس فيها، وما أجزاؤها. ستتعلم:</p><ol><li>أسماء أدوات شائعة.</li><li>السؤال والجواب بـ ${e('Does … have …?')}</li><li>${e('a pair of')} مع الأدوات التي لها جزءان.</li><li>أجزاء الأداة، والمقارنة بـ ${e('but')}.</li></ol>`},
-  {h:'أدوات الأداة المتعددة',ref:'ص 20',html:vt(MT,['English','المعنى'])},
-  {h:'Does it have…?',ref:'ص 20',html:`${vt([['Do you have a Multi Tool?','Yes, I do. / No, I don\'t.'],['Does the Multi Tool have a hammer?','Yes, it does. / No, it doesn\'t.'],['The Multi Tool doesn\'t have a ruler.','—']],['السؤال / النفي','الجواب القصير'])}
-   <p>مع ${e('I, you, we, they')} نستعمل ${e('do')}، ومع ${e('he, she, it')} نستعمل ${e('does')}. وبعد ${e('does')} يبقى الفعل ${e('have')} (لا ${e('has')}).</p>${eb(['The knife has a blade.','Does the knife have a saw?',"No, it doesn't."])}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">pliers</span> و <span class="en">scissors</span> دائماً بالجمع، فنقول <span class="en">I need some scissors</span> أو <span class="en">I need a pair of scissors</span>، ولا نقول <span class="en">a scissor</span>.'},
-  {h:'أجزاء الأداة',ref:'ص 21',html:`${vt(PARTS,['English','المعنى'])}${eb(['This is a hammer. It has a handle and a head.','These are pliers. They have two handles and two jaws.'])}`},
-  {h:'المقارنة بـ but',ref:'ص 21',html:eb(["The Key Tool has a screwdriver, but it doesn't have a wrench.","The Survival Tool has a ruler, but the Multi Tool doesn't."])},
+  ...R31.theory,
   {h:'تمارين الكتاب',ref:'ص 20–21',html:
    bk(1,'ص 20','استمع وأكمل إعلان التلفاز.',['(1) hammer','(2) pliers','(3) saw','(4) blade','(5) can opener'])+
    bk(2,'ص 20','استمع وأكمل الحوار بكلمات الصندوق.',['(1) have','(2) do','(3) have','(4) does','(5) have','(6) doesn\'t'])+
@@ -55,16 +124,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'Does it have…?',title:'السؤال بـ Does … have …?',q:'كيف تسأل هل في الأداة منشار؟ وكيف تجيب؟',ref:'ص 20',
-   art:art(`<g data-tip="Does + الشيء + have + …? — السؤال عن مفرد (it)."><rect x="30" y="60" width="300" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,94,'Does it have a saw?',{fs:17,w:700})}</g>
-    <g data-tip="Yes, it does. — جواب قصير بالإيجاب."><rect x="30" y="140" width="140" height="56" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(100,174,'Yes, it does.',{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="No, it doesn't. — جواب قصير بالنفي (doesn't = does not)."><rect x="190" y="140" width="140" height="56" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(260,174,"No, it doesn't.",{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="بعد does يبقى have."><rect x="70" y="224" width="220" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,252,'does + have (not has)',{fs:13,w:700})}</g>`,'Does it have'),
-   cap:'السؤال والجوابان. مرّر المؤشر على كل منها.',side:[{tip:`في الإثبات ${e('It has a saw.')}، وفي السؤال ${e('Does it have a saw?')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:'___ you have a torch?',o:['Do','Does'],a:0},{s:'Does the knife ___ a saw?',o:['have','has'],a:0},{s:"No, it ___.",o:["doesn't","don't"],a:0},{s:'The car ___ a radio.',o:['has','have'],a:0}]}),title:'مختبر مصغّر: do أم does؟'}]},
-  {st:2,short:'أجزاء الأداة',title:'أجزاء الأداة و a pair of',q:'لماذا نقول a pair of pliers؟',ref:'ص 21',art:toolArt(),cap:'مطرقة وزردية من رسمنا. مرّر المؤشر على كل جزء.',
-   side:[{tip:`الأداة ذات الجزأين بالجمع دائماً: ${e('pliers, scissors')}، ونعدّها بـ ${e('a pair of')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الجزء؟',cases:[{q:'You hold it in your hand.',opts:[['handle',1],['blade',0]]},{q:'It cuts.',opts:[['blade',1],['jaws',0]]},{q:'Pliers hold things with them.',opts:[['jaws',1],['head',0]]}]}),title:'مختبر مصغّر: ما الجزء؟'}]},
+  ...R31.stations,
   {recap:['Does it have a saw? — Yes, it does. / No, it doesn\'t.','do مع I/you/we/they، و does مع he/she/it، وبعد does: have.','a pair of pliers / a pair of scissors.','أجزاء الأداة: handle, shaft, head, blade, jaws.','المقارنة: It has a ruler, but the other tool doesn\'t.']}
  ],
  lab:lab31,
@@ -106,17 +166,41 @@ function lab32(el,B){kcss();
  const ws=i=>{el.querySelectorAll('[data-w]').forEach(b=>b.classList.toggle('pri',+b.dataset.w===i));$('#wo').innerHTML=`${eb(W[i][0])}<p class="sub">${W[i][1]}</p>`};
  el.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>ws(+b.dataset.w));ws(0);
 }
+const R32=N.rule({title:'مصادر الطاقة ووظائف الأجزاء، والمضارع البسيط',ref:'ص 22–23',
+ intro:`في هذا الدرس نصف راديو طوارئ: من أين يأخذ الطاقة، وماذا يفعل كل جزء فيه. ولوصف الوظيفة نحتاج المضارع البسيط، ثم نستعمله للسؤال عن العمل والدراسة.`,
+ parts:[
+ {t:'مصادر الطاقة وأجزاء الجهاز',short:'الأجزاء والوظائف',old:[1],q:'ماذا يفعل الـ compass؟',ref:'ص 22–23',
+  lead:`كل جهاز يحتاج مصدر طاقة، وكل جزء فيه له وظيفة. نصف الوظيفة بجملة قصيرة: الجزء ثم الفعل.`,
+  points:[`<b>مصادر الطاقة:</b> ${e('mains electricity · solar power · dynamo · batteries')}`,`<b>الوظيفة:</b> ${e('The compass finds North.')} ${e('The torch shines a light.')}`],
+  html:vt([['mains electricity + AC adapter','كهرباء الشبكة مع محوّل'],['solar power','الطاقة الشمسية'],['dynamo','مولّد (دينامو) يدار باليد'],['batteries','بطاريات'],['internal ≠ external','داخلي ≠ خارجي']],['English','المعنى'])+vt(FN.map(f=>[f[0],f[1],f[2]]),['Part الجزء','Function الوظيفة','المعنى']),
+  labs:[{title:'الوظيفة',w:(el,B)=>N.cases(el,B,{intro:'ما الوظيفة؟',cases:[{q:'The compass …',opts:[['finds North',1],['tells the time',0]]},{q:'The thermometer …',opts:[['measures temperature',1],['makes electricity',0]]},{q:'The alarm …',opts:[['makes a loud noise',1],['shines a light',0]]}]})}]},
+ {t:'المضارع البسيط مع كل الضمائر',short:'المضارع البسيط',old:[2],q:'لماذا نقول I work لكن He works؟',ref:'ص 23',
+  lead:`نستعمل المضارع البسيط لشيء ثابت أو متكرر: وظيفة جهاز، أو عمل نقوم به كل يوم. وقاعدته الأساسية تخص ${e('he · she · it')}.`,
+  points:[`<b>مع ${e('I · you · we · they')}</b> يبقى الفعل كما هو: ${e('I work in Jeddah.')}`,`<b>مع ${e('he · she · it')}</b> نضيف ${e('s')}: ${e('He works in a factory.')} ${e('It measures temperature.')}`,
+   `<b>السؤال:</b> ${e('Do')} أو ${e('Does')} + الفاعل + الفعل بلا ${e('s')}: ${e('Does it measure temperature?')}`,`<b>النفي:</b> ${e("don't")} أو ${e("doesn't")} + الفعل بلا ${e('s')}: ${e("It doesn't measure speed.")}`,
+   `<b>إملاء s:</b><br>المنتهي بـ ${e('s · sh · ch · x · o')} نضيف له ${e('es')}: ${e('watch → watches · go → goes')}<br>المنتهي بحرف ساكن + ${e('y')} نحذف ${e('y')} ونضيف ${e('ies')}: ${e('study → studies')}`],
+  grid:{head:['','I / you / we / they','he / she / it'],rows:[['إثبات','I work.','He works.'],['نفي',"I don't work.","He doesn't work."],['سؤال','Do you work?','Does he work?'],['جواب قصير',"Yes, I do. / No, I don't.","Yes, he does. / No, he doesn't."]]},
+  pairs:[['It measure temperature.','It measures temperature.','مع it نضيف s.'],['Does it measures speed?','Does it measure speed?','بعد does يعود الفعل بلا s.'],['He studys English.','He studies English.','ساكن + y: نحذف y ونضيف ies.']],
+  art:art(`<g data-tip="الإثبات: الفعل + s مع it."><rect x="30" y="60" width="300" height="52" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,92,'It measures speed.',{fs:16,w:700})}</g>
+    <g data-tip="السؤال: does + الفعل بلا s."><rect x="30" y="134" width="300" height="52" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,166,'Does it measure speed?',{fs:16,w:700})}</g>
+    <g data-tip="النفي: doesn't + الفعل بلا s."><rect x="30" y="208" width="300" height="52" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,240,"It doesn't measure time.",{fs:16,w:700})}</g>`,'measures does doesnt'),cap:'الإثبات والسؤال والنفي. مرّر المؤشر على كل سطر.',labs:[LAB32A,{title:'s أم لا؟',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The clock ___ the time.',o:['tells','tell'],a:0},{s:'Does the torch ___ a light?',o:['shine','shines'],a:0},{s:"The radio doesn't ___ batteries.",o:['need','needs'],a:0},{s:'A chisel ___ wood.',o:['cuts','cut'],a:0}]})}]},
+ {t:'أفعال الأدوات',short:'أفعال الأدوات',old:[3],q:'ماذا تفعل الـ pliers؟',ref:'ص 23',
+  lead:`لكل أداة فعل يصف عملها. ونطبق عليه قاعدة المضارع البسيط نفسها.`,
+  points:[`${e('cut')} يقطع، و ${e('grip')} يمسك بإحكام، و ${e('drive in')} يدق، و ${e('tighten')} يشد، و ${e('loosen')} يرخي.`,`<b>الأداة المفردة</b> (${e('it')}) يأخذ فعلها ${e('s')}: ${e('A saw cuts wood.')}`,`<b>${e('pliers')} و ${e('scissors')}</b> جمع (${e('they')})، فالفعل بلا ${e('s')}: ${e('Pliers grip wire.')}`],
+  art:art(`${[['A saw cuts wood.','cut'],['Pliers grip wire.','grip'],['A hammer drives in nails.','drive in'],['A spanner tightens nuts.','tighten']].map((x,i)=>`<g data-tip="${x[1]}: ${x[0]}"><rect x="30" y="${50+i*62}" width="300" height="48" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,80+i*62,x[0],{fs:15,w:700})}</g>`).join('')}`,'أفعال الأدوات'),cap:'أربع أدوات وأفعالها. مرّر المؤشر على كل منها.',labs:[LAB32B,{title:'فعل الأداة',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'Scissors ___ paper.',o:['cut','cuts'],a:0,why:'scissors جمع.'},{s:'A screwdriver ___ screws.',o:['drives in','drive in'],a:0},{s:'Pliers ___ wire.',o:['grip','grips'],a:0}]})}]},
+ {t:'السؤال عن العمل والدراسة',short:'What do you do?',q:'كيف تسأل عن عمل زميلك أحمد؟',ref:'ص 23',
+  lead:`نستعمل المضارع البسيط أيضاً للكلام عن عمل الشخص ودراسته، لأنهما شيء ثابت.`,
+  points:[`${e('What do you do?')} = ما عملك؟ والجواب ${e("I'm a mechanic.")}`,`${e('Where do you work?')} والجواب ${e('I work at a car company.')}`,`عن شخص آخر نستعمل ${e('does')}: ${e('What does Ahmed do?')} والجواب ${e('He studies at the technical college.')}`],
+  html:dl([['A','What do you do?'],['B',"I'm a mechanic."],['A','Where do you work?'],['B','I work at a car company in Jeddah.'],['A','What does Ahmed do?'],['B',"He's a student. He studies at the technical college."]]),
+  labs:[LAB32C]}
+ ]});
 B.lesson({
  id:'u3-l2',unit:3,order:2,pages:'22–23',
  title:'Functions — الوظائف',
  summary:'مصادر الطاقة الكهربائية (mains، solar، dynamo، batteries)، وأجزاء راديو الطوارئ ووظائفها، والمضارع البسيط مع he/she/it بإضافة s (It measures temperature)، والسؤال والنفي بـ does / doesn\'t، وأفعال الأدوات (cut، grip، drive in، tighten، loosen)، والسؤال عن العمل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 22–23',html:`<p>تصف ماذا يفعل كل جزء في جهاز. ستتعلم:</p><ol><li>مصادر الطاقة الكهربائية.</li><li>أجزاء جهاز ووظيفة كل جزء.</li><li>المضارع البسيط: ${e('It measures temperature.')}</li><li>أفعال الأدوات، والسؤال عن العمل.</li></ol>`},
-  {h:'مصادر الطاقة',ref:'ص 22',html:vt([['mains electricity + AC adapter','كهرباء الشبكة مع محوّل'],['solar power','الطاقة الشمسية'],['dynamo','مولّد (دينامو) يدار باليد'],['batteries','بطاريات'],['internal ≠ external','داخلي ≠ خارجي']],['English','المعنى'])},
-  {h:'الجزء ووظيفته',ref:'ص 23',html:vt(FN.map(f=>[f[0],f[1],f[2]]),['Part الجزء','Function الوظيفة','المعنى'])},
-  {h:'المضارع البسيط مع it',ref:'ص 23',html:`${vt([['It measures temperature.','إثبات: الفعل + s'],['Does it measure temperature?','سؤال: Does + الفعل بلا s'],["Yes, it does. / No, it doesn't.",'جواب قصير'],["It doesn't measure speed.",'نفي: doesn\'t + الفعل بلا s']],['English','القاعدة'])}<p>مع ${e('he, she, it')} نضيف ${e('s')} في الإثبات: ${e('measure → measures')}، ${e('shine → shines')}، وبعد ${e('does')} نحذفها.</p>`},
-  {h:'أفعال الأدوات',ref:'ص 23',html:`${vt([['cut','يقطع'],['grip','يمسك بإحكام'],['drive in','يدق (يُدخل)'],['tighten','يشدّ'],['loosen','يرخي']],['English','المعنى'])}${eb(['A saw cuts wood and metal.','Pliers grip wire.','A hammer drives in nails.'])}`},
-  {h:'السؤال عن العمل والدراسة',ref:'ص 23',html:dl([['A','What do you do?'],['B',"I'm a mechanic."],['A','Where do you work?'],['B','I work at a car company in Jeddah.'],['A','What does Ahmed do?'],['B',"He's a student. He studies at the technical college."]])},
+  ...R32.theory,
   {h:'تمارين الكتاب',ref:'ص 22–23',html:
    bk(1,'ص 22','طابق مصادر الطاقة مع الصور.',['A → 4 batteries','B → 1 mains electricity + AC adapter','C → 2 solar power','D → 3 dynamo'])+
    bk(2,'ص 22','سمِّ أجزاء راديو الطوارئ بكلمات الصندوق.',['1 clock (مثال)','الكلمات: alarm, antenna, compass, handle, thermometer, torch'],'مواقع الأرقام حسب صورة الكتاب.')+
@@ -133,20 +217,8 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الجزء ووظيفته',title:'أجزاء الجهاز ووظائفها',q:'ما وظيفة الهوائي؟',ref:'ص 22–23',art:radioArt(),cap:'راديو طوارئ من رسمنا. مرّر المؤشر على كل جزء لترى وظيفته.',
-   side:[{tip:`القالب: ${e('The + part + verb(s) + …')}: ${e('The antenna receives radio signals.')}`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الوظيفة؟',cases:[{q:'The compass …',opts:[['finds North',1],['tells the time',0]]},{q:'The thermometer …',opts:[['measures temperature',1],['makes electricity',0]]},{q:'The alarm …',opts:[['makes a loud noise',1],['shines a light',0]]}]}),title:'مختبر مصغّر: الوظيفة'}]},
-  {st:2,short:'measures / Does it…?',title:'المضارع البسيط مع it',q:'لماذا نقول It measures لكن Does it measure؟',ref:'ص 23',
-   art:art(`<g data-tip="الإثبات: الفعل + s مع it."><rect x="30" y="60" width="300" height="52" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,92,'It measures speed.',{fs:16,w:700})}</g>
-    <g data-tip="السؤال: does + الفعل بلا s."><rect x="30" y="134" width="300" height="52" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,166,'Does it measure speed?',{fs:16,w:700})}</g>
-    <g data-tip="النفي: doesn't + الفعل بلا s."><rect x="30" y="208" width="300" height="52" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,240,"It doesn't measure time.",{fs:16,w:700})}</g>`,'measures does doesnt'),
-   cap:'الإثبات والسؤال والنفي. مرّر المؤشر على كل سطر.',side:[{tip:`الـ ${e('s')} تظهر مرة واحدة فقط: إما في الفعل (${e('measures')}) أو في ${e('does')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The clock ___ the time.',o:['tells','tell'],a:0},{s:'Does the torch ___ a light?',o:['shine','shines'],a:0},{s:"The radio doesn't ___ batteries.",o:['need','needs'],a:0},{s:'A chisel ___ wood.',o:['cuts','cut'],a:0}]}),title:'مختبر مصغّر: s أم لا؟'}]},
-  {st:3,short:'أفعال الأدوات',title:'أفعال الأدوات',q:'ماذا تفعل الزردية؟',ref:'ص 23',
-   art:art(`${[['A saw cuts wood.','cut'],['Pliers grip wire.','grip'],['A hammer drives in nails.','drive in'],['A spanner tightens nuts.','tighten']].map((x,i)=>`<g data-tip="${x[1]}: ${x[0]}"><rect x="30" y="${50+i*62}" width="300" height="48" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,80+i*62,x[0],{fs:15,w:700})}</g>`).join('')}`,'أفعال الأدوات'),
-   cap:'أربع أدوات وأفعالها. مرّر المؤشر على كل منها.',side:[{tip:`${e('pliers')} و ${e('scissors')} جمع، فلا نضيف s للفعل: ${e('Pliers grip wire.')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'Scissors ___ paper.',o:['cut','cuts'],a:0,why:'scissors جمع.'},{s:'A screwdriver ___ screws.',o:['drives in','drive in'],a:0},{s:'Pliers ___ wire.',o:['grip','grips'],a:0}]}),title:'مختبر مصغّر: فعل الأداة'}]},
-  {recap:['مصادر الطاقة: mains + AC adapter، solar، dynamo، batteries.','The + الجزء + الفعل + s: The compass finds North.','السؤال: Does it measure…? والنفي: It doesn\'t measure…','أفعال الأدوات: cut, grip, drive in, tighten, loosen.','What do you do? Where do you work? What does he do?']}
+  ...R32.stations,
+  {recap:['الوظيفة بالمضارع البسيط: The compass finds North.','مع he / she / it نضيف s: works, measures, watches, studies.','السؤال والنفي: Do / Does و don\'t / doesn\'t، والفعل بعدها بلا s.','pliers و scissors جمع: Pliers grip wire.','What do you do? — I\'m a mechanic. What does Ahmed do?']}
  ],
  lab:lab32,
  examples:[
@@ -183,15 +255,34 @@ function lab33(el,B){kcss();
  const rel=()=>{const a=$('#a').value,b=$('#b').value;$('#ro').innerHTML=a===b?'<p class="sub">اختر شيئين مختلفين.</p>':eb(`${cap(a)} is ${$('#rel').value} ${b}.`)};
  ['a','rel','b'].forEach(k=>$('#'+k).addEventListener('input',rel));rel();
 }
+const R33=N.rule({title:'وصف المكان: at و on و in، و to the left of',ref:'ص 24–25',
+ intro:`في هذا الدرس تصف مكان الأزرار على الشاشة ومكان الأشياء في الغرفة. نبدأ بالمواقع التسعة في أي مساحة، ثم المكان بالنسبة لشيء آخر.`,
+ parts:[
+ {t:'المواقع التسعة',short:'at / on / in',old:[1],q:'لماذا نقول at the top لكن on the left؟',ref:'ص 24',
+  lead:`أي مساحة (شاشة، لوحة، جدار) نقسمها إلى تسعة مواقع. ولكل جهة حرف جر ثابت معها، فاحفظها مع حرفها.`,
+  points:[`${e('at')} مع ${e('the top')} و ${e('the bottom')}: ${e('at the top')}`,`${e('on')} مع ${e('the left')} و ${e('the right')}: ${e('on the right')}`,`${e('in')} مع ${e('the middle')} و ${e('the centre')}: ${e('in the centre')}`,
+   `<b>نجمع الاتجاهين</b> بفاصلة: ${e('The START button is at the bottom, on the left.')}`,`${e('middle = centre')}. والبريطانية تكتب ${e('centre')} والأمريكية ${e('center')}.`],
+  grid:{head:['حرف الجر','مع','المعنى'],rows:[['at','the top · the bottom','أعلى / أسفل'],['on','the left · the right','يسار / يمين'],['in','the middle · the centre','الوسط']]},
+  pairs:[['in the top','at the top','مع top و bottom نستعمل at.'],['in the left','on the left','مع left و right نستعمل on.']],
+  art:art(`${GRID.map((row,r)=>row.map((g,c)=>`<g data-tip="${['at the top','in the middle','at the bottom'][r]}${c===1?(r===1?'':''):', '+['on the left','','on the right'][c]}${r===1&&c===1?' = in the centre':''}"><rect x="${54+c*86}" y="${44+r*80}" width="80" height="74" rx="10" fill="${r===0&&c===2?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(94+c*86,86+r*80,g.replace('centre','ctr'),{fs:11,w:700})}</g>`).join('')).join('')}`,'تسعة مواقع'),cap:'تسعة مواقع على شاشة. الأصفر: at the top, on the right. مرّر المؤشر على كل مربع.',labs:[LAB33A,{title:'حرف الجر',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:"It's ___ the top.",o:['at','on'],a:0},{s:"It's ___ the left.",o:['on','at'],a:0},{s:"It's ___ the middle.",o:['in','on'],a:0}]})}]},
+ {t:'المكان بالنسبة لشيء آخر',short:'to the left of',old:[2],q:'ما الفرق بين on the left و to the left of؟',ref:'ص 25',
+  lead:`أحياناً لا نصف المكان في المساحة كلها، بل بالنسبة لشيء آخر: الساعة يسار النافذة، والرف فوق الطاولة.`,
+  points:[`${e('on the left')} = في الجهة اليسرى من المكان كله: ${e('The clock is on the left.')}`,`${e('to the left of')} = يسار شيء محدد، ونذكر الشيء بعدها: ${e('The clock is to the left of the window.')}`,`${e('above')} فوق، و ${e('below')} تحت: ${e('The shelf is above the desk.')}`],
+  grid:{head:['English','المعنى'],rows:[['above','فوق'],['below','تحت'],['to the left of','يسار …'],['to the right of','يمين …']]},
+  pairs:[['The clock is on the left of the window.','The clock is to the left of the window.','مع شيء محدد: to the left of.']],
+  art:art(`<rect x="140" y="110" width="80" height="80" fill="${C.blue}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,156,'screen',{fs:12,w:700,c:'#fff'})}
+    <g data-tip="above the screen — فوق الشاشة"><circle cx="180" cy="66" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,40,'above',{fs:11,w:700})}</g>
+    <g data-tip="below the screen — تحت الشاشة"><circle cx="180" cy="232" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,272,'below',{fs:11,w:700})}</g>
+    <g data-tip="to the left of the screen — يسار الشاشة"><circle cx="96" cy="150" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(70,190,'to the left of',{fs:11,w:700})}</g>
+    <g data-tip="to the right of the screen — يمين الشاشة"><circle cx="264" cy="150" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(290,190,'to the right of',{fs:11,w:700})}</g>`,'above below to the left of'),cap:'أربعة مواقع حول الشاشة. مرّر المؤشر على كل منها.',labs:[LAB33B,{title:'أي عبارة؟',w:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'The mouse is ___ the keyboard. (يمينها)',opts:[['to the right of',1],['on the right',0]]},{q:'The printer is ___. (على الرف كله، يسار)',opts:[['on the left',1],['to the left of',0]]},{q:'The clock is ___ the door. (فوقه)',opts:[['above',1],['below',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u3-l3',unit:3,order:3,pages:'24–25',
  title:'Locations — المواقع',
  summary:'تحديد مكان الأشياء على الشاشة أو الرف: at the top / at the bottom، on the left / on the right، in the middle / in the centre، والمكان بالنسبة لشيء آخر: to the left of، to the right of، above، below.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 24–25',html:`<p>تصف مكان شيء على الشاشة أو في الورشة. ستتعلم:</p><ol><li>${e('at the top / at the bottom')}.</li><li>${e('on the left / on the right')}.</li><li>${e('in the middle / in the centre')}.</li><li>المكان بالنسبة لشيء آخر: ${e('to the left of, above, below')}.</li></ol>`},
-  {h:'at / on / in',ref:'ص 24',html:`${vt([['at','at the top, at the bottom','أعلى / أسفل'],['on','on the left, on the right','يسار / يمين'],['in','in the middle, in the centre','الوسط']],['حرف الجر','مع','المعنى'])}${eb(["The START button is at the bottom, on the left.","The CLOSE button is at the top, on the right."])}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">middle = centre</span>. والبريطانية تكتب <span class="en">centre</span> والأمريكية <span class="en">center</span>.'},
-  {h:'on the left أم to the left of؟',ref:'ص 25',html:`<p>${e('on the left')} = في الجهة اليسرى من المكان كله (الشاشة، الرف). و ${e('to the left of')} = يسار شيء آخر محدد:</p>${eb(['The clock is on the left. (من الحائط كله)','The clock is to the left of the window. (بالنسبة للنافذة)'])}${vt([['above','فوق'],['below','تحت'],['to the left of','يسار …'],['to the right of','يمين …']],['English','المعنى'])}`},
+  ...R33.theory,
   {h:'تمارين الكتاب',ref:'ص 24–25',html:
    bk(1,'ص 24','استمع إلى درس الحاسوب وأكمل الحوار بكلمات الصندوق.',['at · bottom · left','on · right · top'])+
    bk(2,'ص 24','طابق الشاشات مع مواقعها.',['1 G','2 I','3 H','4 D','5 F','6 B','7 A','8 C','9 E'])+
@@ -205,18 +296,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'at · on · in',title:'المواقع التسعة',q:'كيف تصف مكان زر في الزاوية العليا اليمنى؟',ref:'ص 24',
-   art:art(`${GRID.map((row,r)=>row.map((g,c)=>`<g data-tip="${['at the top','in the middle','at the bottom'][r]}${c===1?(r===1?'':''):', '+['on the left','','on the right'][c]}${r===1&&c===1?' = in the centre':''}"><rect x="${54+c*86}" y="${44+r*80}" width="80" height="74" rx="10" fill="${r===0&&c===2?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(94+c*86,86+r*80,g.replace('centre','ctr'),{fs:11,w:700})}</g>`).join('')).join('')}`,'تسعة مواقع'),
-   cap:'تسعة مواقع على شاشة. الأصفر: at the top, on the right. مرّر المؤشر على كل مربع.',side:[{tip:`${e('at')} مع ${e('top/bottom')}، و ${e('on')} مع ${e('left/right')}، و ${e('in')} مع ${e('middle/centre')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:"It's ___ the top.",o:['at','on'],a:0},{s:"It's ___ the left.",o:['on','at'],a:0},{s:"It's ___ the middle.",o:['in','on'],a:0}]}),title:'مختبر مصغّر: حرف الجر'}]},
-  {st:2,short:'to the left of',title:'المكان بالنسبة لشيء آخر',q:'الساعة بجانب النافذة من اليسار: كيف تقول؟',ref:'ص 25',
-   art:art(`<rect x="140" y="110" width="80" height="80" fill="${C.blue}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,156,'screen',{fs:12,w:700,c:'#fff'})}
-    <g data-tip="above the screen — فوق الشاشة"><circle cx="180" cy="66" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,40,'above',{fs:11,w:700})}</g>
-    <g data-tip="below the screen — تحت الشاشة"><circle cx="180" cy="232" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,272,'below',{fs:11,w:700})}</g>
-    <g data-tip="to the left of the screen — يسار الشاشة"><circle cx="96" cy="150" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(70,190,'to the left of',{fs:11,w:700})}</g>
-    <g data-tip="to the right of the screen — يمين الشاشة"><circle cx="264" cy="150" r="18" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(290,190,'to the right of',{fs:11,w:700})}</g>`,'above below to the left of'),
-   cap:'أربعة مواقع حول الشاشة. مرّر المؤشر على كل منها.',side:[{tip:`بعد ${e('to the left')} نضيف ${e('of')} إذا ذكرنا الشيء الآخر: ${e('to the left of the screen')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'The mouse is ___ the keyboard. (يمينها)',opts:[['to the right of',1],['on the right',0]]},{q:'The printer is ___. (على الرف كله، يسار)',opts:[['on the left',1],['to the left of',0]]},{q:'The clock is ___ the door. (فوقه)',opts:[['above',1],['below',0]]}]}),title:'مختبر مصغّر: أي عبارة؟'}]},
+  ...R33.stations,
   {recap:['at the top / at the bottom.','on the left / on the right.','in the middle = in the centre.','on the left (في المكان كله) ≠ to the left of (بالنسبة لشيء).','above فوق، below تحت.']}
  ],
  lab:lab33,

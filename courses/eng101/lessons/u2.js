@@ -31,18 +31,81 @@ function lab21(el,B){kcss();
  const ps=i=>{el.querySelectorAll('[data-p]').forEach(b=>b.classList.toggle('pri',+b.dataset.p===i));$('#po').innerHTML=`<p style="margin:8px 0"><b>${SK[i][1]}</b></p>${eb(`It's called ${/^[aeiou]/.test(SK[i][0])?'an':'a'} ${SK[i][0]}.`)}`};
  el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>ps(+b.dataset.p));ps(0);
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 2 ===== */
+const OB2={spanner:['spanner','spanners','مفتاح ربط'],washer:['washer','washers','حلقة'],axle:['axle','axles','محور'],nut:['nut','nuts','صامولة'],adapter:['adapter','adapters','محوّل']};
+const an2=w=>/^[aeiou]/.test(w)?'an':'a';
+const LAB21A={title:"What's this called?",w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء، وهل هو واحد أم أكثر، وشاهد السؤال والجواب.',
+ controls:[{k:'o',label:'الشيء',opts:Object.keys(OB2).map(k=>[k,OB2[k][2]])},{k:'n',label:'العدد',opts:[['1','واحد'],['2','أكثر من واحد']]}],
+ out:({o,n})=>{const [s,p]=OB2[o];return n==='1'?{pieces:[["What's this called?",'q','سؤال المفرد'],["It's called",'x',''],[an2(s),'k',an2(s)==='an'?'صوت متحرك':'صوت ساكن'],[s+'.','n','مفرد']],say:`What's this called? It's called ${an2(s)} ${s}.`,why:"مع المفرد: What's … called? والجواب It's called a / an."}
+  :{pieces:[['What are these called?','q','سؤال الجمع'],["They're called",'x',''],[p+'.','n','جمع بلا a']],say:`What are these called? They're called ${p}.`,why:"مع الجمع: What are … called? والجواب They're called … بلا a."}}})};
+const dem2=(near,many)=>{const x=near?70:250,o=[];const n=many?3:1;for(let i=0;i<n;i++)o.push(`<circle cx="${x+i*22}" cy="${88-i%2*6}" r="9" fill="#c9a23a" stroke="#6b4f12" stroke-width="2"/><circle cx="${x+i*22}" cy="${88-i%2*6}" r="3.5" fill="#fff"/>`);
+ return `<svg viewBox="0 0 320 120" width="320"><circle cx="30" cy="30" r="12" fill="#f2d3b1" stroke="#555"/><path d="M30 42v40M30 82l-10 28M30 82l10 28" stroke="#555" stroke-width="4" fill="none"/><path d="M30 55 L${x-14} 80" stroke="#555" stroke-width="4"/>${o.join('')}<text x="${near?100:170}" y="20" font-size="13" fill="#666">${near?'قريب':'بعيد'}</text></svg>`};
+const LAB21B={title:'this / that / these / those',w:(el,B)=>N.labB(el,B,{intro:'اختر المسافة والعدد، وشاهد الكلمة المناسبة.',
+ controls:[{k:'d',label:'المسافة',opts:[['near','قريب'],['far','بعيد']]},{k:'n',label:'العدد',opts:[['1','واحد'],['2','أكثر']]}],
+ out:({d,n})=>{const near=d==='near',one=n==='1',w=one?(near?'this':'that'):(near?'these':'those');
+  return{svg:dem2(near,!one),pieces:[[one?"What's":'What are','x',''],[w,'k',(near?'قريب':'بعيد')+' · '+(one?'مفرد':'جمع')],['called?','x','']],say:`${one?"What's":'What are'} ${w} called?`,why:`${e('this')} و ${e('that')} للمفرد، و ${e('these')} و ${e('those')} للجمع. ${e('this')} و ${e('these')} للقريب، و ${e('that')} و ${e('those')} للبعيد.`}}})};
+const IT22={washer:['washer','washers'],nut:['nut','nuts'],axle:['axle','axles'],bolt:['bolt','bolts']};
+const LAB22A={title:'a أم some أم عدد؟',w:(el,B)=>N.labB(el,B,{intro:'اختر القطعة والكمية، وشاهد الطلب في المحل.',
+ controls:[{k:'i',label:'القطعة',opts:Object.keys(IT22).map(k=>[k,k])},{k:'q',label:'الكمية',opts:[['a','واحدة'],['some','بعض (عدد غير محدد)'],['20','عدد محدد (20)']]}],
+ out:({i,q})=>{const [s,p]=IT22[i];if(q==='a')return{pieces:[['I need','x',''],[an2(s),'k','لواحد'],[s,'n','مفرد'],['please.','x','']],say:`I need ${an2(s)} ${s}, please.`,why:`لشيء واحد: ${an2(s)} + الاسم المفرد.`};
+  if(q==='some')return{pieces:[['I need','x',''],['some','k','عدد غير محدد'],[p,'n','جمع'],['please.','x','']],say:`I need some ${p}, please.`,ar:'والبائع يسأل: How many? كم العدد؟',why:'لأكثر من واحد دون ذكر العدد: some + الاسم بالجمع.'};
+  return{pieces:[['I need','x',''],['twenty','k','عدد محدد'],[p,'n','جمع'],['please.','x','']],say:`I need twenty ${p}, please.`,why:'إذا عرفنا العدد نذكره، والاسم بعده جمع.'}}})};
+const V22={put:['Put',true],take:['Take',true],tighten:['Tighten',false],loosen:['Loosen',false]};
+const LAB22B={title:'ابنِ التعليمة',w:(el,B)=>N.labB(el,B,{intro:'ابنِ تعليمة تركيب: الفعل ثم الشيء ثم المكان (إن احتاج).',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(V22).map(k=>[k,V22[k][0]])},{k:'o',label:'الشيء',opts:[['the nut','the nut'],['the wheel','the wheel']]},{k:'l',label:'المكان',opts:[['','بلا مكان'],['on','on the axle'],['off','off the axle']]}],
+ out:({v,o,l})=>{const [V,needs]=V22[v];const loc=l?(l+' the axle'):'';let bad='';
+  if(v==='put'&&l!=='on')bad=l?`${e('put')} تأتي مع ${e('on')}: ${e('Put … on the axle.')}`:`${e('put')} تحتاج مكاناً: أين تضعه؟`;
+  else if(v==='take'&&l!=='off')bad=l?`${e('take')} تأتي مع ${e('off')}: ${e('Take … off the axle.')}`:`${e('take')} تحتاج مكاناً: من أين تنزعه؟`;
+  else if(!needs&&l)bad=`${e(V)} لا تحتاج مكاناً عادة: ${e(V+' '+o+'.')}`;
+  const pieces=[[V,'k','الفعل'],[o,'n','الشيء']];if(loc)pieces.push([loc,'q','المكان']);
+  return{pieces,say:`${V} ${o}${loc?' '+loc:''}.`,bad,why:`التعليمة: فعل + شيء + مكان. وبعض الأفعال مثل ${e('tighten')} لا تحتاج مكاناً.`}}})};
+const OP22={put:['put on','take off','يضع','ينزع','Put the wheel on.','Take the wheel off.'],tighten:['tighten','loosen','يشدّ','يرخي','Tighten the nut.','Loosen the nut.'],push:['push','pull','يدفع','يسحب','Push the door.','Pull the door.']};
+const LAB22C={title:'الفعل وضده',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل، ثم اقلبه إلى ضده.',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(OP22).map(k=>[k,OP22[k][0]])},{k:'f',label:'',opts:[['a','الفعل'],['b','ضده']]}],
+ out:({v,f})=>{const o=OP22[v],a=f==='a';return{pieces:[[a?o[4]:o[5],a?'n':'q',a?o[2]:o[3]]],say:a?o[4]:o[5],why:`${e(o[0])} ${o[2]}، وضده ${e(o[1])} ${o[3]}.`}}})};
+const NM23={nawaf:['Nawaf Al-Shehri','S-H-E-H-R-I','Delta Tools','00966 50 311 7788'],badr:['Badr Al-Harbi','H-A-R-B-I','Star Parts','00966 55 420 1199']};
+const LAB23A={title:'رسالة صوتية',w:(el,B)=>N.labB(el,B,{intro:'اختر المتصل، ثم اختر السطر لترى ترتيب الرسالة الصوتية.',
+ controls:[{k:'p',label:'المتصل',opts:[['nawaf','نواف'],['badr','بدر']]},{k:'s',label:'السطر',opts:[['1','1 من أنت'],['2','2 التهجئة'],['3','3 الشركة والرقم'],['4','4 الختام']]}],
+ out:({p,s})=>{const [n,sp,c,ph]=NM23[p];const L={1:[['Hello. This is','k','في الهاتف: This is'],[n+'.','n','الاسم']],2:[["That's",'x',''],[sp+'.','q','حرفاً حرفاً']],3:[["I'm from",'x',''],[c+'.','n','الشركة'],['My phone number is','x',''],[ph+'.','q','00 = double oh']],4:[['Please call me back.','k','الختام'],['Thanks.','x','']]}[s];
+  return{pieces:L,say:L.map(x=>x[0]).join(' '),why:"في الهاتف نبدأ بـ This is … لا I'm …، ونتهجى الاسم، ونذكر الرقم، ونختم بـ Please call me back."}}})};
+const Q23={colour:['What colour?','Black.','اللون'],size:['What size?','Large.','المقاس'],many:['How many?','Two, please.','العدد'],name:["What's your name, please?","It's Hamad. H-A-M-A-D.",'الاسم'],phone:["What's your phone number?",'0556 33 21 08.','الرقم']};
+const LAB23B={title:'أسئلة الطلب بالهاتف',w:(el,B)=>N.labB(el,B,{intro:'اختر ما يريد البائع أن يعرفه، وشاهد السؤال وجواباً مناسباً.',
+ controls:[{k:'q',label:'يريد أن يعرف',opts:Object.keys(Q23).map(k=>[k,Q23[k][2]])}],
+ out:({q})=>{const [a,b,t]=Q23[q];return{pieces:[[a,'q','البائع'],[b,'n','الزبون']],say:`${a} ${b}`,why:`للسؤال عن ${t} نقول ${e(a)}`}}})};
+const PP23={saud:['Saud','He','student'],hind:['Hind','She','engineer'],omar:['Omar','He','technician']};
+const LAB23C={title:'عرّف شخصاً آخر',w:(el,B)=>N.labB(el,B,{intro:'اختر الشخص، وشاهد كيف تعرّفه لغيرك.',
+ controls:[{k:'p',label:'الشخص',opts:Object.keys(PP23).map(k=>[k,PP23[k][0]])}],
+ out:({p})=>{const [n,h,j]=PP23[p];return{pieces:[['This is','k','لتعريف شخص'],[n+'.','n','الاسم'],[h+"'s",'x',h==='He'?'هو':'هي'],[an2(j)+' '+j+',','q','المهنة'],['too.','x','أيضاً']],say:`This is ${n}. ${h}'s ${an2(j)} ${j}, too.`,why:`نعرّف غيرنا بـ This is …، ثم He's أو She's. و too في الآخر تعني «أيضاً».`}}})};
+const R21=N.rule({title:'أسماء الأشياء، و What\'s this called?، وأسماء الإشارة',ref:'ص 10–11',
+ intro:`في الورشة كثيراً ما ترى قطعة لا تعرف اسمها بالإنجليزي. في هذا الدرس تتعلم أسماء أجزاء لوح التزلج، ثم كيف تسأل عن اسم أي شيء، ثم الفرق بين ${e('this')} و ${e('that')} و ${e('these')} و ${e('those')}.`,
+ parts:[
+ {t:'أجزاء لوح التزلج',short:'الأجزاء',old:[1],q:'ما اسم الجزء الذي تُركّب عليه العجلات؟',ref:'ص 10',
+  lead:`نبدأ بالكلمات التي سنستعملها في الأسئلة: أجزاء لوح التزلج.`,
+  points:[`كل جزء له اسم، ونذكره عادة مع ${e('the')}: ${e('the deck · the wheel · the axle')}`,`العجلة ${e('wheel')} تُركّب على المحور ${e('axle')}، والمحور جزء من الحامل ${e('truck')}.`],
+  html:vt(SK,['English','المعنى']),labs:[{title:'ما الجزء؟',w:(el,B)=>N.cases(el,B,{intro:'ما الجزء؟',cases:[{q:'The wheels turn on it.',opts:[['axle',1],['deck',0],['nose',0]]},{q:'You stand on it.',opts:[['deck',1],['truck',0],['plate',0]]},{q:'The back end of the board.',opts:[['tail',1],['nose',0]]}]})}]},
+ {t:"السؤال عن اسم الشيء",short:"What's this called?",old:[2],q:"ما الفرق بين What's this? و What's this called?",ref:'ص 11',
+  lead:`عندما ترى شيئاً ولا تعرف اسمه الإنجليزي تحتاج سؤالاً ثابتاً. والسؤال والجواب يختلفان قليلاً بين المفرد والجمع.`,
+  points:[`<b>${e("What's this called?")}</b> نسأل بها عندما نعرف الشيء ولا نعرف اسمه الإنجليزي. ونضيف ${e('in English')} للتوضيح.`,`<b>${e("What's this?")}</b> نسأل بها عندما لا نعرف ما هو الشيء أصلاً.`,
+   `<b>المفرد:</b> ${e("What's this called? — It's called a spanner.")} وبعد ${e("It's called")} نضع ${e('a')} أو ${e('an')}.`,`<b>الجمع:</b> ${e("What are these called? — They're called washers.")} وبعد ${e("They're called")} لا نضع ${e('a')}.`],
+  grid:{head:['','السؤال','الجواب'],rows:[['مفرد',"What's this called?","It's called a spanner."],['جمع','What are these called?',"They're called washers."]]},
+  pairs:[["They're called a washers.","They're called washers.",'مع الجمع لا نضع a.'],["What's these called?",'What are these called?','these جمع، فنقول What are.']],
+  art:art(`<g data-tip="What's this called? — تعرف الشيء لكن لا تعرف اسمه بالإنجليزي."><rect x="30" y="70" width="300" height="58" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,"What's this called?",{fs:17,w:700})}</g>
+    <g data-tip="It's called a spanner. — الجواب للمفرد."><rect x="30" y="170" width="300" height="58" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,204,"It's called a spanner.",{fs:17,w:700})}</g>`,'سؤال الاسم وجوابه'),cap:'السؤال وجوابه. مرّر المؤشر على كل منهما.',labs:[LAB21A,{title:'أكمل السؤال',w:(el,B)=>N.gaps(el,B,{intro:'أكمل (أمثلة من عندنا):',items:[{s:"What's this ___ in English?",o:['called','call'],a:0},{s:"It's called ___ axle.",o:['an','a'],a:0,why:'axle تبدأ بصوت متحرك.'},{s:"What are these called? — They're called ___.",o:['washers','a washers'],a:0,why:'لا أداة مع الجمع.'}]})}]},
+ {t:'this / that / these / those',short:'أسماء الإشارة',old:[3],q:'أيهما للقريب: this أم that؟',ref:'ص 11',
+  lead:`عندما نشير إلى شيء نختار الكلمة حسب أمرين: هل هو قريب أم بعيد؟ وهل هو واحد أم أكثر؟`,
+  points:[`<b>${e('this')}</b> لشيء واحد قريب، و <b>${e('that')}</b> لشيء واحد بعيد.`,`<b>${e('these')}</b> لأشياء قريبة، و <b>${e('those')}</b> لأشياء بعيدة.`],
+  grid:{head:['','قريب','بعيد'],rows:[['مفرد','this','that'],['جمع','these','those']]},
+  html:vt([['nails','مسامير (تُدق بالمطرقة)'],['bolts','مسامير ملولبة (براغي بصامولة)'],['nuts','صواميل'],['washers','حلقات'],['staples','دبابيس (مشابك على شكل U)'],['screws','براغي'],['spanner','مفتاح ربط'],['screwdriver','مفك']],['English','المعنى']),
+  pairs:[['What are this called?','What are these called?','للجمع القريب: these.']],
+  art:art(`${DEM.map((d,i)=>`<g data-tip="${d[0]}: ${d[1]} — ${d[2]}"><rect x="${i%2?190:30}" y="${70+Math.floor(i/2)*100}" width="140" height="70" rx="14" fill="${i<2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(i%2?260:100,112+Math.floor(i/2)*100,d[0],{fs:22,w:700})}</g>`).join('')}${TL(100,56,'near',{fs:12,c:C.blue,w:700})}${TL(260,56,'far',{fs:12,c:C.red,w:700})}`,'this that these those'),cap:'العمود الأيمن للقريب والأيسر للبعيد، والصف الثاني للجمع.',labs:[LAB21B,{title:'الإشارة',w:(el,B)=>N.cases(el,B,{intro:'اختر الكلمة:',cases:[{q:'nuts — far',opts:[['those',1],['these',0],['that',0]]},{q:'a screw — near',opts:[['this',1],['that',0]]},{q:'bolts — near',opts:[['these',1],['those',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u2-l1',unit:2,order:1,pages:'10–11',
  title:'Naming — التسمية',
  summary:'أجزاء لوح التزلج (deck، truck، axle، wheel…)، والسؤال عن اسم الشيء بـ What\'s this called (in English)? وأسماء الإشارة this و that و these و those، والجواب It\'s called… / They\'re called…، ومثبتات مثل nails و staples.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>في الورشة تحتاج أن تسأل عن اسم قطعة لا تعرفها. ستتعلم:</p><ol><li>أسماء أجزاء لوح التزلج.</li><li>السؤال ${e("What's this called?")} والجواب ${e("It's called…")}.</li><li>الفرق بين ${e('this, that, these, those')}.</li><li>أسماء مثبتات وأدوات جديدة.</li></ol>`},
-  {h:'أجزاء لوح التزلج',ref:'ص 10',html:vt(SK,['English','المعنى'])},
-  {h:'What\'s this called?',ref:'ص 11',html:`<p>نسأل ${e("What's this called?")} عندما لا نعرف <b>الاسم الإنجليزي</b> لشيء، ونضيف ${e('in English')} للتوضيح. ونسأل ${e("What's this?")} عندما لا نعرف <b>ما هو</b> الشيء أصلاً.</p>
-   ${dl([['A',"What's this called in English?"],['B',"It's called a spanner."],['A','What are these called?'],['B',"They're called washers."]])}`},
-  {h:'this / that / these / those',ref:'ص 11',html:`${vt(DEM,['الكلمة','المعنى','العدد'])}<p>مع المفرد ${e("What's … called? — It's called a …")}، ومع الجمع ${e("What are … called? — They're called …")} (بلا a).</p>`},
-  {note:'<b>توضيح للمتدرب:</b> بعد <span class="en">It\'s called</span> نضع <span class="en">a</span> أو <span class="en">an</span>، وبعد <span class="en">They\'re called</span> لا نضع أداة: <span class="en">They\'re called bolts.</span>'},
-  {h:'مثبتات وأدوات',ref:'ص 11',html:vt([['nails','مسامير (تُدق بالمطرقة)'],['bolts','مسامير ملولبة (براغي بصامولة)'],['nuts','صواميل'],['washers','حلقات'],['staples','دبابيس (مشابك على شكل U)'],['screws','براغي'],['spanner','مفتاح ربط'],['screwdriver','مفك']],['English','المعنى'])},
+  ...R21.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11',html:
    bk(1,'ص 10','استمع وأكمل جدول أرقام التزلج القياسية.',['High jump: 7.1 metres · 19/06/03','Long jump: 24 metres · 08/08/04'])+
    bk(2,'ص 10','مع زميلك: سمِّ أجزاء الرسم بكلمات الصندوق.',['1 tail','2 truck','3 deck','4 nose','5 wheel','6 axle','7 plate'])+
@@ -59,18 +122,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أجزاء اللوح',title:'أجزاء لوح التزلج',q:'ما اسم القطعة التي تحمل العجلات؟',ref:'ص 10',art:skateArt(),cap:'لوح تزلج من رسمنا. مرّر المؤشر على كل جزء (أو المسه).',
-   side:[{tip:`${e('nose')} المقدمة و ${e('tail')} المؤخرة، و ${e('truck')} يحمل ${e('axle')} الذي تدور عليه ${e('wheels')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما الجزء؟',cases:[{q:'The wheels turn on it.',opts:[['axle',1],['deck',0],['nose',0]]},{q:'You stand on it.',opts:[['deck',1],['truck',0],['plate',0]]},{q:'The back end of the board.',opts:[['tail',1],['nose',0]]}]}),title:'مختبر مصغّر: ما الجزء؟'}]},
-  {st:2,short:'What\'s this called?',title:'السؤال عن اسم الشيء',q:'ما الفرق بين What\'s this? و What\'s this called?',ref:'ص 11',
-   art:art(`<g data-tip="What's this called? — تعرف الشيء لكن لا تعرف اسمه بالإنجليزي."><rect x="30" y="70" width="300" height="58" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,"What's this called?",{fs:17,w:700})}</g>
-    <g data-tip="It's called a spanner. — الجواب للمفرد."><rect x="30" y="170" width="300" height="58" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,204,"It's called a spanner.",{fs:17,w:700})}</g>`,'سؤال الاسم وجوابه'),
-   cap:'السؤال وجوابه. مرّر المؤشر على كل منهما.',side:[{tip:`${e("What's this?")} = ما هذا؟ (لا تعرف الشيء). ${e("What's this called?")} = ما اسمه؟ (تعرفه ولا تعرف اسمه).`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل (أمثلة من عندنا):',items:[{s:"What's this ___ in English?",o:['called','call'],a:0},{s:"It's called ___ axle.",o:['an','a'],a:0,why:'axle تبدأ بصوت متحرك.'},{s:"What are these called? — They're called ___.",o:['washers','a washers'],a:0,why:'لا أداة مع الجمع.'}]}),title:'مختبر مصغّر: أكمل السؤال'}]},
-  {st:3,short:'this · that · these · those',title:'أسماء الإشارة',q:'تشير إلى صواميل بعيدة على الرف: ماذا تقول؟',ref:'ص 11',
-   art:art(`${DEM.map((d,i)=>`<g data-tip="${d[0]}: ${d[1]} — ${d[2]}"><rect x="${i%2?190:30}" y="${70+Math.floor(i/2)*100}" width="140" height="70" rx="14" fill="${i<2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(i%2?260:100,112+Math.floor(i/2)*100,d[0],{fs:22,w:700})}</g>`).join('')}${TL(100,56,'near',{fs:12,c:C.blue,w:700})}${TL(260,56,'far',{fs:12,c:C.red,w:700})}`,'this that these those'),
-   cap:'العمود الأيمن للقريب والأيسر للبعيد، والصف الثاني للجمع.',side:[{tip:`قريب مفرد ${e('this')}، بعيد مفرد ${e('that')}، قريب جمع ${e('these')}، بعيد جمع ${e('those')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر الكلمة:',cases:[{q:'nuts — far',opts:[['those',1],['these',0],['that',0]]},{q:'a screw — near',opts:[['this',1],['that',0]]},{q:'bolts — near',opts:[['these',1],['those',0]]}]}),title:'مختبر مصغّر: الإشارة'}]},
+  ...R21.stations,
   {recap:['أجزاء اللوح: nose, tail, deck, truck, axle, wheel, plate.',"What's this called (in English)? — It's called a/an …",'What are these called? — They\'re called … (بلا a).','this/that للمفرد، these/those للجمع؛ this/these قريب، that/those بعيد.']}
  ],
  lab:lab21,
@@ -118,15 +170,38 @@ function lab22(el,B){kcss();
  const shop=()=>{const it=$('#sh').value,s=+$('#sz').value,q=+$('#qt').value;$('#so').innerHTML=dl([['Customer',`I need some ${it}, please.`],['Shopkeeper','What size?'],['Customer',`${s} mm.`],['Shopkeeper','How many?'],['Customer',`${q}, please.`]])};
  ['sh','sz','qt'].forEach(k=>$('#'+k).addEventListener('input',shop));shop();
 }
+const R22=N.rule({title:'الطلب في المحل، والتعليمة، وأفعال التركيب',ref:'ص 12–13',
+ intro:`في هذا الدرس تشتري قطعاً من المحل، ثم تقرأ تعليمات تركيب لوح التزلج. نشرح ذلك في ثلاث خطوات: كيف تطلب القطع بالعدد والمقاس، ثم كيف تُبنى التعليمة، ثم أفعال التركيب وأضدادها.`,
+ parts:[
+ {t:'الطلب في المحل: a و some و How many?',short:'a و some',old:[1],q:'متى نقول a washer ومتى some washers؟',ref:'ص 12',
+  lead:`عندما تطلب قطعاً من المحل يسألك البائع عن المقاس والعدد. وقبل ذلك تحتاج أن تعرف كيف تذكر الشيء: واحد أم أكثر؟ وهل تعرف العدد؟`,
+  points:[`<b>لشيء واحد</b> نستعمل ${e('a')} أو ${e('an')} مع الاسم المفرد: ${e('a washer · an axle')}`,`<b>لأكثر من واحد</b> نضيف ${e('s')} للاسم. وإذا لم نذكر العدد نضع ${e('some')} (بعض): ${e('some washers')}`,
+   `<b>إذا عرفنا العدد</b> نذكره بدل ${e('some')}: ${e('twenty washers')}`,`<b>أسئلة البائع:</b> ${e('What size?')} (ما المقاس؟) و ${e('How many?')} (كم العدد؟)، والاسم بعد ${e('How many')} جمع.`,
+   `نكتب ${e('8 mm')} ونقول ${e('eight millimetres')} أو باختصار ${e('eight mil')}. و ${e('M5')} مقاس برغي قطره 5 mm.`],
+  grid:{head:['واحد','عدد غير محدد','عدد محدد'],rows:[['a washer','some washers','twenty washers'],['a nut','some nuts','six nuts'],['an axle','some axles','two axles']]},
+  html:dl([['Customer','I need some washers, please.'],['Shopkeeper','What size?'],['Customer','8 mm.'],['Shopkeeper','How many?'],['Customer','Twenty, please.']]),
+  pairs:[['I need a washers.','I need some washers.','washers جمع، فلا نضع a.'],['How many nut?','How many nuts?','بعد How many يكون الاسم جمعاً.']],
+  art:art(`<g data-tip="What size? — سؤال عن المقاس، والجواب 7 mm أو M5."><rect x="30" y="70" width="140" height="60" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(100,106,'What size?',{fs:16,w:700})}</g>
+    <g data-tip="How many? — سؤال عن العدد، والجواب Four, please."><rect x="190" y="70" width="140" height="60" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(260,106,'How many?',{fs:16,w:700})}</g>
+    <g data-tip="8 mm = eight millimetres = eight mil"><rect x="80" y="180" width="200" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,'8 mm · M5',{fs:18,w:700})}</g>`,'What size How many'),cap:'سؤالا البائع والمقاسات. مرّر المؤشر على كل منها.',labs:[LAB22A,{title:'رتّب الحوار',w:(el,B)=>N.order(el,B,{intro:'رتّب الحوار:',steps:['I need some screws, please.','What size?','6 mm.','How many?','Thirty, please.']})}]},
+ {t:'التعليمة: فعل + شيء + مكان',short:'بناء التعليمة',old:[2],q:'ما ترتيب كلمات التعليمة؟',ref:'ص 13',
+  lead:`تعليمات التركيب في أي كتيّب لها ترتيب ثابت. إذا عرفته فهمت أي تعليمة بسرعة.`,
+  points:[`<b>الفعل أولاً</b> بلا فاعل، ثم <b>الشيء</b>، ثم <b>المكان</b>: ${e('Put the plate on the four bolts.')}`,`<b>بعض الأفعال لا تحتاج مكاناً:</b> ${e('Tighten the nuts.')}`],
+  grid:{head:['الفعل','الشيء','المكان'],rows:STEPS.slice(0,6).map(s=>[s[0],s[1],s[2]||'—'])},
+  pairs:[['The plate put on the bolts.','Put the plate on the bolts.','التعليمة تبدأ بالفعل.']],
+  labs:[LAB22B,{title:'رتّب الخطوات',w:(el,B)=>N.order(el,B,{intro:'رتّب خطوات تركيب العجلة (من عندنا):',steps:['Put the wheel on the axle.','Put the nut on the axle.','Tighten the nut.']})}]},
+ {t:'أفعال التركيب وأضدادها',short:'الأضداد',old:[3],q:'ما ضد tighten؟',ref:'ص 13',
+  lead:`كل عمل تركيب له عكس في الفك. لذلك نحفظ أفعال التركيب أزواجاً.`,
+  points:[`${e('put on ≠ take off')} (يضع ≠ ينزع)`,`${e('tighten ≠ loosen')} (يشدّ ≠ يرخي)`,`${e('push ≠ pull')} (يدفع ≠ يسحب)`,`مع ${e('put')} نقول ${e('on')}، ومع ${e('take')} نقول ${e('off')}: ${e('Put the wheel on the axle. Take the wheel off the axle.')}`],
+  labs:[LAB22C,{title:'اختر الفعل',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'___ the old tyre off the car.',o:['Take','Put'],a:0},{s:'The nut is too tight. ___ it.',o:['Loosen','Tighten'],a:0},{s:'___ the door to open it. (نحوك)',o:['Pull','Push'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u2-l2',unit:2,order:2,pages:'12–13',
  title:'Assembling — التركيب',
  summary:'طلب القطع في المحل (What size? How many?) وقراءة المقاسات (10 mm، M5)، وترتيب خطوات التركيب، والتعليمات بقالب فعل + شيء + مكان (Put the plate on the bolts)، والأفعال put on/take off و tighten/loosen و push/pull.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>${e('assemble')} = يركّب الأجزاء معاً. ستتعلم:</p><ol><li>طلب القطع في المحل بالمقاس والعدد.</li><li>ترتيب خطوات تركيب لوح تزلج.</li><li>كتابة التعليمات بقالب: فعل + شيء + مكان.</li><li>أفعال التركيب وأضدادها.</li></ol>`},
-  {h:'في المحل: What size? How many?',ref:'ص 12',html:`${dl([['Customer','I need some washers, please.'],['Shopkeeper','What size?'],['Customer','8 mm.'],['Shopkeeper','How many?'],['Customer','Twenty, please.']])}<p>نكتب ${e('8 mm')} ونقول ${e('eight millimetres')} أو باختصار ${e('eight mil')}. و ${e('M5')} مقاس برغي قطره 5 mm.</p>`},
-  {h:'التعليمة: فعل + شيء + مكان',ref:'ص 13',html:`${vt(STEPS.slice(0,6).map(s=>[s[0],s[1],s[2]||'—']),['Verb الفعل','Object الشيء','Location المكان'])}<p>بعض الأفعال لا تحتاج مكاناً: ${e('Tighten the nuts.')}</p>`},
-  {h:'أفعال التركيب وأضدادها',ref:'ص 13',html:`${vt(OPV,['الفعل','ضده','المعنى'])}${eb(['Put the wheel on the axle.','Take the wheel off the axle.','Tighten the nut. Then loosen it.'])}`},
+  ...R22.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13',html:
    bk(1,'ص 12','مع زميلك: تريد تركيب لوح تزلج. ماذا تحتاج من كلمات التمرين 7 ص 11؟',null)+
    bk(2,'ص 12','استمع وأكمل قائمة المشتريات.',['spanner: 10 mm · 1','nuts: 7 mm · 4','bolts: M5 · 8'])+
@@ -141,19 +216,8 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'في المحل',title:'طلب القطع بالمقاس والعدد',q:'ماذا يسأل البائع بعد I need some nuts؟',ref:'ص 12',
-   art:art(`<g data-tip="What size? — سؤال عن المقاس، والجواب 7 mm أو M5."><rect x="30" y="70" width="140" height="60" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(100,106,'What size?',{fs:16,w:700})}</g>
-    <g data-tip="How many? — سؤال عن العدد، والجواب Four, please."><rect x="190" y="70" width="140" height="60" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(260,106,'How many?',{fs:16,w:700})}</g>
-    <g data-tip="8 mm = eight millimetres = eight mil"><rect x="80" y="180" width="200" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,'8 mm · M5',{fs:18,w:700})}</g>`,'What size How many'),
-   cap:'سؤالا البائع والمقاسات. مرّر المؤشر على كل منها.',side:[{tip:`${e('some')} في الطلب: ${e('I need some bolts, please.')}`}],
-   body:[{widget:(el,B)=>N.order(el,B,{intro:'رتّب الحوار:',steps:['I need some screws, please.','What size?','6 mm.','How many?','Thirty, please.']}),title:'مختبر مصغّر: رتّب الحوار'}]},
-  {st:2,short:'خطوات التركيب',title:'التعليمة: فعل + شيء + مكان',q:'ما الخطوة الأولى في تركيب الحامل على اللوح؟',ref:'ص 13',art:skateArt(),cap:'أجزاء اللوح من الدرس السابق. مرّر المؤشر لتتذكر الأسماء.',
-   side:[{tip:`القالب: ${e('Put + the plate + on the four bolts.')}`}],
-   body:[{widget:(el,B)=>N.order(el,B,{intro:'رتّب خطوات تركيب العجلة (من عندنا):',steps:['Put the wheel on the axle.','Put the nut on the axle.','Tighten the nut.']}),title:'مختبر مصغّر: رتّب الخطوات'}]},
-  {st:3,short:'الأضداد',title:'أفعال التركيب وأضدادها',q:'ما ضد tighten؟',ref:'ص 13',art:opArt(),cap:'أربعة أفعال من رسمنا. مرّر المؤشر على كل منها.',
-   side:[{tip:`${e('put on ≠ take off')} · ${e('tighten ≠ loosen')} · ${e('push ≠ pull')}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'___ the old tyre off the car.',o:['Take','Put'],a:0},{s:'The nut is too tight. ___ it.',o:['Loosen','Tighten'],a:0},{s:'___ the door to open it. (نحوك)',o:['Pull','Push'],a:0}]}),title:'مختبر مصغّر: اختر الفعل'}]},
-  {recap:['في المحل: I need some … — What size? — How many?','10 mm = ten millimetres (ten mil)، و M5 مقاس البرغي.','التعليمة: فعل + شيء + مكان: Put the plate on the bolts.','put on ≠ take off، tighten ≠ loosen، push ≠ pull.']}
+  ...R22.stations,
+  {recap:['لشيء واحد a / an، ولأكثر some + جمع، أو العدد + جمع.','في المحل: What size? How many? — والاسم بعد How many جمع.','10 mm = ten millimetres (ten mil)، و M5 مقاس البرغي.','التعليمة: فعل + شيء + مكان: Put the plate on the bolts.','put on ≠ take off، tighten ≠ loosen، push ≠ pull.']}
  ],
  lab:lab22,
  examples:[
@@ -191,16 +255,36 @@ function lab23(el,B){kcss();
   $('#oo').innerHTML=dl([['A','Hello. I need to buy some things for my skateboard.'],['B','OK. What do you need?'],['A',`I need ${q>1||it==='pads'?q:'a'} ${q>1||it==='pads'?pl:it}.`],['B','What colour do you need?'],['A',cap(c)+'.'],['B','What size?'],['A',cap(s)+'.']])};
  const cap=s=>s[0].toUpperCase()+s.slice(1);['it','cl','sz','q'].forEach(k=>$('#'+k).addEventListener('input',ord));ord();
 }
+const R23=N.rule({title:'الرسالة الصوتية، والطلب بالهاتف، وتعريف شخص آخر',ref:'ص 14–15',
+ intro:`الهاتف له عبارات خاصة به. في هذا الدرس تتعلم أن تترك رسالة صوتية، وأن تطلب بضاعة بالهاتف، وأن تعرّف شخصاً آخر.`,
+ parts:[
+ {t:'الرسالة الصوتية والأرقام الدولية',short:'الرسالة الصوتية',old:[1],q:"لماذا نقول This is … في الهاتف؟",ref:'ص 14',
+  lead:`إذا اتصلت ولم يرد أحد تترك رسالة صوتية. والرسالة الجيدة قصيرة ومرتبة حتى يعرف السامع من أنت وكيف يتصل بك.`,
+  points:[`<b>نبدأ بـ</b> ${e('This is …')} لا ${e("I'm …")}: ${e('Hello. This is Nawaf Al-Shehri.')}`,`<b>نتهجى</b> الاسم الصعب: ${e("That's S-H-E-H-R-I.")}`,`<b>نذكر</b> الشركة والرقم: ${e("I'm from Delta Tools. My phone number is …")}`,`<b>نختم</b> بـ ${e('Please call me back.')}`,
+   `<b>الرقم الدولي:</b> ${e('00')} نقرؤه ${e('double oh')} أو ${e('zero zero')}، و ${e('966')} رمز السعودية ${e('nine six six')}.`],
+  html:eb(["Hello. This is Nawaf Al-Shehri. That's S-H-E-H-R-I.","I'm from Delta Tools. My phone number is 00966 50 311 7788.",'Please call me back. Thanks.'])+vt([['00','double oh / zero zero','رمز الاتصال الدولي'],['966','nine six six','رمز السعودية'],['55','double five / five five',''],['0','oh / zero','']],['المكتوب','نقرؤه','ملاحظة']),
+  art:art(`<rect x="110" y="40" width="140" height="240" rx="20" fill="${C.ink}"/><rect x="122" y="62" width="116" height="180" rx="8" fill="${C.paper}"/>
+    <g data-tip="This is … — في الهاتف نعرّف بأنفسنا بـ This is.">${TL(180,96,'This is Majed.',{fs:12,w:700})}</g><g data-tip="That's M-A-J-E-D. — نتهجى الاسم.">${TL(180,126,"That's M-A-J-E-D.",{fs:11})}</g>
+    <g data-tip="My phone number is … — نقرأ الرقم رقماً رقماً.">${TL(180,160,'My number is …',{fs:11})}</g><g data-tip="Please call me back. — اتصل بي من فضلك.">${TL(180,196,'Please call me back.',{fs:11,w:700,c:C.red})}</g>`,'رسالة صوتية'),cap:'رسالة صوتية في أربعة أجزاء. مرّر المؤشر على كل جزء.',labs:[LAB23A,{title:'رتّب الرسالة',w:(el,B)=>N.order(el,B,{intro:'رتّب الرسالة:',steps:["Hello. This is Omar Saleh.","That's S-A-L-E-H.",'My phone number is 0555 21 04 66.','Please call me back. Thanks.']})}]},
+ {t:'طلب البضائع بالهاتف',short:'الطلب بالهاتف',old:[2],q:'ماذا يسألك البائع عندما تطلب غطاء مقعد؟',ref:'ص 15',
+  lead:`عندما تطلب بضاعة بالهاتف لا يرى البائع ما تريد، فيسألك أسئلة قصيرة ليعرف التفاصيل.`,
+  points:[`${e('What do you need?')} ماذا تحتاج؟ والجواب ${e('I need two seat covers.')}`,`${e('What colour?')} ما اللون؟`,`${e('What size?')} ما المقاس؟`,`${e('How many?')} كم العدد؟`,`${e("What's your name, please?")} و ${e('Please spell that.')}`],
+  html:dl([['A','Hello. I need to buy some things for my car.'],['B','OK. What do you need?'],['A','I need two seat covers.'],['B','What colour?'],['A','Black.'],['B','What size?'],['A','Large.'],['B',"What's your name, please?"]]),
+  art:art(`${[['What colour?',C.red],['What size?',C.blue],['How many?',C.grn]].map((q,i)=>`<g data-tip="${q[0]}"><rect x="40" y="${60+i*72}" width="280" height="54" rx="14" fill="${C.paper}" stroke="${q[1]}" stroke-width="3"/>${TL(180,93+i*72,q[0],{fs:18,w:700,c:q[1]})}</g>`).join('')}`,'أسئلة البائع'),cap:'أسئلة البائع الثلاثة. مرّر المؤشر على كل منها.',labs:[LAB23B,{title:'السؤال المناسب',w:(el,B)=>N.cases(el,B,{intro:'اختر السؤال المناسب للجواب:',cases:[{q:'Medium.',opts:[['What size?',1],['What colour?',0]]},{q:'Three, please.',opts:[['How many?',1],['What size?',0]]},{q:'Red.',opts:[['What colour?',1],['How many?',0]]}]})}]},
+ {t:'تعريف شخص آخر',short:'This is …',q:'كيف تعرّف زميلك لشخص آخر؟',ref:'ص 15',
+  lead:`عرفت كيف تعرّف بنفسك. وتحتاج أحياناً أن تعرّف زميلك لغيرك.`,
+  points:[`<b>نبدأ بـ</b> ${e('This is …')}: ${e('This is Saud.')}`,`<b>ثم</b> ${e("He's")} أو ${e("She's")}: ${e("He's a student.")}`,`<b>${e('too')}</b> في آخر الجملة تعني «أيضاً»: ${e("He's a student, too.")}`],
+  html:dl([['A',"I'm Hamad. I'm a student. And this is Saud. He's a student, too."],['B','Hello, Hamad. Hello, Saud. Nice to meet you.']]),
+  pairs:[["He's Saud.",'This is Saud.','لتعريف شخص نقول This is.']],
+  labs:[LAB23C]}
+ ]});
 B.lesson({
  id:'u2-l3',unit:2,order:3,pages:'14–15',
  title:'Ordering — الطلب بالهاتف',
  summary:'الرسائل الهاتفية والبريد الصوتي (Please call me back)، وتهجئة الأسماء وقراءة أرقام الهاتف الدولية (double، zero/oh)، وطلب البضائع بالهاتف بأسئلة What colour / What size / How many، وتعريف شخص آخر (This is…).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>كثيراً ما تطلب قطعاً بالهاتف أو تترك رسالة. ستتعلم:</p><ol><li>ترك رسالة صوتية وتسجيل رسالة من شخص.</li><li>تهجئة الأسماء وقراءة الأرقام الدولية.</li><li>طلب البضائع بالهاتف.</li><li>تعريف شخص آخر.</li></ol>`},
-  {h:'رسالة صوتية',ref:'ص 14',html:`${eb(["Hello. This is Nawaf Al-Shehri. That's S-H-E-H-R-I.","I'm from Delta Tools. My phone number is 00966 50 311 7788.",'Please call me back. Thanks.'])}<p>في الهاتف نقول ${e('This is…')} لا ${e("I'm…")} في البداية، وننهي بـ ${e('Please call me back.')}</p>`},
-  {h:'قراءة الأرقام الدولية',ref:'ص 14',html:`${vt([['00','double oh / zero zero','رمز الاتصال الدولي'],['966','nine six six','رمز السعودية'],['55','double five / five five',''],['0','oh / zero','']],['المكتوب','نقرؤه','ملاحظة'])}`},
-  {h:'طلب البضائع بالهاتف',ref:'ص 15',html:`${dl([['A','Hello. I need to buy some things for my car.'],['B','OK. What do you need?'],['A','I need two seat covers.'],['B','What colour?'],['A','Black.'],['B','What size?'],['A','Large.'],['B',"What's your name, please?"]])}${vt([['What colour?','ما اللون؟'],['What size?','ما المقاس؟'],['How many?','كم العدد؟'],["What's your phone number?",'ما رقم هاتفك؟'],['Please spell that.','تهجَّ ذلك من فضلك.']],['العبارة','المعنى'])}`},
-  {h:'تعريف شخص آخر',ref:'ص 15',html:dl([['A',"I'm Hamad. I'm a student. And this is Saud. He's a student, too."],['B','Hello, Hamad. Hello, Saud. Nice to meet you.']])},
+  ...R23.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15',html:
    bk(1,'ص 14','استمع إلى الرسالة الصوتية وأكمل الملاحظات.',['Name: Ben Johnson','Phone number: 0044 208 8947'])+
    bk(2,'ص 14','استمع وصحّح الأخطاء في الأسماء والأرقام.',['1 Abdul Monim Waheed · 00 202 48830','2 José Fernando Ruiz · 00 35 912 828 990','3 Adil Al-Mansur · 00 971 2 605 9943','4 Nikolai Kuznetsev · 00 7 455 988-22-77'])+
@@ -212,16 +296,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الرسالة الصوتية',title:'ترك رسالة صوتية',q:'كيف تبدأ رسالة صوتية؟ وكيف تنهيها؟',ref:'ص 14',
-   art:art(`<rect x="110" y="40" width="140" height="240" rx="20" fill="${C.ink}"/><rect x="122" y="62" width="116" height="180" rx="8" fill="${C.paper}"/>
-    <g data-tip="This is … — في الهاتف نعرّف بأنفسنا بـ This is.">${TL(180,96,'This is Majed.',{fs:12,w:700})}</g><g data-tip="That's M-A-J-E-D. — نتهجى الاسم.">${TL(180,126,"That's M-A-J-E-D.",{fs:11})}</g>
-    <g data-tip="My phone number is … — نقرأ الرقم رقماً رقماً.">${TL(180,160,'My number is …',{fs:11})}</g><g data-tip="Please call me back. — اتصل بي من فضلك.">${TL(180,196,'Please call me back.',{fs:11,w:700,c:C.red})}</g>`,'رسالة صوتية'),
-   cap:'رسالة صوتية في أربعة أجزاء. مرّر المؤشر على كل جزء.',side:[{tip:`الترتيب: الاسم ← التهجئة ← الرقم ← ${e('Please call me back.')}`}],
-   body:[{widget:(el,B)=>N.order(el,B,{intro:'رتّب الرسالة:',steps:["Hello. This is Omar Saleh.","That's S-A-L-E-H.",'My phone number is 0555 21 04 66.','Please call me back. Thanks.']}),title:'مختبر مصغّر: رتّب الرسالة'}]},
-  {st:2,short:'الطلب بالهاتف',title:'طلب البضائع بالهاتف',q:'ما الأسئلة الثلاثة التي يسألها البائع؟',ref:'ص 15',
-   art:art(`${[['What colour?',C.red],['What size?',C.blue],['How many?',C.grn]].map((q,i)=>`<g data-tip="${q[0]}"><rect x="40" y="${60+i*72}" width="280" height="54" rx="14" fill="${C.paper}" stroke="${q[1]}" stroke-width="3"/>${TL(180,93+i*72,q[0],{fs:18,w:700,c:q[1]})}</g>`).join('')}`,'أسئلة البائع'),
-   cap:'أسئلة البائع الثلاثة. مرّر المؤشر على كل منها.',side:[{tip:`نجيب قصيراً: ${e('Blue. — Large. — Two, please.')}`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر السؤال المناسب للجواب:',cases:[{q:'Medium.',opts:[['What size?',1],['What colour?',0]]},{q:'Three, please.',opts:[['How many?',1],['What size?',0]]},{q:'Red.',opts:[['What colour?',1],['How many?',0]]}]}),title:'مختبر مصغّر: السؤال المناسب'}]},
+  ...R23.stations,
   {recap:['في الهاتف: This is … ثم التهجئة والرقم، ثم Please call me back.','00 = double oh، والرقمان المتشابهان double.','أسئلة الطلب: What colour? What size? How many?','تعريف شخص آخر: This is Saud. He\'s a student, too.']}
  ],
  lab:lab23,
