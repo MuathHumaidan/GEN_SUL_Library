@@ -39,6 +39,56 @@ function lab101(el,B){
 }
 const VOC101=[['rule','قاعدة',''],['warning','تحذير',''],['safety sign','لوحة سلامة',''],['hazard','خطر (مصدر خطر)',''],['danger','خطر',''],['poison','سُمّ',''],['prohibition','منع',''],['mandatory','إلزامي',''],['hard hat','خوذة',''],['safety gloves / boots','قفازات / أحذية سلامة',''],['high-voltage','جهد عالٍ',''],['electric shock','صعقة كهربائية',''],['guard','واقٍ (حاجز حماية)','على المنشار أو الآلة'],['injure','يُصيب (يجرح)',''],['trap','يحبس (يعلق)','trap your hand in the gears'],['lighted match','عود ثقاب مشتعل','']];
 
+/* ===== مختبرات «شرح القاعدة» 10.1 ===== */
+const RA101={hat:['wear a hard hat','do','ارتدِ خوذة'],gloves:['wear gloves','do','ارتدِ قفازات'],touch:['touch the machine','dont','لا تلمس الآلة'],smoke:['smoke','dont','لا تدخّن'],run:['run in the workshop','dont','لا تركض في الورشة']};
+const cap101=s=>s.replace(/^./,c=>c.toUpperCase());
+const LAB101A={title:'ركّب قاعدة السلامة',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل وقوة القاعدة، وشاهد الصيغ الثلاث للأمر والمنع.',
+ controls:[{k:'a',label:'الفعل',opts:Object.keys(RA101).map(k=>[k,RA101[k][0]])},{k:'f',label:'الصيغة',opts:[['imp','أمر بسيط'],['adv','always / never'],['must',"must / mustn't"]]}],
+ out:({a,f})=>{const [v,t]=RA101[a],neg=t==='dont';
+  const W={imp:neg?["Don't",'لا تفعل']:['','افعل'],adv:neg?['Never','أبداً لا']:['Always','دائماً'],must:neg?["You mustn't",'ممنوع']:['You must','يجب']}[f];
+  const pieces=[...(W[0]?[[W[0],'k',W[1]]]:[]),[(W[0]?v:cap101(v))+'.','n','الفعل الأصلي']];
+  return{pieces,say:`${W[0]?W[0]+' '+v:cap101(v)}.`,ar:RA101[a][2]+'.',why:`بعد ${W[0]||'بداية الجملة'} يأتي الفعل الأصلي. ${f==='must'?(neg?"mustn't = must not: منع قوي.":'must: إلزام قوي.'):f==='adv'?'always و never تقويان الأمر أو المنع.':'الأمر يبدأ بالفعل الأصلي، والمنع بـ Don\'t.'}`}}})};
+const SG101={warn:['Warning sign','تحذير','There is a danger. Be careful.','Be careful. The floor is wet.'],proh:['Prohibition sign','منع','Do not do this.',"Do not smoke here."],mand:['Mandatory action sign','إلزام','You must do this.','You must wear a hard hat.'],safe:['Safe condition sign','حالة آمنة','This is safe. Go this way.','Fire exit. Go this way.']};
+const sgsvg101=k=>{const I='#222';const g={warn:`<path d="M280 14 L340 116 H220 Z" fill="#F2C14E" stroke="${I}" stroke-width="6" stroke-linejoin="round"/><rect x="275" y="50" width="10" height="38" rx="3" fill="${I}"/><circle cx="280" cy="100" r="6" fill="${I}"/>`,
+ proh:`<circle cx="280" cy="66" r="52" fill="#fff" stroke="#C8553D" stroke-width="12"/><rect x="262" y="56" width="40" height="10" rx="3" fill="${I}"/><path d="M243 30 L317 102" stroke="#C8553D" stroke-width="12"/>`,
+ mand:`<circle cx="280" cy="66" r="52" fill="#3E7CB1"/><path d="M256 76 q24 -50 48 0 z M250 78 h60" stroke="#fff" stroke-width="6" fill="#fff"/>`,
+ safe:`<rect x="210" y="22" width="140" height="88" rx="8" fill="#4F9D69"/><path d="M250 66 h50 M285 50 l18 16 l-18 16" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>`}[k];
+ return `<svg viewBox="0 0 560 130" aria-hidden="true"><rect width="560" height="130" rx="14" fill="${C.bg}"/>${g}</svg>`};
+const LAB101B={title:'اقرأ لوحة السلامة',w:(el,B)=>N.labB(el,B,{intro:'اختر نوع اللوحة، وشاهد شكلها ولونها ومعناها، ثم جملة تكتبها تحتها.',
+ controls:[{k:'k',label:'اللوحة',opts:Object.keys(SG101).map(k=>[k,SG101[k][1]])}],
+ out:({k})=>{const x=SG101[k];return{svg:sgsvg101(k),pieces:[[x[0],'q',x[1]],['=','x',''],[x[2],'k','معناها'],[x[3],'n','مثال']],say:`${x[0]}. ${x[3]}`,why:{warn:'مثلث أصفر بإطار أسود: يوجد خطر، فانتبه.',proh:'دائرة بإطار أحمر وخط مائل: ممنوع.',mand:'دائرة زرقاء: إلزام، يجب أن تفعل.',safe:'مستطيل أخضر: حالة آمنة، مثل مخرج الطوارئ (إضافة من خارج الكتاب).'}[k]}}})};
+const HZ101={hot:['The surface is hot.','burn your hand','قد تحرق يدك'],laser:['Lasers.','injure your eyes','قد تؤذي عينيك'],wet:['The floor is wet.','slip','قد تنزلق'],blade:['The blade is sharp.','cut your fingers','قد تجرح أصابعك']};
+const LAB101C={title:'التحذير ونتيجته: might و could',w:(el,B)=>N.labB(el,B,{intro:'اختر الخطر والكلمة، وشاهد جملتي التحذير.',
+ controls:[{k:'h',label:'الخطر',opts:Object.keys(HZ101).map(k=>[k,k])},{k:'m',label:'الكلمة',opts:[['might','might'],['could','could']]}],
+ out:({h,m})=>{const x=HZ101[h];return{pieces:[['Be careful.','x','تنبيه'],[x[0],'x','الخطر'],['You','x',''],[m,'k','قد (احتمال)'],[x[1]+'.','n','الفعل الأصلي']],say:`Be careful. ${x[0]} You ${m} ${x[1]}.`,ar:x[2]+'.',why:`${m} = «قد»، ويأتي بعدها الفعل الأصلي. و might و could هنا بمعنى واحد تقريباً.`}}})};
+const R101=N.rule({title:'قواعد السلامة ولوحاتها وتحذيراتها',ref:'ص 74–75',
+ intro:`نشرح لغة السلامة في ثلاث خطوات مرتبة: صيغ القاعدة (الأمر والمنع)، ثم أنواع لوحات السلامة ومعانيها، ثم ذكر النتيجة المحتملة للخطر بـ ${e('might')} و ${e('could')}.`,
+ parts:[
+ {t:'صيغ القاعدة: الأمر والمنع',short:'القواعد',old:[1],q:'كيف تكتب قاعدة «ممنوع لمس الآلة» بثلاث طرق؟',ref:'ص 75',
+  lead:`في الورشة والموقع تُكتب قواعد السلامة بجمل قصيرة واضحة: ما يجب أن تفعله، وما يُمنع. ولكل منهما ثلاث صيغ تختلف في قوتها.`,
+  subs:[{h:'ما يجب أن تفعله',points:[`<b>أمر بسيط</b> يبدأ بالفعل الأصلي: ${e('Wear a hard hat here.')}`,`<b>${e('Always')}</b> + الفعل الأصلي: ${e('Always wear a hard hat here.')}`,`<b>${e('You must')}</b> + الفعل الأصلي (أقواها): ${e('You must wear a hard hat here.')}`]},
+   {h:'ما يُمنع',points:[`<b>${e("Do not / Don't")}</b> + الفعل الأصلي: ${e("Don't touch the machine.")}`,`<b>${e('Never')}</b> + الفعل الأصلي: ${e('Never touch the machine.')}`,`<b>${e("You must not / mustn't")}</b> + الفعل الأصلي: ${e("You mustn't touch the machine.")}`]}],
+  points:[`<b>في كل الصيغ</b> يأتي بعد الكلمة الفعل الأصلي بلا ${e('s')} وبلا ${e('to')}.`],
+  grid:{head:['','افعل ✓','لا تفعل ✗'],rows:[['أمر','Wear a hard hat.',"Don't touch it."],['always / never','Always wear a hard hat.','Never touch it.'],["must / mustn't",'You must wear a hard hat.',"You mustn't touch it."]]},
+  pairs:[['You must to wear a hard hat.','You must wear a hard hat.','لا نضع to بعد must.'],["Don't touching the machine.","Don't touch the machine.","بعد Don't الفعل الأصلي."]],
+  art:art(`<g data-tip="Wear a hard hat. / Always wear a hard hat. / You must wear a hard hat.">${signSVG('mandatory','⛑',120).replace('<svg ','<svg x="40" y="70" ')}</g><g data-tip="Don't touch. / Never touch. / You mustn't touch.">${signSVG('prohibition','✋',120).replace('<svg ','<svg x="200" y="70" ')}</g>${TL(100,230,'must',{fs:16,w:700,c:C.blue})}${TL(260,230,"mustn't",{fs:16,w:700,c:C.red})}`,'لوحة إلزام ولوحة منع'),cap:'إلزام ومنع. مرّر المؤشر على كل لوحة.',labs:[LAB101A,{title:'القاعدة',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة:',items:[{s:'You ___ wear safety boots in the workshop.',o:['must','mustn\'t','never'],a:0},{s:'___ use your phone near the fuel pump.',o:['Never','Always','Must'],a:0},{s:"You ___ open this door. It's an emergency door only.",o:["mustn't","must","always"],a:0}]})}]},
+ {t:'أنواع لوحات السلامة',short:'اللوحات',old:[2],q:'ما معنى الدائرة الزرقاء؟ وما معنى الدائرة ذات الخط الأحمر المائل؟',ref:'ص 74',
+  lead:`لوحات السلامة لغة عالمية: من شكلها ولونها تعرف معناها قبل أن تقرأ ما كُتب عليها. وهي موحّدة في المعيار الدولي ISO.`,
+  points:[`<b>لوحة التحذير</b> ${e('Warning sign')}: مثلث أصفر بإطار أسود، ومعناها يوجد خطر فانتبه.`,
+   `<b>لوحة المنع</b> ${e('Prohibition sign')}: دائرة بيضاء بإطار أحمر وخط مائل، ومعناها لا تفعل هذا.`,
+   `<b>لوحة الإلزام</b> ${e('Mandatory action sign')}: دائرة زرقاء، ومعناها يجب أن تفعل هذا.`,
+   `<small>(إضافة من خارج الكتاب)</small> وفي المعيار نفسه <b>لوحات الحالة الآمنة</b> الخضراء، مثل مخرج الطوارئ، و<b>لوحات معدات الحريق</b> الحمراء المربعة.`],
+  grid:{head:['النوع','الشكل واللون','جملة تناسبها'],rows:[['Warning','مثلث أصفر','Be careful. The floor is wet.'],['Prohibition','دائرة بخط أحمر مائل','Do not smoke here.'],['Mandatory','دائرة زرقاء','You must wear ear protectors.']]},
+  art:art(`<g data-tip="Warning: yellow and black, triangle — تحذير">${signSVG('warning','!',90).replace('<svg ','<svg x="30" y="110" ')}</g><g data-tip="Prohibition: red, white and black, round — منع">${signSVG('prohibition','🔥',90).replace('<svg ','<svg x="135" y="110" ')}</g><g data-tip="Mandatory: blue and white, round — إلزام">${signSVG('mandatory','👓',90).replace('<svg ','<svg x="240" y="110" ')}</g>${TL(75,230,'warning',{fs:12,w:700})}${TL(180,230,'prohibition',{fs:12,w:700})}${TL(285,230,'mandatory',{fs:12,w:700})}`,'ثلاث لوحات: تحذير ومنع وإلزام'),cap:'الأنواع الثلاثة. مرّر المؤشر على كل لوحة.',labs:[LAB101B,{title:'صنّف',w:(el,B)=>N.sort(el,B,{intro:'صنّف اللوحة من وصفها:',cats:['تحذير','منع','إلزام'],items:[['دائرة زرقاء فيها قفازات',2,'إلزام: You must wear gloves.'],['مثلث أصفر فيه صاعقة',0,'تحذير: high voltage.'],['دائرة حمراء بخط مائل على سيجارة',1,'منع: No smoking.'],['دائرة زرقاء فيها أذن بسماعة',2,'إلزام: wear ear protection.']]})}]},
+ {t:'النتيجة المحتملة: might و could',short:'might / could',old:[3],q:'كيف تحذّر زميلك من سطح ساخن وتذكر ما قد يحدث له؟',ref:'ص 75',
+  lead:`التحذير الجيد لا يكتفي بذكر الخطر، بل يذكر ما قد يحدث إذا لم ننتبه. وهنا نستعمل ${e('might')} أو ${e('could')}.`,
+  points:[`<b>القالب:</b> نذكر الخطر، ثم ${e('You might / could')} + الفعل الأصلي.<br>${e('The surface is hot. You might burn your hand.')}`,
+   `<b>${e('might')} و ${e('could')}</b> هنا بمعنى واحد تقريباً: «قد»، أي شيء محتمل لا مؤكد.`,
+   `<b>بعدهما الفعل الأصلي</b> بلا ${e('s')} وبلا ${e('to')}، مع كل الفاعلين.`],
+  grid:{head:['الخطر','النتيجة المحتملة'],rows:[['The surface is hot.','You might burn your hand.'],['Lasers.','You could injure your eyes.'],['The floor is wet.','You might slip.']]},
+  pairs:[['You could to injure your eyes.','You could injure your eyes.','لا نضع to بعد could.'],['You might burns your hand.','You might burn your hand.','بعد might الفعل الأصلي.']],
+  art:art(`<g data-tip="Be careful. You might trap your hand in the gears."><circle cx="140" cy="150" r="50" fill="${C.mut}" stroke="${C.ink}" stroke-width="3"/><circle cx="225" cy="150" r="38" fill="${C.mut}" stroke="${C.ink}" stroke-width="3"/>${TL(180,250,'You might trap your hand.',{fs:14,w:700})}</g>`,'ترسان متداخلان'),cap:'خطر التروس. مرّر المؤشر على الرسم.',labs:[LAB101C,{title:'النتيجة',w:(el,B)=>N.cases(el,B,{intro:'اختر التحذير المناسب:',cases:[{q:'A wet floor',opts:[['You could slip and fall.',1,''],['You could burn your hand.',0,'']]},{q:'An open cable box',opts:[['You might get an electric shock.',1,''],['You might trap your hand.',0,'']]}]})}]}
+ ]});
 B.lesson({
  id:'u10-l1',unit:10,order:1,pages:'74–75',
  title:'Rules and warnings — القواعد والتحذيرات',
@@ -46,9 +96,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 74–75',html:`<ol><li>تكتب قواعد السلامة: ${e('You must wear a hard hat.')}</li><li>تميّز لوحات التحذير والمنع والإلزام.</li><li>تحوّل اللوحة إلى جملة: ${e('Do not smoke here.')}</li><li>تقول النتيجة المحتملة للخطر: ${e('You might burn your arm.')}</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 74–75',html:vt(VOC101)},
-  {h:'القواعد',ref:'ص 75',html:`<div class="tbx"><table class="vt" dir="ltr"><thead><tr><th>Do this ✓</th><th>Don't do this ✗</th></tr></thead><tbody><tr><td class="en">Wear a hard hat here.</td><td class="en">Do not / Don't touch the machine.</td></tr><tr><td class="en">Always wear a hard hat here.</td><td class="en">Never touch the machine.</td></tr><tr><td class="en">You must wear a hard hat here.</td><td class="en">You must not / mustn't touch the machine.</td></tr></tbody></table></div><p>بعد ${e('must / mustn\'t / always / never / don\'t')} الفعل الأصلي.</p>`},
-  {h:'أنواع لوحات السلامة (معيار ISO)',ref:'ص 74',html:`${vt([['Warning signs','تحذير: مثلث أصفر بإطار أسود','There is a danger. Be careful.'],['Prohibition signs','منع: دائرة حمراء وبيضاء وسوداء بخط مائل','Do not do this.'],['Mandatory action signs','إلزام: دائرة زرقاء وبيضاء','You must do this.']],['النوع','الشكل واللون','المعنى'])}<div class="sb sb-add" style="margin-top:8px"><div class="sb-h"><span class="tg t-add">إضافة من خارج الكتاب</span></div><div class="prose">في المعيار نفسه نوعان آخران: <b>لوحات الحالة الآمنة</b> خضراء (مثل مخرج الطوارئ ${e('fire exit')})، و<b>لوحات معدات الحريق</b> حمراء مربعة (مثل طفاية الحريق).</div></div>`},
-  {h:'النتيجة المحتملة: might و could',ref:'ص 75',html:`${eb(['Be careful. The surface is hot. You <b>might</b> burn your hand.','Danger. Lasers. You <b>could</b> injure your eyes.'])}<p>${e('might')} و ${e('could')} هنا بمعنى واحد تقريباً: «قد».</p>`},
+  ...R101.theory,
   {h:'تمارين الكتاب',ref:'ص 74–75',html:
    bk(1,'ص 74','مع زميلك: ما قواعد السلامة في عملك أو كليتك؟ اكتب قائمة.',null)+
    bk(2,'ص 74','استمع وأكمل التحذيرات بالكلمات في الصندوق.',['must','Don\'t','must',"Don't",'might',"mustn't"],'إجابات متوقعة من معنى الجمل؛ تحقق منها بالتسجيل.')+
@@ -61,21 +109,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'must / mustn\'t',title:'قواعد السلامة',q:'كيف تكتب قاعدة لبس الخوذة بثلاث طرق؟',ref:'ص 75',
-   art:art(`<g data-tip="Wear a hard hat. / Always wear a hard hat. / You must wear a hard hat.">${signSVG('mandatory','⛑',120).replace('<svg ','<svg x="40" y="70" ')}</g><g data-tip="Don't touch. / Never touch. / You mustn't touch.">${signSVG('prohibition','✋',120).replace('<svg ','<svg x="200" y="70" ')}</g>${TL(100,230,'must',{fs:16,w:700,c:C.blue})}${TL(260,230,"mustn't",{fs:16,w:700,c:C.red})}`,'لوحة إلزام ولوحة منع'),
-   cap:'إلزام ومنع. مرّر المؤشر على كل لوحة.',
-   side:[{tip:'<span class="en">mustn\'t</span> = ممنوع. ولا تخلطها بـ <span class="en">don\'t have to</span> (لا يلزم).'}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة:',items:[{s:'You ___ wear safety boots in the workshop.',o:['must','mustn\'t','never'],a:0},{s:'___ use your phone near the fuel pump.',o:['Never','Always','Must'],a:0},{s:"You ___ open this door. It's an emergency door only.",o:["mustn't","must","always"],a:0}]}),title:'مختبر مصغّر: القاعدة'}]},
-  {st:2,short:'أنواع اللوحات',title:'التحذير والمنع والإلزام',q:'لوحة دائرية زرقاء: هل هي منع أم إلزام؟',ref:'ص 74',
-   art:art(`<g data-tip="Warning: yellow and black, triangle — تحذير">${signSVG('warning','!',90).replace('<svg ','<svg x="30" y="110" ')}</g><g data-tip="Prohibition: red, white and black, round — منع">${signSVG('prohibition','🔥',90).replace('<svg ','<svg x="135" y="110" ')}</g><g data-tip="Mandatory: blue and white, round — إلزام">${signSVG('mandatory','👓',90).replace('<svg ','<svg x="240" y="110" ')}</g>${TL(75,230,'warning',{fs:12,w:700})}${TL(180,230,'prohibition',{fs:12,w:700})}${TL(285,230,'mandatory',{fs:12,w:700})}`,'ثلاث لوحات: تحذير ومنع وإلزام'),
-   cap:'الأنواع الثلاثة. مرّر المؤشر على كل لوحة.',
-   side:[{tip:'اللون والشكل يكفيان لفهم اللوحة دون لغة، ولهذا تُستعمل في أوروبا رغم كثرة لغاتها.'}],
-   body:[{widget:(el,B)=>N.sort(el,B,{intro:'صنّف اللوحة من وصفها:',cats:['تحذير','منع','إلزام'],items:[['دائرة زرقاء فيها قفازات',2,'إلزام: You must wear gloves.'],['مثلث أصفر فيه صاعقة',0,'تحذير: high voltage.'],['دائرة حمراء بخط مائل على سيجارة',1,'منع: No smoking.'],['دائرة زرقاء فيها أذن بسماعة',2,'إلزام: wear ear protection.']]}),title:'مختبر مصغّر: صنّف'}]},
-  {st:3,short:'might / could',title:'النتيجة المحتملة',q:'أمامك تروس مكشوفة. ماذا قد يحدث ليدك؟',ref:'ص 75',
-   art:art(`<g data-tip="Be careful. You might trap your hand in the gears."><circle cx="140" cy="150" r="50" fill="${C.mut}" stroke="${C.ink}" stroke-width="3"/><circle cx="225" cy="150" r="38" fill="${C.mut}" stroke="${C.ink}" stroke-width="3"/>${TL(180,250,'You might trap your hand.',{fs:14,w:700})}</g>`,'ترسان متداخلان'),
-   cap:'خطر التروس. مرّر المؤشر على الرسم.',
-   side:[{tip:'<span class="en">You might / could + فعل أصلي</span>: burn your arm, injure yourself, get an electric shock, trap your hand.'}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر التحذير المناسب:',cases:[{q:'A wet floor',opts:[['You could slip and fall.',1,''],['You could burn your hand.',0,'']]},{q:'An open cable box',opts:[['You might get an electric shock.',1,''],['You might trap your hand.',0,'']]}]}),title:'مختبر مصغّر: النتيجة'}]},
+  ...R101.stations,
   {recap:["القواعد: Always / Never / Do / Don't / must / mustn't + فعل أصلي.",'لوحة التحذير مثلث أصفر، والمنع دائرة حمراء، والإلزام دائرة زرقاء.','You might / could + فعل للنتيجة المحتملة.']}
  ],
  lab:lab101,
@@ -130,6 +164,49 @@ function lab102(el,B){
 }
 const VOC102=[['hazard','خطر',''],['trip over','يتعثّر بـ',''],['fall into','يسقط في',''],['low beam','عارضة منخفضة',''],['gears','تروس',''],['slippery','زلق',''],['liquid','سائل',''],['fire extinguisher','طفاية حريق',''],['fire exit','مخرج طوارئ',''],['locked','مقفل','with a padlock = بقفل'],['coiled','ملفوف','a coiled cable'],['cones','أقماع (مخاريط) تحذير',''],['inspector','مفتش',''],['inspection report','تقرير التفتيش',''],['findings','النتائج (ما وُجد)','']];
 
+/* ===== مختبرات «شرح القاعدة» 10.2 و 10.3 ===== */
+const HZ102={beam:["There's a low beam in front of you.",'could','injure your head','عارضة منخفضة'],gears:['The gears are moving.','might','catch your fingers','تروس تدور'],floor:['The floor is slippery.','could','slip and fall','أرضية زلقة'],cable:["There's a cable on the floor.",'might','trip over it','كابل على الأرض']};
+const LAB102A={title:'حذّر زميلك',w:(el,B)=>N.labB(el,B,{intro:'اختر الخطر، وشاهد التحذير من ثلاثة أجزاء: النداء، ثم الخطر، ثم ما قد يحدث.',
+ controls:[{k:'h',label:'الخطر',opts:Object.keys(HZ102).map(k=>[k,HZ102[k][3]])}],
+ out:({h})=>{const x=HZ102[h];return{pieces:[['Look out!','q','انتبه!'],[x[0],'x','الخطر'],['You','x',''],[x[1],'k','قد'],[x[2]+'.','n','النتيجة']],say:`Look out! ${x[0]} You ${x[1]} ${x[2]}.`,why:'التحذير: نداء سريع، ثم الخطر بـ There\'s أو بجملة وصف، ثم النتيجة المحتملة بـ could أو might.'}}})};
+const OB102={liquid:[['There','is','some liquid on the floor.']],boxes:[['There','are','some boxes on the stairs.']],exit:[['The fire exit','is','locked.']],cables:[['Some cables','are','damaged.']],ext:[['There','are','no fire extinguishers.']]};
+const LAB102B={title:'من الحاضر إلى التقرير',w:(el,B)=>N.labB(el,B,{intro:'اختر ما رأيته في الورشة، ثم اختر: الآن أم في التقرير (بعد الزيارة)؟',
+ controls:[{k:'o',label:'الملاحظة',opts:[['liquid','سائل على الأرض'],['boxes','صناديق على الدرج'],['exit','مخرج طوارئ مقفل'],['cables','كابلات تالفة'],['ext','لا طفايات حريق']]},{k:'t',label:'الوقت',opts:[['now','الآن'],['rep','في التقرير']]}],
+ out:({o,t})=>{const [S,v,r]=OB102[o][0],pl=v==='are',now=t==='now',V=now?v:(pl?'were':'was');
+  return{pieces:[[S,'x',''],[V,'k',now?(pl?'جمع الآن':'مفرد الآن'):(pl?'are ← were':'is ← was')],[r,'n','']],say:`${S} ${V} ${r}`,why:now?'نصف ما نراه الآن بـ is أو are.':'في التقرير نكتب ما رأيناه في الزيارة بالماضي: is ← was، و are ← were.'}}})};
+const CL103={12:'ahead (in front of you)',1:'ahead, a little to the right',2:'ahead and to the right',3:'to your right',4:'behind and to the right',5:'behind, a little to the right',6:'behind you',7:'behind, a little to the left',8:'behind and to the left',9:'to your left',10:'ahead and to the left',11:'ahead, a little to the left'};
+const AR103={12:'أمامك تماماً',1:'أمامك قليلاً إلى اليمين',2:'أمامك يميناً',3:'على يمينك',4:'خلفك يميناً',5:'خلفك قليلاً إلى اليمين',6:'خلفك تماماً',7:'خلفك قليلاً إلى اليسار',8:'خلفك يساراً',9:'على يسارك',10:'أمامك يساراً',11:'أمامك قليلاً إلى اليسار'};
+const NW103=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'];
+const clk103=h=>{const a=h/12*2*Math.PI,x=280+70*Math.sin(a),y=72-55*Math.cos(a);let t='';for(let i=1;i<=12;i++){const b=i/12*2*Math.PI;t+=`<text x="${280+52*Math.sin(b)}" y="${76-40*Math.cos(b)}" text-anchor="middle" font-size="11" font-family="monospace" fill="${C.ink}">${i}</text>`}
+ return `<svg viewBox="0 0 560 150" aria-hidden="true"><rect width="560" height="150" rx="14" fill="${C.bg}"/><circle cx="280" cy="72" r="62" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${t}<path d="M280 62 l8 18 l-8 -4 l-8 4 z" fill="${C.blue}"/><path d="M280 72 L${x} ${y}" stroke="${C.red}" stroke-width="3" stroke-dasharray="4 3"/><circle cx="${x}" cy="${y}" r="8" fill="${C.red}"/></svg>`};
+const LAB103A={title:'الاتجاه بالساعة',w:(el,B)=>N.labB(el,B,{intro:'أنت في وسط الساعة ووجهك نحو 12. اختر الساعة، وشاهد أين الطائرة الأخرى والجملة التي تقولها.',
+ controls:[{k:'h',label:'الساعة',opts:[12,1,2,3,4,6,8,9,10].map(h=>[String(h),String(h)])}],
+ out:({h})=>{h=+h;return{svg:clk103(h),pieces:[["There's a plane",'x',''],['at','k',''],[`${NW103[h]} o'clock.`,'n','الاتجاه']],say:`There's a plane at ${NW103[h]} o'clock.`,ar:AR103[h]+'.',why:"12 أمامك، و 3 يمينك، و 6 خلفك، و 9 يسارك. ونقول at + الرقم + o'clock."}}})};
+const Q103={where:['Where','were','the planes?',"They were 3500 m above the city.",'be'],high:['How high','was','the plane?','It was at 3500 m.','be'],far:['How far','was','the jet from the plane?','It was 1 km away.','be'],many:['How many passengers','were','on the plane?','There were 180.','be'],when:['When','did','the incident happen?','It happened at 22.17.','did'],what:['What','did','the pilot do?','He turned left.','did']};
+const LAB103B={title:'was / were أم did؟',w:(el,B)=>N.labB(el,B,{intro:'اختر سؤال التحقيق، وشاهد متى نستعمل was / were ومتى did.',
+ controls:[{k:'q',label:'السؤال',opts:Object.keys(Q103).map(k=>[k,Q103[k][0]])}],
+ out:({q})=>{const x=Q103[q],be=x[4]==='be';
+  return{pieces:[[x[0],'q','كلمة السؤال'],[x[1],'k',be?(x[1]==='was'?'be مفرد ← was':'be جمع ← were'):'did + فعل أصلي'],[x[2],'n',be?'':'الفعل الأصلي في آخره'],[x[3],'x','الجواب']],say:`${x[0]} ${x[1]} ${x[2]} ${x[3]}`,why:be?'مع الفعل be نسأل بـ was أو were مباشرة، بلا did.':'مع بقية الأفعال نسأل بـ did، ويعود الفعل إلى صورته الأصلية (happen لا happened).'}}})};
+const R102=N.rule({title:'التحذير من الخطر وتقرير التفتيش',ref:'ص 76–77',
+ intro:`نشرح لغة مخاطر السلامة في خطوتين مرتبتين: التحذير السريع من خطر أمامك، ثم كتابة ما رأيته في تقرير تفتيش بالماضي.`,
+ parts:[
+ {t:'التحذير ونتيجته',short:'Look out!',old:[1],q:'زميلك سيمشي تحت عارضة منخفضة. ماذا تقول له؟',ref:'ص 76',
+  lead:`إذا رأيت زميلك يقترب من خطر فلا وقت لجملة طويلة. التحذير الجيد ثلاثة أجزاء قصيرة: نداء، ثم الخطر، ثم ما قد يحدث.`,
+  points:[`<b>النداء:</b> ${e('Look out!')} أو ${e('Be careful!')}`,
+   `<b>الخطر:</b> ${e("There's")} + مفرد، أو ${e('There are')} + جمع، أو جملة تصف الحالة.<br>${e("There's a low beam in front of you.")}`,
+   `<b>النتيجة المحتملة:</b> ${e('You could / might')} + الفعل الأصلي (من الدرس 10.1).<br>${e('You could injure your head.')}`],
+  grid:{head:['الجزء','مثال'],rows:[['النداء','Look out!'],['الخطر',"There's a cable on the floor."],['النتيجة','You might trip over it.']]},
+  art:art(`<g data-tip="Look out! There's a low beam in front of you. You could injure your head."><rect x="40" y="100" width="280" height="22" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${[0,1,2,3,4,5,6].map(i=>`<rect x="${48+i*40}" y="100" width="18" height="22" fill="${C.ink}"/>`).join('')}<circle cx="180" cy="160" r="22" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/><rect x="164" y="182" width="32" height="70" rx="8" fill="${C.blue}"/></g>${TL(180,280,'Look out!',{fs:18,w:700,c:C.red})}`,'شخص يقترب من عارضة منخفضة'),cap:'خطر العارضة. مرّر المؤشر على الرسم.',labs:[LAB102A,{title:'النتيجة',w:(el,B)=>N.cases(el,B,{intro:'اختر النتيجة المناسبة:',cases:[{q:"Be careful! There are some bricks on the floor.",opts:[['You could trip over them.',1,''],['You could get an electric shock.',0,'']]},{q:"Look out! There's a gap in the floor.",opts:[['You might fall into it.',1,''],['You might burn your hands.',0,'']]}]})}]},
+ {t:'من الحاضر إلى تقرير الماضي',short:'was / were',old:[2],q:'وجدت أمس صناديق على الدرج. كيف تكتبها في التقرير؟',ref:'ص 77',
+  lead:`أثناء التفتيش تصف ما تراه بالحاضر. لكن التقرير تكتبه بعد الزيارة، فتنقل كل ما رأيته إلى الماضي.`,
+  points:[`<b>المفرد وغير المعدود:</b> ${e('is → was')}<br>${e("There's some liquid on the floor. → There was some liquid on the floor.")}`,
+   `<b>الجمع:</b> ${e('are → were')}<br>${e('There are some boxes on the stairs. → There were some boxes on the stairs.')}`,
+   `<b>النفي في التقرير:</b> ${e('There were no')} + جمع، أو ${e('There was no')} + مفرد.<br>${e('There were no fire extinguishers.')}`],
+  grid:{head:['','الآن','في التقرير'],rows:[['مفرد',"There's some liquid.",'There was some liquid.'],['جمع','There are some boxes.','There were some boxes.'],['حالة','The exit is locked.','The exit was locked.']]},
+  pairs:[['There was some boxes.','There were some boxes.','boxes جمع: were.'],['The fire exit were locked.','The fire exit was locked.','exit مفرد: was.']],
+  art:art(`<g data-tip="الآن: There are some boxes on the stairs."><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,111,'There are some boxes…',{fs:15,w:700})}</g>${arrowS(180,134,180,166,C.ink,3)}
+    <g data-tip="التقرير: There were some boxes on the stairs."><rect x="30" y="170" width="300" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,201,'There were some boxes…',{fs:15,w:700})}</g>`,'are تصير were'),cap:'التحويل إلى الماضي. مرّر المؤشر على كل جملة.',labs:[LAB102B,{title:'حوّل',w:(el,B)=>N.typ(el,B,{intro:'حوّل إلى الماضي (جمل جديدة):',items:[{q:e("There's a hole in the fence."),a:['There was a hole in the fence.']},{q:e('Two windows are broken.'),a:['Two windows were broken.']},{q:e('There are no cones around the gap.'),a:['There were no cones around the gap.']}]})}]}
+ ]});
 B.lesson({
  id:'u10-l2',unit:10,order:2,pages:'76–77',
  title:'Safety hazards — مخاطر السلامة',
@@ -137,7 +214,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 76–77',html:`<ol><li>تحذّر من خطر وتذكر نتيجته: ${e("Look out! There's a low beam. You could injure your head.")}</li><li>تصف ما تراه في ورشة: ${e('There are some boxes on the stairs.')}</li><li>تكتب تقرير تفتيش بالماضي: ${e('There were some boxes on the stairs.')}</li><li>تكتب قواعد سلامة للورشة.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 76–77',html:vt(VOC102)},
-  {h:'There is / are ← There was / were',ref:'ص 77',html:`<div class="tbx"><table class="vt" dir="ltr"><thead><tr><th>Now</th><th>Report (past)</th></tr></thead><tbody><tr><td class="en">There's some liquid on the floor.</td><td class="en">There was some liquid on the floor.</td></tr><tr><td class="en">There are some boxes on the stairs.</td><td class="en">There were some boxes on the stairs.</td></tr><tr><td class="en">The fire exit is locked.</td><td class="en">The fire exit was locked.</td></tr><tr><td class="en">Some cables are coiled.</td><td class="en">Some cables were coiled.</td></tr></tbody></table></div><p>المفرد وغير المعدود: ${e('is → was')}، والجمع: ${e('are → were')}. وللنفي: ${e('There were no fire extinguishers.')}</p>`},
+  ...R102.theory,
   {h:'تمارين الكتاب',ref:'ص 76–77',html:
    bk(3,'ص 76','قل التحذيرات ونتائجها المحتملة، كما في المثال.',null,'القالب: Look out! There\'s … . You could / might … .')+
    bk(4,'ص 76','مع زميلك: كم خطراً ترى في صورة الورشة؟ اكتب قائمة.',null,'جرّب أيضاً «ابحث عن المخاطر» في المختبر بورشة من رسمنا.')+
@@ -150,17 +227,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'التحذير',title:'التحذير ونتيجته',q:'زميلك سيمشي تحت عارضة منخفضة. ماذا تقول له؟',ref:'ص 76',
-   art:art(`<g data-tip="Look out! There's a low beam in front of you. You could injure your head."><rect x="40" y="100" width="280" height="22" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${[0,1,2,3,4,5,6].map(i=>`<rect x="${48+i*40}" y="100" width="18" height="22" fill="${C.ink}"/>`).join('')}<circle cx="180" cy="160" r="22" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/><rect x="164" y="182" width="32" height="70" rx="8" fill="${C.blue}"/></g>${TL(180,280,'Look out!',{fs:18,w:700,c:C.red})}`,'شخص يقترب من عارضة منخفضة'),
-   cap:'خطر العارضة. مرّر المؤشر على الرسم.',
-   side:[{tip:'التحذير ثلاثة أجزاء: <span class="en">Look out! / Be careful!</span> ثم الخطر <span class="en">There\'s a …</span> ثم النتيجة <span class="en">You could …</span>.'}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر النتيجة المناسبة:',cases:[{q:"Be careful! There are some bricks on the floor.",opts:[['You could trip over them.',1,''],['You could get an electric shock.',0,'']]},{q:"Look out! There's a gap in the floor.",opts:[['You might fall into it.',1,''],['You might burn your hands.',0,'']]}]}),title:'مختبر مصغّر: النتيجة'}]},
-  {st:2,short:'was / were',title:'من الحاضر إلى تقرير الماضي',q:'وجدت أمس صناديق على الدرج. كيف تكتبها في التقرير؟',ref:'ص 77',
-   art:art(`<g data-tip="الآن: There are some boxes on the stairs."><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,111,'There are some boxes…',{fs:15,w:700})}</g>${arrowS(180,134,180,166,C.ink,3)}
-    <g data-tip="التقرير: There were some boxes on the stairs."><rect x="30" y="170" width="300" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,201,'There were some boxes…',{fs:15,w:700})}</g>`,'are تصير were'),
-   cap:'التحويل إلى الماضي. مرّر المؤشر على كل جملة.',
-   side:[{tip:'<span class="en">is → was</span> و <span class="en">are → were</span>، والباقي كما هو.'}],
-   body:[{widget:(el,B)=>N.typ(el,B,{intro:'حوّل إلى الماضي (جمل جديدة):',items:[{q:e("There's a hole in the fence."),a:['There was a hole in the fence.']},{q:e('Two windows are broken.'),a:['Two windows were broken.']},{q:e('There are no cones around the gap.'),a:['There were no cones around the gap.']}]}),title:'مختبر مصغّر: حوّل'}]},
+  ...R102.stations,
   {recap:["التحذير: Look out! There's … You could / might ….","الوصف: There is / are + المكان، و The … is / are + الحالة.",'التقرير بالماضي: is → was و are → were.','قواعد الورشة: Always … / Never … / Staff must / must not ….']}
  ],
  lab:lab102,
@@ -203,6 +270,28 @@ function lab103(el,B){
 }
 const VOC103=[['investigation','تحقيق',''],['near miss','حادثة كادت تقع (تفادٍ في آخر لحظة)',''],['air traffic control','برج المراقبة الجوية',''],['pilot','طيار',''],['passenger plane','طائرة ركاب',''],['military jet','طائرة عسكرية نفاثة',''],['altitude','الارتفاع (عن سطح البحر)',''],['flight number','رقم الرحلة',''],['collision','تصادم',''],["at two o'clock",'في اتجاه الساعة الثانية','مقدمة الطائرة = 12'],['heading','الاتجاه (المسار)',''],['descend ≠ climb','يهبط ≠ يرتفع',''],['take place = happen','يحدث',''],['injury / injured','إصابة / مصاب',''],['slip, trip, fall','ينزلق، يتعثر، يسقط','']];
 
+const R103=N.rule({title:'الاتجاه بالساعة وأسئلة التحقيق',ref:'ص 78–79',
+ intro:`نشرح لغة التحقيق في حادثة في خطوتين مرتبتين: تحديد الاتجاه بالساعة، ثم أسئلة التحقيق بالماضي.`,
+ parts:[
+ {t:'الاتجاه بالساعة',short:"o'clock",old:[1],q:'طائرة تظهر أمامك قليلاً إلى اليمين. أي ساعة؟',ref:'ص 78',
+  lead:`الطيارون وأبراج المراقبة يحتاجون طريقة سريعة ودقيقة لتحديد مكان طائرة أخرى. والطريقة المتفق عليها: تخيّل أنك في وسط ساعة، ووجهك نحو الرقم 12.`,
+  points:[`<b>الاتجاهات الأربعة:</b> 12 أمامك تماماً، و 3 على يمينك، و 6 خلفك، و 9 على يسارك.`,
+   `<b>وما بينها:</b> 1 و 2 أمامك يميناً، و 10 و 11 أمامك يساراً، و 4 و 5 خلفك يميناً، و 7 و 8 خلفك يساراً.`,
+   `<b>القالب:</b> ${e("at")} + الرقم + ${e("o'clock")}<br>${e("There's a plane at two o'clock.")}`],
+  grid:{head:['الساعة','المعنى','مثال'],rows:[['12','أمامك',"at twelve o'clock"],['3','على يمينك',"at three o'clock"],['6','خلفك',"at six o'clock"],['9','على يسارك',"at nine o'clock"]]},
+  art:art(`<circle cx="180" cy="160" r="110" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${[...Array(12)].map((_,i)=>{const a=(i+1)/12*2*Math.PI;return TL(180+95*Math.sin(a),165-95*Math.cos(a),i+1,{fs:14,w:700})}).join('')}
+    <g data-tip="أنت في المركز ومقدمتك نحو 12."><path d="M180 140 l10 28 l-10 -6 l-10 6z" fill="${C.blue}"/></g>
+    <g data-tip="at two o'clock: أمامك يميناً"><circle cx="${180+70*Math.sin(Math.PI/3)}" cy="${160-70*Math.cos(Math.PI/3)}" r="9" fill="${C.red}"/></g>`,'ساعة حول الطائرة وهدف عند الساعة الثانية'),cap:'الاتجاه بالساعة. مرّر المؤشر على طائرتك وعلى الهدف.',labs:[LAB103A,{title:'الاتجاه',w:(el,B)=>N.cases(el,B,{intro:'اختر الاتجاه:',cases:[{q:'The other plane is on your left.',opts:[["at nine o'clock",1,''],["at three o'clock",0,'3 يمينك.']]},{q:'The truck is behind you.',opts:[["at six o'clock",1,''],["at twelve o'clock",0,'12 أمامك.']]}]})}]},
+ {t:'أسئلة التحقيق بالماضي',short:'Where were…?',old:[2],q:'كيف تسأل متى وقعت الحادثة؟ ولماذا did هنا وليس was؟',ref:'ص 79',
+  lead:`المحقق يسأل عن حادثة وقعت وانتهت، فكل أسئلته بالماضي. والسؤال يتكوّن بطريقتين حسب الفعل الذي فيه.`,
+  subs:[{h:'مع الفعل be (كان)',points:[`نسأل بـ ${e('was')} للمفرد و ${e('were')} للجمع، مباشرة بعد كلمة السؤال:<br>${e('Where were the planes?')}<br>${e('How far was the jet from the plane?')}`]},
+   {h:'مع بقية الأفعال',points:[`نسأل بـ ${e('did')}، ويعود الفعل إلى صورته الأصلية:<br>${e('When did the incident happen?')}<br>${e('What did the pilot do?')}`,`والجواب بالماضي: ${e('It happened at 22.17.')}`]}],
+  points:[`<small>(من الكتاب)</small> ${e('take place')} بمعنى ${e('happen')}: ${e('When did it take place?')}`],
+  grid:{head:['الفعل','السؤال','الجواب'],rows:[['be (مفرد)','How high was the plane?','It was at 3500 m.'],['be (جمع)','Where were the planes?','They were above the city.'],['غيره','When did it happen?','It happened at 22.17.']]},
+  pairs:[['When did the incident happened?','When did the incident happen?','بعد did الفعل الأصلي.'],['Where did the planes be?','Where were the planes?','مع be نسأل بـ was / were.']],
+  art:art(`<g data-tip="مع be: Where were …? / How high was …?"><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,111,'Where were the planes?',{fs:15,w:700})}</g>
+    <g data-tip="مع فعل آخر: When did … happen?"><rect x="30" y="170" width="300" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,201,'When did it happen?',{fs:15,w:700})}</g>`,'سؤالان بالماضي'),cap:'نوعا السؤال. مرّر المؤشر على كل منهما.',labs:[LAB103B,{title:'السؤال',w:(el,B)=>N.typ(el,B,{intro:'كوّن السؤال (من عندنا):',items:[{q:`(When / the accident / happen)`,a:['When did the accident happen?']},{q:`(How high / be / the ladder)`,a:['How high was the ladder?']},{q:`(How many / workers / be / in the room)`,a:['How many workers were in the room?']}]})}]}
+ ]});
 B.lesson({
  id:'u10-l3',unit:10,order:3,pages:'78–79',
  title:'Investigations — التحقيق في الحوادث',
@@ -210,8 +299,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 78–79',html:`<ol><li>تحدد اتجاه شيء بالنسبة إليك بالساعة: ${e("Unknown traffic at two o'clock.")}</li><li>تقرأ خبراً عن حادثة وتملأ تقريرها.</li><li>تسأل أسئلة التحقيق بالماضي وتجيب.</li><li>تدعو زميلاً أو تعتذر بلباقة.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 78–79',html:vt(VOC103)},
-  {h:'الاتجاه بالساعة',ref:'ص 78',html:`<p>تخيّل ساعة حولك: <b>12</b> أمامك تماماً، و<b>3</b> يمينك، و<b>6</b> خلفك، و<b>9</b> يسارك:</p>${eb(["There's a plane at two o'clock. (أمامك يميناً)","Turn left. Heading 270."])}`},
-  {h:'أسئلة التحقيق بالماضي',ref:'ص 79',html:`${eb(['Where <b>were</b> the planes? — They were 3500 m above the city.','When <b>did</b> the incident <b>happen</b>? — It happened at 22.17.','How far <b>was</b> the jet from the plane?','How many passengers <b>were</b> on the plane?'])}<p>مع ${e('be')}: ${e('was / were')} في السؤال. ومع بقية الأفعال: ${e('did')} + الفعل الأصلي.</p>`},
+  ...R103.theory,
   {h:'تمارين الكتاب',ref:'ص 78–79',html:
    bk(1,'ص 78','مع زميلك: ماذا يحدث في الصورة؟ في أي اتجاه تتحرك الطائرتان؟ من سيكلم الطيارين؟',null)+
    bk(3,'ص 78','اقرأ الخبر وأكمل تقرير الحادثة.',['Date: 24 November (the day before the article)','Time: 22.17','Location: 10 km west of Manchester','Distance between two planes: 36 metres','Plane 1: Boeing 757 passenger plane · altitude 3505 m · flight BA 4058 · 234 passengers · from Manchester to Greece','Plane 2: F16 military jet · altitude 3527 m · from Scotland to the south of England'],'التاريخ: الخبر بتاريخ 25 نوفمبر ويقول «Last night».')+
@@ -224,19 +312,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الاتجاه بالساعة',title:"at two o'clock",q:'طائرة تظهر أمامك قليلاً إلى اليمين. أي ساعة؟',ref:'ص 78',
-   art:art(`<circle cx="180" cy="160" r="110" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${[...Array(12)].map((_,i)=>{const a=(i+1)/12*2*Math.PI;return TL(180+95*Math.sin(a),165-95*Math.cos(a),i+1,{fs:14,w:700})}).join('')}
-    <g data-tip="أنت في المركز ومقدمتك نحو 12."><path d="M180 140 l10 28 l-10 -6 l-10 6z" fill="${C.blue}"/></g>
-    <g data-tip="at two o'clock: أمامك يميناً"><circle cx="${180+70*Math.sin(Math.PI/3)}" cy="${160-70*Math.cos(Math.PI/3)}" r="9" fill="${C.red}"/></g>`,'ساعة حول الطائرة وهدف عند الساعة الثانية'),
-   cap:'الاتجاه بالساعة. مرّر المؤشر على طائرتك وعلى الهدف.',
-   side:[{tip:'<b>12</b> أمامك، <b>3</b> يمينك، <b>6</b> خلفك، <b>9</b> يسارك.'}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر الاتجاه:',cases:[{q:'The other plane is on your left.',opts:[["at nine o'clock",1,''],["at three o'clock",0,'3 يمينك.']]},{q:'The truck is behind you.',opts:[["at six o'clock",1,''],["at twelve o'clock",0,'12 أمامك.']]}]}),title:'مختبر مصغّر: الاتجاه'}]},
-  {st:2,short:'أسئلة التحقيق',title:'أسئلة الماضي',q:'كيف تسأل متى وقعت الحادثة؟',ref:'ص 79',
-   art:art(`<g data-tip="مع be: Where were …? / How high was …?"><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,111,'Where were the planes?',{fs:15,w:700})}</g>
-    <g data-tip="مع فعل آخر: When did … happen?"><rect x="30" y="170" width="300" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,201,'When did it happen?',{fs:15,w:700})}</g>`,'سؤالان بالماضي'),
-   cap:'نوعا السؤال. مرّر المؤشر على كل منهما.',
-   side:[{tip:'<span class="en">take place</span> = <span class="en">happen</span>: <span class="en">When did it take place?</span>'}],
-   body:[{widget:(el,B)=>N.typ(el,B,{intro:'كوّن السؤال (من عندنا):',items:[{q:`(When / the accident / happen)`,a:['When did the accident happen?']},{q:`(How high / be / the ladder)`,a:['How high was the ladder?']},{q:`(How many / workers / be / in the room)`,a:['How many workers were in the room?']}]}),title:'مختبر مصغّر: السؤال'}]},
+  ...R103.stations,
   {recap:["at … o'clock: 12 أمامك و 3 يمينك و 6 خلفك و 9 يسارك.",'أسئلة الماضي: Where were …? How high was …? When did … happen?','take place = happen.']}
  ],
  lab:lab103,
