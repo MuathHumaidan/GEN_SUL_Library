@@ -108,5 +108,71 @@ PLCBOOK.words({
   ['shelf / shelves','رف / رفوف','Put the books on the top shelf.','ضع الكتب على الرف العلوي.'],
   ['button','زر','Press the red button to stop.','اضغط الزر الأحمر للإيقاف.'],
   ['screen','شاشة','Clean the screen of your laptop.','نظّف شاشة حاسوبك.']
+ ],
+ 'u4-l1':[
+  ['up ≠ down','إلى الأعلى ≠ إلى الأسفل','The lift goes up to the fifth floor.','المصعد يصعد إلى الدور الخامس.'],
+  ['forwards ≠ backwards','إلى الأمام ≠ إلى الخلف','Take two steps forwards, please.','تقدّم خطوتين من فضلك.'],
+  ['sideways','جانبياً','Crabs walk sideways.','السرطان يمشي جانبياً.'],
+  ['diagonally','بشكل مائل','Cut the sandwich diagonally.','اقطع الساندويتش بشكل مائل.'],
+  ['can ≠ can\'t','يستطيع ≠ لا يستطيع','My little brother can swim, but he can\'t ride a bike.','أخي الصغير يسبح لكنه لا يركب الدراجة.'],
+  ['rotate','يدور','The fan rotates very fast.','المروحة تدور بسرعة كبيرة.'],
+  ['wrist','رسغ','I wear my watch on my left wrist.','ألبس ساعتي على رسغي الأيسر.'],
+  ['elbow','مرفق','Don\'t put your elbows on the table.','لا تضع مرفقيك على الطاولة.']
+ ],
+ 'u4-l2':[
+  ['speed','سرعة','What is the speed limit here?','كم السرعة المحددة هنا؟'],
+  ['km/h','كيلومتر في الساعة','The car is going at 100 km/h.','السيارة تسير بسرعة 100 كم/س.'],
+  ['joystick','عصا التحكم','Move the joystick to play the game.','حرّك العصا لتلعب.'],
+  ['push ≠ pull','ادفع ≠ اسحب','Push the door to open it.','ادفع الباب لتفتحه.'],
+  ['ascend ≠ descend','يصعد ≠ ينزل','The plane descends before it lands.','الطائرة تنزل قبل أن تهبط.'],
+  ['accelerate','يسرّع','Don\'t accelerate near the school.','لا تسرّع قرب المدرسة.'],
+  ['Can you …?','هل تستطيع …؟','Can you help me with this box?','هل تستطيع مساعدتي في هذا الصندوق؟']
+ ],
+ 'u4-l3':[
+  ['lever','ذراع تحكم','Pull the lever to open the gate.','اسحب الذراع لتفتح البوابة.'],
+  ['pedal','دواسة','Press the pedal gently.','اضغط الدواسة بلطف.'],
+  ['brake','فرامل','Use the brake before the turn.','استعمل الفرامل قبل المنعطف.'],
+  ['steering wheel','مقود','Hold the steering wheel with both hands.','أمسك المقود بكلتا يديك.'],
+  ['reverse','يرجع للخلف','Reverse slowly into the parking space.','ارجع ببطء إلى الموقف.'],
+  ['slow down','يخفّف السرعة','Slow down! There\'s a speed bump.','خفّف السرعة! يوجد مطب.'],
+  ['turn round','يستدير','Turn round at the next roundabout.','استدر عند الدوار القادم.'],
+  ['When you …','عندما …','When you press this button, the light comes on.','عندما تضغط هذا الزر يضيء المصباح.']
+ ],
+ 'u4-l4':[
+  ['a pair of','زوج من','I need a new pair of headphones.','أحتاج سماعات جديدة.'],
+  ['some','بعض','Can I have some water, please?','أعطني بعض الماء من فضلك.'],
+  ['silent letter','حرف صامت','The k in knife is a silent letter.','حرف k في knife صامت.'],
+  ['helmet','خوذة','Always wear a helmet on a bike.','البس خوذة دائماً على الدراجة.'],
+  ['spade','مجرفة','We need a spade for the garden.','نحتاج مجرفة للحديقة.'],
+  ['kilo-','ألف','A kilogram is a thousand grams.','الكيلوغرام ألف غرام.']
+ ],
+ 'u5-l1':[
+  ['tank','خزان','The water tank is on the roof.','خزان الماء فوق السطح.'],
+  ['pipe','أنبوب','Water runs through this pipe.','الماء يجري في هذا الأنبوب.'],
+  ['valve','صمام','Close the valve before you fix the tap.','أغلق الصمام قبل إصلاح الصنبور.'],
+  ['flow','يتدفق','The river flows to the sea.','النهر يتدفق إلى البحر.'],
+  ['into ≠ out of','إلى داخل ≠ إلى خارج','Put the milk into the fridge.','ضع الحليب داخل الثلاجة.'],
+  ['through','عبر','We drove through the tunnel.','قدنا عبر النفق.'],
+  ['rise ≠ sink','يصعد ≠ ينزل','Hot air rises.','الهواء الساخن يصعد.'],
+  ['enter ≠ leave','يدخل ≠ يخرج','Please leave the room quietly.','اخرج من الغرفة بهدوء.']
+ ],
+ 'u5-l2':[
+  ['circuit','دائرة كهربائية','There is a problem in the circuit.','توجد مشكلة في الدائرة.'],
+  ['lamp','مصباح','Switch on the lamp, please.','أشعل المصباح من فضلك.'],
+  ['switch','مفتاح','The switch is next to the door.','المفتاح بجانب الباب.'],
+  ['fuse','منصهر (فيوز)','The fuse in the plug is broken.','الفيوز في القابس تالف.'],
+  ['current','تيار','The current flows through the wire.','التيار يسري في السلك.'],
+  ['controller','متحكم','The controller turns the lights on at night.','المتحكم يشغّل الأنوار ليلاً.'],
+  ['convert','يحوّل','Convert the price into riyals.','حوّل السعر إلى ريالات.'],
+  ['If …, …','إذا …، …','If it rains, the streets get wet.','إذا أمطرت تبتل الشوارع.']
+ ],
+ 'u5-l3':[
+  ['temperature','درجة الحرارة','The temperature is 45 degrees today.','الحرارة اليوم 45 درجة.'],
+  ['Celsius / Fahrenheit','سلسيوس / فهرنهايت','We use Celsius in Saudi Arabia.','نستعمل السلسيوس في السعودية.'],
+  ['engine','محرك','Turn off the engine at the petrol station.','أطفئ المحرك في محطة الوقود.'],
+  ['radiator','مشعاع (رديتر)','Check the water in the radiator.','افحص الماء في الرديتر.'],
+  ['hose','خرطوم','Wash the car with a hose.','اغسل السيارة بالخرطوم.'],
+  ['cool ≠ heat','يبرّد ≠ يسخّن','The AC cools the room.','المكيف يبرّد الغرفة.'],
+  ['every Monday','كل اثنين','I play football every Monday.','ألعب الكرة كل اثنين.']
  ]
 });

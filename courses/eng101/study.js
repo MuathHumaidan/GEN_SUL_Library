@@ -387,6 +387,247 @@ PLCBOOK.study({
      "l": "u3-l3"
     }
    ]
+  },
+  "u4": {
+   "title": "Movement — الحركة",
+   "cards": [
+    {
+     "k": "def",
+     "f": "up / down / forwards / backwards",
+     "b": "إلى الأعلى / الأسفل / الأمام / الخلف.",
+     "ref": "ص 26",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "sideways",
+     "b": "جانبياً.",
+     "ref": "ص 26",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "vertical / horizontal / diagonal",
+     "b": "عمودي / أفقي / مائل.",
+     "ref": "ص 26",
+     "l": "u4-l1"
+    },
+    {
+     "k": "law",
+     "f": "can / can't",
+     "b": "القدرة: can + الفعل كما هو. Can it…? Yes, it can. / No, it can't.",
+     "ref": "ص 26",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "rotate / axis / pivot",
+     "b": "يدور / محور / نقطة ارتكاز.",
+     "ref": "ص 27",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "wrist / elbow / shoulder",
+     "b": "الرسغ / المرفق / الكتف.",
+     "ref": "ص 27",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "km/h · mph · m/s · rpm",
+     "b": "كيلومتر/ساعة · ميل/ساعة · متر/ثانية · دورة/دقيقة.",
+     "ref": "ص 28",
+     "l": "u4-l2"
+    },
+    {
+     "k": "def",
+     "f": "push ≠ pull",
+     "b": "ادفع بعيداً عنك ≠ اسحب نحوك.",
+     "ref": "ص 29",
+     "l": "u4-l2"
+    },
+    {
+     "k": "def",
+     "f": "ascend ≠ descend",
+     "b": "يصعد ≠ ينزل.",
+     "ref": "ص 29",
+     "l": "u4-l2"
+    },
+    {
+     "k": "law",
+     "f": "it",
+     "b": "الضمير it يعود على اسم مفرد ذُكر قبله.",
+     "ref": "ص 29",
+     "l": "u4-l2"
+    },
+    {
+     "k": "def",
+     "f": "lever / pedal",
+     "b": "ذراع (باليد) / دواسة (بالقدم).",
+     "ref": "ص 30",
+     "l": "u4-l3"
+    },
+    {
+     "k": "def",
+     "f": "brake ≠ accelerator",
+     "b": "فرامل ≠ دواسة السرعة.",
+     "ref": "ص 30",
+     "l": "u4-l3"
+    },
+    {
+     "k": "def",
+     "f": "reverse = go backwards",
+     "b": "يرجع إلى الخلف.",
+     "ref": "ص 30",
+     "l": "u4-l3"
+    },
+    {
+     "k": "def",
+     "f": "turn round = do a U-turn",
+     "b": "يستدير.",
+     "ref": "ص 31",
+     "l": "u4-l3"
+    },
+    {
+     "k": "law",
+     "f": "When you …, …",
+     "b": "When you press the brake pedal, the truck stops.",
+     "ref": "ص 31",
+     "l": "u4-l3"
+    },
+    {
+     "k": "law",
+     "f": "a / an / some / a pair of",
+     "b": "a printer, an amplifier, some nuts, a pair of pliers.",
+     "ref": "ص 35",
+     "l": "u4-l4"
+    },
+    {
+     "k": "def",
+     "f": "silent letters",
+     "b": "حروف لا تُنطق: knife, wrist, right.",
+     "ref": "ص 34",
+     "l": "u4-l4"
+    },
+    {
+     "k": "def",
+     "f": "multi- / therm- / kilo-",
+     "b": "كثير / حرارة / ألف.",
+     "ref": "ص 35",
+     "l": "u4-l4"
+    }
+   ]
+  },
+  "u5": {
+   "title": "Flow — التدفق",
+   "cards": [
+    {
+     "k": "def",
+     "f": "tank / pipe / valve",
+     "b": "خزان / أنبوب / صمام.",
+     "ref": "ص 36",
+     "l": "u5-l1"
+    },
+    {
+     "k": "def",
+     "f": "inlet ≠ outlet",
+     "b": "مدخل ≠ مخرج.",
+     "ref": "ص 36",
+     "l": "u5-l1"
+    },
+    {
+     "k": "law",
+     "f": "into / out of / through / around / to / from",
+     "b": "حروف الجر مع الحركة: The water flows into the tank.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "law",
+     "f": "goes / passes",
+     "b": "go و pass تأخذان es مع المفرد.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "def",
+     "f": "rise ≠ sink",
+     "b": "يصعد (go up) ≠ ينزل (go down).",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "def",
+     "f": "enter ≠ leave",
+     "b": "يدخل (go into) ≠ يخرج (go out of).",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "def",
+     "f": "lamp / switch / fuse",
+     "b": "مصباح / مفتاح / منصهر.",
+     "ref": "ص 38",
+     "l": "u5-l2"
+    },
+    {
+     "k": "def",
+     "f": "positive / negative / terminal",
+     "b": "موجب / سالب / طرف توصيل.",
+     "ref": "ص 38",
+     "l": "u5-l2"
+    },
+    {
+     "k": "def",
+     "f": "W · V · A · Ah · DC",
+     "b": "واط · فولت · أمبير · أمبير ساعة · تيار مستمر.",
+     "ref": "ص 38",
+     "l": "u5-l2"
+    },
+    {
+     "k": "def",
+     "f": "convert = change",
+     "b": "يحوّل.",
+     "ref": "ص 39",
+     "l": "u5-l2"
+    },
+    {
+     "k": "law",
+     "f": "If …, …",
+     "b": "If the Sun shines, the current flows from the panel. (مضارع بسيط في الجزأين)",
+     "ref": "ص 39",
+     "l": "u5-l2"
+    },
+    {
+     "k": "law",
+     "f": "°F = °C × 9 / 5 + 32",
+     "b": "التحويل من سلسيوس إلى فهرنهايت.",
+     "ref": "ص 40",
+     "l": "u5-l3"
+    },
+    {
+     "k": "def",
+     "f": "engine / radiator / thermostat",
+     "b": "المحرك / المشعاع / منظم الحرارة.",
+     "ref": "ص 40",
+     "l": "u5-l3"
+    },
+    {
+     "k": "def",
+     "f": "top hose / bottom hose",
+     "b": "الخرطوم العلوي / السفلي.",
+     "ref": "ص 40",
+     "l": "u5-l3"
+    },
+    {
+     "k": "def",
+     "f": "every Monday = on Mondays",
+     "b": "كل اثنين.",
+     "ref": "ص 41",
+     "l": "u5-l3"
+    }
+   ]
   }
  },
  "lessons": {
@@ -692,6 +933,189 @@ PLCBOOK.study({
       [
        "in the middle",
        "في الوسط"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l1": {
+   "match": [
+    {
+     "title": "وصّل الاتجاه بمعناه",
+     "pairs": [
+      [
+       "up",
+       "إلى الأعلى"
+      ],
+      [
+       "backwards",
+       "إلى الخلف"
+      ],
+      [
+       "sideways",
+       "جانبياً"
+      ],
+      [
+       "diagonally",
+       "بشكل مائل"
+      ],
+      [
+       "rotate",
+       "يدور"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l2": {
+   "match": [
+    {
+     "title": "وصّل الرمز بقراءته",
+     "pairs": [
+      [
+       "km/h",
+       "kilometres per hour"
+      ],
+      [
+       "mph",
+       "miles per hour"
+      ],
+      [
+       "m/s",
+       "metres per second"
+      ],
+      [
+       "rpm",
+       "revolutions per minute"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l3": {
+   "match": [
+    {
+     "title": "وصّل الأداة بعملها",
+     "pairs": [
+      [
+       "brake pedal",
+       "the truck stops"
+      ],
+      [
+       "accelerator",
+       "the truck goes faster"
+      ],
+      [
+       "steering wheel",
+       "the truck turns"
+      ],
+      [
+       "direction lever",
+       "forwards or backwards"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l4": {
+   "match": [
+    {
+     "title": "وصّل الكلمة بما قبلها",
+     "pairs": [
+      [
+       "printer",
+       "a"
+      ],
+      [
+       "amplifier",
+       "an"
+      ],
+      [
+       "nuts",
+       "some"
+      ],
+      [
+       "pliers",
+       "a pair of"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l1": {
+   "match": [
+    {
+     "title": "وصّل الفعل بمعناه",
+     "pairs": [
+      [
+       "rise",
+       "go up"
+      ],
+      [
+       "sink",
+       "go down"
+      ],
+      [
+       "enter",
+       "go into"
+      ],
+      [
+       "leave",
+       "go out of"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l2": {
+   "match": [
+    {
+     "title": "وصّل الجزء بمواصفته",
+     "pairs": [
+      [
+       "solar panel",
+       "60W"
+      ],
+      [
+       "controller",
+       "5A"
+      ],
+      [
+       "battery",
+       "12V 100Ah"
+      ],
+      [
+       "lamps",
+       "12V 8W"
+      ],
+      [
+       "current",
+       "DC"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l3": {
+   "match": [
+    {
+     "title": "وصّل الجزء بوظيفته",
+     "pairs": [
+      [
+       "water pump",
+       "pushes water around the engine"
+      ],
+      [
+       "thermostat",
+       "controls the temperature"
+      ],
+      [
+       "radiator",
+       "cools the hot water"
+      ],
+      [
+       "fan",
+       "blows air onto the radiator"
       ]
      ]
     }

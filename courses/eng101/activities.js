@@ -419,5 +419,299 @@ PLCBOOK.acts({
     "e": "to the right of (ص 25)."
    }
   ]
+ },
+ "u4-l1": {
+  "open": [
+   "Something that can fly straight up",
+   "Something that can't fly",
+   "A joint in your body"
+  ],
+  "exit": [
+   {
+    "q": "A helicopter ___ fly backwards.",
+    "o": [
+     "can",
+     "cans",
+     "can to",
+     "is can"
+    ],
+    "c": 0,
+    "e": "can + الفعل (ص 26)."
+   },
+   {
+    "q": "Can a plane fly sideways? — No, it ___.",
+    "o": [
+     "can't",
+     "doesn't",
+     "isn't",
+     "not"
+    ],
+    "c": 0,
+    "e": "No, it can't (ص 26)."
+   },
+   {
+    "q": "The elbow can move in ___ direction.",
+    "o": [
+     "one",
+     "three",
+     "seven",
+     "two"
+    ],
+    "c": 0,
+    "e": "ص 27."
+   }
+  ]
+ },
+ "u4-l2": {
+  "open": [
+   "A speed you know",
+   "Something with a joystick",
+   "Something you can do"
+  ],
+  "exit": [
+   {
+    "q": "rpm =",
+    "o": [
+     "revolutions per minute",
+     "rotations per hour",
+     "metres per minute",
+     "road per mile"
+    ],
+    "c": 0,
+    "e": "ص 28."
+   },
+   {
+    "q": "ascend ≠",
+    "o": [
+     "descend",
+     "accelerate",
+     "rotate",
+     "pull"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   },
+   {
+    "q": "Can you swim? — Yes, I ___.",
+    "o": [
+     "can",
+     "do",
+     "am",
+     "swim"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   }
+  ]
+ },
+ "u4-l3": {
+  "open": [
+   "A control in a car",
+   "An instruction for a driver",
+   "A sentence with When you…"
+  ],
+  "exit": [
+   {
+    "q": "reverse =",
+    "o": [
+     "go backwards",
+     "go faster",
+     "stop",
+     "turn"
+    ],
+    "c": 0,
+    "e": "ص 30."
+   },
+   {
+    "q": "When you press the brake, the truck ___.",
+    "o": [
+     "stops",
+     "stop",
+     "stopping",
+     "to stop"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   },
+   {
+    "q": "You press it with your foot:",
+    "o": [
+     "pedal",
+     "lever",
+     "wheel",
+     "key"
+    ],
+    "c": 0,
+    "e": "ص 30."
+   }
+  ]
+ },
+ "u4-l4": {
+  "open": [
+   "A word with a silent letter",
+   "Something you need a pair of",
+   "A word with kilo-"
+  ],
+  "exit": [
+   {
+    "q": "___ the radio have a dynamo?",
+    "o": [
+     "Does",
+     "Do",
+     "Is",
+     "Has"
+    ],
+    "c": 0,
+    "e": "ص 32."
+   },
+   {
+    "q": "I need ___ amplifier.",
+    "o": [
+     "an",
+     "a",
+     "some",
+     "a pair of"
+    ],
+    "c": 0,
+    "e": "ص 35."
+   },
+   {
+    "q": "The silent letter in knife:",
+    "o": [
+     "k",
+     "n",
+     "f",
+     "e"
+    ],
+    "c": 0,
+    "e": "ص 34."
+   }
+  ]
+ },
+ "u5-l1": {
+  "open": [
+   "A part of a water system",
+   "A verb of movement (rise, sink…)",
+   "Something that flows"
+  ],
+  "exit": [
+   {
+    "q": "rise =",
+    "o": [
+     "go up",
+     "go down",
+     "go in",
+     "go out"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   },
+   {
+    "q": "The water ___ through the pipes.",
+    "o": [
+     "passes",
+     "pass",
+     "passs",
+     "passing"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   },
+   {
+    "q": "Water ___ the house through the inlet pipe.",
+    "o": [
+     "enters",
+     "leaves",
+     "sinks",
+     "rises"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   }
+  ]
+ },
+ "u5-l2": {
+  "open": [
+   "An electrical symbol",
+   "A part of a solar system",
+   "A sentence with If…"
+  ],
+  "exit": [
+   {
+    "q": "If the Sun ___, the current flows from the panel.",
+    "o": [
+     "shines",
+     "shine",
+     "shining",
+     "is shine"
+    ],
+    "c": 0,
+    "e": "ص 39."
+   },
+   {
+    "q": "⊗ =",
+    "o": [
+     "lamp",
+     "fuse",
+     "switch",
+     "battery"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   },
+   {
+    "q": "The battery ___ the electricity.",
+    "o": [
+     "stores",
+     "converts",
+     "measures",
+     "blows"
+    ],
+    "c": 0,
+    "e": "ص 39."
+   }
+  ]
+ },
+ "u5-l3": {
+  "open": [
+   "A temperature you know",
+   "A part of a car cooling system",
+   "Something you do every week"
+  ],
+  "exit": [
+   {
+    "q": "0°C =",
+    "o": [
+     "32°F",
+     "0°F",
+     "100°F",
+     "212°F"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   },
+   {
+    "q": "The thermostat ___ the temperature.",
+    "o": [
+     "controls",
+     "pushes",
+     "blows",
+     "sinks"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   },
+   {
+    "q": "every Monday =",
+    "o": [
+     "on Mondays",
+     "in Monday",
+     "at Monday",
+     "Monday every"
+    ],
+    "c": 0,
+    "e": "ص 41."
+   }
+  ]
  }
 });

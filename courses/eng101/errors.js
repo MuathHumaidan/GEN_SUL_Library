@@ -829,5 +829,547 @@ PLCBOOK.errs({
    ],
    "answer": "The table is in the middle of the room."
   }
+ ],
+ "u4-l1": [
+  {
+   "ex": "مثال 1: قدرة",
+   "title": "قدرة",
+   "given": "المروحية تطير جانبياً.",
+   "ask": "اكتب الجملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: القدرة: can."
+    },
+    {
+     "t": "الخطوة 2: A helicopter can flies sideways.",
+     "bad": true,
+     "why": "بعد can الفعل كما هو.",
+     "fix": "A helicopter can fly sideways.",
+     "reasons": [
+      "نقول cans",
+      "بعد can الفعل بلا s",
+      "flies صحيحة بعد can",
+      "نضيف to بعد can"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "A helicopter can fly sideways."
+  },
+  {
+   "ex": "مثال 2: سؤال وجواب",
+   "title": "سؤال",
+   "given": "هل تطير الطائرة عمودياً؟ لا.",
+   "ask": "اسأل وأجب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Can a plane fly straight up?"
+    },
+    {
+     "t": "الخطوة 2: No, it doesn't.",
+     "bad": true,
+     "why": "سؤال can جوابه بـ can't.",
+     "fix": "No, it can't.",
+     "reasons": [
+      "نقول isn't",
+      "نقول not can",
+      "سؤال can جوابه can't",
+      "doesn't صحيحة"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Can a plane fly straight up? No, it can't."
+  },
+  {
+   "ex": "مثال 3: المفاصل",
+   "title": "مفاصل",
+   "given": "كم اتجاهاً يتحرك المرفق؟",
+   "ask": "أجب.",
+   "steps": [
+    {
+     "t": "المعطى: كم اتجاهاً يتحرك المرفق؟"
+    },
+    {
+     "t": "الخطوة 1: The elbow can move in three directions.",
+     "bad": true,
+     "why": "المرفق حركة واحدة فقط (ص 27).",
+     "fix": "The elbow can only move in one direction.",
+     "reasons": [
+      "المرفق: ثلاثة اتجاهات",
+      "المرفق: سبعة",
+      "المرفق لا يتحرك",
+      "المرفق: اتجاه واحد"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "The elbow can only move in one direction."
+  }
+ ],
+ "u4-l2": [
+  {
+   "ex": "مثال 1: قراءة سرعة",
+   "title": "سرعة",
+   "given": "154 m/s",
+   "ask": "اكتبها بالكلمات.",
+   "steps": [
+    {
+     "t": "الخطوة 1: a hundred and fifty-four."
+    },
+    {
+     "t": "الخطوة 2: miles per second.",
+     "bad": true,
+     "why": "m/s = metres per second.",
+     "fix": "metres per second",
+     "reasons": [
+      "m/s = metres per second",
+      "m/s = miles per second",
+      "m/s = minutes per second",
+      "m/s = metres per hour"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "a hundred and fifty-four metres per second"
+  },
+  {
+   "ex": "مثال 2: تعليمة ونتيجة",
+   "title": "تعليمة",
+   "given": "العصا اليمنى إلى الأعلى.",
+   "ask": "اكتب التعليمة ونتيجتها.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Push the RH stick up."
+    },
+    {
+     "t": "الخطوة 2: The plane ascends.",
+     "bad": true,
+     "why": "دفع العصا اليمنى للأعلى يُنزل الطائرة (ص 29).",
+     "fix": "The plane descends.",
+     "reasons": [
+      "RH up: rolls left",
+      "RH up: descends",
+      "RH up: ascends",
+      "RH up: accelerates"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Push the RH stick up and the plane descends."
+  },
+  {
+   "ex": "مثال 3: سؤال القدرة",
+   "title": "قدرة",
+   "given": "هل تقود دراجة نارية؟ نعم.",
+   "ask": "اسأل وأجب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Can you ride a motorbike?"
+    },
+    {
+     "t": "الخطوة 2: Yes, I do.",
+     "bad": true,
+     "why": "سؤال can جوابه can.",
+     "fix": "Yes, I can.",
+     "reasons": [
+      "Yes, I am",
+      "Yes, I ride",
+      "سؤال can جوابه can",
+      "Yes, I do صحيحة"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Can you ride a motorbike? Yes, I can."
+  }
+ ],
+ "u4-l3": [
+  {
+   "ex": "مثال 1: من ملاحظة إلى جملة",
+   "title": "when",
+   "given": "push lever B forwards → fork moves up",
+   "ask": "اكتب جملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: When you push lever B forwards"
+    },
+    {
+     "t": "الخطوة 2: , the fork move up.",
+     "bad": true,
+     "why": "the fork مفرد: moves.",
+     "fix": "the fork moves up",
+     "reasons": [
+      "move صحيحة",
+      "نقول moving",
+      "نقول is move",
+      "المفرد + s: moves"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "When you push lever B forwards, the fork moves up."
+  },
+  {
+   "ex": "مثال 2: الفرامل",
+   "title": "فرامل",
+   "given": "press brake pedal → truck stops",
+   "ask": "اكتب جملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: When you press the accelerator, the truck stops.",
+     "bad": true,
+     "why": "دواسة التوقف هي brake pedal.",
+     "fix": "When you press the brake pedal",
+     "reasons": [
+      "التوقف: brake pedal",
+      "التوقف: accelerator",
+      "التوقف: steering wheel",
+      "التوقف: lever G"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 2: , the truck stops."
+    }
+   ],
+   "answer": "When you press the brake pedal, the truck stops."
+  },
+  {
+   "ex": "مثال 3: تعليمة",
+   "title": "تعليمة",
+   "given": "يرجع إلى اليسار.",
+   "ask": "اكتب التعليمة.",
+   "steps": [
+    {
+     "t": "المعطى: يرجع إلى اليسار."
+    },
+    {
+     "t": "الخطوة 1: Drive forwards to the left.",
+     "bad": true,
+     "why": "الرجوع للخلف: Reverse.",
+     "fix": "Reverse",
+     "reasons": [
+      "الرجوع: Stop",
+      "الرجوع: Reverse",
+      "الرجوع: Drive forwards",
+      "الرجوع: Turn round"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Reverse to the left."
+  }
+ ],
+ "u4-l4": [
+  {
+   "ex": "مثال 1: سؤال have",
+   "title": "have",
+   "given": "The workshop has a forklift truck.",
+   "ask": "حوّل إلى سؤال.",
+   "steps": [
+    {
+     "t": "الخطوة 1: مفرد: Does."
+    },
+    {
+     "t": "الخطوة 2: Does the workshop has a forklift truck?",
+     "bad": true,
+     "why": "بعد does: have.",
+     "fix": "Does the workshop have a forklift truck?",
+     "reasons": [
+      "نقول Do",
+      "نحذف does",
+      "بعد does: have",
+      "has صحيحة بعد does"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Does the workshop have a forklift truck?"
+  },
+  {
+   "ex": "مثال 2: can و but",
+   "title": "can",
+   "given": "knife: bread ✓ · metal ✗",
+   "ask": "اكتب جملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: This knife can cut bread"
+    },
+    {
+     "t": "الخطوة 2: , but it can't cuts metal.",
+     "bad": true,
+     "why": "بعد can't الفعل كما هو.",
+     "fix": "but it can't cut metal",
+     "reasons": [
+      "cuts صحيحة",
+      "نقول doesn't can",
+      "نقول not can",
+      "بعد can't: cut"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "This knife can cut bread, but it can't cut metal."
+  },
+  {
+   "ex": "مثال 3: a / an / some",
+   "title": "أدوات",
+   "given": "screws · oven · scissors",
+   "ask": "ضع الكلمة المناسبة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: some screws."
+    },
+    {
+     "t": "الخطوة 2: a oven.",
+     "bad": true,
+     "why": "oven يبدأ بصوت متحرك: an.",
+     "fix": "an oven",
+     "reasons": [
+      "قبل الصوت المتحرك an",
+      "a صحيحة",
+      "some oven",
+      "a pair of oven"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 3: a pair of scissors."
+    }
+   ],
+   "answer": "some screws · an oven · a pair of scissors"
+  }
+ ],
+ "u5-l1": [
+  {
+   "ex": "مثال 1: حركة الماء",
+   "title": "حركة",
+   "given": "الماء يمر عبر الصمام.",
+   "ask": "اكتب الجملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: The water pass through the valve.",
+     "bad": true,
+     "why": "pass مع المفرد: passes.",
+     "fix": "The water passes",
+     "reasons": [
+      "نقول passing",
+      "pass + es مع المفرد",
+      "pass صحيحة مع المفرد",
+      "نقول passs"
+     ],
+     "rc": 1
+    },
+    {
+     "t": "الخطوة 2: through the valve."
+    }
+   ],
+   "answer": "The water passes through the valve."
+  },
+  {
+   "ex": "مثال 2: rise أم sink",
+   "title": "rise",
+   "given": "الهواء الساخن.",
+   "ask": "أكمل الجملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: الهواء الساخن خفيف."
+    },
+    {
+     "t": "الخطوة 2: When you heat the air, the hot air sinks.",
+     "bad": true,
+     "why": "الساخن يصعد: rises.",
+     "fix": "the hot air rises",
+     "reasons": [
+      "الساخن يدخل: enters",
+      "الساخن يبقى",
+      "الساخن يصعد: rises",
+      "الساخن ينزل: sinks"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "When you heat the air, the hot air rises."
+  },
+  {
+   "ex": "مثال 3: enter",
+   "title": "enter",
+   "given": "الماء يدخل البيت.",
+   "ask": "اكتب الجملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Water enters into the house.",
+     "bad": true,
+     "why": "enter لا تحتاج into.",
+     "fix": "Water enters the house",
+     "reasons": [
+      "enter into صحيحة",
+      "نقول enter to",
+      "نقول enters in",
+      "enter بلا حرف جر"
+     ],
+     "rc": 3
+    },
+    {
+     "t": "الخطوة 2: through the inlet pipe."
+    }
+   ],
+   "answer": "Water enters the house through the inlet pipe."
+  }
+ ],
+ "u5-l2": [
+  {
+   "ex": "مثال 1: جملة شرطية",
+   "title": "if",
+   "given": "الشمس مشرقة ← التيار من اللوح.",
+   "ask": "اكتب جملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: If the Sun shine,",
+     "bad": true,
+     "why": "the Sun مفرد: shines.",
+     "fix": "If the Sun shines,",
+     "reasons": [
+      "المفرد + s: shines",
+      "shine صحيحة",
+      "نقول shining",
+      "نقول will shine"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 2: the current flows from the panel."
+    }
+   ],
+   "answer": "If the Sun shines, the current flows from the panel."
+  },
+  {
+   "ex": "مثال 2: نفي في الشرط",
+   "title": "نفي",
+   "given": "المصابيح ليست مضاءة.",
+   "ask": "اكتب جملة.",
+   "steps": [
+    {
+     "t": "الخطوة 1: If the lamps isn't on,",
+     "bad": true,
+     "why": "lamps جمع: aren't.",
+     "fix": "If the lamps aren't on,",
+     "reasons": [
+      "نقول not on",
+      "الجمع: aren't",
+      "isn't صحيحة مع الجمع",
+      "نقول doesn't on"
+     ],
+     "rc": 1
+    },
+    {
+     "t": "الخطوة 2: the current flows into the battery."
+    }
+   ],
+   "answer": "If the lamps aren't on, the current flows into the battery."
+  },
+  {
+   "ex": "مثال 3: الرموز",
+   "title": "رموز",
+   "given": "رمز ⊗",
+   "ask": "سمِّ الرمز.",
+   "steps": [
+    {
+     "t": "المعطى: رمز ⊗"
+    },
+    {
+     "t": "الخطوة 1: ⊗ = fuse",
+     "bad": true,
+     "why": "⊗ رمز المصباح.",
+     "fix": "lamp",
+     "reasons": [
+      "⊗ = switch",
+      "⊗ = battery",
+      "⊗ = lamp",
+      "⊗ = fuse"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "⊗ = lamp"
+  }
+ ],
+ "u5-l3": [
+  {
+   "ex": "مثال 1: تحويل الحرارة",
+   "title": "تحويل",
+   "given": "20°C",
+   "ask": "حوّلها إلى فهرنهايت.",
+   "steps": [
+    {
+     "t": "الخطوة 1: °F = °C × 9 / 5 + 32"
+    },
+    {
+     "t": "الخطوة 2: 20 × 9 / 5 = 36، والجواب 36°F.",
+     "bad": true,
+     "why": "نسينا إضافة 32.",
+     "fix": "36 + 32 = 68°F",
+     "reasons": [
+      "36°F صحيحة",
+      "نطرح 32",
+      "نضرب في 32",
+      "يجب إضافة 32: 68°F"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "20°C = 68°F"
+  },
+  {
+   "ex": "مثال 2: وظيفة جزء",
+   "title": "وظيفة",
+   "given": "المشعاع.",
+   "ask": "اكتب وظيفته.",
+   "steps": [
+    {
+     "t": "الخطوة 1: The radiator heats the water.",
+     "bad": true,
+     "why": "المشعاع يبرّد الماء: cools.",
+     "fix": "The radiator cools",
+     "reasons": [
+      "المشعاع يبرّد: cools",
+      "المشعاع يسخّن",
+      "المشعاع يدفع الماء",
+      "المشعاع يتحكم في الحرارة"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 2: the hot water from the engine."
+    }
+   ],
+   "answer": "The radiator cools the hot water from the engine."
+  },
+  {
+   "ex": "مثال 3: الجدول",
+   "title": "جدول",
+   "given": "كل أربعاء صباحاً.",
+   "ask": "أجب.",
+   "steps": [
+    {
+     "t": "المعطى: كل أربعاء صباحاً."
+    },
+    {
+     "t": "الخطوة 1: In Wednesday morning.",
+     "bad": true,
+     "why": "كل أربعاء: every Wednesday أو on Wednesdays.",
+     "fix": "Every Wednesday morning.",
+     "reasons": [
+      "Wednesday every",
+      "every Wednesday morning",
+      "in Wednesday صحيحة",
+      "at Wednesday"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Every Wednesday morning."
+  }
  ]
 });
