@@ -70,7 +70,8 @@ function speak(t){const s=plain(t).replace(/\s+/g,' ').trim();if(!TTSSET)TTSSET=
   const k=ttsKey(s);if(TTSSET.has(k)){const a=new Audio('audio/tts/'+k+'.mp3');cur=a;a.play().catch(()=>devSpeak(s));return}
   devSpeak(s)}
 if(typeof document!=='undefined')document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-say]');if(!b)return;e.preventDefault();speak(b.dataset.say)});
-const sp=t=>hasTTS()?`<button type="button" class="say" data-say="${esc(plain(t))}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`:'';
+const latinT=t=>{const x=plain(t),l=(x.match(/[A-Za-z]/g)||[]).length,a=(x.match(/[\u0600-\u06FF]/g)||[]).length;return l>0&&l>a};
+const sp=t=>hasTTS()&&latinT(t)?`<button type="button" class="say" data-say="${esc(plain(t))}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`:'';
 /* جملة إنجليزية داخل النص العربي */
 const e=s=>`<span class="en" lang="en">${s}</span>`;
 /* فقرة/أمثلة إنجليزية: سطر لكل جملة مع زر نطق */
@@ -78,7 +79,7 @@ const eb=lines=>`<div class="enb" lang="en">${(Array.isArray(lines)?lines:[lines
 /* حوار جديد (ليس من الكتاب): [[المتحدث, الجملة]] */
 const dl=rows=>`<ul class="dlg" lang="en">${rows.map(([w,t])=>`<li><b>${w}:</b> ${t} ${sp(t)}</li>`).join('')}</ul>`;
 /* جدول كلمات: [[إنجليزي, عربي, ملاحظة]] */
-const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td class="en" lang="en">${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt">${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td${latinT(r[0])?' class="en" lang="en"':''}>${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt">${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
 /* تمرين في الكتاب: يُحال إليه برقمه وصفحته، مع المطلوب بالعربي وإجابات البنود (للمراجعة) */
 const bk=(n,ref,task,ans,note)=>`<div class="ebk"><div class="eh"><span class="tg">في كتابك</span><b>تمرين ${n}</b><span class="ref">${ref}</span></div><p>${task}</p>${ans?`<details><summary>${Array.isArray(ans)?'الإجابات (بأرقام البنود)':'الإجابة'}</summary>${Array.isArray(ans)?`<ol class="ans" lang="en">${ans.map(a=>`<li>${a}</li>`).join('')}</ol>`:`<p>${ans}</p>`}${note?`<p class="ans-n">${note}</p>`:''}</details>`:''}</div>`;
 /* مقطع من صوتيات الكتاب: يُرفع الملف إلى courses/english/audio/track-NN.mp3 */
