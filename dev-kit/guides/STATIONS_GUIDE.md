@@ -47,6 +47,14 @@ Any number with a unit, equation written as text, or equation number like (1-3) 
 M 0.1 / T1 and PLC terms (LAD, FBD, STL) too.
 
 ## Fixed rules
+- «اشرح أولاً» (trainer's standing rule, all courses, all lessons): every rule a lesson needs is EXPLAINED before any
+  dialogue, question, example or exercise that uses it — even when the book assumes the trainee already knows it
+  (e.g. am/is/are with pronouns before an introductions dialogue). If the book does not explain it, add a short
+  explanation marked «إضافة من خارج الكتاب»: plain Arabic, a table, our own examples, then a mini-lab, then the book
+  material. English courses: register it in lessons/gram.js with ENK.gram('<lesson id>',{title,short,q,intro,head,rows,
+  ex,note:[…],lab:{title,intro,items}}) — en.js inserts a «رسمي» section after «ماذا ستتعلم؟» and a first station in
+  «التفاعلي», and renumbers the stations. en_inject.py adds gram.js to index.html. Before building a lesson, list the
+  rules its dialogues and exercises use and check each is explained earlier (in the lesson or an earlier lesson).
 - Illustrative (non-book) numbers in any widget get the «قيم توضيحية / قيم المدرب» switch (B.params — see
   /home/claude/lib/TP_GUIDE.md) like the other simulations. Prefer widgets that need no invented numbers.
 - Any judgement call (a number, the wording of an addition, a calculation method) → do not assume: list it in the report.

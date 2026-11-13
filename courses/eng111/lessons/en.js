@@ -84,7 +84,7 @@ const eb=lines=>`<div class="enb" lang="en">${(Array.isArray(lines)?lines:[lines
 /* حوار جديد (ليس من الكتاب): [[المتحدث, الجملة]] */
 const dl=rows=>`<ul class="dlg" lang="en">${rows.map(([w,t])=>`<li><b>${w}:</b> ${t} ${sp(t)}</li>`).join('')}</ul>`;
 /* جدول كلمات: [[إنجليزي, عربي, ملاحظة]] */
-const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td${latinT(r[0])?' class="en" lang="en"':''}>${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt">${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td${latinT(r[0])?' class="en" lang="en"':''}>${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt"${/^[\x20-\x7E·—–…’]+$/.test(r[2]||'')?' lang="en" dir="ltr" style="text-align:left"':''}>${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
 /* تمرين في الكتاب: يُحال إليه برقمه وصفحته، مع المطلوب بالعربي وإجابات البنود (للمراجعة) */
 const bk=(n,ref,task,ans,note)=>`<div class="ebk"><div class="eh"><span class="tg">في كتابك</span><b>تمرين ${n}</b><span class="ref">${ref}</span></div><p>${task}</p>${ans?`<details><summary>${Array.isArray(ans)?'الإجابات (بأرقام البنود)':'الإجابة'}</summary>${Array.isArray(ans)?`<ol class="ans" lang="en">${ans.map(a=>`<li>${a}</li>`).join('')}</ol>`:`<p>${ans}</p>`}${note?`<p class="ans-n">${note}</p>`:''}</details>`:''}</div>`;
 /* مقطع من صوتيات الكتاب: يُرفع الملف إلى courses/english/audio/track-NN.mp3 */
@@ -124,5 +124,27 @@ const cases=(el,B,o)=>K.cases(el,B,{...o,cases:o.cases.map(c=>({...c,q:W(c.q),op
 const tf=(el,B,o)=>K.tf(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
 const sort=(el,B,o)=>K.sort(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
 const order=(el,B,o)=>K.order(el,B,{...o,steps:o.steps.map(x=>Array.isArray(x)?[W(x[0]),x[1]]:W(x))});
-G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W};
+
+/* ===== «اشرح أولاً»: شرح قاعدة من خارج الكتاب قبل الحوارات والتمارين =====
+   gram.js في كل مقرر يسجّل: ENK.gram('u1-l1',{title,short,q,intro,rows,head,ex,note,lab:{title,intro,items}})
+   فيُضاف للدرس قسم في «رسمي» بعد «ماذا ستتعلم؟» ومحطة أولى في «التفاعلي»، وتُعاد أرقام المحطات. */
+const GRAM={};
+const gram=(id,s)=>{GRAM[id]=s};
+const gramParts=s=>{const tag='إضافة من خارج الكتاب';const nt=Array.isArray(s.note)?`<ul>${s.note.map(x=>`<li>${x}</li>`).join('')}</ul>`:s.note?`<p>${s.note}</p>`:'';
+  const table=s.rows?vt(s.rows,s.head):'';const ex=s.ex&&s.ex.length?eb(s.ex):'';
+  const labW=s.lab?((el,B)=>gaps(el,B,{intro:s.lab.intro,items:s.lab.items})):null;
+  const theory=[{h:`${s.title} (${tag})`,html:`<p>${s.intro}</p>${table}${ex}${nt}${s.lab?`<p><b>مختبر مصغّر: ${s.lab.title}</b></p>`:''}`}];
+  if(labW)theory.push({widget:labW});
+  const station={st:0,short:s.short||s.title,title:s.title,q:s.q,
+    side:[{add:s.intro}],
+    body:[{html:table+ex},...(s.note?[{tip:nt}]:[]),...(labW?[{widget:labW,title:'مختبر مصغّر: '+s.lab.title}]:[])]};
+  return {theory,station}};
+if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
+  G.PLCBOOK.lesson=L=>{const s=GRAM[L.id];
+    if(s){const p=gramParts(s);
+      if(Array.isArray(L.theory)){const i=L.theory.findIndex(b=>b.h==='ماذا ستتعلم؟');L.theory.splice(i+1,0,...p.theory)}
+      if(Array.isArray(L.stations)){const i=L.stations.findIndex(b=>b.intro);L.stations.splice(i+1,0,p.station)}}
+    if(Array.isArray(L.stations)){let n=0;L.stations.forEach(b=>{if(b.st!=null)b.st=++n})}
+    return ol(L)}}
+G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram};
 })(window);

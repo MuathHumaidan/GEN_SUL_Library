@@ -26,6 +26,7 @@ STATIONS_GUIDE.md and create fragments from scratch.
 - guides/API_THEORY.md, API_LAB.md, API_CIRC.md, API_NEW.md, TP_GUIDE.md — how a course and its lessons are written
   (theory, labs, circuits, worked examples, trainer values).
 - guides/STATIONS_GUIDE.md, MINILAB_GUIDE.md — the second explanation style «التفاعلي» and its mini-labs.
+- guides/EN_MODE_GUIDE.md — «لغة الشرح: عربي / English» for the English courses (i18n.js, dictionaries, enscan).
 - guides/FIXNOTE_GUIDE.md — book-error handling: «كما في الكتاب / المصحح» switch, «إخفاء الشرح».
 - guides/ACTIVITIES_PLAN.md, ACT_CONTENT_GUIDE.md, CHALLENGE_GUIDE.md — «الأنشطة التفاعلية» tab, live activities with the
   quiz server (repo elec-quiz on Railway), fault-finding and simulation challenge.
