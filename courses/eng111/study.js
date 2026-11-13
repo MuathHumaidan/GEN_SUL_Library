@@ -376,6 +376,395 @@ PLCBOOK.study({
      "l": "u5-l2"
     }
    ]
+  },
+  "u6": {
+   "title": "Placing an order — تقديم طلب شراء",
+   "cards": [
+    {
+     "k": "law",
+     "f": "I'd like to place an order.",
+     "b": "بداية مكالمة الطلب.",
+     "ref": "ص 28",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "I'd like to order …",
+     "b": "العدد والصنف.",
+     "ref": "ص 28",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "How many + countable?",
+     "b": "How many lab coats?",
+     "ref": "ص 29",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "How much + uncountable / price?",
+     "b": "How much paper? How much are they?",
+     "ref": "ص 29",
+     "l": "u6-l1"
+    },
+    {
+     "k": "def",
+     "f": "a few / a little / a lot of",
+     "b": "قليل (معدود) / قليل (غير معدود) / كثير.",
+     "ref": "ص 29",
+     "l": "u6-l1"
+    },
+    {
+     "k": "def",
+     "f": "pairs of",
+     "b": "20 pairs of goggles.",
+     "ref": "ص 28",
+     "l": "u6-l1"
+    },
+    {
+     "k": "def",
+     "f": "invoice / discount / VAT",
+     "b": "فاتورة / خصم / ضريبة القيمة المضافة.",
+     "ref": "ص 30",
+     "l": "u6-l2"
+    },
+    {
+     "k": "law",
+     "f": "Complaint → Apology → Action → Response",
+     "b": "مراحل التعامل مع المشكلة.",
+     "ref": "ص 31",
+     "l": "u6-l2"
+    },
+    {
+     "k": "law",
+     "f": "ordered / promised",
+     "b": "الماضي البسيط في الشكوى.",
+     "ref": "ص 31",
+     "l": "u6-l2"
+    },
+    {
+     "k": "law",
+     "f": "I'll … / We'll …",
+     "b": "الإجراء: I'll send you a new invoice.",
+     "ref": "ص 31",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "not much / not many",
+     "b": "ليس كثيراً (غير معدود / معدود).",
+     "ref": "ص 33",
+     "l": "u6-l3"
+    }
+   ]
+  },
+  "u7": {
+   "title": "Making a reservation — الحجز",
+   "cards": [
+    {
+     "k": "law",
+     "f": "When would you like to stay?",
+     "b": "سؤال موظف الفندق عن التاريخ.",
+     "ref": "ص 34",
+     "l": "u7-l1"
+    },
+    {
+     "k": "law",
+     "f": "Would you like a single or a double room?",
+     "b": "نوع الغرفة.",
+     "ref": "ص 34",
+     "l": "u7-l1"
+    },
+    {
+     "k": "law",
+     "f": "May I have your name, please?",
+     "b": "طلب مهذب للاسم.",
+     "ref": "ص 34",
+     "l": "u7-l1"
+    },
+    {
+     "k": "def",
+     "f": "single / return / double",
+     "b": "ذهاب فقط / ذهاب وعودة / غرفة لشخصين.",
+     "ref": "ص 35",
+     "l": "u7-l1"
+    },
+    {
+     "k": "law",
+     "f": "I'd like to … / I want to …",
+     "b": "الرغبة، وبعدها الفعل كما هو.",
+     "ref": "ص 35",
+     "l": "u7-l1"
+    },
+    {
+     "k": "law",
+     "f": "How do you want to pay? — By credit card.",
+     "b": "طريقة الدفع.",
+     "ref": "ص 35",
+     "l": "u7-l1"
+    },
+    {
+     "k": "law",
+     "f": "the + superlative",
+     "b": "the cheapest، the biggest، the most comfortable، the best.",
+     "ref": "ص 36",
+     "l": "u7-l2"
+    },
+    {
+     "k": "def",
+     "f": "UK 8/3 = 8 March · US 8/3 = August 3",
+     "b": "التاريخ يوم/شهر أو شهر/يوم.",
+     "ref": "ص 36",
+     "l": "u7-l2"
+    },
+    {
+     "k": "law",
+     "f": "What kind of car would you like?",
+     "b": "نوع السيارة.",
+     "ref": "ص 37",
+     "l": "u7-l2"
+    },
+    {
+     "k": "law",
+     "f": "I chose … because …",
+     "b": "تبرير الاختيار.",
+     "ref": "ص 37",
+     "l": "u7-l2"
+    }
+   ]
+  },
+  "u8": {
+   "title": "Getting around — التنقل",
+   "cards": [
+    {
+     "k": "law",
+     "f": "How do I get to …?",
+     "b": "السؤال عن الطريق.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "law",
+     "f": "Turn left. Take the second right. Go straight on.",
+     "b": "الاتجاهات بفعل الأمر.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "def",
+     "f": "opposite / on the left",
+     "b": "مقابل / على اليسار.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "law",
+     "f": "Take the … line. Change at … Get off at …",
+     "b": "المترو.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "def",
+     "f": "northbound / southbound",
+     "b": "باتجاه الشمال / الجنوب.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "def",
+     "f": "by train / on foot",
+     "b": "بالقطار / مشياً.",
+     "ref": "ص 38",
+     "l": "u8-l1"
+    },
+    {
+     "k": "law",
+     "f": "So, I need …",
+     "b": "التحقق بتكرار التعليمات.",
+     "ref": "ص 39",
+     "l": "u8-l1"
+    },
+    {
+     "k": "law",
+     "f": "I'm here to see …",
+     "b": "الزائر في الاستقبال.",
+     "ref": "ص 40",
+     "l": "u8-l2"
+    },
+    {
+     "k": "law",
+     "f": "Do you have an appointment?",
+     "b": "سؤال موظف الاستقبال.",
+     "ref": "ص 40",
+     "l": "u8-l2"
+    },
+    {
+     "k": "def",
+     "f": "Please take a seat. · He'll be down in a moment.",
+     "b": "عبارات الانتظار.",
+     "ref": "ص 40",
+     "l": "u8-l2"
+    },
+    {
+     "k": "def",
+     "f": "Here's my business card. — Here's mine.",
+     "b": "تبادل البطاقات.",
+     "ref": "ص 40",
+     "l": "u8-l2"
+    }
+   ]
+  },
+  "u9": {
+   "title": "About the company — عن الشركة",
+   "cards": [
+    {
+     "k": "law",
+     "f": "past simple: + ed",
+     "b": "launched, developed, introduced.",
+     "ref": "ص 42",
+     "l": "u9-l1"
+    },
+    {
+     "k": "law",
+     "f": "irregular past",
+     "b": "met, made, sold, built, left.",
+     "ref": "ص 42",
+     "l": "u9-l1"
+    },
+    {
+     "k": "def",
+     "f": "increase / rise / go up",
+     "b": "يرتفع.",
+     "ref": "ص 43",
+     "l": "u9-l1"
+    },
+    {
+     "k": "def",
+     "f": "decrease / fall / go down",
+     "b": "ينخفض.",
+     "ref": "ص 43",
+     "l": "u9-l1"
+    },
+    {
+     "k": "def",
+     "f": "from … to …",
+     "b": "It rose from 10 to 15.",
+     "ref": "ص 43",
+     "l": "u9-l1"
+    },
+    {
+     "k": "law",
+     "f": "have / has + past participle",
+     "b": "المضارع التام لتغيّر بلا زمن محدد.",
+     "ref": "ص 44",
+     "l": "u9-l2"
+    },
+    {
+     "k": "law",
+     "f": "past time reference → past simple",
+     "b": "last month, in 2001, yesterday, two years ago.",
+     "ref": "ص 44",
+     "l": "u9-l2"
+    },
+    {
+     "k": "law",
+     "f": "just / already / yet",
+     "b": "just و already قبل الفعل، و yet في آخر النفي والسؤال.",
+     "ref": "ص 45",
+     "l": "u9-l2"
+    },
+    {
+     "k": "def",
+     "f": "and / but / so / because",
+     "b": "أدوات ربط الجمل.",
+     "ref": "ص 45",
+     "l": "u9-l2"
+    },
+    {
+     "k": "def",
+     "f": "hire = rent · book = reserve",
+     "b": "مترادفات.",
+     "ref": "ص 46",
+     "l": "u9-l3"
+    },
+    {
+     "k": "def",
+     "f": "How long …?",
+     "b": "السؤال عن المدة.",
+     "ref": "ص 46",
+     "l": "u9-l3"
+    }
+   ]
+  },
+  "u10": {
+   "title": "Routines — الروتين اليومي",
+   "cards": [
+    {
+     "k": "def",
+     "f": "get up / leave home / get home",
+     "b": "يستيقظ / يغادر البيت / يصل البيت.",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "def",
+     "f": "pick up / go out / finish work",
+     "b": "يمرّ لأخذ / يخرج / ينهي العمل.",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "law",
+     "f": "every Monday → present simple",
+     "b": "She leaves home at seven. (+ s مع she)",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "law",
+     "f": "now / Look! → present continuous",
+     "b": "She's playing tennis.",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "law",
+     "f": "last Saturday → past simple",
+     "b": "I got up at ten. I had breakfast.",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "def",
+     "f": "got · had · drove · made · ate",
+     "b": "ماضي get, have, drive, make, eat.",
+     "ref": "ص 48",
+     "l": "u10-l1"
+    },
+    {
+     "k": "law",
+     "f": "always … never",
+     "b": "ظروف التكرار من 100% إلى 0%.",
+     "ref": "ص 50",
+     "l": "u10-l2"
+    },
+    {
+     "k": "law",
+     "f": "adverb + main verb · be + adverb",
+     "b": "I usually take the train. · I'm never late.",
+     "ref": "ص 50",
+     "l": "u10-l2"
+    },
+    {
+     "k": "law",
+     "f": "How often …?",
+     "b": "السؤال عن التكرار.",
+     "ref": "ص 50",
+     "l": "u10-l2"
+    }
+   ]
   }
  },
  "lessons": {
@@ -673,6 +1062,330 @@ PLCBOOK.study({
       [
        "I'm calling to ask for …",
        "أتصل لأطلب"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l1": {
+   "match": [
+    {
+     "title": "وصّل الكمية بالاسم",
+     "pairs": [
+      [
+       "How many",
+       "lab coats?"
+      ],
+      [
+       "How much",
+       "paper?"
+      ],
+      [
+       "a few",
+       "pens"
+      ],
+      [
+       "a little",
+       "money"
+      ],
+      [
+       "pairs of",
+       "goggles"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l2": {
+   "match": [
+    {
+     "title": "وصّل الجملة بمرحلتها",
+     "pairs": [
+      [
+       "I ordered ten but got twenty.",
+       "Complaint"
+      ],
+      [
+       "I'm sorry about that.",
+       "Apology"
+      ],
+      [
+       "I'll send a new invoice.",
+       "Action"
+      ],
+      [
+       "That's very helpful.",
+       "Response"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l3": {
+   "match": [
+    {
+     "title": "وصّل الشكوى بالإجراء",
+     "pairs": [
+      [
+       "too many boxes",
+       "give some back to the driver"
+      ],
+      [
+       "no price list",
+       "put one in the post"
+      ],
+      [
+       "wrong price",
+       "send a new invoice"
+      ],
+      [
+       "late delivery",
+       "give money back"
+      ]
+     ]
+    }
+   ]
+  },
+  "u7-l1": {
+   "match": [
+    {
+     "title": "وصّل الحقل بسؤاله",
+     "pairs": [
+      [
+       "Name",
+       "May I have your name?"
+      ],
+      [
+       "Dates",
+       "When would you like to stay?"
+      ],
+      [
+       "Room",
+       "Single or double?"
+      ],
+      [
+       "Payment",
+       "How do you want to pay?"
+      ]
+     ]
+    }
+   ]
+  },
+  "u7-l2": {
+   "match": [
+    {
+     "title": "وصّل الصفة بالتفضيل",
+     "pairs": [
+      [
+       "cheap",
+       "the cheapest"
+      ],
+      [
+       "big",
+       "the biggest"
+      ],
+      [
+       "good",
+       "the best"
+      ],
+      [
+       "comfortable",
+       "the most comfortable"
+      ]
+     ]
+    }
+   ]
+  },
+  "u8-l1": {
+   "match": [
+    {
+     "title": "وصّل التعليمة بمعناها",
+     "pairs": [
+      [
+       "Turn left.",
+       "انعطف يساراً"
+      ],
+      [
+       "Go straight on.",
+       "امشِ مباشرة"
+      ],
+      [
+       "Get off at …",
+       "انزل في …"
+      ],
+      [
+       "Change at …",
+       "غيّر في …"
+      ],
+      [
+       "opposite",
+       "مقابل"
+      ]
+     ]
+    }
+   ]
+  },
+  "u8-l2": {
+   "match": [
+    {
+     "title": "وصّل العبارة بمعناها",
+     "pairs": [
+      [
+       "Please take a seat.",
+       "تفضل بالجلوس"
+      ],
+      [
+       "I'm here to see …",
+       "جئت لمقابلة …"
+      ],
+      [
+       "Do you have an appointment?",
+       "هل لديك موعد؟"
+      ],
+      [
+       "You're welcome.",
+       "العفو"
+      ]
+     ]
+    }
+   ]
+  },
+  "u9-l1": {
+   "match": [
+    {
+     "title": "وصّل الفعل بماضيه",
+     "pairs": [
+      [
+       "meet",
+       "met"
+      ],
+      [
+       "make",
+       "made"
+      ],
+      [
+       "sell",
+       "sold"
+      ],
+      [
+       "build",
+       "built"
+      ],
+      [
+       "leave",
+       "left"
+      ]
+     ]
+    }
+   ]
+  },
+  "u9-l2": {
+   "match": [
+    {
+     "title": "وصّل الجملة بزمنها",
+     "pairs": [
+      [
+       "The factory has closed.",
+       "no time → present perfect"
+      ],
+      [
+       "The factory closed last month.",
+       "past time → past simple"
+      ],
+      [
+       "They haven't opened it yet.",
+       "yet → negative"
+      ],
+      [
+       "They've just arrived.",
+       "just → a moment ago"
+      ]
+     ]
+    }
+   ]
+  },
+  "u9-l3": {
+   "match": [
+    {
+     "title": "وصّل المترادفين",
+     "pairs": [
+      [
+       "hire",
+       "rent"
+      ],
+      [
+       "book",
+       "reserve"
+      ],
+      [
+       "start",
+       "begin"
+      ],
+      [
+       "leave",
+       "depart"
+      ],
+      [
+       "make",
+       "produce"
+      ]
+     ]
+    }
+   ]
+  },
+  "u10-l1": {
+   "match": [
+    {
+     "title": "وصّل الفعل بماضيه",
+     "pairs": [
+      [
+       "get",
+       "got"
+      ],
+      [
+       "have",
+       "had"
+      ],
+      [
+       "drive",
+       "drove"
+      ],
+      [
+       "make",
+       "made"
+      ],
+      [
+       "eat",
+       "ate"
+      ]
+     ]
+    }
+   ]
+  },
+  "u10-l2": {
+   "match": [
+    {
+     "title": "وصّل الظرف بنسبته",
+     "pairs": [
+      [
+       "always",
+       "100%"
+      ],
+      [
+       "usually",
+       "about 85%"
+      ],
+      [
+       "sometimes",
+       "about 50%"
+      ],
+      [
+       "hardly ever",
+       "about 10%"
+      ],
+      [
+       "never",
+       "0%"
       ]
      ]
     }

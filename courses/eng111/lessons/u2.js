@@ -75,18 +75,18 @@ B.lesson({
 /* ========== 2B Workplaces and locations ========== */
 const WP=[['head office','المقر الرئيسي'],['branch office','فرع'],['factory','مصنع'],['warehouse','مستودع'],['showroom','صالة عرض'],['store','متجر'],['design studio','مكتب تصميم']];
 const LOC=[['in the centre','في الوسط'],['in the suburbs','في الضواحي'],['in the country','في الريف'],['in the north / south / east / west','في الشمال / الجنوب / الشرق / الغرب'],['in the northwest / southeast…','في الشمال الغربي / الجنوب الشرقي…'],['on the east coast','على الساحل الشرقي']];
-const CITY=[{n:'Riyadh',x:205,y:150,w:'Head Office and a showroom',p:'in the centre of Saudi Arabia'},{n:'Jubail',x:262,y:95,w:'a factory',p:'on the east coast'},{n:'Dammam',x:280,y:120,w:'a warehouse',p:'in the east'},{n:'Jeddah',x:92,y:185,w:'a branch office and a warehouse',p:'on the west coast'},{n:'Abha',x:125,y:240,w:'a design studio',p:'in the southwest'},{n:'Tabuk',x:68,y:60,w:'a store',p:'in the northwest'}];
+const CITY=[{n:'Riyadh',x:205,y:150,w:'its Head Office and a showroom',p:'in the centre of Saudi Arabia'},{n:'Jubail',x:262,y:95,w:'a factory',p:'on the east coast'},{n:'Dammam',x:280,y:120,w:'a warehouse',p:'in the east'},{n:'Jeddah',x:92,y:185,w:'a branch office and a warehouse',p:'on the west coast'},{n:'Abha',x:125,y:240,w:'a design studio',p:'in the southwest'},{n:'Tabuk',x:68,y:60,w:'a store',p:'in the northwest'}];
 const ksa=()=>`<path d="M40 40 L150 20 L250 60 L300 110 L330 170 L300 230 L210 270 L130 280 L95 230 L60 150 Z" fill="#f4ecd6" stroke="${C.ink}" stroke-width="2"/>
  <g transform="translate(330 40)"><line x1="0" y1="18" x2="0" y2="-18" stroke="${C.ink}" stroke-width="2"/><polygon points="0,-22 -5,-12 5,-12" fill="${C.ink}"/>${TL(0,-26,'N',{fs:11,w:700})}</g>`;
 function lab2b(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
- <div class="c7 panel"><h3 style="margin-top:0">أماكن عمل شركة Sahara Foods</h3><p class="sub">شركة من إعدادنا، مبني على التمرينين 3 و 4 ص 13. اضغط مدينة.</p><div id="sv" style="max-width:380px;margin:auto"></div><div id="o"></div></div>
+ <div class="c7 panel"><h3 style="margin-top:0">أماكن عمل شركة Sahara Foods</h3><p class="sub">شركة من إعدادنا على خريطة تقريبية، مبني على التمرينين 3 و 4 ص 13. اضغط مدينة.</p><div id="sv" style="max-width:380px;margin:auto"></div><div id="o"></div></div>
  <div class="c5 panel"><h3 style="margin-top:0">أين تحب أن تعيش وتعمل؟</h3><p class="sub">مبني على التمرين 2 ص 12.</p>
   <div class="ph-row"><select class="ph-sel" id="lv"><option>the centre</option><option>the suburbs</option><option>the country</option></select><select class="ph-sel" id="wk"><option value="1">commute</option><option value="0">work at home</option></select></div><div id="wo"></div></div>
  <div class="c12 panel"><h3 style="margin-top:0">جرّب</h3><ol class="ph-try"><li>أين المقر الرئيسي؟ وأين المصنع؟</li><li>ما الفرق بين <span class="en">warehouse</span> و <span class="en">showroom</span>؟</li><li>اكتب جملة: أين تحب أن تعمل ولماذا؟</li></ol></div></div></div>`;
  const $=s=>el.querySelector(s);let k=0;
- const draw=()=>{$('#sv').innerHTML=`<svg viewBox="0 0 360 300" style="width:100%">${ksa()}${CITY.map((c,i)=>`<g data-c="${i}" style="cursor:pointer"><circle cx="${c.x}" cy="${c.y}" r="${i===k?10:7}" fill="${i===k?C.red:C.ink}"/>${TL(c.x,c.y-14,c.n,{fs:12,w:700})}</g>`).join('')}</svg>`;
-  el.querySelectorAll('[data-c]').forEach(g=>g.onclick=()=>{k=+g.dataset.c;draw()});const c=CITY[k];$('#o').innerHTML=eb([`Sahara Foods has ${c.w} in ${c.n}, ${c.p}.`,`Where is the ${c.w.replace(/^an? /,'').split(' and')[0]}? — It's in ${c.n}.`])};draw();
+ const draw=()=>{$('#sv').innerHTML=`<svg viewBox="0 0 360 300" style="width:100%">${ksa()}${CITY.map((c,i)=>`<g data-c="${i}" style="cursor:pointer"><circle cx="${c.x}" cy="${c.y}" r="${i===k?10:7}" fill="${i===k?C.red:C.ink}"/>${TL(c.x,c.n==='Dammam'?c.y+24:c.y-14,c.n,{fs:12,w:700})}</g>`).join('')}</svg>`;
+  el.querySelectorAll('[data-c]').forEach(g=>g.onclick=()=>{k=+g.dataset.c;draw()});const c=CITY[k];$('#o').innerHTML=eb([`Sahara Foods has ${c.w} in ${c.n}, ${c.p}.`,`Where is the ${c.w.replace(/^(an?|its) /,'').split(' and')[0]}? — It's in ${c.n}.`])};draw();
  const ws=()=>{const l=$('#lv').value,c=$('#wk').value==='1';$('#wo').innerHTML=eb([`I'd like to live in ${l}.`,c?"I'd like to commute to work.":"I'd like to work at home.",c?"I wouldn't like to work at home.":"I wouldn't like to commute."])};['lv','wk'].forEach(x=>$('#'+x).addEventListener('input',ws));ws();
 }
 B.lesson({
@@ -110,7 +110,7 @@ B.lesson({
  stations:[
   {intro:true},
   {st:1,short:'الجهات والمواقع',title:'in the centre · on the coast',q:'كيف تصف مكان مدينة في بلدك؟',ref:'ص 12–13',
-   art:art(`${ksa()}${CITY.map(c=>`<g data-tip="${c.n}: ${c.p}"><circle cx="${c.x}" cy="${c.y}" r="7" fill="${C.ink}"/>${TL(c.x,c.y-12,c.n,{fs:11,w:700})}</g>`).join('')}`,'مدن ومواقعها'),
+   art:art(`${ksa()}${CITY.map(c=>`<g data-tip="${c.n}: ${c.p}"><circle cx="${c.x}" cy="${c.y}" r="7" fill="${C.ink}"/>${TL(c.x,c.n==='Dammam'?c.y+22:c.y-12,c.n,{fs:11,w:700})}</g>`).join('')}`,'مدن ومواقعها'),
    cap:'خريطة تقريبية من رسمنا. مرّر المؤشر على كل مدينة.',side:[{tip:`${e('in the southwest')} = في الجنوب الغربي (كلمة واحدة).`}],
    body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"Jeddah is ___ the west coast.",o:['on','in'],a:0},{s:"Riyadh is in the ___ of the country.",o:['centre','coast'],a:0},{s:'Tabuk is in the ___.',o:['northwest','west north'],a:0}]}),title:'مختبر مصغّر: الموقع'}]},
   {st:2,short:'would like to',title:'الرغبة بـ would like to',q:'كيف تقول بلطف إنك تريد أن تعمل في الوسط؟',ref:'ص 12',

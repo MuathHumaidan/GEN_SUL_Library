@@ -101,5 +101,115 @@ PLCBOOK.words({
   ['slowly','ببطء','Please speak slowly.','تكلم ببطء من فضلك.'],
   ['brochure','كتيّب','Take a brochure about the new courses.','خذ كتيّباً عن الدورات الجديدة.'],
   ['send','يرسل','I\'ll send you the photos tonight.','سأرسل لك الصور الليلة.']
+ ],
+ 'u6-l1':[
+  ['order','يطلب / طلب','I ordered a new phone online.','طلبت جوالاً جديداً عبر الإنترنت.'],
+  ['need','يحتاج','I need a new pair of shoes.','أحتاج حذاءً جديداً.'],
+  ['a few','قليل (يُعدّ)','I have a few friends in Jeddah.','لي بعض الأصدقاء في جدة.'],
+  ['a lot of','كثير من','There are a lot of cars on the road.','هناك سيارات كثيرة في الطريق.'],
+  ['How many …?','كم عدد …؟','How many brothers do you have?','كم أخاً لك؟'],
+  ['How much …?','كم (الكمية / السعر)؟','How much is this bag?','كم سعر هذه الحقيبة؟'],
+  ['each','لكل واحد','The tickets are 50 riyals each.','التذاكر بخمسين ريالاً للواحدة.'],
+  ['a pair of','زوج من','I bought a pair of sunglasses.','اشتريت نظارة شمسية.']
+ ],
+ 'u6-l2':[
+  ['problem','مشكلة','There is a problem with my car.','في سيارتي مشكلة.'],
+  ['invoice','فاتورة','Please send me the invoice by email.','أرسل لي الفاتورة بالبريد.'],
+  ['discount','خصم','Is there a discount for students?','هل يوجد خصم للطلاب؟'],
+  ['wrong','خطأ / غير صحيح','You have the wrong number.','الرقم خطأ.'],
+  ['I\'m sorry about that.','أعتذر عن ذلك.','I\'m sorry about that. It won\'t happen again.','أعتذر عن ذلك، لن يتكرر.'],
+  ['check','يتحقق','Check your answers before you finish.','راجع إجاباتك قبل أن تنتهي.'],
+  ['helpful','مفيد / متعاون','The staff were very helpful.','كان الموظفون متعاونين جداً.']
+ ],
+ 'u6-l3':[
+  ['five to eight','الثامنة إلا خمساً','The class starts at five to eight.','يبدأ الدرس الثامنة إلا خمساً.'],
+  ['not much','ليس كثيراً','There\'s not much milk in the fridge.','الحليب في الثلاجة قليل.'],
+  ['not many','ليس كثيرين','Not many people came to the meeting.','لم يحضر الاجتماع كثيرون.'],
+  ['a little','قليل (لا يُعدّ)','I speak a little French.','أتكلم قليلاً من الفرنسية.'],
+  ['trouble','مشكلة / متاعب','We had some trouble with the car.','واجهنا متاعب مع السيارة.'],
+  ['in the post','بالبريد','The letter is in the post.','الرسالة في البريد.']
+ ],
+ 'u7-l1':[
+  ['reservation','حجز','I have a reservation for two nights.','عندي حجز لليلتين.'],
+  ['single room','غرفة مفردة','A single room, please.','غرفة مفردة من فضلك.'],
+  ['double room','غرفة مزدوجة','We need a double room.','نحتاج غرفة مزدوجة.'],
+  ['night','ليلة','We stayed three nights in Abha.','أقمنا ثلاث ليالٍ في أبها.'],
+  ['credit card','بطاقة ائتمان','Can I pay by credit card?','أستطيع الدفع بالبطاقة؟'],
+  ['confirm','يؤكد','Please confirm your booking by email.','أكّد حجزك بالبريد من فضلك.'],
+  ['return ticket','تذكرة ذهاب وعودة','A return ticket to Dubai, please.','تذكرة ذهاب وعودة إلى دبي من فضلك.']
+ ],
+ 'u7-l2':[
+  ['rent','يستأجر','We rented a car at the airport.','استأجرنا سيارة في المطار.'],
+  ['the cheapest','الأرخص','This is the cheapest phone in the shop.','هذا أرخص جوال في المحل.'],
+  ['the best','الأفضل','He is the best player in the team.','هو أفضل لاعب في الفريق.'],
+  ['the most comfortable','الأكثر راحة','This is the most comfortable chair.','هذا أكثر كرسي مريح.'],
+  ['date','تاريخ','What\'s the date today?','ما تاريخ اليوم؟'],
+  ['agent','وكيل','The travel agent booked our tickets.','وكيل السفر حجز تذاكرنا.'],
+  ['choose','يختار','Choose a colour for your room.','اختر لوناً لغرفتك.']
+ ],
+ 'u8-l1':[
+  ['get to','يصل إلى','How do I get to the stadium?','كيف أصل إلى الملعب؟'],
+  ['turn left / right','انعطف يساراً / يميناً','Turn right at the traffic lights.','انعطف يميناً عند الإشارة.'],
+  ['go straight on','امشِ مباشرة','Go straight on until you see the mall.','امشِ مباشرة حتى ترى المجمّع.'],
+  ['opposite','مقابل','The pharmacy is opposite the mosque.','الصيدلية مقابل المسجد.'],
+  ['get off','ينزل (من وسيلة نقل)','Get off the bus at the next stop.','انزل من الحافلة في المحطة القادمة.'],
+  ['change','يغيّر (الخط)','Change at the central station.','غيّر الخط في المحطة المركزية.'],
+  ['on foot','سيراً على الأقدام','I go to school on foot.','أذهب إلى المدرسة مشياً.'],
+  ['traffic lights','إشارة المرور','Stop at the traffic lights.','قف عند الإشارة.']
+ ],
+ 'u8-l2':[
+  ['appointment','موعد','I have a doctor\'s appointment at 4.','عندي موعد مع الطبيب الساعة 4.'],
+  ['reception','الاستقبال','Please wait at reception.','انتظر في الاستقبال من فضلك.'],
+  ['take a seat','تفضل بالجلوس','Please take a seat, the doctor is coming.','تفضل بالجلوس، الطبيب قادم.'],
+  ['I\'m here to see …','جئت لمقابلة …',"I'm here to see the manager.",'جئت لمقابلة المدير.'],
+  ['journey','رحلة','How was your journey from Jeddah?','كيف كانت رحلتك من جدة؟'],
+  ['shake hands','يصافح','We shake hands when we meet.','نتصافح عندما نلتقي.'],
+  ['You\'re welcome.','العفو.',"Thank you! — You're welcome.",'شكراً! — العفو.']
+ ],
+ 'u9-l1':[
+  ['history','تاريخ','I love reading about Saudi history.','أحب القراءة عن تاريخ السعودية.'],
+  ['launch','يطلق (منتجاً / شركة)','They launched a new phone this week.','أطلقوا جوالاً جديداً هذا الأسبوع.'],
+  ['develop','يطوّر','The students developed a small app.','طوّر الطلاب تطبيقاً صغيراً.'],
+  ['sold (sell)','باع','My father sold his old car.','باع أبي سيارته القديمة.'],
+  ['built (build)','بنى','They built a new school in our street.','بنوا مدرسة جديدة في شارعنا.'],
+  ['increase ≠ decrease','يزيد ≠ يقل','Prices increase every year.','الأسعار تزيد كل عام.'],
+  ['rise ≠ fall','يرتفع ≠ ينخفض','The temperature fell at night.','انخفضت الحرارة ليلاً.'],
+  ['expand','يتوسّع','The mall is expanding.','المجمّع يتوسّع.']
+ ],
+ 'u9-l2':[
+  ['change','تغيير / يغيّر','There are many changes in our town.','هناك تغييرات كثيرة في مدينتنا.'],
+  ['have just …','للتو','I\'ve just finished my homework.','أنهيت واجبي للتو.'],
+  ['already','بالفعل','I\'ve already eaten.','أكلت بالفعل.'],
+  ['yet','بعد (في النفي والسؤال)','I haven\'t seen the film yet.','لم أشاهد الفيلم بعد.'],
+  ['recently','مؤخراً','They have recently moved house.','انتقلوا إلى بيت جديد مؤخراً.'],
+  ['recruit','يوظّف','The company is recruiting new graduates.','الشركة توظف خريجين جدداً.'],
+  ['report','تقرير','Write a short report about your visit.','اكتب تقريراً قصيراً عن زيارتك.']
+ ],
+ 'u9-l3':[
+  ['hire = rent','يستأجر','We hired a car for the weekend.','استأجرنا سيارة لنهاية الأسبوع.'],
+  ['book = reserve','يحجز','I reserved two seats.','حجزت مقعدين.'],
+  ['begin = start','يبدأ','The lesson begins at eight.','يبدأ الدرس الساعة الثامنة.'],
+  ['depart = leave','يغادر','The plane departs at 6 a.m.','تغادر الطائرة الساعة 6 صباحاً.'],
+  ['How long …?','كم المدة؟','How long is the trip to Makkah?','كم مدة الطريق إلى مكة؟'],
+  ['success','نجاح','The event was a big success.','كانت الفعالية نجاحاً كبيراً.']
+ ],
+ 'u10-l1':[
+  ['routine','روتين','My morning routine starts at six.','روتيني الصباحي يبدأ الساعة السادسة.'],
+  ['get up','يستيقظ وينهض','I get up early for Fajr.','أستيقظ مبكراً لصلاة الفجر.'],
+  ['leave home','يغادر البيت','I leave home at seven.','أغادر البيت الساعة السابعة.'],
+  ['pick up','يمرّ لأخذ (شخص)','I\'ll pick you up at eight.','سأمرّ لآخذك الساعة الثامنة.'],
+  ['get home','يصل إلى البيت','I usually get home at four.','أصل البيت عادة الساعة الرابعة.'],
+  ['last weekend','نهاية الأسبوع الماضي','Last weekend, we went to the desert.','نهاية الأسبوع الماضي ذهبنا إلى البر.'],
+  ['had (have)','تناول / كان لديه','We had dinner at a nice restaurant.','تعشينا في مطعم جميل.']
+ ],
+ 'u10-l2':[
+  ['always','دائماً','I always drink water before I sleep.','أشرب الماء دائماً قبل النوم.'],
+  ['usually','عادة','I usually go to bed at eleven.','أنام عادة الساعة الحادية عشرة.'],
+  ['often','غالباً','We often eat kabsa on Fridays.','نأكل الكبسة غالباً يوم الجمعة.'],
+  ['sometimes','أحياناً','Sometimes I walk to the mosque.','أمشي أحياناً إلى المسجد.'],
+  ['hardly ever','نادراً','I hardly ever watch TV.','نادراً ما أشاهد التلفاز.'],
+  ['never','أبداً','I never smoke.','لا أدخن أبداً.'],
+  ['How often …?','كم مرة …؟','How often do you visit your grandparents?','كم مرة تزور أجدادك؟'],
+  ['save','يدّخر','I save some money every month.','أدّخر بعض المال كل شهر.']
  ]
 });

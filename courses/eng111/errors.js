@@ -846,5 +846,929 @@ PLCBOOK.errs({
    ],
    "answer": "oh five double six"
   }
+ ],
+ "u6-l1": [
+  {
+   "ex": "مثال 1: الطلب",
+   "title": "طلب",
+   "given": "40 خوذة.",
+   "ask": "اطلب.",
+   "steps": [
+    {
+     "t": "المعطى: 40 خوذة."
+    },
+    {
+     "t": "الخطوة 1: I'd like order 40 safety helmets.",
+     "bad": true,
+     "why": "نحتاج to: I'd like to order.",
+     "fix": "I'd like to order 40 safety helmets.",
+     "reasons": [
+      "like to + الفعل",
+      "like + الفعل",
+      "like ordering",
+      "like orders"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "I'd like to order 40 safety helmets."
+  },
+  {
+   "ex": "مثال 2: المجموع",
+   "title": "حساب",
+   "given": "25 × 12.50",
+   "ask": "احسب.",
+   "steps": [
+    {
+     "t": "المعطى: 25 × 12.50"
+    },
+    {
+     "t": "الخطوة 1: 25 × 12.50 = 300.50",
+     "bad": true,
+     "why": "25 × 12.50 = 312.50.",
+     "fix": "312.50",
+     "reasons": [
+      "250.00",
+      "312.50",
+      "300.50",
+      "325.00"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "That's SAR 312.50 in total."
+  },
+  {
+   "ex": "مثال 3: السؤال",
+   "title": "كمية",
+   "given": "الورق.",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: الورق."
+    },
+    {
+     "t": "الخطوة 1: How many paper do you need?",
+     "bad": true,
+     "why": "paper غير معدود: How much.",
+     "fix": "How much paper do you need?",
+     "reasons": [
+      "How lot",
+      "How few",
+      "غير المعدود: How much",
+      "How many للورق"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "How much paper do you need?"
+  }
+ ],
+ "u6-l2": [
+  {
+   "ex": "مثال 1: شكوى",
+   "title": "شكوى",
+   "given": "طلبت 15 ووصل 5.",
+   "ask": "اشتكِ.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I order fifteen boxes but I've got five.",
+     "bad": true,
+     "why": "الطلب في الماضي: ordered.",
+     "fix": "I ordered fifteen boxes",
+     "reasons": [
+      "order في الماضي",
+      "ordering",
+      "orders",
+      "الماضي: ordered"
+     ],
+     "rc": 3
+    },
+    {
+     "t": "الخطوة 2: but I've got five."
+    }
+   ],
+   "answer": "I ordered fifteen boxes but I've got five."
+  },
+  {
+   "ex": "مثال 2: إجراء",
+   "title": "إجراء",
+   "given": "سترسل الباقي غداً.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I'm sorry about that."
+    },
+    {
+     "t": "الخطوة 2: I send ten more tomorrow.",
+     "bad": true,
+     "why": "القرار الآن: I'll send.",
+     "fix": "I'll send ten more tomorrow.",
+     "reasons": [
+      "I'll + الفعل",
+      "I + الفعل للقرار",
+      "I'm send",
+      "I'd send to"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "I'm sorry about that. I'll send ten more tomorrow."
+  },
+  {
+   "ex": "مثال 3: الضريبة",
+   "title": "حساب",
+   "given": "732 + 15%",
+   "ask": "احسب الإجمالي.",
+   "steps": [
+    {
+     "t": "الخطوة 1: 732 × 0.15 = 109.80"
+    },
+    {
+     "t": "الخطوة 2: 732 − 109.80 = 622.20",
+     "bad": true,
+     "why": "الضريبة تُضاف: 732 + 109.80 = 841.80.",
+     "fix": "841.80",
+     "reasons": [
+      "الضريبة وحدها",
+      "نضيف الضريبة: 841.80",
+      "نطرح الضريبة",
+      "نضرب في 15"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "SAR 841.80"
+  }
+ ],
+ "u6-l3": [
+  {
+   "ex": "مثال 1: الوقت",
+   "title": "وقت",
+   "given": "4.15",
+   "ask": "اكتبه.",
+   "steps": [
+    {
+     "t": "المعطى: 4.15"
+    },
+    {
+     "t": "الخطوة 1: quarter to four",
+     "bad": true,
+     "why": "4.15 = quarter past four.",
+     "fix": "quarter past four",
+     "reasons": [
+      "quarter past five",
+      "fifteen to four",
+      "quarter past four",
+      "quarter to four"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "quarter past four"
+  },
+  {
+   "ex": "مثال 2: الهاتف",
+   "title": "هاتف",
+   "given": "I can help you?",
+   "ask": "صحّح.",
+   "steps": [
+    {
+     "t": "المعطى: I can help you?"
+    },
+    {
+     "t": "الخطوة 1: I can help you?",
+     "bad": true,
+     "why": "السؤال يبدأ بـ Can.",
+     "fix": "Can I help you?",
+     "reasons": [
+      "I can …?",
+      "Can help I?",
+      "I help you can?",
+      "Can I …?"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Can I help you?"
+  },
+  {
+   "ex": "مثال 3: الكمية",
+   "title": "كمية",
+   "given": "الوقت قليل.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: الوقت قليل."
+    },
+    {
+     "t": "الخطوة 1: There aren't many time.",
+     "bad": true,
+     "why": "time غير معدود: isn't much.",
+     "fix": "There isn't much time.",
+     "reasons": [
+      "isn't much",
+      "aren't many",
+      "isn't many",
+      "aren't much"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "There isn't much time."
+  }
+ ],
+ "u7-l1": [
+  {
+   "ex": "مثال 1: سؤال الموظف",
+   "title": "سؤال",
+   "given": "like / would / you / When / stay / to",
+   "ask": "رتّب.",
+   "steps": [
+    {
+     "t": "المعطى: like / would / you / When / stay / to"
+    },
+    {
+     "t": "الخطوة 1: When you would like to stay?",
+     "bad": true,
+     "why": "السؤال: would قبل you.",
+     "fix": "When would you like to stay?",
+     "reasons": [
+      "When you like to",
+      "would قبل you",
+      "you قبل would",
+      "When like you"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "When would you like to stay?"
+  },
+  {
+   "ex": "مثال 2: الليالي",
+   "title": "حساب",
+   "given": "من 20 إلى 22.",
+   "ask": "كم ليلة؟",
+   "steps": [
+    {
+     "t": "المعطى: من 20 إلى 22."
+    },
+    {
+     "t": "الخطوة 1: 22 − 20 = 3 nights",
+     "bad": true,
+     "why": "22 − 20 = 2.",
+     "fix": "two nights",
+     "reasons": [
+      "one night",
+      "four nights",
+      "two nights",
+      "three nights"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "OK, so two nights."
+  },
+  {
+   "ex": "مثال 3: حجز رحلة",
+   "title": "حجز",
+   "given": "رحلة ذهاب فقط.",
+   "ask": "اطلب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I'd like book a flight.",
+     "bad": true,
+     "why": "نحتاج to.",
+     "fix": "I'd like to book a flight",
+     "reasons": [
+      "like + الفعل",
+      "like booking",
+      "like books",
+      "like to + الفعل"
+     ],
+     "rc": 3
+    },
+    {
+     "t": "الخطوة 2: from Riyadh to Cairo, single, please."
+    }
+   ],
+   "answer": "I'd like to book a flight from Riyadh to Cairo, single, please."
+  }
+ ],
+ "u7-l2": [
+  {
+   "ex": "مثال 1: التفضيل",
+   "title": "تفضيل",
+   "given": "الأكثر راحة.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: الأكثر راحة."
+    },
+    {
+     "t": "الخطوة 1: The Camry is most comfortable car.",
+     "bad": true,
+     "why": "نضع the قبل most.",
+     "fix": "The Camry is the most comfortable car.",
+     "reasons": [
+      "the most",
+      "most بلا the",
+      "the more",
+      "more"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "The Camry is the most comfortable car."
+  },
+  {
+   "ex": "مثال 2: التاريخ",
+   "title": "تاريخ",
+   "given": "21/02/26 (UK)",
+   "ask": "اقرأه.",
+   "steps": [
+    {
+     "t": "المعطى: 21/02/26 (UK)"
+    },
+    {
+     "t": "الخطوة 1: the second of twenty-one",
+     "bad": true,
+     "why": "البريطاني: اليوم أولاً: the twenty-first of February.",
+     "fix": "the twenty-first of February",
+     "reasons": [
+      "السنة أولاً",
+      "اليوم ثم الشهر",
+      "الشهر ثم اليوم",
+      "اليوم وحده"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "the twenty-first of February, two thousand and twenty-six"
+  },
+  {
+   "ex": "مثال 3: التبرير",
+   "title": "تبرير",
+   "given": "اخترت لأنها أرخص.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: اخترت لأنها أرخص."
+    },
+    {
+     "t": "الخطوة 1: I chose City Car Rental because it was more cheap than the others.",
+     "bad": true,
+     "why": "cheap → cheaper.",
+     "fix": "because it was cheaper than the others",
+     "reasons": [
+      "cheapest than",
+      "more cheaper",
+      "cheaper",
+      "more cheap"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "I chose City Car Rental because it was cheaper than the others."
+  }
+ ],
+ "u8-l1": [
+  {
+   "ex": "مثال 1: سؤال الطريق",
+   "title": "سؤال",
+   "given": "المتحف الوطني.",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: المتحف الوطني."
+    },
+    {
+     "t": "الخطوة 1: How do I go to the National Museum?",
+     "bad": true,
+     "why": "للوصول: get to.",
+     "fix": "How do I get to the National Museum?",
+     "reasons": [
+      "go to",
+      "take to",
+      "turn to",
+      "get to"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Excuse me. How do I get to the National Museum?"
+  },
+  {
+   "ex": "مثال 2: وصف الطريق",
+   "title": "اتجاهات",
+   "given": "ثاني شارع يميناً.",
+   "ask": "اكتب التعليمة.",
+   "steps": [
+    {
+     "t": "المعطى: ثاني شارع يميناً."
+    },
+    {
+     "t": "الخطوة 1: Get the second right.",
+     "bad": true,
+     "why": "مع الشارع: Take the second right.",
+     "fix": "Take the second right.",
+     "reasons": [
+      "Take",
+      "Get",
+      "Go",
+      "Make"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Take the second right."
+  },
+  {
+   "ex": "مثال 3: المترو",
+   "title": "مترو",
+   "given": "انزل في محطة المتحف.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: انزل في محطة المتحف."
+    },
+    {
+     "t": "الخطوة 1: Get out at Museum station.",
+     "bad": true,
+     "why": "من القطار: Get off.",
+     "fix": "Get off at Museum station.",
+     "reasons": [
+      "Take off",
+      "Get off",
+      "Get out",
+      "Go off"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Get off at Museum station."
+  }
+ ],
+ "u8-l2": [
+  {
+   "ex": "مثال 1: الوصول",
+   "title": "زائر",
+   "given": "موعد مع هدى.",
+   "ask": "قل للموظف.",
+   "steps": [
+    {
+     "t": "المعطى: موعد مع هدى."
+    },
+    {
+     "t": "الخطوة 1: I'm here for see Ms Huda.",
+     "bad": true,
+     "why": "here to + الفعل.",
+     "fix": "I'm here to see Ms Huda.",
+     "reasons": [
+      "here seeing",
+      "here see",
+      "here to see",
+      "here for see"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "I'm here to see Ms Huda. I have an appointment at 10 o'clock."
+  },
+  {
+   "ex": "مثال 2: الموظف",
+   "title": "انتظار",
+   "given": "اطلب الجلوس.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: اطلب الجلوس."
+    },
+    {
+     "t": "الخطوة 1: Please take a sit.",
+     "bad": true,
+     "why": "الاسم: a seat.",
+     "fix": "Please take a seat.",
+     "reasons": [
+      "a sit",
+      "a sitting",
+      "a chair to",
+      "a seat"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Please take a seat. He'll be down in a moment."
+  },
+  {
+   "ex": "مثال 3: البطاقة",
+   "title": "بطاقة",
+   "given": "أعطه بطاقتك بعد بطاقته.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: أعطه بطاقتك بعد بطاقته."
+    },
+    {
+     "t": "الخطوة 1: Thank you. Here's my.",
+     "bad": true,
+     "why": "بدون اسم بعدها: mine.",
+     "fix": "Thank you. Here's mine.",
+     "reasons": [
+      "mine",
+      "my",
+      "me",
+      "I"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Thank you. Here's mine."
+  }
+ ],
+ "u9-l1": [
+  {
+   "ex": "مثال 1: الماضي",
+   "title": "ماضٍ",
+   "given": "1992 / launch",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: 1992 / launch"
+    },
+    {
+     "t": "الخطوة 1: In 1992, they launch SunNajd Ltd.",
+     "bad": true,
+     "why": "الماضي: launched.",
+     "fix": "In 1992, they launched SunNajd Ltd.",
+     "reasons": [
+      "have launch",
+      "launched",
+      "launch",
+      "launching"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "In 1992, they launched SunNajd Ltd."
+  },
+  {
+   "ex": "مثال 2: الشاذ",
+   "title": "شاذ",
+   "given": "2001 / build",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: 2001 / build"
+    },
+    {
+     "t": "الخطوة 1: In 2001, the company builded a factory.",
+     "bad": true,
+     "why": "build شاذ: built.",
+     "fix": "In 2001, the company built a factory.",
+     "reasons": [
+      "build",
+      "buildt",
+      "built",
+      "builded"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "In 2001, the company built a factory in Jubail."
+  },
+  {
+   "ex": "مثال 3: التغيير",
+   "title": "تغيير",
+   "given": "من 800 إلى 1200.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: من 800 إلى 1200."
+    },
+    {
+     "t": "الخطوة 1: The number of employees decreased from 800 to 1,200.",
+     "bad": true,
+     "why": "العدد زاد: increased.",
+     "fix": "increased from 800 to 1,200",
+     "reasons": [
+      "decreased",
+      "fell",
+      "went down",
+      "increased"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "The number of employees increased from 800 to 1,200."
+  }
+ ],
+ "u9-l2": [
+  {
+   "ex": "مثال 1: بلا زمن",
+   "title": "تام",
+   "given": "فتحت صالة عرض.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: فتحت صالة عرض."
+    },
+    {
+     "t": "الخطوة 1: The company have opened a new showroom.",
+     "bad": true,
+     "why": "company مفرد: has.",
+     "fix": "The company has opened a new showroom.",
+     "reasons": [
+      "has + opened",
+      "have مع المفرد",
+      "has open",
+      "is opened"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "The company has opened a new showroom."
+  },
+  {
+   "ex": "مثال 2: بزمن",
+   "title": "بسيط",
+   "given": "الشهر الماضي.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: الشهر الماضي."
+    },
+    {
+     "t": "الخطوة 1: The company has opened a new showroom last month.",
+     "bad": true,
+     "why": "مع last month: الماضي البسيط.",
+     "fix": "The company opened a new showroom last month.",
+     "reasons": [
+      "have opened",
+      "opened",
+      "has opened",
+      "opens"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "The company opened a new showroom last month."
+  },
+  {
+   "ex": "مثال 3: yet",
+   "title": "yet",
+   "given": "لم يفتحوا الفرع بعد.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: لم يفتحوا الفرع بعد."
+    },
+    {
+     "t": "الخطوة 1: They haven't opened the branch already.",
+     "bad": true,
+     "why": "في النفي: yet.",
+     "fix": "They haven't opened the branch yet.",
+     "reasons": [
+      "just",
+      "ago",
+      "yet",
+      "already"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "They haven't opened the branch yet."
+  }
+ ],
+ "u9-l3": [
+  {
+   "ex": "مثال 1: مرادف",
+   "title": "مرادف",
+   "given": "reserve",
+   "ask": "ما مرادفها؟",
+   "steps": [
+    {
+     "t": "المعطى: reserve"
+    },
+    {
+     "t": "الخطوة 1: reserve = rent",
+     "bad": true,
+     "why": "reserve = book.",
+     "fix": "book",
+     "reasons": [
+      "rent",
+      "take",
+      "hire",
+      "book"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "reserve = book"
+  },
+  {
+   "ex": "مثال 2: السؤال",
+   "title": "سؤال",
+   "given": "السعر.",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: السعر."
+    },
+    {
+     "t": "الخطوة 1: How many is the room per night?",
+     "bad": true,
+     "why": "للسعر: How much.",
+     "fix": "How much is the room per night?",
+     "reasons": [
+      "How much",
+      "How many",
+      "How long",
+      "When"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "How much is the room per night?"
+  },
+  {
+   "ex": "مثال 3: الزمن",
+   "title": "زمن",
+   "given": "in 2001",
+   "ask": "صحّح.",
+   "steps": [
+    {
+     "t": "المعطى: in 2001"
+    },
+    {
+     "t": "الخطوة 1: The store has opened in 2001.",
+     "bad": true,
+     "why": "in 2001 ← الماضي البسيط.",
+     "fix": "The store opened in 2001.",
+     "reasons": [
+      "opens",
+      "opened",
+      "has opened",
+      "have opened"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "The store opened in 2001."
+  }
+ ],
+ "u10-l1": [
+  {
+   "ex": "مثال 1: روتين",
+   "title": "بسيط",
+   "given": "كل اثنين تغادر سارة.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: كل اثنين تغادر سارة."
+    },
+    {
+     "t": "الخطوة 1: Every Monday, Sara leave home at seven.",
+     "bad": true,
+     "why": "she + s: leaves.",
+     "fix": "Every Monday, Sara leaves home at seven.",
+     "reasons": [
+      "left",
+      "leaving",
+      "leaves",
+      "leave"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Every Monday, Sara leaves home at seven."
+  },
+  {
+   "ex": "مثال 2: الآن",
+   "title": "مستمر",
+   "given": "يلعب الآن.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: يلعب الآن."
+    },
+    {
+     "t": "الخطوة 1: Look! Ahmed plays tennis.",
+     "bad": true,
+     "why": "الآن: is playing.",
+     "fix": "Look! Ahmed is playing tennis.",
+     "reasons": [
+      "plays",
+      "played",
+      "play",
+      "is playing"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Look! Ahmed is playing tennis."
+  },
+  {
+   "ex": "مثال 3: الماضي",
+   "title": "ماضٍ",
+   "given": "السبت الماضي.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: السبت الماضي."
+    },
+    {
+     "t": "الخطوة 1: Last Saturday, I get up at ten.",
+     "bad": true,
+     "why": "الماضي: got up.",
+     "fix": "Last Saturday, I got up at ten.",
+     "reasons": [
+      "got up",
+      "get up",
+      "getted up",
+      "gets up"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Last Saturday, I got up at ten and had breakfast."
+  }
+ ],
+ "u10-l2": [
+  {
+   "ex": "مثال 1: المكان",
+   "title": "ظرف",
+   "given": "usually / take",
+   "ask": "رتّب.",
+   "steps": [
+    {
+     "t": "المعطى: usually / take"
+    },
+    {
+     "t": "الخطوة 1: I take usually the bus.",
+     "bad": true,
+     "why": "الظرف قبل الفعل الأساسي.",
+     "fix": "I usually take the bus.",
+     "reasons": [
+      "قبل I",
+      "قبل الفعل",
+      "بعد الفعل",
+      "في آخر الجملة"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "I usually take the bus."
+  },
+  {
+   "ex": "مثال 2: مع be",
+   "title": "ظرف",
+   "given": "never / late",
+   "ask": "رتّب.",
+   "steps": [
+    {
+     "t": "المعطى: never / late"
+    },
+    {
+     "t": "الخطوة 1: I never am late.",
+     "bad": true,
+     "why": "مع be: الظرف بعده.",
+     "fix": "I'm never late.",
+     "reasons": [
+      "في الآخر",
+      "بعد late",
+      "بعد be",
+      "قبل be"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "I'm never late."
+  },
+  {
+   "ex": "مثال 3: never",
+   "title": "نفي",
+   "given": "لا أقود أبداً.",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: لا أقود أبداً."
+    },
+    {
+     "t": "الخطوة 1: I don't never drive.",
+     "bad": true,
+     "why": "never وحدها تكفي للنفي.",
+     "fix": "I never drive.",
+     "reasons": [
+      "don't never",
+      "not never",
+      "never don't",
+      "never بلا don't"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "I never drive to college."
+  }
  ]
 });

@@ -461,5 +461,509 @@ PLCBOOK.acts({
     "e": "ص 26."
    }
   ]
+ },
+ "u6-l1": {
+  "open": [
+   "How do you usually buy clothes?",
+   "Something your college needs to order",
+   "A question about price"
+  ],
+  "exit": [
+   {
+    "q": "I'd like to ___ an order.",
+    "o": [
+     "place",
+     "make to",
+     "give",
+     "put"
+    ],
+    "c": 0,
+    "e": "ص 28."
+   },
+   {
+    "q": "How ___ lab coats do you need?",
+    "o": [
+     "many",
+     "much",
+     "lot",
+     "few"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   },
+   {
+    "q": "We need ___ goggles. (كثير)",
+    "o": [
+     "a lot of",
+     "a little",
+     "much",
+     "a few of"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   }
+  ]
+ },
+ "u6-l2": {
+  "open": [
+   "What can go wrong with an order?",
+   "A complaint you made",
+   "How do you say sorry in a shop?"
+  ],
+  "exit": [
+   {
+    "q": "I ___ ten lights but I've got twenty.",
+    "o": [
+     "ordered",
+     "order",
+     "ordering",
+     "orders"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   },
+   {
+    "q": "___ send you a new invoice.",
+    "o": [
+     "I'll",
+     "I'm",
+     "I",
+     "I'd to"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   },
+   {
+    "q": "Apology:",
+    "o": [
+     "I'm sorry about that.",
+     "Thank you.",
+     "I ordered ten.",
+     "Could you give ten back?"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   }
+  ]
+ },
+ "u6-l3": {
+  "open": [
+   "Your schedule for tomorrow",
+   "A phone phrase you learned",
+   "Something you have a lot of"
+  ],
+  "exit": [
+   {
+    "q": "7.55 =",
+    "o": [
+     "five to eight",
+     "five past seven",
+     "five to seven",
+     "fifty-five to eight"
+    ],
+    "c": 0,
+    "e": "ص 32."
+   },
+   {
+    "q": "There isn't ___ time.",
+    "o": [
+     "much",
+     "many",
+     "few",
+     "a few"
+    ],
+    "c": 0,
+    "e": "ص 33."
+   },
+   {
+    "q": "Who calls, please? →",
+    "o": [
+     "Who's calling, please?",
+     "Who is call?",
+     "Who called?",
+     "Who calling?"
+    ],
+    "c": 0,
+    "e": "ص 32."
+   }
+  ]
+ },
+ "u7-l1": {
+  "open": [
+   "A hotel you know",
+   "A question a receptionist asks",
+   "Your next trip"
+  ],
+  "exit": [
+   {
+    "q": "When would you like to ___?",
+    "o": [
+     "stay",
+     "staying",
+     "stays",
+     "stayed"
+    ],
+    "c": 0,
+    "e": "ص 34."
+   },
+   {
+    "q": "___ I have your name, please?",
+    "o": [
+     "May",
+     "Would",
+     "Do",
+     "Am"
+    ],
+    "c": 0,
+    "e": "ص 34."
+   },
+   {
+    "q": "How do you want to pay? — ___",
+    "o": [
+     "By credit card.",
+     "On credit card.",
+     "With credit card.",
+     "In credit card."
+    ],
+    "c": 0,
+    "e": "ص 35."
+   }
+  ]
+ },
+ "u7-l2": {
+  "open": [
+   "The best car for your family",
+   "Today's date in English",
+   "Why did you choose your college?"
+  ],
+  "exit": [
+   {
+    "q": "big → the ___",
+    "o": [
+     "biggest",
+     "bigest",
+     "most big",
+     "bigger"
+    ],
+    "c": 0,
+    "e": "ص 36."
+   },
+   {
+    "q": "good → the ___",
+    "o": [
+     "best",
+     "better",
+     "goodest",
+     "most good"
+    ],
+    "c": 0,
+    "e": "ص 36."
+   },
+   {
+    "q": "8/3/05 (US) =",
+    "o": [
+     "August 3rd",
+     "8th March",
+     "March 8th",
+     "3rd August"
+    ],
+    "c": 0,
+    "e": "ص 36."
+   }
+  ]
+ },
+ "u8-l1": {
+  "open": [
+   "How do you get to college?",
+   "Directions to your house from the mosque",
+   "A place opposite your college"
+  ],
+  "exit": [
+   {
+    "q": "How do I ___ to the station?",
+    "o": [
+     "get",
+     "go",
+     "take",
+     "turn"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   },
+   {
+    "q": "___ off at Oxford Circus.",
+    "o": [
+     "Get",
+     "Go",
+     "Take",
+     "Turn"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   },
+   {
+    "q": "I go to work ___ foot.",
+    "o": [
+     "on",
+     "by",
+     "with",
+     "in"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   }
+  ]
+ },
+ "u8-l2": {
+  "open": [
+   "What do you say at reception?",
+   "How do people greet in your country?",
+   "Do you have a business card?"
+  ],
+  "exit": [
+   {
+    "q": "I'm here to ___ Mr Smith.",
+    "o": [
+     "see",
+     "seeing",
+     "sees",
+     "saw"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   },
+   {
+    "q": "Please take a ___.",
+    "o": [
+     "seat",
+     "sit",
+     "chair to",
+     "sitting"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   },
+   {
+    "q": "Here's my card. — Here's ___.",
+    "o": [
+     "mine",
+     "my",
+     "me",
+     "I"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   }
+  ]
+ },
+ "u9-l1": {
+  "open": [
+   "When did your college start?",
+   "A company that has grown",
+   "Something that went up this year"
+  ],
+  "exit": [
+   {
+    "q": "meet →",
+    "o": [
+     "met",
+     "meeted",
+     "meet",
+     "meat"
+    ],
+    "c": 0,
+    "e": "ص 42."
+   },
+   {
+    "q": "rise =",
+    "o": [
+     "go up",
+     "go down",
+     "stay",
+     "move"
+    ],
+    "c": 0,
+    "e": "ص 43."
+   },
+   {
+    "q": "They ___ a new office last year.",
+    "o": [
+     "built",
+     "build",
+     "builded",
+     "have build"
+    ],
+    "c": 0,
+    "e": "ص 43."
+   }
+  ]
+ },
+ "u9-l2": {
+  "open": [
+   "A recent change in your college",
+   "Something you haven't done yet",
+   "Something you have just done"
+  ],
+  "exit": [
+   {
+    "q": "He ___ the company in June.",
+    "o": [
+     "left",
+     "has left",
+     "leaves",
+     "leave"
+    ],
+    "c": 0,
+    "e": "ص 44."
+   },
+   {
+    "q": "They haven't opened it ___.",
+    "o": [
+     "yet",
+     "already",
+     "just",
+     "ago"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   },
+   {
+    "q": "Two accountants ___ the company. (لا زمن)",
+    "o": [
+     "have joined",
+     "joined last",
+     "join",
+     "joining"
+    ],
+    "c": 0,
+    "e": "ص 44."
+   }
+  ]
+ },
+ "u9-l3": {
+  "open": [
+   "A synonym you know",
+   "A question with How long",
+   "A company's first success"
+  ],
+  "exit": [
+   {
+    "q": "rent =",
+    "o": [
+     "hire",
+     "book",
+     "take",
+     "leave"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "___ does it take?",
+    "o": [
+     "How long",
+     "How many",
+     "How much",
+     "When"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "Correct:",
+    "o": [
+     "The store opened in 2001.",
+     "The store has opened in 2001.",
+     "The store has open in 2001.",
+     "The store opens in 2001 ago."
+    ],
+    "c": 0,
+    "e": "ص 47."
+   }
+  ]
+ },
+ "u10-l1": {
+  "open": [
+   "What do you do every morning?",
+   "What did you do last weekend?",
+   "What is your teacher doing now?"
+  ],
+  "exit": [
+   {
+    "q": "Every Monday, she ___ home at seven.",
+    "o": [
+     "leaves",
+     "left",
+     "is leaving",
+     "leave"
+    ],
+    "c": 0,
+    "e": "ص 48."
+   },
+   {
+    "q": "Look! She ___ tennis.",
+    "o": [
+     "'s playing",
+     "plays",
+     "played",
+     "play"
+    ],
+    "c": 0,
+    "e": "ص 48."
+   },
+   {
+    "q": "Last Saturday, I ___ up at ten.",
+    "o": [
+     "got",
+     "get",
+     "gets",
+     "getting"
+    ],
+    "c": 0,
+    "e": "ص 48."
+   }
+  ]
+ },
+ "u10-l2": {
+  "open": [
+   "Something you always do",
+   "Something you never do",
+   "How often do you visit family?"
+  ],
+  "exit": [
+   {
+    "q": "I ___ take the train.",
+    "o": [
+     "usually",
+     "am usually",
+     "usual",
+     "usually am"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   },
+   {
+    "q": "I'm ___ late.",
+    "o": [
+     "never",
+     "don't never",
+     "not never",
+     "never am"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   },
+   {
+    "q": "How ___ do you go to the gym?",
+    "o": [
+     "often",
+     "many",
+     "much",
+     "long ago"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   }
+  ]
  }
 });
