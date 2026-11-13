@@ -62,6 +62,39 @@ const VOC=[['specifications','المواصفات','جدول المواصفات =
 const DIMS=[['long','طويل','length','الطول'],['wide','عريض','width','العرض'],['high','مرتفع / عالٍ','height','الارتفاع'],['deep','عميق','depth','العمق']];
 const dimTable=`<div class="tbx"><table class="vt"><thead><tr><th>Adjective الصفة</th><th>المعنى</th><th>Noun الاسم</th><th>المعنى</th></tr></thead><tbody>${DIMS.map(r=>`<tr><td class="en">${r[0]} ${sp(r[0])}</td><td>${r[1]}</td><td class="en">${r[2]} ${sp(r[2])}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table></div>`;
 
+/* ===== مختبرات «شرح القاعدة» 7.1: يختار المتدرب فتتكوّن الجملة بقطع ملونة ويتغير الرسم ===== */
+const DIM71={long:['length','الطول','طوله'],wide:['width','العرض','عرضه'],high:['height','الارتفاع','ارتفاعه'],deep:['depth','العمق','عمقه']};
+const OBJ71={bridge:{ar:'الجسر',v:{long:'2.5 km',wide:'32 m',high:'340 m',deep:'—'}},tunnel:{ar:'النفق',v:{long:'9 km',wide:'12 m',high:'8 m',deep:'45 m'}},tower:{ar:'البرج',v:{long:'—',wide:'40 m',high:'150 m',deep:'—'}},lake:{ar:'البحيرة',v:{long:'3 km',wide:'800 m',high:'—',deep:'20 m'}}};
+/* رسم الشيء وسهم البُعد المختار */
+const scene71=(o,d)=>{const A=`stroke="${C.red}" stroke-width="4" fill="none" stroke-linecap="round"`;let g='',ar='';
+ if(o==='bridge'){g=`<rect x="80" y="70" width="400" height="12" fill="${C.ink}"/><rect x="150" y="30" width="10" height="90" fill="${C.ink}"/><rect x="400" y="30" width="10" height="90" fill="${C.ink}"/><path d="M155 34 L90 72 M155 34 L230 72 M405 34 L330 72 M405 34 L475 72" stroke="${C.mut}" stroke-width="2"/><path d="M60 120 H500" stroke="${C.blue}" stroke-width="3"/>`;
+  ar={long:`<path d="M80 96 H480" ${A}/>`,wide:`<path d="M280 64 L300 88" ${A}/>`,high:`<path d="M140 30 V120" ${A}/>`}[d]}
+ if(o==='tunnel'){g=`<path d="M40 30 H520 V120 H40 Z" fill="#d9d2c3" stroke="${C.ink}" stroke-width="2"/><path d="M60 110 V70 Q60 50 90 50 H470 Q500 50 500 70 V110 Z" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>`;
+  ar={long:`<path d="M60 100 H500" ${A}/>`,wide:`<path d="M90 80 H150" ${A}/>`,high:`<path d="M280 52 V108" ${A}/>`,deep:`<path d="M530 30 V120" ${A}/>`}[d]}
+ if(o==='tower'){g=`<rect x="250" y="12" width="60" height="108" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${[0,1,2,3,4,5].map(i=>`<line x1="250" x2="310" y1="${28+i*16}" y2="${28+i*16}" stroke="${C.mut}"/>`).join('')}<path d="M200 120 H360" stroke="${C.ink}" stroke-width="3"/>`;
+  ar={wide:`<path d="M250 128 H310" ${A}/>`,high:`<path d="M330 12 V120" ${A}/>`}[d]}
+ if(o==='lake'){g=`<path d="M60 40 Q280 20 500 40 L470 110 Q280 130 90 110 Z" fill="#cfe6f5" stroke="${C.ink}" stroke-width="2"/>`;
+  ar={long:`<path d="M80 70 H480" ${A}/>`,wide:`<path d="M280 30 V118" ${A}/>`,deep:`<path d="M520 40 V112" ${A}/>`}[d]}
+ return `<svg viewBox="0 0 560 140" aria-hidden="true"><rect width="560" height="140" rx="14" fill="${C.bg}"/>${g}${ar||''}</svg>`};
+const LAB71A={title:'صفة أم اسم؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء والبُعد وشكل الجملة، وشاهد مكان الصفة ومكان الاسم.',
+ controls:[{k:'o',label:'الشيء',opts:Object.keys(OBJ71).map(k=>[k,k])},{k:'d',label:'البُعد',opts:Object.keys(DIM71).map(k=>[k,DIM71[k][1]])},{k:'f',label:'الجملة',opts:[['adj','بالصفة'],['noun','بالاسم']]}],
+ out:({o,d,f})=>{const x=OBJ71[o],v=x.v[d],D=DIM71[d];
+  if(v==='—')return{svg:scene71(o,d),bad:`لا نصف ${x.ar} بهذا البُعد عادةً. اختر بُعداً آخر.`};
+  const [num,unit]=v.split(' ');
+  if(f==='adj')return{svg:scene71(o,d),pieces:[[`The ${o}`,'x','الشيء'],['is','x',''],[num,'k','الرقم'],[unit,'k','الوحدة'],[d+'.','n','الصفة في الآخر']],say:`The ${o} is ${v} ${d}.`,ar:`${x.ar} ${D[2]} ${v}.`,why:`بعد الرقم والوحدة تأتي الصفة ${d}.`};
+  return{svg:scene71(o,d),pieces:[['The','x',''],[D[0],'q','الاسم بعد The'],[`of the ${o}`,'x','of + الشيء'],['is','x',''],[`${v}.`,'k','الرقم في الآخر']],say:`The ${D[0]} of the ${o} is ${v}.`,ar:`${D[1].replace('ال','')} ${x.ar} ${v}.`,why:`بعد The يأتي الاسم ${D[0]}، ثم of والشيء، والرقم في آخر الجملة.`}}})};
+const PL71={bridge:['bridge','bridges'],cable:['cable','cables'],tower:['tower','towers'],pylon:['pylon','pylons']};
+const LAB71B={title:'كوّن السؤال والجواب',w:(el,B)=>N.labB(el,B,{intro:'اختر البُعد والشيء ومفرداً أو جمعاً، وشاهد السؤال وجوابه.',
+ controls:[{k:'d',label:'البُعد',opts:Object.keys(DIM71).map(k=>[k,k])},{k:'o',label:'الشيء',opts:Object.keys(PL71).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','مفرد'],['2','جمع']]}],
+ out:({d,o,n})=>{const pl=n==='2',w=pl?PL71[o][1]:PL71[o][0],num={long:'60',wide:'4',high:'90',deep:'12'}[d];
+  return{pieces:[['How','q','كم'],[d,'n','الصفة'],[pl?'are':'is','k',pl?'جمع ← are':'مفرد ← is'],[`the ${w}?`,'x','الشيء'],[pl?"They're":"It's",'k',pl?'للجمع':'للمفرد'],[`${num} metres`,'x','الرقم والوحدة'],[d+'.','n','الصفة']],
+   say:`How ${d} ${pl?'are':'is'} the ${w}? ${pl?"They're":"It's"} ${num} metres ${d}.`,why:pl?`${w} جمع، فنسأل بـ are ونجيب بـ They're.`:`${w} مفرد، فنسأل بـ is ونجيب بـ It's.`}}})};
+const U71={mm:['millimetre','millimetres'],cm:['centimetre','centimetres'],m:['metre','metres'],km:['kilometre','kilometres']};
+const NW71={1:'one',5:'five',30:'thirty',100:'one hundred'};
+const LAB71C={title:'اكتب واقرأ الوحدة',w:(el,B)=>N.labB(el,B,{intro:'اختر الرقم والوحدة، وقارن بين الكتابة والقراءة.',
+ controls:[{k:'n',label:'الرقم',opts:Object.keys(NW71).map(k=>[k,k])},{k:'u',label:'الوحدة',opts:Object.keys(U71).map(k=>[k,k])}],
+ out:({n,u})=>{const one=n==='1',word=one?U71[u][0]:U71[u][1];
+  return{pieces:[[`${n} ${u}`,'k','نكتب: الاختصار لا يُجمع'],['=','x',''],[NW71[n],'q','نقرأ الرقم'],[word,'n',one?'مفرد لأن الرقم 1':'جمع لأن الرقم أكثر من 1']],say:`${NW71[n]} ${word}`,why:one?`نكتب ${n} ${u} ونقرأ ${NW71[n]} ${word}، بلا s لأن الرقم واحد.`:`نكتب ${n} ${u} بلا s، ونقرأ ${NW71[n]} ${word} بالجمع.`}}})};
 const R_u7_l1=N.rule({title:'الأبعاد: الصفة والاسم، والسؤال بـ How، وكتابة الوحدات',ref:'ص 52–53',
  intro:`نشرح وصف الأبعاد في ثلاث خطوات مرتبة: الصفة والاسم لكل بُعد ومكان كل منهما في الجملة، ثم السؤال عن البُعد وجوابه، ثم كتابة الوحدات وقراءتها.`,
  parts:[
@@ -74,11 +107,11 @@ const R_u7_l1=N.rule({title:'الأبعاد: الصفة والاسم، والس�
   ex:['The bridge is 2.5 km <b>long</b>.','The <b>length</b> of the bridge is 2.5 km.'],
   pairs:[['The road is 6 m width.','The road is 6 m wide.','بعد الرقم والوحدة تأتي الصفة.'],['The long of the bridge is 2 km.','The length of the bridge is 2 km.','بعد The يأتي الاسم.']],
   art:art(`${[['long','length',70],['wide','width',130],['high','height',190],['deep','depth',250]].map(([a,n,y])=>`<g data-tip="${a} صفة تأتي بعد الرقم والوحدة، و ${n} اسم يأتي بعد The."><rect x="40" y="${y-26}" width="120" height="36" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100,y-3,a,{fs:16,w:700})}${arrowS(166,y-8,196,y-8,C.ink,2.5,8)}<rect x="200" y="${y-26}" width="120" height="36" rx="8" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(260,y-3,n,{fs:16,w:700})}</g>`).join('')}
-    ${T(100,290,'صفة',{ar:1,w:700})}${T(260,290,'اسم',{ar:1,w:700})}`,'أربع صفات وأسماؤها: long length، wide width، high height، deep depth'),cap:'كل صفة واسمها. مرّر المؤشر على أي زوج لتعرف مكان كل كلمة في الجملة.',lab:{title:'صفة أم اسم',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة (أمثلة جديدة من عندنا):',items:[
+    ${T(100,290,'صفة',{ar:1,w:700})}${T(260,290,'اسم',{ar:1,w:700})}`,'أربع صفات وأسماؤها: long length، wide width، high height، deep depth'),cap:'كل صفة واسمها. مرّر المؤشر على أي زوج لتعرف مكان كل كلمة في الجملة.',labs:[LAB71A,{title:'صفة أم اسم',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة (أمثلة جديدة من عندنا):',items:[
      {s:'The tunnel is 9 km ___.',o:['long','length'],a:0,why:'بعد الرقم والوحدة: صفة.'},
      {s:'The ___ of the tower is 150 m.',o:['high','height'],a:1,why:'بعد The: اسم.'},
      {s:'The lake has a ___ of 20 m.',o:['deep','depth'],a:1,why:'بعد a: اسم.'},
-     {s:'The new bridge is 30 m ___.',o:['wide','width'],a:0,why:'بعد الرقم والوحدة: صفة.'}]})}},
+     {s:'The new bridge is 30 m ___.',o:['wide','width'],a:0,why:'بعد الرقم والوحدة: صفة.'}]})}]},
  {t:'السؤال عن الأبعاد وجوابه',short:'How high…?',old:[3],q:'كيف تسأل عن طول الكوابل؟ ولماذا are وليست is؟',ref:'ص 53',
   lead:`إذا أردت أن تعرف بُعداً لا تعرفه، تسأل عنه بـ ${e('How')} مع الصفة نفسها التي تستعملها في الوصف.`,
   subs:[{h:'السؤال',points:[`<b>القالب:</b> ${e('How')} + الصفة + ${e('is')} أو ${e('are')} + الشيء؟`,`${e('is')} مع المفرد:<br>${e('How high is the tower?')}`,`${e('are')} مع الجمع:<br>${e('How long are the cables?')}`]},
@@ -87,10 +120,10 @@ const R_u7_l1=N.rule({title:'الأبعاد: الصفة والاسم، والس�
   html:`<p><small>(إضافة من خارج الكتاب)</small> ويمكن أن تسأل بالاسم أيضاً: ${e('What is the length of the bridge?')}</p>`,
   pairs:[['How high are the tower?','How high is the tower?','tower مفرد، فنستعمل is.'],["It's 150 metres height.","It's 150 metres high.",'بعد الرقم والوحدة تأتي الصفة.']],
   art:art(`<g data-tip="How + صفة: How high / How long / How wide / How deep."><rect x="30" y="70" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,'How long are the cables?',{fs:17,w:700})}</g>
-    <g data-tip="للجمع They're، وللمفرد It's، ثم الرقم والوحدة والصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,"They're 60 metres long.",{fs:17,w:700})}</g>${arrowS(180,130,180,174,C.ink,3)}`,'سؤال How long are the cables وجوابه They are 60 metres long'),cap:'السؤال وجوابه. مرّر المؤشر على كل منهما لترى القاعدة.',lab:{title:'اكتب السؤال',w:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال الذي جوابه بين القوسين:',items:[
+    <g data-tip="للجمع They're، وللمفرد It's، ثم الرقم والوحدة والصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,214,"They're 60 metres long.",{fs:17,w:700})}</g>${arrowS(180,130,180,174,C.ink,3)}`,'سؤال How long are the cables وجوابه They are 60 metres long'),cap:'السؤال وجوابه. مرّر المؤشر على كل منهما لترى القاعدة.',labs:[LAB71B,{title:'اكتب السؤال',w:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال الذي جوابه بين القوسين:',items:[
      {q:`الجواب: ${e("It's 6 m wide.")} (the road)`,a:['How wide is the road?'],hint:'How + wide + is + the road?'},
      {q:`الجواب: ${e("They're 87 m high.")} (the pylons)`,a:['How high are the pylons?'],hint:'الجمع: are.'},
-     {q:`الجواب: ${e("It's 300 m deep.")} (the sea)`,a:['How deep is the sea?'],hint:'How deep …?'}]})}},
+     {q:`الجواب: ${e("It's 300 m deep.")} (the sea)`,a:['How deep is the sea?'],hint:'How deep …?'}]})}]},
  {t:'كتابة الوحدات وقراءتها',short:'الوحدات',q:'كيف تكتب «مئة متر» مختصرة؟ وكيف تقرؤها؟',ref:'ص 52',
   lead:`الأبعاد في جداول المواصفات تُكتب بأرقام ووحدات مختصرة، لكننا نقرؤها كلمات كاملة.`,
   points:[`<b>الاختصار لا يُجمع:</b> نكتب ${e('100 m')} و ${e('100 km')}، ولا نكتب ${e('100 ms')}.`,
@@ -98,10 +131,10 @@ const R_u7_l1=N.rule({title:'الأبعاد: الصفة والاسم، والس�
    `<b>الإملاء:</b> البريطانية ${e('metre, centimetre, millimetre')}، والأمريكية ${e('meter, centimeter, millimeter')}، وكلاهما صحيح.`],
   grid:{head:['الاختصار','الكلمة','مثال'],rows:[['mm','millimetre','5 mm = five millimetres'],['cm','centimetre','30 cm = thirty centimetres'],['m','metre','100 m = one hundred metres'],['km','kilometre','2.46 km = two point four six kilometres']]},
   pairs:[['100 ms','100 m','لا نضيف s إلى الاختصار.'],['one hundred metre','one hundred metres','عند القراءة نجمع الوحدة.']],
-  lab:{title:'الوحدات',intro:'اختر الصحيح:',items:[
+  labs:[LAB71C,{title:'الوحدات',intro:'اختر الصحيح:',items:[
    {s:'The deck is 32 ___ wide.',o:['m','ms'],a:0,why:'الاختصار لا يُجمع.'},
    {s:'We read 342 m as: three hundred and forty-two ___.',o:['metre','metres'],a:1,why:'عند القراءة نجمع الوحدة لأن الرقم أكثر من واحد.'},
-   {s:'We read 1 km as: one ___.',o:['kilometre','kilometres'],a:0,why:'الرقم واحد، فالوحدة مفردة.'}]}}
+   {s:'We read 1 km as: one ___.',o:['kilometre','kilometres'],a:0,why:'الرقم واحد، فالوحدة مفردة.'}]}]}
  ]});
 B.lesson({
  id:'u7-l1',unit:7,order:1,pages:'52–53',
