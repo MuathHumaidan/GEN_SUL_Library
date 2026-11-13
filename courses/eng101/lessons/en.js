@@ -69,6 +69,11 @@ function speak(t){const s=plain(t).replace(/\s+/g,' ').trim();if(!TTSSET)TTSSET=
   if(cur){try{cur.pause()}catch(e){}cur=null}if(hasTTS())speechSynthesis.cancel();
   const k=ttsKey(s);if(TTSSET.has(k)){const a=new Audio('audio/tts/'+k+'.mp3');cur=a;a.play().catch(()=>devSpeak(s));return}
   devSpeak(s)}
+/* نطق ينتظر نهاية الجملة (للاستماع لقسم كامل في الوضع الإنجليزي) */
+function speakP(t){return new Promise(res=>{const s=plain(t).replace(/\s+/g,' ').trim();if(!TTSSET)TTSSET=new Set(String(G.ENG_TTS||'').split(' ').filter(Boolean));
+  if(cur){try{cur.pause()}catch(e){}cur=null}if(hasTTS())speechSynthesis.cancel();
+  const dev=()=>{if(!hasTTS())return res();const u=new SpeechSynthesisUtterance(s);u.lang=voice?voice.lang:'en-US';if(voice)u.voice=voice;u.rate=0.9;u.onend=u.onerror=()=>res();speechSynthesis.speak(u)};
+  const k=ttsKey(s);if(TTSSET.has(k)){const a=new Audio('audio/tts/'+k+'.mp3');cur=a;a.onended=()=>res();a.onerror=()=>dev();a.play().catch(dev);return}dev()})}
 if(typeof document!=='undefined')document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-say]');if(!b)return;e.preventDefault();speak(b.dataset.say)});
 const latinT=t=>{const x=plain(t),l=(x.match(/[A-Za-z]/g)||[]).length,a=(x.match(/[\u0600-\u06FF]/g)||[]).length;return l>0&&l>a};
 const sp=t=>hasTTS()&&latinT(t)?`<button type="button" class="say" data-say="${esc(plain(t))}" title="استمع للنطق" aria-label="استمع للنطق">🔊</button>`:'';
@@ -119,5 +124,5 @@ const cases=(el,B,o)=>K.cases(el,B,{...o,cases:o.cases.map(c=>({...c,q:W(c.q),op
 const tf=(el,B,o)=>K.tf(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
 const sort=(el,B,o)=>K.sort(el,B,{...o,items:o.items.map(x=>[W(x[0]),x[1],x[2]])});
 const order=(el,B,o)=>K.order(el,B,{...o,steps:o.steps.map(x=>Array.isArray(x)?[W(x[0]),x[1]]:W(x))});
-G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,gaps,typ,norm,esc,cases,tf,sort,order,W};
+G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W};
 })(window);

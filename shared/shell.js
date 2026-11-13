@@ -1,6 +1,7 @@
 /* shared page boot: theme toggle, course tag, offline cache */
 (function(){const root=document.documentElement;
  /* أسلوب الشرح: رسمي / التفاعلي (يُحفظ على هذا الجهاز) — القيمة المخزنة ما زالت 'stations' */
+ {const q=(location.search.match(/[?&]style=(formal|stations)/)||[])[1];if(q)try{localStorage.setItem('elib-style',q)}catch(e){}}
  let sm='formal';try{sm=localStorage.getItem('elib-style')==='stations'?'stations':'formal'}catch(e){}
  if(sm==='stations')root.setAttribute('data-style','stations');
  const ta=document.querySelector('.top-actions');
