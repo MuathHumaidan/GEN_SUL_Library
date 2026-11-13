@@ -1371,5 +1371,316 @@ PLCBOOK.errs({
    ],
    "answer": "Every Wednesday morning."
   }
+ ],
+ "u6-l1": [
+  {
+   "ex": "مثال 1: ماذا تفعل الآن؟",
+   "title": "مستمر",
+   "given": "تسخّن البلاستيك الآن.",
+   "ask": "صِف ذلك.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I heating the plastic.",
+     "bad": true,
+     "why": "نحتاج am قبل ing.",
+     "fix": "I'm heating",
+     "reasons": [
+      "I'm heat",
+      "I heats",
+      "am + ing: I'm heating",
+      "I heating صحيحة"
+     ],
+     "rc": 2
+    },
+    {
+     "t": "الخطوة 2: the plastic."
+    }
+   ],
+   "answer": "I'm heating the plastic."
+  },
+  {
+   "ex": "مثال 2: النفي",
+   "title": "نفي",
+   "given": "الحبل لا يتمطط.",
+   "ask": "اكتب النفي.",
+   "steps": [
+    {
+     "t": "الخطوة 1: The rope doesn't stretching.",
+     "bad": true,
+     "why": "النفي في المستمر: isn't.",
+     "fix": "The rope isn't",
+     "reasons": [
+      "doesn't + ing صحيحة",
+      "aren't مع المفرد",
+      "not stretching",
+      "المستمر: isn't + ing"
+     ],
+     "rc": 3
+    },
+    {
+     "t": "الخطوة 2: stretching."
+    }
+   ],
+   "answer": "The rope isn't stretching."
+  },
+  {
+   "ex": "مثال 3: الإملاء",
+   "title": "إملاء",
+   "given": "drop · strike",
+   "ask": "اكتب بصيغة ing.",
+   "steps": [
+    {
+     "t": "الخطوة 1: drop → droping",
+     "bad": true,
+     "why": "drop: نضاعف p.",
+     "fix": "dropping",
+     "reasons": [
+      "نضاعف p: dropping",
+      "droping صحيحة",
+      "dropeing",
+      "dropps"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 2: strike → striking"
+    }
+   ],
+   "answer": "dropping · striking"
+  }
+ ],
+ "u6-l2": [
+  {
+   "ex": "مثال 1: ممّ صُنع؟",
+   "title": "made of",
+   "given": "الإطارات من المطاط.",
+   "ask": "اسأل وأجب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: What is the tyres made of?",
+     "bad": true,
+     "why": "tyres جمع: are.",
+     "fix": "What are the tyres made of?",
+     "reasons": [
+      "What does",
+      "tyres جمع: What are",
+      "What is صحيحة",
+      "What do"
+     ],
+     "rc": 1
+    },
+    {
+     "t": "الخطوة 2: They're made of rubber."
+    }
+   ],
+   "answer": "What are the tyres made of? They're made of rubber."
+  },
+  {
+   "ex": "مثال 2: الخاصية",
+   "title": "خاصية",
+   "given": "لا يحترق ولا يذوب.",
+   "ask": "ما الخاصية؟",
+   "steps": [
+    {
+     "t": "المعطى: لا يحترق ولا يذوب."
+    },
+    {
+     "t": "الخطوة 1: It's corrosion-resistant.",
+     "bad": true,
+     "why": "الحرارة: heat-resistant.",
+     "fix": "It's heat-resistant.",
+     "reasons": [
+      "flexible",
+      "brittle",
+      "الحرارة: heat-resistant",
+      "التآكل هو الجواب"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "It's heat-resistant."
+  },
+  {
+   "ex": "مثال 3: الأضداد",
+   "title": "ضد",
+   "given": "tough",
+   "ask": "ما ضدها؟",
+   "steps": [
+    {
+     "t": "المعطى: tough"
+    },
+    {
+     "t": "الخطوة 1: tough ≠ soft",
+     "bad": true,
+     "why": "ضد tough هو brittle.",
+     "fix": "brittle",
+     "reasons": [
+      "tough ≠ soft",
+      "tough ≠ light",
+      "tough ≠ heavy",
+      "tough ≠ brittle"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "tough ≠ brittle"
+  }
+ ],
+ "u6-l3": [
+  {
+   "ex": "مثال 1: نطق بريد",
+   "title": "بريد",
+   "given": "sami.n@shop-sa.com",
+   "ask": "انطقه.",
+   "steps": [
+    {
+     "t": "الخطوة 1: sami dot n"
+    },
+    {
+     "t": "الخطوة 2: at shop underscore sa",
+     "bad": true,
+     "why": "- تُنطق dash.",
+     "fix": "at shop dash sa",
+     "reasons": [
+      "- = dash",
+      "- = underscore",
+      "- = slash",
+      "- = dot"
+     ],
+     "rc": 0
+    },
+    {
+     "t": "الخطوة 3: dot com"
+    }
+   ],
+   "answer": "sami dot n at shop dash sa dot com"
+  },
+  {
+   "ex": "مثال 2: رقم هاتف",
+   "title": "هاتف",
+   "given": "0055 812",
+   "ask": "انطقه.",
+   "steps": [
+    {
+     "t": "الخطوة 1: 00 = two oh",
+     "bad": true,
+     "why": "00 = double oh.",
+     "fix": "double oh",
+     "reasons": [
+      "00 = zero two",
+      "00 = double oh",
+      "00 = two oh",
+      "00 = oh oh only"
+     ],
+     "rc": 1
+    },
+    {
+     "t": "الخطوة 2: double five, eight one two"
+    }
+   ],
+   "answer": "double oh, double five, eight one two"
+  },
+  {
+   "ex": "مثال 3: التأكد",
+   "title": "تأكد",
+   "given": "15 أم 50؟",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: 15 أم 50؟"
+    },
+    {
+     "t": "الخطوة 1: Are that fifteen or fifty?",
+     "bad": true,
+     "why": "نقول Is that …?",
+     "fix": "Is that fifteen or fifty?",
+     "reasons": [
+      "Does that",
+      "Do that",
+      "Is that …?",
+      "Are that صحيحة"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Is that fifteen or fifty?"
+  }
+ ],
+ "u6-l4": [
+  {
+   "ex": "مثال 1: تصحيح خطأ",
+   "title": "تصحيح",
+   "given": "Ice melts at −10°C. (freeze)",
+   "ask": "صحّح.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Ice isn't melt at −10°C.",
+     "bad": true,
+     "why": "نفي المضارع البسيط: doesn't melt.",
+     "fix": "Ice doesn't melt at −10°C.",
+     "reasons": [
+      "isn't melt صحيحة",
+      "don't melt",
+      "not melts",
+      "doesn't + melt"
+     ],
+     "rc": 3
+    },
+    {
+     "t": "الخطوة 2: It freezes."
+    }
+   ],
+   "answer": "Ice doesn't melt at −10°C. It freezes."
+  },
+  {
+   "ex": "مثال 2: عطل الآن",
+   "title": "عطل",
+   "given": "تدير المفتاح والمحرك لا يشتغل.",
+   "ask": "صِف.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I'm turning the key,"
+    },
+    {
+     "t": "الخطوة 2: but the engine doesn't starting.",
+     "bad": true,
+     "why": "المستمر: isn't starting.",
+     "fix": "but the engine isn't starting",
+     "reasons": [
+      "isn't + ing",
+      "doesn't + ing",
+      "aren't",
+      "not start"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "I'm turning the key, but the engine isn't starting."
+  },
+  {
+   "ex": "مثال 3: بسيط أم مستمر",
+   "title": "زمن",
+   "given": "Every day … / Now …",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Every day, the machine is testing 50 helmets.",
+     "bad": true,
+     "why": "Every day عادة: tests.",
+     "fix": "Every day, the machine tests 50 helmets.",
+     "reasons": [
+      "testing",
+      "العادة: tests",
+      "is testing صحيحة مع every day",
+      "test"
+     ],
+     "rc": 1
+    },
+    {
+     "t": "الخطوة 2: Now it is testing a blue helmet."
+    }
+   ],
+   "answer": "Every day, the machine tests 50 helmets. Now it is testing a blue helmet."
+  }
  ]
 });

@@ -713,5 +713,173 @@ PLCBOOK.acts({
     "e": "ص 41."
    }
   ]
+ },
+ "u6-l1": {
+  "open": [
+   "A test for a material",
+   "Something you are doing now",
+   "A verb + ing"
+  ],
+  "exit": [
+   {
+    "q": "I ___ pulling the rope.",
+    "o": [
+     "'m",
+     "'s",
+     "'re",
+     "be"
+    ],
+    "c": 0,
+    "e": "ص 42."
+   },
+   {
+    "q": "Is it breaking? — No, it ___.",
+    "o": [
+     "isn't",
+     "doesn't",
+     "aren't",
+     "not"
+    ],
+    "c": 0,
+    "e": "ص 42."
+   },
+   {
+    "q": "drop + ing =",
+    "o": [
+     "dropping",
+     "droping",
+     "dropeing",
+     "dropps"
+    ],
+    "c": 0,
+    "e": "ص 43."
+   }
+  ]
+ },
+ "u6-l2": {
+  "open": [
+   "A material",
+   "A property",
+   "Something made of rubber"
+  ],
+  "exit": [
+   {
+    "q": "What ___ the tyres made of?",
+    "o": [
+     "are",
+     "is",
+     "do",
+     "does"
+    ],
+    "c": 0,
+    "e": "ص 44."
+   },
+   {
+    "q": "tough ≠",
+    "o": [
+     "brittle",
+     "soft",
+     "light",
+     "weak"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   },
+   {
+    "q": "It doesn't melt if you heat it. It's ___.",
+    "o": [
+     "heat-resistant",
+     "flexible",
+     "brittle",
+     "soft"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   }
+  ]
+ },
+ "u6-l3": {
+  "open": [
+   "An email address (made up)",
+   "A question on the phone",
+   "A number with -teen"
+  ],
+  "exit": [
+   {
+    "q": "@ =",
+    "o": [
+     "at",
+     "and",
+     "about",
+     "add"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "Could you ___ that, please? — L-I-N-T.",
+    "o": [
+     "spell",
+     "repeat",
+     "say",
+     "write"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "00 =",
+    "o": [
+     "double oh",
+     "two oh",
+     "oh two",
+     "zero"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   }
+  ]
+ },
+ "u6-l4": {
+  "open": [
+   "Something that boils",
+   "An instruction with a tool",
+   "A pair of opposites"
+  ],
+  "exit": [
+   {
+    "q": "If you heat water to 100°C, it ___.",
+    "o": [
+     "boils",
+     "freezes",
+     "sinks",
+     "melts"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   },
+   {
+    "q": "Look! The hammer ___ the bar.",
+    "o": [
+     "is striking",
+     "strikes",
+     "strike",
+     "striking"
+    ],
+    "c": 0,
+    "e": "ص 51."
+   },
+   {
+    "q": "sol- =",
+    "o": [
+     "sun",
+     "many",
+     "heat",
+     "thousand"
+    ],
+    "c": 0,
+    "e": "ص 51."
+   }
+  ]
  }
 });

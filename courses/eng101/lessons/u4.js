@@ -136,7 +136,7 @@ B.lesson({
   {h:'الضمير it',ref:'ص 29',html:`<p>${e('it')} يعود على اسم مفرد ذُكر قبله. اقرأ الجملة السابقة لتعرف ما هو:</p>${eb(['Look at the LH stick. Push it up. (it = the LH stick)','Slide the stick to the right and it turns right. (it = the plane)'])}`},
   {h:'Can you…?',ref:'ص 29',html:dl([['A','Can you swim?'],['B','Yes, I can. Can you?'],['A','Yes, I can. Can you drive a truck?'],['B',"No, I can't."]])},
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
-   bk(1,'ص 28','اختبار: ما السرعات؟',['1 b) 9800 rpm','2 b) 1200 km/h (746 mph)','3 a) 1228 km/h (763 mph)','4 a) 154 m/s','5 a) 1000 mph (1609 km/h)','6 a) 67,000 mph (107,825 km/h)'])+
+   bk(1,'ص 28','اختبار: ما السرعات؟',['1 b) 9800 rpm','2 b) 1200 km/h (746 mph)','3 a) 1228 km/h (763 mph)','4 a) 154 m/s <span class="sub">(إضافة من خارج الكتاب: الرقم القياسي الرسمي المسجّل منذ 1978 نحو 511 km/h، أي قرابة 142 m/s)</span>','5 a) 1000 mph (1609 km/h)','6 a) 67,000 mph (107,825 km/h)'])+
    bk(2,'ص 28','استمع وتحقق من إجاباتك.',null)+bk(3,'ص 28','مع زميلك: أملِ عليه سرعات.',null)+
    bk(4,'ص 28','سمِّ أجزاء جهاز التحكم بكلمات الصندوق.',['الكلمات: antenna, handle, joysticks, slider, switch','1 antenna (أعلى الجهاز)'],'بقية الأرقام حسب صورة الكتاب.')+
    bk(5,'ص 28','ماذا تفعل الطائرة عندما تحرّك العصوين؟',['1 LH up: accelerates · LH down: slows down','2 LH left: turns left · LH right: turns right','3 RH up: descends · RH down: ascends','4 RH left: rolls left · RH right: rolls right'])+

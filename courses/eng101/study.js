@@ -628,6 +628,123 @@ PLCBOOK.study({
      "l": "u5-l3"
     }
    ]
+  },
+  "u6": {
+   "title": "Materials — المواد",
+   "cards": [
+    {
+     "k": "def",
+     "f": "strike / stretch / compress",
+     "b": "يضرب / يمطّ / يضغط.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "def",
+     "f": "bend / drop / scratch",
+     "b": "يثني / يُسقط / يخدش.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "am / is / are + ing",
+     "b": "المضارع المستمر لما يحدث الآن: I'm pulling the rope.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "Is it breaking?",
+     "b": "Yes, it is. / No, it isn't.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "strike → striking · drop → dropping",
+     "b": "نحذف e، ونضاعف الحرف الأخير في drop و cut.",
+     "ref": "ص 43",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "What's it made of?",
+     "b": "It's made of … · What are they made of? They're made of …",
+     "ref": "ص 44",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "tough ≠ brittle",
+     "b": "متين ≠ هش.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "rigid ≠ flexible",
+     "b": "لا ينثني ≠ مرن.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "hard ≠ soft",
+     "b": "صلب ≠ ليّن.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "heat-resistant / corrosion-resistant",
+     "b": "مقاوم للحرارة / للتآكل.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "alloy / composite",
+     "b": "خليط معادن / خليط مادتين مختلفتين.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "def",
+     "f": "@ at · . dot · _ underscore · - dash",
+     "b": "نطق رموز البريد.",
+     "ref": "ص 46",
+     "l": "u6-l3"
+    },
+    {
+     "k": "law",
+     "f": "Could you repeat / spell that, please?",
+     "b": "لطلب الإعادة والتهجئة.",
+     "ref": "ص 46",
+     "l": "u6-l3"
+    },
+    {
+     "k": "def",
+     "f": "-teen ≠ -ty",
+     "b": "seventeen (النبر آخراً) ≠ seventy (أولاً).",
+     "ref": "ص 46",
+     "l": "u6-l3"
+    },
+    {
+     "k": "def",
+     "f": "boil / freeze / melt",
+     "b": "يغلي / يتجمد / يذوب.",
+     "ref": "ص 50",
+     "l": "u6-l4"
+    },
+    {
+     "k": "def",
+     "f": "sol- / poly-",
+     "b": "شمس / كثير.",
+     "ref": "ص 51",
+     "l": "u6-l4"
+    }
+   ]
   }
  },
  "lessons": {
@@ -1116,6 +1233,114 @@ PLCBOOK.study({
       [
        "fan",
        "blows air onto the radiator"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l1": {
+   "match": [
+    {
+     "title": "وصّل الفعل بصيغة ing",
+     "pairs": [
+      [
+       "strike",
+       "striking"
+      ],
+      [
+       "drop",
+       "dropping"
+      ],
+      [
+       "cut",
+       "cutting"
+      ],
+      [
+       "stretch",
+       "stretching"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l2": {
+   "match": [
+    {
+     "title": "وصّل الخاصية بضدها",
+     "pairs": [
+      [
+       "tough",
+       "brittle"
+      ],
+      [
+       "hard",
+       "soft"
+      ],
+      [
+       "rigid",
+       "flexible"
+      ],
+      [
+       "strong",
+       "weak"
+      ],
+      [
+       "light",
+       "heavy"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l3": {
+   "match": [
+    {
+     "title": "وصّل الرمز بنطقه",
+     "pairs": [
+      [
+       "@",
+       "at"
+      ],
+      [
+       ".",
+       "dot"
+      ],
+      [
+       "_",
+       "underscore"
+      ],
+      [
+       "-",
+       "dash"
+      ],
+      [
+       "/",
+       "forward slash"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l4": {
+   "match": [
+    {
+     "title": "وصّل الفعل بمعناه",
+     "pairs": [
+      [
+       "boil",
+       "يغلي"
+      ],
+      [
+       "freeze",
+       "يتجمد"
+      ],
+      [
+       "melt",
+       "يذوب"
+      ],
+      [
+       "stretch",
+       "يتمدد"
       ]
      ]
     }

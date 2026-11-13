@@ -174,5 +174,43 @@ PLCBOOK.words({
   ['hose','خرطوم','Wash the car with a hose.','اغسل السيارة بالخرطوم.'],
   ['cool ≠ heat','يبرّد ≠ يسخّن','The AC cools the room.','المكيف يبرّد الغرفة.'],
   ['every Monday','كل اثنين','I play football every Monday.','ألعب الكرة كل اثنين.']
+ ],
+ 'u6-l1':[
+  ['test','يختبر','The doctor is testing my eyes.','الطبيب يفحص عينيّ.'],
+  ['strike','يضرب','Don\'t strike the screen with your hand!','لا تضرب الشاشة بيدك!'],
+  ['stretch','يمطّ / يتمدد','Stretch your arms before you run.','مدّ ذراعيك قبل الجري.'],
+  ['bend','يثني','Bend your knees to pick up the box.','اثنِ ركبتيك لترفع الصندوق.'],
+  ['drop','يُسقط','Don\'t drop your phone!','لا توقع جوالك!'],
+  ['break','ينكسر','The glass breaks if you drop it.','الكأس ينكسر إذا أوقعته.'],
+  ['melt','يذوب','The ice cream is melting in the sun.','الآيس كريم يذوب في الشمس.'],
+  ["I'm …ing",'أنا أفعل الآن',"I'm reading a book now.",'أنا أقرأ كتاباً الآن.']
+ ],
+ 'u6-l2':[
+  ['made of','مصنوع من','My ring is made of silver.','خاتمي مصنوع من الفضة.'],
+  ['steel','فولاذ','The bridge is made of steel.','الجسر مصنوع من الفولاذ.'],
+  ['rubber','مطاط','The tyres are made of rubber.','الإطارات مصنوعة من المطاط.'],
+  ['plastic','بلاستيك','Don\'t put plastic in the oven.','لا تضع البلاستيك في الفرن.'],
+  ['tough ≠ brittle','متين ≠ هشّ','Biscuits are brittle.','البسكويت هش.'],
+  ['flexible ≠ rigid','مرن ≠ صلب لا ينثني','A yoga mat is flexible.','حصيرة اليوغا مرنة.'],
+  ['light ≠ heavy','خفيف ≠ ثقيل','My laptop is very light.','حاسوبي خفيف جداً.'],
+  ['heat-resistant','مقاوم للحرارة','Use a heat-resistant dish in the oven.','استعمل طبقاً مقاوماً للحرارة في الفرن.']
+ ],
+ 'u6-l3':[
+  ['email address','بريد إلكتروني','Write your email address here.','اكتب بريدك هنا.'],
+  ['@ = at','آت (في البريد)','My email is sami at mail dot com.','بريدي sami at mail dot com.'],
+  ['phone number','رقم الهاتف','Can I have your phone number?','أعطني رقم هاتفك.'],
+  ['repeat','يعيد','Could you repeat the question, please?','أعد السؤال من فضلك.'],
+  ['spell','يتهجّى','How do you spell your name?','كيف تتهجّى اسمك؟'],
+  ['order','طلب','I want to order a pizza.','أريد أن أطلب بيتزا.'],
+  ['price','سعر','What\'s the price of this jacket?','كم سعر هذه السترة؟'],
+  ['How many …?','كم عدد …؟','How many tickets do you need?','كم تذكرة تحتاج؟']
+ ],
+ 'u6-l4':[
+  ['boil','يغلي','Boil the eggs for ten minutes.','اسلق البيض عشر دقائق.'],
+  ['freeze','يتجمّد','Water freezes at 0°C.','الماء يتجمد عند الصفر.'],
+  ['goggles','نظارات واقية','Wear goggles in the lab.','البس النظارات الواقية في المختبر.'],
+  ['measure','يقيس','Measure the window before you buy curtains.','قِس النافذة قبل شراء الستائر.'],
+  ['sol-','شمس','Solar energy comes from the Sun.','الطاقة الشمسية من الشمس.'],
+  ['poly-','كثير','A polygon has many sides.','المضلع له أضلاع كثيرة.']
  ]
 });
