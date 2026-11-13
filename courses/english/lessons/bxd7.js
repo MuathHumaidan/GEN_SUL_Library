@@ -42,14 +42,17 @@ BX.add('u7-l2',[
  {n:3,ref:'ص 54',st:4,kind:'match',intro:'وصّل كل سؤال عن برج المدينة (برج من خيالنا) بجوابه.',pairs:[
   ['How high is the tower?',"It's 320 m high."],['How many storeys does it have?','It has 75 storeys.'],['How many lifts are there?','There are 24 lifts.'],
   ['How much concrete did they use?','About 90,000 tonnes.'],['How long did they take to build it?','Four years.'],['How many people work there?','About 6000 people.']]},
- {n:4,ref:'ص 55',st:2,kind:'gaps',intro:'أكمل الحوار في محل الأدوات بالكلمات نفسها التي في صندوق الكتاب.',items:[
-  A('Customer: Have you got ___ wood glue?',['any','some'],0,'في السؤال نستعمل any.'),A('Shop assistant: Yes. ___ do you want — small or large?',['What size','What colour'],0),
-  A('Customer: Large, please. And I need some screws. — Assistant: OK, ___ do you need?',['how many','how much'],0,'screws معدودة.'),A('Customer: Fifty. And I want ___ paint too.',['some','any'],0,'في الجملة المثبتة نستعمل some.'),
-  A('Assistant: ___ do you want — white or blue?',['What colour','What size'],0),A('Assistant: And ___ do you need? — Customer: Two litres.',['how much','how many'],0,'paint غير معدودة.')]},
- {n:5,ref:'ص 55',st:3,kind:'speak',goal:'كوّن حواراً مشابهاً مع زميلك. أنت تشتري هذه الأشياء من محل الأدوات:',
-  card:'<ul lang="en" dir="ltr"><li>a tube of glue — small</li><li>nails — 200</li><li>a tin of paint — green, 1 litre</li><li>a bag of cement — 25 kg</li></ul>',
-  useful:['Have you got any nails?','How many do you need?','How much paint do you want?','What colour?','A bag of cement, please.'],
-  model:[['Customer','Have you got any nails?'],['Assistant','Yes. How many do you need?'],['Customer','Two hundred, please. And I want a tin of paint.'],['Assistant','What colour?'],['Customer','Green.'],['Assistant','How much do you need?'],['Customer','One litre.']]}
+ {n:4,ref:'ص 55',st:2,kind:'gaps',intro:'أكمل الحوار في محل الأدوات (حوار من إعدادنا) باختيار كلمة من الصندوق نفسه: any · some · What size · What colour · how many · how much',items:[
+  A('Assistant: Good afternoon. Can I help you? — Customer: Yes. Have you got ___ bolts?',['any','some','What size','What colour','how many','how much'],0,'سؤال عام: any.'),
+  A('Assistant: Yes, we have. ___ do you need?',['any','some','What size','What colour','how many','how much'],2,'نسأل عن المقاس: What size.'),
+  A('Customer: Twelve mil. — Assistant: OK. And ___ do you need?',['any','some','What size','What colour','how many','how much'],4,'bolts معدودة: how many.'),
+  A('Customer: Forty, please. — Assistant: So that\'s forty 12 mil bolts. Anything else? — Customer: Yes. I need ___ paint, please.',['any','some','What size','What colour','how many','how much'],1,'طلب مثبت مع غير معدود: some.'),
+  A('Assistant: ___? — Customer: White.',['any','some','What size','What colour','how many','how much'],3,'نسأل عن اللون: What colour.'),
+  A('Assistant: OK. So ___ white paint do you need? — Customer: Three small tins, please.',['any','some','What size','What colour','how many','how much'],5,'paint غير معدود: how much.')]},
+ {n:5,ref:'ص 55',st:3,kind:'speak',goal:'كوّن حوارات مشابهة مع زميلك: أحدكما البائع والآخر المشتري. استعمل الأسئلة في الصندوق والمعلومات في الجدول (جدول من إعدادنا).',
+  card:'<table class="rt" dir="ltr" lang="en"><thead><tr><th>Item</th><th>Quantity</th><th>Kind, size or colour</th></tr></thead><tbody><tr><td>bolts</td><td>40</td><td>16 mm</td></tr><tr><td>paint</td><td>3 small tins</td><td>white</td></tr><tr><td>glue</td><td>1 tube</td><td>wood glue</td></tr><tr><td>washers</td><td>100</td><td>12 mm</td></tr><tr><td>oil</td><td>5 L</td><td>engine oil</td></tr><tr><td>screws</td><td>2 packets of 100</td><td>25 mm</td></tr><tr><td>sand</td><td>10 bags</td><td>fine</td></tr><tr><td>nails</td><td>500</td><td>40 mm</td></tr></tbody></table><p>اكتب <span class="en">5 L</span> وانطقها <span class="en">five litres</span>.</p>',
+  useful:['How many?','How much?','What colour?','What kind?','What size?','What type?'],
+  model:[['Assistant','Can I help you?'],['Customer','Yes. Have you got any bolts?'],['Assistant','Yes. What size do you need?'],['Customer','Sixteen mil.'],['Assistant','How many do you need?'],['Customer','Forty, please. And I need some engine oil.'],['Assistant','How much oil do you need?'],['Customer','Five litres, please.']]}
 ]);
 /* ===== 7.3 Future projects ===== */
 BX.add('u7-l3',[
