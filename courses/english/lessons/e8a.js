@@ -38,6 +38,50 @@ function lab81(el,B){
 
 const VOC81=[['incident','حادثة (واقعة)',''],['recent','حديث (قريب الوقوع)',''],['break down','يتعطّل','My car has broken down.'],['break into','يقتحم (للسرقة)','Thieves have broken into my office.'],['hotline','خط الدعم (خط ساخن)',''],['data','البيانات',''],['ambulance','سيارة إسعاف',''],['fall downstairs','يسقط من الدرج',''],['exhaust pipe','أنبوب العادم',''],['tyre','إطار السيارة','tire بالأمريكية'],['brakes','الفرامل',''],['spark plug','شمعة الإشعال',''],['fuse','فيوز (مُنصهِر)',''],['supplier','المورِّد',''],['supervisor','المشرف',''],['mechanic','الميكانيكي',''],['past participle','التصريف الثالث للفعل','checked, broken, taken']];
 
+const R81=N.rule({title:'المضارع التام (have / has + التصريف الثالث)',ref:'ص 58–59',
+ intro:`نستعمل المضارع التام لنخبر عن شيء <b>حدث</b> قبل قليل أو في وقت لا نذكره، و<b>نتيجته ما زالت أمامنا الآن</b>. مثال: ${e('My car has broken down.')} = تعطلت سيارتي (وهي الآن متوقفة). في هذا الشرح: متى نستعمله، وكيف نكوّنه، والنفي والسؤال، والتصريف الثالث، والفرق بينه وبين الماضي البسيط.`,
+ parts:[
+ {t:'متى نستعمله؟',short:'متى؟',q:'سيارتك توقفت للتو في الطريق. كيف تخبر خط الدعم؟',ref:'ص 58',
+  text:`لاستعمالين: (1) حدث قريب ونتيجته أمامك الآن: ${e('The machine has stopped.')} (الآلة واقفة الآن). (2) خبر عن حدث دون أن يهمنا متى وقع: ${e('Someone has taken my laptop.')} وغالباً يقابله بالعربي «قد + فعل ماضٍ» أو «للتو».`,
+  ex:["I<b>'ve changed</b> the tyre.","The machine <b>has broken</b> down.","Someone <b>has taken</b> my laptop."],
+  html:`<p><small>(إضافة من خارج الكتاب)</small> ${e('just')} = للتو، وتأتي بين ${e('have/has')} والتصريف الثالث: ${e('The bus has just left.')}</p>`},
+ {t:'كيف نكوّنه؟',old:[1],short:'have / has + V3',q:'متى نقول have ومتى has؟',ref:'ص 58',
+  text:`الفاعل + ${e('have')} أو ${e('has')} + <b>التصريف الثالث</b> للفعل (${e('past participle')}، ونرمز له V3). ${e('has')} مع المفرد الغائب (${e('he, she, it')} أو اسم مفرد)، و ${e('have')} مع الباقي.`,
+  head:['الفاعل','الصيغة','مثال'],
+  rows:[['I / you / we / they','have + V3',"I have checked it. = I've checked it."],['he / she / it','has + V3',"She has left. = She's left."],['اسم مفرد','has + V3','The printer has stopped.'],['اسم جمع','have + V3','The parts have arrived.']],
+  watch:[`الاختصار: ${e("I've, you've, we've, they've")} و ${e("he's, she's, it's")}.`,`${e("He's")} قد تعني ${e('He is')} أو ${e('He has')}؛ نعرفها من الكلمة بعدها: ${e("He's tired.")} (is) لكن ${e("He's left.")} (has + V3).`,`لا ننسى ${e('have/has')}: ✘ ${e('I broken it.')} ✔ ${e("I've broken it.")}`],
+  art:art(`<g data-tip="has مع he / she / it ومع اسم مفرد."><rect x="40" y="110" width="80" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(80,141,'has',{fs:18,w:700})}</g>
+    <g data-tip="التصريف الثالث: broken من break."><rect x="140" y="110" width="110" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(195,141,'broken',{fs:18,w:700})}</g>
+    <g data-tip="الجملة: My car has broken down. = تعطلت سيارتي للتو.">${TL(180,220,'My car has broken down.',{fs:16,w:700})}</g>${TL(270,141,'down',{fs:16})}`,'has + broken down'),cap:'أجزاء الجملة. مرّر المؤشر على كل جزء.',lab:{title:'have / has',w:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة (مواقف جديدة):',items:[
+     {s:'The printer ___ stopped.',o:['has','have','is'],a:0,why:'printer مفرد: has.'},
+     {s:'Someone has ___ my phone.',o:['took','taken','take'],a:1,why:'بعد has: التصريف الثالث taken.'},
+     {s:'We ___ lost the password.',o:['has','have','are'],a:1},
+     {s:'He has ___ his hand.',o:['cut','cutted','cuts'],a:0,why:'cut شاذ: cut / cut / cut.'}]})}},
+ {t:'النفي والسؤال والجواب القصير',old:[3],short:'Have you…?',q:'المشرف يسأل: Have you checked the brakes? كيف تجيب بالنفي؟',ref:'ص 59',
+  text:`النفي: نضع ${e('not')} بعد ${e('have/has')}. السؤال: نقدّم ${e('Have/Has')} على الفاعل. والجواب القصير يعيد ${e('have/has')} فقط، بلا الفعل.`,
+  head:['الحالة','الصيغة','مثال'],
+  rows:[['النفي',"haven't / hasn't + V3","The parts haven't arrived. · He hasn't called."],['السؤال','Have / Has + الفاعل + V3 ؟','Have you checked the brakes? · Has she sent it?'],['الجواب القصير',"Yes, … have/has. · No, … haven't/hasn't.","Yes, I have. · No, she hasn't."]],
+  html:dl([['Supervisor','Have you changed the oil?'],['Mechanic','Yes, I have.'],['Supervisor','Good. What about the filter? Have you cleaned it?'],['Mechanic',"No, I haven't. I'll do it now."]])+'<p class="pk-ill">حوار جديد من عندنا على نمط التمرين 6.</p>',
+  watch:[`✘ ${e('Yes, I checked.')} ✔ ${e('Yes, I have.')}`,`بعد الجواب المنفي نَعِد بالفعل: ${e("No, I haven't. I'll do it now.")}`],
+  art:art(`<g data-tip="المشرف يسأل بـ Have you + V3 …?"><rect x="30" y="70" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,'Have you cleaned the filter?',{fs:15,w:700})}</g>
+    <g data-tip="الجواب القصير يعيد have فقط."><rect x="30" y="170" width="140" height="50" rx="10" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(100,201,'Yes, I have.',{fs:14,w:700,c:'#fff'})}<rect x="190" y="170" width="140" height="50" rx="10" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(260,201,"No, I haven't.",{fs:14,w:700,c:'#fff'})}</g>`,'سؤال وجوابان قصيران'),cap:'السؤال وجوابه. مرّر المؤشر على كل جزء.',lab:{title:'الجواب القصير',w:(el,B)=>N.cases(el,B,{intro:'اختر الجواب الصحيح:',cases:[{q:'Has the supplier sent the parts? (✓)',opts:[['Yes, he has.',1,''],['Yes, he sent.',0,'الجواب القصير: Yes, he has.'],['Yes, he have.',0,'he مع has.']]},{q:'Have you written the report? (✗)',opts:[["No, I haven't.",1,''],["No, I didn't write.",0,''],["No, I hasn't.",0,'I مع have.']]}]})}},
+ {t:'التصريف الثالث (V3)',old:[2],short:'المنتظم والشاذ',q:'لماذا نقول stolen وليس stealed؟',ref:'ص 58',
+  text:`الفعل <b>المنتظم</b> نضيف له ${e('-ed')}، كما في الماضي البسيط. والفعل <b>الشاذ</b> له صيغة خاصة تُحفظ مع الماضي: ${e('write – wrote – written')}.`,
+  head:['الفعل المنتظم','القاعدة','مثال'],
+  rows:[['أغلب الأفعال','+ ed','check → checked'],['ينتهي بـ e','+ d','arrive → arrived'],['حرف ساكن + y','y → ied','try → tried'],['قصير: ساكن + متحرك + ساكن','نضاعف الأخير + ed','stop → stopped']],
+  html:`<p><small>(قواعد الإملاء إضافة من خارج الكتاب)</small> والأفعال الشاذة في الدرس:</p>${vt(VERBS.filter(v=>v[4]).map(v=>[`${v[0]} → ${v[2]}`,v[3]]),['الفعل → التصريف الثالث','المعنى'])}`,
+  art:art(`<g data-tip="منتظم: نضيف ed — check → checked."><rect x="30" y="80" width="140" height="160" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(100,110,'regular',{fs:14,w:700,c:C.grn})}${['checked','ordered','repaired','crashed'].map((w,i)=>TL(100,145+i*24,w,{fs:13})).join('')}</g>
+    <g data-tip="شاذ: يُحفظ — steal → stolen."><rect x="190" y="80" width="140" height="160" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(260,110,'irregular',{fs:14,w:700,c:C.red})}${['stolen','taken','written','sold'].map((w,i)=>TL(260,145+i*24,w,{fs:13})).join('')}</g>`,'أفعال منتظمة وشاذة'),cap:'منتظم وشاذ. مرّر المؤشر على كل عمود.',lab:{title:'صنّف',w:(el,B)=>N.sort(el,B,{intro:'صنّف الفعل حسب تصريفه الثالث:',cats:['منتظم (ed)','شاذ'],items:[['order',0,'ordered'],['sell',1,'sold'],['repair',0,'repaired'],['speak',1,'spoken'],['send',1,'sent'],['crash',0,'crashed']]})}},
+ {t:'المضارع التام أم الماضي البسيط؟',old:[4],short:'لا مع yesterday',q:'هل تقول I have lost my key yesterday؟',ref:'ص 58',
+  text:`إذا ذكرنا <b>متى</b> حدث الشيء بالضبط نستعمل الماضي البسيط، وإذا لم نذكره وكانت نتيجته الآن نستعمل المضارع التام.`,
+  head:['الحالة','الزمن','مثال'],
+  rows:[['بلا وقت محدد، والنتيجة الآن','المضارع التام',"I've lost my key."],['مع وقت محدد في الماضي','الماضي البسيط','I lost my key yesterday.']],
+  html:`<p>كلمات الوقت المحدد التي تأتي مع الماضي البسيط: ${e('yesterday, last week, two hours ago, in 2005, When…?')}</p>`,
+  watch:`✘ ${e('I have lost my key yesterday.')} ✔ ${e('I lost my key yesterday.')}`,
+  art:art(`<g data-tip="بلا وقت محدد: المضارع التام."><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,111,"I've lost my key. ✔",{fs:15,w:700})}</g>
+    <g data-tip="مع yesterday: الماضي البسيط."><rect x="30" y="160" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,191,'I lost my key yesterday. ✔',{fs:15,w:700})}</g>
+    <g data-tip="خطأ: المضارع التام مع وقت محدد."><rect x="30" y="240" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,271,'I have lost it yesterday. ✘',{fs:15,w:700})}</g>`,'جملتان صحيحتان وجملة خاطئة'),cap:'الصحيح والخطأ. مرّر المؤشر على كل جملة.',lab:{title:'صح أم خطأ',w:(el,B)=>N.tf(el,B,{intro:'صح أم خطأ؟',items:[["The engine has stopped.",true,'لا وقت محدد: صحيحة.'],["We have finished the job last week.",false,'last week وقت محدد: We finished the job last week.'],["Has the technician arrived?",true,'سؤال صحيح.']]})}}
+ ]});
 B.lesson({
  id:'u8-l1',unit:8,order:1,pages:'58–59',
  title:'Recent incidents — حوادث وقعت للتو',
@@ -45,11 +89,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 58–59',html:`<ol><li>تبلّغ عن مشكلة حدثت للتو: ${e('My car has broken down.')}</li><li>تكوّن المضارع التام بـ ${e('have / has')} + التصريف الثالث.</li><li>تعرف التصريف الثالث للأفعال المنتظمة والشاذة.</li><li>تسأل ${e('Have you checked…?')} وتجيب ${e("Yes, I have. / No, I haven't.")}</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 58–59',html:vt(VOC81)},
-  {h:'المضارع التام',ref:'ص 58',html:`<p>نكوّنه بـ ${e('have')} (مع I/you/we/they) أو ${e('has')} (مع he/she/it) ثم <b>التصريف الثالث</b>:</p>${eb(["I<b>'ve changed</b> the tyre.","The machine <b>has broken</b> down.","Someone <b>has taken</b> my laptop."])}
-   <p>نستعمله لحدث <b>قريب</b> ما زالت نتيجته أمامنا، دون ذكر وقت محدد.</p>`},
-  {h:'متى لا نستعمله؟',ref:'ص 58',html:`<p>لا نضع المضارع التام مع وقت محدد في الماضي مثل ${e('yesterday, a week ago, in 2005')}؛ معها نستعمل الماضي البسيط:</p>${eb(['I <b>have lost</b> my key. ✔','I <b>lost</b> my key yesterday. ✔','I have lost my key yesterday. ✘'])}`},
-  {h:'التصريف الثالث',ref:'ص 58',html:`<p>المنتظم يضاف له ${e('-ed')}: ${e('check → checked, repair → repaired')}. والشاذ يُحفظ:</p>${vt(VERBS.filter(v=>v[4]).map(v=>[`${v[0]} → ${v[2]}`,v[3]]),['الفعل → التصريف الثالث','المعنى'])}`},
-  {h:'السؤال والجواب القصير',ref:'ص 59',html:`${eb(['<b>Have</b> you <b>checked</b> the brakes?',"Yes, I have.","<b>Has</b> he <b>repaired</b> the tyres?","No, he hasn't. He'll do it now."])}<p>لاحظ: الجواب القصير يعيد ${e('have/has')} فقط، ولا يعيد الفعل.</p>`},
+  ...R81.theory,
   {h:'تمارين الكتاب',ref:'ص 58–59',html:
    bk(1,'ص 58','مع زميلك: صف ما يحدث في الصورة، واذكر خمس مشكلات شائعة في السيارات.',null)+
    bk(4,'ص 58','أكمل الجمل بالأفعال في الصندوق، كلمتان في كل فراغ.',['have broken (example) · have taken','has happened · have lost','has fallen · has cut','have had · have driven'],'التمرين 4 مرتبط بالمكالمات في التمرين 3، وفيه أربع مكالمات.')+
@@ -61,37 +101,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'have / has + V3',title:'تكوين المضارع التام',q:'سيارتك توقفت للتو في الطريق. كيف تخبر خط الدعم؟',ref:'ص 58',
-   art:art(`<g data-tip="has مع he / she / it ومع اسم مفرد."><rect x="40" y="110" width="80" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(80,141,'has',{fs:18,w:700})}</g>
-    <g data-tip="التصريف الثالث: broken من break."><rect x="140" y="110" width="110" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(195,141,'broken',{fs:18,w:700})}</g>
-    <g data-tip="الجملة: My car has broken down. = تعطلت سيارتي للتو.">${TL(180,220,'My car has broken down.',{fs:16,w:700})}</g>${TL(270,141,'down',{fs:16})}`,'has + broken down'),
-   cap:'أجزاء الجملة. مرّر المؤشر على كل جزء.',
-   side:[{tip:`القالب: ${e('subject + have/has + past participle')}. و ${e("I've")} = ${e('I have')}، و ${e("He's")} قد تعني ${e('He has')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة (مواقف جديدة):',items:[
-     {s:'The printer ___ stopped.',o:['has','have','is'],a:0,why:'printer مفرد: has.'},
-     {s:'Someone has ___ my phone.',o:['took','taken','take'],a:1,why:'بعد has: التصريف الثالث taken.'},
-     {s:'We ___ lost the password.',o:['has','have','are'],a:1},
-     {s:'He has ___ his hand.',o:['cut','cutted','cuts'],a:0,why:'cut شاذ: cut / cut / cut.'}]}),title:'مختبر مصغّر: have / has'}]},
-  {st:2,short:'الأفعال الشاذة',title:'المنتظم والشاذ',q:'لماذا نقول stolen وليس stealed؟',ref:'ص 58',
-   art:art(`<g data-tip="منتظم: نضيف ed — check → checked."><rect x="30" y="80" width="140" height="160" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(100,110,'regular',{fs:14,w:700,c:C.grn})}${['checked','ordered','repaired','crashed'].map((w,i)=>TL(100,145+i*24,w,{fs:13})).join('')}</g>
-    <g data-tip="شاذ: يُحفظ — steal → stolen."><rect x="190" y="80" width="140" height="160" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(260,110,'irregular',{fs:14,w:700,c:C.red})}${['stolen','taken','written','sold'].map((w,i)=>TL(260,145+i*24,w,{fs:13})).join('')}</g>`,'أفعال منتظمة وشاذة'),
-   cap:'منتظم وشاذ. مرّر المؤشر على كل عمود.',
-   side:[{tip:'الشاذ لا قاعدة له، فاحفظ الثلاثة معاً: <span class="en">write – wrote – written</span>.'}],
-   body:[{widget:(el,B)=>N.sort(el,B,{intro:'صنّف الفعل حسب تصريفه الثالث:',cats:['منتظم (ed)','شاذ'],items:[['order',0,'ordered'],['sell',1,'sold'],['repair',0,'repaired'],['speak',1,'spoken'],['send',1,'sent'],['crash',0,'crashed']]}),title:'مختبر مصغّر: صنّف'}]},
-  {st:3,short:'Have you…?',title:'السؤال والجواب القصير',q:'المشرف يسأل: Have you checked the brakes? كيف تجيب بالنفي؟',ref:'ص 59',
-   art:art(`<g data-tip="المشرف يسأل بـ Have you + V3 …?"><rect x="30" y="70" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,104,'Have you cleaned the filter?',{fs:15,w:700})}</g>
-    <g data-tip="الجواب القصير يعيد have فقط."><rect x="30" y="170" width="140" height="50" rx="10" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(100,201,'Yes, I have.',{fs:14,w:700,c:'#fff'})}<rect x="190" y="170" width="140" height="50" rx="10" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(260,201,"No, I haven't.",{fs:14,w:700,c:'#fff'})}</g>`,'سؤال وجوابان قصيران'),
-   cap:'السؤال وجوابه. مرّر المؤشر على كل جزء.',
-   side:[{tip:'بعد الجواب القصير المنفي نَعِد بالفعل: <span class="en">No, I haven\'t. I\'ll do it now.</span>'}],
-   body:[{html:dl([['Supervisor','Have you changed the oil?'],['Mechanic','Yes, I have.'],['Supervisor','Good. What about the filter? Have you cleaned it?'],['Mechanic',"No, I haven't. I'll do it now."]])+'<p class="pk-ill">حوار جديد من عندنا على نمط التمرين 6.</p>'},
-    {widget:(el,B)=>N.cases(el,B,{intro:'اختر الجواب الصحيح:',cases:[{q:'Has the supplier sent the parts? (✓)',opts:[['Yes, he has.',1,''],['Yes, he sent.',0,'الجواب القصير: Yes, he has.'],['Yes, he have.',0,'he مع has.']]},{q:'Have you written the report? (✗)',opts:[["No, I haven't.",1,''],["No, I didn't write.",0,''],["No, I hasn't.",0,'I مع have.']]}]}),title:'مختبر مصغّر: الجواب القصير'}]},
-  {st:4,short:'لا مع yesterday',title:'المضارع التام والوقت المحدد',q:'هل تقول I have lost my key yesterday؟',ref:'ص 58',
-   art:art(`<g data-tip="بلا وقت محدد: المضارع التام."><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,111,"I've lost my key. ✔",{fs:15,w:700})}</g>
-    <g data-tip="مع yesterday: الماضي البسيط."><rect x="30" y="160" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,191,'I lost my key yesterday. ✔',{fs:15,w:700})}</g>
-    <g data-tip="خطأ: المضارع التام مع وقت محدد."><rect x="30" y="240" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,271,'I have lost it yesterday. ✘',{fs:15,w:700})}</g>`,'جملتان صحيحتان وجملة خاطئة'),
-   cap:'الصحيح والخطأ. مرّر المؤشر على كل جملة.',
-   side:[{tip:'إذا ذكرت <b>متى</b> بالضبط (yesterday, last week, in 2005, two hours ago) فاستعمل الماضي البسيط.'}],
-   body:[{widget:(el,B)=>N.tf(el,B,{intro:'صح أم خطأ؟',items:[["The engine has stopped.",true,'لا وقت محدد: صحيحة.'],["We have finished the job last week.",false,'last week وقت محدد: We finished the job last week.'],["Has the technician arrived?",true,'سؤال صحيح.']]}),title:'مختبر مصغّر: صح أم خطأ'}]},
+  ...R81.stations,
   {recap:['المضارع التام: have/has + التصريف الثالث لحدث قريب ونتيجته أمامنا.','المنتظم يضاف له ed، والشاذ يُحفظ (break → broken، take → taken).','السؤال: Have you …? والجواب: Yes, I have. / No, I haven\'t.','لا نستعمله مع yesterday أو in 2005 أو ago؛ معها الماضي البسيط.']}
  ],
  lab:lab81,

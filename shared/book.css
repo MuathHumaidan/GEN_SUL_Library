@@ -789,3 +789,6 @@ html[data-lang=en] .search svg{right:auto;left:14px}
 @media (max-width:600px){.langbtn .lg-l{display:none}.langbtn .lg-s{display:inline}}
 @media (max-width:600px){html[data-lang=en] .top-actions{gap:6px}html[data-lang=en] .stylebtn{padding:0 8px}html[data-lang=en] .fzb{padding:0 6px}html[data-lang=en] .fzv{min-width:32px}}
 html[data-lang=en] td[dir=rtl],html[data-lang=en] th[dir=rtl]{text-align:left}
+.theory h3.rh{font-size:1.08em;margin:1.3em 0 .4em;color:var(--blue-ink,var(--fg))}
+.theory h3.rh small{font-weight:500;color:var(--muted);font-size:.8em}
+.theory h3.rh .ref{font-size:.75em}

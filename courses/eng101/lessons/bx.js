@@ -72,7 +72,7 @@ const box=(lid,x)=>{const d=document.createElement('div');d.className='bx';d.dat
 /* الحقن: بعد مربع «في كتابك» (رسمي) أو في آخر المحطة (تفاعلي) */
 function inject(){const view=document.getElementById('view');if(!view)return;const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
   const sts=view.querySelectorAll('section[id^="st-"]');
-  if(sts.length){X.forEach(x=>{const s=view.querySelector('#st-'+(x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;s.appendChild(box(lid,x))});return}
+  if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;s.appendChild(box(lid,x))});return}
   const bks=[...view.querySelectorAll('.ebk')];if(!bks.length)return;
   X.forEach(x=>{if(view.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const t=bks.find(b=>{const h=b.querySelector('.eh b');return h&&h.textContent.trim()==='تمرين '+x.n});
     if(t)t.after(box(lid,x))})}

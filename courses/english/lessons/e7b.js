@@ -51,6 +51,54 @@ function lab72(el,B){
 
 const VOC72=[['quantity','الكمية',''],['countable noun','اسم معدود','له مفرد وجمع: screw → screws'],['uncountable noun','اسم غير معدود','لا جمع له: cement, oil, sand'],['screw','برغي',''],['nail','مسمار',''],['bolt / nut','مسمار بصامولة / صامولة',''],['concrete','خرسانة',''],['cement','أسمنت',''],['sand','رمل',''],['glue','غراء',''],['tin','علبة معدنية','six tins of paint'],['tube','أنبوب (عبوة)','two tubes of glue'],['bag','كيس','twenty bags of cement'],['packet','علبة كرتون صغيرة','two packets of nails'],['storey','طابق','How many storeys does it have?'],['elevator / lift','مصعد','elevator أمريكية و lift بريطانية'],['footprint','مساحة قاعدة المبنى على الأرض',''],['tonne','طن (1000 كجم)',''],['reinforced concrete','خرسانة مسلّحة','']];
 
+const R72=N.rule({title:'المعدود وغير المعدود، و some و any، و How many و How much',ref:'ص 55',
+ intro:`في المحل أو الورشة تطلب أشياء تُعدّ (براغي، مسامير) وأشياء لا تُعدّ (أسمنت، زيت، دهان). الإنجليزية تفرّق بينهما في: الجمع، والكلمة قبل الاسم (${e('a / some / any')})، وسؤال الكمية (${e('How many / How much')}). في هذا الشرح أربعة أجزاء بالترتيب.`,
+ parts:[
+ {t:'المعدود وغير المعدود',short:'معدود أم لا؟',old:[1],q:'هل تقول two cements أم two bags of cement؟',ref:'ص 55',
+  text:`<b>المعدود</b>: شيء نستطيع أن نعدّه واحد، اثنان، ثلاثة؛ له مفرد وجمع، ونضع قبله ${e('a/an')} أو رقماً. <b>غير المعدود</b>: مادة أو سائل أو مسحوق لا نعدّه حبة حبة؛ لا جمع له، ولا نضع قبله ${e('a')} ولا رقماً.`,
+  head:['النوع','القاعدة','مثال'],
+  rows:[['معدود','مفرد وجمع، و a أو رقم قبله','a screw · ten screws'],['غير معدود','بلا جمع، ولا a ولا رقم قبله','cement · oil · some paint']],
+  ex:['I need <b>a</b> screw. I need <b>fifty</b> screws.','I need <b>some</b> cement.'],
+  html:`<p>كلمات غير معدودة في هذا الدرس: ${e('paint, oil, glue, cement, concrete, sand, steel')}. وطريقة سهلة للتمييز: اسأل نفسك «هل أقول ثلاثة منه؟» ${e('three screws')} نعم؛ ${e('three cements')} لا.</p>`,
+  watch:[`✘ ${e('two cements')} ✔ ${e('two bags of cement')}`,`✘ ${e('a sand')} ✔ ${e('some sand')}`],
+  art:art(`<g data-tip="screws: معدود، نقول ten screws."><rect x="40" y="70" width="120" height="90" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${[0,1,2,3,4].map(i=>`<g transform="translate(${62+i*20},90)"><rect x="-3" y="0" width="6" height="40" fill="${C.mut}"/><rect x="-7" y="-4" width="14" height="6" rx="2" fill="${C.ink}"/></g>`).join('')}${TL(100,182,'screws',{fs:14,w:700})}</g>
+    <g data-tip="cement: غير معدود، نعدّ الأكياس: two bags of cement."><path d="M210 80 h100 l-8 90 h-84z" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(260,130,'CEMENT',{fs:13,w:700})}${TL(260,192,'a bag of cement',{fs:13,w:700})}</g>
+    <g data-tip="How many مع المعدود، و How much مع غير المعدود.">${TL(100,250,'How many?',{fs:16,w:700,c:C.blue})}${TL(260,250,'How much?',{fs:16,w:700,c:C.red})}</g>`,'براغٍ معدودة وكيس أسمنت غير معدود'),cap:'المعدود والغير معدود. مرّر المؤشر على كل منهما.',lab:{title:'صنّف',w:(el,B)=>N.sort(el,B,{intro:'صنّف كل كلمة:',cats:['معدود','غير معدود'],items:[['bolt',0,'bolt → bolts.'],['oil',1,'نقول two litres of oil.'],['bottle',0,'bottle → bottles.'],['sand',1,'نقول a bag of sand.'],['nail',0,'nail → nails.'],['concrete',1,'نقول 150,000 m³ of concrete.']]})}},
+ {t:'العبوات: كيف نعدّ غير المعدود؟',short:'العبوات',old:[3],q:'كيف تطلب دهاناً؟ وكيف تطلب غراءً؟',ref:'ص 55',
+  text:`غير المعدود لا نعدّه هو، بل نعدّ <b>العبوة</b> أو <b>الوحدة</b> التي فيها: رقم + عبوة + ${e('of')} + المادة. العبوة هي التي تُجمع، والمادة تبقى مفردة.`,
+  head:['العبوة','مع','مثال'],
+  rows:[['a tin of','paint · oil','six tins of paint'],['a tube of','glue','two tubes of glue'],['a bag of','cement · sand','twenty bags of cement'],['a packet of','nails · screws','two packets of nails'],['a litre of','oil · water','five litres of oil']],
+  watch:`✘ ${e('two tin of paints')} ✔ ${e('two tins of paint')} — نجمع العبوة لا المادة. ونكتب ${e('15 L')} ونقرؤها ${e('fifteen litres')}.`,
+  html:`<p><small>(السطر الأخير a litre of إضافة من خارج الكتاب)</small></p>`,
+  art:art(`${[['tin','paint',70,C.mut],['tube','glue',150,C.red],['bag','cement',230,C.yel],['packet','nails',300,C.grn]].map(([u,m,x,c])=>`<g data-tip="a ${u} of ${m}"><rect x="${x-30}" y="120" width="56" height="${u==='tube'?24:70}" rx="${u==='tin'?6:3}" fill="${c}" stroke="${C.ink}" stroke-width="2.5"/>${TL(x-2,220,u,{fs:14,w:700})}${TL(x-2,240,m,{fs:12})}</g>`).join('')}`,'أربع عبوات: tin و tube و bag و packet'),cap:'أربع عبوات. مرّر المؤشر على كل واحدة.',lab:{title:'اختر العبوة',w:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
+     {q:'Three ___ of superglue, please.',opts:[['tubes',1,'الغراء يباع في أنابيب.'],['bags',0,''],['tins',0,'']]},
+     {q:'We need forty ___ of cement.',opts:[['packets',0,''],['bags',1,'الأسمنت يباع في أكياس.'],['tubes',0,'']]},
+     {q:'Two large ___ of black paint, please.',opts:[['tins',1,'الدهان يباع في علب معدنية.'],['tubes',0,''],['packets',0,'']]}]})}},
+ {t:'some و any',short:'some / any',q:'Do you need some nails أم Do you need any nails؟',ref:'ص 55',
+  text:`${e('some')} و ${e('any')} معناهما «بعض / شيء من»، ونستعملهما مع <b>الجمع المعدود</b> ومع <b>غير المعدود</b> عندما لا نذكر الكمية بالضبط. ${e('some')} في الجملة المثبتة والطلب، و ${e('any')} في السؤال والنفي.`,
+  head:['الجملة','الكلمة','مثال'],
+  rows:[['مثبتة أو طلب','some','I need some nails. · I need some oil.'],['سؤال','any','Do you need any nails?'],['نفي','any',"We don't have any cement."]],
+  html:`<p><small>(إضافة من خارج الكتاب)</small> النفي بـ ${e('any')}، وفي العرض المهذب نستعمل ${e('some')} حتى في السؤال: ${e('Would you like some water?')}</p>`,
+  watch:[`مع المفرد المعدود لا نستعمل ${e('some')} ولا ${e('any')} بل ${e('a/an')}: ✘ ${e('some hammer')} ✔ ${e('a hammer')}`,`✘ ${e('Do you need some bolts?')} في سؤال عادي ✔ ${e('Do you need any bolts?')}`],
+  lab:{title:'some أم any أم a؟',intro:'اختر الصحيح:',items:[
+   {s:'I need ___ screws, please.',o:['some','any','a'],a:0,why:'جملة طلب مثبتة مع جمع: some.'},
+   {s:'Do you have ___ glue?',o:['some','any','a'],a:1,why:'سؤال: any.'},
+   {s:"We don't have ___ sand.",o:['some','any','a'],a:1,why:'نفي: any.'},
+   {s:'Can I have ___ spanner?',o:['some','any','a'],a:2,why:'spanner مفرد معدود: a.'},
+   {s:'I need ___ white paint.',o:['some','any','a'],a:0,why:'غير معدود في طلب مثبت: some.'}]}},
+ {t:'How many و How much',short:'How many / much',old:[2],q:'أيهما تقول: How many paint أم How much paint؟',ref:'ص 55',
+  text:`نسأل عن الكمية بـ ${e('How many')} مع <b>المعدود</b>، والاسم بعدها جمع دائماً. وبـ ${e('How much')} مع <b>غير المعدود</b>، والاسم بعدها مفرد.`,
+  head:['السؤال','مع','مثال'],
+  rows:[['How many','+ اسم معدود بالجمع','How many bolts do you need?'],['How much','+ اسم غير معدود','How much oil do you need?'],['How much','للسعر','How much is it? — It\'s 20 riyals.']],
+  html:`<p><small>(سؤال السعر إضافة من خارج الكتاب)</small> وأسئلة النوع في المحل: ${e('What size? · What colour? · What kind? · What type?')}</p>`,
+  watch:[`✘ ${e('How many screw')} ✔ ${e('How many screws')}`,`✘ ${e('How much nails')} ✔ ${e('How many nails')}`,`مع العبوة نستعمل How many لأن العبوة معدودة: ${e('How many tins of paint?')}`],
+  art:art(`<g data-tip="How many + اسم معدود بالجمع"><rect x="30" y="80" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.blue}" stroke-width="3"/>${TL(180,117,'How many nuts do you need?',{fs:16,w:700})}</g>
+    <g data-tip="How much + اسم غير معدود"><rect x="30" y="180" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,217,'How much oil do you need?',{fs:16,w:700})}</g>`,'سؤالان عن الكمية'),cap:'القالبان. مرّر المؤشر على كل سؤال.',lab:{title:'املأ الفراغ',w:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة:',items:[
+     {s:'___ tubes of glue do you need?',o:['How many','How much'],a:0,why:'tubes معدودة.'},
+     {s:'___ cement do you need?',o:['How many','How much'],a:1,why:'cement غير معدود.'},
+     {s:'Do you have ___ bolts?',o:['any','a','much'],a:0,why:'في السؤال: any.'},
+     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'في الطلب الإيجابي مع غير المعدود: some.'}]})}}
+ ]});
 B.lesson({
  id:'u7-l2',unit:7,order:2,pages:'54–55',
  title:'Quantities — الكميات',
@@ -58,12 +106,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 54–55',html:`<ol><li>تفرّق بين الاسم <b>المعدود</b> ${e('screws')} و<b>غير المعدود</b> ${e('cement')}.</li><li>تسأل عن الكمية بـ ${e('How many')} و ${e('How much')}.</li><li>تطلب مواد من محل: الكمية والنوع والمقاس واللون والعبوة.</li><li>تقرأ أسئلة وأجوبة عن مواصفات مبنى عالٍ.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 54–55',html:vt(VOC72)},
-  {h:'المعدود وغير المعدود',ref:'ص 55',html:`<p><b>المعدود</b> له مفرد وجمع، فنقول ${e('a screw')} و ${e('ten screws')}. <b>غير المعدود</b> مفرد دائماً ولا نضع قبله ${e('a')} ولا رقماً مباشرة، بل نعدّ عبواته:</p>
-   ${eb(['I need <b>a</b> screw. I need <b>fifty</b> screws.','I need <b>some</b> cement. I need <b>two bags of</b> cement.'])}
-   <p>في السؤال نستعمل ${e('any')}، وفي الطلب الإيجابي ${e('some')}:</p>${eb(['Do you need <b>any</b> nails?','Yes, I need <b>some</b> nails.'])}`},
-  {h:'How many و How much',ref:'ص 55',html:`<p>${e('How many')} مع <b>المعدود</b> (بالجمع)، و ${e('How much')} مع <b>غير المعدود</b>:</p>${eb(['<b>How many</b> bolts do you need?','<b>How much</b> oil do you need?'])}
-   <p>وأسئلة النوع: ${e('What size? · What colour? · What kind? · What type?')}</p>`},
-  {note:'<b>توضيح للمتدرب:</b> كلمات مثل <span class="en">paint, oil, glue, cement, concrete, sand, steel</span> غير معدودة في العادة، فلا تقل <span class="en">two paints</span> بل <span class="en">two tins of paint</span>. ونكتب <span class="en">15 L</span> ونقرؤها <span class="en">fifteen litres</span>.'},
+  ...R72.theory,
   {h:'تمارين الكتاب',ref:'ص 54–55',html:
    bk(1,'ص 54','اختبار المباني: طابق أسماء المباني السبعة مع الصور، واكتب الارتفاع التقريبي لكل مبنى.',null,'الإجابة من التسجيل في التمرين 2.')+
    upd('المعلومات في الكتاب صحيحة وقت طباعته. اليوم: أعلى مبنى مكتمل في العالم <b>برج خليفة</b> في دبي (نحو 828 م، افتُتح 2010)، أما <span class="en">Taipei 101</span> فكان الأعلى من 2004 إلى 2010. و<span class="en">Sears Tower</span> صار اسمه <span class="en">Willis Tower</span> منذ 2009، و<span class="en">Burj Dubai</span> صار اسمه برج خليفة. وأبراج البيت في مكة (<span class="en">Abraj Al Bait</span>) اكتملت 2012 بارتفاع نحو 601 م.')+
@@ -74,31 +117,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'معدود أم لا؟',title:'المعدود وغير المعدود',q:'هل تقول two cements أم two bags of cement؟',ref:'ص 55',
-   art:art(`<g data-tip="screws: معدود، نقول ten screws."><rect x="40" y="70" width="120" height="90" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${[0,1,2,3,4].map(i=>`<g transform="translate(${62+i*20},90)"><rect x="-3" y="0" width="6" height="40" fill="${C.mut}"/><rect x="-7" y="-4" width="14" height="6" rx="2" fill="${C.ink}"/></g>`).join('')}${TL(100,182,'screws',{fs:14,w:700})}</g>
-    <g data-tip="cement: غير معدود، نعدّ الأكياس: two bags of cement."><path d="M210 80 h100 l-8 90 h-84z" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(260,130,'CEMENT',{fs:13,w:700})}${TL(260,192,'a bag of cement',{fs:13,w:700})}</g>
-    <g data-tip="How many مع المعدود، و How much مع غير المعدود.">${TL(100,250,'How many?',{fs:16,w:700,c:C.blue})}${TL(260,250,'How much?',{fs:16,w:700,c:C.red})}</g>`,'براغٍ معدودة وكيس أسمنت غير معدود'),
-   cap:'المعدود والغير معدود. مرّر المؤشر على كل منهما.',
-   side:[{tip:`نسأل: ${e('Is it countable?')} هل له جمع؟ ${e('screw → screws')} نعم. ${e('cement')} لا.`}],
-   body:[{widget:(el,B)=>N.sort(el,B,{intro:'صنّف كل كلمة:',cats:['معدود','غير معدود'],items:[['bolt',0,'bolt → bolts.'],['oil',1,'نقول two litres of oil.'],['bottle',0,'bottle → bottles.'],['sand',1,'نقول a bag of sand.'],['nail',0,'nail → nails.'],['concrete',1,'نقول 150,000 m³ of concrete.']]}),title:'مختبر مصغّر: صنّف'}]},
-  {st:2,short:'How many / much',title:'السؤال عن الكمية',q:'أيهما تقول: How many paint أم How much paint؟',ref:'ص 55',
-   art:art(`<g data-tip="How many + اسم معدود بالجمع"><rect x="30" y="80" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.blue}" stroke-width="3"/>${TL(180,117,'How many nuts do you need?',{fs:16,w:700})}</g>
-    <g data-tip="How much + اسم غير معدود"><rect x="30" y="180" width="300" height="60" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,217,'How much oil do you need?',{fs:16,w:700})}</g>`,'سؤالان عن الكمية'),
-   cap:'القالبان. مرّر المؤشر على كل سؤال.',
-   side:[{tip:`بعد ${e('How many')} يأتي الجمع دائماً: ${e('How many screws')}، لا ${e('How many screw')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الكلمة الصحيحة:',items:[
-     {s:'___ tubes of glue do you need?',o:['How many','How much'],a:0,why:'tubes معدودة.'},
-     {s:'___ cement do you need?',o:['How many','How much'],a:1,why:'cement غير معدود.'},
-     {s:'Do you have ___ bolts?',o:['any','a','much'],a:0,why:'في السؤال: any.'},
-     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'في الطلب الإيجابي مع غير المعدود: some.'}]}),title:'مختبر مصغّر: املأ الفراغ'}]},
-  {st:3,short:'العبوات',title:'العبوات: tin, tube, bag, packet',q:'كيف تطلب دهاناً؟ وكيف تطلب غراءً؟',ref:'ص 55',
-   art:art(`${[['tin','paint',70,C.mut],['tube','glue',150,C.red],['bag','cement',230,C.yel],['packet','nails',300,C.grn]].map(([u,m,x,c])=>`<g data-tip="a ${u} of ${m}"><rect x="${x-30}" y="120" width="56" height="${u==='tube'?24:70}" rx="${u==='tin'?6:3}" fill="${c}" stroke="${C.ink}" stroke-width="2.5"/>${TL(x-2,220,u,{fs:14,w:700})}${TL(x-2,240,m,{fs:12})}</g>`).join('')}`,'أربع عبوات: tin و tube و bag و packet'),
-   cap:'أربع عبوات. مرّر المؤشر على كل واحدة.',
-   side:[{tip:`نقول ${e('six large tins of paint')} و ${e('two tubes of superglue')} و ${e('twenty bags of cement')} و ${e('two packets of 50 nails')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
-     {q:'Three ___ of superglue, please.',opts:[['tubes',1,'الغراء يباع في أنابيب.'],['bags',0,''],['tins',0,'']]},
-     {q:'We need forty ___ of cement.',opts:[['packets',0,''],['bags',1,'الأسمنت يباع في أكياس.'],['tubes',0,'']]},
-     {q:'Two large ___ of black paint, please.',opts:[['tins',1,'الدهان يباع في علب معدنية.'],['tubes',0,''],['packets',0,'']]}]}),title:'مختبر مصغّر: اختر العبوة'}]},
+  ...R72.stations,
   {st:4,short:'أسئلة عن مبنى',title:'أسئلة شائعة عن مبنى عالٍ',q:'ما السؤال الذي جوابه «It has 60 storeys»؟',ref:'ص 54',
    art:art(`<g data-tip="How high is it? — الارتفاع"><rect x="140" y="40" width="80" height="240" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${[...Array(10)].map((_,i)=>`<line x1="140" x2="220" y1="${60+i*22}" y2="${60+i*22}" stroke="${C.mut}"/>`).join('')}</g>
     <g data-tip="How many storeys does it have? — عدد الطوابق">${arrowS(240,60,240,270,C.blue,2.5,8)}${TL(290,170,'storeys',{fs:13,w:700,c:C.blue})}</g>

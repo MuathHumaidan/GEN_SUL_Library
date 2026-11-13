@@ -84,7 +84,7 @@ const eb=lines=>`<div class="enb" lang="en">${(Array.isArray(lines)?lines:[lines
 /* حوار جديد (ليس من الكتاب): [[المتحدث, الجملة]] */
 const dl=rows=>`<ul class="dlg" lang="en">${rows.map(([w,t])=>`<li><b>${w}:</b> ${t} ${sp(t)}</li>`).join('')}</ul>`;
 /* جدول كلمات: [[إنجليزي, عربي, ملاحظة]] */
-const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td${latinT(r[0])?' class="en" lang="en"':''}>${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E]+$/.test(r[1])?' class="en v2" lang="en"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt"${/^[\x20-\x7E·—–…’]+$/.test(r[2]||'')?' lang="en" dir="ltr" style="text-align:left"':''}>${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0])||'English'}</th><th>${(h&&h[1])||'المعنى'}</th>${rows.some(r=>r[2])?`<th>${(h&&h[2])||'ملاحظة'}</th>`:''}</tr></thead><tbody>${rows.map(r=>`<tr><td${latinT(r[0])?' class="en" lang="en"':''}>${r[0]} ${sp(r[0])}</td><td${/^[\x20-\x7E·—–…’→]+$/.test(r[1])?' class="en v2" lang="en" dir="ltr"':''}>${r[1]}</td>${rows.some(x=>x[2])?`<td class="nt"${/^[\x20-\x7E·—–…’]+$/.test(r[2]||'')?' lang="en" dir="ltr" style="text-align:left"':''}>${r[2]||''}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
 /* تمرين في الكتاب: يُحال إليه برقمه وصفحته، مع المطلوب بالعربي وإجابات البنود (للمراجعة) */
 const bk=(n,ref,task,ans,note)=>`<div class="ebk"><div class="eh"><span class="tg">في كتابك</span><b>تمرين ${n}</b><span class="ref">${ref}</span></div><p>${task}</p>${ans?`<details><summary>${Array.isArray(ans)?'الإجابات (بأرقام البنود)':'الإجابة'}</summary>${Array.isArray(ans)?`<ol class="ans" lang="en">${ans.map(a=>`<li>${a}</li>`).join('')}</ol>`:`<p>${ans}</p>`}${note?`<p class="ans-n">${note}</p>`:''}</details>`:''}</div>`;
 /* مقطع من صوتيات الكتاب: يُرفع الملف إلى courses/english/audio/track-NN.mp3 */
@@ -144,7 +144,28 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
     if(s){const p=gramParts(s);
       if(Array.isArray(L.theory)){const i=L.theory.findIndex(b=>b.h==='ماذا ستتعلم؟');L.theory.splice(i+1,0,...p.theory)}
       if(Array.isArray(L.stations)){const i=L.stations.findIndex(b=>b.intro);L.stations.splice(i+1,0,p.station)}}
-    if(Array.isArray(L.stations)){let n=0;L.stations.forEach(b=>{if(b.st!=null)b.st=++n})}
+    if(Array.isArray(L.stations)){let n=0;const M={};
+      /* تمارين «يقابل» (bx.js) مربوطة برقم المحطة الأصلي: نحفظ خريطة الرقم القديم ← الجديد */
+      L.stations.forEach(b=>{if(b.st==null)return;const nw=++n;if(b.st>0&&!b._old)M[b.st]=nw;(b._old||[]).forEach(o=>{M[o]=nw});b.st=nw});
+      (G.PLCBOOK.stMap=G.PLCBOOK.stMap||{})[L.id]=M}
     return ol(L)}}
-G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram};
+
+/* ===== «شرح القاعدة»: قسم شامل واحد يدمج شرح قاعدة الدرس =====
+   const R=ENK.rule({title,ref,intro,parts:[{t,short,q,ref,add,text,head,rows,ex,html,watch,art,cap,dlg,lab:{title,w|intro+items}}]})
+   ثم في الدرس: theory:[…ماذا ستتعلم، ...R.theory, …]  و stations:[{intro:true}, ...R.stations, …]
+   «رسمي»: عنوان «شرح القاعدة: …» ثم كل جزء بعنوان فرعي وجدوله وأمثلته و«انتبه» ومختبره. «التفاعلي»: محطة لكل جزء. */
+const rule=R=>{const TAG='إضافة من خارج الكتاب';
+  const labW=l=>l?(l.w||((el,B)=>gaps(el,B,{intro:l.intro,items:l.items}))):null;
+  const watchH=w=>w?(Array.isArray(w)?`<ul>${w.map(x=>`<li>${x}</li>`).join('')}</ul>`:w):'';
+  const theory=[{h:'شرح القاعدة: '+R.title,ref:R.ref,html:R.intro?`<p>${R.intro}</p>`:''}];
+  const stations=[];
+  R.parts.forEach((p,i)=>{const tbl=p.rows?vt(p.rows,p.head):'';const ex=p.ex&&p.ex.length?eb(p.ex):'';const dlg=p.dlg?dl(p.dlg):'';
+    theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3>${p.text?`<p>${p.text}</p>`:''}${tbl}${ex}${dlg}${p.html||''}`});
+    if(p.watch)theory.push({note:`<b>انتبه:</b> ${watchH(p.watch)}`});
+    if(p.lab){theory.push({html:`<p><b>مختبر مصغّر: ${p.lab.title}</b></p>`});theory.push({widget:labW(p.lab)})}
+    const side=p.text?[p.add?{add:p.text}:{tip:p.text}]:[];
+    stations.push({st:0,_old:p.old||[],short:p.short||p.t,title:p.t,q:p.q,ref:p.ref,...(p.art?{art:p.art,cap:p.cap}:{}),side,
+      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(p.watch?[{watch:watchH(p.watch)}]:[]),...(p.lab?[{widget:labW(p.lab),title:'مختبر مصغّر: '+p.lab.title}]:[])]})});
+  return {theory,stations}};
+G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule};
 })(window);
