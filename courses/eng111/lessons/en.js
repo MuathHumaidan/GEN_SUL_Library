@@ -156,16 +156,20 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
    «رسمي»: عنوان «شرح القاعدة: …» ثم كل جزء بعنوان فرعي وجدوله وأمثلته و«انتبه» ومختبره. «التفاعلي»: محطة لكل جزء. */
 const rule=R=>{const TAG='إضافة من خارج الكتاب';
   const labW=l=>l?(l.w||((el,B)=>gaps(el,B,{intro:l.intro,items:l.items}))):null;
-  const watchH=w=>w?(Array.isArray(w)?`<ul>${w.map(x=>`<li>${x}</li>`).join('')}</ul>`:w):'';
+  /* انتبه: الخطأ والصحيح متجاوران في صف واحد، ثم السبب تحتهما */
+  const pairsH=ps=>ps&&ps.length?`<div class="wx">${ps.map(p=>`<div class="wx-r"><span class="wx-x">✘ ${W(p[0])}</span><span class="wx-ok">✔ ${W(p[1])}</span>${p[2]?`<span class="wx-why">${p[2]}</span>`:''}</div>`).join('')}</div>`:'';
+  const watchH=p=>{const w=p.watch?(Array.isArray(p.watch)?p.watch.map(x=>`<p>${x}</p>`).join(''):`<p>${p.watch}</p>`):'';return pairsH(p.pairs)+w};
+  const body=p=>`${p.why?`<p class="rwhy"><b>لماذا نتعلمه؟</b> ${p.why}</p>`:''}${(p.points||[]).map(x=>`<p class="rpt">${x}</p>`).join('')}${p.text?`<p class="rpt">${p.text}</p>`:''}`;
   const theory=[{h:'شرح القاعدة: '+R.title,ref:R.ref,html:R.intro?`<p>${R.intro}</p>`:''}];
   const stations=[];
   R.parts.forEach((p,i)=>{const tbl=p.rows?vt(p.rows,p.head):'';const ex=p.ex&&p.ex.length?eb(p.ex):'';const dlg=p.dlg?dl(p.dlg):'';
-    theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3>${p.text?`<p>${p.text}</p>`:''}${tbl}${ex}${dlg}${p.html||''}`});
-    if(p.watch)theory.push({note:`<b>انتبه:</b> ${watchH(p.watch)}`});
+    const hasW=p.watch||(p.pairs&&p.pairs.length);
+    theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3><div class="rbody">${body(p)}</div>${tbl}${ex}${dlg}${p.html||''}`});
+    if(hasW)theory.push({note:`<b>انتبه: الخطأ والصحيح</b>${watchH(p)}`});
     if(p.lab){theory.push({html:`<p><b>مختبر مصغّر: ${p.lab.title}</b></p>`});theory.push({widget:labW(p.lab)})}
-    const side=p.text?[p.add?{add:p.text}:{tip:p.text}]:[];
+    const sb=body(p);const side=sb?[p.add?{add:sb}:{tip:sb}]:[];
     stations.push({st:0,_old:p.old||[],short:p.short||p.t,title:p.t,q:p.q,ref:p.ref,...(p.art?{art:p.art,cap:p.cap}:{}),side,
-      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(p.watch?[{watch:watchH(p.watch)}]:[]),...(p.lab?[{widget:labW(p.lab),title:'مختبر مصغّر: '+p.lab.title}]:[])]})});
+      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.lab?[{widget:labW(p.lab),title:'مختبر مصغّر: '+p.lab.title}]:[])]})});
   return {theory,stations}};
 G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule};
 })(window);
