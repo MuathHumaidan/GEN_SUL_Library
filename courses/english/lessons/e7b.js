@@ -51,15 +51,43 @@ function lab72(el,B){
 
 const VOC72=[['quantity','الكمية',''],['countable noun','اسم معدود','له مفرد وجمع: screw → screws'],['uncountable noun','اسم غير معدود','لا جمع له: cement, oil, sand'],['screw','برغي',''],['nail','مسمار',''],['bolt / nut','مسمار بصامولة / صامولة',''],['concrete','خرسانة',''],['cement','أسمنت',''],['sand','رمل',''],['glue','غراء',''],['tin','علبة معدنية','six tins of paint'],['tube','أنبوب (عبوة)','two tubes of glue'],['bag','كيس','twenty bags of cement'],['packet','علبة كرتون صغيرة','two packets of nails'],['storey','طابق','How many storeys does it have?'],['elevator / lift','مصعد','elevator أمريكية و lift بريطانية'],['footprint','مساحة قاعدة المبنى على الأرض',''],['tonne','طن (1000 كجم)',''],['reinforced concrete','خرسانة مسلّحة','']];
 
+/* رسوم العبوات: نفس الرسم في الشرح وفي المختبر */
+const PKD={
+ paint:{c:[72,165],g:`<ellipse cx="72" cy="128" rx="34" ry="9" fill="#cfd4d6" stroke="${C.ink}" stroke-width="2"/>
+  <path d="M38 128 V196 a34 9 0 0 0 68 0 V128" fill="#b9c0c3" stroke="${C.ink}" stroke-width="2"/>
+  <path d="M38 150 a34 9 0 0 0 68 0 M38 174 a34 9 0 0 0 68 0" fill="none" stroke="#8d969a" stroke-width="1.5"/>
+  <ellipse cx="72" cy="128" rx="26" ry="6" fill="#e07b39"/>
+  <path d="M60 131 q-2 14 2 22 q4-8 2-22z" fill="#e07b39"/>`},
+ glue:{c:[150,172],g:`<g transform="rotate(-35 150 175)">
+   <path d="M128 150 h44 l-4 70 h-36 z" fill="#f3f1ec" stroke="${C.ink}" stroke-width="2"/>
+   <rect x="126" y="214" width="48" height="8" fill="#dcd8cf" stroke="${C.ink}" stroke-width="1.5"/>
+   <path d="M128 222 h44 M128 226 h44" stroke="${C.ink}" stroke-width="1"/>
+   <path d="M140 150 h20 l-3 -12 h-14 z" fill="#d8d4ca" stroke="${C.ink}" stroke-width="1.5"/>
+   <rect x="142" y="124" width="16" height="14" rx="2" fill="${C.red}" stroke="${C.ink}" stroke-width="1.5"/>
+   <path d="M134 168 h32 M134 176 h24" stroke="${C.blue}" stroke-width="3"/>
+  </g>`},
+ cement:{c:[246,165],g:`<path d="M212 120 q34 -8 64 0 l6 92 q-38 10 -76 0 z" fill="#e6c76a" stroke="${C.ink}" stroke-width="2"/>
+  <path d="M212 120 q34 6 64 0" fill="none" stroke="${C.ink}" stroke-width="1.5"/>
+  <path d="M220 124 l-4 -8 m12 9 l-2 -9 m14 9 l0 -9 m14 9 l2 -9 m12 8 l4 -8" stroke="${C.ink}" stroke-width="1.5"/>
+  <rect x="222" y="150" width="46" height="30" rx="3" fill="#fff8e6" stroke="${C.ink}" stroke-width="1.2"/>
+  ${TL(245,170,'CEMENT',{fs:9,w:700})}`},
+ nails:{c:[319,166],g:`<path d="M296 118 h46 v96 h-46 z" fill="#7fb36a" stroke="${C.ink}" stroke-width="2"/>
+  <path d="M296 118 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 M296 214 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6" fill="none" stroke="${C.ink}" stroke-width="1.5"/>
+  <rect x="304" y="140" width="30" height="40" rx="3" fill="#f4f8ef" stroke="${C.ink}" stroke-width="1.2"/>
+  <path d="M312 148 v22 m-3 -22 h6 M320 148 v22 m-3 -22 h6 M328 148 v22 m-3 -22 h6" stroke="${C.ink}" stroke-width="1.6"/>`},
+};
+const pkd=(k,x,y,sc)=>`<g transform="translate(${x} ${y}) scale(${sc}) translate(${-PKD[k].c[0]} ${-PKD[k].c[1]})">${PKD[k].g}</g>`;
 /* ===== مختبرات «شرح القاعدة» 7.2: يختار المتدرب فتتكوّن الجملة بقطع ملونة ويتغير الرسم ===== */
 const NOUNS72={screw:{c:true,pl:'screws',ar:['برغي','براغٍ'],ic:'scr'},nail:{c:true,pl:'nails',ar:['مسمار','مسامير'],ic:'nail'},bottle:{c:true,pl:'bottles',ar:['زجاجة','زجاجات'],ic:'bot'},
- cement:{c:false,ar:'أسمنت',ic:'heap',box:'bags'},sand:{c:false,ar:'رمل',ic:'heap',box:'bags'},oil:{c:false,ar:'زيت',ic:'liq',box:'litres'},paint:{c:false,ar:'دهان',ic:'liq',box:'tins'}};
+ cement:{c:false,ar:'أسمنت',ic:'cem',box:'bags'},sand:{c:false,ar:'رمل',ic:'sand',box:'bags'},oil:{c:false,ar:'زيت',ic:'oil',box:'litres'},paint:{c:false,ar:'دهان',ic:'pnt',box:'tins'}};
 const ico72=(k,x,y)=>({scr:`<g transform="translate(${x} ${y})"><rect x="-9" y="-30" width="18" height="7" rx="2" fill="${C.ink}"/><path d="M-3 -23 V12 L0 18 L3 12 V-23" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.5"/><path d="M-5 -14 L5 -11 M-5 -6 L5 -3 M-5 2 L5 5" stroke="${C.ink}" stroke-width="1.2"/></g>`,
  nail:`<g transform="translate(${x} ${y})"><rect x="-8" y="-30" width="16" height="5" rx="2" fill="${C.ink}"/><path d="M-2 -25 V14 L0 20 L2 14 V-25" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.3"/></g>`,
  bot:`<g transform="translate(${x} ${y})"><rect x="-5" y="-30" width="10" height="9" fill="${C.ink}"/><path d="M-5 -21 Q-13 -14 -13 -4 V18 H13 V-4 Q13 -14 5 -21 Z" fill="#cfe6f5" stroke="${C.ink}" stroke-width="2"/></g>`,
- heap:`<g transform="translate(${x} ${y})"><path d="M-60 18 Q-40 -26 0 -30 Q40 -26 60 18 Z" fill="#d9d2c3" stroke="${C.ink}" stroke-width="2"/><circle cx="-20" cy="0" r="2" fill="${C.ink}"/><circle cx="10" cy="-12" r="2" fill="${C.ink}"/><circle cx="25" cy="6" r="2" fill="${C.ink}"/></g>`,
- liq:`<g transform="translate(${x} ${y})"><path d="M-62 18 Q-60 -2 -30 -6 Q0 -12 30 -5 Q62 0 60 18 Z" fill="#e07b39" opacity=".85" stroke="${C.ink}" stroke-width="2"/></g>`})[k];
-const scene72=(k,n)=>{const ic=NOUNS72[k].ic;let g='';if(ic==='heap'||ic==='liq'){g=ico72(ic,280,70)}else{const xs=n===1?[280]:n===3?[230,280,330]:[170,210,250,290,330,370,410];xs.forEach(x=>{g+=ico72(ic,x,70)})}
+ cem:`<g transform="translate(${x} ${y})"><path d="M-70 18 Q-50 -24 -10 -28 Q30 -24 50 18 Z" fill="#b9b8b1" stroke="${C.ink}" stroke-width="2"/><path d="M-40 4 q10 -6 20 0 M0 -8 q8 -5 16 0" stroke="#8d8c86" stroke-width="2" fill="none"/>${pkd('cement',95,-6,.42)}</g>`,
+ sand:`<g transform="translate(${x} ${y})"><path d="M-75 18 Q-45 -20 0 -24 Q45 -20 75 18 Z" fill="#e8c37a" stroke="${C.ink}" stroke-width="2"/>${[[-40,4],[-20,-8],[0,2],[18,-12],[34,6],[-6,-16],[50,10],[-55,12]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="1.8" fill="#9a7633"/>`).join('')}<path d="M70 -30 l-30 40" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/><path d="M34 6 q-6 14 6 16 q12 -2 6 -14 z" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.5"/></g>`,
+ oil:`<g transform="translate(${x} ${y})"><path d="M-30 -34 h18 v8 h-18 z" fill="${C.ink}"/><path d="M-36 -26 h30 l6 10 v34 h-42 v-34 z" fill="#f2c14e" stroke="${C.ink}" stroke-width="2"/><rect x="-32" y="-8" width="30" height="14" rx="2" fill="#fff8e6" stroke="${C.ink}" stroke-width="1"/>${TL(-17,3,'OIL',{fs:9,w:700})}<path d="M30 -10 q-10 14 0 20 q10 -6 0 -20 z" fill="#d99a1b" stroke="${C.ink}" stroke-width="1.5"/><path d="M10 18 q20 -6 40 0" stroke="#d99a1b" stroke-width="5" fill="none" stroke-linecap="round"/></g>`,
+ pnt:`<g transform="translate(${x} ${y})">${pkd('paint',-40,0,.5)}<path d="M5 14 q20 -20 40 -6 q20 14 40 -4" stroke="#e07b39" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M78 -26 l-14 22" stroke="#8a5a2b" stroke-width="5" stroke-linecap="round"/><rect x="58" y="-6" width="12" height="10" rx="2" transform="rotate(33 64 0)" fill="#e07b39" stroke="${C.ink}" stroke-width="1.2"/></g>`})[k];
+const scene72=(k,n)=>{const ic=NOUNS72[k].ic;let g='';if(!NOUNS72[k].c){g=ico72(ic,280,66)}else{const xs=n===1?[280]:n===3?[230,280,330]:[170,210,250,290,330,370,410];xs.forEach(x=>{g+=ico72(ic,x,70)})}
  return `<svg viewBox="0 0 560 110" aria-hidden="true"><rect x="0" y="0" width="560" height="110" rx="14" fill="${C.bg}"/>${g}</svg>`};
 const LAB72A={title:'معدود أم غير معدود؟',w:(el,B)=>N.labB(el,B,{intro:'اختر اسماً ثم اختر الصيغة، وشاهد كيف تتكوّن الكلمة. الأخضر هو الاسم، والأصفر هو ما يأتي قبله.',
  controls:[{k:'n',label:'الاسم',opts:Object.keys(NOUNS72).map(k=>[k,k])},{k:'f',label:'الصيغة',opts:[['one','واحد'],['many','أكثر من واحد'],['num','مع رقم (3)'],['q','السؤال عن الكمية']]}],
@@ -74,13 +102,9 @@ const LAB72A={title:'معدود أم غير معدود؟',w:(el,B)=>N.labB(el,B,
   return{svg:scene72(n),pieces:[['How much','q','كم كمية'],[n,'n','مفرد'],['do you need?','x','']],say:`How much ${n} do you need?`,ar:`كم تحتاج من ال${x.ar}؟`,why:'نسأل عن كمية غير المعدود بـ How much، والاسم بعدها مفرد.'}}})};
 const BOX72={paint:['tin','tins','علبة','علب','دهان'],glue:['tube','tubes','أنبوب','أنابيب','غراء'],cement:['bag','bags','كيس','أكياس','أسمنت'],nails:['packet','packets','كيس','أكياس','مسامير']};
 const NUM72={1:'one',2:'two',5:'five',20:'twenty'};
-const pkg72=(m,n)=>{const d=n>5?5:n,w=60,x0=280-(d-1)*w/2;let g='';
- const one=(x)=>({paint:`<g transform="translate(${x} 0)"><ellipse cx="0" cy="40" rx="20" ry="6" fill="#cfd4d6" stroke="${C.ink}" stroke-width="1.5"/><path d="M-20 40 V82 a20 6 0 0 0 40 0 V40" fill="#b9c0c3" stroke="${C.ink}" stroke-width="1.5"/><ellipse cx="0" cy="40" rx="15" ry="4" fill="#e07b39"/></g>`,
-  glue:`<g transform="translate(${x} 0) rotate(-30 0 62)"><path d="M-12 42 h24 l-2 40 h-20 z" fill="#f3f1ec" stroke="${C.ink}" stroke-width="1.5"/><rect x="-5" y="32" width="10" height="10" rx="2" fill="${C.red}" stroke="${C.ink}" stroke-width="1.2"/></g>`,
-  cement:`<g transform="translate(${x} 0)"><path d="M-20 36 q20 -5 40 0 l4 50 q-24 6 -48 0 z" fill="#e6c76a" stroke="${C.ink}" stroke-width="1.5"/></g>`,
-  nails:`<g transform="translate(${x} 0)"><rect x="-15" y="36" width="30" height="50" fill="#7fb36a" stroke="${C.ink}" stroke-width="1.5"/><path d="M-6 46 v22 M0 46 v22 M6 46 v22" stroke="${C.ink}" stroke-width="1.6"/></g>`})[m];
- for(let i=0;i<d;i++)g+=one(x0+i*w);
- return `<svg viewBox="0 0 560 110" aria-hidden="true"><rect x="0" y="0" width="560" height="110" rx="14" fill="${C.bg}"/>${g}${n>5?`<text x="${x0+d*w-10}" y="66" font-family="monospace" font-weight="700" font-size="22" fill="${C.ink}">… ×${n}</text>`:''}</svg>`};
+const pkg72=(m,n)=>{const d=n>5?5:n,w=78,x0=280-(d-1)*w/2;let g='';
+ for(let i=0;i<d;i++)g+=pkd(m,x0+i*w,58,.6);
+ return `<svg viewBox="0 0 560 116" aria-hidden="true"><rect x="0" y="0" width="560" height="116" rx="14" fill="${C.bg}"/>${g}${n>5?`<text x="${x0+(d-1)*w+40}" y="66" font-family="monospace" font-weight="700" font-size="22" fill="${C.ink}">… ×${n}</text>`:''}</svg>`};
 const LAB72B={title:'ركّب الطلب بالعبوة',w:(el,B)=>N.labB(el,B,{intro:'اختر المادة والعدد، وشاهد العبوات وكيف تتكوّن الجملة. لاحظ أن العبوة هي التي تُجمع.',
  controls:[{k:'m',label:'المادة',opts:Object.keys(BOX72).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','1'],['2','2'],['5','5'],['20','20']]}],
  out:({m,n})=>{n=+n;const b=BOX72[m],one=n===1;
@@ -125,36 +149,11 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
   html:`<p><small>(السطر الأخير a litre of إضافة من خارج الكتاب)</small> ونكتب ${e('15 L')} ونقرؤها ${e('fifteen litres')}.</p>`,
   pairs:[['two tin of paints','two tins of paint','نجمع العبوة (tins) لا المادة (paint).'],['three glues','three tubes of glue','glue غير معدود، فنعدّ الأنابيب.']],
   art:art(`
- <g data-tip="a tin of paint: علبة معدنية، للدهان والزيت." transform="translate(-22 0)">
-  <ellipse cx="72" cy="128" rx="34" ry="9" fill="#cfd4d6" stroke="${C.ink}" stroke-width="2"/>
-  <path d="M38 128 V196 a34 9 0 0 0 68 0 V128" fill="#b9c0c3" stroke="${C.ink}" stroke-width="2"/>
-  <path d="M38 150 a34 9 0 0 0 68 0 M38 174 a34 9 0 0 0 68 0" fill="none" stroke="#8d969a" stroke-width="1.5"/>
-  <ellipse cx="72" cy="128" rx="26" ry="6" fill="#e07b39"/>
-  <path d="M60 131 q-2 14 2 22 q4-8 2-22z" fill="#e07b39"/>
-  ${TL(72,234,'a tin',{fs:13,w:700})}${TL(72,251,'of paint',{fs:11})}</g>
- <g data-tip="a tube of glue: أنبوب يُعصر، للغراء." transform="translate(-6 -14)">
-  <g transform="rotate(-35 150 175)">
-   <path d="M128 150 h44 l-4 70 h-36 z" fill="#f3f1ec" stroke="${C.ink}" stroke-width="2"/>
-   <rect x="126" y="214" width="48" height="8" fill="#dcd8cf" stroke="${C.ink}" stroke-width="1.5"/>
-   <path d="M128 222 h44 M128 226 h44" stroke="${C.ink}" stroke-width="1"/>
-   <path d="M140 150 h20 l-3 -12 h-14 z" fill="#d8d4ca" stroke="${C.ink}" stroke-width="1.5"/>
-   <rect x="142" y="124" width="16" height="14" rx="2" fill="${C.red}" stroke="${C.ink}" stroke-width="1.5"/>
-   <path d="M134 168 h32 M134 176 h24" stroke="${C.blue}" stroke-width="3"/>
-  </g>
-  ${TL(156,248,'a tube',{fs:13,w:700})}${TL(156,265,'of glue',{fs:11})}</g>
- <g data-tip="a bag of cement: كيس كبير، للأسمنت والرمل.">
-  <path d="M212 120 q34 -8 64 0 l6 92 q-38 10 -76 0 z" fill="#e6c76a" stroke="${C.ink}" stroke-width="2"/>
-  <path d="M212 120 q34 6 64 0" fill="none" stroke="${C.ink}" stroke-width="1.5"/>
-  <path d="M220 124 l-4 -8 m12 9 l-2 -9 m14 9 l0 -9 m14 9 l2 -9 m12 8 l4 -8" stroke="${C.ink}" stroke-width="1.5"/>
-  <rect x="222" y="150" width="46" height="30" rx="3" fill="#fff8e6" stroke="${C.ink}" stroke-width="1.2"/>
-  ${TL(245,170,'CEMENT',{fs:9,w:700})}
-  ${TL(246,234,'a bag',{fs:13,w:700})}${TL(246,251,'of cement',{fs:11})}</g>
- <g data-tip="a packet of nails: علبة أو كيس صغير مغلق، للمسامير والبراغي." transform="translate(8 0)">
-  <path d="M296 118 h46 v96 h-46 z" fill="#7fb36a" stroke="${C.ink}" stroke-width="2"/>
-  <path d="M296 118 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 M296 214 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6" fill="none" stroke="${C.ink}" stroke-width="1.5"/>
-  <rect x="304" y="140" width="30" height="40" rx="3" fill="#f4f8ef" stroke="${C.ink}" stroke-width="1.2"/>
-  <path d="M312 148 v22 m-3 -22 h6 M320 148 v22 m-3 -22 h6 M328 148 v22 m-3 -22 h6" stroke="${C.ink}" stroke-width="1.6"/>
-  ${TL(319,234,'a packet',{fs:13,w:700})}${TL(319,251,'of nails',{fs:11})}</g>`,'أربع عبوات: علبة دهان وأنبوب غراء وكيس أسمنت وكيس مسامير'),cap:'أربع عبوات من رسمنا. مرّر المؤشر على كل واحدة.',labs:[LAB72B,{title:'اختر العبوة',w:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
+ <g data-tip="a tin of paint: علبة معدنية، للدهان والزيت." transform="translate(-22 0)">${PKD.paint.g}${TL(72,234,'a tin',{fs:13,w:700})}${TL(72,251,'of paint',{fs:11})}</g>
+ <g data-tip="a tube of glue: أنبوب يُعصر، للغراء." transform="translate(-6 -14)">${PKD.glue.g}${TL(156,248,'a tube',{fs:13,w:700})}${TL(156,265,'of glue',{fs:11})}</g>
+ <g data-tip="a bag of cement: كيس كبير، للأسمنت والرمل.">${PKD.cement.g}${TL(246,234,'a bag',{fs:13,w:700})}${TL(246,251,'of cement',{fs:11})}</g>
+ <g data-tip="a packet of nails: علبة أو كيس صغير مغلق، للمسامير والبراغي." transform="translate(8 0)">${PKD.nails.g}${TL(319,234,'a packet',{fs:13,w:700})}${TL(319,251,'of nails',{fs:11})}</g>
+`,'أربع عبوات: علبة دهان وأنبوب غراء وكيس أسمنت وكيس مسامير'),cap:'أربع عبوات من رسمنا. مرّر المؤشر على كل واحدة.',labs:[LAB72B,{title:'اختر العبوة',w:(el,B)=>N.cases(el,B,{intro:'اختر العبوة المناسبة:',cases:[
      {q:'Three ___ of superglue, please.',opts:[['tubes',1,'الغراء يباع في أنابيب.'],['bags',0,''],['tins',0,'']]},
      {q:'We need forty ___ of cement.',opts:[['packets',0,''],['bags',1,'الأسمنت يباع في أكياس.'],['tubes',0,'']]},
      {q:'Two large ___ of black paint, please.',opts:[['tins',1,'الدهان يباع في علب معدنية.'],['tubes',0,''],['packets',0,'']]}]})}]},
