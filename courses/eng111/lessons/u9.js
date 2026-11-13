@@ -23,15 +23,59 @@ function lab9a(el,B){kcss();
   $('#ro').innerHTML=a===b?eb(`The number of employees stayed the same: ${a}.`):eb([`The number of employees ${b>a?'increased':'decreased'} from ${a.toLocaleString('en')} to ${b.toLocaleString('en')}.`,`= It ${b>a?'rose':'fell'} / It went ${b>a?'up':'down'}.`])};
  ['a','b'].forEach(x=>$('#'+x).addEventListener('input',rs));rs();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 9 ===== */
+const PV9=[...REG.map(r=>[r[0],r[1],r[0].endsWith('e')?'ينتهي بـ e: نضيف d':'منتظم: نضيف ed']),...IRR.map(r=>[r[0],r[1],'شاذ: يُحفظ'])];
+const LAB191A={title:'الماضي البسيط',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل، وشاهد ماضيه: منتظم أم شاذ؟',
+ controls:[{k:'v',label:'الفعل',opts:PV9.map((p,i)=>[String(i),p[0]])}],
+ out:({v})=>{const [b,p,r]=PV9[+v];return{pieces:[['In 1992,','q','زمن ماضٍ'],['they','n',''],[p,'k',r],['…','x','']],say:`${b}, ${p}`,why:`الماضي البسيط لحدث انتهى في زمن ماضٍ. المنتظم + ${e('ed')}، والشاذ يُحفظ: ${e('meet → met · make → made')}`}}})};
+const LAB191B={title:'تاريخ الشركة',w:(el,B)=>N.labB(el,B,{intro:'اختر السنة، وشاهد ما حدث فيها بالماضي البسيط.',
+ controls:[{k:'y',label:'السنة',opts:HIST.map((h,i)=>[String(i),String(h[0])])}],
+ out:({y})=>{const [yr,s,v,o]=HIST[+y];return{pieces:[['In '+yr+',','q','السنة'],[s.replace(/^They|^The|^It|^Two/,m=>m.toLowerCase()),'n','الفاعل'],[v,'k','ماضٍ'],[o,'x','']],say:`In ${yr}, ${s.replace(/^They|^The|^It|^Two/,m=>m.toLowerCase())} ${v} ${o}`,why:`مع السنة نستعمل ${e('in')}، والفعل في الماضي البسيط.`}}})};
+const CH9={rise:['rose','increased','ارتفع',1],fall:['fell','decreased','انخفض',-1]};
+const LAB191C={title:'أفعال التغيير مع الأرقام',w:(el,B)=>N.labB(el,B,{intro:'اختر اتجاه التغيير والفعل، وشاهد الرسم والجملة مع from … to.',
+ controls:[{k:'d',label:'التغيير',opts:[['rise','ارتفاع'],['fall','انخفاض']]},{k:'v',label:'الفعل',opts:[['a','rose / fell'],['b','increased / decreased'],['c','went up / went down']]}],
+ out:({d,v})=>{const [a,b,ar,s]=CH9[d],verb=v==='a'?a:v==='b'?b:(s>0?'went up':'went down'),f=s>0?1.3:3000,t=s>0?1.7:2000,sub=s>0?'Profit':'The number of employees',fmt=x=>s>0?'$'+x+' million':String(x);
+  const y1=s>0?110:40,y2=s>0?40:110;return{svg:`<svg viewBox="0 0 300 140" width="280"><line x1="30" y1="125" x2="280" y2="125" stroke="#555"/><line x1="30" y1="10" x2="30" y2="125" stroke="#555"/><polyline points="60,${y1} 250,${y2}" fill="none" stroke="${s>0?'#00875a':'#d2452f'}" stroke-width="5"/><circle cx="60" cy="${y1}" r="6" fill="#333"/><circle cx="250" cy="${y2}" r="6" fill="#333"/></svg>`,
+   pieces:[[sub,'n',''],[verb,'k',ar],['from '+fmt(f),'q','من'],['to '+fmt(t)+'.','q','إلى']],say:`${sub} ${verb} from ${fmt(f)} to ${fmt(t)}.`,why:`${e('increase = rise = go up')}، و ${e('decrease = fall = go down')}. ومع الأرقام ${e('from … to …')}`}}})};
+const LAB192A={title:'المضارع التام أم الماضي البسيط؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الحدث وكلمة الزمن. الزمن يُختار تلقائياً: هل ذكرنا متى حدث؟',
+ controls:[{k:'e',label:'الحدث',opts:EVT.map((x,i)=>[String(i),x[0]])},{k:'t',label:'متى',opts:TREF.map((x,i)=>[String(i),x==='(no time)'?'لم نذكر الوقت':x])}],
+ out:({e:ev,t})=>{const [b,p,pp,o]=EVT[+ev],tr=TREF[+t];if(+t===0)return{pieces:[['The company','n',''],['has','q','has + التصريف الثالث'],[pp,'k','التصريف الثالث'],[o+'.','x','بلا وقت محدد']],say:`The company has ${pp} ${o}.`,why:'لم نذكر متى حدث، المهم النتيجة الآن: المضارع التام.'};
+  return{pieces:[['The company','n',''],[p,'k','الماضي البسيط'],[o,'x',''],[tr+'.','q','وقت ماضٍ محدد']],say:`The company ${p} ${o} ${tr}.`,why:`مع وقت ماضٍ محدد مثل ${e(tr)} نستعمل الماضي البسيط، لا المضارع التام.`}}})};
+const LAB192B={title:'already · just · yet',w:(el,B)=>N.labB(el,B,{intro:'اختر الخطة والكلمة، وشاهد مكانها في الجملة.',
+ controls:[{k:'p',label:'الخطة',opts:PLAN.map((x,i)=>[String(i),x[0]])},{k:'w',label:'الكلمة',opts:[['just','just للتو'],['already','already بالفعل'],['yetn','yet في النفي'],['yetq','yet في السؤال']]}],
+ out:({p,w})=>{const P=PLAN[+p],pos=P[2].replace(/\.$/,''),m=pos.match(/^They have (\w+) (.*)$/),v=m[1],o=m[2];
+  const nb=P[1]?(w==='yetn'?'هذه الخطة نُفّذت، فالنفي هنا لا يطابق الواقع. جرّب just أو already.':''):(w==='just'||w==='already'?'هذه الخطة لم تُنفّذ بعد، فالأنسب النفي أو السؤال بـ yet.':'');
+  if(w==='just'||w==='already')return{bad:nb,pieces:[["They've",'n','= They have'],[w,'k','بين have والتصريف الثالث'],[v,'q','التصريف الثالث'],[o+'.','x','']],say:`They've ${w} ${v} ${o}.`,why:`${e('just')} للتو، و ${e('already')} بالفعل، وتأتيان بين ${e('have')} والتصريف الثالث.`};
+  if(w==='yetn')return{bad:nb,pieces:[["They haven't",'r','نفي'],[v,'q','التصريف الثالث'],[o,'x',''],['yet.','k','في آخر الجملة']],say:`They haven't ${v} ${o} yet.`,why:`${e('yet')} في النفي = «بعد»، وتأتي في آخر الجملة.`};
+  return{pieces:[['Have they','q','سؤال'],[v,'q','التصريف الثالث'],[o,'x',''],['yet?','k','في آخر السؤال']],say:`Have they ${v} ${o} yet?`,why:`${e('yet')} في السؤال = «حتى الآن؟»، وتأتي في آخره.`}}})};
+const LK9={and:['and','و','They have expanded their office space','they have recruited ten new staff.'],but:['but','لكن','They have expanded their office space',"they haven't opened a new branch yet."],so:['so','لذلك','Sales have increased','they have recruited ten new staff.'],bec:['because','لأن','They have recruited ten new staff','sales have increased.']};
+const LAB192C={title:'اربط الجملتين',w:(el,B)=>N.labB(el,B,{intro:'اختر أداة الربط، وشاهد الجملتين مربوطتين.',
+ controls:[{k:'l',label:'الأداة',opts:Object.keys(LK9).map(k=>[k,LK9[k][0]])}],
+ out:({l})=>{const [w,ar,a,b]=LK9[l];return{pieces:[[a+(w==='because'?'':','),'n','الجملة الأولى'],[w,'k',ar],[b,'n','الجملة الثانية']],say:`${a}${w==='because'?'':','} ${w} ${b}`,why:`${e('and')} إضافة، و ${e('but')} عكس، و ${e('so')} نتيجة، و ${e('because')} سبب.`}}})};
+const R191=N.rule({title:'الماضي البسيط، وأفعال التغيير',ref:'ص 42–43',
+ intro:`في هذا الدرس تحكي تاريخ شركة: متى تأسست، وماذا صنعت، وكيف تغيرت أرقامها. نحتاج الماضي البسيط بنوعيه، ثم أفعال التغيير مع الأرقام.`,
+ parts:[
+ {t:'الماضي البسيط',short:'met · made · launched',old:[1],q:'لماذا نقول launched لكن met؟',ref:'ص 42',
+  lead:`التاريخ أحداث وقعت وانتهت في زمن ماضٍ، فنحكيها بالماضي البسيط. وأفعاله نوعان: منتظم وشاذ.`,
+  points:[`<b>المنتظم</b> نضيف له ${e('ed')}: ${e('launch → launched · develop → developed')}`,`والمنتهي بـ ${e('e')} نضيف له ${e('d')}: ${e('move → moved · introduce → introduced')}`,`<b>الشاذ</b> له صيغة خاصة تُحفظ: ${e('meet → met · make → made · sell → sold · build → built')}`,
+   `الماضي واحد مع كل الضمائر: ${e('I launched · it launched · they launched')}`,`مع السنة نستعمل ${e('in')}: ${e('In 1992, they launched the company.')}`],
+  html:vt(REG.map(r=>[r[0],r[1]]),['الفعل','الماضي (+ ed / d)'])+vt(IRR.map(r=>[r[0],r[1]]),['الفعل الشاذ','الماضي'])+eb(['The two founders met at university.','In 1992, they launched the company.','In 2019, it sold its millionth panel.']),
+  pairs:[['They meeted at university.','They met at university.','meet شاذ: met.'],['In 1992, they launch the company.','In 1992, they launched the company.','حدث ماضٍ: launched.']],
+  art:art(`${HIST.slice(0,5).map((h,i)=>`<g data-tip="${h[0]}: ${h[1]} ${h[2]} ${h[3]}"><rect x="20" y="${30+i*52}" width="320" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(70,57+i*52,String(h[0]),{fs:14,w:700})}${TL(220,57+i*52,h[2],{fs:15,w:700})}</g>`).join('')}`,'خط زمني'),cap:'تاريخ شركة من إعدادنا. مرّر المؤشر على كل سنة.',labs:[LAB191A,LAB191B,{title:'الماضي',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'They ___ at university in 1985.',o:['met','meeted'],a:0},{s:'In 1992, they ___ the company.',o:['launched','launch'],a:0},{s:'The company ___ a factory in 2001.',o:['built','builded'],a:0},{s:'It ___ a million panels.',o:['sold','selled'],a:0}]})}]},
+ {t:'أفعال التغيير',short:'rose · fell',old:[2],q:'ما الفرق بين rose و fell؟',ref:'ص 43',
+  lead:`عندما نصف كيف تغيرت أرقام الشركة نستعمل أفعال الارتفاع والانخفاض، مع ${e('from … to …')}.`,
+  points:[`<b>ارتفاع:</b> ${e('increase = rise = go up')}، وماضيها ${e('increased · rose · went up')}`,`<b>انخفاض:</b> ${e('decrease = fall = go down')}، وماضيها ${e('decreased · fell · went down')}`,`مع الأرقام: ${e('Profit rose from $1.3 million to $1.7 million.')}`,`وأفعال أخرى: ${e('expand')} يتوسع، و ${e('move')} ينتقل، و ${e('build')} يبني.`],
+  html:vt([['increase = rise = go up','يرتفع / يزيد'],['decrease = fall = go down','ينخفض / يقل'],['expand','يتوسّع'],['move','ينتقل'],['change','يغيّر'],['build','يبني']],['English','المعنى']),
+  pairs:[['Profit rised.','Profit rose.','rise شاذ: rose.'],['It went up of 10 to 15.','It went up from 10 to 15.','مع الأرقام: from … to.']],
+  art:art(`<g data-tip="increase = rise = go up"><polyline points="30,220 100,180 170,140 240,90 310,50" fill="none" stroke="${C.grn}" stroke-width="5"/>${TL(250,40,'rose / went up',{fs:13,w:700})}</g><g data-tip="decrease = fall = go down"><polyline points="30,80 100,120 170,160 240,200 310,230" fill="none" stroke="${C.red}" stroke-width="5"/>${TL(250,260,'fell / went down',{fs:13,w:700})}</g>`,'rise fall'),cap:'خط يرتفع وخط ينخفض. مرّر المؤشر على كل منهما.',labs:[LAB191C,{title:'التغيير',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Profit ___ from $1.3 million to $1.7 million.',o:['increased','decreased'],a:0},{s:'The number of employees ___ from 3000 to 2000.',o:['fell','rose'],a:0},{s:'Sales went ___ last year. (ارتفعت)',o:['up','down'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u9-l1',unit:9,order:1,pages:'42–43',
  title:'Part A: Talking about company history — تاريخ الشركة',
  summary:'الماضي البسيط في سرد تاريخ شركة: الأفعال المنتظمة (launched، developed، introduced) والشاذة (met، made، sold، built، left)، وأفعال التغيير (increase / decrease، rise / fall، go up / go down، expand، move، change)، وكتابة فقرة عن تاريخ شركة من ملاحظات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 42–43',html:`<p>تحكي تاريخ شركة. ستتعلم:</p><ol><li>الماضي البسيط المنتظم والشاذ.</li><li>أفعال التغيير.</li><li>كتابة فقرة من ملاحظات.</li></ol>`},
-  {h:'الماضي البسيط',ref:'ص 42',html:`${vt(REG.map(r=>[r[0],r[1]]),['الفعل','الماضي (+ ed / d)'])}${vt(IRR.map(r=>[r[0],r[1]]),['الفعل الشاذ','الماضي'])}${eb(['The two founders met at university.','In 1992, they launched the company.','In 2019, it sold its millionth panel.'])}`},
-  {h:'أفعال التغيير',ref:'ص 43',html:`${vt([['increase = rise = go up','يرتفع / يزيد'],['decrease = fall = go down','ينخفض / يقل'],['expand','يتوسّع'],['move','ينتقل'],['change','يغيّر'],['build','يبني']],['English','المعنى'])}${eb(['The number of employees decreased from 3000 to 2000.','Profit rose from $1.3 million to $1.7 million.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> مع الأرقام نستعمل <span class="en">from … to …</span>: <span class="en">It went up from 10 to 15.</span>'},
+  ...R191.theory,
   {h:'تمارين الكتاب',ref:'ص 42–43',html:
    bk(1,'ص 42','استمع ورتّب مراحل تاريخ الشركة، واكتب الماضي تحت كل مرحلة.',['a: c → f → b → d → a → e','b: c met · f made · b launched · d developed · a sold · e introduced'])+
    bk(2,'ص 42','اكتب مع زميلك تاريخ الشركة من الملاحظات.',null)+
@@ -41,14 +85,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الماضي البسيط',title:'met · made · launched',q:'كيف تحكي متى بدأت شركة؟',ref:'ص 42',
-   art:art(`${HIST.slice(0,5).map((h,i)=>`<g data-tip="${h[0]}: ${h[1]} ${h[2]} ${h[3]}"><rect x="20" y="${30+i*52}" width="320" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(70,57+i*52,String(h[0]),{fs:14,w:700})}${TL(220,57+i*52,h[2],{fs:15,w:700})}</g>`).join('')}`,'خط زمني'),
-   cap:'تاريخ شركة من إعدادنا. مرّر المؤشر على كل سنة.',side:[{tip:`في الماضي البسيط الفعل واحد لكل الضمائر: ${e('I met, he met, they met')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'They ___ at university in 1985.',o:['met','meeted'],a:0},{s:'In 1992, they ___ the company.',o:['launched','launch'],a:0},{s:'The company ___ a factory in 2001.',o:['built','builded'],a:0},{s:'It ___ a million panels.',o:['sold','selled'],a:0}]}),title:'مختبر مصغّر: الماضي'}]},
-  {st:2,short:'rise · fall',title:'أفعال التغيير',q:'كيف تقول إن الأرباح ارتفعت؟',ref:'ص 43',
-   art:art(`<g data-tip="increase = rise = go up"><polyline points="30,220 100,180 170,140 240,90 310,50" fill="none" stroke="${C.grn}" stroke-width="5"/>${TL(250,40,'rose / went up',{fs:13,w:700})}</g><g data-tip="decrease = fall = go down"><polyline points="30,80 100,120 170,160 240,200 310,230" fill="none" stroke="${C.red}" stroke-width="5"/>${TL(250,260,'fell / went down',{fs:13,w:700})}</g>`,'rise fall'),
-   cap:'خط يرتفع وخط ينخفض. مرّر المؤشر على كل منهما.',side:[{tip:`${e('rise → rose')} و ${e('fall → fell')} شاذان.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Profit ___ from $1.3 million to $1.7 million.',o:['increased','decreased'],a:0},{s:'The number of employees ___ from 3000 to 2000.',o:['fell','rose'],a:0},{s:'Sales went ___ last year. (ارتفعت)',o:['up','down'],a:0}]}),title:'مختبر مصغّر: التغيير'}]},
+  ...R191.stations,
   {recap:['regular: launched, developed, introduced.','irregular: met, made, sold, built, left.','increase / rise / go up ≠ decrease / fall / go down.','from … to …','expand, move, change, build.']}
  ],
  lab:lab9a,
@@ -84,17 +121,41 @@ function lab9b(el,B){kcss();
  const ps=()=>{$('#pl').innerHTML=PLAN.map((p,i)=>`<div class="ph-row" style="align-items:center"><button type="button" class="btn${st[i]?' pri':''}" data-p="${i}" style="min-width:42px">${st[i]?'✓':'✗'}</button><span class="en">${p[0]}</span></div>`).join('')+eb(PLAN.map((p,i)=>st[i]?p[2]:p[3]));
   el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{st[+b.dataset.p]^=1;ps()})};ps();
 }
+const R192=N.rule({title:'المضارع التام والماضي البسيط، و already / just / yet، والربط',ref:'ص 44–45',
+ intro:`في هذا الدرس تصف تغييرات حدثت في شركة. نشرح المضارع التام والفرق بينه وبين الماضي البسيط، ثم ${e('already · just · yet')}، ثم أدوات الربط.`,
+ parts:[
+ {t:'المضارع التام والماضي البسيط',short:'has closed · closed',old:[1],q:'لماذا نقول has closed لكن closed last month؟',ref:'ص 44',
+  lead:`الزمنان يتكلمان عن شيء حدث في الماضي. الفرق: هل نذكر متى حدث؟`,
+  points:[`<b>المضارع التام:</b> ${e('have / has')} + التصريف الثالث، عندما لا نذكر الوقت ويهمنا أن الحدث وقع: ${e('The company has closed its factory.')}`,`<b>الماضي البسيط:</b> عندما نذكر وقتاً ماضياً محدداً: ${e('The factory closed last month.')}`,
+   `<b>كلمات الزمن الماضي</b> تمنع المضارع التام: ${e('yesterday · last week · in 2002 · two months ago')}`,`<b>التصريف الثالث</b> للمنتظم مثل الماضي (${e('opened')})، وللشاذ يُحفظ (${e('go → went → gone')}).`,
+   `${e("They've")} = ${e('They have')}، و ${e("It's closed")} هنا = ${e('It has closed')}.`],
+  grid:{head:['English','الزمن','الصيغة'],rows:[['The company has closed its factory.','لا زمن ماضٍ محدد','المضارع التام'],['The factory closed last month.','زمن ماضٍ محدد','الماضي البسيط'],['He has left the company.','لا زمن','المضارع التام'],['He left in June.','in June','الماضي البسيط']]},
+  html:vt(IRR.map(r=>[r[0],r[1],r[2]]).concat([['open','opened','opened'],['join','joined','joined']]),['الفعل','الماضي','التصريف الثالث']),
+  pairs:[['The factory has closed last month.','The factory closed last month.','مع last month: الماضي البسيط.'],['He has went.','He has gone.','بعد has: التصريف الثالث.']],
+  art:art(`<g data-tip="لا زمن محدد ← المضارع التام"><rect x="20" y="60" width="320" height="56" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,93,'The company has closed its factory.',{fs:14,w:700})}</g>
+    <g data-tip="last month ← الماضي البسيط"><rect x="20" y="140" width="320" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,173,'The factory closed last month.',{fs:14,w:700})}</g>`,'present perfect'),cap:'خبران عن الحدث نفسه. مرّر المؤشر على كل منهما.',labs:[LAB192A,{title:'الزمن',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Two new accountants ___ the company.',o:['have joined','joined'],a:0,why:'لا زمن محدد.'},{s:'We ___ a new factory in 2001.',o:['built','have built'],a:0,why:'in 2001.'},{s:'Our costs ___ down last year.',o:['went','have gone'],a:0},{s:'He ___ the company.',o:['has left','left'],a:0}]})}]},
+ {t:'already · just · yet',short:'already · just · yet',old:[2],q:'أين نضع yet في الجملة؟',ref:'ص 45',
+  lead:`مع المضارع التام كلمات تحدد متى حدث الشيء بالنسبة للآن، ولكل منها مكان في الجملة.`,
+  points:[`${e('just')} = للتو، بين ${e('have')} والتصريف الثالث: ${e("They've just installed new software.")}`,`${e('already')} = بالفعل (أسرع من المتوقع)، في المكان نفسه: ${e('The company has already recruited ten new staff.')}`,
+   `${e('yet')} في النفي = «بعد»، في آخر الجملة: ${e("They haven't opened the office yet.")}`,`${e('yet')} في السؤال = «حتى الآن؟»، في آخره: ${e('Have they changed their computer system yet?')}`],
+  grid:{head:['الكلمة','المعنى','مكانها'],rows:[['just','للتو','have + just + التصريف الثالث'],['already','بالفعل','have + already + التصريف الثالث'],['yet','بعد / حتى الآن','آخر النفي والسؤال']]},
+  pairs:[["They haven't yet opened the office.","They haven't opened the office yet.",'yet في آخر الجملة.'],["They've installed just new software.","They've just installed new software.",'just قبل التصريف الثالث.']],
+  art:art(`<g data-tip="just = للتو"><rect x="20" y="40" width="320" height="50" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,71,"They've just installed new software.",{fs:13,w:700,c:'#fff'})}</g>
+    <g data-tip="already = بالفعل"><rect x="20" y="110" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,141,"They've already recruited ten staff.",{fs:13,w:700})}</g>
+    <g data-tip="yet في النفي = بعد"><rect x="20" y="180" width="320" height="50" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,211,"They haven't opened the branch yet.",{fs:13,w:700,c:'#fff'})}</g>`,'already yet'),cap:'ثلاث كلمات مع المضارع التام. مرّر المؤشر على كل منها.',labs:[LAB192B,{title:'already / yet',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"They haven't changed the logo ___.",o:['yet','already'],a:0},{s:"We've ___ found new investors. (بالفعل)",o:['already','yet'],a:0},{s:'Have they opened the branch ___?',o:['yet','just'],a:0}]})}]},
+ {t:'الربط',short:'and · but · so · because',q:'ما الفرق بين so و because؟',ref:'ص 45',
+  lead:`لنربط جملتين في جملة واحدة نستعمل أداة ربط تبين العلاقة بينهما.`,
+  points:[`${e('and')} = و (إضافة)، و ${e('but')} = لكن (عكس).`,`${e('so')} = لذلك (نتيجة): ${e('Sales have increased, so they have recruited new staff.')}`,`${e('because')} = لأن (سبب): ${e('They have recruited new staff because sales have increased.')}`],
+  html:eb("They have expanded their office space, but they haven't opened a new branch yet."),
+  labs:[LAB192C]}
+ ]});
 B.lesson({
  id:'u9-l2',unit:9,order:2,pages:'44–45',
  title:'Part B: Company changes — تغيّرات الشركة',
  summary:'المضارع التام (have / has + التصريف الثالث) للتغيّرات دون زمن محدد، والماضي البسيط مع زمن ماضٍ محدد (last month، in 2001، yesterday)، و already / just / yet، والسؤال Have they …?، والربط بـ and، but، so، because في كتابة تقرير عن تغيّرات شركة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 44–45',html:`<p>تتحدث وتكتب عن تغيّرات في شركة. ستتعلم:</p><ol><li>المضارع التام.</li><li>الفرق بينه وبين الماضي البسيط.</li><li>${e('already, just, yet')}.</li><li>أدوات الربط.</li></ol>`},
-  {h:'المضارع التام والماضي البسيط',ref:'ص 44',html:`${vt([['The company has closed its factory.','لا زمن ماضٍ محدد','المضارع التام'],['The factory closed last month.','زمن ماضٍ محدد','الماضي البسيط'],['He has left the company.','لا زمن','المضارع التام'],['He left in June.','in June','الماضي البسيط']],['English','الزمن','الصيغة'])}<p>كلمات الزمن الماضي: ${e('yesterday, last week, last month, in 2002, ten years ago, two months ago')}.</p>`},
-  {h:'التصريف الثالث',ref:'ص 44',html:vt(IRR.map(r=>[r[0],r[1],r[2]]).concat([['open','opened','opened'],['join','joined','joined']]),['الفعل','الماضي','التصريف الثالث'])},
-  {h:'already · just · yet',ref:'ص 45',html:`${vt([["They've just installed new software.",'just = للتو'],["The company has already recruited ten new staff.",'already = بالفعل'],["They haven't opened the office yet.",'yet في النفي = بعد'],['Have they changed their computer system yet?','yet في السؤال']],['English','المعنى'])}`},
-  {h:'الربط',ref:'ص 45',html:`${vt([['and','و'],['but','لكن'],['so','لذلك'],['because','لأن']],['English','المعنى'])}${eb("They have expanded their office space, but they haven't opened a new branch yet.")}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">have / has</span> + التصريف الثالث: <span class="en">They\'ve</span> = <span class="en">They have</span>، و <span class="en">It\'s closed</span> هنا = <span class="en">It has closed</span>.'},
+  ...R192.theory,
   {h:'تمارين الكتاب',ref:'ص 44–45',html:
    bk(1,'ص 44','ضع خطاً تحت الأفعال، ثم أكمل بالماضي البسيط أو المضارع التام.',['a: has left · left · has closed · closed','b: 1 rose · 2 have joined · 3 built · 4 have opened · 5 went down · 6 have reduced'])+
    bk(2,'ص 44–45','نشاط ثنائي: اسأل زميلك عمّا تغيّر في الشركة، وأجب عن أسئلته.',null,'معلومات الطالب أ في ص 81 من الكتاب.')+
@@ -103,17 +164,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'تام أم بسيط؟',title:'has closed · closed last month',q:'لماذا نقول has closed مرة و closed مرة؟',ref:'ص 44',
-   art:art(`<g data-tip="لا زمن محدد ← المضارع التام"><rect x="20" y="60" width="320" height="56" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,93,'The company has closed its factory.',{fs:14,w:700})}</g>
-    <g data-tip="last month ← الماضي البسيط"><rect x="20" y="140" width="320" height="56" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,173,'The factory closed last month.',{fs:14,w:700})}</g>`,'present perfect'),
-   cap:'خبران عن الحدث نفسه. مرّر المؤشر على كل منهما.',side:[{tip:`إذا ذكرت متى حدث بالضبط فاستعمل الماضي البسيط.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Two new accountants ___ the company.',o:['have joined','joined'],a:0,why:'لا زمن محدد.'},{s:'We ___ a new factory in 2001.',o:['built','have built'],a:0,why:'in 2001.'},{s:'Our costs ___ down last year.',o:['went','have gone'],a:0},{s:'He ___ the company.',o:['has left','left'],a:0}]}),title:'مختبر مصغّر: الزمن'}]},
-  {st:2,short:'already · yet',title:'already · just · yet',q:'كيف تقول إنهم لم يفتحوا الفرع بعد؟',ref:'ص 45',
-   art:art(`<g data-tip="just = للتو"><rect x="20" y="40" width="320" height="50" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,71,"They've just installed new software.",{fs:13,w:700,c:'#fff'})}</g>
-    <g data-tip="already = بالفعل"><rect x="20" y="110" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,141,"They've already recruited ten staff.",{fs:13,w:700})}</g>
-    <g data-tip="yet في النفي = بعد"><rect x="20" y="180" width="320" height="50" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,211,"They haven't opened the branch yet.",{fs:13,w:700,c:'#fff'})}</g>`,'already yet'),
-   cap:'ثلاث كلمات مع المضارع التام. مرّر المؤشر على كل منها.',side:[{tip:`${e('yet')} في آخر الجملة، و ${e('just / already')} بين ${e('have')} والفعل.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"They haven't changed the logo ___.",o:['yet','already'],a:0},{s:"We've ___ found new investors. (بالفعل)",o:['already','yet'],a:0},{s:'Have they opened the branch ___?',o:['yet','just'],a:0}]}),title:'مختبر مصغّر: already / yet'}]},
+  ...R192.stations,
   {recap:['have / has + past participle.','لا زمن محدد ← has closed؛ زمن محدد ← closed last month.','just, already (قبل الفعل) · yet (في الآخر، نفي وسؤال).','and, but, so, because.']}
  ],
  lab:lab9b,

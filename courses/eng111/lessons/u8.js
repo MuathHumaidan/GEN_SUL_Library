@@ -32,15 +32,66 @@ function lab8a(el,B){kcss();
   else{flush();dir=(dir+(a==='R'?1:3))%4;steps.push(a==='R'?'Turn right.':'Turn left.')}draw()});
  $('#rs').onclick=reset;$('#tg').addEventListener('input',reset);reset();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 8 ===== */
+const DR8={l:['Turn left.','انعطف يساراً','l'],r:['Turn right.','انعطف يميناً','r'],s:['Go straight on for ten minutes.','امشِ مباشرة','s'],t2:['Take the second right.','خذ الشارع الثاني يميناً','t2'],op:["It's opposite the bank.",'مقابل البنك','op'],see:["You'll see our office on the left.",'سترى المكتب على اليسار','see']};
+const st8=k=>{const road='<rect x="150" y="10" width="60" height="200" fill="#ddd"/>',ar=(d)=>d;let g='';
+ if(k==='l')g=road+'<rect x="20" y="70" width="140" height="50" fill="#ddd"/>'+AR8(180,190,180,95)+AR8(180,95,60,95);
+ else if(k==='r')g=road+'<rect x="200" y="70" width="140" height="50" fill="#ddd"/>'+AR8(180,190,180,95)+AR8(180,95,300,95);
+ else if(k==='s')g=road+AR8(180,200,180,25);
+ else if(k==='t2')g=road+'<rect x="200" y="140" width="140" height="30" fill="#ddd"/><rect x="200" y="50" width="140" height="30" fill="#ddd"/><text x="260" y="160" font-size="11" text-anchor="middle">1st</text><text x="260" y="70" font-size="11" text-anchor="middle">2nd</text>'+AR8(180,200,180,65)+AR8(180,65,320,65);
+ else if(k==='op')g=road+'<rect x="60" y="80" width="80" height="60" fill="#cfe6f7" stroke="#555"/><text x="100" y="115" font-size="12" text-anchor="middle">bank</text><rect x="220" y="80" width="80" height="60" fill="#f3e3c1" stroke="#d2452f" stroke-width="3"/><text x="260" y="115" font-size="12" text-anchor="middle">office</text>';
+ else g=road+'<rect x="60" y="40" width="80" height="60" fill="#f3e3c1" stroke="#d2452f" stroke-width="3"/><text x="100" y="75" font-size="12" text-anchor="middle">office</text>'+AR8(180,200,180,40);
+ return `<svg viewBox="0 0 360 220" width="300">${g}</svg>`};
+const AR8=(x1,y1,x2,y2)=>{const a=Math.atan2(y2-y1,x2-x1),p=t=>[x2-12*Math.cos(a+t),y2-12*Math.sin(a+t)].map(v=>v.toFixed(1)).join(',');return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1f5fd1" stroke-width="6" stroke-linecap="round"/><polygon points="${x2},${y2} ${p(.5)} ${p(-.5)}" fill="#1f5fd1"/>`};
+const LAB181A={title:'تعليمات الاتجاه',w:(el,B)=>N.labB(el,B,{intro:'اختر التعليمة، وشاهد الرسم والجملة.',
+ controls:[{k:'d',label:'التعليمة',opts:Object.keys(DR8).map(k=>[k,DR8[k][1]])}],
+ out:({d})=>{const [a,ar]=DR8[d];return{svg:st8(d),pieces:[[a,'n',ar]],say:a,why:`التعليمة تبدأ بالفعل: ${e('Turn · Take · Go')}. و ${e('opposite')} = مقابل، و ${e('on the left')} = على اليسار.`}}})};
+const MT8={line:['Take the Red line','northbound.','خذ الخط','باتجاه الشمال'],chg:['Change at Central station','for the Green line.','غيّر في','للخط الأخضر'],off:['Get off at','King Fahd Road.','انزل في','اسم المحطة'],stop:["It's the",'second stop.','هي','المحطة الثانية']};
+const LAB181B={title:'المترو والقطار',w:(el,B)=>N.labB(el,B,{intro:'اختر الخطوة في رحلة المترو، وشاهد العبارة.',
+ controls:[{k:'s',label:'الخطوة',opts:[['line','1 الخط'],['chg','2 التغيير'],['off','3 النزول'],['stop','4 عدد المحطات']]}],
+ out:({s})=>{const [a,b,x,y]=MT8[s];return{pieces:[[a,'k',x],[b,'n',y]],say:`${a} ${b}`,why:`${e('northbound')} باتجاه الشمال، و ${e('change at')} غيّر في، و ${e('get off at')} انزل في. وللتحقق كرر التعليمات: ${e('So, I need the Red line northbound …')}`}}})};
+const TR8={train:['by','train'],bus:['by','bus'],car:['by','car'],foot:['on','foot']};
+const LAB181C={title:'by train أم on foot؟',w:(el,B)=>N.labB(el,B,{intro:'اختر وسيلة الوصول، وشاهد حرف الجر.',
+ controls:[{k:'t',label:'الوسيلة',opts:[['train','القطار'],['bus','الحافلة'],['car','السيارة'],['foot','مشياً']]}],
+ out:({t})=>{const [p,w]=TR8[t];return{pieces:[['I go to work','x',''],[p,'k',p==='on'?'استثناء':'مع الوسائل'],[w+'.','n','بلا the']],say:`I go to work ${p} ${w}.`,why:`${e('by')} مع وسائل النقل بلا ${e('the')}: ${e('by train · by car')}، لكن ${e('on foot')} سيراً على الأقدام.`}}})};
+const LAB182A={title:'في الاستقبال',w:(el,B)=>N.labB(el,B,{intro:'اختر الزائر، ثم السطر، وشاهد ما يقوله الزائر وما يرد به موظف الاستقبال.',
+ controls:[{k:'v',label:'الزائر',opts:VIS.slice(0,2).map((v,i)=>[String(i),v.nm])},{k:'s',label:'السطر',opts:[['1','التعريف'],['2','سبب الزيارة'],['3','الموعد'],['4','الانتظار']]}],
+ out:({v,s})=>{const V=VIS[+v],to=V.to,he=/^Ms/.test(to)?'She':'He',him=he==='She'?'her':'him';
+  const L={1:[`Good morning. My name's ${V.nm} from ${V.co}.`,'الزائر','Can I help you?','الموظف'],2:[`I'm here to see ${to}.`,'الزائر','What department is that?','الموظف'],3:[`I have an appointment at ${V.ap}.`,'الزائر',`One moment, please. I'll call ${to}.`,'الموظف'],4:['Thank you.','الزائر',`Please take a seat. ${he}'ll be down in a moment.`,'الموظف']}[s];
+  return{pieces:[[L[0],'q',L[1]],[L[2],'n',L[3]]],say:`${L[0]} ${L[2]}`,why:s==='4'?`${e("He'll be down")} = سينزل من مكتبه.`:`${e("I'm here to see …")} = جئت لأقابل …، و ${e("I'll")} للوعد.`}}})};
+const HM8={hi:["Hello. I'm Turki Al-Shehri.",'Hello. Paul Grant. Nice to meet you.','التعارف'],card:["Here's my business card.","Oh, thank you. Here's mine.",'تبادل البطاقات'],jr:['Did you have a good journey?','Yes, thank you. It was fine.','السؤال عن الرحلة'],th:['Thank you for coming.',"You're welcome.",'الشكر']};
+const LAB182B={title:'لقاء المضيف',w:(el,B)=>N.labB(el,B,{intro:'اختر خطوة اللقاء، وشاهد العبارة والرد.',
+ controls:[{k:'s',label:'الخطوة',opts:Object.keys(HM8).map(k=>[k,HM8[k][2]])}],
+ out:({s})=>{const [a,b]=HM8[s];return{pieces:[[a,'q',''],[b,'n','الرد']],say:`${a} ${b}`,why:s==='card'?`${e('mine')} = بطاقتي، بدل أن نكرر ${e('my card')}.`:s==='th'?`${e("You're welcome.")} = العفو.`:`${e('Did you …?')} سؤال عن الماضي.`}}})};
+const R181=N.rule({title:'السؤال عن الطريق والاتجاهات، والمترو والقطار',ref:'ص 38–39',
+ intro:`في هذا الدرس تسأل عن الطريق إلى مكان في المدينة، وتصف الطريق لزائر. نشرح عبارات الاتجاه، ثم عبارات المترو والقطار ووسائل النقل.`,
+ parts:[
+ {t:'السؤال والاتجاهات',short:'Turn left · Go straight on',old:[1],q:'كيف تصف لزائر طريق المتحف؟',ref:'ص 38',
+  lead:`وصف الطريق سلسلة تعليمات قصيرة تبدأ بالفعل، ثم معلم يراه الزائر.`,
+  points:[`<b>السؤال:</b> ${e('How do I get to the National Museum?')}`,`<b>التعليمات:</b> ${e('Turn left / right.')} و ${e('Take the second right.')} و ${e('Go straight on for ten minutes.')}`,`<b>المعلم:</b> ${e("You'll see our office on the left.")} و ${e("It's opposite the bank.")}`,`<b>المسافة:</b> ${e("It's a twenty-minute walk.")} (${e('minute')} بلا ${e('s')} لأنها صفة هنا)`],
+  html:vt([['How do I get to the National Museum?','كيف أصل إلى …؟'],['Turn left / right.','انعطف يساراً / يميناً'],['Take the second right.','خذ الشارع الثاني يميناً'],['Go straight on for ten minutes.','امشِ مباشرة'],["You'll see our office on the left.",'سترى … على اليسار'],["It's opposite the bank.",'مقابل البنك'],["It's a twenty-minute walk, or you can take a taxi.",'مشي عشرين دقيقة']],['English','المعنى']),
+  pairs:[["It's a twenty-minutes walk.","It's a twenty-minute walk.",'قبل الاسم بلا s.']],
+  art:art(`<line x1="180" y1="270" x2="180" y2="40" stroke="#c9c2b0" stroke-width="22"/><line x1="40" y1="140" x2="320" y2="140" stroke="#c9c2b0" stroke-width="22"/><line x1="40" y1="70" x2="320" y2="70" stroke="#c9c2b0" stroke-width="22"/>
+    <g data-tip="Go straight on = امشِ مباشرة"><polygon points="180,250 192,226 168,226" fill="${C.blue}"/>${TL(240,240,'go straight on',{fs:12,w:700})}</g>
+    <g data-tip="the first right = أول شارع يميناً">${TL(270,130,'first right',{fs:12,w:700})}</g>
+    <g data-tip="the second left = ثاني شارع يساراً">${TL(90,60,'second left',{fs:12,w:700})}</g>
+    <g data-tip="opposite the bank = مقابل البنك"><rect x="200" y="86" width="60" height="36" fill="${C.yel}" stroke="${C.ink}"/>${TL(230,108,'bank',{fs:11,w:700})}<rect x="100" y="86" width="60" height="36" fill="${C.paper}" stroke="${C.ink}"/>${TL(130,108,'office',{fs:11,w:700})}</g>`,'اتجاهات'),cap:'شوارع من رسمنا. مرّر المؤشر على العبارات.',labs:[LAB181A,{title:'الاتجاهات',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'How do I ___ to the station?',o:['get','go'],a:0},{s:'___ the second right.',o:['Take','Get'],a:0},{s:'Go ___ on for five minutes.',o:['straight','right'],a:0},{s:"The office is ___ the bank.",o:['opposite','straight'],a:0}]})}]},
+ {t:'المترو والقطار ووسائل النقل',short:'northbound · by train',old:[2],q:'ما الفرق بين by car و on foot؟',ref:'ص 38–39',
+  lead:`في المترو تحتاج أن تعرف الخط واتجاهه، وأين تغيّر، وأين تنزل.`,
+  points:[`${e('Take the Red line northbound.')} خذ الخط الأحمر باتجاه الشمال.`,`${e('Change at Central station for the Green line.')} و ${e('Get off at King Fahd Road.')}`,`${e("It's the second stop.")} و ${e('The next train is from platform five.')}`,
+   `<b>وسيلة النقل:</b> ${e('by train / by bus / by car')} بلا ${e('the')}، لكن ${e('on foot')} سيراً على الأقدام.`,`للتحقق كرّر التعليمات: ${e('So, I need the Red line northbound and then …')}`],
+  html:vt([['Take the Red line northbound.','خذ الخط الأحمر باتجاه الشمال'],['Change at Central station for the Green line.','غيّر في محطة …'],['Get off at King Fahd Road.','انزل في …'],["It's the second stop.",'المحطة الثانية'],['The next train is from platform five.','الرصيف رقم …']],['English','المعنى']),
+  pairs:[['by the train','by train','مع by بلا the.'],['by foot','on foot','سيراً: on foot.']],
+  art:art(`<line x1="40" y1="230" x2="320" y2="60" stroke="${C.red}" stroke-width="10"/><line x1="40" y1="80" x2="320" y2="220" stroke="${C.grn}" stroke-width="10"/>
+    ${[[40,230,'Start'],[180,145,'Central'],[320,220,'Museum']].map(x=>`<g data-tip="${x[2]==='Central'?'change at Central = غيّر الخط هنا':x[2]==='Start'?'take the Red line = خذ الخط الأحمر':'get off at Museum = انزل هنا'}"><circle cx="${x[0]}" cy="${x[1]}" r="12" fill="#fff" stroke="${C.ink}" stroke-width="3"/>${TL(x[0],x[1]-18,x[2],{fs:12,w:700})}</g>`).join('')}`,'المترو'),cap:'خطان من رسمنا. مرّر المؤشر على كل محطة.',labs:[LAB181B,LAB181C,{title:'المترو',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Take the Red line and ___ at Central.',o:['change','get to'],a:0},{s:'Then ___ the Green line.',o:['take','turn'],a:0},{s:'___ off at Museum.',o:['Get','Go'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u8-l1',unit:8,order:1,pages:'38–39',
  title:'Part A: Getting around town — التنقل في المدينة',
  summary:'السؤال عن الطريق (How do I get to …?)، وإعطاء الاتجاهات بفعل الأمر (turn left، take the second right، go straight on، get off at، change at)، ووسائل النقل (by train، on foot)، وخطوط المترو (northbound، platform)، والأماكن (opposite، on the left)، والتحقق بتكرار التعليمات (So, I need …).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 38–39',html:`<p>تصف الطريق إلى مكتبك، وتفهم وصف طريق. ستتعلم:</p><ol><li>${e('How do I get to …?')}</li><li>أفعال الاتجاهات.</li><li>المترو والمحطات.</li><li>التحقق بتكرار التعليمات.</li></ol>`},
-  {h:'السؤال والاتجاهات',ref:'ص 38',html:`${vt([['How do I get to the National Museum?','كيف أصل إلى …؟'],['Turn left / right.','انعطف يساراً / يميناً'],['Take the second right.','خذ الشارع الثاني يميناً'],['Go straight on for ten minutes.','امشِ مباشرة'],["You'll see our office on the left.",'سترى … على اليسار'],["It's opposite the bank.",'مقابل البنك'],["It's a twenty-minute walk, or you can take a taxi.",'مشي عشرين دقيقة']],['English','المعنى'])}`},
-  {h:'المترو والقطار',ref:'ص 38–39',html:`${vt([['Take the Red line northbound.','خذ الخط الأحمر باتجاه الشمال'],['Change at Central station for the Green line.','غيّر في محطة …'],['Get off at King Fahd Road.','انزل في …'],["It's the second stop.",'المحطة الثانية'],['The next train is from platform five.','الرصيف رقم …']],['English','المعنى'])}<p>${e('by train / by bus / by car')} لكن ${e('on foot')} سيراً على الأقدام.</p>`},
-  {note:'<b>توضيح للمتدرب:</b> للتحقق كرّر التعليمات: <span class="en">So, I need the Red line northbound and then …</span>'},
+  ...R181.theory,
   {h:'تمارين الكتاب',ref:'ص 38–39',html:
    bk(1,'ص 38','اقرأ الرسالة وجِد مبنى المكتب على الخريطة.',null,'حسب خريطة الكتاب: المبنى الرمادي ذو الاثني عشر طابقاً على اليسار بعد أول شارع يميناً.')+
    bk(2,'ص 38','أكمل الحوارين بالأفعال، ثم استمع.',['1 get to · take · change · Get off','2 get to · take · Turn · Go'])+
@@ -51,19 +102,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الاتجاهات',title:'Turn left · Go straight on',q:'كيف تصف الطريق من المحطة إلى المكتب؟',ref:'ص 38',
-   art:art(`<line x1="180" y1="270" x2="180" y2="40" stroke="#c9c2b0" stroke-width="22"/><line x1="40" y1="140" x2="320" y2="140" stroke="#c9c2b0" stroke-width="22"/><line x1="40" y1="70" x2="320" y2="70" stroke="#c9c2b0" stroke-width="22"/>
-    <g data-tip="Go straight on = امشِ مباشرة"><polygon points="180,250 192,226 168,226" fill="${C.blue}"/>${TL(240,240,'go straight on',{fs:12,w:700})}</g>
-    <g data-tip="the first right = أول شارع يميناً">${TL(270,130,'first right',{fs:12,w:700})}</g>
-    <g data-tip="the second left = ثاني شارع يساراً">${TL(90,60,'second left',{fs:12,w:700})}</g>
-    <g data-tip="opposite the bank = مقابل البنك"><rect x="200" y="86" width="60" height="36" fill="${C.yel}" stroke="${C.ink}"/>${TL(230,108,'bank',{fs:11,w:700})}<rect x="100" y="86" width="60" height="36" fill="${C.paper}" stroke="${C.ink}"/>${TL(130,108,'office',{fs:11,w:700})}</g>`,'اتجاهات'),
-   cap:'شوارع من رسمنا. مرّر المؤشر على العبارات.',side:[{tip:`${e('opposite')} = مقابل (على الجهة الأخرى من الشارع).`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'How do I ___ to the station?',o:['get','go'],a:0},{s:'___ the second right.',o:['Take','Get'],a:0},{s:'Go ___ on for five minutes.',o:['straight','right'],a:0},{s:"The office is ___ the bank.",o:['opposite','straight'],a:0}]}),title:'مختبر مصغّر: الاتجاهات'}]},
-  {st:2,short:'المترو',title:'northbound · change at · get off',q:'كيف تصف رحلة بالمترو بخطين؟',ref:'ص 38–39',
-   art:art(`<line x1="40" y1="230" x2="320" y2="60" stroke="${C.red}" stroke-width="10"/><line x1="40" y1="80" x2="320" y2="220" stroke="${C.grn}" stroke-width="10"/>
-    ${[[40,230,'Start'],[180,145,'Central'],[320,220,'Museum']].map(x=>`<g data-tip="${x[2]==='Central'?'change at Central = غيّر الخط هنا':x[2]==='Start'?'take the Red line = خذ الخط الأحمر':'get off at Museum = انزل هنا'}"><circle cx="${x[0]}" cy="${x[1]}" r="12" fill="#fff" stroke="${C.ink}" stroke-width="3"/>${TL(x[0],x[1]-18,x[2],{fs:12,w:700})}</g>`).join('')}`,'المترو'),
-   cap:'خطان من رسمنا. مرّر المؤشر على كل محطة.',side:[{tip:`${e('northbound')} = متجه شمالاً، و ${e('southbound')} = متجه جنوباً.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Take the Red line and ___ at Central.',o:['change','get to'],a:0},{s:'Then ___ the Green line.',o:['take','turn'],a:0},{s:'___ off at Museum.',o:['Get','Go'],a:0}]}),title:'مختبر مصغّر: المترو'}]},
+  ...R181.stations,
   {recap:['How do I get to …?','Turn left / right. Take the second right. Go straight on.','Take the … line northbound. Change at … Get off at …',"You'll see … on the left. It's opposite …",'So, I need …']}
  ],
  lab:lab8a,
@@ -96,16 +135,27 @@ function lab8b(el,B){kcss();
   $('#ck').innerHTML=vt([["visitor's name",x.nm],['company',x.co||'—'],['person to see',x.to],['department',x.dep],['appointment',x.ap||'no']],['Check','']) };
  el.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{v=+b.dataset.v;k=1;sh()});$('#nx').onclick=()=>{k++;sh()};sh();
 }
+const R182=N.rule({title:'في الاستقبال، ولقاء المضيف',ref:'ص 40–41',
+ intro:`في هذا الدرس تصل إلى شركة لموعد. نشرح ما يقوله الزائر وموظف الاستقبال، ثم عبارات لقاء المضيف.`,
+ parts:[
+ {t:'في الاستقبال',short:'الاستقبال',old:[1],q:'ماذا تقول لموظف الاستقبال عند وصولك؟',ref:'ص 40',
+  lead:`عند الوصول تعرّف بنفسك، وتذكر من جئت لتقابله وموعدك. وموظف الاستقبال يسأل ويتصل ويطلب منك الانتظار.`,
+  points:[`<b>الزائر:</b> ${e("Good morning. My name's Ahmed Saleh from Red Sea Foods.")}`,`${e("I'm here to see Ms Huda Al-Ali.")} و ${e('I have an appointment at 2 o’clock.')}`,`<b>الموظف:</b> ${e('Do you have an appointment?')} و ${e('What department is that?')}`,`${e("One moment, please. I'll call Mr Turki.")} و ${e('Please take a seat.')}`,`${e("He'll be down in a moment.")} = سينزل من مكتبه بعد لحظة.`],
+  html:vt([["Good morning. My name's Ahmed Saleh from Red Sea Foods.",'التعريف'],["I'm here to see Ms Huda Al-Ali.",'جئت لأقابل …'],["I'd like to see Mr Turki, please.",'أود مقابلة …'],['I have an appointment at 2 o’clock.','موعدي الساعة …']],['الزائر','المعنى'])+vt([['Do you have an appointment?','هل لديك موعد؟'],['What department is that?','أي قسم؟'],['Can I have your name, please?','اسمك من فضلك'],["One moment, please. I'll call Mr Turki.",'سأتصل به'],['Please take a seat.','تفضل بالجلوس'],["He'll be down in a moment.",'سينزل بعد لحظة'],["I'll tell him you're here.",'سأخبره بوصولك']],['موظف الاستقبال','المعنى']),
+  art:art(`${[["Good morning. Can I help you?",'الموظف',C.paper],["I'm here to see Ms Huda.",'الزائر',C.yel],['Do you have an appointment?','الموظف',C.paper],['Yes, at 10 o’clock.','الزائر',C.yel],['Please take a seat.','الموظف',C.paper]].map((x,i)=>`<g data-tip="${x[1]}"><rect x="${x[1]==='الزائر'?60:20}" y="${26+i*52}" width="280" height="42" rx="12" fill="${x[2]}" stroke="${C.ink}" stroke-width="2"/>${TL(x[1]==='الزائر'?200:160,53+i*52,x[0],{fs:13,w:700})}</g>`).join('')}`,'الاستقبال'),cap:'حوار في الاستقبال. مرّر المؤشر لترى من يتكلم.',labs:[LAB182A,{title:'الاستقبال',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'm here to ___ Mr Turki.",o:['see','meet to'],a:0},{s:'Do you ___ an appointment?',o:['have','has'],a:0},{s:'Please ___ a seat.',o:['take','sit'],a:0},{s:"He'll be ___ in a moment.",o:['down','up to'],a:0}]})}]},
+ {t:'لقاء المضيف',short:'لقاء المضيف',old:[2],q:"ماذا تقول بعد Here's my business card؟",ref:'ص 40',
+  lead:`عندما ينزل المضيف تتعارفان وتتبادلان بطاقات العمل، ثم يبدأ الحديث بسؤال بسيط.`,
+  points:[`<b>التعارف:</b> ${e("Hello. I'm Turki Al-Shehri.")} والرد ${e('Hello. Paul Grant. Nice to meet you.')}`,`<b>البطاقات:</b> ${e("Here's my business card.")} والرد ${e("Oh, thank you. Here's mine.")} و ${e('mine')} = بطاقتي.`,`<b>سؤال للحديث:</b> ${e('Did you have a good journey?')}`,`${e("You're welcome.")} = العفو.`],
+  html:dl([['Host',"Hello. I'm Turki Al-Shehri."],['Visitor','Hello. Paul Grant. Nice to meet you.'],['Host','Nice to meet you, too.'],['Visitor',"Here's my business card."],['Host',"Oh, thank you. Here's mine. Did you have a good journey?"]]),
+  art:art(`<g data-tip="Here's my business card. = تفضل بطاقتي"><rect x="40" y="80" width="130" height="80" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(105,125,'my card',{fs:13,w:700})}</g><g data-tip="Here's mine. = وهذه بطاقتي"><rect x="190" y="80" width="130" height="80" rx="8" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(255,125,'mine',{fs:13,w:700})}</g>${TL(180,210,'Did you have a good journey?',{fs:14,w:700})}`,'business cards'),cap:'تبادل البطاقات. مرّر المؤشر على كل بطاقة.',labs:[LAB182B,{title:'اللقاء',w:(el,B)=>N.cases(el,B,{intro:'ماذا تقول؟',cases:[{q:'تقدّم بطاقتك.',opts:[["Here's my business card.",1],['Give me your card.',0]]},{q:'أخذت بطاقته وتعطيه بطاقتك.',opts:[["Thank you. Here's mine.",1],["It's my.",0]]},{q:'تسأل عن رحلته.',opts:[['Did you have a good journey?',1],['Where is your car?',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u8-l2',unit:8,order:2,pages:'40–41',
  title:'Part B: Arriving for an appointment — الوصول إلى موعد',
  summary:'الوصول إلى استقبال شركة (I\'m here to see … · I have an appointment at …)، وأسئلة موظف الاستقبال (Do you have an appointment? What department is that?)، وعبارات الانتظار (Please take a seat. He\'ll be down in a moment.)، ولقاء المضيف وتبادل بطاقات العمل (Here\'s my business card. Did you have a good journey?)، وعادات التحية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 40–41',html:`<p>تصل إلى شركة لموعد، أو تستقبل زائراً. ستتعلم:</p><ol><li>عبارات الزائر.</li><li>عبارات موظف الاستقبال.</li><li>لقاء المضيف وبطاقات العمل.</li></ol>`},
-  {h:'الزائر',ref:'ص 40',html:vt([["Good morning. My name's Ahmed Saleh from Red Sea Foods.",'التعريف'],["I'm here to see Ms Huda Al-Ali.",'جئت لأقابل …'],["I'd like to see Mr Turki, please.",'أود مقابلة …'],['I have an appointment at 2 o’clock.','موعدي الساعة …']],['English','المعنى'])},
-  {h:'موظف الاستقبال',ref:'ص 40',html:vt([['Do you have an appointment?','هل لديك موعد؟'],['What department is that?','أي قسم؟'],['Can I have your name, please?','اسمك من فضلك'],["One moment, please. I'll call Mr Turki.",'سأتصل به'],['Please take a seat.','تفضل بالجلوس'],["He'll be down in a moment.",'سينزل بعد لحظة'],["I'll tell him you're here.",'سأخبره بوصولك']],['English','المعنى'])},
-  {h:'لقاء المضيف',ref:'ص 40',html:dl([['Host',"Hello. I'm Turki Al-Shehri."],['Visitor','Hello. Paul Grant. Nice to meet you.'],['Host','Nice to meet you, too.'],['Visitor',"Here's my business card."],['Host',"Oh, thank you. Here's mine. Did you have a good journey?"]])},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">He\'ll be down</span> = سينزل (من مكتبه في الطابق الأعلى). و <span class="en">You\'re welcome</span> = العفو.'},
+  ...R182.theory,
   {h:'تمارين الكتاب',ref:'ص 40–41',html:
    bk(1,'ص 40','استمع: ضع علامة على المذكور، ثم أكمل المحادثتين.',['a Visitor 1: name ✓ · company ✓ · person ✓ · appointment ✓ (no department)','a Visitor 2: name ✓ · person ✓ · department ✓ · appointment ✓ (no company)',"b1: My name's · I'm here to see · Do you have","b2: I'd like to see · is that · I have an · I'm"])+
    bk(2,'ص 40','رتّب المحادثتين المختلطتين، ثم استمع.',['Conversation 1: A Good morning. Can I help you? · B 1 · A 4 · B 7 · A 3','Conversation 2: C Hello. I\'m Richard Chandler. · B 6 · C 5 · B 8 · C 2'])+
@@ -115,14 +165,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الاستقبال',title:'في الاستقبال',q:'ماذا تقول لموظف الاستقبال عند وصولك؟',ref:'ص 40',
-   art:art(`${[["Good morning. Can I help you?",'الموظف',C.paper],["I'm here to see Ms Huda.",'الزائر',C.yel],['Do you have an appointment?','الموظف',C.paper],['Yes, at 10 o’clock.','الزائر',C.yel],['Please take a seat.','الموظف',C.paper]].map((x,i)=>`<g data-tip="${x[1]}"><rect x="${x[1]==='الزائر'?60:20}" y="${26+i*52}" width="280" height="42" rx="12" fill="${x[2]}" stroke="${C.ink}" stroke-width="2"/>${TL(x[1]==='الزائر'?200:160,53+i*52,x[0],{fs:13,w:700})}</g>`).join('')}`,'الاستقبال'),
-   cap:'حوار في الاستقبال. مرّر المؤشر لترى من يتكلم.',side:[{tip:`${e("I'm here to see")} + الشخص.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'm here to ___ Mr Turki.",o:['see','meet to'],a:0},{s:'Do you ___ an appointment?',o:['have','has'],a:0},{s:'Please ___ a seat.',o:['take','sit'],a:0},{s:"He'll be ___ in a moment.",o:['down','up to'],a:0}]}),title:'مختبر مصغّر: الاستقبال'}]},
-  {st:2,short:'بطاقات العمل',title:'لقاء المضيف',q:'كيف تقدّم بطاقة عملك؟',ref:'ص 40–41',
-   art:art(`<g data-tip="Here's my business card. = تفضل بطاقتي"><rect x="40" y="80" width="130" height="80" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(105,125,'my card',{fs:13,w:700})}</g><g data-tip="Here's mine. = وهذه بطاقتي"><rect x="190" y="80" width="130" height="80" rx="8" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(255,125,'mine',{fs:13,w:700})}</g>${TL(180,210,'Did you have a good journey?',{fs:14,w:700})}`,'business cards'),
-   cap:'تبادل البطاقات. مرّر المؤشر على كل بطاقة.',side:[{tip:`${e('mine')} = الخاص بي (بطاقتي).`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ماذا تقول؟',cases:[{q:'تقدّم بطاقتك.',opts:[["Here's my business card.",1],['Give me your card.',0]]},{q:'أخذت بطاقته وتعطيه بطاقتك.',opts:[["Thank you. Here's mine.",1],["It's my.",0]]},{q:'تسأل عن رحلته.',opts:[['Did you have a good journey?',1],['Where is your car?',0]]}]}),title:'مختبر مصغّر: اللقاء'}]},
+  ...R182.stations,
   {recap:["I'm here to see … · I have an appointment at …",'Do you have an appointment? · What department is that?',"Please take a seat. He'll be down in a moment.","Here's my business card. — Here's mine.",'Did you have a good journey?']}
  ],
  lab:lab8b,

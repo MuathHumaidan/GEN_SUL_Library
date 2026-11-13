@@ -27,16 +27,59 @@ function lab2a(el,B){kcss();
  ['a','b'].forEach(k=>$('#'+k).addEventListener('input',sh));sh();
  const xs=()=>{const o=OBJ[+$('#ob').value];$('#xo').innerHTML=`${eb([`It's ${o[2]}.`,`(${o[0]})`])}`};$('#ob').addEventListener('input',xs);xs();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 2 ===== */
+const DS2={calc:['a thing','for','adding numbers','calculator'],note:['a thing','for','making notes','notepad'],fluid:['stuff','for','correcting mistakes','correction fluid'],ruler:['something we use','to','draw a straight line','ruler']};
+const LAB121A={title:'صِف شيئاً لا تعرف اسمه',w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء، وشاهد كيف تصفه إذا نسيت اسمه. لاحظ الفعل بعد for وبعد to.',
+ controls:[{k:'o',label:'الشيء',opts:Object.keys(DS2).map(k=>[k,DS2[k][3]])}],
+ out:({o})=>{const [a,p,v,n]=DS2[o];return{pieces:[["It's",'x',''],[a,'n',a==='stuff'?'مادة لا تُعد':'شيء'],[p,'q',p],[v+'.','k',p==='for'?'الفعل + ing':'الفعل كما هو']],say:`It's ${a} ${p} ${v}.`,ar:`والاسم: ${n}`,why:`بعد ${e('for')} الفعل + ${e('ing')}، وبعد ${e('to')} الفعل كما هو. و ${e('stuff')} لما لا يُعد (سائل أو مادة).`}}})};
+const PP2={on:['on','the desk','على'],under:['under','the desk','تحت'],next:['next to','the monitor','بجانب (ملاصق)'],near:['near','the monitor','قريب من'],front:['in front of','the monitor','أمام'],behind:['behind','the monitor','خلف']};
+const desk2=p=>{const desk='<rect x="20" y="150" width="340" height="10" fill="#8a6d3b"/><rect x="40" y="160" width="10" height="70" fill="#8a6d3b"/><rect x="330" y="160" width="10" height="70" fill="#8a6d3b"/>';
+ const mon='<rect x="150" y="60" width="90" height="65" rx="4" fill="#33475b"/><rect x="185" y="125" width="20" height="25" fill="#33475b"/>';
+ const ph=(x,y)=>`<rect x="${x}" y="${y}" width="34" height="20" rx="4" fill="#d2452f" stroke="#7a1e10" stroke-width="2"/><text x="${x+17}" y="${y+14}" font-size="9" fill="#fff" text-anchor="middle">phone</text>`;
+ const P={on:[60,130,1],under:[170,208,1],next:[242,130,1],near:[290,130,1],front:[178,118,1],behind:[178,52,0]}[p];
+ return `<svg viewBox="0 0 380 240" width="360">${desk}${P[2]?mon+ph(P[0],P[1]):ph(P[0],P[1])+mon}</svg>`};
+const LAB121B={title:'أين الهاتف؟',w:(el,B)=>N.labB(el,B,{intro:'اختر حرف الجر، وشاهد مكان الهاتف في الرسم والجملة.',
+ controls:[{k:'p',label:'المكان',opts:Object.keys(PP2).map(k=>[k,PP2[k][0]])}],
+ out:({p})=>{const [w,o,ar]=PP2[p];return{svg:desk2(p),pieces:[['The phone is','x',''],[w,'k',ar],[o+'.','n','']],say:`The phone is ${w} ${o}.`,why:p==='next'||p==='near'?`${e('next to')} ملاصق بجانبه، و ${e('near')} قريب منه وقد لا يلاصقه.`:`المكان: ${e('be')} + حرف الجر + الشيء.`}}})};
+const LC2={c:['in the centre',190,120],n:['in the north',190,40],s:['in the south',190,200],w:['in the west',70,120],e:['on the east coast',330,120],nw:['in the northwest',90,50]};
+const map2=k=>{const [,x,y]=LC2[k];return `<svg viewBox="0 0 380 240" width="320"><rect x="20" y="15" width="320" height="210" rx="20" fill="#f3efe2" stroke="#8a7a50" stroke-width="3"/><rect x="340" y="15" width="30" height="210" fill="#cfe6f7"/><text x="355" y="125" font-size="10" fill="#1f5fd1" text-anchor="middle" transform="rotate(90 355 125)">sea</text><text x="190" y="12" font-size="10" fill="#666" text-anchor="middle">N</text><circle cx="${x}" cy="${y}" r="12" fill="#d2452f"/></svg>`};
+const LAB122A={title:'أين المدينة؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الموقع، وشاهد النقطة على الخريطة وحرف الجر المناسب.',
+ controls:[{k:'l',label:'الموقع',opts:[['c','الوسط'],['n','الشمال'],['s','الجنوب'],['w','الغرب'],['nw','الشمال الغربي'],['e','الساحل الشرقي']]}],
+ out:({l})=>{const ph=LC2[l][0];return{svg:map2(l),pieces:[['The factory is','x',''],[ph.split(' ')[0],'k',ph.startsWith('on')?'مع coast':'مع الجهات'],[ph.split(' ').slice(1).join(' ')+'.','n','']],say:`The factory is ${ph}.`,why:`${e('in')} مع الجهات والوسط، و ${e('on')} مع الساحل: ${e('in the north · on the coast')}`}}})};
+const WL2={home:'work at home',people:'meet more people',city:'live in the city centre',commute:'commute'};
+const LAB122B={title:'would like to',w:(el,B)=>N.labB(el,B,{intro:'اختر الرغبة ونوع الجملة، وشاهد would like to مع الفعل.',
+ controls:[{k:'a',label:'الرغبة',opts:Object.keys(WL2).map(k=>[k,WL2[k]])},{k:'f',label:'الجملة',opts:[['pos','أريد'],['neg','لا أريد'],['q','سؤال']]}],
+ out:({a,f})=>{const v=WL2[a];if(f==='pos')return{pieces:[["I'd like to",'k','= I would like to'],[v+'.','n','الفعل كما هو']],say:`I'd like to ${v}.`,why:`بعد ${e('would like to')} الفعل كما هو.`};
+  if(f==='neg')return{pieces:[["I wouldn't like to",'r','= would not'],[v+'.','n','الفعل كما هو']],say:`I wouldn't like to ${v}.`,why:`النفي: ${e("wouldn't")} = ${e('would not')}.`};
+  return{pieces:[['Would you like to','q','نقدّم would'],[v+'?','n','الفعل كما هو']],say:`Would you like to ${v}?`,ar:"Yes, I would. / No, I wouldn't.",why:`السؤال: ${e('Would you like to …?')}`}}})};
+const R121=N.rule({title:'أدوات المكتب، ووصف شيء لا تعرف اسمه، وحروف الجر للمكان',ref:'ص 10–11',
+ intro:`في هذا الدرس تتكلم عن أدوات مكتبك وأماكنها. نشرح أسماء الأدوات، ثم كيف تصف شيئاً نسيت اسمه، ثم حروف الجر التي تحدد مكانه.`,
+ parts:[
+ {t:'أدوات المكتب',short:'الأدوات',old:[1],q:'ما الفرق بين rubber و eraser؟',ref:'ص 10',
+  lead:`نبدأ بأسماء الأدوات التي على كل مكتب.`,
+  points:[`بعض الأسماء تختلف بين البريطانية والأمريكية: ${e('rubber (BrE) = eraser (AmE)')}`,`ونسأل عن الأداة: ${e("What's this?")} والجواب ${e("It's a stapler.")}`],
+  html:vt(OBJ.map(o=>[o[0],o[1]]),['English','المعنى']),
+  art:art(`${OBJ.slice(0,6).map((o,i)=>`<g data-tip="${o[0]} — ${o[1]}: ${o[2]}"><rect x="${30+(i%2)*160}" y="${40+Math.floor(i/2)*76}" width="140" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100+(i%2)*160,76+Math.floor(i/2)*76,o[0].split(' (')[0],{fs:13,w:700})}</g>`).join('')}`,'أدوات المكتب'),cap:'ست أدوات. مرّر المؤشر لترى المعنى ووصفاً بلا اسم.',labs:[{title:'الوصف',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"It's a thing for ___ numbers.",o:['adding','add'],a:0},{s:"It's something we use to ___ a straight line.",o:['draw','drawing'],a:0},{s:"It's white ___ for correcting mistakes.",o:['stuff','thing'],a:0}]})}]},
+ {t:'وصف شيء لا تعرف اسمه',short:'a thing for …',q:'كيف تطلب شيئاً نسيت اسمه؟',ref:'ص 10',
+  lead:`كثيراً ما تحتاج شيئاً ولا تتذكر اسمه بالإنجليزي. عندها تصف ما يُستعمل له، وزميلك يعرفه.`,
+  points:[`${e("It's a thing for")} + الفعل + ${e('ing')}: ${e("It's a thing for adding numbers.")}`,`${e("It's something we use to")} + الفعل كما هو: ${e("It's something we use to draw a straight line.")}`,`${e("It's stuff for")} + الفعل + ${e('ing')} لما لا يُعد (سائل أو مادة): ${e("It's stuff for correcting mistakes.")}`],
+  grid:{head:['القالب','بعده','مثال'],rows:[['a thing for','الفعل + ing',"It's a thing for adding numbers."],['something we use to','الفعل كما هو',"It's something we use to draw a straight line."],['stuff for','الفعل + ing',"It's stuff for correcting mistakes."]]},
+  pairs:[["It's a thing for add numbers.","It's a thing for adding numbers.",'بعد for نضيف ing.'],["It's something we use to drawing.","It's something we use to draw.",'بعد to الفعل كما هو.']],
+  labs:[LAB121A]},
+ {t:'حروف الجر للمكان',short:'on · under · next to',old:[2],q:'ما الفرق بين next to و near؟',ref:'ص 11',
+  lead:`لتقول لزميلك أين يجد شيئاً تستعمل حرف جر يحدد مكانه بالنسبة لشيء آخر.`,
+  points:[`<b>الجملة:</b> الشيء + ${e('is / are')} + حرف الجر + المكان: ${e('The phone is on the desk.')}`,`${e('on')} على، و ${e('under')} تحت، و ${e('in front of')} أمام، و ${e('behind')} خلف.`,`${e('next to')} ملاصق بجانبه، و ${e('near')} قريب منه وقد لا يلاصقه.`,`وللجمع ${e('are')}: ${e('The files are under the desk.')}`],
+  html:vt(PREP,['English','المعنى']),
+  pairs:[['The phone on the desk.','The phone is on the desk.','لا ننسى is.'],['The keyboard is in front the monitor.','The keyboard is in front of the monitor.','in front of: لا ننسى of.']],
+  labs:[LAB121B,{title:'المكان',w:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'The keyboard is ___ the monitor.',opts:[['in front of',1],['behind',0]]},{q:'The bin is ___ the phone.',opts:[['under',1],['on',0]]},{q:'The lamp is ___ the monitor.',opts:[['next to',1],['under',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u2-l1',unit:2,order:1,pages:'10–11',
  title:'Part A: In the office — في المكتب',
  summary:'أسماء أدوات المكتب (calculator، ruler، notepad، rubber، correction fluid، highlighter…)، ووصف شيء لا تعرف اسمه (It\'s a thing for …ing / It\'s stuff for … / It\'s something we use to …)، وحروف الجر للمكان (next to، under، on، in front of، near، behind).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>تتحدث عن الأشياء في المكتب. ستتعلم:</p><ol><li>أسماء أدوات المكتب.</li><li>وصف شيء لا تعرف اسمه.</li><li>حروف الجر للمكان.</li></ol>`},
-  {h:'أدوات المكتب',ref:'ص 10',html:vt(OBJ.map(o=>[o[0],o[1]]),['English','المعنى'])},
-  {h:'وصف شيء لا تعرف اسمه',ref:'ص 10',html:`${vt([["It's a thing for adding numbers.",'شيء لـ + فعل ing'],["It's stuff for correcting mistakes.",'مادة لـ … (لما لا يُعدّ)'],["It's something we use to draw a straight line.",'شيء نستعمله لـ + فعل']],['English','القالب'])}<p>بعد ${e('for')} نضع الفعل بـ ${e('ing')}، وبعد ${e('to')} نضع الفعل كما هو.</p>`},
-  {h:'حروف الجر للمكان',ref:'ص 11',html:`${vt(PREP,['English','المعنى'])}${eb(['The phone is on the desk.','The bin is under the desk.','The keyboard is in front of the monitor.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">next to</span> ملاصق بجانبه، و <span class="en">near</span> قريب منه وقد لا يلاصقه.'},
+  ...R121.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11',html:
    bk(1,'ص 10','اكتب أسماء الأشياء في صورة المكتب (1–15).',null,'حسب صورة الكتاب؛ الكلمات في «Vocabulary file 1» ص 84 (مثل lamp, monitor, keyboard, printer, filing cabinet, drawer, telephone).')+
    bk(2,'ص 10','استمع واكتب رقم الحوار تحت كل صورة، ثم اكتب الأسماء.',['a calculator → 3','b ruler → 1','c notepad → 4','d rubber → 2','e correction fluid → 2','f highlighter → 4'],'في الحوار 2 ذُكرت الممحاة ثم سائل التصحيح، وفي الحوار 4 الدفتر ثم قلم التظليل.')+
@@ -47,13 +90,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أدوات المكتب',title:'أدوات المكتب',q:'كيف تطلب شيئاً لا تعرف اسمه؟',ref:'ص 10',
-   art:art(`${OBJ.slice(0,6).map((o,i)=>`<g data-tip="${o[0]} — ${o[1]}: ${o[2]}"><rect x="${30+(i%2)*160}" y="${40+Math.floor(i/2)*76}" width="140" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100+(i%2)*160,76+Math.floor(i/2)*76,o[0].split(' (')[0],{fs:13,w:700})}</g>`).join('')}`,'أدوات المكتب'),
-   cap:'ست أدوات. مرّر المؤشر لترى المعنى ووصفاً بلا اسم.',side:[{tip:`${e("It's a thing for")} + فعل بـ ${e('ing')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"It's a thing for ___ numbers.",o:['adding','add'],a:0},{s:"It's something we use to ___ a straight line.",o:['draw','drawing'],a:0},{s:"It's white ___ for correcting mistakes.",o:['stuff','thing'],a:0}]}),title:'مختبر مصغّر: الوصف'}]},
-  {st:2,short:'حروف الجر',title:'أين هو؟',q:'أين الهاتف؟',ref:'ص 11',art:art(scene(),'مشهد المكتب'),cap:'مكتب من رسمنا. حدّد مكان كل شيء بالنسبة لغيره.',
-   side:[{tip:`نبدأ بالشيء ثم ${e('is / are')} ثم حرف الجر ثم الشيء الآخر.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر:',cases:[{q:'The keyboard is ___ the monitor.',opts:[['in front of',1],['behind',0]]},{q:'The bin is ___ the phone.',opts:[['under',1],['on',0]]},{q:'The lamp is ___ the monitor.',opts:[['next to',1],['under',0]]}]}),title:'مختبر مصغّر: المكان'}]},
+  ...R121.stations,
   {recap:['calculator, ruler, notepad, rubber, correction fluid, highlighter.',"It's a thing for …ing.","It's stuff for …","It's something we use to …",'next to, under, on, in front of, near, behind.']}
  ],
  lab:lab2a,
@@ -89,16 +126,37 @@ function lab2b(el,B){kcss();
   el.querySelectorAll('[data-c]').forEach(g=>g.onclick=()=>{k=+g.dataset.c;draw()});const c=CITY[k];$('#o').innerHTML=eb([`Sahara Foods has ${c.w} in ${c.n}, ${c.p}.`,`Where is the ${c.w.replace(/^(an?|its) /,'').split(' and')[0]}? — It's in ${c.n}.`])};draw();
  const ws=()=>{const l=$('#lv').value,c=$('#wk').value==='1';$('#wo').innerHTML=eb([`I'd like to live in ${l}.`,c?"I'd like to commute to work.":"I'd like to work at home.",c?"I wouldn't like to work at home.":"I wouldn't like to commute."])};['lv','wk'].forEach(x=>$('#'+x).addEventListener('input',ws));ws();
 }
+const R122=N.rule({title:'المواقع والجهات، و would like to، وأماكن الشركة',ref:'ص 12–13',
+ intro:`في هذا الدرس نصف أين نعمل ونسكن: مواقع المدن والجهات، ثم ما نحب أو لا نحب بـ ${e('would like to')}، ثم أماكن الشركة المختلفة.`,
+ parts:[
+ {t:'المواقع والجهات',short:'in the centre · on the coast',old:[1],q:'لماذا نقول in the north لكن on the coast؟',ref:'ص 12',
+  lead:`لنصف مكان مدينة أو مصنع نستعمل الجهات. ولكل منها حرف جر ثابت.`,
+  points:[`${e('in')} مع الوسط والجهات والضواحي: ${e('in the centre · in the north · in the suburbs')}`,`${e('on')} مع الساحل: ${e('on the east coast')}`,`الجهات المركبة كلمة واحدة: ${e('in the northwest · in the southeast')}`,`${e('commute')} يتنقل يومياً من بيته إلى عمله، و ${e('teleworker')} من يعمل من بيته.`],
+  html:vt(LOC,['English','المعنى'])+vt([['commute','يتنقل يومياً من بيته إلى عمله'],['commuter','من يتنقل يومياً للعمل'],['teleworker / telecommuter','من يعمل من بيته بالهاتف والحاسوب'],['village','قرية']],['English','المعنى']),
+  pairs:[['in the east coast','on the east coast','مع coast نستعمل on.']],
+  art:art(`${ksa()}${CITY.map(c=>`<g data-tip="${c.n}: ${c.p}"><circle cx="${c.x}" cy="${c.y}" r="7" fill="${C.ink}"/>${TL(c.x,c.n==='Dammam'?c.y+22:c.y-12,c.n,{fs:11,w:700})}</g>`).join('')}`,'مدن ومواقعها'),cap:'خريطة تقريبية من رسمنا. مرّر المؤشر على كل مدينة.',labs:[LAB122A,{title:'الموقع',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"Jeddah is ___ the west coast.",o:['on','in'],a:0},{s:"Riyadh is in the ___ of the country.",o:['centre','coast'],a:0},{s:'Tabuk is in the ___.',o:['northwest','west north'],a:0}]})}]},
+ {t:'الرغبة بـ would like to',short:'would like to',old:[2],q:"ما الفرق بين I like و I'd like؟",ref:'ص 12',
+  lead:`عندما نتكلم عن رغبة أو أمنية بلطف نستعمل ${e('would like to')}.`,
+  points:[`<b>الإثبات:</b> ${e("I'd like to")} + الفعل كما هو: ${e("I'd like to meet more people.")}`,`<b>النفي:</b> ${e("I wouldn't like to work at home.")}`,`<b>السؤال:</b> ${e('Would you like to work at home?')} والجواب ${e("Yes, I would. / No, I wouldn't.")}`,
+   `${e("I'd like to")} رغبة (أريد)، أما ${e('I like')} فحب عام: ${e('I like my job.')}`],
+  grid:{head:['الجملة','مثال'],rows:[['إثبات',"I'd like to meet more people."],['نفي',"I wouldn't like to work at home."],['سؤال','Where would you like to live?']]},
+  pairs:[["I'd like to working at home.","I'd like to work at home.",'بعد to الفعل كما هو.']],
+  art:art(`<g data-tip="I'd like to + الفعل = أريد بلطف."><rect x="30" y="60" width="300" height="50" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,91,"I'd like to work in the centre.",{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="I wouldn't like to = لا أريد."><rect x="30" y="130" width="300" height="50" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,161,"I wouldn't like to work at home.",{fs:14,w:700,c:'#fff'})}</g>
+    <g data-tip="السؤال: Would you like to …?"><rect x="30" y="200" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,231,'Would you like to commute?',{fs:14,w:700})}</g>`,'would like to'),cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',labs:[LAB122B,{title:'would like',w:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:"I'd like to ___ in the suburbs.",o:['live','living'],a:0},{s:"I ___ like to commute every day.",o:["wouldn't","don't would"],a:0},{s:'Where ___ you like to work?',o:['would','do'],a:0}]})}]},
+ {t:'أماكن الشركة',short:'أماكن العمل',old:[3],q:'ما الفرق بين head office و branch office؟',ref:'ص 13',
+  lead:`الشركة الكبيرة لها أكثر من مكان: مقر رئيسي وفروع ومصانع ومستودعات.`,
+  points:[`نقول: ${e('The company has its Head Office in Riyadh, in the centre of Saudi Arabia.')}`,`ونضيف مكاناً آخر بـ ${e('also')}: ${e('They also have a factory in Jubail, on the east coast.')}`],
+  html:vt(WP,['English','المعنى']),
+  art:art(`${WP.slice(0,6).map((w,i)=>`<g data-tip="${w[0]} — ${w[1]}"><rect x="${30+(i%2)*160}" y="${40+Math.floor(i/2)*76}" width="140" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100+(i%2)*160,76+Math.floor(i/2)*76,w[0],{fs:13,w:700})}</g>`).join('')}`,'أماكن العمل'),cap:'ستة أماكن عمل. مرّر المؤشر على كل منها.',labs:[{title:'المكان',w:(el,B)=>N.cases(el,B,{intro:'أي مكان؟',cases:[{q:'They make cars here.',opts:[['factory',1],['showroom',0]]},{q:'They keep products here.',opts:[['warehouse',1],['design studio',0]]},{q:'The main office of the company.',opts:[['head office',1],['branch office',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u2-l2',unit:2,order:2,pages:'12–13',
  title:'Part B: Workplaces and locations — أماكن العمل ومواقعها',
  summary:'الجهات (north، southeast…) والمواقع (in the centre، in the suburbs، in the country، on the east coast)، والتنقل للعمل (commute، commuter، teleworker)، والرغبة بـ would like to / wouldn\'t like to، وأماكن عمل الشركة (head office، branch office، factory، warehouse، showroom)، ووصف مواقعها.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>تصف أين تعيش وتعمل، وأين أماكن شركة. ستتعلم:</p><ol><li>الجهات والمواقع.</li><li>${e("I'd like to / I wouldn't like to")}</li><li>أماكن العمل في الشركة.</li></ol>`},
-  {h:'المواقع والجهات',ref:'ص 12',html:`${vt(LOC,['English','المعنى'])}${vt([['commute','يتنقل يومياً من بيته إلى عمله'],['commuter','من يتنقل يومياً للعمل'],['teleworker / telecommuter','من يعمل من بيته بالهاتف والحاسوب'],['village','قرية']],['English','المعنى'])}`},
-  {h:'would like to',ref:'ص 12',html:`${vt([["I'd like to meet more people.",'أريد (بلطف)'],["I wouldn't like to work at home.",'لا أريد'],['Where would you like to live?','أين تحب أن …؟'],["Would you like to work at home? — No, I'd like to commute.",'هل تحب أن …؟']],['English','المعنى'])}<p>بعد ${e('would like to')} الفعل كما هو.</p>`},
-  {h:'أماكن العمل',ref:'ص 13',html:`${vt(WP,['English','المعنى'])}${eb(['The company has its Head Office in Riyadh, in the centre of Saudi Arabia.','They also have a factory in Jubail, on the east coast.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> نقول <span class="en">in the north of the country</span> مع <span class="en">in</span>، لكن <span class="en">on the coast</span> مع <span class="en">on</span>.'},
+  ...R122.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13',html:
    bk(1,'ص 12','اقرأ عن الشخصين واكتب أسماء الأماكن على الخريطة.',['1 Tadlow (شمال لندن)','2 Westminster (وسط لندن)','3 Croydon (جنوب لندن)'],'من قراءتنا للخريطة.')+
    bk(2,'ص 12','أكمل الجمل، ثم اسأل زملاءك وأكمل الجدول.',["a1 Rob: I'd like to meet more people.","a2 Ann: I wouldn't like to work at home."])+
@@ -109,20 +167,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الجهات والمواقع',title:'in the centre · on the coast',q:'كيف تصف مكان مدينة في بلدك؟',ref:'ص 12–13',
-   art:art(`${ksa()}${CITY.map(c=>`<g data-tip="${c.n}: ${c.p}"><circle cx="${c.x}" cy="${c.y}" r="7" fill="${C.ink}"/>${TL(c.x,c.n==='Dammam'?c.y+22:c.y-12,c.n,{fs:11,w:700})}</g>`).join('')}`,'مدن ومواقعها'),
-   cap:'خريطة تقريبية من رسمنا. مرّر المؤشر على كل مدينة.',side:[{tip:`${e('in the southwest')} = في الجنوب الغربي (كلمة واحدة).`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"Jeddah is ___ the west coast.",o:['on','in'],a:0},{s:"Riyadh is in the ___ of the country.",o:['centre','coast'],a:0},{s:'Tabuk is in the ___.',o:['northwest','west north'],a:0}]}),title:'مختبر مصغّر: الموقع'}]},
-  {st:2,short:'would like to',title:'الرغبة بـ would like to',q:'كيف تقول بلطف إنك تريد أن تعمل في الوسط؟',ref:'ص 12',
-   art:art(`<g data-tip="I'd like to + الفعل = أريد بلطف."><rect x="30" y="60" width="300" height="50" rx="14" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,91,"I'd like to work in the centre.",{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="I wouldn't like to = لا أريد."><rect x="30" y="130" width="300" height="50" rx="14" fill="${C.red}" stroke="${C.ink}" stroke-width="2"/>${TL(180,161,"I wouldn't like to work at home.",{fs:14,w:700,c:'#fff'})}</g>
-    <g data-tip="السؤال: Would you like to …?"><rect x="30" y="200" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,231,'Would you like to commute?',{fs:14,w:700})}</g>`,'would like to'),
-   cap:'الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.',side:[{tip:`${e("I'd")} = ${e('I would')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'أكمل:',items:[{s:"I'd like to ___ in the suburbs.",o:['live','living'],a:0},{s:"I ___ like to commute every day.",o:["wouldn't","don't would"],a:0},{s:'Where ___ you like to work?',o:['would','do'],a:0}]}),title:'مختبر مصغّر: would like'}]},
-  {st:3,short:'أماكن العمل',title:'أماكن الشركة',q:'أين تُصنع المنتجات؟ وأين تُعرض؟',ref:'ص 13',
-   art:art(`${WP.slice(0,6).map((w,i)=>`<g data-tip="${w[0]} — ${w[1]}"><rect x="${30+(i%2)*160}" y="${40+Math.floor(i/2)*76}" width="140" height="60" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(100+(i%2)*160,76+Math.floor(i/2)*76,w[0],{fs:13,w:700})}</g>`).join('')}`,'أماكن العمل'),
-   cap:'ستة أماكن عمل. مرّر المؤشر على كل منها.',side:[{tip:`${e('factory')} للتصنيع، و ${e('warehouse')} للتخزين، و ${e('showroom')} للعرض.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أي مكان؟',cases:[{q:'They make cars here.',opts:[['factory',1],['showroom',0]]},{q:'They keep products here.',opts:[['warehouse',1],['design studio',0]]},{q:'The main office of the company.',opts:[['head office',1],['branch office',0]]}]}),title:'مختبر مصغّر: المكان'}]},
+  ...R122.stations,
   {recap:['in the centre / suburbs / country، on the east coast.','north, southeast, northwest…',"I'd like to … / I wouldn't like to …",'head office, branch office, factory, warehouse, showroom.','commute, commuter, teleworker.']}
  ],
  lab:lab2b,

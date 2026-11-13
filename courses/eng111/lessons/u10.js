@@ -20,15 +20,56 @@ function lab10a(el,B){kcss();
   $('#o').innerHTML=t==='every'?eb(`Every Sunday, Faisal ${d[1]}${c} at ${d[5]}.`):t==='now'?eb([`It's ${d[5]} now.`,`Look! Faisal is ${d[3]}${c}.`]):eb(`Last Sunday, Faisal ${d[2]}${c} at ${d[5]}.`)};
  el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{t=b.dataset.t;sh()});el.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{h=+b.dataset.h;sh()});sh();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 10 ===== */
+const LAB1101A={title:'ثلاثة أزمنة',w:(el,B)=>N.labB(el,B,{intro:'اختر النشاط والوقت، وشاهد الزمن المناسب للفعل.',
+ controls:[{k:'a',label:'النشاط',opts:DAY.slice(0,6).map((d,i)=>[String(i),d[0]+(d[4]?' '+d[4]:'')])},{k:'t',label:'الوقت',opts:[['every','Every day'],['now','Look! (الآن)'],['past','Yesterday']]},{k:'s',label:'الفاعل',opts:[['I','I'],['he','he']]}],
+ out:({a,t,s})=>{const [b,th,p,ing,o]=DAY[+a],obj=o?' '+o:'';const S=s==='I'?'I':'he';
+  if(t==='every'){const v=s==='he'?th:b;return{pieces:[['Every day,','q','روتين'],[S,'n',''],[v,'k',s==='he'?'مضارع بسيط + s':'مضارع بسيط'],[obj.trim()+'.','x','']],say:`Every day, ${S} ${v}${obj}.`,why:'للروتين المتكرر: المضارع البسيط.'}}
+  if(t==='now'){const be=s==='he'?"'s":"'m";return{pieces:[['Look!','q','الآن'],[(s==='he'?'He':'I')+be,'n','am / is'],[ing,'k','الفعل + ing'],[obj.trim()+'.','x','']],say:`Look! ${s==='he'?'He':'I'}${be} ${ing}${obj}.`,why:`لما يحدث الآن: ${e('am · is · are')} + الفعل + ${e('ing')}.`}}
+  const reg=p.endsWith('ed');return{pieces:[['Yesterday,','q','ماضٍ'],[S,'n',''],[p,'k',reg?'منتظم + ed':'شاذ'],[obj.trim()+'.','x','']],say:`Yesterday, ${S} ${p}${obj}.`,why:'لما حدث وانتهى: الماضي البسيط، وهو واحد مع كل الضمائر.'}}})};
+const LAB1101B={title:'النفي والسؤال في الماضي',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل ونوع الجملة. لاحظ أن الفعل يعود إلى أصله بعد did.',
+ controls:[{k:'a',label:'الفعل',opts:DAY.slice(0,6).map((d,i)=>[String(i),d[0]+(d[4]?' '+d[4]:'')])},{k:'f',label:'الجملة',opts:[['pos','إثبات'],['neg','نفي'],['q','سؤال']]}],
+ out:({a,f})=>{const [b,,p,,o]=DAY[+a],obj=o?' '+o:'';if(f==='pos')return{pieces:[['I','n',''],[p,'k','الماضي'],[obj.trim()+' yesterday.','x','']],say:`I ${p}${obj} yesterday.`,why:'الإثبات: الفعل في الماضي.'};
+  if(f==='neg')return{pieces:[['I','n',''],["didn't",'r','= did not'],[b,'k','الفعل الأصلي'],[obj.trim()+' yesterday.','x','']],say:`I didn't ${b}${obj} yesterday.`,why:`النفي: ${e("didn't")} + الفعل الأصلي، لا الماضي.`};
+  return{pieces:[['Did','q','السؤال'],['you','n',''],[b,'k','الفعل الأصلي'],[obj.trim()+' yesterday?','x','']],say:`Did you ${b}${obj} yesterday?`,ar:"Yes, I did. / No, I didn't.",why:`السؤال: ${e('Did')} + الفاعل + الفعل الأصلي.`}}})};
+const LAB1102A={title:'ظروف التكرار',w:(el,B)=>N.labB(el,B,{intro:'اختر الظرف والجملة. لاحظ مكانه: قبل الفعل، أو بعد be.',
+ controls:[{k:'a',label:'الظرف',opts:ADV.map(a=>[a[1],a[1]+' ('+a[0]+'%)'])},{k:'v',label:'الجملة',opts:[['main','مع فعل: take the train'],['be','مع be: late']]}],
+ out:({a,v})=>{const pc=ADV.find(x=>x[1]===a)[0];const bar=`<svg viewBox="0 0 320 40" width="300"><rect x="10" y="12" width="300" height="16" rx="8" fill="#eee"/><rect x="10" y="12" width="${3*pc}" height="16" rx="8" fill="#00875a"/><text x="${Math.max(18,3*pc)}" y="10" font-size="10">${pc}%</text></svg>`;
+  return v==='main'?{svg:bar,pieces:[['I','n',''],[a,'k','قبل الفعل'],['take','q','الفعل'],['the train.','x','']],say:`I ${a} take the train.`,why:`ظرف التكرار يأتي قبل الفعل الأساسي.${a==='never'?` ومع ${e('never')} لا نستعمل ${e("don't")}.`:''}`}
+  :{svg:bar,pieces:[["I'm",'q','be'],[a,'k','بعد be'],['late.','x','']],say:`I'm ${a} late.`,why:`مع ${e('be')} يأتي ظرف التكرار بعده.`}}})};
+const LAB1102B={title:'How often …?',w:(el,B)=>N.labB(el,B,{intro:'اختر النشاط والظرف، وشاهد السؤال والجواب.',
+ controls:[{k:'x',label:'النشاط',opts:[['late','work late'],['out','go out with your classmates'],['bus','take the bus']]},{k:'a',label:'الجواب',opts:ADV.map(a=>[a[1],a[1]])}],
+ out:({x,a})=>{const act={late:'work late',out:'go out with your classmates',bus:'take the bus'}[x];return{pieces:[['How often do you','q','كم مرة؟'],[act+'?','x',''],['I','n',''],[a,'k','ظرف التكرار'],[act+'.','x','']],say:`How often do you ${act}? I ${a} ${act}.`,why:`نسأل عن التكرار بـ ${e('How often …?')} ونجيب بظرف تكرار.`}}})};
+const R1101=N.rule({title:'أفعال الروتين، والأزمنة الثلاثة',ref:'ص 48–49',
+ intro:`في هذا الدرس تتكلم عن يومك المعتاد، وعما تفعله الآن، وعما فعلته أمس. نشرح أفعال الروتين، ثم كيف نكوّن الأزمنة الثلاثة ومتى نستعمل كلاً منها.`,
+ parts:[
+ {t:'أفعال الروتين',short:'get up · leave home',old:[1],q:'ما الفرق بين get to work و get home؟',ref:'ص 48',
+  lead:`الروتين اليومي له أفعال تأتي مع كلمات معينة، فنحفظها معاً.`,
+  points:[`${e('get up')} يستيقظ وينهض، و ${e('leave home')} يغادر البيت.`,`${e('get to work')} يصل إلى العمل، و ${e('get home')} يصل إلى البيت (بلا ${e('to')}).`,`${e('have breakfast / lunch / a break')}، و ${e('finish work')}، و ${e('go shopping / go out')}`],
+  html:vt([['get up','يستيقظ وينهض'],['have breakfast / lunch / a break','يتناول الفطور / الغداء / يستريح'],['leave home','يغادر البيت'],['get to work / get home','يصل إلى العمل / البيت'],['call my clients','يتصل بعملائه'],['pick up a friend','يمرّ لأخذ صديق'],['go shopping / go out','يتسوق / يخرج'],['finish work','ينهي العمل'],['watch TV / play tennis','يشاهد التلفاز / يلعب التنس']],['English','المعنى']),
+  pairs:[['I get to home at five.','I get home at five.','مع home بلا to.']],
+  art:art(`${DAY.slice(0,8).map((d,i)=>`<g data-tip="${d[5]}: ${d[0]}${d[4]?' '+d[4]:''}"><rect x="${20+(i%2)*165}" y="${26+Math.floor(i/2)*60}" width="155" height="46" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(97+(i%2)*165,54+Math.floor(i/2)*60,d[0]+(d[4]?' '+d[4]:''),{fs:12,w:700})}</g>`).join('')}`,'روتين'),cap:'يوم فيصل. مرّر المؤشر لترى الوقت.',labs:[{title:'الأفعال',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'I ___ up at six.',o:['get','have'],a:0},{s:'I ___ breakfast at home.',o:['have','make to'],a:0},{s:'I ___ home at seven.',o:['leave','go'],a:0},{s:'I ___ my friend on the way.',o:['pick up','go out'],a:0}]})}]},
+ {t:'ثلاثة أزمنة: الروتين والآن والماضي',short:'leaves · is leaving · left',old:[2],q:"ما الفرق بين I play و I'm playing و I played؟",ref:'ص 48',
+  lead:`لكل وقت زمن: ما نفعله كل يوم، وما يحدث الآن، وما حدث وانتهى. ونعرف الزمن غالباً من كلمة الوقت في الجملة.`,
+  points:[`<b>المضارع البسيط</b> للروتين (${e('every day · every Monday')}): ${e('Every Monday, I leave home at seven.')} ومع ${e('he · she')} نضيف ${e('s')}: ${e('She leaves home at seven.')}`,
+   `<b>المضارع المستمر</b> لما يحدث الآن (${e('Look! · now')}): ${e('am · is · are')} + الفعل + ${e('ing')}: ${e("Look! She's playing tennis.")}`,
+   `<b>الماضي البسيط</b> لما حدث وانتهى (${e('yesterday · last Saturday')}): الفعل + ${e('ed')} أو الشاذ: ${e('Last Saturday, I got up at ten.')}`,
+   `<b>نفي الماضي وسؤاله:</b> ${e("didn't")} و ${e('Did')} + الفعل الأصلي: ${e("He didn't take the bus.")} و ${e('Did you have lunch at one?')}`,
+   `<b>إملاء ing:</b> نحذف ${e('e')} الأخيرة: ${e('have → having')}، ونضاعف الحرف الأخير في الفعل القصير: ${e('get → getting')}.`],
+  grid:{head:['الزمن','نكوّنه بـ','مثال'],rows:[['المضارع البسيط (روتين)','الفعل، ومع he/she/it + s','Every Monday, I leave home at seven.'],['المضارع المستمر (الآن)','am / is / are + الفعل + ing',"Look! She's playing tennis."],['الماضي البسيط (انتهى)','الفعل + ed، أو الشاذ','Last Saturday, I got up at ten.'],['نفي الماضي',"didn't + الفعل الأصلي","He didn't take the bus."]]},
+  html:vt([['get','got'],['have','had'],['drive','drove'],['make','made'],['eat','ate'],['go','went']],['الفعل','الماضي الشاذ']),
+  pairs:[["I didn't went home.","I didn't go home.","بعد didn't الفعل الأصلي."],['Look! He plays tennis.',"Look! He's playing tennis.",'الآن: المضارع المستمر.'],['Yesterday, she leaves at seven.','Yesterday, she left at seven.','أمس: الماضي البسيط.']],
+  art:art(`<g data-tip="روتين: المضارع البسيط"><rect x="20" y="50" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,81,'Every Monday, she leaves at seven.',{fs:14,w:700})}</g>
+    <g data-tip="الآن: المضارع المستمر"><rect x="20" y="120" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,151,"Look! She's leaving now.",{fs:14,w:700})}</g>
+    <g data-tip="في الماضي: الماضي البسيط"><rect x="20" y="190" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,221,'Last Saturday, she left at ten.',{fs:14,w:700})}</g>`,'tenses'),cap:'ثلاثة أزمنة. مرّر المؤشر على كل سطر.',labs:[LAB1101A,LAB1101B,{title:'الزمن',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Every day, she ___ at eight.',o:['starts','started'],a:0},{s:"Look! He ___ tennis.",o:["'s playing",'plays'],a:0},{s:'Last Saturday, I ___ a Japanese meal.',o:['made','make'],a:0},{s:'Yesterday, we ___ lunch at a pizza restaurant.',o:['had','have'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u10-l1',unit:10,order:1,pages:'48–49',
  title:'Part A: Routines and past events — الروتين والأحداث الماضية',
  summary:'أفعال الروتين اليومي (get up، have breakfast، leave home، pick up، go out، get home)، والمضارع البسيط للروتين (every Monday)، والمضارع المستمر لما يحدث الآن (She\'s playing tennis)، والماضي البسيط لما حدث (last Saturday: got up، had، drove)، وترتيب قصتين متداخلتين.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 48–49',html:`<p>تتحدث عن روتينك وعما فعلته. ستتعلم:</p><ol><li>أفعال الروتين.</li><li>الفرق بين ثلاثة أزمنة.</li><li>رواية يوم في الماضي.</li></ol>`},
-  {h:'أفعال الروتين',ref:'ص 48',html:vt([['get up','يستيقظ وينهض'],['have breakfast / lunch / a break','يتناول الفطور / الغداء / يستريح'],['leave home','يغادر البيت'],['get to work / get home','يصل إلى العمل / البيت'],['call my clients','يتصل بعملائه'],['pick up a friend','يمرّ لأخذ صديق'],['go shopping / go out','يتسوق / يخرج'],['finish work','ينهي العمل'],['watch TV / play tennis','يشاهد التلفاز / يلعب التنس']],['English','المعنى'])},
-  {h:'ثلاثة أزمنة',ref:'ص 48',html:`${vt([['Every Monday, I leave home at seven.','روتين يتكرر','المضارع البسيط'],["Look! She's playing tennis.",'يحدث الآن','المضارع المستمر'],['Last Saturday, I got up at ten.','حدث وانتهى','الماضي البسيط']],['English','المعنى','الزمن'])}${vt([['get','got'],['have','had'],['drive','drove'],['make','made'],['eat','ate'],['go','went']],['الفعل','الماضي الشاذ'])}`},
-  {note:'<b>توضيح للمتدرب:</b> مع <span class="en">he / she</span> في المضارع البسيط نضيف <span class="en">s</span>: <span class="en">She leaves home at seven.</span> وفي الماضي لا نضيف شيئاً: <span class="en">She left.</span>'},
+  ...R1101.theory,
   {h:'تمارين الكتاب',ref:'ص 48–49',html:
    bk(1,'ص 48','أكمل تحت الصور بالأفعال.',['a have lunch · b leave home · c have breakfast · d call my clients · e watch TV','f go shopping · g pick up my friend · h have a break · i finish work · j get home','k go out · l get up · m have a meeting · n play tennis · o have lunch'],'من قراءتنا للصور؛ b و j: leave home / get home حسب الصورة.')+
    bk(2,'ص 48','اختر صورة وقل ماذا تفعل الشخصية، وزميلك يخمّن.',["A: She's playing tennis. B: Picture n. (مثال)"])+
@@ -38,16 +79,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أفعال الروتين',title:'أفعال الروتين',q:'ماذا تفعل كل صباح؟',ref:'ص 48',
-   art:art(`${DAY.slice(0,8).map((d,i)=>`<g data-tip="${d[5]}: ${d[0]}${d[4]?' '+d[4]:''}"><rect x="${20+(i%2)*165}" y="${26+Math.floor(i/2)*60}" width="155" height="46" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(97+(i%2)*165,54+Math.floor(i/2)*60,d[0]+(d[4]?' '+d[4]:''),{fs:12,w:700})}</g>`).join('')}`,'روتين'),
-   cap:'يوم فيصل. مرّر المؤشر لترى الوقت.',side:[{tip:`${e('get home')} بلا ${e('to')}، لكن ${e('get to work')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'I ___ up at six.',o:['get','have'],a:0},{s:'I ___ breakfast at home.',o:['have','make to'],a:0},{s:'I ___ home at seven.',o:['leave','go'],a:0},{s:'I ___ my friend on the way.',o:['pick up','go out'],a:0}]}),title:'مختبر مصغّر: الأفعال'}]},
-  {st:2,short:'ثلاثة أزمنة',title:'leaves · is leaving · left',q:'كيف تختلف الجمل الثلاث؟',ref:'ص 48',
-   art:art(`<g data-tip="روتين: المضارع البسيط"><rect x="20" y="50" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,81,'Every Monday, she leaves at seven.',{fs:14,w:700})}</g>
-    <g data-tip="الآن: المضارع المستمر"><rect x="20" y="120" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,151,"Look! She's leaving now.",{fs:14,w:700})}</g>
-    <g data-tip="في الماضي: الماضي البسيط"><rect x="20" y="190" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,221,'Last Saturday, she left at ten.',{fs:14,w:700})}</g>`,'tenses'),
-   cap:'ثلاثة أزمنة. مرّر المؤشر على كل سطر.',side:[{tip:`كلمات تدل على الزمن: ${e('every')} / ${e('now, Look!')} / ${e('last, yesterday')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Every day, she ___ at eight.',o:['starts','started'],a:0},{s:"Look! He ___ tennis.",o:["'s playing",'plays'],a:0},{s:'Last Saturday, I ___ a Japanese meal.',o:['made','make'],a:0},{s:'Yesterday, we ___ lunch at a pizza restaurant.',o:['had','have'],a:0}]}),title:'مختبر مصغّر: الزمن'}]},
+  ...R1101.stations,
   {recap:['get up, have breakfast, leave home, get to work, get home.','every Monday ← المضارع البسيط (+ s مع he / she).',"now / Look! ← am / is / are + ing.",'last Saturday / yesterday ← الماضي البسيط.','got, had, drove, made, ate, went.']}
  ],
  lab:lab10a,
@@ -85,16 +117,30 @@ function lab10b(el,B){kcss();
   $('#co').innerHTML=vt(s.map(c=>[c[0],String(c[i])]),['Country',L])+eb(`People in ${s[0][0]==='UK'||s[0][0]==='USA'?'the '+s[0][0]:s[0][0]} ${q===1?'work the longest hours':q===-1?'work the shortest hours':q===2?'stay at one company the longest':q===3?'save the most':'save the least'}.`)};
  $('#q').addEventListener('input',cs);cs();
 }
+const R1102=N.rule({title:'ظروف التكرار، و How often …?، والمقارنة',ref:'ص 50–51',
+ intro:`في هذا الدرس تقارن روتينك بروتين غيرك: كم مرة تفعل الشيء؟ نشرح ظروف التكرار ومكانها في الجملة، ثم السؤال بـ ${e('How often')}، ثم قراءة جدول للمقارنة.`,
+ parts:[
+ {t:'ظروف التكرار',short:'always · never',old:[1],q:'أين نضع usually في الجملة؟',ref:'ص 50',
+  lead:`ظرف التكرار يبين كم مرة نفعل الشيء، من «دائماً» إلى «أبداً».`,
+  points:[`<b>من الأكثر إلى الأقل:</b> ${e('always · usually · often · sometimes · hardly ever · never')}`,`<b>قبل الفعل الأساسي:</b> ${e('I usually take the train.')}`,`<b>بعد be:</b> ${e("I'm never late.")}`,`مع ${e('never')} لا نستعمل ${e("don't")}: ${e('I never drive')}، لا ${e("I don't never drive")}.`,
+   `<b>السؤال:</b> ${e('How often do you work late?')} والجواب ${e('I sometimes work late on Thursdays.')} أو باختصار ${e('Hardly ever.')}`],
+  grid:{head:['المكان','مثال'],rows:[['قبل الفعل الأساسي','I usually take the train.'],['بعد be',"I'm never late."]]},
+  html:vt(ADV.map(a=>[a[1],a[0]+'%']).reverse(),['English','النسبة تقريباً'])+dl([['A','How often do you work late?'],['B','I sometimes work late on Thursdays.'],['A','How often do you go out with your classmates?'],['B','Hardly ever. I always go home after college.']]),
+  pairs:[['I take usually the train.','I usually take the train.','الظرف قبل الفعل الأساسي.'],['I usually am late.',"I'm usually late.",'مع be: الظرف بعده.'],["I don't never drive.",'I never drive.',"never لا تأتي مع don't."]],
+  art:art(`<line x1="30" y1="150" x2="330" y2="150" stroke="${C.ink}" stroke-width="3"/>${ADV.map(a=>`<g data-tip="${a[1]} ≈ ${a[0]}%"><circle cx="${30+a[0]*3}" cy="150" r="9" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(30+a[0]*3,a[0]%20===0||a[0]===85?126:182,a[1],{fs:11,w:700})}${TL(30+a[0]*3,a[0]%20===0||a[0]===85?110:198,a[0]+'%',{fs:10})}</g>`).join('')}`,'adverbs'),cap:'مقياس التكرار. مرّر المؤشر على كل نقطة.',labs:[LAB1102A,LAB1102B,{title:'التكرار',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'I ___ drive to college. (100%)',o:['always','never'],a:0},{s:"I'm ___ late. (0%)",o:['never','always'],a:0},{s:'How ___ do you work late?',o:['often','many'],a:0},{s:'I ___ go out on Fridays. (50%)',o:['sometimes','hardly ever'],a:0}]})}]},
+ {t:'قراءة جدول والمقارنة',short:'قراءة جدول',old:[2],q:'كيف تقارن بين روتينك وروتين زميلك؟',ref:'ص 50–51',
+  lead:`عندما نقرأ جدولاً نقارن أرقامه، ونستعمل ما تعلمناه من المقارنة والتفضيل.`,
+  points:[`نقارن بين شخصين بـ ${e('but')}: ${e('Sami always drives to work, but I never do.')}`,`ونختار الأعلى بالتفضيل: ${e('In the UK, people work the longest hours.')}`],
+  html:eb(["Sami always drives to work, but I never do. I usually take the bus.","In the UK, people work the longest hours."]),
+  art:art(`${CNT.slice(0,4).map((c,i)=>`<g data-tip="${c[0]}: ${c[1]} hours a week"><rect x="${40+i*75}" y="${240-(c[1]-30)*12}" width="55" height="${(c[1]-30)*12}" fill="${i===0?C.red:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(67+i*75,258,c[0],{fs:12,w:700})}${TL(67+i*75,232-(c[1]-30)*12,String(c[1]),{fs:12,w:700})}</g>`).join('')}`,'working hours'),cap:'ساعات العمل الأسبوعية من جدول الكتاب (المحور يبدأ من 30). مرّر المؤشر على كل عمود.',labs:[{title:'الجدول',w:(el,B)=>N.cases(el,B,{intro:'أي بلد؟',cases:[{q:'People work the shortest hours.',opts:[['Germany',1],['the UK',0]]},{q:'People save the most.',opts:[['France',1],['Canada',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u10-l2',unit:10,order:2,pages:'50–51',
  title:'Part B: Comparing routines — مقارنة الروتين',
  summary:'ظروف التكرار (always، usually، often، sometimes، hardly ever، never) ومكانها في الجملة، والسؤال How often …?، والمقارنة بين روتينك وروتين زميلك، وقراءة جدول عن ساعات العمل وسنوات البقاء في الشركة والادخار في بلدان مختلفة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 50–51',html:`<p>تقارن عاداتك بعادات غيرك. ستتعلم:</p><ol><li>ظروف التكرار.</li><li>مكانها في الجملة.</li><li>${e('How often …?')}</li><li>قراءة جدول مقارنة.</li></ol>`},
-  {h:'ظروف التكرار',ref:'ص 50',html:`${vt(ADV.map(a=>[a[1],a[0]+'%']).reverse(),['English','النسبة تقريباً'])}${vt([['before the main verb','I usually take the train.'],['after be',"I'm never late."]],['المكان','مثال'])}`},
-  {h:'How often …?',ref:'ص 50',html:dl([['A','How often do you work late?'],['B','I sometimes work late on Thursdays.'],['A','How often do you go out with your classmates?'],['B','Hardly ever. I always go home after college.']])},
-  {h:'المقارنة',ref:'ص 50',html:eb(["Sami always drives to work, but I never do. I usually take the bus.","In the UK, people work the longest hours."])},
-  {note:'<b>توضيح للمتدرب:</b> مع <span class="en">never</span> لا نستعمل <span class="en">don\'t</span>: نقول <span class="en">I never drive</span>، لا <span class="en">I don\'t never drive</span>.'},
+  ...R1102.theory,
   {h:'تمارين الكتاب',ref:'ص 50–51',html:
    bk(1,'ص 50','ضع ظروف تكرار أخرى على المقياس.',['never (0%) · hardly ever · sometimes (50%) · often · usually · always (100%)'])+
    bk(2,'ص 50','أكمل الجدول عن نفسك ثم اسأل زميلين.',null)+
@@ -105,14 +151,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'always … never',title:'ظروف التكرار',q:'كم مرة تتأخر عن الكلية؟',ref:'ص 50',
-   art:art(`<line x1="30" y1="150" x2="330" y2="150" stroke="${C.ink}" stroke-width="3"/>${ADV.map(a=>`<g data-tip="${a[1]} ≈ ${a[0]}%"><circle cx="${30+a[0]*3}" cy="150" r="9" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(30+a[0]*3,a[0]%20===0||a[0]===85?126:182,a[1],{fs:11,w:700})}${TL(30+a[0]*3,a[0]%20===0||a[0]===85?110:198,a[0]+'%',{fs:10})}</g>`).join('')}`,'adverbs'),
-   cap:'مقياس التكرار. مرّر المؤشر على كل نقطة.',side:[{tip:`قبل الفعل: ${e('I usually walk')}. بعد be: ${e("I'm usually tired")}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'I ___ drive to college. (100%)',o:['always','never'],a:0},{s:"I'm ___ late. (0%)",o:['never','always'],a:0},{s:'How ___ do you work late?',o:['often','many'],a:0},{s:'I ___ go out on Fridays. (50%)',o:['sometimes','hardly ever'],a:0}]}),title:'مختبر مصغّر: التكرار'}]},
-  {st:2,short:'جدول المقارنة',title:'قراءة جدول',q:'في أي بلد يعمل الناس أطول ساعات؟',ref:'ص 51',
-   art:art(`${CNT.slice(0,4).map((c,i)=>`<g data-tip="${c[0]}: ${c[1]} hours a week"><rect x="${40+i*75}" y="${240-(c[1]-30)*12}" width="55" height="${(c[1]-30)*12}" fill="${i===0?C.red:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(67+i*75,258,c[0],{fs:12,w:700})}${TL(67+i*75,232-(c[1]-30)*12,String(c[1]),{fs:12,w:700})}</g>`).join('')}`,'working hours'),
-   cap:'ساعات العمل الأسبوعية من جدول الكتاب (المحور يبدأ من 30). مرّر المؤشر على كل عمود.',side:[{tip:`${e('the longest hours')} صيغة تفضيل من الوحدة 7.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أي بلد؟',cases:[{q:'People work the shortest hours.',opts:[['Germany',1],['the UK',0]]},{q:'People save the most.',opts:[['France',1],['Canada',0]]}]}),title:'مختبر مصغّر: الجدول'}]},
+  ...R1102.stations,
   {recap:['always, usually, often, sometimes, hardly ever, never.','قبل الفعل الأساسي، وبعد be.','How often do you …?',"Sam always drives, but I never do.",'the longest / the shortest / the most / the least.']}
  ],
  lab:lab10b,

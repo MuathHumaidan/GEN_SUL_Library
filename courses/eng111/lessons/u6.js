@@ -22,15 +22,57 @@ function lab6a(el,B){kcss();
   $('#o').innerHTML=L.length?dl([['Supplier','Unifit Workwear. Can I help you?'],['You',"I'd like to place an order, please."],...L.flatMap(x=>[['You',`I'd like ${x[1]} ${x[0].u}${x[0].d}, order number ${x[0].no}.`],['Supplier',`OK. That's ${W(x[1])} ${x[0].d}. They're ${money(x[0].p)} each.`]]),['Supplier',`So that's ${money(g)} in total. We'll send the goods immediately.`]]):''};
  el.querySelectorAll('[data-q]').forEach(i=>i.addEventListener('input',sh));sh();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 6 ===== */
+const OS6={start:["I'd like to place an order, please.",'الزبون','يبدأ الطلب'],acc:['Do you have an account with us?','البائع','يسأل عن الحساب'],ord:["I'd like to order 30 lab coats.",'الزبون','يذكر الكمية'],price:['How much are they? — SAR 45 each.','الزبون','يسأل عن السعر'],more:['Anything else?','البائع','يسأل عن المزيد'],check:['Can I just check your order?','البائع','يراجع الطلب'],send:["We'll send the goods immediately.",'البائع','يعد بالإرسال']};
+const LAB161A={title:'خطوات تقديم الطلب',w:(el,B)=>N.labB(el,B,{intro:'اختر الخطوة في المكالمة، وشاهد العبارة ومن يقولها.',
+ controls:[{k:'s',label:'الخطوة',opts:Object.keys(OS6).map((k,i)=>[k,(i+1)+' '+OS6[k][2]])}],
+ out:({s})=>{const [a,w,ar]=OS6[s];return{pieces:[[w,'x',''],[a,w==='الزبون'?'q':'n',ar]],say:a,why:`${e("I'd like to")} ألطف من ${e('I want to')}، و ${e("We'll")} = ${e('We will')} للوعد.`}}})};
+const QT6={coats:['lab coats',1],gog:['goggles',1,'pairs of '],paper:['paper',0],money:['money',0],time:['time',0]};
+const LAB161B={title:'How many أم How much؟ a few أم a little؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء والكمية. لاحظ كيف يتغير السؤال وكلمة الكمية حسب نوع الاسم.',
+ controls:[{k:'o',label:'الشيء',opts:Object.keys(QT6).map(k=>[k,QT6[k][0]])},{k:'q',label:'الكمية',opts:[['ask','السؤال'],['few','قليل'],['lot','كثير'],['not','ليس كثيراً']]}],
+ out:({o,q})=>{const [n,cnt,pr]=QT6[o],ty=cnt?'معدود':'غير معدود';
+  if(q==='ask')return{pieces:[[cnt?'How many':'How much','k',ty],[(pr||'')+n,'n',cnt?'جمع':'بلا جمع'],['do you need?','x','']],say:`${cnt?'How many':'How much'} ${(pr||'')+n} do you need?`,why:cnt?`${e('How many')} للمعدود، والاسم بعده جمع.`:`${e('How much')} لغير المعدود، والاسم بعده بلا ${e('s')}.`};
+  if(q==='not')return{pieces:[["We don't need",'r','نفي'],[cnt?'many':'much','k',ty],[n+'.','n','']],say:`We don't need ${cnt?'many':'much'} ${n}.`,why:`${e('many')} للمعدود و ${e('much')} لغير المعدود، وتكثران في النفي والسؤال.`};
+  const w=q==='few'?(cnt?'a few':'a little'):'a lot of';
+  return{pieces:[['We need','x',''],[w,'k',ty],[(pr||'')+n+'.','n','']],say:`We need ${w} ${(pr||'')+n}.`,why:q==='lot'?`${e('a lot of')} مع النوعين.`:cnt?`مع المعدود: ${e('a few')}`:`مع غير المعدود: ${e('a little')}`}}})};
+const LAB162A={title:'احسب الفاتورة',w:(el,B)=>N.labB(el,B,{intro:'اختر القطعة والكمية، وشاهد سطر الفاتورة والخصم.',
+ controls:[{k:'i',label:'القطعة',opts:ORD.map((o,i)=>[String(i),o[0]])},{k:'q',label:'الكمية',opts:[['5','5'],['10','10'],['20','20']]}],
+ out:({i,q})=>{const [n,,p]=ORD[+i],Q=+q,t=Q*p,d=t*0.05;return{pieces:[['quantity','x',String(Q)],['price / item','x',money(p)],['goods total','k',money(t)],['discount (5%)','q','− '+money(d)],['total','n',money(t-d)]],say:`The goods total is ${t} riyals. The discount is ${d} riyals.`,why:`${e('goods total')} = الكمية × سعر القطعة، ثم نطرح ${e('discount')}. و ${e('VAT')} ضريبة تُضاف بعد ذلك.`}}})};
+const ST6={c:['Complaint','شكوى',"I ordered ten fluorescent lights but I've got twenty."],a:['Apology','اعتذار',"Oh, I'm sorry about that."],x:['Action','إجراء',"I'll check that and send you a new invoice."],r:['Response','رد',"Thank you. That's very helpful."]};
+const LAB162B={title:'مراحل حل المشكلة',w:(el,B)=>N.labB(el,B,{intro:'اختر المرحلة، وشاهد عبارة مناسبة لها. المكالمة تمر بالمراحل الأربع بالترتيب.',
+ controls:[{k:'s',label:'المرحلة',opts:Object.keys(ST6).map((k,i)=>[k,(i+1)+' '+ST6[k][1]])}],
+ out:({s})=>{const [en,ar,x]=ST6[s];return{pieces:[[en,'k',ar],[x,s==='c'||s==='r'?'q':'n',s==='c'||s==='r'?'الزبون':'البائع']],say:x,why:`الشكوى بالماضي البسيط (${e('I ordered')})، والإجراء بالمستقبل البسيط (${e("I'll check")}).`}}})};
+const PV6={order:['order','ordered','نضيف ed'],promise:['promise','promised','ينتهي بـ e: نضيف d'],check:['check','checked','نضيف ed'],deliver:['deliver','delivered','نضيف ed']};
+const LAB162C={title:'الماضي بـ ed أم المستقبل بـ will؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل والزمن.',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(PV6).map(k=>[k,k])},{k:'t',label:'الزمن',opts:[['past','حدث وانتهى'],['will','قرار الآن للمستقبل']]}],
+ out:({v,t})=>{const [b,p,r]=PV6[v],o={order:'ten lights',promise:'a discount',check:'the invoice',deliver:'the goods'}[v];return t==='past'?{pieces:[['We','n',''],[p,'k',r],[o+'.','x','']],say:`We ${p} ${o}.`,why:`الماضي البسيط للفعل المنتظم: الفعل + ${e('ed')}، والمنتهي بـ ${e('e')} نضيف له ${e('d')}.`}
+  :{pieces:[["I'll",'k','= I will'],[b,'n','الفعل كما هو'],[o+'.','x','']],say:`I'll ${b} ${o}.`,why:`${e('will')} لقرار نتخذه الآن، وبعدها الفعل كما هو.`}}})};
+const R161=N.rule({title:'تقديم الطلب، والمعدود وغير المعدود، والكميات',ref:'ص 28–29',
+ intro:`في هذا الدرس تطلب لوازم لشركتك بالهاتف. نشرح عبارات تقديم الطلب، ثم الفرق بين الاسم المعدود وغير المعدود، وكلمات الكمية التي تأتي مع كل منهما.`,
+ parts:[
+ {t:'تقديم الطلب',short:'place an order',old:[1],q:'كيف تبدأ مكالمة طلب؟',ref:'ص 28',
+  lead:`مكالمة الطلب تمر بخطوات ثابتة: البدء، والكمية، والسعر، والمراجعة، والوعد بالإرسال.`,
+  points:[`<b>البدء:</b> ${e("I'd like to place an order, please.")}`,`<b>الكمية:</b> ${e("I'd like to order 30 lab coats.")}`,`<b>السعر:</b> ${e('How much are they? — SAR 45 each.')} و ${e('each')} = للواحدة.`,`<b>البائع يراجع:</b> ${e('Anything else?')} و ${e('Can I just check your order?')}`,`<b>ويعد:</b> ${e("We'll send the goods immediately.")}`],
+  html:vt([["I'd like to place an order, please.",'أود تقديم طلب'],["I'd like to order 30 lab coats.",'أود أن أطلب …'],['Do you have an account with us?','هل لك حساب لدينا؟'],['How much are they? — SAR 45 each.','كم سعرها؟ — … للواحدة'],['Anything else?','شيء آخر؟'],['Can I just check your order?','أراجع طلبك'],["We'll send the goods immediately.",'سنرسل البضاعة فوراً']],['English','المعنى']),
+  art:art(`${[["I'd like to place an order.",'أبدأ الطلب'],["I'd like to order 30 lab coats.",'العدد والصنف'],['How much are they?','السعر'],["That's everything, thanks.",'انتهيت']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${40+i*58}" width="320" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*58,x[0],{fs:14,w:700})}</g>`).join('')}`,'الطلب'),cap:'مراحل الطلب. مرّر المؤشر على كل منها.',labs:[LAB161A,{title:'الطلب',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'd like to ___ an order, please.",o:['place','put'],a:0},{s:'How much ___ they?',o:['are','is'],a:0},{s:'They are €58 ___.',o:['each','one'],a:0}]})}]},
+ {t:'المعدود وغير المعدود والكميات',short:'many · much · a few · a little',old:[2],q:'لماذا نقول How many coats لكن How much paper؟',ref:'ص 29',
+  lead:`قبل أن تسأل عن الكمية يجب أن تعرف نوع الاسم: هل نستطيع أن نعدّه؟ لأن كلمات الكمية تختلف بين النوعين.`,
+  points:[`<b>المعدود:</b> يمكن استخدامه بصيغة المفرد والجمع، ويكون قبله عدد أو ${e('a')}: ${e('a lab coat · 30 lab coats')}`,`<b>غير المعدود:</b> لا يمكن جمعه، ولا يأتي معه عدد أو ${e('a')}: ${e('paper · money · time')}`,
+   `<b>السؤال:</b> ${e('How many')} للمعدود: ${e('How many lab coats do you need?')}<br>${e('How much')} لغير المعدود وللسعر: ${e('How much paper? · How much are they?')}`,
+   `<b>قليل:</b> ${e('a few')} مع المعدود، و ${e('a little')} مع غير المعدود.`,`<b>كثير:</b> ${e('a lot of')} مع النوعين.`,`<b>في النفي:</b> ${e('not many')} مع المعدود، و ${e('not much')} مع غير المعدود: ${e("We don't have much time.")}`,
+   `بعض الأشياء من جزأين نعدّها بـ ${e('pairs of')}: ${e('20 pairs of goggles')}`],
+  grid:{head:['','المعدود','غير المعدود'],rows:[['السؤال','How many coats?','How much paper?'],['قليل','a few coats','a little paper'],['كثير','a lot of coats','a lot of paper'],['ليس كثيراً','not many coats','not much paper']]},
+  pairs:[['How much lab coats?','How many lab coats?','lab coats معدود: How many.'],['a few paper','a little paper','paper غير معدود: a little.'],['two papers','two sheets of paper','paper لا يُجمع ولا يُعدّ مباشرة.']],
+  art:art(`<g data-tip="المعدود: How many / a few / many"><rect x="20" y="50" width="155" height="190" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(97,80,'countable',{fs:15,w:700})}${['How many?','a few','many','a lot of','lab coats, pens'].map((x,i)=>TL(97,115+i*26,x,{fs:13})).join('')}</g>
+    <g data-tip="غير المعدود: How much / a little / much"><rect x="185" y="50" width="155" height="190" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(262,80,'uncountable',{fs:15,w:700})}${['How much?','a little','much','a lot of','paper, money'].map((x,i)=>TL(262,115+i*26,x,{fs:13})).join('')}</g>`,'many much'),cap:'المعدود وغير المعدود. مرّر المؤشر على كل عمود.',labs:[LAB161B,{title:'الكمية',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'How ___ pens do you need?',o:['many','much'],a:0},{s:'How ___ paper do you need?',o:['much','many'],a:0},{s:'We need ___ lab coats. (عدد قليل)',o:['a few','a little'],a:0},{s:'We need ___ goggles. (عدد كبير)',o:['a lot of','a few'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u6-l1',unit:6,order:1,pages:'28–29',
  title:'Part A: Ordering what you need — طلب ما تحتاجه',
  summary:'طرق الشراء (by phone، on the Internet…)، وتقديم طلب شراء بالهاتف (I\'d like to place an order. I\'d like to order …)، والكميات (a few، a lot of، How many …? How much …?) مع المعدود وغير المعدود، و pairs of، وقراءة شاشة طلب وحساب المجموع.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 28–29',html:`<p>تطلب ما تحتاجه شركتك من مورّد. ستتعلم:</p><ol><li>عبارات الطلب بالهاتف.</li><li>الكميات: ${e('a few, a lot of, many, much')}.</li><li>السؤال عن العدد والسعر.</li></ol>`},
-  {h:'تقديم الطلب',ref:'ص 28',html:vt([["I'd like to place an order, please.",'أود تقديم طلب'],["I'd like to order 30 lab coats.",'أود أن أطلب …'],['Do you have an account with us?','هل لك حساب لدينا؟'],['How much are they? — SAR 45 each.','كم سعرها؟ — … للواحدة'],['Anything else?','شيء آخر؟'],['Can I just check your order?','أراجع طلبك'],["We'll send the goods immediately.",'سنرسل البضاعة فوراً']],['English','المعنى'])},
-  {h:'الكميات',ref:'ص 29',html:`${vt([['How many …?','للمعدود (lab coats, pens)','How many lab coats do you need?'],['How much …?','لغير المعدود (paper, money) وللسعر','How much paper? How much are they?'],['a few','قليل من المعدود','a few lab coats'],['a little','قليل من غير المعدود','a little paper'],['a lot of','كثير من الاثنين','a lot of goggles / a lot of money'],['not many / not much','ليس كثيراً','not many problems / not much time']],['English','الاستعمال','مثال'])}`},
-  {note:'<b>توضيح للمتدرب:</b> بعض الأشياء من جزأين نعدّها بـ <span class="en">pairs of</span>: <span class="en">20 pairs of goggles</span>، <span class="en">three pairs of overalls</span>.'},
+  ...R161.theory,
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
    bk(1,'ص 28','استمع: كم يحتاج الزميلان من كل شيء؟ ثم أكمل شاشة الطلب.',['a: Ben: 6 lab coats · 20 pairs of goggles — Ron: 3 pairs of overalls · 30 pairs of gloves','b: account MX 343467 · P21G5 lab coats 30 × €45 = €1350 · P2251 overalls 25 × €58 = €1450 · WB91 goggles 50 × €8 = €400 · S32 gloves 50 × €5 = €250 · Grand Total €3450'])+
    bk(2,'ص 29','أكمل الجمل بالكلمات، ثم استمع وتحقق.',['1 A: We need a few lab coats. B: How many? A: Er, three … four … six will be fine.','2 We need a lot of goggles.','3 He needs three pairs of overalls.','4 B: How much are they? A: €58 each.'])+
@@ -40,15 +82,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الطلب بالهاتف',title:'I\'d like to place an order',q:'كيف تبدأ مكالمة طلب شراء؟',ref:'ص 28',
-   art:art(`${[["I'd like to place an order.",'أبدأ الطلب'],["I'd like to order 30 lab coats.",'العدد والصنف'],['How much are they?','السعر'],["That's everything, thanks.",'انتهيت']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${40+i*58}" width="320" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*58,x[0],{fs:14,w:700})}</g>`).join('')}`,'الطلب'),
-   cap:'مراحل الطلب. مرّر المؤشر على كل منها.',side:[{tip:`${e("I'd like")} ألطف من ${e('I want')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'd like to ___ an order, please.",o:['place','put'],a:0},{s:'How much ___ they?',o:['are','is'],a:0},{s:'They are €58 ___.',o:['each','one'],a:0}]}),title:'مختبر مصغّر: الطلب'}]},
-  {st:2,short:'many · much',title:'الكميات',q:'هل تقول How many paper أم How much paper؟',ref:'ص 29',
-   art:art(`<g data-tip="المعدود: How many / a few / many"><rect x="20" y="50" width="155" height="190" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(97,80,'countable',{fs:15,w:700})}${['How many?','a few','many','a lot of','lab coats, pens'].map((x,i)=>TL(97,115+i*26,x,{fs:13})).join('')}</g>
-    <g data-tip="غير المعدود: How much / a little / much"><rect x="185" y="50" width="155" height="190" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(262,80,'uncountable',{fs:15,w:700})}${['How much?','a little','much','a lot of','paper, money'].map((x,i)=>TL(262,115+i*26,x,{fs:13})).join('')}</g>`,'many much'),
-   cap:'المعدود وغير المعدود. مرّر المؤشر على كل عمود.',side:[{tip:`${e('a lot of')} تصلح للنوعين.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'How ___ pens do you need?',o:['many','much'],a:0},{s:'How ___ paper do you need?',o:['much','many'],a:0},{s:'We need ___ lab coats. (عدد قليل)',o:['a few','a little'],a:0},{s:'We need ___ goggles. (عدد كبير)',o:['a lot of','a few'],a:0}]}),title:'مختبر مصغّر: الكمية'}]},
+  ...R161.stations,
   {recap:["I'd like to place an order. · I'd like to order …",'How many + معدود؟ How much + غير معدود / السعر؟','a few / a little / a lot of.','pairs of goggles / overalls / gloves.',"Can I just check your order? · We'll send the goods immediately."]}
  ],
  lab:lab6a,
@@ -83,16 +117,33 @@ function lab6b(el,B){kcss();
   el.querySelectorAll('[data-r]').forEach(tr=>tr.onclick=()=>{const ok=+tr.dataset.r===x.r;$('#o').innerHTML=ok?`<p class="sub">✔ وجدت الخطأ.</p>`+dl([['Customer (complaint)',x.t],['Supplier (apology + action)',x.a],['Customer (response)',"Thank you. That's very helpful."]]):'<p class="sub" style="color:var(--red)">✘ هذا السطر يطابق الطلب. قارن الكمية والسعر بالطلب الأصلي.</p>'})};
  $('#nw').onclick=()=>{m=(m+1)%MIST.length;sh()};sh();
 }
+const R162=N.rule({title:'الفاتورة، ومراحل حل المشكلة، والماضي والمستقبل البسيطان',ref:'ص 30–31',
+ intro:`في هذا الدرس تصلك بضاعة أو فاتورة فيها خطأ، فتتصل لحل المشكلة. نشرح كلمات الفاتورة، ثم مراحل مكالمة الشكوى، ثم الزمنين اللذين نستعملهما فيها.`,
+ parts:[
+ {t:'قراءة الفاتورة',short:'invoice',old:[1],q:'ما الفرق بين goods total و grand total؟',ref:'ص 30',
+  lead:`الفاتورة جدول بالكميات والأسعار، ولكل سطر فيها اسم.`,
+  points:[`${e('quantity')} الكمية، و ${e('price / item')} سعر القطعة.`,`${e('goods total')} = الكمية × السعر، ثم ${e('discount')} الخصم.`,`${e('VAT')} ضريبة القيمة المضافة، و ${e('grand total')} الإجمالي النهائي.`,`نسبة ${e('VAT')} في السعودية 15% <small>(إضافة من خارج الكتاب؛ الفاتورة في الكتاب بريطانية بنسبة 17.5%)</small>.`],
+  html:vt([['invoice','فاتورة'],['quantity','الكمية'],['price / item','سعر القطعة'],['goods total','مجموع البضاعة'],['discount (5%)','خصم'],['VAT','ضريبة القيمة المضافة'],['grand total','الإجمالي النهائي']],['English','المعنى']),
+  art:art(`<rect x="40" y="30" width="280" height="240" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,58,'INVOICE',{fs:16,w:700})}${[['10 AC filters × 30','300.00','quantity × price'],['24 LED lamps × 18','432.00','quantity × price'],['Goods total','732.00','المجموع'],['VAT 15%','109.80','الضريبة'],['Grand total','841.80','الإجمالي']].map((x,i)=>`<g data-tip="${x[2]}"><text x="60" y="${96+i*34}" font-size="13" fill="${C.ink}" direction="ltr" font-weight="${i>1?700:400}">${x[0]}</text><text x="300" y="${96+i*34}" font-size="13" fill="${C.ink}" text-anchor="end" direction="ltr" font-weight="${i>1?700:400}">${x[1]}</text></g>`).join('')}`,'فاتورة'),cap:'فاتورة من إعدادنا. مرّر المؤشر على كل سطر.',labs:[LAB162A,{title:'المشكلة',w:(el,B)=>N.cases(el,B,{intro:'ما المشكلة؟',cases:[{q:'You ordered 10, the invoice says 20.',opts:[['wrong quantity',1],['wrong address',0]]},{q:'The catalogue says SAR 18, the invoice says SAR 21.',opts:[['wrong price',1],['late delivery',0]]}]})}]},
+ {t:'مراحل حل المشكلة',short:'Complaint → Apology → Action',old:[2],q:'ماذا يقول البائع بعد الاعتذار؟',ref:'ص 31',
+  lead:`مكالمة الشكوى الناجحة تمر بأربع مراحل بالترتيب، ولكل مرحلة عبارات.`,
+  points:[`<b>Complaint</b> الشكوى: ${e("I ordered ten fluorescent lights but I've got twenty.")}`,`<b>Apology</b> الاعتذار: ${e("Oh, I'm sorry about that.")}`,`<b>Action</b> الإجراء: ${e("I'll check that and send you a new invoice.")}`,`<b>Response</b> الرد: ${e("Thank you. That's very helpful.")}`],
+  grid:{head:['المرحلة','المعنى','مثال'],rows:[['Complaint','شكوى',"The salesman promised us a ten per cent discount, not five."],['Apology','اعتذار',"Oh, I'm sorry about that."],['Action','إجراء','Could you give ten back to the driver?'],['Response','رد',"Oh, good. That's very helpful."]]},
+  art:art(`${[["I ordered 10 but I've got 20.",'Complaint',C.red],["I'm sorry about that.",'Apology',C.yel],['Could you give 10 back to the driver?','Action',C.paper],["Thank you. That's very helpful.",'Response',C.grn]].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${30+i*60}" width="320" height="48" rx="12" fill="${x[2]}" stroke="${C.ink}" stroke-width="2"/>${TL(180,60+i*60,x[0],{fs:13,w:700,c:x[2]===C.red||x[2]===C.grn?'#fff':C.ink})}</g>`).join('')}`,'complaint'),cap:'المراحل الأربع. مرّر المؤشر على كل منها.',labs:[LAB162B,{title:'المراحل',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I ___ ten boxes but I've got twenty.",o:['ordered','order'],a:0},{s:"I'm ___ about that.",o:['sorry','sad'],a:0},{s:"___ send you a new invoice.",o:["I'll","I"],a:0},{s:"Oh, good. That's very ___.",o:['helpful','help'],a:0}]})}]},
+ {t:'الماضي البسيط والمستقبل البسيط',short:'ordered · I\'ll',q:'لماذا نقول I ordered في الشكوى و I\'ll send في الإجراء؟',ref:'ص 31',
+  lead:`في مكالمة الشكوى نتكلم عن شيء حدث (الطلب)، وعن شيء سنفعله (الإجراء). فنحتاج زمنين.`,
+  points:[`<b>الماضي البسيط</b> لما حدث وانتهى: الفعل + ${e('ed')}: ${e('order → ordered')}`,`والفعل المنتهي بـ ${e('e')} نضيف له ${e('d')}: ${e('promise → promised')}`,`<b>المستقبل البسيط</b> بـ ${e('will')} لقرار نتخذه الآن: ${e("I'll send another one.")}`,`بعد ${e('will')} الفعل كما هو، واختصارها ${e("'ll")}: ${e("We'll give you your money back.")}`],
+  grid:{head:['English','القاعدة'],rows:[['order → ordered','الماضي بـ ed'],['promise → promised','الماضي بـ d'],["I'll send another one.",'سأرسل (قرار الآن)'],["We'll give you your money back.",'سنعيد لك المبلغ']]},
+  pairs:[["I'll sending another one.","I'll send another one.",'بعد will الفعل كما هو.'],['I order ten lights yesterday.','I ordered ten lights yesterday.','لما حدث وانتهى: ed.']],
+  labs:[LAB162C]}
+ ]});
 B.lesson({
  id:'u6-l2',unit:6,order:2,pages:'30–31',
  title:'Part B: Dealing with problems — التعامل مع المشكلات',
  summary:'ما قد يخطئ في الطلب، وقراءة فاتورة (discount، VAT، grand total)، والشكوى بالماضي البسيط (I ordered ten but I\'ve got twenty. The salesman promised …)، والاعتذار (I\'m sorry about that)، والإجراء بالمستقبل البسيط (I\'ll check that. We\'ll send …) والطلب (Could you …?)، والرد.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 30–31',html:`<p>تشتكي من خطأ في طلب، أو تعتذر وتحل المشكلة. ستتعلم:</p><ol><li>قراءة الفاتورة.</li><li>الشكوى والاعتذار والإجراء والرد.</li><li>${e('ordered')} للماضي و ${e("I'll")} للإجراء.</li></ol>`},
-  {h:'الفاتورة',ref:'ص 30',html:vt([['invoice','فاتورة'],['quantity','الكمية'],['price / item','سعر القطعة'],['goods total','مجموع البضاعة'],['discount (5%)','خصم'],['VAT','ضريبة القيمة المضافة'],['grand total','الإجمالي النهائي']],['English','المعنى'])},
-  {h:'الشكوى والاعتذار والإجراء',ref:'ص 31',html:`${vt([['Complaint','شكوى',"I ordered ten fluorescent lights but I've got twenty. / The salesman promised us a ten per cent discount, not five."],['Apology','اعتذار',"Oh, I'm sorry about that."],['Action','إجراء',"I'll check that and send you a new invoice. / Could you give ten back to the driver?"],['Response','رد',"Thank you. / Oh, good. That's very helpful."]],['المرحلة','المعنى','مثال'])}`},
-  {h:'الماضي البسيط والمستقبل البسيط',ref:'ص 31',html:`${vt([['order → ordered','الماضي بـ ed'],['promise → promised','الماضي بـ d'],["I'll send another one.",'سأرسل (قرار الآن)'],["We'll give you your money back.",'سنعيد لك المبلغ']],['English','القاعدة'])}`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">VAT</span> ضريبة القيمة المضافة، ونسبتها في السعودية 15% (إضافة من خارج الكتاب؛ الفاتورة في الكتاب بريطانية بنسبة 17.5%).'},
+  ...R162.theory,
   {h:'تمارين الكتاب',ref:'ص 30–31',html:
    bk(1,'ص 30','اكتب مع زميلك ما قد يخطئ في الطلب.',['wrong address (مثال) · wrong items · wrong quantity · wrong price · late delivery · damaged goods · no discount (نماذج)'])+
    bk(2,'ص 30','استمع: ما المشكلتان؟ وماذا يقول المورّد؟',['1: the discount — the salesman promised 10%, not 5% · the quantity — she ordered 10 fluorescent lights but got 20','2: b and e'])+
@@ -102,14 +153,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الفاتورة',title:'قراءة الفاتورة',q:'كيف تتأكد أن الفاتورة صحيحة؟',ref:'ص 30',
-   art:art(`<rect x="40" y="30" width="280" height="240" rx="8" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,58,'INVOICE',{fs:16,w:700})}${[['10 AC filters × 30','300.00','quantity × price'],['24 LED lamps × 18','432.00','quantity × price'],['Goods total','732.00','المجموع'],['VAT 15%','109.80','الضريبة'],['Grand total','841.80','الإجمالي']].map((x,i)=>`<g data-tip="${x[2]}"><text x="60" y="${96+i*34}" font-size="13" fill="${C.ink}" direction="ltr" font-weight="${i>1?700:400}">${x[0]}</text><text x="300" y="${96+i*34}" font-size="13" fill="${C.ink}" text-anchor="end" direction="ltr" font-weight="${i>1?700:400}">${x[1]}</text></g>`).join('')}`,'فاتورة'),
-   cap:'فاتورة من إعدادنا. مرّر المؤشر على كل سطر.',side:[{tip:`تحقق من: الكمية، والسعر، والخصم، والمجموع.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'ما المشكلة؟',cases:[{q:'You ordered 10, the invoice says 20.',opts:[['wrong quantity',1],['wrong address',0]]},{q:'The catalogue says SAR 18, the invoice says SAR 21.',opts:[['wrong price',1],['late delivery',0]]}]}),title:'مختبر مصغّر: المشكلة'}]},
-  {st:2,short:'الشكوى والاعتذار',title:'Complaint → Apology → Action → Response',q:'ماذا تقول إذا وصلك عدد أكثر مما طلبت؟',ref:'ص 31',
-   art:art(`${[["I ordered 10 but I've got 20.",'Complaint',C.red],["I'm sorry about that.",'Apology',C.yel],['Could you give 10 back to the driver?','Action',C.paper],["Thank you. That's very helpful.",'Response',C.grn]].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${30+i*60}" width="320" height="48" rx="12" fill="${x[2]}" stroke="${C.ink}" stroke-width="2"/>${TL(180,60+i*60,x[0],{fs:13,w:700,c:x[2]===C.red||x[2]===C.grn?'#fff':C.ink})}</g>`).join('')}`,'complaint'),
-   cap:'المراحل الأربع. مرّر المؤشر على كل منها.',side:[{tip:`${e("I'll")} للقرار الذي نتخذه الآن: ${e("I'll send you a new invoice.")}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I ___ ten boxes but I've got twenty.",o:['ordered','order'],a:0},{s:"I'm ___ about that.",o:['sorry','sad'],a:0},{s:"___ send you a new invoice.",o:["I'll","I"],a:0},{s:"Oh, good. That's very ___.",o:['helpful','help'],a:0}]}),title:'مختبر مصغّر: المراحل'}]},
+  ...R162.stations,
   {recap:['invoice, discount, VAT, grand total.',"Complaint: I ordered … but I've got …","Apology: I'm sorry about that.","Action: I'll … / Could you …?","Response: Thank you. That's very helpful."]}
  ],
  lab:lab6b,

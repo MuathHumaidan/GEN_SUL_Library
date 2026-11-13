@@ -177,7 +177,7 @@ const labB=(el,B,o)=>{const s={};o.controls.forEach(c=>{s[c.k]=c.init!=null?c.in
     r.querySelectorAll('button').forEach(b=>b.onclick=()=>{s[c.k]=b.dataset.v;draw()});C.appendChild(r);c._r=r});
   function draw(){o.controls.forEach(c=>c._r.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===String(s[c.k]))));
     const r=o.out(s)||{};SV.innerHTML=r.svg||'';
-    OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${r.ar}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;
+    OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${/[\u0600-\u06FF]/.test(r.ar)?r.ar:e(r.ar)}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;
     if(B&&B.ltrU)try{B.ltrU(OUT)}catch(e){}}
   draw()};
 /* ===== «شرح القاعدة»: قسم شامل واحد يدمج شرح قاعدة الدرس =====

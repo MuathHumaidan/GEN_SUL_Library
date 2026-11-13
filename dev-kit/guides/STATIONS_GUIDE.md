@@ -56,6 +56,11 @@ M 0.1 / T1 and PLC terms (LAD, FBD, STL) too.
 - Builder labs: ENK.labB(el,B,{intro,controls:[{k,label,opts:[[v,text]]}],out:s=>({svg,pieces:[[text,'n|k|q|x',role]],say,ar,why,bad})}):
   coloured sentence pieces with their role under each, a drawing that changes, a reason line, and a red box for a wrong combination.
   Reuse the same drawings in the explanation and the lab (one source, e.g. PKD in 7.2).
+- Converting a lesson: scripts/en/conv.py convert(path,lid,n_old_stations,first_grammar_heading,Rname,Rsource,{part_n:'LABX[,LABY]'},recap=…,pre=labs_js)
+  replaces the old grammar sections and stations with ...R.theory / ...R.stations and keeps each old station's drawing and mini-lab
+  (write ALAB<n> in the part where old station n goes). Long sentence pieces wrap on phones; English-only lab notes (ar) are isolated LTR.
+  All three English courses use it now (انجل-101 18 lessons, انجل-102 12, انجل-111 20; reviews stay as summaries). gram.js is now empty
+  in انجل-101 and انجل-111: new «اشرح أولاً» rules go straight into the lesson's ENK.rule as a part with add:true.
 - Station renumbering: en.js keeps PLCBOOK.stMap[lesson] old→new so book counterpart exercises (bx.js, by original st) stay in place;
   give each rule part old:[n] for the old station it replaces.
 - Book exercises: never copy their text or pictures; counterparts mirror the structure (same word box, number of gaps, answer order, table shape).

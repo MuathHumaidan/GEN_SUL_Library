@@ -20,15 +20,56 @@ function lab3a(el,B){kcss();
  el.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>sh(+b.dataset.p));sh(0);
  $('#mk').innerHTML=eb(['A car company makes cars.','A bank provides banking services.','An airline provides air travel.','A phone company makes phones.']);
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 3 ===== */
+const CO3={fac:['Gulf Office','make','office equipment','product','منتج'],food:['Red Sea Foods','produce','soft drinks','product','منتج'],bank:['Najd Bank','provide','banking services','service','خدمة'],net:['SkyNet','offer','Internet access 24 hours a day','service','خدمة']};
+const LAB131A={title:'make أم provide أم offer؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الشركة، وشاهد الفعل المناسب لما تقدمه: منتج أم خدمة؟',
+ controls:[{k:'c',label:'الشركة',opts:Object.keys(CO3).map(k=>[k,CO3[k][0]])}],
+ out:({c})=>{const [n,v,o,k,ar]=CO3[c];return{pieces:[[n,'n','الشركة = it'],[v+'s','k',k==='product'?'للمنتج':'للخدمة'],[o+'.','q',ar]],say:`${n} ${v}s ${o}.`,why:`${e('make · produce')} للمنتج الذي تمسكه، و ${e('provide · offer')} للخدمة. والشركة مفردة فنضيف ${e('s')}.`}}})};
+const LAB131B={title:'صِف المنتج أو الخدمة',w:(el,B)=>N.labB(el,B,{intro:'اختر المنتج أو الخدمة، ثم اختر ما تريد أن تصفه.',
+ controls:[{k:'p',label:'الاسم',opts:PROD.map((p,i)=>[String(i),p.n])},{k:'t',label:'أصف',opts:[['has','ما فيه'],['can','ما يستطيعه'],['you','ما تستطيعه أنت'],['cost','سعره']]}],
+ out:({p,t})=>{const P=PROD[+p];if(t==='has')return{pieces:[['It','n','it'],['has','k','has مع it'],[P.has[0]+'.','x','']],say:`It has ${P.has[0]}.`,why:`مع ${e('it')} نقول ${e('has')}.`};
+  if(t==='can')return{pieces:[['It','n','it'],['can','k','يستطيع'],[P.can[0]+'.','x','الفعل كما هو']],say:`It can ${P.can[0]}.`,why:`بعد ${e('can')} الفعل كما هو بلا ${e('s')}.`};
+  if(t==='you')return{pieces:[['You','n','أنت (المستعمل)'],['can','k','تستطيع'],[P.you[0]+'.','x','الفعل كما هو']],say:`You can ${P.you[0]}.`,why:`${e('You can …')} لما يستطيعه المستعمل.`};
+  return{pieces:[['It','n','it'],['costs','k','costs مع it'],[P.cost+'.','x','السعر']],say:`It costs ${P.cost}.`,why:`${e('It costs')} + السعر. و ${e('SAR')} = الريال السعودي.`}}})};
+const AD3={cheap:['cheap','cheaper','cost',-1,'+ er'],fast:['fast','faster','time',-1,'+ er'],comf:['comfortable','more comfortable','comfort',1,'طويلة: more'],conv:['convenient','more convenient','conv',1,'طويلة: more'],exp:['expensive','more expensive','cost',1,'طويلة: more']};
+const bar3=(key,dir)=>{const v=OPT.map(o=>o.s[key]),mx=Math.max(...v);return `<svg viewBox="0 0 360 150" width="340">${OPT.map((o,i)=>{const w=Math.round(v[i]/mx*220);return `<text x="10" y="${35+i*42}" font-size="13" fill="#333">${o.n.replace('the ','')}</text><rect x="70" y="${20+i*42}" width="${w}" height="22" rx="4" fill="${['#1f5fd1','#00875a','#b37d00'][i]}"/><text x="${76+w}" y="${36+i*42}" font-size="12" fill="#333">${key==='cost'?'SAR '+v[i]:key==='time'?v[i]+' h':'★'.repeat(v[i])}</text>`}).join('')}</svg>`};
+const LAB132A={title:'صيغة المقارنة',w:(el,B)=>N.labB(el,B,{intro:'اختر الصفة ووسيلتين. الجملة تُبنى من الأرقام في الرسم.',
+ controls:[{k:'a',label:'الصفة',opts:Object.keys(AD3).map(k=>[k,AD3[k][0]])},{k:'x',label:'الأولى',opts:OPT.map((o,i)=>[String(i),o.n])},{k:'y',label:'الثانية',opts:OPT.map((o,i)=>[String(i),o.n])}],
+ out:({a,x,y})=>{const [adj,cmp,key,dir,rule]=AD3[a],A=OPT[+x],Bo=OPT[+y];if(x===y)return{svg:bar3(key,dir),bad:'اختر وسيلتين مختلفتين.'};
+  const va=A.s[key],vb=Bo.s[key];if(va===vb)return{svg:bar3(key,dir),pieces:[[A.n.replace(/^t/,'T'),'n',''],['is as '+adj+' as','k','متساويان'],[Bo.n+'.','n','']],say:`${A.n} is as ${adj} as ${Bo.n}.`,why:`القيمتان متساويتان، فنقول ${e('as … as')} <small>(إضافة من خارج الكتاب)</small>.`};
+  const aWins=dir<0?va<vb:va>vb,W=aWins?A:Bo,L=aWins?Bo:A;
+  return{svg:bar3(key,dir),pieces:[[W.n.replace(/^t/,'T'),'n','الأول'],['is','x',''],[cmp,'k',rule],['than','q','من'],[L.n+'.','n','الثاني']],say:`${W.n.replace(/^t/,'T')} is ${cmp} than ${L.n}.`,why:`الصفة القصيرة نضيف لها ${e('er')}، والطويلة نسبقها بـ ${e('more')}، وبعدها ${e('than')}.`}}})};
+const ND3={cheap:['cheap','cheaper'],fast:['fast','faster'],comf:['comfortable','more comfortable']};
+const LAB132B={title:'الأنسب لمن؟ ولماذا؟',w:(el,B)=>N.labB(el,B,{intro:'اختر أهم شيء عند المسافر، وشاهد الوسيلة الأنسب له مع السبب.',
+ controls:[{k:'n',label:'يهمه',opts:[['cheap','السعر'],['fast','الوقت'],['comf','الراحة']]}],
+ out:({n})=>{const key={cheap:'cost',fast:'time',comf:'comfort'}[n],sorted=[...OPT].sort((p,q)=>n==='comf'?q.s[key]-p.s[key]:p.s[key]-q.s[key]),W=sorted[0],L=sorted[1];
+  return{svg:bar3(key),pieces:[['I think','x',''],[W.n,'n','الاختيار'],['is better for Mr Adel','k','better for + الشخص'],['because','q','السبب'],[`it's ${ND3[n][1]} than ${L.n}.`,'x','المقارنة']],say:`I think ${W.n} is better for Mr Adel because it's ${ND3[n][1]} than ${L.n}.`,why:`${e('better')} مقارنة ${e('good')} (شاذة)، و ${e('because')} يأتي بعدها السبب.`}}})};
+const R131=N.rule({title:'المنتج والخدمة، و make / provide / offer، ووصف المنتج',ref:'ص 14–15',
+ intro:`في هذا الدرس تصف ما تقدمه شركتك: هل هو منتج أم خدمة؟ وبأي فعل نصفه؟ ثم كيف تصف المنتج: ما فيه، وما يستطيعه، وسعره.`,
+ parts:[
+ {t:'المنتج والخدمة و make / provide / offer',short:'make · provide · offer',old:[1],q:'ما الفرق بين make و provide؟',ref:'ص 14',
+  lead:`كل شركة تقدم منتجاً أو خدمة. والفعل الذي نصف به عملها يختلف بينهما.`,
+  points:[`${e('product')} منتج: شيء تشتريه وتمسكه، مثل ${e('soft drinks · mobile phones')}`,`${e('service')} خدمة: عمل يُقدَّم لك، مثل ${e('banking · Internet access · air travel')}`,
+   `<b>للمنتج:</b> ${e('make')} أو ${e('produce')}: ${e('They make office equipment.')}`,`<b>للخدمة:</b> ${e('provide')} أو ${e('offer')}: ${e('They provide banking services.')}`,`والشركة مفردة، فمعها يأخذ الفعل ${e('s')}: ${e('The company offers online banking.')}`],
+  grid:{head:['الفعل','المعنى','مثال'],rows:[['make / produce','يصنع / ينتج','They make office equipment.'],['provide','يقدّم (خدمة)','They provide banking services.'],['offer','يعرض / يقدّم','We offer online banking 24 hours a day.']]},
+  pairs:[['The company provide banking services.','The company provides banking services.','الشركة مفردة: نضيف s.']],
+  art:art(`<g data-tip="product — منتج: يُصنع (make / produce)."><rect x="20" y="50" width="150" height="190" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,80,'products',{fs:16,w:700})}${['phones','cars','soft drinks','staplers'].map((x,i)=>TL(95,120+i*30,x,{fs:13})).join('')}</g>
+    <g data-tip="service — خدمة: تُقدَّم (provide / offer)."><rect x="190" y="50" width="150" height="190" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(265,80,'services',{fs:16,w:700})}${['banking','air travel','Internet access','car washing'].map((x,i)=>TL(265,120+i*30,x,{fs:13})).join('')}</g>`,'منتجات وخدمات'),cap:'منتجات وخدمات. مرّر المؤشر على كل عمود.',labs:[LAB131A,{title:'الفعل',w:(el,B)=>N.cases(el,B,{intro:'أي فعل؟',cases:[{q:'An airline ___ air travel.',opts:[['provides',1],['makes',0]]},{q:'Pepsi ___ soft drinks.',opts:[['makes',1],['provides',0]]},{q:'We ___ banking 24 hours a day.',opts:[['offer',1],['produce',0]]}]})}]},
+ {t:'وصف المنتج',short:'has · can · costs',old:[2],q:'كيف تقول سعر المنتج وما يستطيعه؟',ref:'ص 14–15',
+  lead:`لتعرض منتجاً على زبون تذكر ما فيه، وما يستطيعه، وما يستطيع الزبون أن يفعله به، وسعره.`,
+  points:[`<b>ما فيه:</b> ${e('It has two USB ports.')}`,`<b>ما يستطيعه:</b> ${e('It can charge a phone three times.')}`,`<b>ما تستطيعه أنت:</b> ${e('You can carry it in your pocket.')}`,`<b>السعر:</b> ${e('It costs SAR 149.')}، و<b>الوقت:</b> ${e('It takes about ten minutes.')}`,
+   `بعد ${e('can')} الفعل كما هو بلا ${e('s')}: ${e('It can make holes')} لا ${e('It can makes')}.`],
+  html:vt([['It has two USB ports.','فيه …'],['It can charge a phone three times.','يستطيع …'],['You can carry it in your pocket.','تستطيع أنت …'],['It costs SAR 149.','سعره …'],['It takes about ten minutes.','يستغرق …']],['English','المعنى']),
+  pairs:[['It can charges a phone.','It can charge a phone.','بعد can الفعل بلا s.'],['It have two ports.','It has two ports.','مع it نقول has.']],
+  art:art(`${[['It has two USB ports.','فيه'],['It can charge a phone.','يستطيع'],['You can carry it.','تستطيع أنت'],['It costs SAR 149.','سعره']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="30" y="${40+i*58}" width="300" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*58,x[0],{fs:15,w:700})}</g>`).join('')}`,'وصف المنتج'),cap:'أربع جمل لوصف منتج. مرّر المؤشر على كل منها.',labs:[LAB131B,{title:'الوصف',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'It ___ just SAR 29.',o:['costs','cost'],a:0},{s:'The punch can ___ holes in ten sheets.',o:['make','makes'],a:0},{s:'You can ___ online in three steps.',o:['register','registers'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u3-l1',unit:3,order:1,pages:'14–15',
  title:'Part A: Describing products and services — وصف المنتجات والخدمات',
  summary:'المنتجات والخدمات وأفعالها (make، produce، provide، offer)، ووصف منتج أو خدمة بـ It has / It can / You can / It costs، وقراءة الأرقام والأسعار في إعلان، وكتابة فقرة عن شركة من أرقامها.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>تصف ما تقدمه شركة. ستتعلم:</p><ol><li>الفرق بين المنتج والخدمة.</li><li>${e('make, produce, provide, offer')}</li><li>${e('It has / It can / You can / It costs')}</li></ol>`},
-  {h:'المنتج والخدمة',ref:'ص 14',html:`${vt([['product','منتج: شيء تشتريه وتمسكه','soft drinks, mobile phones'],['service','خدمة: عمل يُقدَّم لك','banking, Internet access, air travel']],['English','المعنى','أمثلة'])}${vt([['make / produce','يصنع / ينتج','They make office equipment.'],['provide','يقدّم (خدمة)','They provide banking services.'],['offer','يعرض / يقدّم','We offer online banking 24 hours a day.']],['الفعل','المعنى','مثال'])}`},
-  {h:'وصف المنتج',ref:'ص 14–15',html:`${vt([['It has two USB ports.','فيه …'],['It can charge a phone three times.','يستطيع …'],['You can carry it in your pocket.','تستطيع أنت …'],['It costs SAR 149.','سعره …'],['It takes about ten minutes.','يستغرق …']],['English','المعنى'])}`},
-  {note:'<b>توضيح للمتدرب:</b> بعد <span class="en">can</span> الفعل كما هو بلا <span class="en">s</span>: <span class="en">It can make holes</span>، لا <span class="en">It can makes</span>.'},
+  ...R131.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15',html:
    bk(1,'ص 14','طابق الشركات بالمنتجات والخدمات، ثم تحدث عنها.',['Pepsi: a soft drinks','Nokia: b mobile phones','T-Online: c Internet access','Barclays: d banking','Virgin Atlantic: e air travel'])+
    bk(2,'ص 14','استمع وأكمل الملاحظات والعبارات.',['a staple wizard: up to 8 sheets · 3,000 times from 4 batteries · €29','a punch wizard: up to 10 sheets · €39',"b Eurobanx Direct: Europe's number one direct bank · 24 hours · 7 days · register in 3 steps · about 10 minutes · call 0807 363992",'c 1 costs 2 can 3 make 4 provide 5 offer 6 can'])+
@@ -38,15 +79,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'منتج أم خدمة؟',title:'make · provide · offer',q:'هل البنك يصنع منتجاً أم يقدّم خدمة؟',ref:'ص 14',
-   art:art(`<g data-tip="product — منتج: يُصنع (make / produce)."><rect x="20" y="50" width="150" height="190" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,80,'products',{fs:16,w:700})}${['phones','cars','soft drinks','staplers'].map((x,i)=>TL(95,120+i*30,x,{fs:13})).join('')}</g>
-    <g data-tip="service — خدمة: تُقدَّم (provide / offer)."><rect x="190" y="50" width="150" height="190" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(265,80,'services',{fs:16,w:700})}${['banking','air travel','Internet access','car washing'].map((x,i)=>TL(265,120+i*30,x,{fs:13})).join('')}</g>`,'منتجات وخدمات'),
-   cap:'منتجات وخدمات. مرّر المؤشر على كل عمود.',side:[{tip:`${e('They make phones.')} و ${e('They provide banking services.')}`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أي فعل؟',cases:[{q:'An airline ___ air travel.',opts:[['provides',1],['makes',0]]},{q:'Pepsi ___ soft drinks.',opts:[['makes',1],['provides',0]]},{q:'We ___ banking 24 hours a day.',opts:[['offer',1],['produce',0]]}]}),title:'مختبر مصغّر: الفعل'}]},
-  {st:2,short:'It has · It can',title:'وصف المنتج',q:'كيف تصف جهازاً جديداً لصديق؟',ref:'ص 15',
-   art:art(`${[['It has two USB ports.','فيه'],['It can charge a phone.','يستطيع'],['You can carry it.','تستطيع أنت'],['It costs SAR 149.','سعره']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="30" y="${40+i*58}" width="300" height="46" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,69+i*58,x[0],{fs:15,w:700})}</g>`).join('')}`,'وصف المنتج'),
-   cap:'أربع جمل لوصف منتج. مرّر المؤشر على كل منها.',side:[{tip:`${e('costs')} مع s لأن الفاعل ${e('it')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'It ___ just SAR 29.',o:['costs','cost'],a:0},{s:'The punch can ___ holes in ten sheets.',o:['make','makes'],a:0},{s:'You can ___ online in three steps.',o:['register','registers'],a:0}]}),title:'مختبر مصغّر: الوصف'}]},
+  ...R131.stations,
   {recap:['product ≠ service.','make / produce منتجات، provide / offer خدمات.','It has … / It can … / You can … / It costs …','بعد can الفعل كما هو.']}
  ],
  lab:lab3a,
@@ -87,15 +120,30 @@ function lab3b(el,B){kcss();
  ['a','b'].forEach(k=>$('#'+k).addEventListener('input',sh));sh();
  const as=()=>{const x=ADJ[+$('#adj').value];$('#ao').innerHTML=`${eb(`${x[0]} → ${x[1]} than`)}<p class="sub">${x[2]}</p>`};$('#adj').addEventListener('input',as);as();
 }
+const R132=N.rule({title:'صيغة المقارنة، واختيار الأنسب مع السبب',ref:'ص 16–17',
+ intro:`عندما تختار بين منتجين أو خدمتين تقارن بينهما. نشرح كيف نكوّن صيغة المقارنة، ثم كيف نقترح الأنسب لشخص مع ذكر السبب.`,
+ parts:[
+ {t:'صيغة المقارنة',short:'cheaper · more comfortable',old:[1],q:'لماذا نقول cheaper لكن more comfortable؟',ref:'ص 16',
+  lead:`لنقارن بين شيئين نغيّر الصفة إلى صيغة المقارنة، ثم نضع ${e('than')} (من). وطريقة التغيير تعتمد على طول الصفة.`,
+  points:[`<b>الصفة القصيرة</b> نضيف لها ${e('er')}: ${e('cheap → cheaper · fast → faster')}`,`<b>القصيرة المنتهية بساكن بعد متحرك</b> نضاعف آخرها: ${e('big → bigger')}`,`<b>المنتهية بـ ${e('y')}</b> نحذف ${e('y')} ونضيف ${e('ier')}: ${e('easy → easier')}`,
+   `<b>الصفة الطويلة</b> نضع قبلها ${e('more')}: ${e('comfortable → more comfortable')}`,`<b>الشاذة</b> تُحفظ: ${e('good → better · bad → worse')}`,`<b>الجملة:</b> ${e('The train is cheaper than the plane.')}`],
+  grid:{head:['الصفة','المقارنة','القاعدة'],rows:ADJ.map(x=>[x[0],x[1],x[2]])},
+  pairs:[['The plane is more faster than the train.','The plane is faster than the train.','لا نجمع more مع er.'],['The train is comfortabler.','The train is more comfortable.','الطويلة مع more.'],['The train is cheaper that the plane.','The train is cheaper than the plane.','بعد المقارنة than.']],
+  art:art(`${[['fast → faster','قصير: + er'],['big → bigger','نضاعف g'],['tasty → tastier','y → ier'],['comfortable → more comfortable','طويل: more'],['good → better','شاذ']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${30+i*52}" width="320" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,57+i*52,x[0],{fs:15,w:700})}</g>`).join('')}`,'المقارنة'),cap:'خمس قواعد للمقارنة. مرّر المؤشر على كل منها.',labs:[LAB132A,{title:'المقارنة',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The train is ___ than the plane.',o:['cheaper','more cheap'],a:0},{s:'Business class seats are ___ than economy seats.',o:['bigger','biger'],a:0},{s:'The food on the plane is ___ than on the train.',o:['better','gooder'],a:0},{s:'The train is ___ than the car.',o:['more comfortable','comfortabler'],a:0}]})}]},
+ {t:'اختيار الأنسب مع السبب',short:'better for … because',old:[2],q:'كيف تقترح فندقاً لزائر وتذكر السبب؟',ref:'ص 17',
+  lead:`عندما تختار لشخص آخر تذكر اختيارك، ثم السبب، والسبب غالباً مقارنة.`,
+  points:[`${e('I think')} + الاختيار + ${e('is better for')} + الشخص: ${e('I think the Garden Hotel is better for Mr Adel')}`,`${e('because')} + السبب: ${e("because it's near the airport.")}`,`ويمكن أن نضيف مقارنة: ${e("It's cheaper than the Palm Hotel.")}`],
+  pairs:[["It's better for Mr Adel because cheaper.","It's better for Mr Adel because it's cheaper.",'بعد because جملة كاملة.']],
+  art:art(`<g data-tip="better for + الشخص"><rect x="20" y="70" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,101,'The Garden Hotel is better for Adel',{fs:14,w:700})}</g>
+    <g data-tip="because + السبب"><rect x="20" y="140" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,171,"because it's near the airport.",{fs:14,w:700})}</g>`,'better for because'),cap:'الاختيار ثم السبب. مرّر المؤشر على كل جزء.',labs:[LAB132B,{title:'السبب',w:(el,B)=>N.cases(el,B,{intro:'أي سبب يناسب؟',cases:[{q:'A family on holiday wants shopping.',opts:[["because it's near the shopping centre",1],["because it's near the airport",0]]},{q:'A manager has only one day.',opts:[["because it's near his meetings",1],['because it has a big pool',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u3-l2',unit:3,order:2,pages:'16–17',
  title:'Part B: Comparing products and services — المقارنة بين المنتجات والخدمات',
  summary:'صيغة المقارنة (faster، bigger، tastier، more comfortable، better) مع than، وقواعد بنائها، ومقارنة طريقتين للسفر من جدول، وقراءة إعلانات فنادق واختيار الأنسب لكل زائر مع ذكر السبب.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 16–17',html:`<p>تقارن بين منتجين أو خدمتين. ستتعلم:</p><ol><li>صيغة المقارنة و ${e('than')}.</li><li>قواعد بنائها.</li><li>اختيار الأنسب مع السبب.</li></ol>`},
-  {h:'صيغة المقارنة',ref:'ص 16',html:`${vt(ADJ.map(x=>[x[0],x[1],x[2]]),['الصفة','المقارنة','القاعدة'])}${eb(['The train is cheaper than the plane.','The plane is faster than the train.','The train is more comfortable than the car.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> لا نجمع <span class="en">more</span> مع <span class="en">er</span>: نقول <span class="en">faster</span>، لا <span class="en">more faster</span>.'},
-  {h:'اختيار الأنسب',ref:'ص 17',html:`${eb(["I think the Garden Hotel is better for Mr Adel because it's near the airport.","It's cheaper than the Palm Hotel."])}<p>${e('better for')} + الشخص، و ${e('because')} + السبب.</p>`},
+  ...R132.theory,
   {h:'تمارين الكتاب',ref:'ص 16–17',html:
    bk(1,'ص 16','صح أم خطأ؟ ثم استمع وصحّح الخاطئ.',['1 F — Club World is for business class passengers.','2 T','3 T'])+
    bk(2,'ص 16','أكمل جدول المقارنة، ثم قارن الطائرة بالقطار.',['a: more enjoyable · faster · more comfortable · bigger · tastier · better','c (نموذج): The plane is faster than the train. The train is cheaper than the plane. The train is more comfortable than the plane. The train is more convenient than the plane. The food on the plane is better than on the train. The service on the plane is better than on the train.'])+
@@ -105,15 +153,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'+er · more',title:'صيغة المقارنة',q:'كيف تقول إن القطار أرخص من الطائرة؟',ref:'ص 16',
-   art:art(`${[['fast → faster','قصير: + er'],['big → bigger','نضاعف g'],['tasty → tastier','y → ier'],['comfortable → more comfortable','طويل: more'],['good → better','شاذ']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${30+i*52}" width="320" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,57+i*52,x[0],{fs:15,w:700})}</g>`).join('')}`,'المقارنة'),
-   cap:'خمس قواعد للمقارنة. مرّر المؤشر على كل منها.',side:[{tip:`بعد المقارنة نضع ${e('than')}: ${e('cheaper than the plane')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The train is ___ than the plane.',o:['cheaper','more cheap'],a:0},{s:'Business class seats are ___ than economy seats.',o:['bigger','biger'],a:0},{s:'The food on the plane is ___ than on the train.',o:['better','gooder'],a:0},{s:'The train is ___ than the car.',o:['more comfortable','comfortabler'],a:0}]}),title:'مختبر مصغّر: المقارنة'}]},
-  {st:2,short:'الأنسب لمن؟',title:'اختيار الأنسب مع السبب',q:'أي فندق تختار لمسافر عمل مستعجل؟',ref:'ص 17',
-   art:art(`<g data-tip="better for + الشخص"><rect x="20" y="70" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,101,'The Garden Hotel is better for Adel',{fs:14,w:700})}</g>
-    <g data-tip="because + السبب"><rect x="20" y="140" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,171,"because it's near the airport.",{fs:14,w:700})}</g>`,'better for because'),
-   cap:'الاختيار ثم السبب. مرّر المؤشر على كل جزء.',side:[{tip:`${e('because')} = لأن.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'أي سبب يناسب؟',cases:[{q:'A family on holiday wants shopping.',opts:[["because it's near the shopping centre",1],["because it's near the airport",0]]},{q:'A manager has only one day.',opts:[["because it's near his meetings",1],['because it has a big pool',0]]}]}),title:'مختبر مصغّر: السبب'}]},
+  ...R132.stations,
   {recap:['short + er: faster، cheaper.','big → bigger، tasty → tastier.','more + long: more comfortable.','good → better، bad → worse.','… is better for … because …']}
  ],
  lab:lab3b,

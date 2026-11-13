@@ -23,16 +23,65 @@ function lab7a(el,B){kcss();
   $('#o').innerHTML=dl([['Receptionist','Palm Hotel. Can I help you?'],['Guest',"Yes. I'd like to make a reservation, please."],['Receptionist','When would you like to stay?'],['Guest',`From the ${ORD(f)} of ${m} until the ${ORD(t)}.`],['Receptionist',`OK, so ${n} night${n>1?'s':''}. Would you like a single or a double room?`],['Guest',`A ${r} room, please.`],['Receptionist',`A ${r} is ${pr} riyals a night. May I have your name, please?`],['Guest',`It's ${nm}.`],['Receptionist','Could you spell that, please?']])};
  ['nm','rt','f','t','mo'].forEach(k=>$('#'+k).addEventListener('input',sh));sh();
 }
+/* ===== مختبرات «شرح القاعدة» الوحدة 7 ===== */
+const BQ7={when:['When would you like to stay?','From the 20th until the 22nd.','التاريخ'],room:['Would you like a single or a double room?','A single room, please.','نوع الغرفة'],name:['May I have your name, please?','Yes, it’s Khalid Al-Harbi.','الاسم'],tel:['Can I have your telephone number?','It’s 0555 123 456.','الهاتف'],pay:['How do you want to pay?','By credit card.','الدفع'],conf:['Can I confirm your booking?','Yes, please.','التأكيد']};
+const LAB171A={title:'أسئلة موظف الحجز',w:(el,B)=>N.labB(el,B,{intro:'اختر ما يريد الموظف أن يعرفه، وشاهد سؤاله وجواباً مناسباً.',
+ controls:[{k:'q',label:'يسأل عن',opts:Object.keys(BQ7).map(k=>[k,BQ7[k][2]])}],
+ out:({q})=>{const [a,b]=BQ7[q];return{pieces:[[a,'q','الموظف'],[b,'n','الزبون']],say:`${a} ${b}`,why:`أسئلة الموظف مهذبة غالباً: ${e('Would you like …? · May I have …? · Can I …?')}`}}})};
+const WT7={book:'book a flight',fly:'fly on May the 13th',stay:'stay for two nights'};
+const LAB171B={title:'want to أم would like to؟',w:(el,B)=>N.labB(el,B,{intro:'اختر ما تريد، والأسلوب، ونوع الجملة.',
+ controls:[{k:'v',label:'أريد أن',opts:Object.keys(WT7).map(k=>[k,WT7[k]])},{k:'s',label:'الأسلوب',opts:[['p','مهذب'],['d','مباشر']]},{k:'f',label:'الجملة',opts:[['s','خبرية'],['q','سؤال']]}],
+ out:({v,s,f})=>{const V=WT7[v],p=s==='p';if(f==='s')return{pieces:[[p?"I'd like to":'I want to','k',p?'مهذب أكثر':'مباشر'],[V+'.','n','الفعل كما هو']],say:`${p?"I'd like to":'I want to'} ${V}.`,why:`بعد ${e('want to')} و ${e('would like to')} الفعل كما هو.`};
+  return{pieces:[[p?'Would you like to':'Do you want to','q',p?'سؤال مهذب':'سؤال مباشر'],[V+'?','n','الفعل كما هو']],say:`${p?'Would you like to':'Do you want to'} ${V}?`,why:`السؤال المهذب يبدأ بـ ${e('Would')}، والمباشر بـ ${e('Do')}.`}}})};
+const LAB171C={title:'التاريخ في الكلام',w:(el,B)=>N.labB(el,B,{intro:'اختر اليوم والشهر والطريقة، وشاهد كيف نقول التاريخ.',
+ controls:[{k:'d',label:'اليوم',opts:[1,2,3,13,20,22,31].map(n=>[String(n),String(n)])},{k:'m',label:'الشهر',opts:[[4,'May'],[8,'September'],[11,'December']].map(([v,t])=>[String(v),t])},{k:'f',label:'الطريقة',opts:[['a','the 13th of May'],['b','May the 13th']]}],
+ out:({d,m,f})=>{const n=+d,M=MON[+m],sx=n%100>=11&&n%100<=13?'th':({1:'st',2:'nd',3:'rd'})[n%10]||'th';
+  const pc=f==='a'?[['On','x',''],['the '+n+sx,'k',ORD(n)],['of '+M+'.','n','الشهر']]:[['On','x',''],[M,'n','الشهر'],['the '+n+sx+'.','k',ORD(n)]];
+  return{pieces:pc,say:f==='a'?`On the ${ORD(n)} of ${M}.`:`On ${M} the ${ORD(n)}.`,why:`نقرأ اليوم بالعدد الترتيبي مع ${e('the')}، ومع التاريخ ${e('on')}. وللمدة: ${e('from … until …')}`}}})};
+const AT7={cheap:['cheap','cheaper','the cheapest','p',-1,'السعر (ريال)'],fast:['fast','faster','the fastest','sp',1,'السرعة'],big:['big','bigger','the biggest','sz',1,'الحجم'],comf:['comfortable','more comfortable','the most comfortable','cf',1,'الراحة']};
+const cbar7=k=>`<svg viewBox="0 0 360 140" width="340">${CARS.map((c,i)=>{const v=c[k],mx=Math.max(...CARS.map(x=>x[k])),w=Math.round(v/mx*200);return `<text x="8" y="${32+i*40}" font-size="12" fill="#333">${c.n.split(' ')[1]||c.n}</text><rect x="90" y="${18+i*40}" width="${w}" height="22" rx="4" fill="${['#1f5fd1','#00875a','#b37d00'][i]}"/><text x="${96+w}" y="${34+i*40}" font-size="12" fill="#333">${k==='p'?v:'★'.repeat(v)}</text>`}).join('')}</svg>`;
+const LAB172A={title:'المقارنة أم التفضيل؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الصفة، ثم: نقارن بين سيارتين، أم نختار الأفضل من الثلاث؟ الجملة تُبنى من الرسم.',
+ controls:[{k:'a',label:'الصفة',opts:Object.keys(AT7).map(k=>[k,AT7[k][0]])},{k:'m',label:'نوع الجملة',opts:[['c','مقارنة (من اثنين)'],['s','تفضيل (من ثلاثة)']]}],
+ out:({a,m})=>{const [adj,cmp,sup,k,dir]=AT7[a],srt=[...CARS].sort((x,y)=>dir<0?x[k]-y[k]:y[k]-x[k]);
+  if(m==='c')return{svg:cbar7(k),pieces:[['The '+srt[0].n,'n',''],['is','x',''],[cmp,'k','مقارنة'],['than','q','من'],['the '+srt[1].n+'.','n','']],say:`The ${srt[0].n} is ${cmp} than the ${srt[1].n}.`,why:`المقارنة بين شيئين: ${e('er')} أو ${e('more')}، ثم ${e('than')}.`};
+  return{svg:cbar7(k),pieces:[['The '+srt[0].n,'n',''],['is','x',''],[sup,'k','تفضيل: the + est / most'],['car.','n','']],say:`The ${srt[0].n} is ${sup} car.`,why:`التفضيل من ثلاثة فأكثر: ${e('the')} + ${e('est')} أو ${e('the most')}. ومع التفضيل نضع ${e('the')} دائماً.`}}})};
+const DT7={a:[23,9,7],b:[8,3,5],c:[1,12,24]};
+const LAB172B={title:'اقرأ التاريخ: بريطاني أم أمريكي؟',w:(el,B)=>N.labB(el,B,{intro:'اختر التاريخ المكتوب، ثم النظام. الرقم نفسه قد يعني تاريخين مختلفين!',
+ controls:[{k:'d',label:'المكتوب',opts:Object.keys(DT7).map(k=>[k,DT7[k].map(String).join('/').replace(/\/(\d)$/,'/0$1')])},{k:'s',label:'النظام',opts:[['uk','بريطاني (يوم/شهر)'],['us','أمريكي (شهر/يوم)']]}],
+ out:({d,s})=>{const [a,b,y]=DT7[d],yr=y<10?'two thousand and '+['','one','two','three','four','five','six','seven','eight','nine'][y]:'twenty twenty-four';
+  if(s==='uk')return{pieces:[['the '+ORD(a),'k','اليوم أولاً'],['of '+MON[b-1]+',','n','الشهر'],[yr,'x','السنة']],say:`the ${ORD(a)} of ${MON[b-1]}, ${yr}`,why:'في بريطانيا اليوم أولاً ثم الشهر.'};
+  if(a>12)return{bad:`في النظام الأمريكي الرقم الأول شهر، ولا يوجد شهر رقمه ${a}. هذا التاريخ بريطاني.`};
+  return{pieces:[[MON[a-1],'n','الشهر أولاً'],['the '+ORD(b)+',','k','اليوم'],[yr,'x','السنة']],say:`${MON[a-1]} the ${ORD(b)}, ${yr}`,why:'في أمريكا الشهر أولاً ثم اليوم.'}}})};
+const R171=N.rule({title:'أسئلة الحجز، و want to / would like to، والتاريخ في الكلام',ref:'ص 34–35',
+ intro:`في هذا الدرس تحجز فندقاً ورحلة بالهاتف. نشرح أسئلة موظف الحجز، ثم الفرق بين ${e('want to')} و ${e('would like to')}، ثم كيف نقول التاريخ.`,
+ parts:[
+ {t:'أسئلة موظف الحجز',short:'أسئلة الحجز',old:[1],q:'ما الفرق بين single و double؟',ref:'ص 34',
+  lead:`موظف الحجز يسأل أسئلة ثابتة ليكمل الحجز: التاريخ، ونوع الغرفة، والاسم، والهاتف، وطريقة الدفع.`,
+  points:[`${e('When would you like to stay?')} و ${e('Would you like a single or a double room?')}`,`${e('May I have your name, please?')} و ${e('Can I have your telephone number?')}`,`${e('How do you want to pay? — By credit card.')} و ${e('Can I confirm your booking?')}`,
+   `${e('single')} تذكرة ذهاب فقط أو غرفة لشخص، و ${e('return')} تذكرة ذهاب وعودة، و ${e('double')} غرفة لشخصين.`],
+  html:vt([['When would you like to stay?','متى تريد الإقامة؟'],['Would you like a single or a double room?','غرفة مفردة أم مزدوجة؟'],['May I have your name, please?','اسمك من فضلك'],['Could you spell that, please?','تهجّه'],['Can I have your telephone number?','رقم هاتفك'],['When do you want to fly?','متى تريد السفر؟'],['How do you want to pay? — By credit card.','كيف تدفع؟ — بالبطاقة'],['Can I confirm your booking?','أؤكد حجزك؟']],['English','المعنى']),
+  art:art(`<rect x="60" y="30" width="240" height="230" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,58,'Booking form',{fs:15,w:700})}${[['Name','May I have your name, please?'],['Tel','Can I have your telephone number?'],['No. of nights','When would you like to stay?'],['Room','Would you like a single or a double?'],['Payment','How do you want to pay?']].map((x,i)=>`<g data-tip="${x[1]}"><text x="80" y="${96+i*36}" font-size="13" font-weight="700" fill="${C.ink}" direction="ltr">${x[0]}: ..............</text></g>`).join('')}`,'نموذج الحجز'),cap:'نموذج حجز. مرّر المؤشر على كل حقل لترى سؤاله.',labs:[LAB171A,{title:'الأسئلة',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'When ___ you like to stay?',o:['would','do'],a:0},{s:'___ I have your name, please?',o:['May','Would'],a:0},{s:'Would you like a single ___ a double room?',o:['or','and'],a:0},{s:'How do you want to ___?',o:['pay','paying'],a:0}]})}]},
+ {t:'want to و would like to',short:'want to · would like to',old:[2],q:"أيهما أكثر تهذيباً: I want to أم I'd like to؟",ref:'ص 34',
+  lead:`كلاهما للرغبة، لكن ${e('would like to')} أكثر تهذيباً، فنستعملها مع من لا نعرفه، و ${e('want to')} أكثر مباشرة.`,
+  points:[`<b>مهذب:</b> ${e("I'd like to book a flight.")} و ${e('Would you like a single room?')}`,`<b>مباشر:</b> ${e('I want to fly on May the 13th.')} و ${e('When do you want to fly?')}`,`بعدهما الفعل كما هو.`],
+  grid:{head:['English','الاستعمال'],rows:[["I'd like to book a flight.",'مهذبة أكثر'],['I want to fly on May the 13th.','مباشرة'],['Would you like a single room?','سؤال مهذب'],['When do you want to fly?','سؤال مباشر']]},
+  pairs:[['I want fly on Monday.','I want to fly on Monday.','لا ننسى to.'],["I'd like to booking a room.","I'd like to book a room.",'بعد to الفعل كما هو.']],
+  art:art(`<g data-tip="I'd like to + الفعل"><rect x="20" y="60" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,91,"I'd like to book a flight.",{fs:15,w:700})}</g>
+    <g data-tip="I want to + الفعل"><rect x="20" y="130" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,161,'I want to fly on May the 13th.',{fs:15,w:700})}</g>
+    <g data-tip="13th = thirteenth"><rect x="90" y="200" width="180" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,228,'13th = thirteenth',{fs:14,w:700})}</g>`,'want would'),cap:'الرغبة والتاريخ. مرّر المؤشر على كل سطر.',labs:[LAB171B,{title:'الرغبة',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'd like ___ book a room.",o:['to','for'],a:0},{s:'I want to fly on the ___ of May. (22)',o:['twenty-second','twenty-two'],a:0},{s:'When do you want ___ fly?',o:['to','for'],a:0}]})}]},
+ {t:'التاريخ في الكلام',short:'the 13th of May',q:'كيف تقول 13/5 في الكلام؟',ref:'ص 35',
+  lead:`عند الحجز تقول التاريخ بصوتك، وله طريقتان.`,
+  points:[`${e('On May the 13th.')} أو ${e('On the 13th of May.')}`,`نقرأ اليوم بالعدد الترتيبي مع ${e('the')}: ${e('13th = thirteenth · 22nd = twenty-second')}`,`للمدة: ${e('From Thursday the 20th until the 22nd.')}`],
+  pairs:[['On May 13.','On May the 13th.','في الكلام نقول العدد الترتيبي.']],
+  labs:[LAB171C]}
+ ]});
 B.lesson({
  id:'u7-l1',unit:7,order:1,pages:'34–35',
  title:'Part A: Making a booking — الحجز',
  summary:'حجز غرفة فندق ورحلة طيران بالهاتف: أسئلة موظف الحجز (When would you like to stay? Would you like a single or a double room? May I have your name? How do you want to pay?)، و want to / would like to، والتاريخ (May the 13th)، وتأكيد الحجز (Can I confirm your booking?) ورقم المرجع.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 34–35',html:`<p>تحجز غرفة أو رحلة، أو تأخذ حجزاً. ستتعلم:</p><ol><li>أسئلة موظف الحجز.</li><li>${e('want to / would like to')}</li><li>قول التاريخ وتأكيد الحجز.</li></ol>`},
-  {h:'أسئلة موظف الحجز',ref:'ص 34',html:vt([['When would you like to stay?','متى تريد الإقامة؟'],['Would you like a single or a double room?','غرفة مفردة أم مزدوجة؟'],['May I have your name, please?','اسمك من فضلك'],['Could you spell that, please?','تهجّه'],['Can I have your telephone number?','رقم هاتفك'],['When do you want to fly?','متى تريد السفر؟'],['How do you want to pay? — By credit card.','كيف تدفع؟ — بالبطاقة'],['Can I confirm your booking?','أؤكد حجزك؟']],['English','المعنى'])},
-  {h:'want to / would like to',ref:'ص 34',html:`${vt([["I'd like to book a flight.",'مهذبة أكثر'],['I want to fly on May the 13th.','مباشرة'],['Would you like a single room?','سؤال مهذب'],['When do you want to fly?','سؤال مباشر']],['English','الاستعمال'])}<p>بعد ${e('want to')} و ${e('would like to')} الفعل كما هو.</p>`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">single</span> تذكرة ذهاب فقط أو غرفة لشخص، و <span class="en">return</span> تذكرة ذهاب وعودة، و <span class="en">double</span> غرفة لشخصين.'},
-  {h:'التاريخ في الكلام',ref:'ص 35',html:`${eb(['On May the 13th. / On the 13th of May.','From Thursday the 20th until the 22nd.'])}<p>نقرأ اليوم بالرقم الترتيبي: ${e('13th = thirteenth')}، ${e('22nd = twenty-second')}.</p>`},
+  ...R171.theory,
   {h:'تمارين الكتاب',ref:'ص 34–35',html:
    bk(1,'ص 34','اكتب مع زميلك كل الأسئلة التي قد يسألها موظف الاستقبال.',['May I have your name, please? (مثال) · Can I have your telephone number? · How many nights? · When would you like to stay? · Single or double? (نماذج)'])+
    bk(2,'ص 34','رتّب الكلمات لتكوّن أسئلة الموظف، ثم استمع.',['1 When would you like to stay?','2 Would you like a single or a double room?','3 May I have your name, please?','4 Could you spell that, please?','5 Can I have your telephone number?'])+
@@ -42,16 +91,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أسئلة الحجز',title:'أسئلة موظف الحجز',q:'ماذا يسألك موظف الفندق؟',ref:'ص 34',
-   art:art(`<rect x="60" y="30" width="240" height="230" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,58,'Booking form',{fs:15,w:700})}${[['Name','May I have your name, please?'],['Tel','Can I have your telephone number?'],['No. of nights','When would you like to stay?'],['Room','Would you like a single or a double?'],['Payment','How do you want to pay?']].map((x,i)=>`<g data-tip="${x[1]}"><text x="80" y="${96+i*36}" font-size="13" font-weight="700" fill="${C.ink}" direction="ltr">${x[0]}: ..............</text></g>`).join('')}`,'نموذج الحجز'),
-   cap:'نموذج حجز. مرّر المؤشر على كل حقل لترى سؤاله.',side:[{tip:`${e('May I')} و ${e('Could you')} أكثر تهذيباً.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'When ___ you like to stay?',o:['would','do'],a:0},{s:'___ I have your name, please?',o:['May','Would'],a:0},{s:'Would you like a single ___ a double room?',o:['or','and'],a:0},{s:'How do you want to ___?',o:['pay','paying'],a:0}]}),title:'مختبر مصغّر: الأسئلة'}]},
-  {st:2,short:'want to · would like to',title:'الرغبة والتاريخ',q:'كيف تقول إنك تريد السفر يوم 13 مايو؟',ref:'ص 35',
-   art:art(`<g data-tip="I'd like to + الفعل"><rect x="20" y="60" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,91,"I'd like to book a flight.",{fs:15,w:700})}</g>
-    <g data-tip="I want to + الفعل"><rect x="20" y="130" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,161,'I want to fly on May the 13th.',{fs:15,w:700})}</g>
-    <g data-tip="13th = thirteenth"><rect x="90" y="200" width="180" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,228,'13th = thirteenth',{fs:14,w:700})}</g>`,'want would'),
-   cap:'الرغبة والتاريخ. مرّر المؤشر على كل سطر.',side:[{tip:`${e('1st first, 2nd second, 3rd third')} ثم ${e('th')}.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"I'd like ___ book a room.",o:['to','for'],a:0},{s:'I want to fly on the ___ of May. (22)',o:['twenty-second','twenty-two'],a:0},{s:'When do you want ___ fly?',o:['to','for'],a:0}]}),title:'مختبر مصغّر: الرغبة'}]},
+  ...R171.stations,
   {recap:['When would you like to stay?','Would you like a single or a double room?','May I have your name? · Could you spell that?',"I'd like to … / I want to …",'How do you want to pay? · Can I confirm your booking?']}
  ],
  lab:lab7a,
@@ -91,16 +131,31 @@ function lab7b(el,B){kcss();
   $('#do').innerHTML=eb(uk?`the ${ORD(d)} of ${MON[mo-1]}, ${yr}`:`${MON[mo-1]} the ${ORD(d)}, ${yr}`)+`<p class="sub">${uk?'البريطاني: اليوم ثم الشهر':'الأمريكي: الشهر ثم اليوم'}</p>`};
  ['dt','st'].forEach(k=>$('#'+k).addEventListener('input',ds));ds();
 }
+const R172=N.rule({title:'المقارنة والتفضيل، وكتابة التاريخ وقراءته',ref:'ص 36–37',
+ intro:`في هذا الدرس تختار سيارة للاستئجار من بين عدة سيارات. نشرح التفضيل بعد أن عرفنا المقارنة، ثم كيف نقرأ التاريخ المكتوب بالأرقام.`,
+ parts:[
+ {t:'المقارنة والتفضيل',short:'the cheapest · the most',old:[1],q:'ما الفرق بين cheaper و the cheapest؟',ref:'ص 36',
+  lead:`عرفنا المقارنة بين شيئين. وإذا كانت الخيارات ثلاثة أو أكثر واخترنا الأعلى منها نستعمل التفضيل.`,
+  points:[`<b>المقارنة (من اثنين):</b> ${e('er')} أو ${e('more')}، ثم ${e('than')}: ${e('The Picanto is cheaper than the Camry.')}`,`<b>التفضيل (من ثلاثة فأكثر):</b> ${e('the')} + ${e('est')}: ${e('The Picanto is the cheapest car.')}`,
+   `<b>الطويلة:</b> ${e('the most')}: ${e('The Camry is the most comfortable.')}`,`<b>الشاذة:</b> ${e('good → better → the best')}`,`مع التفضيل نضع ${e('the')} دائماً.`],
+  grid:{head:['الصفة','المقارنة (من اثنين)','التفضيل (من ثلاثة فأكثر)'],rows:SUP},
+  html:dl([['Agent','City Car Rental. Can I help you?'],['Customer',"I'd like to rent a car, please."],['Agent','How many days do you want the car for?'],['Customer','Three days.'],['Agent','And what kind of car would you like?'],['Customer','A saloon, please.'],['Agent','How about a Toyota Camry? It’s 220 riyals a day.'],['Customer','That sounds fine.']]),
+  pairs:[['The Picanto is cheapest car.','The Picanto is the cheapest car.','مع التفضيل نضع the.'],['the most cheapest','the cheapest','لا نجمع most مع est.']],
+  art:art(`${CARS.map((c,i)=>`<g data-tip="${c.n}: ${c.t}, SAR ${c.p}/day"><rect x="${20+i*112}" y="${230-c.p/2}" width="96" height="${c.p/2}" rx="6" fill="${[C.yel,C.blue,C.red][i]}" stroke="${C.ink}" stroke-width="2"/>${TL(68+i*112,250,c.n.split(' ')[1],{fs:12,w:700})}${TL(68+i*112,222-c.p/2,'SAR '+c.p,{fs:12,w:700})}</g>`).join('')}`,'أسعار السيارات'),cap:'أسعار يومية توضيحية. مرّر المؤشر على كل عمود.',labs:[LAB172A,{title:'التفضيل',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The Picanto is ___ car.',o:['the cheapest','cheaper'],a:0},{s:'The H-1 is ___ expensive than the Camry.',o:['more','most'],a:0},{s:'The Camry is ___ comfortable.',o:['the most','the more'],a:0},{s:'This is ___ service in town.',o:['the best','the better'],a:0}]})}]},
+ {t:'كتابة التاريخ وقراءته',short:'UK · US',old:[2],q:'هل 8/3/05 في مارس أم أغسطس؟',ref:'ص 36',
+  lead:`التاريخ المكتوب بالأرقام يُقرأ بطريقتين حسب البلد، وقد يعني تاريخين مختلفين.`,
+  points:[`<b>بريطانيا:</b> يوم/شهر: ${e('8/3/05 = the eighth of March, two thousand and five')}`,`<b>أمريكا:</b> شهر/يوم: ${e('8/3/05 = August the third, two thousand and five')}`,`إذا كان الرقم الأول أكبر من 12 فالتاريخ بريطاني حتماً: ${e('23/09/07')}`],
+  grid:{head:['نكتب','نقول','النظام'],rows:[['23/09/07','the twenty-third of September, two thousand and seven','UK'],['8/3/05 (UK)','the eighth of March, two thousand and five','يوم/شهر'],['8/3/05 (US)','August the third, two thousand and five','شهر/يوم']]},
+  art:art(`<g data-tip="البريطاني: اليوم ثم الشهر"><rect x="20" y="60" width="150" height="120" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,95,'UK',{fs:18,w:700})}${TL(95,130,'8/3/05',{fs:16,w:700})}${TL(95,158,'8 March',{fs:14})}</g>
+    <g data-tip="الأمريكي: الشهر ثم اليوم"><rect x="190" y="60" width="150" height="120" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(265,95,'US',{fs:18,w:700})}${TL(265,130,'8/3/05',{fs:16,w:700})}${TL(265,158,'August 3',{fs:14})}</g>`,'UK US'),cap:'التاريخ نفسه بنظامين. مرّر المؤشر على كل منهما.',labs:[LAB172B,{title:'التاريخ',w:(el,B)=>N.cases(el,B,{intro:'كيف تقرأ؟',cases:[{q:'15/12/04 (UK)',opts:[['the fifteenth of December',1],['the twelfth of fifteen',0]]},{q:'5/6/24 (US)',opts:[['May the sixth',1],['the fifth of June',0]]}]})}]}
+ ]});
 B.lesson({
  id:'u7-l2',unit:7,order:2,pages:'36–37',
  title:'Part B: Choosing a service — اختيار خدمة',
  summary:'صيغة التفضيل (the cheapest، the biggest، the most comfortable، the best) مع المقارنة، واختيار سيارة إيجار، وكتابة التاريخ وقراءته بالطريقتين البريطانية والأمريكية، واستئجار سيارة بالهاتف، وتعبئة نموذج حجز، وتبرير الاختيار (because it was cheaper / the most helpful).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 36–37',html:`<p>تختار الخدمة الأنسب وتشرح السبب. ستتعلم:</p><ol><li>صيغة التفضيل.</li><li>كتابة التاريخ وقراءته.</li><li>استئجار سيارة بالهاتف.</li></ol>`},
-  {h:'المقارنة والتفضيل',ref:'ص 36',html:`${vt(SUP,['الصفة','المقارنة (من اثنين)','التفضيل (من ثلاثة فأكثر)'])}${eb(['The Picanto is cheaper than the Camry.','The Picanto is the cheapest car.','The Camry is the most comfortable.'])}`},
-  {note:'<b>توضيح للمتدرب:</b> مع التفضيل نضع <span class="en">the</span> دائماً: <span class="en">the biggest</span>، <span class="en">the best</span>.'},
-  {h:'التاريخ',ref:'ص 36',html:`${vt([['23/09/07','the twenty-third of September, two thousand and seven','UK'],['8/3/05 (UK)','the eighth of March, two thousand and five','يوم/شهر'],['8/3/05 (US)','August the third, two thousand and five','شهر/يوم']],['نكتب','نقول','النظام'])}`},
-  {h:'استئجار سيارة',ref:'ص 37',html:dl([['Agent','City Car Rental. Can I help you?'],['Customer',"I'd like to rent a car, please."],['Agent','How many days do you want the car for?'],['Customer','Three days.'],['Agent','And what kind of car would you like?'],['Customer','A saloon, please.'],['Agent','How about a Toyota Camry? It’s 220 riyals a day.'],['Customer','That sounds fine.']])},
+  ...R172.theory,
   {h:'تمارين الكتاب',ref:'ص 36–37',html:
    bk(1,'ص 36','أكمل الجمل عن سيارات الإيجار، ثم اختر الأنسب.',['1 cheaper (مثال)','2 the fastest','3 bigger','4 more comfortable','5 the most expensive','6 better'])+
    bk(2,'ص 36','كيف تقول هذه التواريخ؟',['23/09/07: the twenty-third of September, two thousand and seven','15/12/04: the fifteenth of December, two thousand and four','8/3/05 (UK): the eighth of March, two thousand and five','8/3/05 (US): August the third, two thousand and five'])+
@@ -111,15 +166,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'التفضيل',title:'the cheapest · the most comfortable',q:'أي سيارة أرخص من الثلاث؟',ref:'ص 36',
-   art:art(`${CARS.map((c,i)=>`<g data-tip="${c.n}: ${c.t}, SAR ${c.p}/day"><rect x="${20+i*112}" y="${230-c.p/2}" width="96" height="${c.p/2}" rx="6" fill="${[C.yel,C.blue,C.red][i]}" stroke="${C.ink}" stroke-width="2"/>${TL(68+i*112,250,c.n.split(' ')[1],{fs:12,w:700})}${TL(68+i*112,222-c.p/2,'SAR '+c.p,{fs:12,w:700})}</g>`).join('')}`,'أسعار السيارات'),
-   cap:'أسعار يومية توضيحية. مرّر المؤشر على كل عمود.',side:[{tip:`${e('the cheapest')} = الأرخص بين الكل.`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The Picanto is ___ car.',o:['the cheapest','cheaper'],a:0},{s:'The H-1 is ___ expensive than the Camry.',o:['more','most'],a:0},{s:'The Camry is ___ comfortable.',o:['the most','the more'],a:0},{s:'This is ___ service in town.',o:['the best','the better'],a:0}]}),title:'مختبر مصغّر: التفضيل'}]},
-  {st:2,short:'التاريخ',title:'كتابة التاريخ وقراءته',q:'ماذا يعني 8/3/05 في أمريكا؟',ref:'ص 36',
-   art:art(`<g data-tip="البريطاني: اليوم ثم الشهر"><rect x="20" y="60" width="150" height="120" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,95,'UK',{fs:18,w:700})}${TL(95,130,'8/3/05',{fs:16,w:700})}${TL(95,158,'8 March',{fs:14})}</g>
-    <g data-tip="الأمريكي: الشهر ثم اليوم"><rect x="190" y="60" width="150" height="120" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(265,95,'US',{fs:18,w:700})}${TL(265,130,'8/3/05',{fs:16,w:700})}${TL(265,158,'August 3',{fs:14})}</g>`,'UK US'),
-   cap:'التاريخ نفسه بنظامين. مرّر المؤشر على كل منهما.',side:[{tip:`لتجنّب الخطأ اكتب الشهر بالحروف: ${e('8 March 2005')}.`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'كيف تقرأ؟',cases:[{q:'15/12/04 (UK)',opts:[['the fifteenth of December',1],['the twelfth of fifteen',0]]},{q:'5/6/24 (US)',opts:[['May the sixth',1],['the fifth of June',0]]}]}),title:'مختبر مصغّر: التاريخ'}]},
+  ...R172.stations,
   {recap:['the cheapest, the biggest, the most comfortable, the best.','cheaper than (اثنان) ≠ the cheapest (الكل).','UK: day/month · US: month/day.','How many days do you want the car for? · What kind of car would you like?','I chose … because …']}
  ],
  lab:lab7b,
