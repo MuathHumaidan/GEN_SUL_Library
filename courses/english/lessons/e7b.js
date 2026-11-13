@@ -140,7 +140,7 @@ const R72=N.rule({title:'المعدود وغير المعدود، و some و any
      {s:'___ tubes of glue do you need?',o:['How many','How much'],a:0,why:'tubes معدودة.'},
      {s:'___ cement do you need?',o:['How many','How much'],a:1,why:'cement غير معدود.'},
      {s:'Do you have ___ bolts?',o:['any','a','much'],a:0,why:'في السؤال: any.'},
-     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'في الطلب الإيجابي مع غير المعدود: some.'}]})}}
+     {s:'I need ___ white paint.',o:['a','some','many'],a:1,why:'جملة طلب مثبتة مع اسم غير معدود: some.'}]})}}
  ]});
 B.lesson({
  id:'u7-l2',unit:7,order:2,pages:'54–55',
@@ -171,7 +171,7 @@ B.lesson({
     {widget:(el,B)=>N.cases(el,B,{intro:'اختر السؤال المناسب لكل جواب:',cases:[
      {q:'It has 60 storeys.',opts:[['How many storeys does it have?',1,''],['How much storeys does it have?',0,'storeys معدودة: How many.'],['How high is it?',0,'']]},
      {q:'About 40,000 tonnes of steel.',opts:[['How many steel is in it?',0,'steel غير معدود.'],['How much steel is in it?',1,'']]}]}),title:'مختبر مصغّر: السؤال والجواب'}]},
-  {recap:['المعدود له جمع (screw → screws) ونعدّه بالأرقام؛ غير المعدود (cement, oil, paint) نعدّ عبواته.','How many + جمع معدود، How much + غير معدود.','any في السؤال والنفي، some في الطلب الإيجابي.','العبوات: a tin of paint، a tube of glue، a bag of cement، a packet of nails.']}
+  {recap:['المعدود يُجمع ويمكن أن يسبقه a أو an أو رقم (a screw، ten screws)؛ وغير المعدود لا يُجمع ولا يسبقه a ولا رقم (cement، oil).','نعدّ غير المعدود بعبوته، والعبوة هي التي تُجمع: two tins of paint، twenty bags of cement.','some في الجملة المثبتة وفي سؤال العرض أو الطلب؛ any في الجملة المنفية وفي السؤال العام.','How many + اسم معدود بالجمع، و How much + اسم غير معدود.']}
  ],
  lab:lab72,
  examples:[
