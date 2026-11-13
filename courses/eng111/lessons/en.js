@@ -206,3 +206,65 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
   return {theory,stations}};
 G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
+/* ===== «إخفاء الترجمة» (التخمين) و«الدرجات» — من مختبر المدرب =====
+   - خلايا المعنى العربي في الجداول (.gl) وترجمات «كلمات الدرس» تُغطّى بضباب عند تشغيل «إخفاء الترجمة»؛ تظهر بالوقوف عليها أو لمسها.
+     الافتراضي: مشغّل في وضع English، ومطفأ في العربي. الاختيار محفوظ على هذا الجهاز لكل وضع.
+   - «الدرجات»: قائمة أسماء المتدربين مع + و − لكل اسم، محفوظة في هذا المتصفح فقط (لكل مقرر). */
+(function(){const B=window.PLCBOOK||{},root=document.documentElement;
+const isEn=()=>(B.lang?B.lang():'ar')==='en';
+const AR=/[؀-ۿ]/,MEAN=/^(المعنى|الترجمة|Meaning)$/;
+function mark(scope){(scope||document).querySelectorAll('table:not([data-glm])').forEach(t=>{t.setAttribute('data-glm','');const ths=[...t.querySelectorAll('thead th')];
+  ths.forEach((th,i)=>{if(!MEAN.test(th.textContent.trim()))return;t.querySelectorAll('tbody tr').forEach(tr=>{const td=tr.children[i];if(td&&AR.test(td.textContent))td.classList.add('gl')})})})}
+const css=document.createElement('style');css.textContent=`
+html.guess :is(.gl,.lw-ar,.lw-mean,.lw-tr):not(.open){filter:blur(6px);cursor:pointer;user-select:none;transition:filter .2s}
+@media (hover:hover){html.guess :is(.gl,.lw-ar,.lw-mean,.lw-tr):hover{filter:none}}
+.gsbtn .sw{display:inline-block;width:28px;height:16px;border-radius:9px;background:rgba(255,255,255,.3);position:relative}
+.gsbtn .sw::after{content:'';position:absolute;top:2px;inset-inline-start:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:inset-inline-start .2s}
+.gsbtn[aria-pressed="true"] .sw{background:#2fb37a}.gsbtn[aria-pressed="true"] .sw::after{inset-inline-start:14px}
+.mkpanel{position:fixed;inset-inline-end:12px;top:64px;z-index:60;width:min(360px,calc(100vw - 24px));max-height:70vh;overflow:auto;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:14px}
+.mkpanel h3{margin:0 0 8px;font-size:17px;display:flex;justify-content:space-between;align-items:center}
+.mkpanel .mkx{border:0;background:none;font-size:20px;cursor:pointer;color:var(--muted)}
+.mkadd{display:flex;gap:8px}.mkadd input{flex:1;min-width:0;font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+.mkadd button,.mkfoot button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:6px 12px;background:#00875a;color:#fff;cursor:pointer}
+.mkrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mkn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 6px 4px 12px;font-weight:700}
+.mkn b{min-width:22px;text-align:center;font-family:var(--font-la,var(--font))}
+.mkn button{width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;font-weight:700;font-size:16px}
+.mkn .p{background:#00875a;color:#fff}.mkn .m{background:var(--line);color:var(--fg)}
+.mkfoot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13px;color:var(--muted)}
+.mkfoot button{background:var(--line);color:var(--fg);font-weight:600}
+@media (max-width:600px){.gsbtn .sl,.mkbtn .sl{display:none}}`;
+document.head.appendChild(css);
+let guess=false;const GK='elib-guess-'+(isEn()?'en':'ar');
+function setGuess(v){guess=v;root.classList.toggle('guess',v);try{localStorage.setItem(GK,v?'1':'0')}catch(e){};const b=document.querySelector('.gsbtn');if(b)b.setAttribute('aria-pressed',v)}
+document.addEventListener('click',e=>{if(!guess)return;const g=e.target.closest('.gl,.lw-ar,.lw-mean,.lw-tr');if(g)g.classList.toggle('open')});
+/* الدرجات */
+const PS=location.pathname.split('/'),key='elib-marks-'+(PS[PS.indexOf('courses')+1]||'course');
+let M=[];try{M=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){M=[]}
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(M))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+let panel=null;
+function draw(){if(!panel)return;const row=panel.querySelector('.mkrow');row.innerHTML='';
+  M.forEach((m,i)=>{const s=document.createElement('span');s.className='mkn';s.innerHTML=`${esc(m.n)}<b>${m.s}</b>`;
+   const mi=document.createElement('button');mi.type='button';mi.className='m';mi.textContent='−';mi.setAttribute('aria-label','إنقاص درجة '+m.n);
+   const pl=document.createElement('button');pl.type='button';pl.className='p';pl.textContent='+';pl.setAttribute('aria-label','زيادة درجة '+m.n);
+   mi.onclick=()=>{if(m.s>0)m.s--;else M.splice(i,1);save();draw()};pl.onclick=()=>{m.s++;save();draw()};s.append(mi,pl);row.appendChild(s)});
+  panel.querySelector('.mkcount').textContent=M.length?`${M.length} ${isEn()?'trainees':'متدرب'}`:''}
+function openPanel(){if(panel){panel.remove();panel=null;return}
+  panel=document.createElement('div');panel.className='mkpanel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','الدرجات');
+  panel.innerHTML=`<h3><span>الدرجات</span><button type="button" class="mkx" aria-label="إغلاق">×</button></h3><p style="margin:0 0 8px;font-size:13px;color:var(--muted)">أضف أسماء المتدربين، واضغط + عند كل إجابة صحيحة. الأسماء محفوظة في هذا المتصفح فقط. الضغط على − عند الصفر يحذف الاسم.</p>
+   <div class="mkadd"><input placeholder="اسم المتدرب" aria-label="اسم المتدرب"><button type="button">إضافة</button></div><div class="mkrow"></div>
+   <div class="mkfoot"><span class="mkcount"></span><button type="button" class="mkz">تصفير الدرجات</button></div>`;
+  document.body.appendChild(panel);const inp=panel.querySelector('input'),add=()=>{const v=inp.value.trim();if(!v)return;M.push({n:v,s:0});inp.value='';save();draw();inp.focus()};
+  panel.querySelector('.mkadd button').onclick=add;inp.addEventListener('keydown',e=>{if(e.key==='Enter')add()});
+  panel.querySelector('.mkx').onclick=openPanel;panel.querySelector('.mkz').onclick=()=>{M.forEach(m=>m.s=0);save();draw()};draw();inp.focus()}
+function buttons(){const ta=document.querySelector('.top-actions');if(!ta||ta.querySelector('.gsbtn'))return;
+  const g=document.createElement('button');g.type='button';g.className='stylebtn gsbtn';g.innerHTML='<span class="sl">إخفاء الترجمة </span><span class="sw" aria-hidden="true"></span>';
+  g.title='إخفاء الترجمة: تظهر بالوقوف عليها أو لمسها';g.setAttribute('aria-label','إخفاء الترجمة');g.onclick=()=>setGuess(!guess);
+  const m=document.createElement('button');m.type='button';m.className='stylebtn mkbtn';m.innerHTML='🏅<span class="sl"> الدرجات</span>';m.title='الدرجات';m.setAttribute('aria-label','الدرجات');m.onclick=openPanel;
+  ta.insertBefore(m,ta.firstChild);ta.insertBefore(g,ta.firstChild);
+  let v=isEn();try{const s=localStorage.getItem(GK);if(s!=null)v=s==='1'}catch(e){}setGuess(v)}
+const obs=new MutationObserver(()=>mark());
+function start(){buttons();mark();obs.observe(document.body,{childList:true,subtree:true})}
+if(document.readyState==='loading')addEventListener('DOMContentLoaded',start);else start();
+})();

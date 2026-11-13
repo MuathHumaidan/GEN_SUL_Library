@@ -17,7 +17,7 @@ let lang='ar';try{lang=localStorage.getItem('elib-lang')==='en'?'en':'ar'}catch(
 B.lang=()=>lang;
 const root=document.documentElement;
 const miss=window.__enMissing=new Set();
-const KEEP='.lw-ar,.lw-mean,.lw-tr,[data-keep-ar],.katex';
+const KEEP='.lw-ar,.lw-mean,.lw-tr,.gl,[data-keep-ar],.katex';
 const LIVE='input,select,textarea,button,canvas,svg,[contenteditable]';
 const REF=/\s*<span class="ref">([^<]*)<\/span>/;
 function look(k){const n=norm(k);if(!n)return null;if(D.has(n))return D.get(n);
@@ -84,6 +84,9 @@ const pp=x=>/[–-]/.test(x)?'pp. '+x:'p. '+x;
 const T=(m,f,i)=>{const v=f(m[i]);return v==null?null:(v==='='?m[i]:v)};
 B.enPat([
  [/^ص ([\d–-]+)$/,m=>pp(m[1])],
+ [/^انجل-(\d+)$/,'ENG-$1'],
+ [/^(إنقاص|زيادة) درجة (.+)$/,m=>`${m[1]==='زيادة'?'One more mark':'One mark less'}: ${m[2]}`],
+ [/^(\d+) متدرب$/,'$1 trainees'],
  [/^الدرس ([\d.]+) · ص ([\d–-]+)$/,m=>`Lesson ${m[1]} · ${pp(m[2])}`],
  [/^الوحدة (\S+)$/,m=>ARO[m[1]]?`Unit ${ARO[m[1]]}`:null],
  [/^المحطة (\S+) · ص ([\d–-]+)$/,m=>ARO[m[1]]?`Station ${ARO[m[1]]} · ${pp(m[2])}`:null],
@@ -132,7 +135,10 @@ B.enDict({
  'توقّع قبل أن تكمل':'Guess before you go on','اختر الصحيح:':'Choose the right answer:','خلاصة الدرس في 5 أسطر':'The lesson in 5 lines','الاستماع':'Listening',
  'تمارين الكتاب':'Book exercises','كما في الكتاب':'As in the book','المصحح':'Corrected','إخفاء الشرح':'Hide the note','لم يُرفع بعد':'Not uploaded yet',
  'من قراءتنا للصور.':'From our reading of the pictures.','من قراءتنا للصورة.':'From our reading of the picture.','حسب صورة الكتاب.':'See the picture in the book.',
- 'لغة الشرح:':'Lesson language:','عربي':'Arabic'
+ 'لغة الشرح:':'Lesson language:','عربي':'Arabic',
+ 'إخفاء الترجمة':'Hide translation','إخفاء الترجمة: تظهر بالوقوف عليها أو لمسها':'Hide translation: point at it or touch it to see it','الدرجات':'Marks',' الدرجات':' Marks',
+ 'أضف أسماء المتدربين، واضغط + عند كل إجابة صحيحة. الأسماء محفوظة في هذا المتصفح فقط. الضغط على − عند الصفر يحذف الاسم.':'Add the trainees\' names. Press + for each right answer. The names stay in this browser only. Press − at zero to remove a name.',
+ 'اسم المتدرب':'Trainee name','إضافة':'Add','إغلاق':'Close','تصفير الدرجات':'Reset marks','المعنى':'Meaning'
 });
 if(document.readyState==='complete')B.enStart();else addEventListener('load',()=>B.enStart());
 })(PLCBOOK);

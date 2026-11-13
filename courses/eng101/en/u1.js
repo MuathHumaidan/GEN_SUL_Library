@@ -1,6 +1,5 @@
 /* مولّد آلياً من en/src — لا تعدّل هنا */
 PLCBOOK.enDict({
-"انجل-101": "=",
 "التعارف بالفعل be (I'm، My name's، Are you…?)، والسؤال عن الاسم والبلد والعمل مع a و an، والتعليمات بفعل الأمر و please، والأضداد، وكلمات الحالة والمكان، وأسماء أدوات ومثبتات شائعة.": "Meeting people with the verb be (I'm, My name's, Are you…?), asking about name, country and job with a and an, instructions with please, opposites, words for state and place, and common tools and fixings.",
 "ماذا ستتعلم؟": "What will you learn?",
 "هذا أول درس في المقرر: تتعرف على الناس بالإنجليزي، وتفهم التعليمات في الورشة والصف. ستتعلم:": "This is the first lesson of the course. You meet people in English and understand instructions in the workshop and the classroom. You will learn to:",
