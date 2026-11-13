@@ -43,6 +43,66 @@ function lab83(el,B){
 const VOC83=[['launch','يطلق (صاروخاً أو قمراً صناعياً)',''],['satellite','قمر صناعي',''],['space station','محطة فضائية',''],['spacewalk','سير في الفضاء خارج المركبة',''],['shuttle','مكوك فضاء',''],['telescope','تلسكوب (مقراب)',''],['crew','طاقم',''],['navigation','الملاحة (تحديد الموقع)',''],['ago','قبل (من الآن)','two days ago'],['yesterday','أمس',''],['the day before yesterday','أول أمس',''],['purchase','الشراء','date of purchase'],['model number','رقم الطراز',''],['drop','يُسقط','I dropped it in water.']];
 const PASTV=[['become','became','يصبح'],['fly','flew','يطير'],['go','went','يذهب'],['make','made','يصنع / يقوم بـ'],['send','sent','يرسل'],['travel','travelled','يسافر'],['land','landed','يهبط'],['launch','launched','يطلق'],['enter','entered','يدخل'],['buy','bought','يشتري'],['drop','dropped','يُسقط']];
 
+/* ===== مختبرات «شرح القاعدة» 8.3 ===== */
+const PV83={launch:['launched','يطلق','+ ed'],enter:['entered','يدخل','+ ed'],arrive:['arrived','يصل','+ d (آخره e)'],try:['tried','يحاول','y ← ied'],stop:['stopped','يتوقف','نكرر الحرف + ed'],send:['sent','يرسل','شاذ'],fly:['flew','يطير','شاذ'],become:['became','يصبح','شاذ'],go:['went','يذهب','شاذ'],break:['broke','يكسر','شاذ']};
+const LAB83A={title:'مصنع الماضي',w:(el,B)=>N.labB(el,B,{intro:'اختر فعلاً وشاهد ماضيه، ولون التغيير يخبرك هل هو منتظم أم شاذ.',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(PV83).map(k=>[k,k])}],
+ out:({v})=>{const x=PV83[v],irr=x[2]==='شاذ';
+  return{pieces:[[v,'x',x[1]],['→','x',''],[x[0],irr?'q':'k',irr?'شاذ يُحفظ':x[2]]],say:`${v}, ${x[0]}`,why:irr?'فعل شاذ: ماضيه لا قاعدة له، فنحفظه.':`فعل منتظم: ${x[2]}.`}}})};
+const EV83={sat:['they','launch','the first satellite','1957'],iss:['the first crew','enter','the ISS','2000'],tel:['NASA','send','a telescope into space','1990'],moon:['two men','fly','to the Moon','1969']};
+const LAB83B={title:'المثبت والسؤال والنفي',w:(el,B)=>N.labB(el,B,{intro:'اختر الحدث ونوع الجملة، وشاهد أين يظهر did وأين يختفي.',
+ controls:[{k:'e',label:'الحدث',opts:[['sat','first satellite'],['iss','first ISS crew'],['tel','space telescope'],['moon','Moon landing']]},{k:'t',label:'الجملة',opts:[['pos','مثبتة'],['when','When did…?'],['yn','Did…?'],['neg','منفية']]}],
+ out:({e,t})=>{const [S,v,o,y]=EV83[e],P=PV83[v][0],SS=S.replace(/^./,c=>c.toUpperCase());
+  if(t==='pos')return{pieces:[[SS,'x','الفاعل'],[P,'n','الماضي'],[o,'x',''],[`in ${y}.`,'q','وقت محدد']],say:`${SS} ${P} ${o} in ${y}.`,why:'في المثبت يكون الفعل نفسه بصيغة الماضي، بلا did.'};
+  if(t==='when')return{pieces:[['When','q','متى'],['did','k','علامة الماضي'],[S,'x','الفاعل'],[v,'n','الفعل الأصلي'],[o+'?','x','']],say:`When did ${S} ${v} ${o}?`,why:'في السؤال تحمل did علامة الماضي، فيعود الفعل إلى صورته الأصلية.'};
+  if(t==='yn')return{pieces:[['Did','k','في أول السؤال'],[S,'x',''],[v,'n','الفعل الأصلي'],[o+'?','x',''],['Yes, '+(S==='NASA'?'it':'they')+' did.','q','جواب قصير']],say:`Did ${S} ${v} ${o}? Yes, ${S==='NASA'?'it':'they'} did.`,why:"الجواب القصير: Yes, … did. / No, … didn't."};
+  return{pieces:[[SS,'x',''],["didn't",'k','نفي الماضي'],[v,'n','الفعل الأصلي'],[o,'x',''],[`in ${+y+5}.`,'q','']],say:`${SS} didn't ${v} ${o} in ${+y+5}.`,why:"النفي: didn't + الفعل الأصلي، لا الماضي."}}})};
+const MON83=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const ORD83=n=>n+(n%100>=11&&n%100<=13?'th':['th','st','nd','rd','th','th','th','th','th','th'][n%10]);
+const ORDW83={1:'first',2:'second',3:'third',4:'fourth',5:'fifth',14:'fourteenth',21:'twenty-first',22:'twenty-second',23:'twenty-third',30:'thirtieth'};
+const LAB83C={title:'on أم in؟ و ago',w:(el,B)=>N.labB(el,B,{intro:'اختر نوع الوقت، وشاهد حرف الجر المناسب. وفي ago يحسب المختبر من تاريخ اليوم.',
+ controls:[{k:'t',label:'الوقت',opts:[['date','تاريخ يوم كامل'],['month','شهر'],['year','سنة'],['ago1','قبل يومين (ago)'],['ago2','قبل 10 سنوات (ago)']]}],
+ out:({t})=>{const d=new Date();
+  if(t==='date')return{pieces:[['on','k','لليوم المحدد'],['the 5th of October 1957','n','']],say:'on the fifth of October 1957',ar:'نقرؤها: on the fifth of October',why:'on مع اليوم والتاريخ الكامل، ونقرأ الرقم ترتيبياً: fifth.'};
+  if(t==='month')return{pieces:[['in','k','للشهر'],['October','n','']],say:'in October',why:'in مع الشهر.'};
+  if(t==='year')return{pieces:[['in','k','للسنة'],['1957','n','']],say:'in 1957',why:'in مع السنة.'};
+  const back=t==='ago1'?new Date(d.getTime()-2*864e5):new Date(d.getFullYear()-10,d.getMonth(),d.getDate());
+  const when=t==='ago1'?`the ${ORD83(back.getDate())} of ${MON83[back.getMonth()]}`:`${back.getFullYear()}`;
+  return{pieces:[[t==='ago1'?'two days':'ten years','n','المدة'],['ago','k','قبل الآن'],['=','x',''],[when,'q','الحساب من اليوم']],say:`${t==='ago1'?'two days':'ten years'} ago`,why:'ago تأتي بعد المدة، ونحسبها من اليوم إلى الوراء.'}}})};
+const R83=N.rule({title:'الماضي البسيط والتواريخ',ref:'ص 62–63',
+ intro:`نشرح الكلام عن أحداث مضت في ثلاث خطوات مرتبة: جملة الماضي المثبتة، ثم السؤال والنفي بـ ${e('did')}، ثم حروف الجر مع التواريخ و ${e('ago')}.`,
+ parts:[
+ {t:'الماضي البسيط في الجملة المثبتة',short:'الماضي',old:[1],q:'كيف تقول إنهم أطلقوا أول قمر صناعي عام 1957؟',ref:'ص 62',
+  lead:`عندما نروي حدثاً وقع وانتهى في وقت معروف، مثل إطلاق قمر صناعي أو افتتاح جسر، نستعمل الماضي البسيط. وغالباً نذكر معه الوقت.`,
+  points:[`<b>القالب:</b> الفاعل + الفعل بصيغة الماضي، وهي واحدة مع كل الفاعلين.<br>${e('They launched the satellite in 1957.')}`,
+   `<b>الفعل المنتظم</b> نضيف له ${e('-ed')}، مع قواعد الإملاء نفسها في الدرس 8.1:<br>${e('launch → launched · arrive → arrived · try → tried · stop → stopped')}`,
+   `<b>الفعل الشاذ</b> له صيغة ماضٍ خاصة تُحفظ:<br>${e('send → sent · fly → flew · become → became · go → went')}`,
+   `<b>كلمات الوقت المحدد</b> التي تأتي معه: ${e('yesterday · last year · in 2007 · two days ago · When…?')}`],
+  html:`<p><b>أفعال الماضي في هذا الدرس:</b></p>${vt(PASTV.map(v=>[`${v[0]} → ${v[1]}`,v[2]]),['الفعل → الماضي','المعنى'])}`,
+  pairs:[['They launch it in 1957.','They launched it in 1957.','مع وقت مضى نستعمل الماضي.'],['They sended a telescope.','They sent a telescope.','send شاذ: sent.']],
+  art:art(`<g data-tip="launched: منتظم بـ ed"><circle cx="110" cy="130" r="56" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(110,126,'launch',{fs:14})}${TL(110,150,'launched',{fs:15,w:700,c:C.grn})}</g>
+    <g data-tip="sent: شاذ (send → sent)"><circle cx="250" cy="130" r="56" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(250,126,'send',{fs:14})}${TL(250,150,'sent',{fs:15,w:700,c:C.red})}</g>
+    <g data-tip="NASA sent Hubble into space in 1990.">${TL(180,250,'in 1990',{fs:18,w:700})}</g>`,'launch → launched و send → sent'),cap:'منتظم وشاذ. مرّر المؤشر على كل منهما.',labs:[LAB83A,{title:'الماضي',w:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة:',items:[{s:'Gagarin ___ the first man in space in 1961.',o:['became','become','has become'],a:0,why:'مع 1961: الماضي البسيط.'},{s:'The first shuttle ___ into space in 1981.',o:['flew','flied','has flown'],a:0,why:'fly → flew.'},{s:'They ___ the satellite last year.',o:['launched','have launched','launch'],a:0}]})}]},
+ {t:'السؤال والنفي بـ did',short:'When did…?',old:[2],q:'كيف تسأل متى دخل أول طاقم محطة الفضاء؟',ref:'ص 62',
+  lead:`في السؤال والنفي لا نغيّر الفعل نفسه، بل نضيف ${e('did')} لتحمل علامة الماضي، فيعود الفعل إلى صورته الأصلية.`,
+  subs:[{h:'السؤال',points:[`<b>بكلمة سؤال:</b> كلمة السؤال + ${e('did')} + الفاعل + الفعل الأصلي؟<br>${e('When did they launch it?')}`,`<b>بنعم أو لا:</b> ${e('Did')} + الفاعل + الفعل الأصلي؟<br>${e("Did they launch it in 1957? — Yes, they did. · No, they didn't.")}`]},
+   {h:'النفي',points:[`الفاعل + ${e("didn't")} (= ${e('did not')}) + الفعل الأصلي:<br>${e("They didn't go there in 2006.")}`]}],
+  grid:{head:['الجملة','الصيغة','مثال'],rows:[['مثبتة','الفعل بالماضي','They launched it.'],['سؤال','When did + الفاعل + الفعل الأصلي','When did they launch it?'],['سؤال نعم/لا','Did + الفاعل + الفعل الأصلي','Did they launch it?'],['منفية',"didn't + الفعل الأصلي","They didn't launch it."]]},
+  pairs:[['When did they launched it?','When did they launch it?','بعد did الفعل الأصلي.'],["They didn't went.","They didn't go.","بعد didn't الفعل الأصلي."]],
+  art:art(`<g data-tip="When + did + الفاعل + الفعل الأصلي?"><rect x="30" y="90" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,124,'When did they land on the Moon?',{fs:14,w:700})}</g>
+    <g data-tip="الجواب بالماضي والتاريخ."><rect x="30" y="190" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,224,'They landed on it in July 1969.',{fs:14,w:700})}</g>`,'سؤال When did وجوابه'),cap:'السؤال والجواب. مرّر المؤشر على كل منهما.',labs:[LAB83B,{title:'اكتب السؤال',w:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال بـ When did (أحداث تاريخية):',items:[{q:e('Leonov made the first spacewalk in 1965.'),a:['When did Leonov make the first spacewalk?']},{q:e('NASA sent Hubble into space in 1990.'),a:['When did NASA send Hubble into space?']}]})}]},
+ {t:'التواريخ: on و in و ago',short:'on / in / ago',old:[3],q:'هل تقول on 1957 أم in 1957؟',ref:'ص 62–63',
+  lead:`مع الماضي نذكر متى حدث الشيء. ولكل نوع من الوقت حرف جر خاص، وهناك كلمة ${e('ago')} للحساب من اليوم إلى الوراء.`,
+  points:[`<b>${e('on')}</b> مع اليوم المحدد والتاريخ الكامل: ${e('on Monday · on the 5th of October 1957')}`,
+   `<b>${e('in')}</b> مع الشهر والسنة: ${e('in October · in 1957 · in October 1957')}`,
+   `<b>قراءة التاريخ:</b> نكتب ${e('5 October')} أو ${e('the 5th of October')}، ونقرأ الرقم ترتيبياً: ${e('the fifth of October')}.`,
+   `<b>${e('ago')}</b> = قبل الآن، وتأتي بعد المدة: ${e('two days ago · ten years ago')}. إذا كان اليوم 15 نوفمبر فـ ${e('two days ago')} = 13 نوفمبر.`],
+  grid:{head:['الوقت','الكلمة','مثال'],rows:[['يوم أو تاريخ كامل','on','on the 14th of May 2005'],['شهر','in','in May'],['سنة','in','in 2005'],['مدة قبل الآن','… ago','two days ago']]},
+  pairs:[['on 1957','in 1957','مع السنة: in.'],['ago two days','two days ago','ago تأتي بعد المدة.']],
+  art:art(`<rect x="60" y="60" width="240" height="200" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="60" y="60" width="240" height="40" rx="14" fill="${C.red}"/>${TL(180,87,'November',{fs:16,w:700,c:'#fff'})}
+    <g data-tip="today: the 15th of November"><circle cx="180" cy="170" r="34" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,177,'15',{fs:22,w:700})}</g>
+    <g data-tip="two days ago = the 13th"> ${TL(110,177,'13',{fs:18,c:C.blue,w:700})}</g><g data-tip="two weeks ago = the 1st">${TL(250,177,'1',{fs:18,c:C.blue,w:700})}</g>${TL(180,235,'ago = before now',{fs:13})}`,'تقويم نوفمبر واليوم 15'),cap:'ago في التقويم. مرّر المؤشر على الأرقام.',labs:[LAB83C,{title:'on / in / ago',w:(el,B)=>N.gaps(el,B,{intro:'اختر الحرف أو الكلمة:',items:[{s:'They launched it ___ the 28th of December 2005.',o:['on','in','at'],a:0},{s:'The station opened ___ 1971.',o:['on','in','ago'],a:1},{s:'I bought it three months ___.',o:['ago','before now','in'],a:0}]})}]}
+ ]});
 B.lesson({
  id:'u8-l3',unit:8,order:3,pages:'62–63',
  title:'Past events — أحداث مضت',
@@ -50,10 +110,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 62–63',html:`<ol><li>تتكلم عن أحداث في وقت محدد بالماضي البسيط: ${e('They launched it in 1957.')}</li><li>تسأل ${e('When did…?')} وتجيب بتاريخ.</li><li>تقرأ التواريخ وتكتبها، وتستعمل ${e('ago')}.</li><li>تفرّق بين الماضي البسيط والمضارع التام.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 62–63',html:vt(VOC83)},
-  {h:'الماضي البسيط',ref:'ص 62',html:`<p>المنتظم بـ ${e('-ed')}، والشاذ يُحفظ. ونستعمله مع وقت محدد: ${e('yesterday, last year, in 2007, when…?')}</p>${vt(PASTV.map(v=>[`${v[0]} → ${v[1]}`,v[2]]),['Base → Past','المعنى'])}
-   ${eb(['NASA <b>sent</b> a telescope into space in 1990.','<b>When did</b> they <b>launch</b> it?',"They <b>didn't</b> go there in 2006."])}<p>في السؤال والنفي: ${e('did / didn\'t')} + الفعل الأصلي (لا ${e('did they launched')}).</p>`},
-  {h:'التواريخ و ago',ref:'ص 62–63',html:`<ul><li>اليوم بالتحديد: ${e('on the 14th of May 2005')} ونقرؤها ${e('on the fourteenth of May')}.</li><li>الشهر أو السنة: ${e('in May 2005 · in 2005')}.</li><li>${e('ago')} = قبل الآن: إذا كان اليوم 15 نوفمبر فـ ${e('two days ago')} = 13 نوفمبر. وإذا كانت الساعة 10.15 فـ ${e('an hour ago')} = 9.15.</li></ul>`},
-  {note:'<b>توضيح للمتدرب:</b> <span class="en">I\'ve broken my MP3 player.</span> (حدث قريب بلا وقت) لكن <span class="en">I broke it on the 18th of August.</span> (مع تاريخ). قارن الدرس 8.1.'},
+  ...R83.theory,
   {h:'تمارين الكتاب',ref:'ص 62–63',html:
    bk(1,'ص 62','مع زميلك: متى حدثت الأحداث العشرة لأول مرة (السنة التقريبية)؟',['space station: 1971','telescope in space: 1990','man in space: 1961','space tourist: 2001','satellite: 1957','spacewalk: 1965','man on the Moon: 1969','shuttle in space: 1981','crew to enter the ISS: 2000','European navigation satellite: 2005'])+
    bk(2,'ص 62','اقرأ الجدول وتحقق من إجاباتك في التمرين 1.',null)+
@@ -69,26 +126,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'الماضي البسيط',title:'الماضي البسيط للأحداث',q:'كيف تقول إن ناسا أطلقت تلسكوباً عام 1990؟',ref:'ص 62',
-   art:art(`<g data-tip="launched: منتظم بـ ed"><circle cx="110" cy="130" r="56" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(110,126,'launch',{fs:14})}${TL(110,150,'launched',{fs:15,w:700,c:C.grn})}</g>
-    <g data-tip="sent: شاذ (send → sent)"><circle cx="250" cy="130" r="56" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(250,126,'send',{fs:14})}${TL(250,150,'sent',{fs:15,w:700,c:C.red})}</g>
-    <g data-tip="NASA sent Hubble into space in 1990.">${TL(180,250,'in 1990',{fs:18,w:700})}</g>`,'launch → launched و send → sent'),
-   cap:'منتظم وشاذ. مرّر المؤشر على كل منهما.',
-   side:[{tip:'الماضي البسيط لحدث <b>انتهى في وقت محدد</b>. والأفعال الشاذة نفسها التي في الدرس 8.1، لكن هنا نأخذ التصريف الثاني (الماضي).'}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة:',items:[{s:'Gagarin ___ the first man in space in 1961.',o:['became','become','has become'],a:0,why:'مع 1961: الماضي البسيط.'},{s:'The first shuttle ___ into space in 1981.',o:['flew','flied','has flown'],a:0,why:'fly → flew.'},{s:'They ___ the satellite last year.',o:['launched','have launched','launch'],a:0}]}),title:'مختبر مصغّر: الماضي'}]},
-  {st:2,short:'When did…?',title:'السؤال بـ When did…?',q:'كيف تسأل متى هبطوا على القمر؟',ref:'ص 62',
-   art:art(`<g data-tip="When + did + الفاعل + الفعل الأصلي?"><rect x="30" y="90" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,124,'When did they land on the Moon?',{fs:14,w:700})}</g>
-    <g data-tip="الجواب بالماضي والتاريخ."><rect x="30" y="190" width="300" height="56" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,224,'They landed on it in July 1969.',{fs:14,w:700})}</g>`,'سؤال When did وجوابه'),
-   cap:'السؤال والجواب. مرّر المؤشر على كل منهما.',
-   side:[{tip:'بعد <span class="en">did</span> الفعل الأصلي دائماً: <span class="en">When did they land?</span> لا <span class="en">When did they landed?</span>'}],
-   body:[{widget:(el,B)=>N.typ(el,B,{intro:'اكتب السؤال بـ When did (أحداث تاريخية):',items:[{q:e('Leonov made the first spacewalk in 1965.'),a:['When did Leonov make the first spacewalk?']},{q:e('NASA sent Hubble into space in 1990.'),a:['When did NASA send Hubble into space?']}]}),title:'مختبر مصغّر: اكتب السؤال'}]},
-  {st:3,short:'التواريخ و ago',title:'on / in و ago',q:'إذا كان اليوم 15 نوفمبر، فما تاريخ two weeks ago؟',ref:'ص 63',
-   art:art(`<rect x="60" y="60" width="240" height="200" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/><rect x="60" y="60" width="240" height="40" rx="14" fill="${C.red}"/>${TL(180,87,'November',{fs:16,w:700,c:'#fff'})}
-    <g data-tip="today: the 15th of November"><circle cx="180" cy="170" r="34" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,177,'15',{fs:22,w:700})}</g>
-    <g data-tip="two days ago = the 13th"> ${TL(110,177,'13',{fs:18,c:C.blue,w:700})}</g><g data-tip="two weeks ago = the 1st">${TL(250,177,'1',{fs:18,c:C.blue,w:700})}</g>${TL(180,235,'ago = before now',{fs:13})}`,'تقويم نوفمبر واليوم 15'),
-   cap:'ago في التقويم. مرّر المؤشر على الأرقام.',
-   side:[{tip:'<span class="en">on</span> مع اليوم المحدد، و <span class="en">in</span> مع الشهر أو السنة. و <span class="en">ago</span> بعد المدة: <span class="en">two weeks ago</span>.'}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الحرف أو الكلمة:',items:[{s:'They launched it ___ the 28th of December 2005.',o:['on','in','at'],a:0},{s:'The station opened ___ 1971.',o:['on','in','ago'],a:1},{s:'I bought it three months ___.',o:['ago','before now','in'],a:0}]}),title:'مختبر مصغّر: on / in / ago'}]},
+  ...R83.stations,
   {recap:['الماضي البسيط لحدث في وقت محدد: launched, sent, flew, became.','السؤال: When did + فاعل + فعل أصلي? والنفي didn\'t + فعل أصلي.','on the 5th of October 1957 · in October · in 1957.','ago = قبل الآن: two days ago, an hour ago.']}
  ],
  lab:lab83,

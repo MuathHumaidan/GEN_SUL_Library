@@ -275,6 +275,62 @@ function lab73(el,B){
 
 const VOC73=[['project','مشروع',''],['future','مستقبل',''],['predict','يتوقّع',''],['complete / completion','يُنجز / الإنجاز',''],['schedule','جدول زمني',''],['tube','أنبوب ضخم (نفق)','في درس النقل: نفق أنبوبي'],['tunnel','نفق',''],['MagLev (magnetic levitation)','الرفع المغناطيسي','قطار يطفو فوق مسار مغناطيسي'],['track','مسار (سكة)',''],['power supply','مصدر الطاقة',''],['vacuum','فراغ (خلاء من الهواء)',''],['foundations','الأساسات','lay foundations = يضع الأساسات'],['attach','يُثبّت / يربط',''],['fibreglass','ألياف زجاجية','']];
 
+/* ===== مختبرات «شرح القاعدة» 7.3: يختار المتدرب فتتكوّن الجملة بقطع ملونة ===== */
+const SUB73={I:"I'll",you:"You'll",it:"It'll",we:"We'll",they:"They'll",'The bridge':'—','The engineers':'—'};
+const ACT73={finish:['finish','the tunnel','ينهون النفق'],use:['use','steel','يستعملون الفولاذ'],connect:['connect','two cities','يربط مدينتين'],open:['open','the bridge','يفتحون الجسر']};
+const LAB73A={title:'ركّب جملة التوقع',w:(el,B)=>N.labB(el,B,{intro:'اختر الفاعل والفعل والوقت، وشاهد مكان will.',
+ controls:[{k:'s',label:'الفاعل',opts:Object.keys(SUB73).map(k=>[k,k])},{k:'v',label:'الفعل',opts:Object.keys(ACT73).map(k=>[k,k])},{k:'t',label:'الوقت',opts:[['in 2035','in 2035'],['next year','next year'],['soon','soon']]},{k:'f',label:'الصيغة',opts:[['full','will كاملة'],['short',"'ll مختصرة"]]}],
+ out:({s,v,t,f})=>{const a=ACT73[v],sh=f==='short'&&SUB73[s]!=='—';
+  const pieces=sh?[[SUB73[s],'k',"الفاعل + 'll"]]:[[s,'x','الفاعل'],['will','k','سـ / سوف']];
+  pieces.push([a[0],'n','الفعل الأصلي'],[a[1],'x',''],[t+'.','q','الوقت']);
+  return{pieces,say:`${sh?SUB73[s]:s+' will'} ${a[0]} ${a[1]} ${t}.`,bad:f==='short'&&SUB73[s]==='—'?`مع اسم مثل ${s} نكتب will كاملة غالباً في الكتابة الرسمية.`:'',why:`بعد will يأتي الفعل الأصلي ${a[0]}، بلا s وبلا to، مع كل الفاعلين.`}}})};
+const WR73={date:['They','open it in 2028','open it in 2031','يفتحونه'],length:['It','be 5 km long','be 8 km long','طوله'],material:['They','use wood','use steel','يستعملون'],fuel:['The trains','use diesel','use electricity','القطارات تستعمل']};
+const LAB73B={title:'اعترض على التوقع الخاطئ',w:(el,B)=>N.labB(el,B,{intro:'اختر التوقع الخاطئ، وشاهد جملتي الاعتراض: النفي ثم التصحيح.',
+ controls:[{k:'k',label:'التوقع',opts:[['date','They\'ll open it in 2028.'],['length','It\'ll be 5 km long.'],['material','They\'ll use wood.'],['fuel','The trains will use diesel.']]}],
+ out:({k})=>{const [S,wrong,right]=WR73[k],P=S==='The trains'?'They':S,c={It:"It'll",They:"They'll"}[P];
+  return{pieces:[[S,'x','الفاعل'],["won't",'k','نفي الخطأ'],[wrong+'.','x',''],[c,'k','ثم التصحيح'],[right+'.','n','الصحيح']],say:`${S} won't ${wrong}. ${c} ${right}.`,why:"نعترض بجملتين: ننفي الخطأ بـ won't، ثم نذكر الصحيح بـ 'll."}}})};
+const LAB73C={title:'السؤال والجواب بـ will',w:(el,B)=>N.labB(el,B,{intro:'اختر نوع السؤال، وشاهد السؤال وجوابه.',
+ controls:[{k:'t',label:'السؤال',opts:[['when','When…?'],['how','How long…?'],['yn','Will…? (نعم)'],['nn','Will…? (لا)']]},{k:'a',label:'المرحلة',opts:[['piers','build the piers'],['deck','make the deck'],['open','open the bridge']]}],
+ out:({t,a})=>{const A={piers:['build the piers','2026','2027'],deck:['make the deck','2028','2030'],open:['open the bridge','2032','2032']}[a];
+  if(t==='when')return{pieces:[['When','q','متى'],['will','k','قبل الفاعل'],['you','x',''],[A[0]+'?','n','الفعل الأصلي'],["We'll",'k',''],[A[1]===A[2]?`do it in ${A[1]}.`:`start in ${A[1]} and finish in ${A[2]}.`,'x','الجواب']],say:`When will you ${A[0]}? We'll ${A[1]===A[2]?'do it in '+A[1]:'start in '+A[1]+' and finish in '+A[2]}.`,why:'سؤال Wh: كلمة السؤال + will + الفاعل + الفعل الأصلي.'};
+  if(t==='how')return{pieces:[['How long','q','كم مدة'],['will','k',''],['it','x',''],['take?','n','الفعل الأصلي'],["It'll",'k',''],[`take ${A[2]-A[1]+1} year${A[2]-A[1]?'s':''}.`,'x','الجواب']],say:`How long will it take? It'll take ${A[2]-A[1]+1} year${A[2]-A[1]?'s':''}.`,why:'How long will…? للسؤال عن المدة.'};
+  const yes=t==='yn';
+  return{pieces:[['Will','k','في أول السؤال'],['you','x',''],[`${A[0]} in ${A[1]}?`,'n',''],[yes?'Yes, we will.':"No, we won't.",'q','جواب قصير']],say:`Will you ${A[0]} in ${A[1]}? ${yes?'Yes, we will.':"No, we won't."}`,why:"الجواب القصير يعيد will أو won't فقط."}}})};
+const R73=N.rule({title:'المستقبل بـ will: التوقع والنفي والسؤال',ref:'ص 56–57',
+ intro:`نشرح الكلام عن المستقبل بـ ${e('will')} في ثلاث خطوات مرتبة: جملة التوقع، ثم النفي والاعتراض على توقع خاطئ، ثم السؤال وجوابه.`,
+ parts:[
+ {t:'جملة التوقع بـ will',short:'will',old:[1],q:'كيف تقول إن المهندسين سيكملون النفق عام 2035؟',ref:'ص 56',
+  lead:`عندما نتكلم عن مشروع لم يُنفَّذ بعد، مثل جسر سيُبنى أو قطار سيعمل، نحتاج صيغة للمستقبل. وأبسطها ${e('will')}، ومعناها «سـ» أو «سوف».`,
+  points:[`<b>القالب:</b> الفاعل + ${e('will')} + الفعل في صورته الأصلية.<br>${e('The engineers will finish the tunnel in 2035.')}`,
+   `<b>${e('will')} واحدة مع كل الفاعلين</b> ولا تتغير: ${e('I will · he will · they will')}`,
+   `<b>الفعل بعدها في صورته الأصلية:</b> بلا ${e('s')} وبلا ${e('to')}.<br>${e('It will connect two cities.')}`,
+   `<b>الاختصار</b> ${e("'ll")} نلصقه بالضمير، ويكثر في الكلام:<br>${e("I'll · you'll · it'll · we'll · they'll")}`],
+  grid:{head:['الفاعل','الصيغة','مثال'],rows:[['I / you / we / they',"will ('ll) + الفعل","They'll use steel."],['he / she / it',"will ('ll) + الفعل","It'll connect two cities."],['اسم','will + الفعل','The bridge will open in 2032.']]},
+  pairs:[['It will connects two cities.','It will connect two cities.','بعد will الفعل الأصلي بلا s.'],['They will to build it.','They will build it.','لا نضع to بعد will.']],
+  art:art(`<g data-tip="will + الفعل الأصلي: The train will use magnetism."><rect x="30" y="90" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,124,'It will use magnetism.',{fs:16,w:700})}</g>
+    <g data-tip="won't = will not"><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,214,"It won't use diesel.",{fs:16,w:700})}</g>`,'جملتان: will use magnetism و won\'t use diesel'),cap:'الإثبات والنفي. مرّر المؤشر على كل جملة.',labs:[LAB73A,{title:'will',w:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة:',items:[
+     {s:'The new tunnel will ___ two cities.',o:['connect','connects','to connect'],a:0,why:'بعد will: الفعل الأصلي.'},
+     {s:"The trains ___ use diesel. They'll use electricity.",o:["won't","willn't","don't will"],a:0},
+     {s:'___ they finish the bridge in 2030?',o:['Will','Do','Are'],a:0,why:'سؤال المستقبل يبدأ بـ Will.'}]})}]},
+ {t:"النفي بـ won't والاعتراض",short:"won't",old:[2],q:"أحدهم قال: «They'll open it in 2028». والصحيح 2031. ماذا تقول؟",ref:'ص 56',
+  lead:`كثيراً ما تسمع توقعاً خاطئاً عن مشروع، فتحتاج أن تنفيه ثم تذكر الصحيح.`,
+  points:[`<b>النفي:</b> ${e("won't")} (= ${e('will not')}) + الفعل الأصلي.<br>${e("The trains won't use diesel.")}`,
+   `<b>الاعتراض بجملتين:</b> الأولى تنفي الخطأ بـ ${e("won't")}، والثانية تذكر الصحيح بـ ${e("'ll")}.<br>${e("They won't open it in 2028. They'll open it in 2031.")}`],
+  grid:{head:['الجملة','الصيغة','مثال'],rows:[['نفي الخطأ',"won't + الفعل","It won't be 5 km long."],['ذكر الصحيح',"'ll + الفعل","It'll be 8 km long."]]},
+  pairs:[["They willn't use wood.","They won't use wood.","نفي will هو won't."],["It won't uses diesel.","It won't use diesel.","بعد won't الفعل الأصلي."]],
+  art:art(`<g data-tip="نفي الخطأ أولاً: They won't open it in 2028."><rect x="30" y="80" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,114,"They won't open it in 2028.",{fs:15,w:700})}</g>
+    <g data-tip="ثم الصحيح: They'll open it in 2031."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,214,"They'll open it in 2031.",{fs:15,w:700})}</g>${arrowS(180,140,180,174,C.ink,3)}`,'نفي ثم تصحيح'),cap:'خطوتا الاعتراض. مرّر المؤشر على كل خطوة.',labs:[LAB73B,{title:'اعترض',w:(el,B)=>N.typ(el,B,{intro:'اعترض على كل جملة (أمثلة جديدة):',items:[
+     {q:`${e("The bridge will be 5 km long.")} (8 km)`,a:["It won't be 5 km long. It'll be 8 km long.","The bridge won't be 5 km long. It'll be 8 km long.","It won't be 5 km long. It will be 8 km long."]},
+     {q:`${e("They'll use wood.")} (steel)`,a:["They won't use wood. They'll use steel.","They won't use wood. They will use steel."]}]})}]},
+ {t:'السؤال بـ will وجوابه',short:'When will…?',old:[3],q:'كيف تسأل متى سيبنون الركائز؟ وكيف تجيب إذا كانت المرحلة سنتين؟',ref:'ص 57',
+  lead:`في مقابلة عن مشروع يسأل المذيع عن موعد كل مرحلة ومدتها، ويجيب المهندس. وفي السؤال تتقدم ${e('will')} على الفاعل.`,
+  subs:[{h:'سؤال بكلمة سؤال',points:[`<b>القالب:</b> كلمة السؤال + ${e('will')} + الفاعل + الفعل الأصلي؟<br>${e('When will you build the piers?')}<br>${e('How long will the bridge be?')}`,`<b>الجواب لمرحلة طويلة:</b><br>${e("We'll start in 2026 and finish in 2027.")}`]},
+   {h:'سؤال جوابه نعم أو لا',points:[`<b>القالب:</b> ${e('Will')} + الفاعل + الفعل الأصلي؟<br>${e('Will they finish it in 2030?')}`,`<b>الجواب القصير:</b><br>${e("Yes, they will. · No, they won't.")}`]}],
+  grid:{head:['السؤال','مثال','الجواب'],rows:[['When will…?','When will you open the bridge?',"We'll open it in 2032."],['How long will…?','How long will it be?',"It'll be 15 km long."],['Will…?','Will it use steel?',"Yes, it will. · No, it won't."]]},
+  pairs:[['When you will build it?','When will you build it?','في السؤال تتقدم will على الفاعل.'],["Yes, they'll.",'Yes, they will.','في جواب «نعم» القصير لا نختصر.']],
+  art:art(`${[['foundations',0,2],['piers',2,2],['deck',3,3],['open',6,1]].map(([t,s,d],i)=>`<g data-tip="${t}: ${2026+s}${d>1?'–'+(2026+s+d-1):''}">${TL(70,96+i*44,t,{fs:12,w:700})}<rect x="${120+s*28}" y="${82+i*44}" width="${d*28-3}" height="20" rx="4" fill="${[C.yel,C.red,C.grn,C.blue][i]}" stroke="${C.ink}"/></g>`).join('')}
+    ${TL(180,270,"We'll start in 2028 and finish in 2029.",{fs:13,w:700})}`,'جدول زمني بأربع مراحل'),cap:'جدول زمني مختصر من رسمنا. مرّر المؤشر على كل مرحلة.',labs:[LAB73C,{title:'متى؟',w:(el,B)=>N.cases(el,B,{intro:'اختر الجواب المناسب:',cases:[{q:'When will you lay the foundations? (2026–2027)',opts:[["We'll start in 2026 and finish in 2027.",1,''],["We lay them in 2026.",0,'نحتاج will للمستقبل.'],["We'll started in 2026.",0,'بعد will الفعل الأصلي.']]}]})}]}
+ ]});
 B.lesson({
  id:'u7-l3',unit:7,order:3,pages:'56–57',
  title:'Future projects — مشاريع المستقبل',
@@ -282,10 +338,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 56–57',html:`<ol><li>تتوقع حقيقة أو حدثاً في المستقبل بـ ${e("will / 'll / won't")}.</li><li>تسأل ${e('When will…?')} و ${e('Will…?')} وتجيب باختصار.</li><li>تقرأ مواصفات مشروع لم يُبنَ بعد، وتحوّلها إلى جدول.</li><li>تتكلم عن جدول تنفيذ مشروع بالسنوات.</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 56–57',html:vt(VOC73)},
-  {h:'will و won\'t للتوقع',ref:'ص 56',html:`<p>للتوقع في المستقبل: الفاعل + ${e('will')} (أو ${e("'ll")}) + الفعل في صورته الأصلية. والنفي ${e("won't")} (= ${e('will not')}):</p>
-   ${eb(["The engineers <b>will</b> finish the tunnel in 2035.","They<b>'ll</b> use steel and concrete.","The trains <b>won't</b> use diesel."])}
-   <p>السؤال: ${e('When will they build it?')} والسؤال بنعم/لا: ${e('Will they build it in 2035?')} — ${e("Yes, they will. / No, they won't.")}</p>`},
-  {note:'<b>توضيح للمتدرب:</b> بعد <span class="en">will</span> لا نضيف <span class="en">s</span> ولا <span class="en">to</span>: نقول <span class="en">It will connect</span> لا <span class="en">It will connects</span> ولا <span class="en">It will to connect</span>.'},
+  ...R73.theory,
   {h:'تمارين الكتاب',ref:'ص 56–57',html:
    bk(1,'ص 56','مع زميلك: ما هذه المركبة في الصورة؟ وكيف تتحرك؟',null)+
    bk(3,'ص 56','اعترض على كل جملة من الست مستعملاً الكلمة بين القوسين، مثل المثال تحت التمرين.',["They won't start the tube in 2020. They'll start it in 2080.","It won't be under the Pacific Ocean. It'll be under the Atlantic.","It won't connect Britain with Europe. It'll connect Britain with the USA.","It won't use diesel. It'll use magnetism.","It won't contain compressed air. It'll contain a vacuum.","They won't travel at 11,000 km/h. They'll travel at 8000 km/h."])+
@@ -297,30 +350,8 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'will / won\'t',title:'التوقع بـ will و won\'t',q:'كيف تقول إن القطار سيستعمل المغناطيس وليس الديزل؟',ref:'ص 56',
-   art:art(`<g data-tip="will + الفعل الأصلي: The train will use magnetism."><rect x="30" y="90" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,124,'It will use magnetism.',{fs:16,w:700})}</g>
-    <g data-tip="won't = will not"><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,214,"It won't use diesel.",{fs:16,w:700})}</g>`,'جملتان: will use magnetism و won\'t use diesel'),
-   cap:'الإثبات والنفي. مرّر المؤشر على كل جملة.',
-   side:[{tip:`القالب: ${e("subject + will / won't + verb")}. والاختصار ${e("'ll")}: ${e("They'll build it.")}`}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الصيغة الصحيحة:',items:[
-     {s:'The new tunnel will ___ two cities.',o:['connect','connects','to connect'],a:0,why:'بعد will: الفعل الأصلي.'},
-     {s:"The trains ___ use diesel. They'll use electricity.",o:["won't","willn't","don't will"],a:0},
-     {s:'___ they finish the bridge in 2030?',o:['Will','Do','Are'],a:0,why:'سؤال المستقبل يبدأ بـ Will.'}]}),title:'مختبر مصغّر: will'}]},
-  {st:2,short:'اعترض',title:'الاعتراض على توقع خاطئ',q:'أحدهم قال: «They\'ll open it in 2028». والصحيح 2031. ماذا تقول؟',ref:'ص 56',
-   art:art(`<g data-tip="نفي الخطأ أولاً: They won't open it in 2028."><rect x="30" y="80" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.red}" stroke-width="3"/>${TL(180,114,"They won't open it in 2028.",{fs:15,w:700})}</g>
-    <g data-tip="ثم الصحيح: They'll open it in 2031."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,214,"They'll open it in 2031.",{fs:15,w:700})}</g>${arrowS(180,140,180,174,C.ink,3)}`,'نفي ثم تصحيح'),
-   cap:'خطوتا الاعتراض. مرّر المؤشر على كل خطوة.',
-   side:[{tip:'نعترض بجملتين: <b>ننفي</b> الخطأ بـ <span class="en">won\'t</span>، ثم <b>نصحّح</b> بـ <span class="en">\'ll</span>.'}],
-   body:[{widget:(el,B)=>N.typ(el,B,{intro:'اعترض على كل جملة (أمثلة جديدة):',items:[
-     {q:`${e("The bridge will be 5 km long.")} (8 km)`,a:["It won't be 5 km long. It'll be 8 km long.","The bridge won't be 5 km long. It'll be 8 km long.","It won't be 5 km long. It will be 8 km long."]},
-     {q:`${e("They'll use wood.")} (steel)`,a:["They won't use wood. They'll use steel.","They won't use wood. They will use steel."]}]}),title:'مختبر مصغّر: اعترض'}]},
-  {st:3,short:'جدول التنفيذ',title:'جدول تنفيذ مشروع',q:'كيف تسأل متى سيبنون الركائز؟ وكيف تجيب إذا كانت المرحلة سنتين؟',ref:'ص 57',
-   art:art(`${[['foundations',0,2],['piers',2,2],['deck',3,3],['open',6,1]].map(([t,s,d],i)=>`<g data-tip="${t}: ${2026+s}${d>1?'–'+(2026+s+d-1):''}">${TL(70,96+i*44,t,{fs:12,w:700})}<rect x="${120+s*28}" y="${82+i*44}" width="${d*28-3}" height="20" rx="4" fill="${[C.yel,C.red,C.grn,C.blue][i]}" stroke="${C.ink}"/></g>`).join('')}
-    ${TL(180,270,"We'll start in 2028 and finish in 2029.",{fs:13,w:700})}`,'جدول زمني بأربع مراحل'),
-   cap:'جدول زمني مختصر من رسمنا. مرّر المؤشر على كل مرحلة.',
-   side:[{tip:`السؤال: ${e('When will you build the piers?')} والجواب لمرحلة طويلة: ${e("We'll start in 2028 and finish in 2029.")}`}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر الجواب المناسب:',cases:[{q:'When will you lay the foundations? (2026–2027)',opts:[["We'll start in 2026 and finish in 2027.",1,''],["We lay them in 2026.",0,'نحتاج will للمستقبل.'],["We'll started in 2026.",0,'بعد will الفعل الأصلي.']]}]}),title:'مختبر مصغّر: متى؟'}]},
-  {recap:["will / 'll + الفعل الأصلي للتوقع، و won't للنفي.","السؤال: When will …? و Will …? — Yes, they will. / No, they won't.","نعترض بجملتين: They won't … They'll ….","جدول التنفيذ: We'll start in … and finish in …."]}
+  ...R73.stations,
+  {recap:["للمستقبل: الفاعل + will أو 'll + الفعل الأصلي، بلا s وبلا to.","النفي: won't + الفعل الأصلي.","نعترض بجملتين: They won't … ثم They'll ….","السؤال: When will you …? و Will …? — Yes, they will. / No, they won't."]}
  ],
  lab:lab73,
  examples:[

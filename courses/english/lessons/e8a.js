@@ -204,6 +204,56 @@ function lab82(el,B){
 
 const VOC82=DMG.map(x=>[`${x[0]} → ${x[1]}`,x[3],`a ${x[2]}`]).concat([['damaged','تالف',''],['missing','مفقود (ناقص)','The manual is missing.'],['condition','الحالة',''],['antenna','هوائي',''],['display screen','شاشة العرض',''],['plug','قابس (فيش)',''],['user manual','دليل المستخدم',''],['goggles','نظارات واقية',''],['overalls','بدلة العمل (أفرول)',''],['insulation','العازل (غلاف السلك)',''],['bonnet / boot','غطاء المحرك / صندوق السيارة','hood / trunk بالأمريكية'],['bumper','الصدّام',''],['windscreen','الزجاج الأمامي','windshield بالأمريكية'],['front ≠ rear','أمامي ≠ خلفي',''],['nearside / offside','جهة الرصيف / جهة السائق','']]);
 
+/* ===== مختبرات «شرح القاعدة» 8.2 ===== */
+const DV82={bend:['bent','bent','يثني','the key'],break:['broke','broken','يكسر','the speakers'],burn:['burnt','burnt','يحرق','the cable'],crack:['cracked','cracked','يشقّ','the screen'],cut:['cut','cut','يقطع','the wire'],dent:['dented','dented','يطعج','the car door'],scratch:['scratched','scratched','يخدش','the lenses'],tear:['tore','torn','يمزّق','the bag']};
+const PL82=o=>/speakers|lenses/.test(o);
+const LAB82A={title:'الفعل أم النتيجة؟',w:(el,B)=>N.labB(el,B,{intro:'اختر فعل التلف، ثم اختر: هل تتكلم عمّن فعل الضرر، أم عن حالة الشيء الآن؟',
+ controls:[{k:'v',label:'الفعل',opts:Object.keys(DV82).map(k=>[k,k])},{k:'f',label:'التركيز',opts:[['act','على الفعل'],['res','على النتيجة']]}],
+ out:({v,f})=>{const d=DV82[v],o=d[3],pl=PL82(o),O=o.replace(/^the/,'The');
+  if(f==='act')return{pieces:[['I','x','الفاعل'],['have','k','have'],[d[1],'n','التصريف الثالث'],[o+'.','x','المفعول']],say:`I have ${d[1]} ${o}.`,why:`نركز على من فعل الضرر، فنستعمل المضارع التام: have + ${d[1]}.`};
+  return{pieces:[[O,'x','الشيء'],[pl?'are':'is','k',pl?'جمع ← are':'مفرد ← is'],[d[1]+'.','n','التصريف الثالث كصفة']],say:`${O} ${pl?'are':'is'} ${d[1]}.`,why:`نركز على حالة الشيء الآن، فنستعمل ${pl?'are':'is'} + ${d[1]} كصفة، ولا نذكر من فعلها.`}}})};
+const DM82={dent:['a dent','some dents','in the side of the box','طعجة'],scratch:['a scratch','some scratches','on the lens','خدش'],crack:['a crack','some cracks','in the screen','شق'],hole:['a hole','some holes','in the bag','ثقب']};
+const LAB82B={title:"There's أم There are؟",w:(el,B)=>N.labB(el,B,{intro:'اختر نوع التلف وعدده، وشاهد الجملة.',
+ controls:[{k:'d',label:'التلف',opts:Object.keys(DM82).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','واحد'],['2','أكثر من واحد'],['0','لا يوجد']]}],
+ out:({d,n})=>{const x=DM82[d],place=x[2];
+  if(n==='1')return{pieces:[["There's",'k','مفرد'],[x[0],'n','a + مفرد'],[place+'.','x','المكان']],say:`There's ${x[0]} ${place}.`,why:"There's (= There is) مع شيء واحد، وبعده a."};
+  if(n==='2')return{pieces:[['There are','k','جمع'],[x[1],'n','some + جمع'],[place+'.','x','المكان']],say:`There are ${x[1]} ${place}.`,why:'There are مع أكثر من شيء، وبعده some والاسم بالجمع.'};
+  return{pieces:[["There's",'k',''],['no','q','لا يوجد'],[x[0].slice(2),'n',''],[place+'.','x','']],say:`There's no ${x[0].slice(2)} ${place}.`,why:"There's no = لا يوجد. وهي أقوى من There isn't any."}}})};
+const MS82={manual:['The manual','is','a manual'],batteries:['The batteries','are','batteries'],plug:['The plug','is','a plug'],screws:['The screws','are','screws']};
+const LAB82C={title:'الشيء الناقص',w:(el,B)=>N.labB(el,B,{intro:'اختر الشيء الناقص والصيغة، وشاهد ثلاث طرق لقول المعنى نفسه.',
+ controls:[{k:'m',label:'الناقص',opts:Object.keys(MS82).map(k=>[k,k])},{k:'f',label:'الصيغة',opts:[['miss','missing'],['no',"There's no / There are no"],['have',"doesn't have"]]}],
+ out:({m,f})=>{const x=MS82[m],pl=x[1]==='are',noun=x[0].replace('The ','');
+  if(f==='miss')return{pieces:[[x[0],'n','الشيء'],[x[1],'k',pl?'جمع':'مفرد'],['missing.','q','ناقص']],say:`${x[0]} ${x[1]} missing.`,why:'missing صفة معناها «ناقص، غير موجود».'};
+  if(f==='no')return{pieces:[[pl?'There are':"There's",'k',''],['no','q','لا يوجد'],[noun,'n',''],['in the box.','x','']],say:`${pl?'There are':"There's"} no ${noun} in the box.`,why:`${pl?'There are no':"There's no"} + الاسم.`};
+  return{pieces:[['The box','x','الشيء الكامل'],["doesn't have",'k','ليس فيه'],[x[2]+'.','n','']],say:`The box doesn't have ${x[2]}.`,why:"doesn't have + a للمفرد، أو الاسم الجمع مباشرة."}}})};
+const R82=N.rule({title:'وصف التلف والنقص',ref:'ص 60–61',
+ intro:`نشرح وصف الأشياء التالفة أو الناقصة في ثلاث خطوات مرتبة: أفعال التلف وتصاريفها، ثم الفرق بين الكلام عن الفعل والكلام عن النتيجة، ثم وصف مكان التلف والشيء الناقص.`,
+ parts:[
+ {t:'أفعال التلف وتصاريفها',short:'أفعال التلف',old:[1],q:'ما الفرق بين cracked و broken؟',ref:'ص 60',
+  lead:`عندما تستلم جهازاً أو تعيده للمحل، تحتاج أن تصف ما أصابه بدقة: هل هو مكسور، أم مخدوش، أم مطعوج؟ ولكل نوع من التلف فعل خاص.`,
+  points:[`<b>ثمانية أفعال</b> للتلف في هذا الدرس، ولكل منها تصريف ثالث نستعمله بعد ${e('have/has')} وبعد ${e('is/are')}.`,
+   `<b>خمسة منها منتظمة</b> نضيف لها ${e('-ed')}: ${e('crack → cracked · dent → dented · scratch → scratched')}`,
+   `<b>وثلاثة شاذة</b> تُحفظ: ${e('bend → bent · break → broken · tear → torn')}، و ${e('cut')} لا يتغير، و ${e('burn → burnt')} (وبالأمريكية ${e('burned')}).`],
+  grid:{head:['الفعل','التصريف الثالث','المعنى'],rows:[['bend','bent','يثني (يعوج)'],['break','broken','يكسر'],['burn','burnt','يحرق'],['crack','cracked','يشقّ'],['cut','cut','يقطع'],['dent','dented','يطعج'],['scratch','scratched','يخدش'],['tear','torn','يمزّق']]},
+  pairs:[['The key is bended.','The key is bent.','bend شاذ: bent.'],['The bag is teared.','The bag is torn.','tear شاذ: torn.']],
+  art:art(`${[['scratch','خدش',60,90],['crack','شرخ',180,90],['dent','بعج',300,90],['bend','ثني',60,200],['tear','تمزيق',180,200],['burn','حرق',300,200]].map(([w,a,x,y])=>`<g data-tip="${w}: ${a}"><rect x="${x-48}" y="${y-38}" width="96" height="76" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(x,y-4,w,{fs:15,w:700})}${T(x,y+20,a,{ar:1,fs:12})}</g>`).join('')}`,'ستة أفعال للتلف مع معانيها'),cap:'أفعال التلف. مرّر المؤشر على كل فعل.',labs:[LAB82A,{title:'أي ضرر؟',w:(el,B)=>N.cases(el,B,{intro:'اختر الفعل المناسب:',cases:[{q:'شق في زجاج النافذة',opts:[['cracked',1,''],['dented',0,'dent للمعدن المنبعج.'],['torn',0,'tear للقماش والورق.']]},{q:'قميص فيه فتحة ممزقة',opts:[['bent',0,''],['torn',1,''],['burnt',0,'']]},{q:'مسمار لم يعد مستقيماً',opts:[['bent',1,''],['scratched',0,''],['cut',0,'']]}]})}]},
+ {t:'الفعل أم النتيجة؟',short:'فعل أم نتيجة',old:[2],q:'أيهما تقول للمحل: I have scratched it أم It is scratched؟',ref:'ص 61',
+  lead:`عن الضرر نفسه نستطيع أن نتكلم بطريقتين: نذكر من فعله، أو نصف حالة الشيء الآن دون ذكر الفاعل. وكل طريقة لها صيغتها.`,
+  points:[`<b>التركيز على الفعل</b> (من سبّب الضرر): المضارع التام، الفاعل + ${e('have/has')} + التصريف الثالث.<br>${e('I have scratched the screen.')}`,
+   `<b>التركيز على النتيجة</b> (حالة الشيء الآن): الشيء + ${e('is/are')} + التصريف الثالث، فيعمل التصريف الثالث هنا عمل الصفة.<br>${e('The screen is scratched.')}`,
+   `${e('is')} مع المفرد و ${e('are')} مع الجمع: ${e('The speakers are broken.')}`],
+  grid:{head:['التركيز','الصيغة','مثال'],rows:[['على الفعل','have / has + V3','He has broken the speakers.'],['على النتيجة','is / are + V3','The speakers are broken.']]},
+  pairs:[['The screen has scratched.','The screen is scratched.','الشاشة لم تخدش شيئاً، بل هي مخدوشة: is + V3.'],['The speakers is broken.','The speakers are broken.','speakers جمع: are.']],
+  art:art(`<g data-tip="الفعل: have/has + التصريف الثالث."><rect x="30" y="80" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.blue}" stroke-width="3"/>${TL(180,114,"I've scratched the screen.",{fs:15,w:700})}</g>
+    <g data-tip="النتيجة: is/are + التصريف الثالث كصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,214,'The screen is scratched.',{fs:15,w:700})}</g>${arrowS(180,140,180,174,C.ink,3)}`,'من الفعل إلى النتيجة'),cap:'من الفعل إلى النتيجة. مرّر المؤشر على كل جملة.',labs:[{title:'حوّل',w:(el,B)=>N.typ(el,B,{intro:'حوّل إلى التركيز على النتيجة (أمثلة جديدة):',items:[{q:e("Someone has bent the key."),a:['The key is bent.']},{q:e("They've cracked the mirrors."),a:['The mirrors are cracked.']},{q:e("He's torn the map."),a:['The map is torn.']}]})}]},
+ {t:"مكان التلف والشيء الناقص",short:"There's / missing",q:'كيف تقول إن في جانب الصندوق طعجة، وإن الكتيّب ناقص؟',ref:'ص 60–61',
+  lead:`عند الفحص نصف أين التلف بالضبط، ونذكر ما ينقص الجهاز. ولهذا صيغ ثابتة.`,
+  subs:[{h:'مكان التلف',points:[`${e("There's a")} + اسم مفرد + المكان:<br>${e("There's a dent in the side of the box.")}`,`${e('There are some')} + اسم جمع + المكان:<br>${e('There are some scratches on the lens.')}`,`${e('in')} داخل الشيء (${e('in the screen')})، و ${e('on')} على سطحه (${e('on the lens')}).`]},
+   {h:'الشيء الناقص: ثلاث طرق بالمعنى نفسه',points:[`${e('The manual is missing.')}`,`${e("There's no manual in the box.")}`,`${e("The box doesn't have a manual.")}`]}],
+  grid:{head:['المعنى','الصيغة','مثال'],rows:[['تلف واحد',"There's a + مفرد","There's a crack in the screen."],['أكثر من تلف','There are some + جمع','There are some scratches on it.'],['ناقص','… is / are missing','The batteries are missing.'],['لا يوجد',"There's no + اسم","There's no plug on the cable."]]},
+  pairs:[["There's some scratches.",'There are some scratches.','scratches جمع: There are.'],["The manual is miss.",'The manual is missing.','الصفة missing بـ ing.']],
+  labs:[LAB82B,LAB82C]}
+ ]});
 B.lesson({
  id:'u8-l2',unit:8,order:2,pages:'60–61',
  title:'Damage and loss — التلف والفقد',
@@ -211,9 +261,7 @@ B.lesson({
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 60–61',html:`<ol><li>تصف الضرر في جهاز أو سيارة بثماني أفعال.</li><li>تفرّق بين ${e('I have dented it')} (الفعل) و ${e("It's dented")} (النتيجة).</li><li>تستعمل ${e("There's a … / There are some …")} لوصف الضرر.</li><li>تبلّغ عن شيء ناقص: ${e("The manual is missing. / There's no manual.")}</li></ol>`},
   {h:'جدول المفردات كاملاً',ref:'ص 60–61',html:vt(VOC82,['English','المعنى','الاسم / ملاحظة'])},
-  {h:'التركيز على الفعل أم على النتيجة',ref:'ص 61',html:`<p><b>الفعل:</b> من فعل الضرر، بالمضارع التام. <b>النتيجة:</b> حالة الشيء الآن، بـ ${e('is / are')} + التصريف الثالث كصفة:</p>${eb(['I<b> have scratched</b> the screen.','The screen <b>is scratched</b>.','He <b>has broken</b> the speakers.','The speakers <b>are broken</b>.'])}`},
-  {h:"There's a … / There are some …",ref:'ص 60–61',html:`${eb(["<b>There's a</b> dent in the side of the box.","<b>There are some</b> scratches on the lenses.","<b>There's no</b> plug on the cable."])}<p>ومع الناقص: ${e("The manual is missing. · There's no manual in the box. · The cable doesn't have a plug.")}</p>`},
-  {note:'<b>توضيح للمتدرب:</b> ثلاثة أفعال تصريفها شاذ: <span class="en">bend → bent</span>، <span class="en">break → broken</span>، <span class="en">tear → torn</span>. و <span class="en">burn → burnt</span> (أو <span class="en">burned</span> بالأمريكية).'},
+  ...R82.theory,
   {h:'تمارين الكتاب',ref:'ص 60–61',html:
    bk(1,'ص 60','هل عندك أدوات أو أجهزة تالفة؟ صف الضرر لزميلك.',null)+
    bk(2,'ص 60','طابق الأفعال الثمانية مع الصور.',null,'الصور في كتابك؛ راجع معاني الأفعال في جدول الكلمات.')+
@@ -228,24 +276,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
-  {st:1,short:'أفعال التلف',title:'ثماني أفعال للتلف',q:'شاشة هاتفك عليها خطوط رفيعة: هل هي cracked أم scratched؟',ref:'ص 60',
-   art:art(`${[['scratch','خدش',60,90],['crack','شرخ',180,90],['dent','بعج',300,90],['bend','ثني',60,200],['tear','تمزيق',180,200],['burn','حرق',300,200]].map(([w,a,x,y])=>`<g data-tip="${w}: ${a}"><rect x="${x-48}" y="${y-38}" width="96" height="76" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(x,y-4,w,{fs:15,w:700})}${T(x,y+20,a,{ar:1,fs:12})}</g>`).join('')}`,'ستة أفعال للتلف مع معانيها'),
-   cap:'أفعال التلف. مرّر المؤشر على كل فعل.',
-   side:[{tip:'<span class="en">scratch</span> خط سطحي، <span class="en">crack</span> شق في مادة صلبة (زجاج، بلاستيك)، <span class="en">dent</span> انبعاج في معدن.'}],
-   body:[{widget:(el,B)=>N.cases(el,B,{intro:'اختر الفعل المناسب:',cases:[{q:'شق في زجاج النافذة',opts:[['cracked',1,''],['dented',0,'dent للمعدن المنبعج.'],['torn',0,'tear للقماش والورق.']]},{q:'قميص فيه فتحة ممزقة',opts:[['bent',0,''],['torn',1,''],['burnt',0,'']]},{q:'مسمار لم يعد مستقيماً',opts:[['bent',1,''],['scratched',0,''],['cut',0,'']]}]}),title:'مختبر مصغّر: أي ضرر؟'}]},
-  {st:2,short:'الفعل أم النتيجة',title:'التركيز على الفعل أم على النتيجة',q:'كيف تقول «الشاشة مخدوشة» بدل «خدشتُ الشاشة»؟',ref:'ص 61',
-   art:art(`<g data-tip="الفعل: have/has + التصريف الثالث."><rect x="30" y="80" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.blue}" stroke-width="3"/>${TL(180,114,"I've scratched the screen.",{fs:15,w:700})}</g>
-    <g data-tip="النتيجة: is/are + التصريف الثالث كصفة."><rect x="30" y="180" width="300" height="56" rx="12" fill="${C.paper}" stroke="${C.grn}" stroke-width="3"/>${TL(180,214,'The screen is scratched.',{fs:15,w:700})}</g>${arrowS(180,140,180,174,C.ink,3)}`,'من الفعل إلى النتيجة'),
-   cap:'من الفعل إلى النتيجة. مرّر المؤشر على كل جملة.',
-   side:[{tip:'التحويل: نجعل المفعول فاعلاً، ونضع <span class="en">is</span> للمفرد و <span class="en">are</span> للجمع، ونُبقي التصريف الثالث.'}],
-   body:[{widget:(el,B)=>N.typ(el,B,{intro:'حوّل إلى التركيز على النتيجة (أمثلة جديدة):',items:[{q:e("Someone has bent the key."),a:['The key is bent.']},{q:e("They've cracked the mirrors."),a:['The mirrors are cracked.']},{q:e("He's torn the map."),a:['The map is torn.']}]}),title:'مختبر مصغّر: حوّل'}]},
-  {st:3,short:"There's a…",title:"There's a dent in… / There's no…",q:'كيف تقول «يوجد بعج في الباب»؟ وكيف تقول إن الكابل بلا قابس؟',ref:'ص 60–61',
-   art:art(`<g data-tip="There's a + اسم مفرد + in / on …"><rect x="30" y="80" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,111,"There's a dent in the door.",{fs:15,w:700})}</g>
-    <g data-tip="There are some + جمع"><rect x="30" y="150" width="300" height="50" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,181,'There are some scratches on it.',{fs:14,w:700})}</g>
-    <g data-tip="الناقص: There's no … / doesn't have …"><rect x="30" y="220" width="300" height="50" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,251,"There's no plug on the cable.",{fs:14,w:700})}</g>`,'ثلاث جمل لوصف الضرر والنقص'),
-   cap:'القوالب الثلاثة. مرّر المؤشر على كل قالب.',
-   side:[{tip:'الاسم من الفعل نفسه غالباً: <span class="en">a dent, a scratch, a crack, a cut, a tear, a burn, a bend</span>.'}],
-   body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر الصحيح:',items:[{s:"There's a ___ in the windscreen.",o:['crack','cracked','cracks'],a:0,why:'بعد a: اسم مفرد.'},{s:'There are some ___ on the table.',o:['burn','burns','burnt'],a:1},{s:"The box ___ have a lid.",o:["doesn't","isn't","hasn't got a"],a:0,why:"The box doesn't have a lid."}]}),title:'مختبر مصغّر: There\'s a…'}]},
+  ...R82.stations,
   {recap:['أفعال التلف: bend (bent)، break (broken)، burn (burnt)، crack، cut (cut)، dent، scratch، tear (torn).','الفعل: I have dented it. النتيجة: It is dented.',"There's a dent in … / There are some scratches on ….","الناقص: The manual is missing. / There's no manual. / It doesn't have a manual."]}
  ],
  lab:lab82,
