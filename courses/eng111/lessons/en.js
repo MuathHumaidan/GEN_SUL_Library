@@ -156,13 +156,16 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
    «رسمي»: عنوان «شرح القاعدة: …» ثم كل جزء بعنوان فرعي وجدوله وأمثلته و«انتبه» ومختبره. «التفاعلي»: محطة لكل جزء. */
 const rule=R=>{const TAG='إضافة من خارج الكتاب';
   const labW=l=>l?(l.w||((el,B)=>gaps(el,B,{intro:l.intro,items:l.items}))):null;
-  /* انتبه: الخطأ والصحيح متجاوران في صف واحد، ثم السبب تحتهما */
+  const isLat=x=>/^[\x20-\x7E·—–…’→✔✘]+$/.test(String(x));
+  /* جدول مرتب: أعمدة متساوية، والخلية الإنجليزية من اليسار لليمين */
+  const grid=g=>g?`<div class="rt-wrap"><table class="rt"><thead><tr>${g.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g.rows.map(r=>`<tr>${r.map((c,j)=>`<td${isLat(c)?' class="en" lang="en" dir="ltr"':''}${j===0?' data-k="1"':''}>${c}${j===r.length-1&&isLat(c)&&/[a-z]{2}/i.test(c)?' '+sp(c.replace(/ · .*/,'')):''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
   const pairsH=ps=>ps&&ps.length?`<div class="wx">${ps.map(p=>`<div class="wx-r"><span class="wx-x">✘ ${W(p[0])}</span><span class="wx-ok">✔ ${W(p[1])}</span>${p[2]?`<span class="wx-why">${p[2]}</span>`:''}</div>`).join('')}</div>`:'';
   const watchH=p=>{const w=p.watch?(Array.isArray(p.watch)?p.watch.map(x=>`<p>${x}</p>`).join(''):`<p>${p.watch}</p>`):'';return pairsH(p.pairs)+w};
-  const body=p=>`${p.why?`<p class="rwhy"><b>لماذا نتعلمه؟</b> ${p.why}</p>`:''}${(p.points||[]).map(x=>`<p class="rpt">${x}</p>`).join('')}${p.text?`<p class="rpt">${p.text}</p>`:''}`;
+  const pts=a=>(a||[]).map(x=>`<p class="rpt">${x}</p>`).join('');
+  const body=p=>`${p.lead?`<p class="rlead">${p.lead}</p>`:''}${pts(p.points)}${(p.subs||[]).map(s=>`<h4 class="rsub">${s.h}</h4>${pts(s.points)}`).join('')}${p.text?`<p class="rpt">${p.text}</p>`:''}`;
   const theory=[{h:'شرح القاعدة: '+R.title,ref:R.ref,html:R.intro?`<p>${R.intro}</p>`:''}];
   const stations=[];
-  R.parts.forEach((p,i)=>{const tbl=p.rows?vt(p.rows,p.head):'';const ex=p.ex&&p.ex.length?eb(p.ex):'';const dlg=p.dlg?dl(p.dlg):'';
+  R.parts.forEach((p,i)=>{const tbl=(p.rows?vt(p.rows,p.head):'')+grid(p.grid);const ex=p.ex&&p.ex.length?eb(p.ex):'';const dlg=p.dlg?dl(p.dlg):'';
     const hasW=p.watch||(p.pairs&&p.pairs.length);
     theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3><div class="rbody">${body(p)}</div>${tbl}${ex}${dlg}${p.html||''}`});
     if(hasW)theory.push({note:`<b>انتبه: الخطأ والصحيح</b>${watchH(p)}`});

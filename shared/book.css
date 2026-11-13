@@ -803,3 +803,11 @@ html[data-lang=en] td[dir=rtl],html[data-lang=en] th[dir=rtl]{text-align:left}
 .wx-why{grid-column:1/-1;font-size:.9em;color:var(--muted)}
 html[data-theme=dark] .wx-x{color:#f19a92}html[data-theme=dark] .wx-ok{color:#8fd8ac}
 .wx-x,.wx-ok{direction:ltr;text-align:left;unicode-bidi:isolate}
+.rlead{margin:.3em 0 .9em;line-height:1.9}
+.rsub{font-size:1em;margin:1em 0 .3em;color:var(--blue-ink,var(--fg))}
+.rt-wrap{overflow-x:auto;margin:.8em 0}
+table.rt{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.95em}
+table.rt th{background:var(--blue-soft);font-weight:700;padding:.55em .5em;text-align:center;border:1px solid var(--line)}
+table.rt td{padding:.55em .5em;text-align:center;border:1px solid var(--line);vertical-align:middle}
+table.rt td[data-k]{font-weight:700;background:rgba(0,0,0,.025)}
+table.rt td.en{font-family:var(--font-la,var(--font));direction:ltr;unicode-bidi:isolate}
