@@ -140,7 +140,7 @@ B.enDict({
  'من قراءتنا للصور.':'From our reading of the pictures.','من قراءتنا للصورة.':'From our reading of the picture.','حسب صورة الكتاب.':'See the picture in the book.',
  'ابدأ الدرس الأول':'Start the first lesson','وحدات':'Units','درساً':'Lessons','أنجزت':'Done','ابحث عن درس':'Find a lesson','لا يوجد درس بهذا الاسم.':'There is no lesson with this name.',
  'لغة الشرح:':'Lesson language:','عربي':'Arabic',
- 'إخفاء الترجمة':'Hide translation','إخفاء الترجمة: تظهر بالوقوف عليها أو لمسها':'Hide translation: point at it or touch it to see it','الدرجات':'Marks',' الدرجات':' Marks',
+ 'إخفاء الترجمة':'Hide translation','رتّب الخطوات':'Put the steps in order','وصّل كل عنصر بما يناسبه':'Match the pairs','إخفاء الترجمة: تظهر بالوقوف عليها أو لمسها':'Hide translation: point at it or touch it to see it','الدرجات':'Marks',' الدرجات':' Marks',
  'أضف أسماء المتدربين، واضغط + عند كل إجابة صحيحة. الأسماء محفوظة في هذا المتصفح فقط. الضغط على − عند الصفر يحذف الاسم.':'Add the trainees\' names. Press + for each right answer. The names stay in this browser only. Press − at zero to remove a name.',
  'اسم المتدرب':'Trainee name','إضافة':'Add','إغلاق':'Close','تصفير الدرجات':'Reset marks','المعنى':'Meaning'
 });
