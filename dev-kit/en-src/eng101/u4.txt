@@ -1,0 +1,1247 @@
+كلمات الاتجاه (up، down، forwards، backwards، sideways، straight، diagonally)، والخطوط (vertical، horizontal، diagonal)، والقدرة بـ can / can't في الإثبات والسؤال والجواب القصير، والدوران rotate حول محور، وحركات الذراع والمفاصل (wrist، elbow، shoulder، pivot).
+Direction words (up, down, forwards, backwards, sideways, straight, diagonally), lines (vertical, horizontal, diagonal), ability with can / can't in positives, questions and short answers, rotate around an axis, and the movements of the arm and its joints (wrist, elbow, shoulder, pivot).
+
+تصف كيف يتحرك شيء: طائرة، مروحية، ذراع روبوت. ستتعلم:
+You describe how something moves: a plane, a helicopter, a robot arm. You will learn:
+
+كلمات الاتجاه.
+Direction words.
+
+<span class="en" lang="en">can / can't</span> للقدرة.
+<span class="en" lang="en">can / can't</span> for ability.
+
+الدوران <span class="en" lang="en">rotate</span> والمحور <span class="en" lang="en">axis</span>.
+<span class="en" lang="en">rotate</span> and <span class="en" lang="en">axis</span>.
+
+مفاصل الذراع وحركاتها.
+The joints of the arm and how they move.
+
+شرح القاعدة: الاتجاهات، والقدرة بـ can، والدوران <span class="ref">ص 26–27</span>
+The rules: directions, ability with can, and rotation <span class="ref">pp. 26–27</span>
+
+في هذا الدرس نصف كيف تتحرك المركبات والأذرع الآلية: نتعلم كلمات الاتجاه، ثم كيف نقول إن شيئاً «يستطيع» أو «لا يستطيع» الحركة بـ <span class="en" lang="en">can</span>، ثم الدوران والمفاصل.
+In this lesson we describe how vehicles and robot arms move. We learn direction words, then how to say something "can" or "can't" move with <span class="en" lang="en">can</span>, then rotation and joints.
+
+1. الاتجاهات والخطوط <span class="ref">ص 26</span>
+1. Directions and lines <span class="ref">p. 26</span>
+
+قبل أن نصف الحركة نحتاج كلمات الاتجاه. وكثير منها أزواج متضادة.
+Before we describe movement, we need direction words. Many of them are pairs of opposites.
+
+<span class="en" lang="en">up ≠ down</span>، و <span class="en" lang="en">forwards ≠ backwards</span>، و <span class="en" lang="en">sideways</span> جانبياً.
+<span class="en" lang="en">up ≠ down</span>, <span class="en" lang="en">forwards ≠ backwards</span>, and <span class="en" lang="en">sideways</span>.
+
+<span class="en" lang="en">straight up</span> عمودياً تماماً، و <span class="en" lang="en">diagonally up</span> مائلاً.
+<span class="en" lang="en">straight up</span> = exactly vertical, <span class="en" lang="en">diagonally up</span> = at an angle.
+
+والخطوط: <span class="en" lang="en">vertical</span> عمودي، و <span class="en" lang="en">horizontal</span> أفقي، و <span class="en" lang="en">diagonal</span> مائل.
+Lines: <span class="en" lang="en">vertical</span>, <span class="en" lang="en">horizontal</span>, <span class="en" lang="en">diagonal</span>.
+
+مختبر مصغّر: الاتجاه
+Mini lab: the direction
+
+اختر الاتجاه، وشاهد السهم والكلمة.
+Choose the direction. See the arrow and the word.
+
+الاتجاه
+Direction
+
+إلى الأعلى
+Up
+
+إلى الأسفل
+Down
+
+إلى الأمام
+Forwards
+
+إلى الخلف
+Backwards
+
+مائلاً إلى الأعلى
+Diagonally up
+
+مائلاً إلى الأسفل
+Diagonally down
+
+<span class="en" lang="en">straight up</span> عمودي تماماً، و <span class="en" lang="en">diagonally up</span> مائل.
+<span class="en" lang="en">straight up</span> is exactly vertical, and <span class="en" lang="en">diagonally up</span> is at an angle.
+
+ما الاتجاه؟
+Which direction?
+
+<b>3.</b> ← (إلى الخلف)
+<b>3.</b> ← (backwards)
+
+2. القدرة بـ can و can't <span class="ref">ص 26</span>
+2. Ability with can and can't <span class="ref">p. 26</span>
+
+عندما نقارن المركبات نقول ما تستطيعه وما لا تستطيعه. ونستعمل لذلك <span class="en" lang="en">can</span>، وهي من أسهل القواعد لأنها لا تتغير.
+When we compare vehicles, we say what they can and can't do. We use <span class="en" lang="en">can</span> for this. It is one of the easiest rules, because it never changes.
+
+<span class="en" lang="en">can</span> واحدة مع كل الضمائر:
+<span class="en" lang="en">can</span> is the same with all pronouns:
+
+<b>بعدها الفعل كما هو</b>، بلا <span class="en" lang="en">s</span> ولا <span class="en" lang="en">to</span>: <span class="en" lang="en">A helicopter can fly backwards.</span>
+<b>After it, the verb doesn't change,</b> with no <span class="en" lang="en">s</span> and no <span class="en" lang="en">to</span>: <span class="en" lang="en">A helicopter can fly backwards.</span>
+
+بعدها الفعل كما هو
+After it, the verb doesn't change,
+
+<b>النفي:</b> <span class="en" lang="en">cannot</span> (كلمة واحدة)، واختصارها <span class="en" lang="en">can't</span>: <span class="en" lang="en">A plane can't fly backwards.</span>
+<b>Negative:</b> <span class="en" lang="en">cannot</span> (one word), short form <span class="en" lang="en">can't</span>: <span class="en" lang="en">A plane can't fly backwards.</span>
+
+<b>السؤال:</b> نقدّم <span class="en" lang="en">can</span>: <span class="en" lang="en">Can it fly sideways?</span> والجواب <span class="en" lang="en">Yes, it can. / No, it can't.</span>
+<b>Question:</b> put <span class="en" lang="en">can</span> first: <span class="en" lang="en">Can it fly sideways?</span> The answer: <span class="en" lang="en">Yes, it can. / No, it can't.</span>
+
+بعد can الفعل بلا s.
+After can, the verb has no s.
+
+لا نضع to بعد can.
+Don't put to after can.
+
+cannot كلمة واحدة.
+cannot is one word.
+
+اختر المركبة والحركة ونوع الجملة. الجملة تُبنى على ما تستطيعه المركبة فعلاً.
+Choose the vehicle, the movement and the sentence type. The sentence follows what the vehicle can really do.
+
+المركبة
+Vehicle
+
+الحركة
+Movement
+
+جملة خبرية
+Statement
+
+لا تستطيع
+Can't
+
+الفعل كما هو
+Verb with no change
+
+<span class="en" lang="en">can</span> واحدة مع كل الضمائر، وبعدها الفعل كما هو بلا <span class="en" lang="en">s</span> ولا <span class="en" lang="en">to</span>.
+<span class="en" lang="en">can</span> is the same with all pronouns, and after it the verb doesn't change: no <span class="en" lang="en">s</span> and no <span class="en" lang="en">to</span>.
+
+3. الدوران والمفاصل <span class="ref">ص 27</span>
+3. Rotation and joints <span class="ref">p. 27</span>
+
+الذراع الآلية تشبه ذراع الإنسان: فيها مفاصل، وكل مفصل يدور حول محور بعدد من الدرجات.
+A robot arm is like a human arm. It has joints, and each joint turns around an axis by some degrees.
+
+<span class="en" lang="en">rotate</span> يدور، و <span class="en" lang="en">axis</span> المحور، و <span class="en" lang="en">pivot</span> نقطة الارتكاز.
+<span class="en" lang="en">rotate</span> = turn, <span class="en" lang="en">axis</span> = the line it turns around, <span class="en" lang="en">pivot</span> = the point it turns on.
+
+المفاصل: <span class="en" lang="en">wrist</span> الرسغ، و <span class="en" lang="en">elbow</span> المرفق، و <span class="en" lang="en">shoulder</span> الكتف.
+Joints: <span class="en" lang="en">wrist</span>, <span class="en" lang="en">elbow</span>, <span class="en" lang="en">shoulder</span>.
+
+ونصف حركتها بـ <span class="en" lang="en">can</span>: <span class="en" lang="en">The wrist can move in three directions.</span> <span class="en" lang="en">The elbow can only move in one direction.</span>
+We describe their movement with <span class="en" lang="en">can</span>: <span class="en" lang="en">The wrist can move in three directions.</span> <span class="en" lang="en">The elbow can only move in one direction.</span>
+
+مختبر مصغّر: المفاصل
+Mini lab: the joints
+
+كم اتجاهاً؟
+How many directions?
+
+سمِّ حركات رجل الحقيبة النفاثة بكلمات الصندوق.
+Name the movements of the jet pack man with the words in the box.
+
+2، 3، 5: forwards / backwards / sideways حسب الأسهم في الصورة
+2, 3, 5: forwards / backwards / sideways, as the arrows in the picture show
+
+وصّل كل سهم بالكلمة.
+Match each arrow with the word.
+
+→ (إلى الأمام)
+→ (forwards)
+
+← (إلى الخلف)
+← (backwards)
+
+↔ (دون أن يدور)
+↔ (without turning)
+
+أي الاتجاهات تطير فيها الطائرة والمروحية؟
+Which directions can the plane and the helicopter fly in?
+
+الطائرة: forwards ✓ · backwards ✗ · up and down (مائلاً فقط) · sideways ✗
+The plane: forwards ✓ · backwards ✗ · up and down (only at an angle) · sideways ✗
+
+المروحية: كل الاتجاهات ✓
+The helicopter: all directions ✓
+
+هل تتحرك السيارة والطائرة المسيّرة (drone) في هذه الاتجاهات؟
+Can the car and the drone move in these directions?
+
+PAT: ^اقرأ\ النص\ وتحقق\ من\ إجاباتك\ في\ التمرين\ (.+?)$ ||| Read the text and check your answers to Exercise $1
+
+استمع إلى النص (من إعدادنا) وتحقق من إجاباتك في التمرين 2.
+Listen to the text (our own) and check your answers to Exercise 2.
+
+أكمل بـ can أو can't.
+Complete with can or can't.
+
+مع زميلك: تدرّب على الحوارات.
+With a classmate: practise the dialogues.
+
+فكّر في الرسغ والكتف والمرفق: كم اتجاهاً يتحرك كل منها؟
+Think about the wrist, the shoulder and the elbow. How many directions can each one move in?
+
+فكّر في رقبتك وركبتك وكاحلك (لا تحرّكها). كم اتجاهاً تتحرك؟
+Think about your neck, knee and ankle (don't move them). How many directions do they move in?
+
+اقرأ النص (من إعدادنا) وتحقق من إجاباتك في التمرين 6.
+Read the text (our own) and check your answers to Exercise 6.
+
+طابق كل حركة في الرسم بـ rotate أو move sideways أو move up and down.
+Match each movement in the drawing with rotate, move sideways or move up and down.
+
+الرسغ: move up and down · move sideways · rotate
+The wrist: move up and down · move sideways · rotate
+
+المرفق: move up and down
+The elbow: move up and down
+
+الكتف: الحركات الثلاث
+The shoulder: all three movements
+
+أرقام الأسهم حسب رسم الكتاب.
+The numbers of the arrows follow the drawing in the book.
+
+وصّل كل حركة بالعبارة.
+Match each movement with the phrase.
+
+يدير مقبض الباب
+Turns a door handle
+
+يهز رأسه نعم
+Nods his head for yes
+
+يهز رأسه لا
+Shakes his head for no
+
+استمع واختر.
+Listen and choose.
+
+عن ذراع الروبوت في التمرين 11: كم اتجاهاً تتحرك؟ وأي جزء يختلف عن ذراع الإنسان؟
+About the robot arm in Exercise 11: how many directions can it move in? Which part is different from a human arm?
+
+ذراع روبوت المصنع (من إعدادنا): wrist = 2 movements · elbow = 1 movement · shoulder = 3 movements
+A factory robot arm (our own): wrist = 2 movements · elbow = 1 movement · shoulder = 3 movements
+
+أكمل النص عن ذراع الروبوت.
+Complete the text about the robot arm.
+
+أكمل النص عن ذراع الروبوت بالكلمات: can · can't · has · is · isn't
+Complete the text about the robot arm with the words: can · can't · has · is · isn't
+
+أربع زوايا بالدرجات.
+Four angles in degrees.
+
+مبني على التمارين 2–5 ص 26. اختر المركبة والحركة، وشاهد السؤال والجواب والجملة.
+Based on Exercises 2–5, p. 26. Choose the vehicle and the movement. See the question, the answer and the sentence.
+
+ذراع الإنسان
+The human arm
+
+مبني على قراءة ص 27. اختر المفصل.
+Based on the reading on p. 27. Choose the joint.
+
+الرسغ: ثلاث حركات.
+The wrist: three movements.
+
+قارن الطائرة والمروحية في <span class="en">straight up</span>.
+Compare the plane and the helicopter for <span class="en">straight up</span>.
+
+لماذا لا نقول <span class="en">It can flies</span>؟
+Why don't we say <span class="en">It can flies</span>?
+
+كم اتجاهاً يتحرك مرفقك؟ جرّب بذراعك.
+How many directions can your elbow move in? Try it with your arm.
+
+المرفق: حركة واحدة.
+The elbow: one movement.
+
+الكتف: ثلاث حركات.
+The shoulder: three movements.
+
+مثال 1: قدرة
+Example 1: ability
+
+المروحية تستطيع الطيران جانبياً. اكتب الجملة.
+A helicopter can fly sideways. Write the sentence.
+
+مثال 2: سؤال وجواب
+Example 2: question and answer
+
+اسأل هل تستطيع الطائرة الطيران عمودياً، والجواب لا.
+Ask if a plane can fly straight up. The answer is no.
+
+مثال 3: مقارنة بـ but
+Example 3: comparing with but
+
+الطائرة لا تطير جانبياً، لكنها تطير إلى الأمام.
+A plane can't fly sideways, but it can fly forwards.
+
+الخطوة 1: القدرة: <span class="en" lang="en">can</span>.
+Step 1: ability: <span class="en" lang="en">can</span>.
+
+الخطوة 2: بعد can الفعل كما هو: <span class="en" lang="en">fly sideways</span>.
+Step 2: after can, the verb doesn't change: <span class="en" lang="en">fly sideways</span>.
+
+الخطوة 1: نبدأ بـ <span class="en" lang="en">Can</span>.
+Step 1: start with <span class="en" lang="en">Can</span>.
+
+PAT: ^الخطوة\ 2:\ نضيف\ <span\ class="en"\ lang="en">(.+?)</span>\.$ ||| Step 2: add <span class="en" lang="en">$1</span>.
+
+خط عمودي
+Vertical line
+
+خط أفقي
+Horizontal line
+
+خط مائل
+Diagonal line
+
+خط منحنٍ
+Curved line
+
+5. المفصل الذي يتحرك في اتجاه واحد:
+5. The joint that moves in one direction:
+
+عمودياً إلى الأعلى
+Straight up
+
+جانبياً
+Sideways
+
+وصّل الاتجاه بمعناه
+Match the direction with its meaning
+
+يدور
+Rotates
+
+بشكل مائل
+Diagonally
+
+<i>1</i>الاتجاهات
+<i>1</i>Directions
+
+<i>3</i>الدوران
+<i>3</i>Rotation
+
+الاتجاهات والخطوط
+Directions and lines
+
+PAT: ^ما\ الفرق\ بين\ (.+?)\ و\ (.+?)؟$ ||| What is the difference between $1 and $2?
+
+القدرة بـ can و can't
+Ability with can and can't
+
+هل تطير الطائرة إلى الخلف؟ كيف تجيب؟
+Can a plane fly backwards? How do you answer?
+
+PAT: ^(.+?)\ \+\ الفعل\ كما\ هو\.$ ||| $1 + verb with no change.
+
+السؤال: Can + الفاعل + الفعل؟
+Question: Can + subject + verb?
+
+الإثبات والنفي والسؤال. مرّر المؤشر على كل سطر.
+Positive, negative and question. Point at each line.
+
+الدوران والمفاصل
+Rotation and joints
+
+في كم اتجاهاً يتحرك المرفق؟
+How many directions can the elbow move in?
+
+مفاصل الذراع
+The joints of the arm
+
+ذراع من رسمنا بثلاثة مفاصل. مرّر المؤشر على كل مفصل.
+An arm we drew with three joints. Point at each joint.
+
+straight up (عمودي) ≠ diagonally up (مائل).
+straight up (vertical) ≠ diagonally up (at an angle).
+
+rotate on an axis؛ الذراع: wrist, elbow, shoulder.
+rotate on an axis. The arm: wrist, elbow, shoulder.
+
+تستطيع
+Can
+
+السؤال: <span class="en" lang="en">Can</span> + الفاعل + الفعل كما هو. والجواب القصير <span class="en" lang="en">Yes, it can.</span> أو <span class="en" lang="en">No, it can't.</span>
+Question: <span class="en" lang="en">Can</span> + subject + verb with no change. The short answer is <span class="en" lang="en">Yes, it can.</span> or <span class="en" lang="en">No, it can't.</span>
+
+وحدات السرعة (km/h، mph، m/s، rpm) وقراءة الأرقام الكبيرة، وأجزاء جهاز التحكم بالطائرة (joystick، slider، switch، antenna)، وأفعال الحركة (push، pull، slide، accelerate، slow down، ascend ≠ descend، roll)، والضمير it ومرجعه في النص، وسؤال القدرة Can you…?
+Speed units (km/h, mph, m/s, rpm) and reading big numbers, the parts of a plane remote control (joystick, slider, switch, antenna), movement verbs (push, pull, slide, accelerate, slow down, ascend ≠ descend, roll), the pronoun it and what it means in a text, and the ability question Can you…?
+
+تقرأ دليل استعمال جهاز وتتبع تعليماته. ستتعلم:
+You read a user guide and follow its instructions. You will learn:
+
+وحدات السرعة.
+Speed units.
+
+أجزاء جهاز التحكم.
+The parts of a remote control.
+
+أفعال الحركة: <span class="en" lang="en">push, pull, slide</span>.
+Movement verbs: <span class="en" lang="en">push, pull, slide</span>.
+
+<span class="en" lang="en">Can you…?</span> عن مهاراتك.
+<span class="en" lang="en">Can you…?</span> about your skills.
+
+شرح القاعدة: السرعة، وأفعال التحكم، والضمير it، و Can you…? <span class="ref">ص 28–29</span>
+The rules: speed, control verbs, the pronoun it, and Can you…? <span class="ref">pp. 28–29</span>
+
+في هذا الدرس نقرأ عن سرعة الطائرات والأقراص، ثم عن جهاز التحكم بطائرة نموذجية. نشرح وحدات السرعة، ثم أفعال التحكم، ثم كيف نعرف على من يعود <span class="en" lang="en">it</span>، ثم السؤال عن المهارات بـ <span class="en" lang="en">Can you…?</span>
+In this lesson we read about the speed of planes and discs, then about the remote control of a model plane. We explain speed units, then control verbs, then how to know what <span class="en" lang="en">it</span> means, then asking about skills with <span class="en" lang="en">Can you…?</span>
+
+1. السرعة ووحداتها <span class="ref">ص 28</span>
+1. Speed and its units <span class="ref">p. 28</span>
+
+السرعة مقدار في وحدة زمن: كم كيلومتراً في الساعة، أو كم دورة في الدقيقة.
+Speed is an amount in a unit of time: how many kilometres in an hour, or how many turns in a minute.
+
+<b>الشرطة <span class="en" lang="en">/</span></b> نقرؤها <span class="en" lang="en">per</span> أي «في كل»: <span class="en" lang="en">km/h = kilometres per hour</span>
+<b>The slash <span class="en" lang="en">/</span></b> is read <span class="en" lang="en">per</span>, which means "in each": <span class="en" lang="en">km/h = kilometres per hour</span>
+
+الشرطة <span class="en" lang="en">/</span>
+The slash <span class="en" lang="en">/</span>
+
+<span class="en" lang="en">rpm = revolutions per minute</span>، و <span class="en" lang="en">1 revolution = 360°</span>
+<span class="en" lang="en">rpm = revolutions per minute</span>, and <span class="en" lang="en">1 revolution = 360°</span>
+
+<b>الأرقام الكبيرة</b> بالآلاف: <span class="en" lang="en">67,000 = sixty-seven thousand</span>
+<b>Big numbers</b> in thousands: <span class="en" lang="en">67,000 = sixty-seven thousand</span>
+
+الأرقام الكبيرة
+Big numbers
+
+مختبر مصغّر: اقرأ السرعة
+Mini lab: read the speed
+
+اختر الرقم والوحدة، وشاهد طريقة القراءة.
+Choose the number and the unit. See how we read it.
+
+نكتب
+We write
+
+كيلومتر في الساعة
+=
+
+الشرطة <span class="en" lang="en">/</span> نقرؤها <span class="en" lang="en">per</span> (في كل): <span class="en" lang="en">km/h = kilometres per hour</span>
+The slash <span class="en" lang="en">/</span> is read <span class="en" lang="en">per</span> (in each): <span class="en" lang="en">km/h = kilometres per hour</span>
+
+مختبر مصغّر: القراءة
+Mini lab: reading
+
+كيف نقرأ؟
+How do we read it?
+
+2. جهاز التحكم وأفعاله <span class="ref">ص 28–29</span>
+2. The remote control and its verbs <span class="ref">pp. 28–29</span>
+
+تعليمات جهاز التحكم تخبرك أي قطعة تحرك وفي أي اتجاه. ولكل حركة فعل.
+The instructions for a remote control tell you which part to move and in which direction. Each movement has a verb.
+
+<span class="en" lang="en">push</span> ادفع (بعيداً عنك)، و <span class="en" lang="en">pull</span> اسحب (نحوك)، و <span class="en" lang="en">slide</span> حرّك بالانزلاق.
+<span class="en" lang="en">push</span> (away from you), <span class="en" lang="en">pull</span> (towards you), and <span class="en" lang="en">slide</span> (move it along).
+
+والتعليمة: فعل + الشيء + الاتجاه: <span class="en" lang="en">Push the joystick up.</span>
+The instruction: verb + thing + direction: <span class="en" lang="en">Push the joystick up.</span>
+
+وأفعال حركة الطائرة أزواج: <span class="en" lang="en">accelerate ≠ slow down</span>، و <span class="en" lang="en">ascend ≠ descend</span>.
+The movement verbs of a plane are pairs: <span class="en" lang="en">accelerate ≠ slow down</span>, and <span class="en" lang="en">ascend ≠ descend</span>.
+
+مختبر مصغّر: أفعال التحكم
+Mini lab: control verbs
+
+اختر الحركة، وشاهد التعليمة.
+Choose the movement. See the instruction.
+
+ادفع للأعلى
+Push up
+
+اسحب للأسفل
+Pull down
+
+حرّك لليسار
+Slide left
+
+حرّك لليمين
+Slide right
+
+ادفع
+Push
+
+<span class="en" lang="en">push</span> بعيداً عنك، و <span class="en" lang="en">pull</span> نحوك، و <span class="en" lang="en">slide</span> حركة انزلاق جانبية.
+<span class="en" lang="en">push</span> is away from you, <span class="en" lang="en">pull</span> is towards you, and <span class="en" lang="en">slide</span> is a sideways movement along something.
+
+مختبر مصغّر: ماذا يحدث؟
+Mini lab: what happens?
+
+3. الضمير it <span class="ref">ص 29</span>
+3. The pronoun it <span class="ref">p. 29</span>
+
+في التعليمات لا نكرر اسم الشيء في كل جملة، بل نضع مكانه <span class="en" lang="en">it</span>. ولتفهم التعليمة يجب أن تعرف على ماذا يعود.
+In instructions we don't say the name of the thing in every sentence. We use <span class="en" lang="en">it</span> instead. To understand the instruction, you need to know what it means.
+
+<span class="en" lang="en">it</span> يعود على اسم مفرد ذُكر قبله.
+<span class="en" lang="en">it</span> means a singular noun that came before it.
+
+اقرأ الجملة السابقة وابحث عن الاسم المناسب للمعنى: <span class="en" lang="en">Look at the LH stick. Push it up.</span> هنا <span class="en" lang="en">it = the LH stick</span>
+Read the sentence before and find the noun that fits the meaning: <span class="en" lang="en">Look at the LH stick. Push it up.</span> Here <span class="en" lang="en">it = the LH stick</span>
+
+وللجمع نستعمل <span class="en" lang="en">them</span>: <span class="en" lang="en">Take the nuts. Tighten them.</span>
+For the plural we use <span class="en" lang="en">them</span>: <span class="en" lang="en">Take the nuts. Tighten them.</span>
+
+مختبر مصغّر: على من يعود it؟
+Mini lab: what does it mean?
+
+اختر الجملتين، وشاهد على أي اسم يعود it.
+Choose the two sentences. See which noun it means.
+
+الجمل
+Sentences
+
+الجملة السابقة
+The sentence before
+
+فيها it
+Has it
+
+<span class="en" lang="en">it</span> يعود على أقرب اسم مفرد مناسب للمعنى ذُكر قبله.
+<span class="en" lang="en">it</span> means the nearest singular noun before it that fits the meaning.
+
+نستعمل <span class="en" lang="en">can</span> أيضاً للسؤال عن مهارات الناس.
+We also use <span class="en" lang="en">can</span> to ask about people's skills.
+
+ولنرد السؤال: <span class="en" lang="en">Can you?</span>
+To ask the question back: <span class="en" lang="en">Can you?</span>
+
+اختر المهارة والجواب، وشاهد السؤال والجواب القصير.
+Choose the skill and the answer. See the question and the short answer.
+
+المهارة
+Skill
+
+الجواب القصير
+Short answer
+
+في الجواب القصير لا نكرر الفعل: <span class="en" lang="en">Yes, I can.</span>
+In the short answer we don't repeat the verb: <span class="en" lang="en">Yes, I can.</span>
+
+اختبار: ما السرعات؟
+Quiz: what are the speeds?
+
+(إضافة من خارج الكتاب: الرقم القياسي الرسمي المسجّل منذ 1978 نحو 511 km/h، أي قرابة 142 m/s)
+(Extra, not in the book: the official record since 1978 is about 511 km/h, nearly 142 m/s)
+
+اختبار: ما السرعة؟
+Quiz: what is the speed?
+
+استمع وتحقق من إجاباتك.
+Listen and check your answers.
+
+مع زميلك: أملِ عليه سرعات.
+With a classmate: say speeds to your classmate.
+
+مع زميلك: اكتب سرعات وأملِها عليه، ثم قارنا.
+With a classmate: write speeds and say them. Then compare.
+
+سمِّ أجزاء جهاز التحكم بكلمات الصندوق.
+Name the parts of the remote control with the words in the box.
+
+PAT: ^الكلمات:\ (.+?)$ ||| The words: $1
+
+1 antenna (أعلى الجهاز)
+1 antenna (on top of the device)
+
+بقية الأرقام حسب صورة الكتاب.
+The other numbers follow the picture in the book.
+
+وصّل أجزاء جهاز تحكم الطائرة المسيّرة بوصفها.
+Match the parts of the drone remote control with their descriptions.
+
+ماذا تفعل الطائرة عندما تحرّك العصوين؟
+What does the plane do when you move the two sticks?
+
+ماذا تفعل الطائرة المسيّرة عندما تحرك العصا؟ (خمّن ثم تحقق في التمرين 6)
+What does the drone do when you move the stick? (Guess, then check in Exercise 6.)
+
+اقرأ الدليل وتحقق من إجاباتك في 4 و 5.
+Read the guide and check your answers to 4 and 5.
+
+اقرأ دليل المستخدم (من إعدادنا) وتحقق من إجاباتك في 4 و 5.
+Read the user guide (our own) and check your answers to 4 and 5.
+
+على أي كلمة يعود الضمير؟
+Which word does the pronoun mean?
+
+في نص التمرين 6: على أي كلمة يعود الضمير؟
+In the text in Exercise 6: which word does the pronoun mean?
+
+<b>1.</b> "Pull it down" (المرة الأولى)
+<b>1.</b> "Pull it down" (the first time)
+
+طابق حركتك مع حركة الطائرة.
+Match your movement with the plane's movement.
+
+وصّل حركتك بحركة الطائرة المسيّرة.
+Match your movement with the drone's movement.
+
+مع زميلك: كوّن حوارات من جدول التمرين 8.
+With a classmate: make dialogues from the table in Exercise 8.
+
+اسأل زميلك ماذا يستطيع ولا يستطيع.
+Ask a classmate what they can and can't do.
+
+إجابات اختبار السرعات.
+The answers to the speed quiz.
+
+جهاز التحكم
+The remote control
+
+مبني على دليل المستخدم ص 29 والتمرين 8. اختر العصا والحركة، وشاهد ما تفعله الطائرة.
+Based on the user guide on p. 29 and Exercise 8. Choose the stick and the movement. See what the plane does.
+
+محوّل السرعة
+Speed converter
+
+مبني على التمرين 1 ص 28. 1 mile = 1.609 km.
+Based on Exercise 1, p. 28. 1 mile = 1.609 km.
+
+ادفع العصا اليمنى إلى الأعلى: هل تصعد الطائرة أم تنزل؟
+Push the right stick up. Does the plane go up or down?
+
+حوّل 100 km/h إلى mph.
+Change 100 km/h into mph.
+
+كوّن حواراً: <span class="en">Can the plane fly to the left?</span>
+Make a dialogue: <span class="en">Can the plane fly to the left?</span>
+
+مثال 1: قراءة سرعة
+Example 1: reading a speed
+
+اكتب بالكلمات: 154 m/s
+Write in words: 154 m/s
+
+مثال 2: تعليمة ونتيجة
+Example 2: instruction and result
+
+اكتب التعليمة ونتيجتها: العصا اليمنى إلى الأعلى.
+Write the instruction and its result: the right stick up.
+
+مثال 3: سؤال القدرة
+Example 3: the ability question
+
+اسأل زميلك هل يستطيع قيادة دراجة نارية، والجواب نعم.
+Ask a classmate if he can ride a motorbike. The answer is yes.
+
+الخطوة 1: الرقم: <span class="en" lang="en">a hundred and fifty-four</span>.
+Step 1: the number: <span class="en" lang="en">a hundred and fifty-four</span>.
+
+الخطوة 2: الوحدة: <span class="en" lang="en">metres per second</span>.
+Step 2: the unit: <span class="en" lang="en">metres per second</span>.
+
+الخطوة 1: التعليمة بفعل الأمر: <span class="en" lang="en">Push the RH stick up.</span>
+Step 1: the instruction with the verb first: <span class="en" lang="en">Push the RH stick up.</span>
+
+الخطوة 2: النتيجة: الطائرة تنزل = <span class="en" lang="en">descends</span>.
+Step 2: the result: the plane goes down = <span class="en" lang="en">descends</span>.
+
+الخطوة 1: <span class="en" lang="en">Can you</span> + الفعل.
+Step 1: <span class="en" lang="en">Can you</span> + verb.
+
+3. ascend ضدها:
+3. The opposite of ascend:
+
+4. pull = اسحب ___
+4. pull = move it ___
+
+نحوك
+Towards you
+
+بعيداً عنك
+Away from you
+
+لليمين
+To the right
+
+لليسار
+To the left
+
+السرعة ووحداتها
+Speed and its units
+
+كيف تقرأ 1200 km/h؟
+How do you read 1200 km/h?
+
+وحدات السرعة
+Speed units
+
+أربع وحدات. مرّر المؤشر على كل منها.
+Four units. Point at each one.
+
+جهاز التحكم وأفعاله
+The remote control and its verbs
+
+الضمير it
+The pronoun it
+
+في Push it up، ما معنى it؟
+In Push it up, what does it mean?
+
+كيف تسأل زميلك هل يستطيع قيادة شاحنة؟
+How do you ask a classmate if he can drive a truck?
+
+push (بعيداً) ≠ pull (نحوك)، slide.
+push (away) ≠ pull (towards you), slide.
+
+accelerate ≠ slow down، ascend ≠ descend.
+accelerate ≠ slow down, ascend ≠ descend.
+
+it يعود على اسم مفرد قبله.
+it means a singular noun before it.
+
+ميل في الساعة (أمريكا وبريطانيا)
+=
+
+متر في الثانية
+=
+
+دورة في الدقيقة
+=
+
+اسحب
+Pull
+
+حرّك بالانزلاق
+Slide
+
+أدوات التحكم في الرافعة الشوكية (lever، pedal، steering wheel، brake، accelerator، fork)، وحركاتها (moves up/down، tilts up/down، reverses)، وتعليمات القيادة بفعل الأمر (Drive forwards، Slow down، Turn round)، وجمل الشرط والنتيجة بـ when و you.
+The controls of a forklift truck (lever, pedal, steering wheel, brake, accelerator, fork), their movements (moves up/down, tilts up/down, reverses), driving instructions with the verb first (Drive forwards, Slow down, Turn round), and sentences with an action and its result with when and you.
+
+تشرح كيف تُشغَّل آلة. ستتعلم:
+You explain how to use a machine. You will learn:
+
+أدوات التحكم في الرافعة الشوكية.
+The controls of a forklift truck.
+
+حركات الشوكة والشاحنة.
+The movements of the fork and the truck.
+
+تعليمات القيادة بفعل الأمر.
+Driving instructions with the verb first.
+
+شرح القاعدة: أدوات التحكم في الرافعة، و when، وتعليمات القيادة <span class="ref">ص 30–31</span>
+The rules: forklift controls, when, and driving instructions <span class="ref">pp. 30–31</span>
+
+في هذا الدرس نتعلم تشغيل رافعة شوكية: أدوات التحكم وحركاتها، ثم كيف نصف التعليمة ونتيجتها بـ <span class="en" lang="en">when</span>، ثم تعليمات القيادة.
+In this lesson we learn to use a forklift truck: the controls and their movements, then how to describe an instruction and its result with <span class="en" lang="en">when</span>, then driving instructions.
+
+1. أدوات التحكم والحركات <span class="ref">ص 30</span>
+1. Controls and movements <span class="ref">p. 30</span>
+
+في الرافعة أدوات باليد وأدوات بالقدم، وكل أداة تحرك جزءاً بطريقة معينة.
+A forklift has hand controls and foot controls. Each control moves a part in a certain way.
+
+<span class="en" lang="en">lever</span> ذراع باليد، و <span class="en" lang="en">pedal</span> دواسة بالقدم، و <span class="en" lang="en">steering wheel</span> المقود.
+<span class="en" lang="en">lever</span> (by hand), <span class="en" lang="en">pedal</span> (by foot), <span class="en" lang="en">steering wheel</span>.
+
+<span class="en" lang="en">brake ≠ accelerator</span> (الفرامل ≠ دواسة السرعة).
+<span class="en" lang="en">brake ≠ accelerator</span>.
+
+<span class="en" lang="en">moves up</span> ترتفع كلها، و <span class="en" lang="en">tilts up</span> تميل للأعلى.
+<span class="en" lang="en">moves up</span> = it all goes up, <span class="en" lang="en">tilts up</span> = it leans up.
+
+<span class="en" lang="en">reverses = goes backwards</span>، و <span class="en" lang="en">turn round</span> تستدير.
+<span class="en" lang="en">reverses = goes backwards</span>, and <span class="en" lang="en">turn round</span> = turn to face the other way.
+
+الحرف في رسم الكتاب
+The letter in the book's drawing
+
+ماذا تفعل
+What it does
+
+مختبر مصغّر: الأداة
+Mini lab: the control
+
+أي أداة؟
+Which control?
+
+2. التعليمة ونتيجتها بـ when <span class="ref">ص 31</span>
+2. An instruction and its result with when <span class="ref">p. 31</span>
+
+دليل التشغيل يربط كل حركة بنتيجتها: إذا فعلت كذا حدث كذا. ونستعمل لذلك <span class="en" lang="en">when</span> (عندما / كلما).
+A user guide links each action with its result: if you do this, that happens. We use <span class="en" lang="en">when</span> for this.
+
+<b>الترتيب الأول:</b> <span class="en" lang="en">When you</span> + الفعل، ثم <b>فاصلة</b>، ثم النتيجة: <span class="en" lang="en">When you press the brake pedal, the truck stops.</span>
+<b>Order 1:</b> <span class="en" lang="en">When you</span> + action, then a <b>comma</b>, then the result: <span class="en" lang="en">When you press the brake pedal, the truck stops.</span>
+
+الترتيب الأول:
+Order 1:
+
+فاصلة
+comma
+
+<b>الترتيب الثاني:</b> النتيجة أولاً، ثم <span class="en" lang="en">when you</span> <b>بلا فاصلة</b>: <span class="en" lang="en">The truck stops when you press the brake pedal.</span>
+<b>Order 2:</b> the result first, then <span class="en" lang="en">when you</span> with <b>no comma</b>: <span class="en" lang="en">The truck stops when you press the brake pedal.</span>
+
+الترتيب الثاني:
+Order 2:
+
+بلا فاصلة
+no comma
+
+<span class="en" lang="en">you</span> هنا تعني «أي شخص»، لا شخصاً معيناً.
+<span class="en" lang="en">you</span> here means "anyone", not one person.
+
+والفعلان في المضارع البسيط، فمع <span class="en" lang="en">the truck</span> نضيف <span class="en" lang="en">s</span>: <span class="en" lang="en">stops</span>
+Both verbs are in the present simple, so with <span class="en" lang="en">the truck</span> we add <span class="en" lang="en">s</span>: <span class="en" lang="en">stops</span>
+
+بعد جزء When نضع فاصلة.
+After the When part, put a comma.
+
+the truck = it، فنضيف s.
+the truck = it, so we add s.
+
+مختبر مصغّر: التعليمة ونتيجتها بـ when
+Mini lab: an instruction and its result with when
+
+اختر الفعل، وترتيب الجملة. لاحظ الفاصلة.
+Choose the action and the order of the sentence. Look at the comma.
+
+الترتيب
+Order
+
+When أولاً
+When first
+
+النتيجة أولاً
+Result first
+
+كلما
+Every time
+
+الفعل + فاصلة
+Action + comma
+
+إذا بدأت الجملة بـ <span class="en" lang="en">When</span> نضع فاصلة بعد الجزء الأول.
+If the sentence starts with <span class="en" lang="en">When</span>, put a comma after the first part.
+
+3. تعليمات القيادة <span class="ref">ص 31</span>
+3. Driving instructions <span class="ref">p. 31</span>
+
+مدرب القيادة يعطي تعليمات قصيرة بفعل الأمر.
+A driving teacher gives short instructions with the verb first.
+
+التعليمة تبدأ بالفعل بلا فاعل: <span class="en" lang="en">Drive forwards. Reverse. Slow down. Turn round.</span>
+The instruction starts with the verb, with no subject: <span class="en" lang="en">Drive forwards. Reverse. Slow down. Turn round.</span>
+
+مختبر مصغّر: التعليمة
+Mini lab: the instruction
+
+ما التعليمة؟
+What is the instruction?
+
+<b>1.</b> تريد أن يرجع إلى الخلف.
+<b>1.</b> You want him to go backwards.
+
+<b>2.</b> تريده أن يستدير ويعود.
+<b>2.</b> You want him to turn and come back.
+
+<b>3.</b> السرعة عالية.
+<b>3.</b> The speed is too high.
+
+انظر إلى الرسم وأجب.
+Look at the drawing and answer.
+
+من قراءتنا للرسم.
+From our reading of the drawing.
+
+اقرأ وصف لوحة تحكم الرافعة (crane) من إعدادنا وأجب.
+Read the description of a crane control panel (our own) and answer.
+
+اكتب حروف الرسم بجانب أدوات التحكم.
+Write the letters from the drawing next to the controls.
+
+أكمل دليل الرافعة.
+Complete the forklift guide.
+
+صِف حركات الشاحنة.
+Describe the movements of the truck.
+
+صِف حركة الرافعة: وصّل الوصف بالجملة.
+Describe the movement of the crane: match the description with the sentence.
+
+الخطاف ينزل
+The hook goes down
+
+الخطاف يصعد
+The hook goes up
+
+الذراع تدور يساراً
+The arm turns left
+
+الرافعة تقف
+The crane stops
+
+الرافعة ترجع للخلف
+The crane goes backwards
+
+مع زميلك: درس قيادة (مدرب ومتعلم).
+With a classmate: a driving lesson (teacher and learner).
+
+مع زميلك: درس قيادة. أحدكما مدرب يعطي التعليمات، والآخر يمثّلها.
+With a classmate: a driving lesson. One is the teacher who gives instructions, and the other acts them out.
+
+اكتب تعليمات قصيرة لعمل ما وارسم رسماً.
+Write short instructions for a job and draw a picture.
+
+اكتب تعليمات قصيرة لعمل واحد مع رسم.
+Write short instructions for one job, with a drawing.
+
+اكتب جملاً كاملة بـ when و you.
+Write full sentences with when and you.
+
+اكتب جملة كاملة بـ when و you و the. المثال: push joystick forwards → hook goes down = When you push the joystick forwards, the hook goes down.
+Write a full sentence with when, you and the. Example: push joystick forwards → hook goes down = When you push the joystick forwards, the hook goes down.
+
+مهمة ثنائية: درس قيادة للرافعة الشوكية ورتّب الصور.
+Pair work: a forklift driving lesson. Put the pictures in order.
+
+رتّب تعليمات ركن السيارة.
+Put the instructions for parking a car in order.
+
+قُد الرافعة الشوكية
+Drive the forklift truck
+
+مبني على الدليل والتمرين 6 ص 30–31. اختر الحركة، وشاهد الرافعة والجملة بـ when.
+Based on the guide and Exercise 6, pp. 30–31. Choose the movement. See the forklift and the sentence with when.
+
+درس قيادة
+A driving lesson
+
+مبني على التمرين 4 ص 31. اضغط تعليمة واسمعها.
+Based on Exercise 4, p. 31. Press an instruction to hear it.
+
+ما الفرق بين <span class="en">moves up</span> و <span class="en">tilts up</span> للشوكة؟
+What is the difference between <span class="en">moves up</span> and <span class="en">tilts up</span> for the fork?
+
+أين نضع الفاصلة في جملة <span class="en">When you…</span>؟
+Where do we put the comma in a <span class="en">When you…</span> sentence?
+
+اكتب ثلاث تعليمات لركن سيارة.
+Write three instructions for parking a car.
+
+مثال 1: من ملاحظة إلى جملة
+Example 1: from a note to a sentence
+
+مثال 2: الفرامل
+Example 2: the brake
+
+مثال 3: تعليمة
+Example 3: an instruction
+
+اطلب من المتعلم أن يرجع إلى اليسار.
+Tell the learner to go backwards to the left.
+
+الخطوة 1: نبدأ بـ <span class="en" lang="en">When you</span> ونضيف <span class="en" lang="en">the</span>: <span class="en" lang="en">When you push lever B forwards</span>
+Step 1: start with <span class="en" lang="en">When you</span> and add <span class="en" lang="en">the</span>: <span class="en" lang="en">When you push lever B forwards</span>
+
+الخطوة 2: فاصلة ثم النتيجة مع <span class="en" lang="en">the</span>: <span class="en" lang="en">the fork moves up</span>.
+Step 2: a comma, then the result with <span class="en" lang="en">the</span>: <span class="en" lang="en">the fork moves up</span>.
+
+الخطوة 1: فعل الأمر <span class="en" lang="en">Reverse</span>.
+Step 1: the verb first: <span class="en" lang="en">Reverse</span>.
+
+الخطوة 2: الاتجاه <span class="en" lang="en">to the left</span>.
+Step 2: the direction: <span class="en" lang="en">to the left</span>.
+
+5. brake ضدها في الوظيفة:
+5. The control with the opposite job to brake:
+
+وصّل الأداة بعملها
+Match the control with its job
+
+<i>1</i>أدوات التحكم
+<i>1</i>Controls
+
+أدوات التحكم والحركات
+Controls and movements
+
+أدوات التحكم
+Controls
+
+ثلاث أدوات تحكم من رسمنا. مرّر المؤشر على كل منها.
+Three controls we drew. Point at each one.
+
+التعليمة ونتيجتها بـ when
+An instruction and its result with when
+
+متى نضع فاصلة في جملة when؟
+When do we put a comma in a when sentence?
+
+الجزء الأول: When + you + الحركة، ثم فاصلة.
+Part 1: When + you + action, then a comma.
+
+الجزء الثاني: النتيجة.
+Part 2: the result.
+
+الحركة ثم النتيجة. مرّر المؤشر على كل جزء.
+The action, then the result. Point at each part.
+
+تعليمات القيادة
+Driving instructions
+
+كيف يعطي المدرب تعليماته؟
+How does the teacher give instructions?
+
+أربع تعليمات بفعل الأمر. مرّر المؤشر على كل منها.
+Four instructions with the verb first. Point at each one.
+
+lever (باليد)، pedal (بالقدم)، steering wheel.
+lever (by hand), pedal (by foot), steering wheel.
+
+When you + الحركة, + النتيجة.
+When you + action, + result.
+
+إذا بدأنا بالنتيجة لا نضع فاصلة.
+If we start with the result, there is no comma.
+
+مراجعة have / has في السؤال والنفي، والمضارع البسيط (does، s)، و can / can't، والاختصارات، والأجزاء والأدوات والمواقع، و a / an / some / a pair of، والحروف الصامتة، والاتجاهات والتعليمات، مع إجابات تمارين المراجعة.
+Review of have / has in questions and negatives, the present simple (does, s), can / can't, short forms, parts, tools and places, a / an / some / a pair of, silent letters, and directions and instructions, with the answers to the review exercises.
+
+ماذا تراجع؟ <span class="ref">ص 32–35</span>
+What do you review? <span class="ref">pp. 32–35</span>
+
+have: سؤال ونفي
+have: question and negative
+
+الأجزاء
+Parts
+
+المضارع البسيط
+The present simple
+
+المواقع
+Places
+
+الاتجاهات
+Directions
+
+الاختصارات <span class="ref">ص 32</span>
+Short forms <span class="ref">p. 32</span>
+
+متى
+When
+
+مفرد يبدأ بصوت ساكن
+Singular, starts with a consonant sound
+
+مفرد يبدأ بصوت متحرك
+Singular, starts with a vowel sound
+
+شيء من جزأين
+A thing with two parts
+
+أجب بالنفي ثم بجملة مثبتة. المثال: Do you have a pen? (pencil) → No, I don't have a pen. I have a pencil.
+Answer in the negative, then with a positive sentence. Example: Do you have a pen? (pencil) → No, I don't have a pen. I have a pencil.
+
+أعد كتابة الجمل بالاختصارات.
+Write the sentences again with short forms.
+
+أعد الكتابة بالاختصارات.
+Write it again with short forms.
+
+أجب إجابات قصيرة.
+Give short answers.
+
+اختر الجواب القصير.
+Choose the short answer.
+
+أكمل الحوار بالصيغة الصحيحة للأفعال.
+Complete the dialogue with the right form of the verbs.
+
+أكمل الحوار بالصيغة الصحيحة.
+Complete the dialogue with the right form.
+
+سمِّ الأجزاء.
+Name the parts.
+
+صِف الأدوات في التمرين 6.
+Describe the tools in Exercise 6.
+
+صِف الأداة.
+Describe the tool.
+
+انظر إلى لوحة الأدوات 15 ثانية ثم اكتب كل الأدوات من الذاكرة.
+Look at the tool board for 15 seconds, then write all the tools from memory.
+
+انظر إلى أدوات ورشتك أو حقيبة أدواتك 15 ثانية، ثم اكتب كل ما تتذكره.
+Look at the tools in your workshop or toolbox for 15 seconds, then write everything you remember.
+
+كوّن جملاً عن لوحة الأدوات بـ above / below / to the left of / to the right of.
+Make sentences about the tool board with above / below / to the left of / to the right of.
+
+لوحة أدوات (من إعدادنا): الصف الأعلى: مفكات ← مفاتيح ربط. الصف الأوسط: مطرقة ← منشار. الصف الأسفل: زردية ← مقص. اكتب جملة.
+A tool board (our own): top row: screwdrivers ← spanners. Middle row: hammer ← saw. Bottom row: pliers ← scissors. Write a sentence.
+
+خمّن الجهاز من وصفه.
+Guess the device from its description.
+
+أكمل الأسئلة والأجوبة.
+Complete the questions and answers.
+
+طابق الأسئلة بالأجوبة.
+Match the questions with the answers.
+
+مع زميلك: تدرّب على الأسئلة والأجوبة بالاختصارات.
+With a classmate: practise the questions and answers with short forms.
+
+مع زميلك: تدرّب على أسئلة التمرين 11 وأجوبته بالاختصارات.
+With a classmate: practise the questions and answers in Exercise 11 with short forms.
+
+احذف الحروف الصامتة وانطق الكلمات.
+Take away the silent letters and say the words.
+
+ما الحرف الصامت؟
+Which letter is silent?
+
+سمِّ أدوات التحكم في السيارة.
+Name the controls in a car.
+
+الأرقام حسب صورة الكتاب.
+The numbers follow the picture in the book.
+
+وصّل أداة التحكم في السيارة بوصفها.
+Match the car control with its description.
+
+ضع a أو an أو some أو a pair of.
+Put a, an, some or a pair of.
+
+كوّن جملاً مثبتة ومنفية.
+Make positive and negative sentences.
+
+كوّن جملة بـ can و but و can't.
+Make a sentence with can, but and can't.
+
+اتبع التعليمات على الشبكة.
+Follow the instructions on the grid.
+
+شبكة 5 × 5 (من إعدادنا): تبدأ في المربع الأوسط C3. الأعمدة A–E من اليسار، والصفوف 1–5 من الأعلى.
+A 5 × 5 grid (our own): you start in the middle square, C3. Columns A–E go from the left, and rows 1–5 from the top.
+
+طابق الصور مع التعليمات.
+Match the pictures with the instructions.
+
+وصّل السهم بالتعليمة.
+Match the arrow with the instruction.
+
+⟲ حول محور عمودي
+⟲ around a vertical axis
+
+اكتب قائمة بالوظائف في مجالك.
+Write a list of jobs in your field.
+
+ما معنى أجزاء الكلمات؟
+What do the parts of the words mean?
+
+وصّل جزء الكلمة بمعناه.
+Match the part of the word with its meaning.
+
+مثال 1: سؤال have
+Example 1: a question with have
+
+حوّل إلى سؤال: The workshop has a forklift truck.
+Change into a question: The workshop has a forklift truck.
+
+مثال 3: a / an / some
+Example 3: a / an / some
+
+ضع الكلمة المناسبة: ___ screws · ___ oven · ___ scissors
+Put the right word: ___ screws · ___ oven · ___ scissors
+
+الخطوة 1: الفاعل مفرد: <span class="en" lang="en">Does</span>.
+Step 1: the subject is singular: <span class="en" lang="en">Does</span>.
+
+الخطوة 2: <span class="en" lang="en">has</span> تصبح <span class="en" lang="en">have</span>.
+Step 2: <span class="en" lang="en">has</span> becomes <span class="en" lang="en">have</span>.
+
+الخطوة 1: <span class="en" lang="en">screws</span> جمع: <span class="en" lang="en">some screws</span>.
+Step 1: <span class="en" lang="en">screws</span> is plural: <span class="en" lang="en">some screws</span>.
+
+الخطوة 2: <span class="en" lang="en">oven</span> يبدأ بصوت متحرك: <span class="en" lang="en">an oven</span>.
+Step 2: <span class="en" lang="en">oven</span> starts with a vowel sound: <span class="en" lang="en">an oven</span>.
+
+الخطوة 3: <span class="en" lang="en">scissors</span> من جزأين: <span class="en" lang="en">a pair of scissors</span>.
+Step 3: <span class="en" lang="en">scissors</span> has two parts: <span class="en" lang="en">a pair of scissors</span>.
+
+4. الحرف الصامت في wrist:
+4. The silent letter in wrist:
+
+ألف
+Thousand
+
+كثير
+Many
+
+حرارة
+Heat
+
+صغير
+Small
+
+وصّل الكلمة بما قبلها
+Match the word with its start
+
+خلاصة الوحدة 3: الأدوات والوظائف والمواقع
+Summary of Unit 3: tools, functions and places
+
+كيف تحوّل John has the spanners إلى سؤال؟
+How do you change John has the spanners into a question?
+
+بعد <span class="en" lang="en">does / doesn't</span> الفعل بلا s: <span class="en" lang="en">Does it have…? It doesn't measure…</span>
+After <span class="en" lang="en">does / doesn't</span> the verb has no s: <span class="en" lang="en">Does it have…? It doesn't measure…</span>
+
+PAT: ^خلاصة\ الوحدة\ (.+?)$ ||| Summary of Unit $1
+
+سؤال have: Does + الفاعل المفرد + have.
+A have question: Does + singular subject + have.
+
+المضارع البسيط: الفعل + s مع المفرد.
+The present simple: verb + s with a singular subject.
+
+المكان بالنسبة لشيء آخر.
+Place compared with another thing.
+
+ثلاث قواعد من الوحدة 3. مرّر المؤشر على كل منها.
+Three rules from Unit 3. Point at each one.
+
+PAT: ^مختبر\ مصغّر:\ الوحدة\ (.+?)$ ||| Mini lab: Unit $1
+
+خلاصة الوحدة 4: الحركة والتعليمات
+Summary of Unit 4: movement and instructions
+
+كيف تقول إن الصاروخ يطير عمودياً لكن لا يرجع للخلف؟
+How do you say a rocket can fly straight up but can't go backwards?
+
+<span class="en" lang="en">a pair of</span> للأشياء ذات الجزأين، و <span class="en" lang="en">some</span> للجمع.
+<span class="en" lang="en">a pair of</span> for things with two parts, and <span class="en" lang="en">some</span> for the plural.
+
+تعليمات بفعل الأمر واتجاه.
+Instructions with the verb first and a direction.
+
+قاعدتان من الوحدة 4. مرّر المؤشر على كل منهما.
+Two rules from Unit 4. Point at each one.
+
+الاختصارات: doesn't, don't, isn't, can't, I'm.
+Short forms: doesn't, don't, isn't, can't, I'm.
+
+الحروف الصامتة: knife, wrist, right.
+Silent letters: knife, wrist, right.
+

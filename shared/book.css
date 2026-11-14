@@ -812,3 +812,5 @@ table.rt td{padding:.55em .5em;text-align:center;border:1px solid var(--line);ve
 table.rt td[data-k]{font-weight:700;background:rgba(0,0,0,.025)}
 table.rt td.en{font-family:var(--font-la,var(--font));direction:ltr;unicode-bidi:isolate}
 @media (max-width:600px){.topbar .in{flex-wrap:wrap;row-gap:6px}.top-actions{flex-wrap:wrap;gap:6px;justify-content:flex-end;margin-inline-start:auto}.topbar .brand{min-width:0}}
+html[data-lang=en] .search input{padding:12px 14px 12px 44px}
+html[data-lang=en] .rt th{overflow-wrap:anywhere;hyphens:auto}

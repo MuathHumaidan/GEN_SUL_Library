@@ -1,0 +1,1417 @@
+شرح القاعدة: التعارف، والفعل be، والتعليمات، والأماكن، والأدوات <span class="ref">ص 4–5</span>
+The rules: meeting people, the verb be, instructions, places and tools <span class="ref">pp. 4–5</span>
+
+هذا أول درس، ونبني فيه الأساس خطوة خطوة: الفعل <span class="en" lang="en">be</span> مع الضمائر، ثم التعارف، ثم السؤال عن العمل مع <span class="en" lang="en">a</span> و <span class="en" lang="en">an</span>، ثم التعليمات، ثم المكان والحالة، ثم أسماء الأدوات بالمفرد والجمع.
+This is the first lesson. We build the basics step by step: the verb <span class="en" lang="en">be</span> with pronouns, then meeting people, then asking about jobs with <span class="en" lang="en">a</span> and <span class="en" lang="en">an</span>, then instructions, then place and state, then tools in the singular and plural.
+
+1. الفعل be مع الضمائر <small>(إضافة من خارج الكتاب)</small>
+1. The verb be with pronouns <small>(extra, not in the book)</small>
+
+(إضافة من خارج الكتاب)
+(extra, not in the book)
+
+قبل أن نتعارف نحتاج الفعل <span class="en" lang="en">be</span>، ومعناه «يكون». لا يظهر في الجملة العربية غالباً (نقول «أنا طالب» بلا فعل)، لكنه لازم في الجملة الإنجليزية: <span class="en" lang="en">I am a student.</span>
+Before we meet people, we need the verb <span class="en" lang="en">be</span>. In Arabic we often don't say it, but in English we always need it: <span class="en" lang="en">I am a student.</span>
+
+<b><span class="en" lang="en">be</span> له ثلاث صيغ في المضارع</b>، ونختار منها حسب الضمير:<br><span class="en" lang="en">am</span> مع <span class="en" lang="en">I</span> فقط.<br><span class="en" lang="en">is</span> مع <span class="en" lang="en">he · she · it</span>.<br><span class="en" lang="en">are</span> مع <span class="en" lang="en">you · we · they</span>.
+<b><span class="en" lang="en">be</span> has three forms in the present.</b> We choose one by the pronoun:<br><span class="en" lang="en">am</span> with <span class="en" lang="en">I</span> only.<br><span class="en" lang="en">is</span> with <span class="en" lang="en">he · she · it</span>.<br><span class="en" lang="en">are</span> with <span class="en" lang="en">you · we · they</span>.
+
+<span class="en" lang="en">be</span> له ثلاث صيغ في المضارع
+<span class="en" lang="en">be</span> has three forms in the present.
+
+<b>الاختصار</b> يكثر في الكلام: نحذف أول حرف من <span class="en" lang="en">be</span> ونضع مكانه علامة: <span class="en" lang="en">I'm · you're · he's · she's · it's · we're · they're</span>
+<b>Short forms</b> are common when we speak. We drop the first letter of <span class="en" lang="en">be</span> and put an apostrophe: <span class="en" lang="en">I'm · you're · he's · she's · it's · we're · they're</span>
+
+الاختصار
+Short forms
+
+<b>النفي:</b> نضع <span class="en" lang="en">not</span> بعد <span class="en" lang="en">be</span>: <span class="en" lang="en">I'm not · he isn't · they aren't</span>
+<b>Negative:</b> put <span class="en" lang="en">not</span> after <span class="en" lang="en">be</span>: <span class="en" lang="en">I'm not · he isn't · they aren't</span>
+
+النفي:
+Negative:
+
+<b>السؤال:</b> نقدّم <span class="en" lang="en">be</span> على الضمير: <span class="en" lang="en">You are a student.</span> ← <span class="en" lang="en">Are you a student?</span>
+<b>Question:</b> put <span class="en" lang="en">be</span> before the pronoun: <span class="en" lang="en">You are a student.</span> → <span class="en" lang="en">Are you a student?</span>
+
+السؤال:
+Question:
+
+<b>الجواب القصير:</b> <span class="en" lang="en">Yes, I am. · No, I'm not.</span> وفي «نعم» لا نختصر: لا نقول <span class="en" lang="en">Yes, I'm.</span>
+<b>Short answer:</b> <span class="en" lang="en">Yes, I am. · No, I'm not.</span> With "Yes" we don't use the short form: we don't say <span class="en" lang="en">Yes, I'm.</span>
+
+الجواب القصير:
+Short answer:
+
+الضمير
+Pronoun
+
+المختصر
+Short form
+
+انتبه: الخطأ والصحيح
+Be careful: wrong and right
+
+PAT: ^مع\ (.+?)\ نستعمل\ (.+?)$ ||| With $1 we use $2
+
+في جواب نعم لا نختصر.
+In a "yes" answer, don't use the short form.
+
+PAT: ^مختبر\ مصغّر:\ (.+?)\ أم\ (.+?)\ أم\ (.+?)؟$ ||| Mini lab: $1, $2 or $3?
+
+اختر الضمير ونوع الجملة، وشاهد صيغة be التي تناسبه.
+Choose the pronoun and the sentence type. See the form of be that goes with it.
+
+الجملة
+Sentence
+
+مثبتة
+Positive
+
+مختصرة
+Short
+
+منفية
+Negative
+
+سؤال
+Question
+
+PAT: ^مع\ (.+?)$ ||| With $1
+
+am مع I فقط، و is مع he و she و it، و are مع you و we و they.
+am with I only; is with he, she and it; are with you, we and they.
+
+أول ما تحتاجه في أي لغة أن تعرّف بنفسك وترد على من يعرّف بنفسه. وللتعريف صيغتان بالمعنى نفسه.
+The first thing you need in any language is to say who you are and to answer people who meet you. There are two ways to say your name, with the same meaning.
+
+PAT: ^<b><span\ class="en"\ lang="en">(.+?)</span></b>\ \+\ الاسم\ \(=\ <span\ class="en"\ lang="en">(.+?)</span>\):\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| <b><span class="en" lang="en">$1</span></b> + name (= <span class="en" lang="en">$2</span>): <span class="en" lang="en">$3</span>
+
+<b>الرد على التعارف:</b> <span class="en" lang="en">Nice to meet you.</span> أو <span class="en" lang="en">Pleased to meet you.</span>
+<b>Answer:</b> <span class="en" lang="en">Nice to meet you.</span> or <span class="en" lang="en">Pleased to meet you.</span>
+
+الرد على التعارف:
+Answer:
+
+<b>للتأكد من شخص</b> نسأل <span class="en" lang="en">Are you …?</span> ونجيب <span class="en" lang="en">Yes, I am.</span> أو <span class="en" lang="en">No, I'm not.</span>، ونبدأ بـ <span class="en" lang="en">Excuse me.</span> للتنبيه بأدب.
+<b>To check who someone is,</b> ask <span class="en" lang="en">Are you …?</span> The answer is <span class="en" lang="en">Yes, I am.</span> or <span class="en" lang="en">No, I'm not.</span> Start with <span class="en" lang="en">Excuse me.</span> to be polite.
+
+للتأكد من شخص
+To check who someone is,
+
+مختبر مصغّر: عرّف بنفسك
+Mini lab: say who you are
+
+اختر الاسم وطريقة التعريف، وشاهد التعارف والرد عليه.
+Choose the name and the way to say it. See the meeting and the answer.
+
+الطريقة
+Way
+
+الرد
+Answer
+
+I'm = I am: أنا. والرد Nice to meet you أو Pleased to meet you.
+I'm = I am. The answer is Nice to meet you or Pleased to meet you.
+
+3. السؤال عن الاسم والبلد والعمل، و a / an <span class="ref">ص 4</span>
+3. Asking about name, country and job, and a / an <span class="ref">p. 4</span>
+
+بعد التعارف نسأل عن الاسم والبلد والعمل. وفي جواب العمل نضع قبل اسم المهنة <span class="en" lang="en">a</span> أو <span class="en" lang="en">an</span>، ويختلف الاختيار حسب أول صوت في الكلمة.
+After we meet, we ask about name, country and job. In the answer about a job, we put <span class="en" lang="en">a</span> or <span class="en" lang="en">an</span> before the job word. The choice depends on the first sound of the word.
+
+الأسئلة الثلاثة:
+The three questions:
+
+<b><span class="en" lang="en">What do you do?</span></b> معناها «ما عملك؟» وليس «ماذا تفعل الآن؟».
+<b><span class="en" lang="en">What do you do?</span></b> means "What is your job?", not "What are you doing now?".
+
+<b><span class="en" lang="en">a</span></b> قبل الكلمة التي تبدأ بصوت ساكن: <span class="en" lang="en">a technician · a builder · a student</span>
+<b><span class="en" lang="en">a</span></b> before a word that starts with a consonant sound: <span class="en" lang="en">a technician · a builder · a student</span>
+
+<b><span class="en" lang="en">an</span></b> قبل الكلمة التي تبدأ بصوت متحرك (<span class="en" lang="en">a, e, i, o, u</span>): <span class="en" lang="en">an electrician · an engineer · an operator</span>
+<b><span class="en" lang="en">an</span></b> before a word that starts with a vowel sound (<span class="en" lang="en">a, e, i, o, u</span>): <span class="en" lang="en">an electrician · an engineer · an operator</span>
+
+<b>العبرة بالصوت لا بالحرف</b> <small>(إضافة من خارج الكتاب)</small>: <span class="en" lang="en">an hour</span> لأن h لا تُنطق، و <span class="en" lang="en">a university</span> لأنها تُنطق «يو».
+<b>The sound matters, not the letter</b> <small>(extra, not in the book)</small>: <span class="en" lang="en">an hour</span>, because we don't say the h, and <span class="en" lang="en">a university</span>, because it starts with a "you" sound.
+
+العبرة بالصوت لا بالحرف
+The sound matters, not the letter
+
+أول صوت
+First sound
+
+الكلمة
+Word
+
+ساكن
+Consonant
+
+متحرك
+Vowel
+
+electrician تبدأ بصوت متحرك: an.
+electrician starts with a vowel sound: an.
+
+لا ننسى a قبل المهنة.
+Don't forget a before a job.
+
+PAT: ^مختبر\ مصغّر:\ (.+?)\ أم\ (.+?)؟$ ||| Mini lab: $1 or $2?
+
+اختر العمل، وشاهد هل يأتي قبله a أو an، والسبب.
+Choose the job. See if a or an comes before it, and why.
+
+العمل
+Job
+
+ما عملك؟
+What's your job?
+
+صوت ساكن ← a
+Consonant sound → a
+
+فني
+=
+
+PAT: ^(.+?)\ تبدأ\ بصوت\ ساكن،\ فنقول\ a\.$ ||| $1 starts with a consonant sound, so we say a.
+
+في الصف والورشة نسمع التعليمات طوال الوقت: قف، اجلس، ارفع، ضع. والتعليمة بالإنجليزي سهلة البناء، وكثير منها له ضد.
+In the classroom and the workshop we hear instructions all the time: stand up, sit down, pick up, put down. An instruction in English is easy to make, and many have an opposite.
+
+<b>التعليمة تبدأ بالفعل مباشرة</b>، بلا فاعل: <span class="en" lang="en">Stand up.</span> <span class="en" lang="en">Read the text aloud.</span>
+<b>An instruction starts with the verb,</b> with no subject: <span class="en" lang="en">Stand up.</span> <span class="en" lang="en">Read the text aloud.</span>
+
+التعليمة تبدأ بالفعل مباشرة
+An instruction starts with the verb,
+
+<b>للتهذيب</b> نضيف <span class="en" lang="en">please</span> في أول الجملة أو آخرها: <span class="en" lang="en">Please sit down.</span> <span class="en" lang="en">Sit down, please.</span>
+<b>To be polite,</b> add <span class="en" lang="en">please</span> at the start or the end: <span class="en" lang="en">Please sit down.</span> <span class="en" lang="en">Sit down, please.</span>
+
+للتهذيب
+To be polite,
+
+<b>الأضداد</b> تُحفظ أزواجاً: <span class="en" lang="en">pick up ≠ put down · raise ≠ lower · start ≠ stop · stand ≠ sit · read ≠ write · say ≠ listen</span>
+<b>Opposites</b> are learned in pairs: <span class="en" lang="en">pick up ≠ put down · raise ≠ lower · start ≠ stop · stand ≠ sit · read ≠ write · say ≠ listen</span>
+
+الأضداد
+Opposites
+
+التعليمة بلا فاعل.
+An instruction has no subject.
+
+please في أول الجملة أو آخرها.
+please goes at the start or the end.
+
+مختبر مصغّر: ركّب التعليمة
+Mini lab: make the instruction
+
+اختر الفعل وضده، ومكان please، وشاهد التعليمة.
+Choose the verb or its opposite, and where please goes. See the instruction.
+
+الفعل
+Verb
+
+الاختيار
+Choice
+
+ضده
+Opposite
+
+بدون
+None
+
+في البداية
+At the start
+
+في النهاية
+At the end
+
+الفعل أولاً
+Verb first
+
+PAT: ^ضده:\ (.+?)$ ||| Opposite: $1
+
+التعليمة تبدأ بالفعل مباشرة، ونضيف please في أولها أو آخرها للتهذيب.
+An instruction starts with the verb. Add please at the start or the end to be polite.
+
+نصف أيضاً أين الشيء وما حالته: هل الجهاز يعمل أم مطفأ؟ هل الباب مفتوح أم مغلق؟ هل المطرقة داخل الصندوق أم فوقه؟
+We also say where a thing is and what state it is in. Is the machine on or off? Is the door open or closed? Is the hammer in the box or on it?
+
+<b>الحالة:</b> <span class="en" lang="en">on ≠ off</span> للجهاز، و <span class="en" lang="en">open ≠ closed</span> للباب: <span class="en" lang="en">The TV is on. The doors are open.</span>
+<b>State:</b> <span class="en" lang="en">on ≠ off</span> for a machine, <span class="en" lang="en">open ≠ closed</span> for a door: <span class="en" lang="en">The TV is on. The doors are open.</span>
+
+الحالة:
+State:
+
+<b>المكان:</b> <span class="en" lang="en">in</span> داخل، و <span class="en" lang="en">on</span> فوق وملامس، و <span class="en" lang="en">under</span> تحت: <span class="en" lang="en">The hammer is in the box.</span>
+<b>Place:</b> <span class="en" lang="en">in</span> inside, <span class="en" lang="en">on</span> on top and touching, <span class="en" lang="en">under</span> below: <span class="en" lang="en">The hammer is in the box.</span>
+
+المكان:
+Place:
+
+الاتجاه:
+Direction:
+
+اختر مكان المطرقة، وشاهد الرسم والجملة.
+Choose where the hammer is. See the picture and the sentence.
+
+المكان
+Place
+
+داخل
+Inside
+
+فوق
+On top
+
+تحت
+Below
+
+in: داخل الشيء.
+in: inside the thing.
+
+في الورشة تحتاج أسماء الأدوات والمثبتات التي تستعملها كل يوم، بالمفرد والجمع.
+In the workshop you need the names of the tools and fixings you use every day, in the singular and the plural.
+
+<b>المفرد</b> يسبقه <span class="en" lang="en">a</span> أو <span class="en" lang="en">an</span>: <span class="en" lang="en">a screwdriver · an adapter</span>
+<b>Singular:</b> <span class="en" lang="en">a</span> or <span class="en" lang="en">an</span> comes before it: <span class="en" lang="en">a screwdriver · an adapter</span>
+
+المفرد
+Singular
+
+<b>الجمع</b> نضيف له <span class="en" lang="en">s</span>: <span class="en" lang="en">screw → screws · nut → nuts</span>
+<b>Plural:</b> add <span class="en" lang="en">s</span>: <span class="en" lang="en">screw → screws · nut → nuts</span>
+
+الجمع
+Plural
+
+<b>التمييز:</b> <span class="en" lang="en">screw</span> له رأس وسن مدبب يدخل الخشب بالمفك، و <span class="en" lang="en">bolt</span> طرفه مستوٍ يُشد بصامولة <span class="en" lang="en">nut</span>، و <span class="en" lang="en">washer</span> حلقة توضع تحت الصامولة.
+<b>The difference:</b> a <span class="en" lang="en">screw</span> has a head and a sharp end; you turn it into wood with a screwdriver. A <span class="en" lang="en">bolt</span> has a flat end and goes into a <span class="en" lang="en">nut</span>. A <span class="en" lang="en">washer</span> is a ring that goes under the nut.
+
+التمييز:
+The difference:
+
+مختبر مصغّر: المفرد والجمع
+Mini lab: singular and plural
+
+اختر الأداة والعدد، وشاهد a أو an مع المفرد، و s مع الجمع.
+Choose the tool and the number. See a or an with the singular, and s with the plural.
+
+الأداة
+Tool
+
+العدد
+Number
+
+واحد
+One
+
+أكثر
+More
+
+مع الشيء الواحد a أو an.
+With one thing, use a or an.
+
+<i>1</i>الضمائر و be
+<i>1</i>Pronouns and be
+
+<i>3</i>a أم an
+<i>3</i>a or an
+
+<i>4</i>التعليمات
+<i>4</i>Instructions
+
+المحطة الأولى
+Station 1
+
+الفعل be مع الضمائر
+The verb be with pronouns
+
+متى نقول am ومتى is ومتى are؟
+When do we say am, is or are?
+
+انتبه
+Be careful
+
+السؤال عن الاسم والبلد والعمل، و a / an
+Asking about name, country and job, and a / an
+
+كيف تطلب من زميلك أن يضع المفك بأدب؟
+How do you ask a classmate politely to put down the screwdriver?
+
+أين المطرقة إذا كانت in the box؟
+Where is the hammer if it is in the box?
+
+be: I am · he / she / it is · you / we / they are، والاختصار I'm, he's, they're.
+be: I am · he / she / it is · you / we / they are. Short forms: I'm, he's, they're.
+
+التعارف: I'm … / My name's … والرد: Nice to meet you.
+Meeting people: I'm … / My name's … Answer: Nice to meet you.
+
+What do you do? — I'm a technician / an electrician: a قبل الصوت الساكن، و an قبل المتحرك.
+What do you do? — I'm a technician / an electrician: a before a consonant sound, an before a vowel sound.
+
+التعليمة تبدأ بالفعل، و please في أولها أو آخرها.
+An instruction starts with the verb. please goes at the start or the end.
+
+in داخل، on فوق، under تحت؛ والجمع بإضافة s: screw → screws.
+in = inside, on = on top, under = below. Plural: add s: screw → screws.
+
+هو
+=
+
+هي
+=
+
+هو/هي لغير الإنسان
+=
+
+نحن
+=
+
+هم
+=
+
+في الكلام نختصر: نحذف أول حرف من be ونضع مكانه علامة (').
+When we speak, we use short forms: we drop the first letter of be and put an apostrophe (').
+
+نفي: not بعد be
+Negative: not after be
+
+النفي: نضع not بعد be. ومع I نقول I'm not فقط.
+Negative: put not after be. With I, we say I'm not.
+
+be في أول السؤال
+be first in a question
+
+جواب قصير
+Short answer
+
+في السؤال نقدّم be على الضمير. وفي جواب «نعم» القصير لا نختصر.
+In a question, be comes before the pronoun. In a "yes" short answer, don't use the short form.
+
+My name's = My name is: اسمي. والمعنى مثل I'm.
+My name's = My name is. It means the same as I'm.
+
+للتنبيه بأدب
+To be polite
+
+هل أنت
+Are you
+
+أو No, I'm not.
+or No, I'm not.
+
+للتأكد من شخص نسأل Are you …? ونجيب بجواب قصير.
+To check who someone is, ask Are you …? and give a short answer.
+
+صوت متحرك ← an
+Vowel sound → an
+
+كهربائي
+=
+
+PAT: ^(.+?)\ تبدأ\ بصوت\ متحرك\ \(a,\ e,\ i,\ o,\ u\)،\ فنقول\ an\.$ ||| $1 starts with a vowel sound (a, e, i, o, u), so we say an.
+
+مهندس
+=
+
+عامل بناء
+=
+
+طالب
+=
+
+مشغّل
+=
+
+ميكانيكي
+=
+
+مهندس معماري
+=
+
+فوق (على)
+On top (touching)
+
+on: فوقه وملامس له.
+on: on top of it and touching it.
+
+under: تحته.
+under: below it.
+
+برغي
+=
+
+مسمار بصامولة
+=
+
+حلقة (وردة)
+=
+
+رقم
+Number
+
++ s للجمع
++ s for the plural
+
+PAT: ^الجمع:\ نضيف\ (.+?)$ ||| Plural: add $1
+
+نطق الحروف الإنجليزية في ست مجموعات صوتية، والتهجئة (How do you spell…?)، وقراءة الهاتف والبريد (oh، at، dot، underscore)، وقراءة الأرقام الكبيرة والعشرية، ورموز الوحدات مثل km و rpm و °C.
+Saying English letters in six sound groups, spelling (How do you spell…?), reading phone numbers and emails (oh, at, dot, underscore), reading big numbers and decimals, and unit symbols like km, rpm and °C.
+
+في العمل تُملي اسماً أو رقم هاتف أو بريداً إلكترونياً، وتكتب أرقاماً بوحداتها. ستتعلم:
+At work you say a name, a phone number or an email, and you write numbers with units. You will learn to:
+
+نطق الحروف وتهجئة الكلمات.
+Say the letters and spell words.
+
+قراءة أرقام الهاتف والبريد.
+Read phone numbers and emails.
+
+قراءة الأرقام الكبيرة والعشرية.
+Read big numbers and decimals.
+
+معاني رموز الوحدات الشائعة.
+Understand common unit symbols.
+
+شرح القاعدة: الحروف والتهجئة، والهاتف والبريد، والأرقام والوحدات <span class="ref">ص 6–7</span>
+The rules: letters and spelling, phone and email, numbers and units <span class="ref">pp. 6–7</span>
+
+في هذا الدرس تتعلم أن تتهجّى وتقرأ الأرقام بالإنجليزي، في ثلاث خطوات مرتبة: الحروف ومجموعاتها الصوتية، ثم رقم الهاتف والبريد الإلكتروني، ثم الأرقام الكبيرة والعشرية ورموز الوحدات.
+In this lesson you learn to spell and to read numbers in English, in three steps: the letters and their sound groups, then phone numbers and emails, then big numbers, decimals and unit symbols.
+
+1. الحروف والتهجئة <span class="ref">ص 6</span>
+1. Letters and spelling <span class="ref">p. 6</span>
+
+كثيراً ما يُطلب منك أن تتهجى اسمك أو اسم شركة على الهاتف أو في نموذج. والحروف الإنجليزية أسهل حفظاً إذا جمعناها حسب صوتها.
+People often ask you to spell your name or a company name on the phone or on a form. English letters are easier to learn when we group them by sound.
+
+<b>ست مجموعات</b> بحسب الصوت الذي ينتهي به اسم الحرف، كما في الجدول. والحرفان <span class="en" lang="en">O</span> و <span class="en" lang="en">R</span> استثناء.
+<b>Six groups</b> by the sound at the end of the letter name, as in the table. The letters <span class="en" lang="en">O</span> and <span class="en" lang="en">R</span> are special.
+
+ست مجموعات
+Six groups
+
+<b>السؤال عن التهجئة:</b> <span class="en" lang="en">How do you spell …?</span> والجواب حرفاً حرفاً: <span class="en" lang="en">O-T-A-I-B-I.</span>
+<b>Asking about spelling:</b> <span class="en" lang="en">How do you spell …?</span> The answer is letter by letter: <span class="en" lang="en">O-T-A-I-B-I.</span>
+
+السؤال عن التهجئة:
+Asking about spelling:
+
+<b>الحرفان المتكرران</b> نقول لهما <span class="en" lang="en">double</span>: <span class="en" lang="en">LL = double L</span>
+<b>Two letters that are the same</b> we call <span class="en" lang="en">double</span>: <span class="en" lang="en">LL = double L</span>
+
+الحرفان المتكرران
+Two letters that are the same
+
+إذا لم تسمع جيداً:
+If you didn't hear well:
+
+<span class="en" lang="en">Z</span> تُنطق «زِد» في البريطانية و«زي» في الأمريكية.
+<span class="en" lang="en">Z</span> is "zed" in British English and "zee" in American English.
+
+الكتاب يقسم الحروف حسب صوتها، فتحفظها أسهل:
+The book groups the letters by sound, so they are easier to learn:
+
+المجموعة
+Group
+
+الحروف
+Letters
+
+الصوت
+Sound
+
+مثل three (صوت إي)
+like three (ee sound)
+
+مثل eight (صوت إيه)
+like eight (ay sound)
+
+مثل five (صوت آي)
+like five (eye sound)
+
+مثل ten (صوت إ)
+like ten (e sound)
+
+مثل two (صوت أو)
+like two (oo sound)
+
+استثناء
+Special
+
+اسأل عن التهجئة بـ <span class="en" lang="en">How do you spell…?</span>:
+Ask about spelling with <span class="en" lang="en">How do you spell…?</span>:
+
+مختبر مصغّر: تهجّ الاسم
+Mini lab: spell the name
+
+اختر اسماً، وشاهد حروفه ملونة حسب مجموعتها الصوتية، وتحت كل حرف مجموعته.
+Choose a name. See its letters coloured by sound group, with the group under each letter.
+
+PAT: ^السؤال:\ How\ do\ you\ spell\ your\ name\?\ والجواب:\ (.+?)$ ||| Question: How do you spell your name? Answer: $1
+
+نقول الحروف حرفاً حرفاً. والحرفان المتكرران نقول لهما double، مثل double L.
+We say the letters one by one. Two letters that are the same are double, like double L.
+
+مختبر مصغّر: صنّف الحروف
+Mini lab: sort the letters
+
+ضع الحرف في مجموعته:
+Put the letter in its group:
+
+2. رقم الهاتف والبريد الإلكتروني <span class="ref">ص 6</span>
+2. Phone numbers and email <span class="ref">p. 6</span>
+
+عند تبادل أرقام الهواتف وعناوين البريد بالإنجليزي لها طريقة قراءة ثابتة، تختلف عن قراءة الأعداد العادية.
+Phone numbers and email addresses have a fixed way of reading in English. It is not like reading normal numbers.
+
+<b>الهاتف:</b> نقرؤه رقماً رقماً بمجموعاته، لا عدداً واحداً كبيراً.
+<b>Phone:</b> read it number by number, in groups, not as one big number.
+
+الهاتف:
+Phone:
+
+<b>الصفر</b> نقرؤه غالباً <span class="en" lang="en">oh</span>، و<b>الرقمان المتشابهان المتتاليان</b> <span class="en" lang="en">double</span>: <span class="en" lang="en">33 = double three</span>
+<b>Zero</b> is usually <span class="en" lang="en">oh</span>, and <b>two numbers that are the same, one after the other,</b> are <span class="en" lang="en">double</span>: <span class="en" lang="en">33 = double three</span>
+
+الصفر
+Zero
+
+الرقمان المتشابهان المتتاليان
+two numbers that are the same, one after the other,
+
+<b>البريد الإلكتروني:</b> <span class="en" lang="en">@ = at</span>، و <span class="en" lang="en">. = dot</span>، و <span class="en" lang="en">_ = underscore</span>، و <span class="en" lang="en">- = hyphen</span>
+<b>Email:</b> <span class="en" lang="en">@ = at</span>, <span class="en" lang="en">. = dot</span>, <span class="en" lang="en">_ = underscore</span>, <span class="en" lang="en">- = hyphen</span>
+
+البريد الإلكتروني:
+Email:
+
+نقرأ رقم الهاتف رقماً رقماً، والصفر <span class="en" lang="en">oh</span> غالباً، والرقمان المتشابهان <span class="en" lang="en">double</span>:
+We read a phone number number by number. Zero is usually <span class="en" lang="en">oh</span>, and two numbers that are the same are <span class="en" lang="en">double</span>:
+
+نقرؤه
+We say
+
+الرمز
+Symbol
+
+مختبر مصغّر: اقرأ رقم الهاتف
+Mini lab: read the phone number
+
+اختر رقماً، وشاهد كيف نقرؤه: رقماً رقماً، والصفر oh، والمتكرر double.
+Choose a number. See how we read it: number by number, zero as oh, and same numbers as double.
+
+الرقم
+Number
+
+نقرأ الرقم بمجموعاته، والصفر oh، والرقمان المتشابهان المتتاليان double.
+We read the number in groups. Zero is oh, and two same numbers together are double.
+
+مختبر مصغّر: الرموز
+Mini lab: symbols
+
+كيف نقرأ الرمز؟
+How do we read the symbol?
+
+<b>3.</b> 0 في رقم الهاتف
+<b>3.</b> 0 in a phone number
+
+3. الأرقام ورموز الوحدات <span class="ref">ص 7</span>
+3. Numbers and unit symbols <span class="ref">p. 7</span>
+
+في العمل الفني تقرأ مواصفات فيها أرقام عشرية وكبيرة ورموز وحدات. ولكل منها قاعدة قراءة.
+In technical work you read specifications with decimals, big numbers and unit symbols. Each has a rule for reading.
+
+<b>الفاصلة العشرية</b> نقرؤها <span class="en" lang="en">point</span>: <span class="en" lang="en">1.2 = one point two</span>
+<b>The decimal point</b> is <span class="en" lang="en">point</span>: <span class="en" lang="en">1.2 = one point two</span>
+
+الفاصلة العشرية
+The decimal point
+
+<b>الفاصلة في الأعداد الكبيرة</b> للآلاف: <span class="en" lang="en">150,000 = a hundred and fifty thousand</span>
+<b>The comma in big numbers</b> is for thousands: <span class="en" lang="en">150,000 = a hundred and fifty thousand</span>
+
+الفاصلة في الأعداد الكبيرة
+The comma in big numbers
+
+<b>النبرة</b> تفرّق بين <span class="en" lang="en">thirTEEN</span> و <span class="en" lang="en">THIRty</span>.
+<b>Stress</b> shows the difference between <span class="en" lang="en">thirTEEN</span> and <span class="en" lang="en">THIRty</span>.
+
+النبرة
+Stress
+
+<b>الرمز لا يُجمع</b> في الكتابة، لكننا نجمع الكلمة عند القراءة: <span class="en" lang="en">230 V = two hundred and thirty volts</span>
+<b>The symbol has no plural</b> in writing, but we say the word in the plural: <span class="en" lang="en">230 V = two hundred and thirty volts</span>
+
+الرمز لا يُجمع
+The symbol has no plural
+
+ملاحظة
+Note
+
+انتبه للنبرة: thirTEEN و THIRty
+Listen for the stress: thirTEEN and THIRty
+
+الفاصلة العشرية = point
+Decimal point = point
+
+الفاصلة للآلاف
+The comma is for thousands
+
+بعد رقم أكبر من واحد نجمع الكلمة: <span class="en" lang="en">230 volts</span>، <span class="en" lang="en">40 watts</span>، لكن الرمز لا يُجمع: <span class="en" lang="en">230 V</span>.
+After a number bigger than one, the word is plural: <span class="en" lang="en">230 volts</span>, <span class="en" lang="en">40 watts</span>. But the symbol has no plural: <span class="en" lang="en">230 V</span>.
+
+الرمز لا يُجمع.
+The symbol has no plural.
+
+عند القراءة نجمع الكلمة.
+When we read it, the word is plural.
+
+مختبر مصغّر: الرقم مع رمز الوحدة
+Mini lab: a number with a unit symbol
+
+اختر الرقم والوحدة، وقارن بين الكتابة بالرمز والقراءة بالكلمات.
+Choose the number and the unit. Compare the symbol in writing with the words we say.
+
+الوحدة
+Unit
+
+نكتب: الرمز لا يُجمع
+We write: the symbol has no plural
+
+مفرد
+Singular
+
+الرقم واحد، فالكلمة مفردة.
+The number is one, so the word is singular.
+
+مختبر مصغّر: اقرأ الرقم
+Mini lab: read the number
+
+اختر القراءة الصحيحة:
+Choose the right way to read it:
+
+استمع وصحّح الأخطاء الأربعة في بطاقة العمل.
+Listen and correct the four mistakes on the business card.
+
+89 → 85 (رقم الهاتف)
+89 → 85 (phone number)
+
+استمع إلى رجل يملي بيانات بطاقته (من إعدادنا). في البطاقة أربعة أخطاء: Hamad Al-Mutari · phone 0555 31 74 82 · hamad21@fixit.com — اختر الصحيح.
+Listen to a man saying the details on his card (our own recording). There are four mistakes on the card: Hamad Al-Mutari · phone 0555 31 74 82 · hamad21@fixit.com — choose the right one.
+
+استمع وأكمل النماذج الثلاثة.
+Listen and complete the three forms.
+
+استمع إلى مكالمة طوارئ (من إعدادنا) وأكمل النموذج.
+Listen to an emergency call (our own) and complete the form.
+
+أملِ تفاصيل بطاقة عملك على زميلك وتهجّها.
+Say the details on your business card to a classmate and spell them.
+
+أملِ بيانات هذه البطاقة (من إعدادنا) على زميلك وتهجَّ الصعب منها، ثم يعيد هو قراءتها.
+Say the details on this card (our own) to a classmate and spell the hard words. Then your classmate reads them back.
+
+ضع حروف الأبجدية في العمود الصحيح.
+Put the letters of the alphabet in the right column.
+
+ضع كل حرف في مجموعته الصوتية.
+Put each letter in its sound group.
+
+مسابقة تهجئة في مجموعتين: دول وعواصم.
+Spelling game in two groups: countries and capitals.
+
+مسابقة تهجئة: الفريق أ يكتب عشر مدن سعودية، والفريق ب يكتب عشرة أسماء سيارات، ويسأل كل فريق الآخر عن التهجئة.
+Spelling game: team A writes ten Saudi cities and team B writes ten car names. Each team asks the other to spell them.
+
+استمع وطابق الصور A–G مع الإعلانات.
+Listen and match pictures A–G with the announcements.
+
+وصّل كل إعلان (من إعدادنا) بمكانه.
+Match each announcement (our own) with its place.
+
+استمع مرة أخرى وأكمل الجمل بالأرقام والحروف.
+Listen again and complete the sentences with the numbers and letters.
+
+أكمل الإعلانات من التمرين 6 بالأرقام.
+Complete the announcements from Exercise 6 with the numbers.
+
+لعبة Fizz Buzz: عدّوا من 1 إلى 100 في الصف.
+Fizz Buzz game: count from 1 to 100 in class.
+
+Fizz Buzz: Fizz للعدد الذي يقبل القسمة على 3، Buzz على 5، Fizz Buzz على الاثنين. ماذا تقول؟
+Fizz Buzz: say Fizz for a number you can divide by 3, Buzz for 5, and Fizz Buzz for both. What do you say?
+
+ماذا تعني هذه الرموز؟
+What do these symbols mean?
+
+ماذا تعني الرموز؟ (المثال: km = kilometre)
+What do the symbols mean? (Example: km = kilometre)
+
+استمع واكتب الأرقام في المكان الصحيح.
+Listen and write the numbers in the right place.
+
+استمع إلى الأرقام (من إعدادنا) واختر الرقم الصحيح لكل وحدة.
+Listen to the numbers (our own) and choose the right number for each unit.
+
+رجل يملي بيانات بطاقته. صحّح الأخطاء.
+A man says the details on his card. Correct the mistakes.
+
+PAT: ^مقطع\ الصوت\ (.+?)\ من\ صوتيات\ الكتاب\ لم\ يُرفع\ بعد،\ وسيضيفه\ المدرب\.\ شغّله\ الآن\ من\ قرص\ الكتاب\ إن\ توفّر\.$ ||| Audio track $1 from the book has not been uploaded yet. The trainer will add it. Play it now from the book CD if you have it.
+
+ثلاث مكالمات. أكمل النماذج.
+Three calls. Complete the forms.
+
+ص 7 — التمرينان 6 و 7
+p. 7 — Exercises 6 and 7
+
+سبعة إعلانات فيها أرقام وحروف.
+Seven announcements with numbers and letters.
+
+أرقام مع وحداتها.
+Numbers with their units.
+
+تهجئة الكلمات
+Spelling words
+
+مبني على التمرينين 3 و4 ص 6. اكتب اسماً أو بريداً، وشاهد كل حرف بلون مجموعته الصوتية، واستمع للتهجئة.
+Based on Exercises 3 and 4, p. 6. Write a name or an email. See each letter in the colour of its sound group, and listen to the spelling.
+
+كلمة للتهجئة
+A word to spell
+
+الوحدات والرموز
+Units and symbols
+
+مبني على التمرين 9 ص 7. اختر رمزاً لترى كيف يُقرأ.
+Based on Exercise 9, p. 7. Choose a symbol to see how we read it.
+
+كيلومتر
+=
+
+اكتب بريدك مثل <span class="en">saad_99@mail.com</span>: كيف تُقرأ <span class="en">_</span> و <span class="en">@</span> و <span class="en">.</span>؟
+Write your email, like <span class="en">saad_99@mail.com</span>. How do we read <span class="en">_</span>, <span class="en">@</span> and <span class="en">.</span>?
+
+اكتب اسم عائلتك وتهجّه لزميلك حرفاً حرفاً.
+Write your family name and spell it to a classmate letter by letter.
+
+اختر <span class="en">°C</span> والرقم 1: لماذا صارت <span class="en">degree</span> مفردة؟
+Choose <span class="en">°C</span> and the number 1. Why is <span class="en">degree</span> singular now?
+
+متر
+=
+
+مثال 1: تهجئة اسم
+Example 1: spelling a name
+
+تهجّ الاسم <span class="en" lang="en">BAKER</span> وحدد مجموعة صوت كل حرف.
+Spell the name <span class="en" lang="en">BAKER</span> and give the sound group of each letter.
+
+مثال 2: قراءة رقم هاتف
+Example 2: reading a phone number
+
+اقرأ الرقم <span class="en" lang="en">0504 11 92 70</span> كما يُقرأ في الهاتف.
+Read the number <span class="en" lang="en">0504 11 92 70</span> as we say it on the phone.
+
+مثال 3: رقم مع وحدة
+Example 3: a number with a unit
+
+اكتب قراءة <span class="en" lang="en">150,000 L</span> بالكلمات.
+Write how we read <span class="en" lang="en">150,000 L</span> in words.
+
+الخطوة 1: B مثل three، A مثل eight.
+Step 1: B is like three, A is like eight.
+
+الخطوة 2: K مثل eight، E مثل three، R استثناء.
+Step 2: K is like eight, E is like three, R is special.
+
+PAT: ^الخطوة\ 3:\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| Step 3: <span class="en" lang="en">$1</span>
+
+الخطوة 1: الصفر oh: <span class="en" lang="en">oh five oh four</span>
+Step 1: zero is oh: <span class="en" lang="en">oh five oh four</span>
+
+الخطوة 2: 11 مكرر: <span class="en" lang="en">double one</span>
+Step 2: 11 has two same numbers: <span class="en" lang="en">double one</span>
+
+الخطوة 1: الرقم: <span class="en" lang="en">a hundred and fifty thousand</span>
+Step 1: the number: <span class="en" lang="en">a hundred and fifty thousand</span>
+
+الخطوة 2: L = litre، والرقم أكبر من واحد فنجمع: litres.
+Step 2: L = litre. The number is bigger than one, so it is plural: litres.
+
+1. الحرف الذي في مجموعة eight:
+1. The letter in the eight group:
+
+2. @ نقرؤها:
+2. We read @ as:
+
+PAT: ^(.+?)\ تُقرأ:$ ||| $1 is read as:
+
+PAT: ^(.+?)\ معناها:$ ||| $1 means:
+
+7. الحرفان الاستثناء في الكتاب:
+7. The two special letters in the book:
+
+PAT: ^(.+?)\ و\ (.+?)$ ||| $1 and $2
+
+وصّل الرمز بقراءته
+Match the symbol with how we read it
+
+<i>1</i>الحروف
+<i>1</i>Letters
+
+<i>2</i>الهاتف والبريد
+<i>2</i>Phone and email
+
+<i>3</i>الأرقام والوحدات
+<i>3</i>Numbers and units
+
+الحروف والتهجئة
+Letters and spelling
+
+كيف تتهجى اسمك؟ وكيف تقول LL؟
+How do you spell your name? How do you say LL?
+
+رقم الهاتف والبريد الإلكتروني
+Phone numbers and email
+
+كيف تقرأ 0556 33 21 08؟ وكيف تقرأ @ و _؟
+How do you read 0556 33 21 08? How do you read @ and _?
+
+قراءة البريد
+Reading an email
+
+بريد إلكتروني ورموزه. مرّر المؤشر على اسم كل رمز.
+An email and its symbols. Point at each symbol to see its name.
+
+الأرقام ورموز الوحدات
+Numbers and unit symbols
+
+كيف تقرأ 1.2 و <span class="ltr">230 V</span>؟
+How do you read 1.2 and <span class="ltr">230 V</span>?
+
+<b>الرمز لا يُجمع</b> في الكتابة، لكننا نجمع الكلمة عند القراءة: <span class="en" lang="en"><span class="ltr">230 V</span> = two hundred and thirty volts</span>
+<b>The symbol has no plural</b> in writing, but we say the word in the plural: <span class="en" lang="en"><span class="ltr">230 V</span> = two hundred and thirty volts</span>
+
+أرقام بوحداتها
+Numbers with units
+
+أربعة أرقام بوحداتها. مرّر المؤشر لترى كيف تُقرأ.
+Four numbers with their units. Point at each one to see how we read it.
+
+بعد رقم أكبر من واحد نجمع الكلمة: <span class="en" lang="en">230 volts</span>، <span class="en" lang="en">40 watts</span>، لكن الرمز لا يُجمع: <span class="en" lang="en"><span class="ltr">230 V</span></span>.
+After a number bigger than one, the word is plural: <span class="en" lang="en">230 volts</span>, <span class="en" lang="en">40 watts</span>. But the symbol has no plural: <span class="en" lang="en"><span class="ltr">230 V</span></span>.
+
+الحروف في ست مجموعات صوتية: three, eight, five, ten, two، والاستثناءان O و R.
+The letters are in six sound groups: three, eight, five, ten, two, and the special letters O and R.
+
+How do you spell…? ونكرر بـ Could you repeat that, please?
+How do you spell…? To ask again: Could you repeat that, please?
+
+الهاتف رقماً رقماً، والصفر oh، والمكرر double.
+Phone: number by number; zero is oh; same numbers are double.
+
+@ at، . dot، _ underscore.
+@ at, . dot, _ underscore.
+
+الفاصلة العشرية point، والرمز لا يُجمع: <span class="ltr">230 V</span> = two hundred and thirty volts.
+Decimal point = point. The symbol has no plural: <span class="ltr">230 V</span> = two hundred and thirty volts.
+
+حرفان متشابهان
+Two same letters
+
+جمع
+Plural
+
+بعد رقم غير الواحد نجمع الكلمة عند القراءة، لكن الرمز يبقى كما هو.
+After any number except one, we say the word in the plural. The symbol stays the same.
+
+الفاصلة العشرية: point
+Decimal point: point
+
+الأعداد الترتيبية (1st، 2nd، 3rd، 4th) وكتابة التاريخ وقراءته، وأسماء الأشهر والأيام، و on Mondays للتكرار، والوقت بنظامي 24 و 12 ساعة وقراءته، ودعوة بسيطة بالتاريخ والوقت.
+Ordinal numbers (1st, 2nd, 3rd, 4th), writing and reading dates, the months and days, on Mondays for things that repeat, the 24-hour and 12-hour clock and how to read it, and a simple invitation with a date and time.
+
+المواعيد والرحلات ومواعيد التسليم كلها تواريخ وأوقات. ستتعلم:
+Meetings, trips and deadlines are all dates and times. You will learn:
+
+الأعداد الترتيبية وكتابة التاريخ وقراءته.
+Ordinal numbers, and how to write and read dates.
+
+أسماء الأشهر والأيام، و <span class="en" lang="en">on Mondays</span>.
+The months and days, and <span class="en" lang="en">on Mondays</span>.
+
+الوقت بنظامي 24 ساعة و 12 ساعة وقراءته.
+The 24-hour and 12-hour clock, and how to read it.
+
+شرح القاعدة: التواريخ والأيام والوقت <span class="ref">ص 8–9</span>
+The rules: dates, days and time <span class="ref">pp. 8–9</span>
+
+نشرح الكلام عن المواعيد في ثلاث خطوات مرتبة: الأعداد الترتيبية وكتابة التاريخ وقراءته، ثم الأيام والأشهر مع <span class="en" lang="en">on</span>، ثم الوقت بنظامي 24 و 12 ساعة.
+We explain talking about dates and times in three steps: ordinal numbers and dates, then days and months with <span class="en" lang="en">on</span>, then the 24-hour and 12-hour clock.
+
+1. الأعداد الترتيبية والتاريخ <span class="ref">ص 8–9</span>
+1. Ordinal numbers and dates <span class="ref">pp. 8–9</span>
+
+التاريخ بالإنجليزي يُقرأ بالعدد الترتيبي (الأول، الثاني…) لا بالعدد العادي. ويُكتب بأكثر من صيغة حسب البلد.
+In English we read a date with an ordinal number (first, second…), not a normal number. We write it in more than one way, by country.
+
+<b>النهايات:</b> <span class="en" lang="en">1st · 2nd · 3rd</span>، وباقي الأرقام <span class="en" lang="en">th</span>: <span class="en" lang="en">4th · 20th</span>
+<b>Endings:</b> <span class="en" lang="en">1st · 2nd · 3rd</span>, and the other numbers take <span class="en" lang="en">th</span>: <span class="en" lang="en">4th · 20th</span>
+
+النهايات:
+Endings:
+
+<b>استثناء:</b> <span class="en" lang="en">11th · 12th · 13th</span> تنتهي بـ <span class="en" lang="en">th</span> رغم أن آخرها 1 و 2 و 3.
+<b>Special:</b> <span class="en" lang="en">11th · 12th · 13th</span> end in <span class="en" lang="en">th</span>, but they end in 1, 2 and 3.
+
+استثناء:
+Special:
+
+القراءة:
+Reading:
+
+<b>الكتابة بالأرقام:</b> بريطانيا <span class="en" lang="en">dd/mm/yy</span>، وأمريكا <span class="en" lang="en">mm/dd/yy</span>، والدولية <span class="en" lang="en">yyyy-mm-dd</span>. فالتاريخ <span class="en" lang="en">03/05</span> يعني 3 مايو في بريطانيا و 5 مارس في أمريكا.
+<b>Writing in numbers:</b> UK <span class="en" lang="en">dd/mm/yy</span>, USA <span class="en" lang="en">mm/dd/yy</span>, international <span class="en" lang="en">yyyy-mm-dd</span>. So <span class="en" lang="en">03/05</span> is 3 May in the UK and 5 March in the USA.
+
+الكتابة بالأرقام:
+Writing in numbers:
+
+النهاية
+Ending
+
+الأرقام
+Numbers
+
+القراءة
+Reading
+
+انتبه: <span class="en" lang="en">11th, 12th, 13th</span> تنتهي بـ <span class="en" lang="en">th</span> رغم أن آخرها 1 و 2 و 3.
+Be careful: <span class="en" lang="en">11th, 12th, 13th</span> end in <span class="en" lang="en">th</span>, but they end in 1, 2 and 3.
+
+الصيغة
+Form
+
+بريطانيا وأوروبا
+UK and Europe
+
+أمريكا
+USA
+
+ISO 8601 (دولي)
+ISO 8601 (international)
+
+ونقرؤه: <span class="en" lang="en">the twenty-third of September, twenty twenty-six</span>.
+We read it: <span class="en" lang="en">the twenty-third of September, twenty twenty-six</span>.
+
+مختبر مصغّر: العدد الترتيبي والتاريخ
+Mini lab: ordinal numbers and dates
+
+اختر اليوم والشهر، وشاهد كتابة التاريخ وقراءته. لاحظ نهاية الرقم.
+Choose the day and the month. See how we write and read the date. Look at the ending of the number.
+
+اليوم
+Day
+
+الشهر
+Month
+
+PAT: ^نهاية\ (.+?)$ ||| Ending: $1
+
+PAT: ^نقرؤه:\ (.+?)\ وبالأرقام\ البريطانية:\ (.+?)،\ والأمريكية:\ (.+?)$ ||| We read it: $1 UK numbers: $2, USA: $3
+
+<span class="en" lang="en">1st · 2nd · 3rd</span>، وباقي الأرقام <span class="en" lang="en">th</span>، إلا <span class="en" lang="en">11th · 12th · 13th</span> فكلها <span class="en" lang="en">th</span>.
+<span class="en" lang="en">1st · 2nd · 3rd</span>, and the other numbers take <span class="en" lang="en">th</span>, but <span class="en" lang="en">11th · 12th · 13th</span> all take <span class="en" lang="en">th</span>.
+
+مختبر مصغّر: الترتيبية
+Mini lab: ordinal numbers
+
+اختر الكتابة الصحيحة:
+Choose the right way to write it:
+
+<b>3.</b> 32? لا يوجد في التاريخ؛ 31
+<b>3.</b> 32? There is no 32nd in a date; 31
+
+2. الأيام والأشهر و on <span class="ref">ص 8</span>
+2. Days, months and on <span class="ref">p. 8</span>
+
+عندما نحدد موعداً نذكر اليوم أو التاريخ، ونستعمل معهما <span class="en" lang="en">on</span>. وجمع اسم اليوم يغيّر المعنى.
+When we make an appointment, we say the day or the date, and we use <span class="en" lang="en">on</span> with them. A day in the plural changes the meaning.
+
+<b><span class="en" lang="en">on</span></b> مع الأيام والتواريخ: <span class="en" lang="en">on Sunday · on the 14th</span>
+<b><span class="en" lang="en">on</span></b> with days and dates: <span class="en" lang="en">on Sunday · on the 14th</span>
+
+<b><span class="en" lang="en">on Monday</span></b> = يوم الاثنين هذا (مرة واحدة).
+<b><span class="en" lang="en">on Monday</span></b> = this Monday (one time).
+
+<b><span class="en" lang="en">on Mondays</span></b> = كل اثنين (عادة تتكرر).
+<b><span class="en" lang="en">on Mondays</span></b> = every Monday (a habit).
+
+أسماء الأيام والأشهر تبدأ دائماً بحرف كبير: <span class="en" lang="en">Monday · May</span>
+Days and months always start with a capital letter: <span class="en" lang="en">Monday · May</span>
+
+<span class="en" lang="en">on Monday</span> = يوم الاثنين هذا، و <span class="en" lang="en">on Mondays</span> = كل اثنين:
+<span class="en" lang="en">on Monday</span> = this Monday, and <span class="en" lang="en">on Mondays</span> = every Monday:
+
+اختر اليوم، ثم اختر: مرة واحدة أم كل أسبوع؟
+Choose the day, then choose: one time or every week?
+
+مرة واحدة
+One time
+
+كل أسبوع
+Every week
+
+مع الأيام
+With days
+
+مفرد = هذا اليوم
+Singular = this day
+
+PAT: ^(.+?)\ =\ يوم\ (.+?)\ القادم\ \(مرة\ واحدة\)\.$ ||| $1 = next $2 (one time).
+
+مختبر مصغّر: الأيام
+Mini lab: days
+
+أكمل:
+Complete:
+
+3. الوقت بنظامي 24 و 12 ساعة <span class="ref">ص 9</span>
+3. The 24-hour and 12-hour clock <span class="ref">p. 9</span>
+
+جداول الرحلات والعمل تكتب الوقت غالباً بنظام 24 ساعة، والناس يقولونه كثيراً بنظام 12 ساعة. فتحتاج أن تنتقل بينهما.
+Travel and work timetables often use the 24-hour clock, but people often say the time in the 12-hour clock. So you need to change between them.
+
+<b>نظام 12 ساعة:</b> <span class="en" lang="en">am</span> قبل الظهر و <span class="en" lang="en">pm</span> بعده: <span class="en" lang="en">14.40 = 2.40 pm</span>
+<b>12-hour clock:</b> <span class="en" lang="en">am</span> before midday and <span class="en" lang="en">pm</span> after: <span class="en" lang="en">14.40 = 2.40 pm</span>
+
+نظام 12 ساعة:
+12-hour clock:
+
+<b>القراءة:</b> الساعة ثم الدقائق: <span class="en" lang="en">2.40 = two forty</span>
+<b>Reading:</b> the hour, then the minutes: <span class="en" lang="en">2.40 = two forty</span>
+
+<b>في نظام 24 ساعة</b> نقرأ الصفر <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>
+<b>In the 24-hour clock</b> we say zero as <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>
+
+في نظام 24 ساعة
+In the 24-hour clock
+
+<span class="en" lang="en">12.00</span> = <span class="en" lang="en">twelve noon</span> أو <span class="en" lang="en">twelve o'clock</span>
+<span class="en" lang="en">12.00</span> = <span class="en" lang="en">twelve noon</span> or <span class="en" lang="en">twelve o'clock</span>
+
+PAT: ^(.+?)\ ساعة$ ||| $1-hour
+
+<span class="en" lang="en">am</span> قبل الظهر و <span class="en" lang="en">pm</span> بعده. وفي نظام 24 ساعة نقرأ الصفر <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>.
+<span class="en" lang="en">am</span> is before midday and <span class="en" lang="en">pm</span> after. In the 24-hour clock we say zero as <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>.
+
+مختبر مصغّر: الوقت بنظامين
+Mini lab: time in two systems
+
+اختر وقتاً، وشاهده بنظام 24 ساعة و 12 ساعة، وطريقة قراءته.
+Choose a time. See it in the 24-hour and 12-hour clock, and how we read it.
+
+الوقت
+Time
+
+PAT: ^نظام\ (.+?)\ ساعة$ ||| $1-hour clock
+
+PAT: ^القراءة\ بنظام\ (.+?)$ ||| Reading in system $1
+
+<span class="en" lang="en">am</span> قبل الظهر و <span class="en" lang="en">pm</span> بعده. وفي نظام 24 ساعة نقرأ الصفر <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>
+<span class="en" lang="en">am</span> is before midday and <span class="en" lang="en">pm</span> after. In the 24-hour clock we say zero as <span class="en" lang="en">oh</span>: <span class="en" lang="en">09.05 = oh nine oh five</span>
+
+مختبر مصغّر: حوّل الوقت
+Mini lab: change the time
+
+حوّل:
+Change:
+
+استمع إلى نتائج السباق: أضف المراكز وأكمل الأزمنة.
+Listen to the race results. Add the places and complete the times.
+
+استمع إلى نتائج سباق 800 متر (من إعدادنا) وأكمل الجدول.
+Listen to the results of an 800 m race (our own) and complete the table.
+
+ضع الأعداد الترتيبية 1st–31st في الجدول واقرأها.
+Put the ordinal numbers 1st–31st in the table and read them.
+
+صنّف الأعداد الترتيبية حسب نهايتها.
+Sort the ordinal numbers by their ending.
+
+قل أسماء الأشهر.
+Say the months.
+
+رتّب الأشهر من الأول.
+Put the months in order from the first.
+
+من جديد
+Again
+
+قل أيام الأسبوع، ابدأ بـ Monday.
+Say the days of the week. Start with Monday.
+
+رتّب أيام الأسبوع، ابدأ بـ Monday.
+Put the days of the week in order. Start with Monday.
+
+اقرأ رموز المطارات.
+Read the airport codes.
+
+وصّل رمز المطار بمدينته (رموز حقيقية).
+Match the airport code with its city (real codes).
+
+قل أيام الرحلات من الجدول.
+Say the flight days from the timetable.
+
+قل أيام الحافلة من الأرقام (1 = Monday … 7 = Sunday). المثال: 1 4 → on Mondays and Thursdays
+Say the bus days from the numbers (1 = Monday … 7 = Sunday). Example: 1 4 → on Mondays and Thursdays
+
+اكتب الجملة
+Write the sentence
+
+أظهر الإجابة
+Show the answer
+
+استمع واكتب التواريخ (dd/mm/yy).
+Listen and write the dates (dd/mm/yy).
+
+استمع إلى أربعة تواريخ (من إعدادنا) واختر الكتابة بصيغة dd/mm/yy.
+Listen to four dates (our own) and choose how to write them as dd/mm/yy.
+
+اكتب تواريخ مهمة لك وأملِها على زميلك.
+Write important dates for you and say them to a classmate.
+
+اكتب ثلاثة تواريخ مهمة لك، وأملِها على زميلك بالصيغة الطويلة، وهو يكتبها بصيغة yyyy-mm-dd.
+Write three important dates for you. Say them to a classmate in the long form. Your classmate writes them as yyyy-mm-dd.
+
+أكمل جدول الوقت بالنظامين.
+Complete the time table in both systems.
+
+أكمل الجدول: حوّل بين النظامين.
+Complete the table: change between the two systems.
+
+اقرأ الأوقات بنظام 24 ثم بنظام 12.
+Read the times in the 24-hour clock, then in the 12-hour clock.
+
+اختر القراءة الصحيحة.
+Choose the right reading.
+
+استمع وأضف أوقات الإقلاع والوصول إلى جدول التمرين 6 (24 ساعة).
+Listen and add the departure and arrival times to the timetable in Exercise 6 (24-hour).
+
+استمع إلى مواعيد الحافلات (من إعدادنا) واختر الوقت بنظام 24 ساعة.
+Listen to the bus times (our own) and choose the time in the 24-hour clock.
+
+استمع واكتب رقم كل جملة بجانب الساعة.
+Listen and write the number of each sentence next to the clock.
+
+وصّل كل جملة (من إعدادنا) بالساعة المناسبة.
+Match each sentence (our own) with the right clock.
+
+اقرأ الأوقات والتواريخ على الساعات بنظام 12 ساعة.
+Read the times and dates on the clocks in the 12-hour clock.
+
+اكتب الوقت بنظام 12 ساعة (مع am أو pm).
+Write the time in the 12-hour clock (with am or pm).
+
+تدرّب على حوار الدعوة بأيام وأوقات مختلفة.
+Practise the invitation dialogue with different days and times.
+
+مثّل حوار دعوة مع زميلك بيوم ووقت مختلفين.
+Act out an invitation dialogue with a classmate, with a different day and time.
+
+نتائج سباق 1500 متر.
+Results of a 1500 m race.
+
+أربعة تواريخ.
+Four dates.
+
+أوقات الرحلات.
+Flight times.
+
+أوقات وتواريخ على الساعات.
+Times and dates on the clocks.
+
+الساعة: 24 ساعة و 12 ساعة
+The clock: 24-hour and 12-hour
+
+مبني على التمارين 9–13 ص 9. حرّك المنزلقين وشاهد الوقت بالنظامين وكيف يُقرأ.
+Based on Exercises 9–13, p. 9. Move the two sliders and see the time in both systems and how we read it.
+
+الساعة
+Hour
+
+الدقائق
+Minutes
+
+التاريخ
+Date
+
+مبني على التمرينين 2 و 8 ص 8–9. اختر اليوم والشهر والسنة، وشاهد طرق الكتابة والقراءة.
+Based on Exercises 2 and 8, pp. 8–9. Choose the day, month and year. See the ways to write and read it.
+
+السنة
+Year
+
+بريطانيا dd/mm/yy
+UK dd/mm/yy
+
+أمريكا mm/dd/yy
+USA mm/dd/yy
+
+اجعل الوقت 17:30: كيف يُقرأ بالنظامين؟
+Make the time 17:30. How do we read it in both systems?
+
+اختر يوم 22: لماذا صار <span class="en">22nd</span> وليس <span class="en">22th</span>؟
+Choose day 22. Why is it <span class="en">22nd</span> and not <span class="en">22th</span>?
+
+اكتب تاريخ ميلادك، وأمْلِه على زميلك بالصيغة الطويلة.
+Write your date of birth and say it to a classmate in the long form.
+
+مثال 1: تاريخ بالكلمات
+Example 1: a date in words
+
+اكتب التاريخ <span class="en" lang="en">03/05/2027</span> (بريطاني) بالكلمات.
+Write the date <span class="en" lang="en">03/05/2027</span> (UK) in words.
+
+مثال 2: من 24 إلى 12 ساعة
+Example 2: from 24-hour to 12-hour
+
+حوّل <span class="en" lang="en">21.05</span> إلى نظام 12 ساعة واقرأه.
+Change <span class="en" lang="en">21.05</span> to the 12-hour clock and read it.
+
+مثال 3: أيام الرحلة
+Example 3: flight days
+
+رحلة أيامها في الجدول 2 و 5 (1 = Monday). اكتب جملة.
+A flight is on days 2 and 5 in the timetable (1 = Monday). Write a sentence.
+
+الخطوة 1: الصيغة البريطانية يوم/شهر: اليوم 3 والشهر 5.
+Step 1: the UK form is day/month: the day is 3 and the month is 5.
+
+PAT: ^الخطوة\ (.+?)\ =\ <span\ class="en"\ lang="en">(.+?)</span>،\ 5\ =\ <span\ class="en"\ lang="en">(.+?)</span>\.$ ||| Step $1 = <span class="en" lang="en">$2</span>, 5 = <span class="en" lang="en">$3</span>.
+
+الخطوة 1: 21 أكبر من 12، فنطرح 12: 9.
+Step 1: 21 is bigger than 12, so we take away 12: 9.
+
+الخطوة 2: بعد الظهر: <span class="en" lang="en">9.05 pm</span>.
+Step 2: after midday: <span class="en" lang="en">9.05 pm</span>.
+
+الخطوة 3: القراءة: <span class="en" lang="en">nine oh five pm</span>
+Step 3: we read it: <span class="en" lang="en">nine oh five pm</span>
+
+الخطوة 2: التكرار بالجمع: <span class="en" lang="en">on Tuesdays and Fridays</span>.
+Step 2: for a habit, use the plural: <span class="en" lang="en">on Tuesdays and Fridays</span>.
+
+1. 22 الترتيبي:
+1. 22 as an ordinal:
+
+3. 19.30 بنظام 12:
+3. 19.30 in the 12-hour clock:
+
+السبت القادم فقط
+Next Saturday only
+
+كل يوم سبت
+Every Saturday
+
+قبل السبت
+Before Saturday
+
+بعد السبت
+After Saturday
+
+5. الصيغة الأمريكية للتاريخ:
+5. The US form of the date:
+
+7. الشهر الثامن:
+7. The eighth month:
+
+رتّب خطوات التجربة
+Put the steps in order
+
+رتّب الخطوات كما يجب أن تُنفَّذ، ثم اضغط «تحقّق».
+Put the steps in the right order, then press "Check".
+
+رتّب أيام الأسبوع
+Put the days of the week in order
+
+اضغط خطوة ثم اضغط المكان الذي تريده لها، أو استخدم السهمين<span class="hide-touch">، أو اسحبها بالفأرة</span>.
+Press a step, then press the place you want for it, or use the arrows<span class="hide-touch">, or drag it with the mouse</span>.
+
+، أو اسحبها بالفأرة
+, or drag it with the mouse
+
+انقلها خطوة لأعلى
+Move it up
+
+انقلها خطوة لأسفل
+Move it down
+
+أظهر الترتيب الصحيح
+Show the right order
+
+أعد الخلط
+Mix again
+
+وصّل الوقتين
+Match the two times
+
+<i>3</i>الوقت
+<i>3</i>Time
+
+الأعداد الترتيبية والتاريخ
+Ordinal numbers and dates
+
+كيف تكتب «الحادي عشر» وتقرؤه؟
+How do you write and read "eleventh"?
+
+أعداد ترتيبية
+Ordinal numbers
+
+ستة أعداد ترتيبية. 12th بالأصفر لأنها استثناء. مرّر المؤشر على كل منها.
+Six ordinal numbers. 12th is yellow because it is special. Point at each one.
+
+الأيام والأشهر و on
+Days, months and on
+
+ما الفرق بين on Monday و on Mondays؟
+What is the difference between on Monday and on Mondays?
+
+أيام الأسبوع
+Days of the week
+
+الأيام الملونة يتكرر فيها الشيء كل أسبوع.
+Coloured days are when something happens every week.
+
+الوقت بنظامي 24 و 12 ساعة
+The 24-hour and 12-hour clock
+
+كيف تقول 14.40 بنظام 12 ساعة؟
+How do you say 14.40 in the 12-hour clock?
+
+1st 2nd 3rd ثم th، و 11th 12th 13th استثناء.
+1st 2nd 3rd, then th. 11th 12th 13th are special.
+
+on Mondays = كل اثنين.
+on Mondays = every Monday.
+
+بريطانيا dd/mm/yy، أمريكا mm/dd/yy، ISO yyyy-mm-dd.
+UK dd/mm/yy, USA mm/dd/yy, ISO yyyy-mm-dd.
+
+نقرأ التاريخ: the twenty-third of September.
+We read the date: the twenty-third of September.
+
+الوقت: 14.40 = 2.40 pm، والصفر oh: 09.05 oh nine oh five.
+Time: 14.40 = 2.40 pm. Zero is oh: 09.05 oh nine oh five.
+
+11–13: th استثناء
+11–13: special th
+
+بالجمع = كل أسبوع
+Plural = every week
+
+PAT: ^(.+?)\ =\ كل\ (.+?)$ ||| $1 = every $2
+

@@ -81,7 +81,7 @@ const LAB71A={title:'صفة أم اسم؟',w:(el,B)=>N.labB(el,B,{intro:'اخت�
  out:({o,d,f})=>{const x=OBJ71[o],v=x.v[d],D=DIM71[d];
   if(v==='—')return{svg:scene71(o,d),bad:`لا نصف ${x.ar} بهذا البُعد عادةً. اختر بُعداً آخر.`};
   const [num,unit]=v.split(' ');
-  if(f==='adj')return{svg:scene71(o,d),pieces:[[`The ${o}`,'x','الشيء'],['is','x',''],[num,'k','الرقم'],[unit,'k','الوحدة'],[d+'.','n','الصفة في الآخر']],say:`The ${o} is ${v} ${d}.`,ar:`${x.ar} ${D[2]} ${v}.`,why:`بعد الرقم والوحدة تأتي الصفة ${d}.`};
+  if(f==='adj')return{svg:scene71(o,d),pieces:[[`The ${o}`,'x','الشيء'],['is','x',''],[num,'k','الرقم'],[unit,'k','الوحدة'],[d+'.','n','الصفة في الآخر']],say:`The ${o} is ${v} ${d}.`,ar:`${x.ar} ${o==='lake'?D[2].replace(/ه$/,'ها'):D[2]} ${v}.`,why:`بعد الرقم والوحدة تأتي الصفة ${d}.`};
   return{svg:scene71(o,d),pieces:[['The','x',''],[D[0],'q','الاسم بعد The'],[`of the ${o}`,'x','of + الشيء'],['is','x',''],[`${v}.`,'k','الرقم في الآخر']],say:`The ${D[0]} of the ${o} is ${v}.`,ar:`${D[1].replace('ال','')} ${x.ar} ${v}.`,why:`بعد The يأتي الاسم ${D[0]}، ثم of والشيء، والرقم في آخر الجملة.`}}})};
 const PL71={bridge:['bridge','bridges'],cable:['cable','cables'],tower:['tower','towers'],pylon:['pylon','pylons']};
 const LAB71B={title:'كوّن السؤال والجواب',w:(el,B)=>N.labB(el,B,{intro:'اختر البُعد والشيء ومفرداً أو جمعاً، وشاهد السؤال وجوابه.',

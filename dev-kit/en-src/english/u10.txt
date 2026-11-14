@@ -1,0 +1,1255 @@
+قواعد السلامة بـ must / mustn't / always / never / do not، وأنواع لوحات السلامة الثلاثة بألوانها وأشكالها، والنتائج المحتملة للخطر بـ might و could.
+Safety rules with must / mustn't / always / never / do not, the three kinds of safety signs with their colours and shapes, and the possible results of a hazard with might and could.
+
+تكتب قواعد السلامة: <span class="en" lang="en">You must wear a hard hat.</span>
+You write safety rules: <span class="en" lang="en">You must wear a hard hat.</span>
+
+تميّز لوحات التحذير والمنع والإلزام.
+You know the difference between warning, prohibition and mandatory signs.
+
+تحوّل اللوحة إلى جملة: <span class="en" lang="en">Do not smoke here.</span>
+You change a sign into a sentence: <span class="en" lang="en">Do not smoke here.</span>
+
+تقول النتيجة المحتملة للخطر: <span class="en" lang="en">You might burn your arm.</span>
+You say the possible result of a hazard: <span class="en" lang="en">You might burn your arm.</span>
+
+على المنشار أو الآلة
+On the saw or the machine
+
+شرح القاعدة: قواعد السلامة ولوحاتها وتحذيراتها <span class="ref">ص 74–75</span>
+The rules: safety rules, signs and warnings <span class="ref">pp. 74–75</span>
+
+نشرح لغة السلامة في ثلاث خطوات مرتبة: صيغ القاعدة (الأمر والمنع)، ثم أنواع لوحات السلامة ومعانيها، ثم ذكر النتيجة المحتملة للخطر بـ <span class="en" lang="en">might</span> و <span class="en" lang="en">could</span>.
+We explain the language of safety in three steps: the forms of a rule (do and don't), then the kinds of safety signs and their meanings, then saying the possible result of a hazard with <span class="en" lang="en">might</span> and <span class="en" lang="en">could</span>.
+
+1. صيغ القاعدة: الأمر والمنع <span class="ref">ص 75</span>
+1. The forms of a rule: do and don't <span class="ref">p. 75</span>
+
+في الورشة والموقع تُكتب قواعد السلامة بجمل قصيرة واضحة: ما يجب أن تفعله، وما يُمنع. ولكل منهما ثلاث صيغ تختلف في قوتها.
+In the workshop and on site, safety rules are written in short clear sentences: what you must do, and what you must not do. Each one has three forms with different strength.
+
+<b>في كل الصيغ</b> يأتي بعد الكلمة الفعل الأصلي بلا <span class="en" lang="en">s</span> وبلا <span class="en" lang="en">to</span>.
+<b>In all the forms</b> the word is followed by the base verb, with no <span class="en" lang="en">s</span> and no <span class="en" lang="en">to</span>.
+
+في كل الصيغ
+In all the forms
+
+ما يجب أن تفعله
+What you must do
+
+<b>أمر بسيط</b> يبدأ بالفعل الأصلي: <span class="en" lang="en">Wear a hard hat here.</span>
+<b>A simple instruction</b> starts with the base verb: <span class="en" lang="en">Wear a hard hat here.</span>
+
+أمر بسيط
+A simple instruction
+
+PAT: ^<b><span\ class="en"\ lang="en">(.+?)</span></b>\ \+\ الفعل\ الأصلي:\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| <b><span class="en" lang="en">$1</span></b> + base verb: <span class="en" lang="en">$2</span>
+
+<b><span class="en" lang="en">You must</span></b> + الفعل الأصلي (أقواها): <span class="en" lang="en">You must wear a hard hat here.</span>
+<b><span class="en" lang="en">You must</span></b> + base verb (the strongest): <span class="en" lang="en">You must wear a hard hat here.</span>
+
+ما يُمنع
+What you must not do
+
+افعل ✓
+Do ✓
+
+لا تفعل ✗
+Don't ✗
+
+أمر
+Instruction
+
+PAT: ^لا\ نضع\ to\ بعد\ (.+?)$ ||| Don't put to after $1
+
+مختبر مصغّر: ركّب قاعدة السلامة
+Mini lab: make a safety rule
+
+اختر الفعل وقوة القاعدة، وشاهد الصيغ الثلاث للأمر والمنع.
+Choose the verb and the strength of the rule. See the three forms of do and don't.
+
+ارتدِ خوذة.
+=
+
+بعد بداية الجملة يأتي الفعل الأصلي. الأمر يبدأ بالفعل الأصلي، والمنع بـ Don't.
+After the start of the sentence comes the base verb. An instruction starts with the base verb, and a prohibition with Don't.
+
+مختبر مصغّر: القاعدة
+Mini lab: the rule
+
+اختر الكلمة:
+Choose the word:
+
+2. أنواع لوحات السلامة <span class="ref">ص 74</span>
+2. Kinds of safety signs <span class="ref">p. 74</span>
+
+لوحات السلامة لغة عالمية: من شكلها ولونها تعرف معناها قبل أن تقرأ ما كُتب عليها. وهي موحّدة في المعيار الدولي ISO.
+Safety signs are an international language: from the shape and colour you know the meaning before you read the words on them. They are the same everywhere in the ISO international standard.
+
+<b>لوحة التحذير</b> <span class="en" lang="en">Warning sign</span>: مثلث أصفر بإطار أسود، ومعناها يوجد خطر فانتبه.
+<b>A warning sign</b> <span class="en" lang="en">Warning sign</span>: a yellow triangle with a black border. It means there is a hazard, so be careful.
+
+لوحة التحذير
+Warning sign
+
+<b>لوحة المنع</b> <span class="en" lang="en">Prohibition sign</span>: دائرة بيضاء بإطار أحمر وخط مائل، ومعناها لا تفعل هذا.
+<b>A prohibition sign</b> <span class="en" lang="en">Prohibition sign</span>: a white circle with a red border and a diagonal line. It means don't do this.
+
+لوحة المنع
+Prohibition sign
+
+<b>لوحة الإلزام</b> <span class="en" lang="en">Mandatory action sign</span>: دائرة زرقاء، ومعناها يجب أن تفعل هذا.
+<b>A mandatory action sign</b> <span class="en" lang="en">Mandatory action sign</span>: a blue circle. It means you must do this.
+
+لوحة الإلزام
+Mandatory action sign
+
+<small>(إضافة من خارج الكتاب)</small> وفي المعيار نفسه <b>لوحات الحالة الآمنة</b> الخضراء، مثل مخرج الطوارئ، و<b>لوحات معدات الحريق</b> الحمراء المربعة.
+<small>(extra, not in the book)</small> The same standard also has green <b>safe condition signs</b>, like the emergency exit, and red square <b>fire equipment signs</b>.
+
+لوحات الحالة الآمنة
+Safe condition signs
+
+لوحات معدات الحريق
+Fire equipment signs
+
+الشكل واللون
+Shape and colour
+
+جملة تناسبها
+A sentence that fits it
+
+مثلث أصفر
+Yellow triangle
+
+دائرة بخط أحمر مائل
+Circle with a red diagonal line
+
+دائرة زرقاء
+Blue circle
+
+مختبر مصغّر: اقرأ لوحة السلامة
+Mini lab: read the safety sign
+
+اختر نوع اللوحة، وشاهد شكلها ولونها ومعناها، ثم جملة تكتبها تحتها.
+Choose the kind of sign. See its shape, its colour and its meaning, then a sentence to write under it.
+
+اللوحة
+Sign
+
+تحذير
+Warning
+
+منع
+Prohibition
+
+إلزام
+Mandatory
+
+حالة آمنة
+Safe condition
+
+معناها
+Meaning
+
+مثلث أصفر بإطار أسود: يوجد خطر، فانتبه.
+A yellow triangle with a black border: there is a hazard, so be careful.
+
+صنّف اللوحة من وصفها:
+Sort the sign from its description:
+
+دائرة زرقاء فيها قفازات
+A blue circle with gloves in it
+
+مثلث أصفر فيه صاعقة
+A yellow triangle with a lightning bolt in it
+
+دائرة حمراء بخط مائل على سيجارة
+A red circle with a line across a cigarette
+
+دائرة زرقاء فيها أذن بسماعة
+A blue circle with an ear with ear defenders in it
+
+3. النتيجة المحتملة: might و could <span class="ref">ص 75</span>
+3. The possible result: might and could <span class="ref">p. 75</span>
+
+التحذير الجيد لا يكتفي بذكر الخطر، بل يذكر ما قد يحدث إذا لم ننتبه. وهنا نستعمل <span class="en" lang="en">might</span> أو <span class="en" lang="en">could</span>.
+A good warning doesn't only say the hazard; it also says what might happen if we are not careful. Here we use <span class="en" lang="en">might</span> or <span class="en" lang="en">could</span>.
+
+<b>القالب:</b> نذكر الخطر، ثم <span class="en" lang="en">You might / could</span> + الفعل الأصلي.<br><span class="en" lang="en">The surface is hot. You might burn your hand.</span>
+<b>The pattern:</b> say the hazard, then <span class="en" lang="en">You might / could</span> + base verb.<br><span class="en" lang="en">The surface is hot. You might burn your hand.</span>
+
+<b><span class="en" lang="en">might</span> و <span class="en" lang="en">could</span></b> هنا بمعنى واحد تقريباً: «قد»، أي شيء محتمل لا مؤكد.
+<b><span class="en" lang="en">might</span> and <span class="en" lang="en">could</span></b> mean almost the same here: something is possible, but not sure.
+
+<b>بعدهما الفعل الأصلي</b> بلا <span class="en" lang="en">s</span> وبلا <span class="en" lang="en">to</span>، مع كل الفاعلين.
+<b>After them comes the base verb</b> with no <span class="en" lang="en">s</span> and no <span class="en" lang="en">to</span>, with every subject.
+
+بعدهما الفعل الأصلي
+After them comes the base verb
+
+الخطر
+Hazard
+
+النتيجة المحتملة
+Possible result
+
+مختبر مصغّر: التحذير ونتيجته: might و could
+Mini lab: the warning and its result: might and could
+
+اختر الخطر والكلمة، وشاهد جملتي التحذير.
+Choose the hazard and the word. See the two warning sentences.
+
+تنبيه
+Warning
+
+قد (احتمال)
+Possibly
+
+قد تحرق يدك.
+=
+
+PAT: ^(.+?)\ =\ «قد»،\ ويأتي\ بعدها\ الفعل\ الأصلي\.\ و\ might\ و\ could\ هنا\ بمعنى\ واحد\ تقريباً\.$ ||| $1 means it is possible, and the base verb comes after it. might and could mean almost the same here.
+
+مختبر مصغّر: النتيجة
+Mini lab: the result
+
+اختر التحذير المناسب:
+Choose the right warning:
+
+مع زميلك: ما قواعد السلامة في عملك أو كليتك؟ اكتب قائمة.
+With a classmate: what are the safety rules in your work or your college? Write a list.
+
+مع زميلك: ما قواعد السلامة في ورشة الكلية أو في البيت؟ اكتبا قائمة من خمس قواعد.
+With a classmate: what are the safety rules in the college workshop or at home? Write a list of five rules.
+
+استمع وأكمل التحذيرات بالكلمات في الصندوق.
+Listen and complete the warnings with the words in the box.
+
+إجابات متوقعة من معنى الجمل؛ تحقق منها بالتسجيل.
+These are expected answers from the meaning of the sentences; check them with the recording.
+
+استمع إلى مشرف الورشة يعطي تحذيرات، ثم أكمل الجمل.
+Listen to the workshop supervisor giving warnings, then complete the sentences.
+
+مع زميلك: لماذا تختلف ألوان اللوحات وأشكالها؟
+With a classmate: why are the colours and shapes of the signs different?
+
+ناقش مع زميلك: لماذا لوحة «ممنوع» دائرة حمراء، ولوحة «إلزامي» دائرة زرقاء، ولوحة «تحذير» مثلث أصفر؟
+Talk with a classmate: why is the "not allowed" sign a red circle, the "must" sign a blue circle, and the "warning" sign a yellow triangle?
+
+اقرأ النص وطابق الأمثلة مع اللوحات A–F.
+Read the text and match the examples with the signs A–F.
+
+1 سم، 2 خطر حريق، 3 لا ترفع بخطاف، 4 لا تنزع الواقي، 5 اقرأ الدليل، 6 استعمل واقي المنشار.
+1 poison, 2 fire hazard, 3 don't lift with a hook, 4 don't take off the guard, 5 read the manual, 6 use the saw guard.
+
+وصّل كل لوحة (بشكلها ولونها) بالرسالة المكتوبة عليها.
+Match each sign (by its shape and colour) with the message written on it.
+
+أكمل التعليمات بكلمات الصندوق (حسب اللوحات الست).
+Complete the instructions with the words in the box (from the six signs).
+
+5: «Do not smoke» بإضافة Do قبل not الموجودة في الجملة.
+5: "Do not smoke", by adding Do before the not that is already in the sentence.
+
+أكمل التعليمات بكلمات الصندوق: Never · Always · Do not · must · Do · mustn't
+Complete the instructions with the words in the box: Never · Always · Do not · must · Do · mustn't
+
+اكتب اللوحات بطريقة أخرى.
+Write the signs in another way.
+
+اكتب اللوحة بطريقة أخرى بـ Do not … . المثال: No smoking. → Do not smoke here.
+Write the sign in another way with Do not … . Example: No smoking. → Do not smoke here.
+
+أكمل التحذيرات بالكلمات (could، might، there are، there's).
+Complete the warnings with the words (could, might, there are, there's).
+
+أكمل التحذيرات بـ could أو might أو there's أو there are.
+Complete the warnings with could, might, there's or there are.
+
+استمع وأكمل التحذيرات الست.
+Listen and complete the six warnings.
+
+ما نوع اللوحة؟
+What kind of sign is it?
+
+مبني على نص اللوحات ص 74. اختر الشكل واللون، واعرف نوع اللوحة ومعناها.
+Based on the text about signs, p. 74. Choose the shape and the colour, and find out the kind of sign and its meaning.
+
+مثلث
+Triangle
+
+دائرة
+Circle
+
+أصفر وأسود
+Yellow and black
+
+أحمر وأبيض
+Red and white
+
+أزرق وأبيض
+Blue and white
+
+لوحة تحذير
+Warning sign
+
+اللوحة: القاعدة والنتيجة المحتملة
+The sign: the rule and the possible result
+
+لوحات من رسمنا. اختر لوحة لترى القاعدة (must / mustn't / always / never) والنتيجة المحتملة (might / could).
+Signs we drew. Choose a sign to see the rule (must / mustn't / always / never) and the possible result (might / could).
+
+النتيجة المحتملة:
+Possible result:
+
+<b>ليس من الأنواع الثلاثة في الكتاب.</b> التحذير مثلث أصفر، والمنع دائرة حمراء، والإلزام دائرة زرقاء.
+<b>It is not one of the three kinds in the book.</b> A warning is a yellow triangle, a prohibition is a red circle, and a mandatory sign is a blue circle.
+
+ليس من الأنواع الثلاثة في الكتاب.
+It is not one of the three kinds in the book.
+
+لوحة منع
+Prohibition sign
+
+لوحة إلزام
+Mandatory sign
+
+مثال 1: من لوحة إلى قاعدة
+Example 1: from a sign to a rule
+
+لوحة إلزام زرقاء عليها نظارة واقية. اكتب القاعدة بطريقتين.
+A blue mandatory sign with safety glasses on it. Write the rule in two ways.
+
+مثال 2: تحذير ونتيجة
+Example 2: a warning and a result
+
+سطح بارد جداً في المختبر. اكتب التحذير والنتيجة.
+A very cold surface in the lab. Write the warning and the result.
+
+الخطوة 1: دائرة زرقاء = إلزام.
+Step 1: blue circle = mandatory.
+
+PAT: ^الخطوة\ (.+?):\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| Step $1: <span class="en" lang="en">$2</span>
+
+الخطوة 2: النتيجة بـ <span class="en" lang="en">could</span> + فعل.
+Step 2: the result with <span class="en" lang="en">could</span> + verb.
+
+أمان
+=
+
+مصدر خطر
+=
+
+لوحة
+=
+
+قاعدة
+=
+
+وصّل نوع اللوحة بشكلها ولونها
+Match the kind of sign with its shape and colour
+
+دائرة حمراء بخط مائل
+A red circle with a diagonal line
+
+دائرة زرقاء وبيضاء
+A blue and white circle
+
+مثلث أصفر وأسود
+A yellow and black triangle
+
+<i>1</i>القواعد
+<i>1</i>Rules
+
+<i>2</i>اللوحات
+<i>2</i>Signs
+
+صيغ القاعدة: الأمر والمنع
+The forms of a rule: do and don't
+
+كيف تكتب قاعدة «ممنوع لمس الآلة» بثلاث طرق؟
+How do you write the rule "Don't touch the machine" in three ways?
+
+لوحة إلزام ولوحة منع
+A mandatory sign and a prohibition sign
+
+إلزام ومنع. مرّر المؤشر على كل لوحة.
+Mandatory and prohibition. Point at each sign.
+
+أنواع لوحات السلامة
+Kinds of safety signs
+
+ما معنى الدائرة الزرقاء؟ وما معنى الدائرة ذات الخط الأحمر المائل؟
+What does the blue circle mean? What does the circle with a red diagonal line mean?
+
+ثلاث لوحات: تحذير ومنع وإلزام
+Three signs: warning, prohibition and mandatory
+
+الأنواع الثلاثة. مرّر المؤشر على كل لوحة.
+The three kinds. Point at each sign.
+
+النتيجة المحتملة: might و could
+The possible result: might and could
+
+كيف تحذّر زميلك من سطح ساخن وتذكر ما قد يحدث له؟
+How do you warn your classmate about a hot surface and say what might happen to him?
+
+ترسان متداخلان
+Two gears that fit together
+
+خطر التروس. مرّر المؤشر على الرسم.
+The gear hazard. Point at the drawing.
+
+القواعد: Always / Never / Do / Don't / must / mustn't + فعل أصلي.
+Rules: Always / Never / Do / Don't / must / mustn't + base verb.
+
+لوحة التحذير مثلث أصفر، والمنع دائرة حمراء، والإلزام دائرة زرقاء.
+A warning sign is a yellow triangle, a prohibition sign is a red circle, and a mandatory sign is a blue circle.
+
+You might / could + فعل للنتيجة المحتملة.
+You might / could + verb for the possible result.
+
+ارتدِ قفازات.
+=
+
+لا تفعل
+Don't
+
+لا تلمس الآلة.
+=
+
+بعد Don't يأتي الفعل الأصلي. الأمر يبدأ بالفعل الأصلي، والمنع بـ Don't.
+After Don't comes the base verb. An instruction starts with the base verb, and a prohibition with Don't.
+
+لا تدخّن.
+=
+
+لا تركض في الورشة.
+=
+
+دائماً
+Always
+
+PAT: ^بعد\ (.+?)\ يأتي\ الفعل\ الأصلي\.\ always\ و\ never\ تقويان\ الأمر\ أو\ المنع\.$ ||| After $1 comes the base verb. always and never make the instruction or the prohibition stronger.
+
+أبداً لا
+Never
+
+يجب
+Must
+
+بعد You must يأتي الفعل الأصلي. must: إلزام قوي.
+After You must comes the base verb. must: a strong rule.
+
+ممنوع
+Must not
+
+بعد You mustn't يأتي الفعل الأصلي. mustn't = must not: منع قوي.
+After You mustn't comes the base verb. mustn't = must not: a strong prohibition.
+
+دائرة بإطار أحمر وخط مائل: ممنوع.
+A circle with a red border and a diagonal line: not allowed.
+
+دائرة زرقاء: إلزام، يجب أن تفعل.
+A blue circle: mandatory, you must do it.
+
+مستطيل أخضر: حالة آمنة، مثل مخرج الطوارئ (إضافة من خارج الكتاب).
+A green rectangle: a safe condition, like the emergency exit (extra, not in the book).
+
+قد تؤذي عينيك.
+=
+
+قد تنزلق.
+=
+
+قد تجرح أصابعك.
+=
+
+التحذير من الخطر ونتيجته، ووصف مخاطر ورشة بـ There is / There are، وتحويلها إلى الماضي There was / There were و was / were في تقرير التفتيش، وكتابة قواعد للورشة.
+Warning about a hazard and its result, describing workshop hazards with There is / There are, changing them to the past There was / There were and was / were in an inspection report, and writing workshop rules.
+
+تحذّر من خطر وتذكر نتيجته: <span class="en" lang="en">Look out! There's a low beam. You could injure your head.</span>
+You warn about a hazard and say its result: <span class="en" lang="en">Look out! There's a low beam. You could injure your head.</span>
+
+تصف ما تراه في ورشة: <span class="en" lang="en">There are some boxes on the stairs.</span>
+You describe what you see in a workshop: <span class="en" lang="en">There are some boxes on the stairs.</span>
+
+تكتب تقرير تفتيش بالماضي: <span class="en" lang="en">There were some boxes on the stairs.</span>
+You write an inspection report in the past: <span class="en" lang="en">There were some boxes on the stairs.</span>
+
+تكتب قواعد سلامة للورشة.
+You write safety rules for the workshop.
+
+with a padlock = بقفل
+with a padlock = locked with a padlock
+
+شرح القاعدة: التحذير من الخطر وتقرير التفتيش <span class="ref">ص 76–77</span>
+The rules: warning about hazards, and the inspection report <span class="ref">pp. 76–77</span>
+
+نشرح لغة مخاطر السلامة في خطوتين مرتبتين: التحذير السريع من خطر أمامك، ثم كتابة ما رأيته في تقرير تفتيش بالماضي.
+We explain the language of safety hazards in two steps: a quick warning about a hazard in front of you, then writing what you saw in an inspection report in the past.
+
+1. التحذير ونتيجته <span class="ref">ص 76</span>
+1. The warning and its result <span class="ref">p. 76</span>
+
+إذا رأيت زميلك يقترب من خطر فلا وقت لجملة طويلة. التحذير الجيد ثلاثة أجزاء قصيرة: نداء، ثم الخطر، ثم ما قد يحدث.
+If you see a classmate going near a hazard, there is no time for a long sentence. A good warning has three short parts: a call, then the hazard, then what might happen.
+
+<b>النداء:</b> <span class="en" lang="en">Look out!</span> أو <span class="en" lang="en">Be careful!</span>
+<b>The call:</b> <span class="en" lang="en">Look out!</span> or <span class="en" lang="en">Be careful!</span>
+
+النداء:
+The call:
+
+<b>الخطر:</b> <span class="en" lang="en">There's</span> + مفرد، أو <span class="en" lang="en">There are</span> + جمع، أو جملة تصف الحالة.<br><span class="en" lang="en">There's a low beam in front of you.</span>
+<b>The hazard:</b> <span class="en" lang="en">There's</span> + singular, or <span class="en" lang="en">There are</span> + plural, or a sentence that describes the situation.<br><span class="en" lang="en">There's a low beam in front of you.</span>
+
+الخطر:
+The hazard:
+
+<b>النتيجة المحتملة:</b> <span class="en" lang="en">You could / might</span> + الفعل الأصلي (من الدرس 10.1).<br><span class="en" lang="en">You could injure your head.</span>
+<b>The possible result:</b> <span class="en" lang="en">You could / might</span> + base verb (from lesson 10.1).<br><span class="en" lang="en">You could injure your head.</span>
+
+النداء
+The call
+
+النتيجة
+Result
+
+مختبر مصغّر: حذّر زميلك
+Mini lab: warn your classmate
+
+اختر الخطر، وشاهد التحذير من ثلاثة أجزاء: النداء، ثم الخطر، ثم ما قد يحدث.
+Choose the hazard. See the warning in three parts: the call, then the hazard, then what might happen.
+
+عارضة منخفضة
+Low beam
+
+تروس تدور
+Turning gears
+
+أرضية زلقة
+Slippery floor
+
+كابل على الأرض
+Cable on the floor
+
+انتبه!
+Look out!
+
+قد
+Might
+
+التحذير: نداء سريع، ثم الخطر بـ There's أو بجملة وصف، ثم النتيجة المحتملة بـ could أو might.
+The warning: a quick call, then the hazard with There's or a describing sentence, then the possible result with could or might.
+
+اختر النتيجة المناسبة:
+Choose the right result:
+
+2. من الحاضر إلى تقرير الماضي <span class="ref">ص 77</span>
+2. From the present to the past report <span class="ref">p. 77</span>
+
+أثناء التفتيش تصف ما تراه بالحاضر. لكن التقرير تكتبه بعد الزيارة، فتنقل كل ما رأيته إلى الماضي.
+During an inspection you describe what you see in the present. But you write the report after the visit, so you change everything you saw to the past.
+
+المفرد وغير المعدود:
+Singular and uncountable:
+
+الجمع:
+Plural:
+
+<b>النفي في التقرير:</b> <span class="en" lang="en">There were no</span> + جمع، أو <span class="en" lang="en">There was no</span> + مفرد.<br><span class="en" lang="en">There were no fire extinguishers.</span>
+<b>Negatives in the report:</b> <span class="en" lang="en">There were no</span> + plural, or <span class="en" lang="en">There was no</span> + singular.<br><span class="en" lang="en">There were no fire extinguishers.</span>
+
+النفي في التقرير:
+Negatives in the report:
+
+الآن
+Now
+
+في التقرير
+In the report
+
+حالة
+State
+
+exit مفرد: was.
+exit is singular: was.
+
+مختبر مصغّر: من الحاضر إلى التقرير
+Mini lab: from the present to the report
+
+اختر ما رأيته في الورشة، ثم اختر: الآن أم في التقرير (بعد الزيارة)؟
+Choose what you saw in the workshop, then choose: now, or in the report (after the visit)?
+
+الملاحظة
+Note
+
+سائل على الأرض
+Liquid on the floor
+
+صناديق على الدرج
+Boxes on the stairs
+
+مخرج طوارئ مقفل
+A locked emergency exit
+
+كابلات تالفة
+Damaged cables
+
+لا طفايات حريق
+No fire extinguishers
+
+مفرد الآن
+Singular, now
+
+نصف ما نراه الآن بـ is أو are.
+We describe what we see now with is or are.
+
+حوّل إلى الماضي (جمل جديدة):
+Change to the past (new sentences):
+
+قل التحذيرات ونتائجها المحتملة، كما في المثال.
+Say the warnings and their possible results, like the example.
+
+قل التحذير ونتيجته المحتملة، مثل: Be careful! There's some water on the floor. You might slip.
+Say the warning and its possible result, like: Be careful! There's some water on the floor. You might slip.
+
+مع زميلك: كم خطراً ترى في صورة الورشة؟ اكتب قائمة.
+With a classmate: how many hazards can you see in the picture of the workshop? Write a list.
+
+مع زميلك: تخيّل مطبخ بيت فيه مخاطر. اكتبا قائمة بكل خطر تريانه في هذا الوصف:
+With a classmate: imagine a kitchen at home with hazards. Write a list of every hazard you see in this description:
+
+أنت مفتش سلامة: صف ما تراه في الورشة بجدول There is / are.
+You are a safety inspector: describe what you see in the workshop with the There is / are table.
+
+أنت مفتش سلامة: اكتب جملة بـ There is أو There are من كل ملاحظة.
+You are a safety inspector: write a sentence with There is or There are from each note.
+
+حوّل جملاً أخرى من التمرين 5 إلى الماضي.
+Change other sentences from Exercise 5 to the past.
+
+حوّل جمل التمرين 5 إلى الماضي (للتقرير).
+Change the sentences in Exercise 5 to the past (for the report).
+
+أكمل تقرير المفتش: صف كل المخاطر في الورشة.
+Complete the inspector's report: describe all the hazards in the workshop.
+
+أكمل تقرير المفتش بالماضي.
+Complete the inspector's report in the past.
+
+في مجموعات: اكتب عشر قواعد سلامة على الأقل للورشة.
+In groups: write at least ten safety rules for the workshop.
+
+في مجموعات: اكتبوا عشر قواعد سلامة على الأقل لمطبخ البيت أو لورشة الكلية.
+In groups: write at least ten safety rules for the kitchen at home or the college workshop.
+
+ص 76 — التمرينان 1 و 2
+p. 76 — Exercises 1 and 2
+
+استمع وطابق التحذيرات مع الصور، ثم اكتب رقم التحذير في الجدول.
+Listen and match the warnings with the pictures, then write the number of the warning in the table.
+
+تقرير نموذجي قصير (إضافة من خارج الكتاب) <span class="ref">ص 77</span>
+A short model report (extra, not in the book) <span class="ref">p. 77</span>
+
+ابحث عن المخاطر
+Find the hazards
+
+مبني على التمارين 4–7 ص 76–77، بورشة من رسمنا. اضغط على كل خطر تراه (ستة مخاطر)، ثم بدّل بين «الآن» و«تقرير التفتيش» لترى الجمل بالحاضر والماضي.
+Based on Exercises 4–7, pp. 76–77, with a workshop we drew. Press each hazard you see (six hazards), then switch between "Now" and "Inspection report" to see the sentences in the present and the past.
+
+ورشة فيها مخاطر
+A workshop with hazards
+
+وجدت 0 من 6.
+You found 0 of 6.
+
+الآن (There is / are)
+Now (There is / are)
+
+التقرير (There was / were)
+Report (There was / were)
+
+ما وجدته
+What you found
+
+اضغط على الرسم حيث ترى خطراً.
+Press the drawing where you see a hazard.
+
+مثال 1: سطر في التقرير
+Example 1: a line in the report
+
+رأيت أمس كابلاً تالفاً. اكتبه في التقرير.
+Yesterday you saw a damaged cable. Write it in the report.
+
+مثال 2: قاعدة من خطر
+Example 2: a rule from a hazard
+
+الخطر: طعام وشراب في الورشة. اكتب قاعدة.
+The hazard: food and drink in the workshop. Write a rule.
+
+الخطوة 1: الحاضر <span class="en" lang="en">A cable is damaged.</span>
+Step 1: the present <span class="en" lang="en">A cable is damaged.</span>
+
+الخطوة 2: <span class="en" lang="en">is → was</span>.
+Step 2: <span class="en" lang="en">is → was</span>.
+
+الخطوة 1: نريد منعاً.
+Step 1: we want a prohibition.
+
+الخطوة 3: أو <span class="en" lang="en">No eating or drinking in the workshop.</span>
+Step 3: or <span class="en" lang="en">No eating or drinking in the workshop.</span>
+
+مخرج طوارئ
+=
+
+طفاية حريق
+=
+
+جرس إنذار
+=
+
+خرطوم
+=
+
+يتعثّر بـ
+=
+
+يسافر
+=
+
+يسقط من أعلى
+=
+
+التحذير ونتيجته
+The warning and its result
+
+زميلك سيمشي تحت عارضة منخفضة. ماذا تقول له؟
+Your classmate is going to walk under a low beam. What do you say to him?
+
+شخص يقترب من عارضة منخفضة
+A person going near a low beam
+
+خطر العارضة. مرّر المؤشر على الرسم.
+The beam hazard. Point at the drawing.
+
+من الحاضر إلى تقرير الماضي
+From the present to the past report
+
+وجدت أمس صناديق على الدرج. كيف تكتبها في التقرير؟
+Yesterday you found boxes on the stairs. How do you write it in the report?
+
+are تصير were
+are becomes were
+
+الآن: There are some boxes on the stairs.
+Now: There are some boxes on the stairs.
+
+التقرير: There were some boxes on the stairs.
+Report: There were some boxes on the stairs.
+
+التحويل إلى الماضي. مرّر المؤشر على كل جملة.
+Changing to the past. Point at each sentence.
+
+التحذير: Look out! There's … You could / might ….
+Warning: Look out! There's … You could / might ….
+
+الوصف: There is / are + المكان، و The … is / are + الحالة.
+Description: There is / are + place, and The … is / are + state.
+
+التقرير بالماضي: is → was و are → were.
+Report in the past: is → was and are → were.
+
+قواعد الورشة: Always … / Never … / Staff must / must not ….
+Workshop rules: Always … / Never … / Staff must / must not ….
+
+جمع الآن
+Plural, now
+
+في التقرير نكتب ما رأيناه في الزيارة بالماضي: is ← was، و are ← were.
+In the report we write what we saw on the visit in the past: is → was, and are → were.
+
+تحديد الاتجاه بالساعة (at two o'clock)، وتحذير برج المراقبة، وأسئلة التحقيق بالماضي (Where were…? When did… happen?)، وتقرير الحادثة، والدعوة والاعتذار في الحديث الاجتماعي.
+Giving a direction with the clock (at two o'clock), a control tower warning, investigation questions in the past (Where were…? When did… happen?), the incident report, and inviting and saying sorry in small talk.
+
+تحدد اتجاه شيء بالنسبة إليك بالساعة: <span class="en" lang="en">Unknown traffic at two o'clock.</span>
+You give the direction of something from you with the clock: <span class="en" lang="en">Unknown traffic at two o'clock.</span>
+
+تقرأ خبراً عن حادثة وتملأ تقريرها.
+You read a news story about an incident and fill in its report.
+
+تسأل أسئلة التحقيق بالماضي وتجيب.
+You ask and answer investigation questions in the past.
+
+تدعو زميلاً أو تعتذر بلباقة.
+You invite a classmate or say sorry politely.
+
+مقدمة الطائرة = 12
+The front of the plane = 12
+
+شرح القاعدة: الاتجاه بالساعة وأسئلة التحقيق <span class="ref">ص 78–79</span>
+The rules: directions with the clock, and investigation questions <span class="ref">pp. 78–79</span>
+
+نشرح لغة التحقيق في حادثة في خطوتين مرتبتين: تحديد الاتجاه بالساعة، ثم أسئلة التحقيق بالماضي.
+We explain the language of investigating an incident in two steps: giving a direction with the clock, then investigation questions in the past.
+
+1. الاتجاه بالساعة <span class="ref">ص 78</span>
+1. Directions with the clock <span class="ref">p. 78</span>
+
+الطيارون وأبراج المراقبة يحتاجون طريقة سريعة ودقيقة لتحديد مكان طائرة أخرى. والطريقة المتفق عليها: تخيّل أنك في وسط ساعة، ووجهك نحو الرقم 12.
+Pilots and control towers need a quick and exact way to say where another plane is. The agreed way: imagine you are in the middle of a clock, facing 12.
+
+<b>الاتجاهات الأربعة:</b> 12 أمامك تماماً، و 3 على يمينك، و 6 خلفك، و 9 على يسارك.
+<b>The four directions:</b> 12 is straight ahead, 3 is on your right, 6 is behind you, and 9 is on your left.
+
+الاتجاهات الأربعة:
+The four directions:
+
+<b>وما بينها:</b> 1 و 2 أمامك يميناً، و 10 و 11 أمامك يساراً، و 4 و 5 خلفك يميناً، و 7 و 8 خلفك يساراً.
+<b>And between them:</b> 1 and 2 are ahead on the right, 10 and 11 are ahead on the left, 4 and 5 are behind on the right, and 7 and 8 are behind on the left.
+
+وما بينها:
+And between them:
+
+<b>القالب:</b> <span class="en" lang="en">at</span> + الرقم + <span class="en" lang="en">o'clock</span><br><span class="en" lang="en">There's a plane at two o'clock.</span>
+<b>The pattern:</b> <span class="en" lang="en">at</span> + number + <span class="en" lang="en">o'clock</span><br><span class="en" lang="en">There's a plane at two o'clock.</span>
+
+الساعة
+Hour
+
+مختبر مصغّر: الاتجاه بالساعة
+Mini lab: directions with the clock
+
+أنت في وسط الساعة ووجهك نحو 12. اختر الساعة، وشاهد أين الطائرة الأخرى والجملة التي تقولها.
+You are in the middle of the clock, facing 12. Choose the clock number. See where the other plane is and the sentence you say.
+
+الاتجاه
+Direction
+
+أمامك تماماً.
+=
+
+12 أمامك، و 3 يمينك، و 6 خلفك، و 9 يسارك. ونقول at + الرقم + o'clock.
+12 is ahead, 3 is on your right, 6 is behind you, and 9 is on your left. We say at + number + o'clock.
+
+مختبر مصغّر: الاتجاه
+Mini lab: the direction
+
+اختر الاتجاه:
+Choose the direction:
+
+2. أسئلة التحقيق بالماضي <span class="ref">ص 79</span>
+2. Investigation questions in the past <span class="ref">p. 79</span>
+
+المحقق يسأل عن حادثة وقعت وانتهت، فكل أسئلته بالماضي. والسؤال يتكوّن بطريقتين حسب الفعل الذي فيه.
+The investigator asks about an incident that happened and finished, so all his questions are in the past. There are two ways to make the question, depending on the verb in it.
+
+<small>(من الكتاب)</small> <span class="en" lang="en">take place</span> بمعنى <span class="en" lang="en">happen</span>: <span class="en" lang="en">When did it take place?</span>
+<small>(from the book)</small> <span class="en" lang="en">take place</span> means <span class="en" lang="en">happen</span>: <span class="en" lang="en">When did it take place?</span>
+
+(من الكتاب)
+(from the book)
+
+مع الفعل be (كان)
+With the verb be
+
+نسأل بـ <span class="en" lang="en">was</span> للمفرد و <span class="en" lang="en">were</span> للجمع، مباشرة بعد كلمة السؤال:<br><span class="en" lang="en">Where were the planes?</span><br><span class="en" lang="en">How far was the jet from the plane?</span>
+We ask with <span class="en" lang="en">was</span> for singular and <span class="en" lang="en">were</span> for plural, right after the question word:<br><span class="en" lang="en">Where were the planes?</span><br><span class="en" lang="en">How far was the jet from the plane?</span>
+
+مع بقية الأفعال
+With other verbs
+
+نسأل بـ <span class="en" lang="en">did</span>، ويعود الفعل إلى صورته الأصلية:<br><span class="en" lang="en">When did the incident happen?</span><br><span class="en" lang="en">What did the pilot do?</span>
+We ask with <span class="en" lang="en">did</span>, and the verb goes back to its base form:<br><span class="en" lang="en">When did the incident happen?</span><br><span class="en" lang="en">What did the pilot do?</span>
+
+والجواب بالماضي: <span class="en" lang="en">It happened at 22.17.</span>
+The answer is in the past: <span class="en" lang="en">It happened at 22.17.</span>
+
+be (مفرد)
+be (singular)
+
+be (جمع)
+be (plural)
+
+غيره
+Other verbs
+
+مع be نسأل بـ was / were.
+With be we ask with was / were.
+
+اختر سؤال التحقيق، وشاهد متى نستعمل was / were ومتى did.
+Choose an investigation question. See when we use was / were and when did.
+
+كلمة السؤال
+Question word
+
+be جمع ← were
+be, plural → were
+
+مع الفعل be نسأل بـ was أو were مباشرة، بلا did.
+With the verb be we ask with was or were directly, with no did.
+
+مختبر مصغّر: السؤال
+Mini lab: the question
+
+كوّن السؤال (من عندنا):
+Make the question (our own):
+
+مع زميلك: ماذا يحدث في الصورة؟ في أي اتجاه تتحرك الطائرتان؟ من سيكلم الطيارين؟
+With a classmate: what is happening in the picture? Which way are the two planes moving? Who will talk to the pilots?
+
+مع زميلك: سيارتان كادتا تصطدمان عند إشارة. ماذا حدث؟ في أي اتجاه كانت كل سيارة تسير؟ من سيحقق؟
+With a classmate: two cars nearly crashed at a traffic light. What happened? Which way was each car going? Who will investigate?
+
+اقرأ الخبر وأكمل تقرير الحادثة.
+Read the news story and complete the incident report.
+
+التاريخ: الخبر بتاريخ 25 نوفمبر ويقول «Last night».
+The date: the story is dated 25 November and says "Last night".
+
+استمع إلى خبر عن حادثة كادت تقع بين قطارين (من خيالنا)، ثم أكمل التقرير.
+Listen to a news story about a near accident between two trains (an invented one), then complete the report.
+
+مع زميلك (محقق وطيار): اسأل وأجب.
+With a classmate (an investigator and a pilot): ask and answer.
+
+أنت المحقق: اكتب السؤال لكل جواب عن حادثة القطارين.
+You are the investigator: write the question for each answer about the train incident.
+
+مهمة ثنائية: حقّق في حادثة زميلك وأكمل نموذج التقرير.
+Pair work: investigate your classmate's incident and complete the report form.
+
+مهمة ثنائية بمعلومات جديدة: كل واحد عنده حادثة. اسأل زميلك وأكمل نموذج التقرير (المكان، الوقت، ماذا حدث، الإصابات).
+Pair work with new information: each one has an incident. Ask your classmate and complete the report form (place, time, what happened, injuries).
+
+أكمل الحوار بالكلمات في الصندوق.
+Complete the dialogue with the words in the box.
+
+أكمل حوار الدعوة بكلمات الصندوق: must · I'd · are · can't · don't · I'll
+Complete the invitation dialogue with the words in the box: must · I'd · are · can't · don't · I'll
+
+مع زميلك: حوارات دعوة مشابهة بأوقات وأيام مختلفة.
+With a classmate: similar invitation dialogues with different times and days.
+
+مع زميلك: ادعُه إلى شيء (مباراة، غداء، زيارة) بيوم ووقت مختلفين، وهو يقبل أو يعتذر.
+With a classmate: invite him to something (a match, lunch, a visit) on a different day and time, and he accepts or says sorry.
+
+استمع وأكمل تحذير برج المراقبة للطيار.
+Listen and complete the control tower's warning to the pilot.
+
+مهمة ثنائية بديلة (إضافة من خارج الكتاب) <span class="ref">ص 79 — التمرين 5</span>
+Pair work, new version (extra, not in the book) <span class="ref">p. 79 — Exercise 5</span>
+
+كل طالب يجيب عن أسئلة زميله من بطاقته، والزميل يملأ نموذج التقرير (التاريخ، الوقت، المكان، الارتفاع، المصاب، وظيفته، الإصابة، نوع الحادثة، الوصف).
+Each student answers their classmate's questions from their card, and the classmate fills in the report form (date, time, place, height, injured person, his job, the injury, the kind of incident, the description).
+
+رادار برج المراقبة
+Control tower radar
+
+مبني على «Clock references» ص 78. حرّك الطائرة الأخرى حول طائرتك (اتجاه الساعة والمسافة)، واقرأ تحذير برج المراقبة. (موقف جديد من عندنا.)
+Based on "Clock references", p. 78. Move the other plane around your plane (clock direction and distance), and read the control tower's warning. (A new situation we made.)
+
+رادار
+Radar
+
+الاتجاه (الساعة)
+Direction (clock)
+
+المسافة (km)
+Distance (km)
+
+أسئلة المحقق
+The investigator's questions
+
+أسئلة الماضي عن حادثة (جديدة من عندنا):
+Past questions about an incident (new, we made them):
+
+مثال 1: سؤال تحقيق
+Example 1: an investigation question
+
+مثال 2: سؤال بـ did
+Example 2: a question with did
+
+الخطوة 1: الفعل <span class="en" lang="en">be</span>، والفاعل مفرد <span class="en" lang="en">the jet</span> → <span class="en" lang="en">was</span>.
+Step 1: the verb is <span class="en" lang="en">be</span>, and the subject is singular <span class="en" lang="en">the jet</span> → <span class="en" lang="en">was</span>.
+
+الخطوة 2: <span class="en" lang="en">How far</span> + <span class="en" lang="en">was</span> + الفاعل.
+Step 2: <span class="en" lang="en">How far</span> + <span class="en" lang="en">was</span> + subject.
+
+الخطوة 1: فعل غير be، فنستعمل <span class="en" lang="en">did</span>.
+Step 1: the verb is not be, so we use <span class="en" lang="en">did</span>.
+
+الخطوة 2: بعد did الفعل الأصلي <span class="en" lang="en">pass</span>.
+Step 2: after did, the base verb <span class="en" lang="en">pass</span>.
+
+السرعة
+Speed
+
+المسافة
+Distance
+
+وصّل الاتجاه بمعناه
+Match the direction with its meaning
+
+خلفك
+=
+
+يسارك
+=
+
+يمينك
+=
+
+أمامك
+=
+
+الاتجاه بالساعة
+Directions with the clock
+
+طائرة تظهر أمامك قليلاً إلى اليمين. أي ساعة؟
+A plane appears a little ahead of you, on the right. Which clock number?
+
+ساعة حول الطائرة وهدف عند الساعة الثانية
+A clock around the plane and a target at two o'clock
+
+أنت في المركز ومقدمتك نحو 12.
+You are in the centre, and your nose points to 12.
+
+at two o'clock: أمامك يميناً
+at two o'clock: ahead on the right
+
+الاتجاه بالساعة. مرّر المؤشر على طائرتك وعلى الهدف.
+Directions with the clock. Point at your plane and at the target.
+
+أسئلة التحقيق بالماضي
+Investigation questions in the past
+
+كيف تسأل متى وقعت الحادثة؟ ولماذا did هنا وليس was؟
+How do you ask when the incident happened? Why did here and not was?
+
+سؤالان بالماضي
+Two questions in the past
+
+مع be: Where were …? / How high was …?
+With be: Where were …? / How high was …?
+
+مع فعل آخر: When did … happen?
+With another verb: When did … happen?
+
+نوعا السؤال. مرّر المؤشر على كل منهما.
+The two kinds of question. Point at each one.
+
+at … o'clock: 12 أمامك و 3 يمينك و 6 خلفك و 9 يسارك.
+at … o'clock: 12 is ahead, 3 is on your right, 6 is behind you and 9 is on your left.
+
+أسئلة الماضي: Where were …? How high was …? When did … happen?
+Past questions: Where were …? How high was …? When did … happen?
+
+أمامك قليلاً إلى اليمين.
+=
+
+أمامك يميناً.
+=
+
+على يمينك.
+=
+
+خلفك يميناً.
+=
+
+خلفك تماماً.
+=
+
+خلفك يساراً.
+=
+
+على يسارك.
+=
+
+أمامك يساراً.
+=
+
+be مفرد ← was
+be, singular → was
+
+did + فعل أصلي
+did + base verb
+
+الفعل الأصلي في آخره
+The base verb at the end
+
+مع بقية الأفعال نسأل بـ did، ويعود الفعل إلى صورته الأصلية (happen لا happened).
+With other verbs we ask with did, and the verb goes back to its base form (happen, not happened).
+
+مراجعة وظائف الأجزاء والتثبيت، والأجوبة القصيرة وجمل If ومخطط السير، وقواعد السلامة والتحذيرات، وتقرير السلامة بالماضي وأسئلة التحقيق، مع إجابات تمارين المراجعة E.
+Review of what parts do and how they are fixed, short answers, If sentences and flow charts, safety rules and warnings, the safety report in the past and investigation questions, with the answers to Review E.
+
+ماذا تراجع؟ <span class="ref">ص 80–83</span>
+What do you review? <span class="ref">pp. 80–83</span>
+
+الوظيفة
+The job
+
+الأجوبة القصيرة
+Short answers
+
+If والمخطط
+If and the chart
+
+القواعد والتحذير
+Rules and warnings
+
+التقرير بالماضي
+The report in the past
+
+أسئلة التحقيق
+Investigation questions
+
+أكمل الجمل عن الدراجة بالصيغة الصحيحة للأفعال.
+Complete the sentences about the bicycle with the right form of the verbs.
+
+الأفعال المتاحة: control, increase, move, propel, push, rotate, steer, support, turn.
+The verbs you can use: control, increase, move, propel, push, rotate, steer, support, turn.
+
+أكمل الجمل عن جزازة العشب بالصيغة الصحيحة للفعل.
+Complete the sentences about the lawnmower with the right form of the verb.
+
+أكمل وصف الحوامة بالصيغة الصحيحة للأفعال.
+Complete the description of the hovercraft with the right form of the verbs.
+
+أكمل وصف الطائرة المسيّرة (درون) بالصيغة الصحيحة للفعل.
+Complete the description of the drone with the right form of the verb.
+
+أكمل الجمل عن مخطط التوصيل بالكلمات والعبارات.
+Complete the sentences about the connection diagram with the words and phrases.
+
+أكمل الجمل عن توصيل نظام الصوت.
+Complete the sentences about connecting the sound system.
+
+تعرّف على الجهاز من الوصف.
+Find the device from the description.
+
+ما الجهاز؟ وصّل كل وصف بالجهاز.
+What is the device? Match each description with the device.
+
+أكمل الجمل عن الصور بعبارات التثبيت.
+Complete the sentences about the pictures with the fixing phrases.
+
+قراءتنا للصور: مفتاح معلّق، طابعة بمقبس، ملزمة على طاولة، فأرة بالكمبيوتر، خطاف بحبل على قضيب، سماعة على قاعدة.
+Our reading of the pictures: a hanging key, a printer with a plug, a vice on a table, a mouse with a computer, a hook with a rope on a bar, a speaker on a stand.
+
+أكمل الجمل بعبارات التثبيت.
+Complete the sentences with the fixing phrases.
+
+ارسم مخطط السير وأكمله من النص.
+Draw the flow chart and complete it from the text.
+
+رتّب مخطط سير جهاز التحكم (الريموت) من النص: Press a button. Does the TV respond? If no, check the batteries. Are they in correctly? If no, put them in correctly. If yes, replace them.
+Put the flow chart for the remote control in order from the text: Press a button. Does the TV respond? If no, check the batteries. Are they in correctly? If no, put them in correctly. If yes, replace them.
+
+اكتب دليل أعطال من المخطط.
+Write a troubleshooting guide from the chart.
+
+اكتب دليل أعطال من مخطط التمرين 6 بجمل If.
+Write a troubleshooting guide from the chart in Exercise 6 with If sentences.
+
+أكمل التحذيرات، كل كلمة مرة واحدة.
+Complete the warnings, each word once.
+
+أكمل التحذيرات، كل كلمة مرة واحدة: must · never · mustn't · might · Always · could
+Complete the warnings, each word once: must · never · mustn't · might · Always · could
+
+أكمل تقرير السلامة بالصيغة الصحيحة للأفعال.
+Complete the safety report with the right form of the verbs.
+
+أكمل تقرير السلامة بالصيغة الصحيحة للأفعال (22 فراغاً قصيراً).
+Complete the safety report with the right form of the verbs (22 short gaps).
+
+اكتب أسئلة لهذه الأجوبة عن الحادثة.
+Write questions for these answers about the incident.
+
+اكتب السؤال لكل جواب عن تقرير التمرين 9.
+Write the question for each answer about the report in Exercise 9.
+
+اكتب قواعد سلامة من التقرير في التمرين 9.
+Write safety rules from the report in Exercise 9.
+
+اكتب قواعد سلامة للكراج من تقرير التمرين 9.
+Write safety rules for the garage from the report in Exercise 9.
+
+مشروع: دليل أعطال في مجالك، أو ملصق سلامة مع قواعده.
+Project: a troubleshooting guide in your field, or a safety poster with its rules.
+
+مشروع: اكتب دليل أعطال قصيراً لجهاز من مجالك (بجمل If)، أو صمّم ملصق سلامة لورشتك مع خمس قواعد.
+Project: write a short troubleshooting guide for a device from your field (with If sentences), or design a safety poster for your workshop with five rules.
+
+تدريب سريع على الوحدتين 9 و 10
+Quick practice for Units 9 and 10
+
+10 أسئلة جديدة من عندنا تغطي قواعد الوحدتين. اكتب الجملة ثم «تحقّق».
+10 new questions we made, covering the rules of the two units. Write the sentence, then press "Check".
+
+1 من 10
+1 of 10
+
+أعد الكتابة: <span class="en" lang="en">The purpose of the pedals is to turn the chain.</span>
+Write it again: <span class="en" lang="en">The purpose of the pedals is to turn the chain.</span>
+
+كوّن السؤال عن <span class="en" lang="en">the pump</span> (ماذا يفعل؟)
+Make the question about <span class="en" lang="en">the pump</span> (what does it do?)
+
+مثال 1: من مخطط إلى دليل (تمرين 7)
+Example 1: from a chart to a guide (Exercise 7)
+
+مثال 2: سؤال لجواب (تمرين 10)
+Example 2: a question for an answer (Exercise 10)
+
+الخطوة 1: الحالة المنفية <span class="en" lang="en">it isn't connected</span>.
+Step 1: the negative situation <span class="en" lang="en">it isn't connected</span>.
+
+الخطوة 2: الأمر <span class="en" lang="en">connect the adapter</span>.
+Step 2: the instruction <span class="en" lang="en">connect the adapter</span>.
+
+الخطوة 1: الجواب بـ <span class="en" lang="en">was</span>، فالسؤال بـ <span class="en" lang="en">was</span>.
+Step 1: the answer is with <span class="en" lang="en">was</span>, so the question is with <span class="en" lang="en">was</span>.
+
+الخطوة 2: <span class="en" lang="en">How high</span> + <span class="en" lang="en">was</span> + <span class="en" lang="en">the cable</span>.
+Step 2: <span class="en" lang="en">How high</span> + <span class="en" lang="en">was</span> + <span class="en" lang="en">the cable</span>.
+
+بطاقات الوحدة: Safety — السلامة. اقرأ الوجه، وتذكّر الجواب، ثم اقلب البطاقة.
+Unit cards: Safety. Read the front, remember the answer, then turn the card over.
+
+خلاصة الوحدة 9: حل الأعطال
+Unit 9 summary: troubleshooting
+
+ما الأدوات اللغوية التي يحتاجها فني الدعم؟
+What language tools does a support technician need?
+
+الوظيفة بالمضارع البسيط، والأجوبة القصيرة بالفعل المساعد، والتعليمات بـ If.
+The function in the present simple, short answers with the helping verb, and instructions with If.
+
+خلاصة الوحدة 10: السلامة
+Unit 10 summary: safety
+
+كيف تكتب قاعدة وتحذيراً وسطراً في تقرير؟
+How do you write a rule, a warning and a line in a report?
+
+القاعدة بـ must/mustn't، والتحذير بـ might/could، والتقرير بالماضي.
+The rule with must/mustn't, the warning with might/could, and the report in the past.
+
+الوظيفة: It drives … / The purpose of … is to ….
+Function: It drives … / The purpose of … is to ….
+
+الأجوبة القصيرة بالفعل المساعد، والتعليمات بـ If + مضارع ثم أمر.
+Short answers with the helping verb, and instructions with If + present, then an instruction.
+
+القواعد: must / mustn't / always / never، والتحذير: might / could.
+Rules: must / mustn't / always / never, and warnings: might / could.
+
+التقرير بالماضي: was / were، والأسئلة: When did …? How high was …?
+The report in the past: was / were, and questions: When did …? How high was …?
+

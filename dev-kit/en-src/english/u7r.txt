@@ -1,0 +1,31 @@
+PAT: ^ماذا\ ستتعلم؟\ <span\ class="ref">ص\ (.+?)</span>$ ||| What will you learn? <span class="ref">pp. $1</span>
+
+PAT: ^جدول\ المفردات\ كاملاً\ <span\ class="ref">ص\ (.+?)</span>$ ||| Full vocabulary table <span class="ref">p. $1</span>
+
+البحيرة طولها 3 km.
+=
+
+البحيرة عرضها 800 m.
+=
+
+البحيرة عمقها 20 m.
+=
+
+علبة دهان واحدة.
+=
+
+زجاجة واحدة.
+=
+
+بعض البراغي.
+=
+
+ثلاث زجاجات.
+=
+
+
+ماذا ستتعلم؟
+What will you learn?
+
+جدول المفردات كاملاً
+Full vocabulary table

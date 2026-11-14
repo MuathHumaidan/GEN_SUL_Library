@@ -1,8 +1,5 @@
 # انجل-101 — الوحدة 1 (الدرس 1.1)
 
-انجل-101
-=
-
 PAT: ^<span class="en" lang="en">(\w+)</span> تبدأ بصوت ساكن فنقول <span class="en" lang="en">a</span>\.$ ||| <span class="en" lang="en">$1</span> starts with a consonant sound, so we say <span class="en" lang="en">a</span>.
 
 PAT: ^<span class="en" lang="en">(\w+)</span> تبدأ بصوت متحرك \(a, e, i, o, u\) فنقول <span class="en" lang="en">an</span>\.$ ||| <span class="en" lang="en">$1</span> starts with a vowel sound (a, e, i, o, u), so we say <span class="en" lang="en">an</span>.

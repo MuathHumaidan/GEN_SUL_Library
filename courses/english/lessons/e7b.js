@@ -78,7 +78,7 @@ const PKD={
 };
 const pkd=(k,x,y,sc)=>`<g transform="translate(${x} ${y}) scale(${sc}) translate(${-PKD[k].c[0]} ${-PKD[k].c[1]})">${PKD[k].g}</g>`;
 /* ===== مختبرات «شرح القاعدة» 7.2: يختار المتدرب فتتكوّن الجملة بقطع ملونة ويتغير الرسم ===== */
-const NOUNS72={screw:{c:true,pl:'screws',ar:['برغي','براغٍ'],ic:'scr'},nail:{c:true,pl:'nails',ar:['مسمار','مسامير'],ic:'nail'},bottle:{c:true,pl:'bottles',ar:['زجاجة','زجاجات'],ic:'bot'},
+const NOUNS72={screw:{c:true,pl:'screws',ar:['برغي','براغٍ','البراغي'],ic:'scr'},nail:{c:true,pl:'nails',ar:['مسمار','مسامير','المسامير'],ic:'nail'},bottle:{c:true,pl:'bottles',ar:['زجاجة','زجاجات','الزجاجات'],f:1,ic:'bot'},
  cement:{c:false,ar:'أسمنت',ic:'cem',box:'bags'},sand:{c:false,ar:'رمل',ic:'sand',box:'bags'},oil:{c:false,ar:'زيت',ic:'oil',box:'litres'},paint:{c:false,ar:'دهان',ic:'pnt',box:'tins'}};
 const ico72=(k,x,y)=>({scr:`<g transform="translate(${x} ${y})"><rect x="-9" y="-30" width="18" height="7" rx="2" fill="${C.ink}"/><path d="M-3 -23 V12 L0 18 L3 12 V-23" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.5"/><path d="M-5 -14 L5 -11 M-5 -6 L5 -3 M-5 2 L5 5" stroke="${C.ink}" stroke-width="1.2"/></g>`,
  nail:`<g transform="translate(${x} ${y})"><rect x="-8" y="-30" width="16" height="5" rx="2" fill="${C.ink}"/><path d="M-2 -25 V14 L0 20 L2 14 V-25" fill="#9aa3a0" stroke="${C.ink}" stroke-width="1.3"/></g>`,
@@ -92,15 +92,15 @@ const scene72=(k,n)=>{const ic=NOUNS72[k].ic;let g='';if(!NOUNS72[k].c){g=ico72(
 const LAB72A={title:'معدود أم غير معدود؟',w:(el,B)=>N.labB(el,B,{intro:'اختر اسماً ثم اختر الصيغة، وشاهد كيف تتكوّن الكلمة. الأخضر هو الاسم، والأصفر هو ما يأتي قبله.',
  controls:[{k:'n',label:'الاسم',opts:Object.keys(NOUNS72).map(k=>[k,k])},{k:'f',label:'الصيغة',opts:[['one','واحد'],['many','أكثر من واحد'],['num','مع رقم (3)'],['q','السؤال عن الكمية']]}],
  out:({n,f})=>{const x=NOUNS72[n];
-  if(x.c){if(f==='one')return{svg:scene72(n,1),pieces:[['a','k','واحد'],[n,'n','اسم معدود مفرد']],say:'a '+n,ar:`${x.ar[0]} واحد.`,why:'الاسم المعدود المفرد يسبقه a (أو an إذا بدأ بصوت متحرك).'};
-   if(f==='many')return{svg:scene72(n,7),pieces:[['some','k','بعض'],[x.pl,'n','اسم معدود جمع']],say:'some '+x.pl,ar:`بعض ال${x.ar[1]}.`,why:`المعدود له جمع: ${n} ← ${x.pl}، ويمكن أن يسبقه some عندما لا نذكر العدد.`};
-   if(f==='num')return{svg:scene72(n,3),pieces:[['three','k','رقم'],[x.pl,'n','اسم معدود جمع']],say:'three '+x.pl,ar:`ثلاثة ${x.ar[1]}.`,why:'المعدود يأتي قبله رقم مباشرة، والاسم بعده بالجمع.'};
+  if(x.c){if(f==='one')return{svg:scene72(n,1),pieces:[['a','k','واحد'],[n,'n','اسم معدود مفرد']],say:'a '+n,ar:`${x.ar[0]} ${x.f?'واحدة':'واحد'}.`,why:'الاسم المعدود المفرد يسبقه a (أو an إذا بدأ بصوت متحرك).'};
+   if(f==='many')return{svg:scene72(n,7),pieces:[['some','k','بعض'],[x.pl,'n','اسم معدود جمع']],say:'some '+x.pl,ar:`بعض ${x.ar[2]}.`,why:`المعدود له جمع: ${n} ← ${x.pl}، ويمكن أن يسبقه some عندما لا نذكر العدد.`};
+   if(f==='num')return{svg:scene72(n,3),pieces:[['three','k','رقم'],[x.pl,'n','اسم معدود جمع']],say:'three '+x.pl,ar:`${x.f?'ثلاث':'ثلاثة'} ${x.ar[1]}.`,why:'المعدود يأتي قبله رقم مباشرة، والاسم بعده بالجمع.'};
    return{svg:scene72(n,7),pieces:[['How many','q','كم عدد'],[x.pl,'n','جمع'],['do you need?','x','']],say:'How many '+x.pl+' do you need?',ar:`كم ${x.ar[0]} تحتاج؟`,why:'نسأل عن عدد المعدود بـ How many، والاسم بعدها بالجمع.'}}
   if(f==='one')return{svg:scene72(n),bad:`✘ لا نقول a ${n}: الاسم غير المعدود لا يسبقه a.`,pieces:[['some','k','شيء من'],[n,'n','اسم غير معدود']],say:'some '+n,ar:`شيء من ال${x.ar}.`,why:`نقول ${n} وحدها أو some ${n}.`};
   if(f==='many')return{svg:scene72(n),pieces:[['some','k','شيء من'],[n,'n','بلا s']],say:'some '+n,ar:`شيء من ال${x.ar}.`,why:`غير المعدود لا يُجمع: نقول some ${n} لا some ${n}s.`};
   if(f==='num')return{svg:scene72(n),bad:`✘ لا نقول three ${n}s: الاسم غير المعدود لا يأتي معه رقم.`,pieces:[['three','k','رقم'],[x.box,'q','العبوة تُجمع'],['of','x',''],[n,'n','المادة لا تُجمع']],say:`three ${x.box} of ${n}`,why:'الصحيح أن نعدّ العبوة: رقم + العبوة + of + المادة. وهذا ما يشرحه الجزء الثاني.'};
   return{svg:scene72(n),pieces:[['How much','q','كم كمية'],[n,'n','مفرد'],['do you need?','x','']],say:`How much ${n} do you need?`,ar:`كم تحتاج من ال${x.ar}؟`,why:'نسأل عن كمية غير المعدود بـ How much، والاسم بعدها مفرد.'}}})};
-const BOX72={paint:['tin','tins','علبة','علب','دهان'],glue:['tube','tubes','أنبوب','أنابيب','غراء'],cement:['bag','bags','كيس','أكياس','أسمنت'],nails:['packet','packets','كيس','أكياس','مسامير']};
+const BOX72={paint:['tin','tins','علبة','علب','دهان',1],glue:['tube','tubes','أنبوب','أنابيب','غراء'],cement:['bag','bags','كيس','أكياس','أسمنت'],nails:['packet','packets','كيس','أكياس','مسامير']};
 const NUM72={1:'one',2:'two',5:'five',20:'twenty'};
 const pkg72=(m,n)=>{const d=n>5?5:n,w=78,x0=280-(d-1)*w/2;let g='';
  for(let i=0;i<d;i++)g+=pkd(m,x0+i*w,58,.6);
@@ -109,7 +109,7 @@ const LAB72B={title:'ركّب الطلب بالعبوة',w:(el,B)=>N.labB(el,B,{
  controls:[{k:'m',label:'المادة',opts:Object.keys(BOX72).map(k=>[k,k])},{k:'n',label:'العدد',opts:[['1','1'],['2','2'],['5','5'],['20','20']]}],
  out:({m,n})=>{n=+n;const b=BOX72[m],one=n===1;
   return{svg:pkg72(m,n),pieces:[[one?'a':NUM72[n],'k',one?'واحد':'العدد'],[one?b[0]:b[1],'q',one?'العبوة':'العبوة بالجمع'],['of','x',''],[m,'n',m==='nails'?'المحتوى':'المادة كما هي']],say:`${one?'a':NUM72[n]} ${one?b[0]:b[1]} of ${m}`,
-   ar:one?`${b[2]} ${b[4]} واحد.`:`${n} من ${b[3]} ال${b[4]}.`,why:one?`مع العبوة الواحدة نقول a ${b[0]} of ${m}.`:`العبوة صارت ${b[1]} بالجمع، أما ${m} فلم تتغير.`}}})};
+   ar:one?`${b[2]} ${b[4]} ${b[5]?'واحدة':'واحد'}.`:`${n} من ${b[3]} ال${b[4]}.`,why:one?`مع العبوة الواحدة نقول a ${b[0]} of ${m}.`:`العبوة صارت ${b[1]} بالجمع، أما ${m} فلم تتغير.`}}})};
 const LAB72C={title:'some أم any أم a؟',w:(el,B)=>N.labB(el,B,{intro:'اختر نوع الجملة ونوع الاسم، وشاهد الكلمة التي تناسبهما.',
  controls:[{k:'t',label:'نوع الجملة',opts:[['pos','مثبتة'],['neg','منفية'],['req','سؤال عرض أو طلب'],['q','سؤال عام']]},{k:'n',label:'الاسم',opts:[['nails','nails (جمع معدود)'],['cement','cement (غير معدود)'],['hammer','hammer (مفرد معدود)']]}],
  out:({t,n})=>{const one=n==='hammer',w=one?'a':(t==='pos'||t==='req'?'some':'any');

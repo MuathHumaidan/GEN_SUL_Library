@@ -1,0 +1,1112 @@
+حجز غرفة فندق ورحلة طيران بالهاتف: أسئلة موظف الحجز (When would you like to stay? Would you like a single or a double room? May I have your name? How do you want to pay?)، و want to / would like to، والتاريخ (May the 13th)، وتأكيد الحجز (Can I confirm your booking?) ورقم المرجع.
+Booking a hotel room and a flight by phone: the booking clerk's questions (When would you like to stay? Would you like a single or a double room? May I have your name? How do you want to pay?), want to / would like to, dates (May the 13th), confirming the booking (Can I confirm your booking?) and the reference number.
+
+تحجز غرفة أو رحلة، أو تأخذ حجزاً. ستتعلم:
+You book a room or a flight, or you take a booking. You will learn:
+
+أسئلة موظف الحجز.
+The booking clerk's questions.
+
+قول التاريخ وتأكيد الحجز.
+Saying the date and confirming the booking.
+
+شرح القاعدة: أسئلة الحجز، و want to / would like to، والتاريخ في الكلام <span class="ref">ص 34–35</span>
+The rules: booking questions, want to / would like to, and saying dates <span class="ref">pp. 34–35</span>
+
+في هذا الدرس تحجز فندقاً ورحلة بالهاتف. نشرح أسئلة موظف الحجز، ثم الفرق بين <span class="en" lang="en">want to</span> و <span class="en" lang="en">would like to</span>، ثم كيف نقول التاريخ.
+In this lesson you book a hotel and a flight by phone. We explain the booking clerk's questions, then the difference between <span class="en" lang="en">want to</span> and <span class="en" lang="en">would like to</span>, then how to say the date.
+
+1. أسئلة موظف الحجز <span class="ref">ص 34</span>
+1. The booking clerk's questions <span class="ref">p. 34</span>
+
+موظف الحجز يسأل أسئلة ثابتة ليكمل الحجز: التاريخ، ونوع الغرفة، والاسم، والهاتف، وطريقة الدفع.
+The booking clerk asks fixed questions to complete the booking: the date, the kind of room, the name, the phone number and how you pay.
+
+PAT: ^<span\ class="en"\ lang="en">(.+?)</span>\ و\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| <span class="en" lang="en">$1</span> and <span class="en" lang="en">$2</span>
+
+<span class="en" lang="en">How do you want to pay? — By credit card.</span> و <span class="en" lang="en">Can I confirm your booking?</span>
+<span class="en" lang="en">How do you want to pay? — By credit card.</span> and <span class="en" lang="en">Can I confirm your booking?</span>
+
+<span class="en" lang="en">single</span> تذكرة ذهاب فقط أو غرفة لشخص، و <span class="en" lang="en">return</span> تذكرة ذهاب وعودة، و <span class="en" lang="en">double</span> غرفة لشخصين.
+<span class="en" lang="en">single</span>: a one-way ticket or a room for one person. <span class="en" lang="en">return</span>: a ticket there and back. <span class="en" lang="en">double</span>: a room for two people.
+
+مختبر مصغّر: أسئلة موظف الحجز
+Mini lab: the booking clerk's questions
+
+اختر ما يريد الموظف أن يعرفه، وشاهد سؤاله وجواباً مناسباً.
+Choose what the clerk wants to know. See the question and a good answer.
+
+يسأل عن
+Asks about
+
+التاريخ
+Date
+
+نوع الغرفة
+Kind of room
+
+الدفع
+Payment
+
+التأكيد
+Confirming
+
+الموظف
+Clerk
+
+أسئلة الموظف مهذبة غالباً: <span class="en" lang="en">Would you like …? · May I have …? · Can I …?</span>
+The clerk's questions are usually polite: <span class="en" lang="en">Would you like …? · May I have …? · Can I …?</span>
+
+مختبر مصغّر: الأسئلة
+Mini lab: the questions
+
+2. want to و would like to <span class="ref">ص 34</span>
+2. want to and would like to <span class="ref">p. 34</span>
+
+كلاهما للرغبة، لكن <span class="en" lang="en">would like to</span> أكثر تهذيباً، فنستعملها مع من لا نعرفه، و <span class="en" lang="en">want to</span> أكثر مباشرة.
+Both are for wishes, but <span class="en" lang="en">would like to</span> is more polite, so we use it with people we don't know. <span class="en" lang="en">want to</span> is more direct.
+
+<b>مهذب:</b> <span class="en" lang="en">I'd like to book a flight.</span> و <span class="en" lang="en">Would you like a single room?</span>
+<b>Polite:</b> <span class="en" lang="en">I'd like to book a flight.</span> and <span class="en" lang="en">Would you like a single room?</span>
+
+مهذب:
+Polite:
+
+<b>مباشر:</b> <span class="en" lang="en">I want to fly on May the 13th.</span> و <span class="en" lang="en">When do you want to fly?</span>
+<b>Direct:</b> <span class="en" lang="en">I want to fly on May the 13th.</span> and <span class="en" lang="en">When do you want to fly?</span>
+
+مباشر:
+Direct:
+
+بعدهما الفعل كما هو.
+After them, the verb doesn't change.
+
+مهذبة أكثر
+More polite
+
+مباشرة
+Direct
+
+سؤال مهذب
+Polite question
+
+سؤال مباشر
+Direct question
+
+لا ننسى to.
+Don't forget to.
+
+PAT: ^مختبر\ مصغّر:\ (.+?)\ أم\ (.+?)؟$ ||| Mini lab: $1 or $2?
+
+اختر ما تريد، والأسلوب، ونوع الجملة.
+Choose what you want, the style and the sentence type.
+
+أريد أن
+I want to
+
+مهذب
+Polite
+
+مباشر
+Direct
+
+خبرية
+Statement
+
+مهذب أكثر
+More polite
+
+بعد <span class="en" lang="en">want to</span> و <span class="en" lang="en">would like to</span> الفعل كما هو.
+After <span class="en" lang="en">want to</span> and <span class="en" lang="en">would like to</span>, the verb doesn't change.
+
+مختبر مصغّر: الرغبة
+Mini lab: wishes
+
+3. التاريخ في الكلام <span class="ref">ص 35</span>
+3. Saying dates <span class="ref">p. 35</span>
+
+عند الحجز تقول التاريخ بصوتك، وله طريقتان.
+When you book, you say the date out loud. There are two ways.
+
+<span class="en" lang="en">On May the 13th.</span> أو <span class="en" lang="en">On the 13th of May.</span>
+<span class="en" lang="en">On May the 13th.</span> or <span class="en" lang="en">On the 13th of May.</span>
+
+نقرأ اليوم بالعدد الترتيبي مع <span class="en" lang="en">the</span>: <span class="en" lang="en">13th = thirteenth · 22nd = twenty-second</span>
+We read the day as an ordinal number with <span class="en" lang="en">the</span>: <span class="en" lang="en">13th = thirteenth · 22nd = twenty-second</span>
+
+للمدة: <span class="en" lang="en">From Thursday the 20th until the 22nd.</span>
+For a period: <span class="en" lang="en">From Thursday the 20th until the 22nd.</span>
+
+في الكلام نقول العدد الترتيبي.
+When we speak, we say the ordinal number.
+
+مختبر مصغّر: التاريخ في الكلام
+Mini lab: saying dates
+
+اختر اليوم والشهر والطريقة، وشاهد كيف نقول التاريخ.
+Choose the day, the month and the way. See how we say the date.
+
+الشهر
+Month
+
+الطريقة
+Way
+
+نقرأ اليوم بالعدد الترتيبي مع <span class="en" lang="en">the</span>، ومع التاريخ <span class="en" lang="en">on</span>. وللمدة: <span class="en" lang="en">from … until …</span>
+We read the day as an ordinal number with <span class="en" lang="en">the</span>, and with a date we use <span class="en" lang="en">on</span>. For a period: <span class="en" lang="en">from … until …</span>
+
+اكتب مع زميلك كل الأسئلة التي قد يسألها موظف الاستقبال.
+With a classmate, write all the questions a receptionist can ask.
+
+May I have your name, please? (مثال) · Can I have your telephone number? · How many nights? · When would you like to stay? · Single or double? (نماذج)
+May I have your name, please? (example) · Can I have your telephone number? · How many nights? · When would you like to stay? · Single or double? (models)
+
+وصّل الحقل في نموذج الحجز بسؤاله.
+Match the field on the booking form with its question.
+
+رتّب الكلمات لتكوّن أسئلة الموظف، ثم استمع.
+Put the words in order to make the clerk's questions, then listen.
+
+رتّب أسئلة الموظف كما تأتي عادة في المكالمة.
+Put the clerk's questions in the order they usually come in the call.
+
+استمع وأكمل نموذج الحجز ثم الحوار.
+Listen and complete the booking form, then the dialogue.
+
+استمع إلى حجز رحلة (من إعدادنا) وأكمل النموذج.
+Listen to a flight booking (our own) and complete the form.
+
+نشاط ثنائي: خذ حجز فندق، واحجز تذكرة طيران.
+Pair work: take a hotel booking, and book a flight ticket.
+
+نشاط ثنائي: احجز غرفة فندق بالهاتف، ثم بدّلا: احجز تذكرة طيران.
+Pair work: book a hotel room by phone, then change: book a flight ticket.
+
+حجز غرفة فندق.
+Booking a hotel room.
+
+حجز تذكرة طيران.
+Booking a flight ticket.
+
+شاشة الحجز
+Booking screen
+
+فندق من إعدادنا (<b>قيم توضيحية</b>: single SAR 450، double SAR 600 لليلة)، مبني على التمرين 1 ص 34.
+A hotel we made (<b>example values</b>: single SAR 450, double SAR 600 a night), based on Exercise 1, p. 34.
+
+من يوم
+From day
+
+إلى يوم
+To day
+
+من يوم 20 إلى 22: كم ليلة؟
+From the 20th to the 22nd: how many nights?
+
+غيّر الغرفة إلى double: ماذا تغيّر؟
+Change the room to double. What changed?
+
+مثال 1: سؤال الموظف
+Example 1: the clerk's question
+
+PAT: ^رتّب:\ (.+?)$ ||| Put in order: $1
+
+مثال 2: عدد الليالي
+Example 2: the number of nights
+
+من 20 يونيو إلى 22 يونيو. كم ليلة؟
+From 20 June to 22 June. How many nights?
+
+مثال 3: حجز رحلة
+Example 3: booking a flight
+
+تريد رحلة ذهاب فقط من الرياض إلى القاهرة.
+You want a one-way flight from Riyadh to Cairo.
+
+الخطوة 1: كلمة السؤال أولاً: <span class="en" lang="en">When</span>.
+Step 1: the question word first: <span class="en" lang="en">When</span>.
+
+الخطوة 2: <span class="en" lang="en">would you like to</span> ثم الفعل.
+Step 2: <span class="en" lang="en">would you like to</span>, then the verb.
+
+الخطوة 1: 22 − 20 = 2.
+Step 1: 22 − 20 = 2.
+
+ذهاب فقط
+One way
+
+ذهاب وعودة
+There and back
+
+لشخصين
+For two people
+
+درجة أولى
+First class
+
+وصّل الحقل بسؤاله
+Match the field with its question
+
+<i>1</i>أسئلة الحجز
+<i>1</i>Booking questions
+
+أسئلة موظف الحجز
+The booking clerk's questions
+
+نموذج الحجز
+Booking form
+
+نموذج حجز. مرّر المؤشر على كل حقل لترى سؤاله.
+A booking form. Point at each field to see its question.
+
+want to و would like to
+want to and would like to
+
+أيهما أكثر تهذيباً: I want to أم I'd like to؟
+Which is more polite: I want to or I'd like to?
+
+PAT: ^(.+?)\ \+\ الفعل$ ||| $1 + verb
+
+الرغبة والتاريخ. مرّر المؤشر على كل سطر.
+Wishes and dates. Point at each line.
+
+التاريخ في الكلام
+Saying dates
+
+كيف تقول 13/5 في الكلام؟
+How do you say 13/5 when you speak?
+
+السؤال المهذب يبدأ بـ <span class="en" lang="en">Would</span>، والمباشر بـ <span class="en" lang="en">Do</span>.
+A polite question starts with <span class="en" lang="en">Would</span>, and a direct one with <span class="en" lang="en">Do</span>.
+
+صيغة التفضيل (the cheapest، the biggest، the most comfortable، the best) مع المقارنة، واختيار سيارة إيجار، وكتابة التاريخ وقراءته بالطريقتين البريطانية والأمريكية، واستئجار سيارة بالهاتف، وتعبئة نموذج حجز، وتبرير الاختيار (because it was cheaper / the most helpful).
+The superlative (the cheapest, the biggest, the most comfortable, the best) with the comparative, choosing a rental car, writing and reading dates in the British and American ways, renting a car by phone, filling in a booking form, and giving a reason for a choice (because it was cheaper / the most helpful).
+
+تختار الخدمة الأنسب وتشرح السبب. ستتعلم:
+You choose the best service and explain why. You will learn:
+
+صيغة التفضيل.
+The superlative.
+
+كتابة التاريخ وقراءته.
+Writing and reading dates.
+
+استئجار سيارة بالهاتف.
+Renting a car by phone.
+
+شرح القاعدة: المقارنة والتفضيل، وكتابة التاريخ وقراءته <span class="ref">ص 36–37</span>
+The rules: comparatives and superlatives, and writing and reading dates <span class="ref">pp. 36–37</span>
+
+في هذا الدرس تختار سيارة للاستئجار من بين عدة سيارات. نشرح التفضيل بعد أن عرفنا المقارنة، ثم كيف نقرأ التاريخ المكتوب بالأرقام.
+In this lesson you choose a rental car from several cars. We explain the superlative, now that we know the comparative, then how to read a date written in numbers.
+
+1. المقارنة والتفضيل <span class="ref">ص 36</span>
+1. Comparatives and superlatives <span class="ref">p. 36</span>
+
+عرفنا المقارنة بين شيئين. وإذا كانت الخيارات ثلاثة أو أكثر واخترنا الأعلى منها نستعمل التفضيل.
+We know how to compare two things. If there are three choices or more and we choose the top one, we use the superlative.
+
+<b>المقارنة (من اثنين):</b> <span class="en" lang="en">er</span> أو <span class="en" lang="en">more</span>، ثم <span class="en" lang="en">than</span>: <span class="en" lang="en">The Picanto is cheaper than the Camry.</span>
+<b>Comparative (of two):</b> <span class="en" lang="en">er</span> or <span class="en" lang="en">more</span>, then <span class="en" lang="en">than</span>: <span class="en" lang="en">The Picanto is cheaper than the Camry.</span>
+
+المقارنة (من اثنين):
+Comparative (of two):
+
+التفضيل (من ثلاثة فأكثر):
+Superlative (of three or more):
+
+الطويلة:
+Long adjectives:
+
+الشاذة:
+Irregular:
+
+مع التفضيل نضع <span class="en" lang="en">the</span> دائماً.
+With the superlative we always put <span class="en" lang="en">the</span>.
+
+المقارنة (من اثنين)
+Comparative (of two)
+
+التفضيل (من ثلاثة فأكثر)
+Superlative (of three or more)
+
+مع التفضيل نضع the.
+With the superlative, put the.
+
+لا نجمع most مع est.
+Don't use most with est.
+
+مختبر مصغّر: المقارنة أم التفضيل؟
+Mini lab: comparative or superlative?
+
+اختر الصفة، ثم: نقارن بين سيارتين، أم نختار الأفضل من الثلاث؟ الجملة تُبنى من الرسم.
+Choose the adjective, then: do we compare two cars, or choose the top one of the three? The sentence comes from the chart.
+
+نوع الجملة
+Sentence type
+
+مقارنة (من اثنين)
+Comparative (of two)
+
+تفضيل (من ثلاثة)
+Superlative (of three)
+
+مقارنة
+Comparative
+
+المقارنة بين شيئين: <span class="en" lang="en">er</span> أو <span class="en" lang="en">more</span>، ثم <span class="en" lang="en">than</span>.
+Comparing two things: <span class="en" lang="en">er</span> or <span class="en" lang="en">more</span>, then <span class="en" lang="en">than</span>.
+
+مختبر مصغّر: التفضيل
+Mini lab: the superlative
+
+2. كتابة التاريخ وقراءته <span class="ref">ص 36</span>
+2. Writing and reading dates <span class="ref">p. 36</span>
+
+التاريخ المكتوب بالأرقام يُقرأ بطريقتين حسب البلد، وقد يعني تاريخين مختلفين.
+A date written in numbers can be read in two ways, by country, and it can mean two different dates.
+
+<b>بريطانيا:</b> يوم/شهر: <span class="en" lang="en">8/3/05 = the eighth of March, two thousand and five</span>
+<b>UK:</b> day/month: <span class="en" lang="en">8/3/05 = the eighth of March, two thousand and five</span>
+
+بريطانيا:
+UK:
+
+<b>أمريكا:</b> شهر/يوم: <span class="en" lang="en">8/3/05 = August the third, two thousand and five</span>
+<b>USA:</b> month/day: <span class="en" lang="en">8/3/05 = August the third, two thousand and five</span>
+
+أمريكا:
+USA:
+
+إذا كان الرقم الأول أكبر من 12 فالتاريخ بريطاني حتماً: <span class="en" lang="en">23/09/07</span>
+If the first number is bigger than 12, the date must be British: <span class="en" lang="en">23/09/07</span>
+
+نكتب
+We write
+
+النظام
+System
+
+يوم/شهر
+Day/month
+
+شهر/يوم
+Month/day
+
+مختبر مصغّر: اقرأ التاريخ: بريطاني أم أمريكي؟
+Mini lab: read the date: British or American?
+
+اختر التاريخ المكتوب، ثم النظام. الرقم نفسه قد يعني تاريخين مختلفين!
+Choose the written date, then the system. The same numbers can mean two different dates!
+
+المكتوب
+Written
+
+بريطاني (يوم/شهر)
+British (day/month)
+
+أمريكي (شهر/يوم)
+American (month/day)
+
+اليوم أولاً
+Day first
+
+السنة
+Year
+
+في بريطانيا اليوم أولاً ثم الشهر.
+In the UK the day comes first, then the month.
+
+مختبر مصغّر: التاريخ
+Mini lab: the date
+
+كيف تقرأ؟
+How do you read it?
+
+أكمل الجمل عن سيارات الإيجار، ثم اختر الأنسب.
+Complete the sentences about the rental cars, then choose the best one.
+
+سيارات المختبر: أكمل.
+The cars in the lab: complete.
+
+كيف تقول هذه التواريخ؟
+How do you say these dates?
+
+وصّل التاريخ بقراءته.
+Match the date with how we read it.
+
+استمع وأجب، ثم أكمل أسئلة الموظف.
+Listen and answer, then complete the clerk's questions.
+
+استمع إلى حجز سيارة (من إعدادنا) وأجب.
+Listen to a car booking (our own) and answer.
+
+مثّل: زبون يحجز فندقاً وتذكرة وسيارة عند وكلاء مختلفين.
+Act it out: a customer books a hotel, a ticket and a car with different agents.
+
+مثّل: زبون يحجز فندقاً وتذكرة وسيارة، ووكيل يملأ نموذج الحجز.
+Act it out: a customer books a hotel, a ticket and a car, and an agent fills in the booking form.
+
+أخبر الصف أي وكيل اخترت ولماذا.
+Tell the class which agent you chose and why.
+
+برّر اختيارك. المثال: I chose … because it was cheaper than the others.
+Give a reason for your choice. Example: I chose … because it was cheaper than the others.
+
+حجز سيارة إيجار في المطار.
+Booking a rental car at the airport.
+
+اختر سيارة
+Choose a car
+
+ثلاث سيارات للإيجار (<b>قيم توضيحية</b>)، مبني على التمرين 1 ص 36. اختر الصفة.
+Three rental cars (<b>example values</b>), based on Exercise 1, p. 36. Choose the adjective.
+
+قل التاريخ
+Say the date
+
+البريطاني: اليوم ثم الشهر
+British: the day, then the month
+
+اكتب 8/3/05 بالطريقتين البريطانية والأمريكية.
+Write 8/3/05 in the British and American ways.
+
+أي سيارة تختار لرحلة عائلية؟ ولماذا؟
+Which car do you choose for a family trip? Why?
+
+الأمريكي: الشهر ثم اليوم
+American: the month, then the day
+
+مثال 1: التفضيل
+Example 1: the superlative
+
+الكامري هي الأكثر راحة بين السيارات الثلاث. اكتب الجملة.
+The Camry is the most comfortable of the three cars. Write the sentence.
+
+مثال 2: التاريخ
+Example 2: the date
+
+اقرأ 21/02/26 بالطريقة البريطانية.
+Read 21/02/26 in the British way.
+
+مثال 3: تبرير الاختيار
+Example 3: giving a reason for a choice
+
+اخترت شركة لأنها أرخص وموظفها الأكثر مساعدة.
+You chose a company because it was cheaper and its staff were the most helpful.
+
+الخطوة 1: <span class="en" lang="en">comfortable</span> طويلة: <span class="en" lang="en">the most comfortable</span>.
+Step 1: <span class="en" lang="en">comfortable</span> is long: <span class="en" lang="en">the most comfortable</span>.
+
+الخطوة 1: اليوم 21 = <span class="en" lang="en">twenty-first</span>.
+Step 1: the day 21 = <span class="en" lang="en">twenty-first</span>.
+
+الخطوة 2: الشهر 02 = <span class="en" lang="en">February</span>.
+Step 2: the month 02 = <span class="en" lang="en">February</span>.
+
+وصّل الصفة بالتفضيل
+Match the adjective with its superlative
+
+المقارنة والتفضيل
+Comparatives and superlatives
+
+أسعار السيارات
+Car prices
+
+أسعار يومية توضيحية. مرّر المؤشر على كل عمود.
+Example daily prices. Point at each column.
+
+كتابة التاريخ وقراءته
+Writing and reading dates
+
+هل 8/3/05 في مارس أم أغسطس؟
+Is 8/3/05 in March or August?
+
+التاريخ نفسه بنظامين. مرّر المؤشر على كل منهما.
+The same date in two systems. Point at each one.
+
+cheaper than (اثنان) ≠ the cheapest (الكل).
+cheaper than (two) ≠ the cheapest (all).
+
+تفضيل: the + est / most
+Superlative: the + est / most
+
+التفضيل من ثلاثة فأكثر: <span class="en" lang="en">the</span> + <span class="en" lang="en">est</span> أو <span class="en" lang="en">the most</span>. ومع التفضيل نضع <span class="en" lang="en">the</span> دائماً.
+The superlative is for three or more: <span class="en" lang="en">the</span> + <span class="en" lang="en">est</span> or <span class="en" lang="en">the most</span>. With the superlative we always put <span class="en" lang="en">the</span>.
+
+في النظام الأمريكي الرقم الأول شهر، ولا يوجد شهر رقمه 23. هذا التاريخ بريطاني.
+In the American system the first number is the month, and there is no month 23. This date is British.
+
+الشهر أولاً
+Month first
+
+في أمريكا الشهر أولاً ثم اليوم.
+In the USA the month comes first, then the day.
+
+السؤال عن الطريق (How do I get to …?)، وإعطاء الاتجاهات بفعل الأمر (turn left، take the second right، go straight on، get off at، change at)، ووسائل النقل (by train، on foot)، وخطوط المترو (northbound، platform)، والأماكن (opposite، on the left)، والتحقق بتكرار التعليمات (So, I need …).
+Asking the way (How do I get to …?), giving directions with the verb first (turn left, take the second right, go straight on, get off at, change at), transport (by train, on foot), metro lines (northbound, platform), places (opposite, on the left), and checking by repeating the directions (So, I need …).
+
+تصف الطريق إلى مكتبك، وتفهم وصف طريق. ستتعلم:
+You describe the way to your office, and you understand directions. You will learn:
+
+أفعال الاتجاهات.
+Verbs for directions.
+
+المترو والمحطات.
+The metro and stations.
+
+التحقق بتكرار التعليمات.
+Checking by repeating the directions.
+
+شرح القاعدة: السؤال عن الطريق والاتجاهات، والمترو والقطار <span class="ref">ص 38–39</span>
+The rules: asking the way and directions, and the metro and train <span class="ref">pp. 38–39</span>
+
+في هذا الدرس تسأل عن الطريق إلى مكان في المدينة، وتصف الطريق لزائر. نشرح عبارات الاتجاه، ثم عبارات المترو والقطار ووسائل النقل.
+In this lesson you ask the way to a place in the city, and describe the way for a visitor. We explain direction phrases, then phrases for the metro, the train and transport.
+
+1. السؤال والاتجاهات <span class="ref">ص 38</span>
+1. Asking the way and directions <span class="ref">p. 38</span>
+
+وصف الطريق سلسلة تعليمات قصيرة تبدأ بالفعل، ثم معلم يراه الزائر.
+Directions are a list of short instructions that start with the verb, then a landmark the visitor can see.
+
+<b>التعليمات:</b> <span class="en" lang="en">Turn left / right.</span> و <span class="en" lang="en">Take the second right.</span> و <span class="en" lang="en">Go straight on for ten minutes.</span>
+<b>Instructions:</b> <span class="en" lang="en">Turn left / right.</span>, <span class="en" lang="en">Take the second right.</span> and <span class="en" lang="en">Go straight on for ten minutes.</span>
+
+التعليمات:
+Instructions:
+
+<b>المعلم:</b> <span class="en" lang="en">You'll see our office on the left.</span> و <span class="en" lang="en">It's opposite the bank.</span>
+<b>Landmark:</b> <span class="en" lang="en">You'll see our office on the left.</span> and <span class="en" lang="en">It's opposite the bank.</span>
+
+المعلم:
+Landmark:
+
+<b>المسافة:</b> <span class="en" lang="en">It's a twenty-minute walk.</span> (<span class="en" lang="en">minute</span> بلا <span class="en" lang="en">s</span> لأنها صفة هنا)
+<b>Distance:</b> <span class="en" lang="en">It's a twenty-minute walk.</span> (<span class="en" lang="en">minute</span> has no <span class="en" lang="en">s</span> because it describes the walk)
+
+المسافة:
+Distance:
+
+قبل الاسم بلا s.
+Before a noun, no s.
+
+مختبر مصغّر: تعليمات الاتجاه
+Mini lab: direction instructions
+
+اختر التعليمة، وشاهد الرسم والجملة.
+Choose the instruction. See the drawing and the sentence.
+
+التعليمة
+Instruction
+
+انعطف يساراً
+Turn left
+
+انعطف يميناً
+Turn right
+
+امشِ مباشرة
+Go straight on
+
+خذ الشارع الثاني يميناً
+Take the second right
+
+مقابل البنك
+Opposite the bank
+
+سترى المكتب على اليسار
+You'll see the office on the left
+
+التعليمة تبدأ بالفعل: <span class="en" lang="en">Turn · Take · Go</span>. و <span class="en" lang="en">opposite</span> = مقابل، و <span class="en" lang="en">on the left</span> = على اليسار.
+The instruction starts with the verb: <span class="en" lang="en">Turn · Take · Go</span>. <span class="en" lang="en">opposite</span> = across from, and <span class="en" lang="en">on the left</span> = on the left side.
+
+مختبر مصغّر: الاتجاهات
+Mini lab: directions
+
+2. المترو والقطار ووسائل النقل <span class="ref">ص 38–39</span>
+2. The metro, the train and transport <span class="ref">pp. 38–39</span>
+
+في المترو تحتاج أن تعرف الخط واتجاهه، وأين تغيّر، وأين تنزل.
+On the metro you need to know the line and its direction, where to change, and where to get off.
+
+<span class="en" lang="en">Take the Red line northbound.</span> خذ الخط الأحمر باتجاه الشمال.
+<span class="en" lang="en">Take the Red line northbound.</span>
+
+<b>وسيلة النقل:</b> <span class="en" lang="en">by train / by bus / by car</span> بلا <span class="en" lang="en">the</span>، لكن <span class="en" lang="en">on foot</span> سيراً على الأقدام.
+<b>Transport:</b> <span class="en" lang="en">by train / by bus / by car</span> with no <span class="en" lang="en">the</span>, but <span class="en" lang="en">on foot</span> for walking.
+
+وسيلة النقل:
+Transport:
+
+للتحقق كرّر التعليمات: <span class="en" lang="en">So, I need the Red line northbound and then …</span>
+To check, repeat the directions: <span class="en" lang="en">So, I need the Red line northbound and then …</span>
+
+مع by بلا the.
+With by, no the.
+
+سيراً: on foot.
+Walking: on foot.
+
+مختبر مصغّر: المترو والقطار
+Mini lab: the metro and the train
+
+اختر الخطوة في رحلة المترو، وشاهد العبارة.
+Choose the step in the metro trip. See the phrase.
+
+1 الخط
+1 The line
+
+2 التغيير
+2 Changing
+
+3 النزول
+3 Getting off
+
+4 عدد المحطات
+4 Number of stops
+
+خذ الخط
+Take the line
+
+باتجاه الشمال
+Going north
+
+<span class="en" lang="en">northbound</span> باتجاه الشمال، و <span class="en" lang="en">change at</span> غيّر في، و <span class="en" lang="en">get off at</span> انزل في. وللتحقق كرر التعليمات: <span class="en" lang="en">So, I need the Red line northbound …</span>
+<span class="en" lang="en">northbound</span> = going north, <span class="en" lang="en">change at</span> = change trains at, <span class="en" lang="en">get off at</span> = leave the train at. To check, repeat the directions: <span class="en" lang="en">So, I need the Red line northbound …</span>
+
+اختر وسيلة الوصول، وشاهد حرف الجر.
+Choose how you travel. See the preposition.
+
+الوسيلة
+Way
+
+القطار
+Train
+
+الحافلة
+Bus
+
+السيارة
+Car
+
+مشياً
+Walking
+
+مع الوسائل
+With transport
+
+بلا the
+No the
+
+<span class="en" lang="en">by</span> مع وسائل النقل بلا <span class="en" lang="en">the</span>: <span class="en" lang="en">by train · by car</span>، لكن <span class="en" lang="en">on foot</span> سيراً على الأقدام.
+<span class="en" lang="en">by</span> with transport, with no <span class="en" lang="en">the</span>: <span class="en" lang="en">by train · by car</span>, but <span class="en" lang="en">on foot</span> for walking.
+
+مختبر مصغّر: المترو
+Mini lab: the metro
+
+اقرأ الرسالة وجِد مبنى المكتب على الخريطة.
+Read the email and find the office building on the map.
+
+اقرأ رسالة (من إعدادنا) وأجب.
+Read an email (our own) and answer.
+
+أكمل الحوارين بالأفعال، ثم استمع.
+Complete the two dialogues with the verbs, then listen.
+
+أكمل الحوارين بالأفعال: change · get off · get to · go · take · turn
+Complete the two dialogues with the verbs: change · get off · get to · go · take · turn
+
+استمع وأكمل الملاحظات.
+Listen and complete the notes.
+
+استمع إلى وصف طريق (من إعدادنا) وأكمل الملاحظات.
+Listen to directions (our own) and complete the notes.
+
+نشاط ثنائي: صِف الطريق على خريطة المترو، وكرّر التعليمات للتحقق.
+Pair work: describe the way on the metro map, and repeat the directions to check.
+
+نشاط ثنائي: صِف الطريق بالمترو على خريطة المختبر، وزميلك يكرر للتحقق.
+Pair work: describe the way by metro on the lab map, and your classmate repeats to check.
+
+صِف لزميلك الطريق من أقرب محطة إلى مكتبك أو كليتك.
+Describe to a classmate the way from the nearest station to your office or college.
+
+صِف لزميلك الطريق من أقرب شارع رئيسي إلى كليتك.
+Describe to a classmate the way from the nearest main street to your college.
+
+حواران عن الطريق.
+Two dialogues about the way.
+
+ثلاثة أشخاص يصفون الطريق.
+Three people describe the way.
+
+اتبع التعليمات
+Follow the directions
+
+مدينة من رسمنا، مبني على التمرينين 2 و 3 ص 38–39. ابدأ من المحطة (S)، واصل إلى المكان المطلوب بالأزرار.
+A city we drew, based on Exercises 2 and 3, pp. 38–39. Start from the station (S) and go to the place with the buttons.
+
+تعليماتك
+Your directions
+
+اذهب إلى البنك بأقل عدد من الخطوات.
+Go to the bank in the smallest number of steps.
+
+اكتب تعليمات من بوابة الكلية إلى صفّك.
+Write directions from the college gate to your classroom.
+
+مثال 1: سؤال الطريق
+Example 1: asking the way
+
+اسأل كيف تصل إلى المتحف الوطني.
+Ask how to get to the National Museum.
+
+مثال 2: وصف الطريق
+Example 2: describing the way
+
+اخرج من الفندق يساراً، ثم ثاني شارع يميناً، وسترى المكتب على اليمين.
+Leave the hotel and turn left, then take the second right, and you'll see the office on the right.
+
+كرّر لتتحقق: الخط الأحمر شمالاً ثم التغيير في Central.
+Repeat to check: the Red line north, then change at Central.
+
+الخطوة 2: <span class="en" lang="en">How do I get to</span> + المكان.
+Step 2: <span class="en" lang="en">How do I get to</span> + place.
+
+الخطوة 1: نبدأ بـ <span class="en" lang="en">So,</span>
+Step 1: start with <span class="en" lang="en">So,</span>
+
+باتجاه الجنوب
+Going south
+
+محطة
+Station
+
+رصيف
+Platform
+
+مقابل
+Opposite
+
+وصّل التعليمة بمعناها
+Match the instruction with its meaning
+
+غيّر في …
+Change at …
+
+انزل في …
+Get off at …
+
+السؤال والاتجاهات
+Asking the way and directions
+
+كيف تصف لزائر طريق المتحف؟
+How do you describe the way to the museum for a visitor?
+
+اتجاهات
+Directions
+
+Go straight on = امشِ مباشرة
+Go straight on = keep walking ahead
+
+the first right = أول شارع يميناً
+the first right = the first street on the right
+
+the second left = ثاني شارع يساراً
+the second left = the second street on the left
+
+opposite the bank = مقابل البنك
+opposite the bank = across from the bank
+
+شوارع من رسمنا. مرّر المؤشر على العبارات.
+Streets we drew. Point at the phrases.
+
+المترو والقطار ووسائل النقل
+The metro, the train and transport
+
+المترو
+The metro
+
+take the Red line = خذ الخط الأحمر
+take the Red line = get on the Red line
+
+change at Central = غيّر الخط هنا
+change at Central = change lines here
+
+get off at Museum = انزل هنا
+get off at Museum = leave the train here
+
+خطان من رسمنا. مرّر المؤشر على كل محطة.
+Two lines we drew. Point at each station.
+
+غيّر في
+Change at
+
+للخط الأخضر
+For the Green line
+
+انزل في
+Get off at
+
+اسم المحطة
+Station name
+
+المحطة الثانية
+The second stop
+
+استثناء
+Special
+
+الوصول إلى استقبال شركة (I'm here to see … · I have an appointment at …)، وأسئلة موظف الاستقبال (Do you have an appointment? What department is that?)، وعبارات الانتظار (Please take a seat. He'll be down in a moment.)، ولقاء المضيف وتبادل بطاقات العمل (Here's my business card. Did you have a good journey?)، وعادات التحية.
+Arriving at a company reception (I'm here to see … · I have an appointment at …), the receptionist's questions (Do you have an appointment? What department is that?), phrases for waiting (Please take a seat. He'll be down in a moment.), meeting the host and exchanging business cards (Here's my business card. Did you have a good journey?), and greeting customs.
+
+تصل إلى شركة لموعد، أو تستقبل زائراً. ستتعلم:
+You arrive at a company for an appointment, or you meet a visitor. You will learn:
+
+عبارات الزائر.
+The visitor's phrases.
+
+عبارات موظف الاستقبال.
+The receptionist's phrases.
+
+لقاء المضيف وبطاقات العمل.
+Meeting the host and business cards.
+
+شرح القاعدة: في الاستقبال، ولقاء المضيف <span class="ref">ص 40–41</span>
+The rules: at reception, and meeting the host <span class="ref">pp. 40–41</span>
+
+في هذا الدرس تصل إلى شركة لموعد. نشرح ما يقوله الزائر وموظف الاستقبال، ثم عبارات لقاء المضيف.
+In this lesson you arrive at a company for an appointment. We explain what the visitor and the receptionist say, then the phrases for meeting the host.
+
+1. في الاستقبال <span class="ref">ص 40</span>
+1. At reception <span class="ref">p. 40</span>
+
+عند الوصول تعرّف بنفسك، وتذكر من جئت لتقابله وموعدك. وموظف الاستقبال يسأل ويتصل ويطلب منك الانتظار.
+When you arrive, you say who you are, who you are here to see, and the time of your appointment. The receptionist asks, calls, and asks you to wait.
+
+الزائر:
+Visitor:
+
+<b>الموظف:</b> <span class="en" lang="en">Do you have an appointment?</span> و <span class="en" lang="en">What department is that?</span>
+<b>Receptionist:</b> <span class="en" lang="en">Do you have an appointment?</span> and <span class="en" lang="en">What department is that?</span>
+
+الموظف:
+Receptionist:
+
+<span class="en" lang="en">He'll be down in a moment.</span> = سينزل من مكتبه بعد لحظة.
+<span class="en" lang="en">He'll be down in a moment.</span> = he will come down from his office soon.
+
+الزائر
+Visitor
+
+موظف الاستقبال
+Receptionist
+
+مختبر مصغّر: في الاستقبال
+Mini lab: at reception
+
+اختر الزائر، ثم السطر، وشاهد ما يقوله الزائر وما يرد به موظف الاستقبال.
+Choose the visitor, then the line. See what the visitor says and what the receptionist answers.
+
+السطر
+Line
+
+التعريف
+Saying who you are
+
+سبب الزيارة
+The reason for the visit
+
+الموعد
+The appointment
+
+الانتظار
+Waiting
+
+<span class="en" lang="en">I'm here to see …</span> = جئت لأقابل …، و <span class="en" lang="en">I'll</span> للوعد.
+<span class="en" lang="en">I'm here to see …</span> = I came to meet …, and <span class="en" lang="en">I'll</span> is for a promise.
+
+مختبر مصغّر: الاستقبال
+Mini lab: reception
+
+2. لقاء المضيف <span class="ref">ص 40</span>
+2. Meeting the host <span class="ref">p. 40</span>
+
+عندما ينزل المضيف تتعارفان وتتبادلان بطاقات العمل، ثم يبدأ الحديث بسؤال بسيط.
+When the host comes down, you meet and exchange business cards, then the conversation starts with a simple question.
+
+<b>التعارف:</b> <span class="en" lang="en">Hello. I'm Turki Al-Shehri.</span> والرد <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+<b>Meeting:</b> <span class="en" lang="en">Hello. I'm Turki Al-Shehri.</span> The answer: <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+
+التعارف:
+Meeting:
+
+<b>البطاقات:</b> <span class="en" lang="en">Here's my business card.</span> والرد <span class="en" lang="en">Oh, thank you. Here's mine.</span> و <span class="en" lang="en">mine</span> = بطاقتي.
+<b>Cards:</b> <span class="en" lang="en">Here's my business card.</span> The answer: <span class="en" lang="en">Oh, thank you. Here's mine.</span> <span class="en" lang="en">mine</span> = my card.
+
+البطاقات:
+Cards:
+
+سؤال للحديث:
+A question to start talking:
+
+<span class="en" lang="en">You're welcome.</span> = العفو.
+<span class="en" lang="en">You're welcome.</span> is the answer to thank you.
+
+مختبر مصغّر: لقاء المضيف
+Mini lab: meeting the host
+
+اختر خطوة اللقاء، وشاهد العبارة والرد.
+Choose the step of the meeting. See the phrase and the answer.
+
+تبادل البطاقات
+Exchanging cards
+
+السؤال عن الرحلة
+Asking about the journey
+
+الشكر
+Thanks
+
+الرد
+Answer
+
+<span class="en" lang="en">Did you …?</span> سؤال عن الماضي.
+<span class="en" lang="en">Did you …?</span> is a question about the past.
+
+مختبر مصغّر: اللقاء
+Mini lab: the meeting
+
+<b>1.</b> تقدّم بطاقتك.
+<b>1.</b> You give your card.
+
+<b>2.</b> أخذت بطاقته وتعطيه بطاقتك.
+<b>2.</b> You took his card and give him yours.
+
+<b>3.</b> تسأل عن رحلته.
+<b>3.</b> You ask about his journey.
+
+استمع: ضع علامة على المذكور، ثم أكمل المحادثتين.
+Listen: tick what they say, then complete the two conversations.
+
+استمع إلى زائر في الاستقبال (من إعدادنا) وأكمل.
+Listen to a visitor at reception (our own) and complete.
+
+رتّب المحادثتين المختلطتين، ثم استمع.
+Put the two mixed conversations in order, then listen.
+
+رتّب لقاء الزائر بمضيفه.
+Put the visitor's meeting with the host in order.
+
+ناقش عادات بطاقات العمل والتحية والمسافة عند الحديث.
+Talk about customs for business cards, greetings and distance when talking.
+
+عادات التعارف في العمل: أي تصرف مناسب في أغلب الشركات؟
+Meeting customs at work: which behaviour is right in most companies?
+
+مثّل: موظف استقبال وزائر، ثم المضيف والزائر.
+Act it out: a receptionist and a visitor, then the host and the visitor.
+
+مثّل: موظف استقبال وزائر يريد مقابلة شخص في قسم المبيعات، ثم المضيف والزائر.
+Act it out: a receptionist and a visitor who wants to see someone in the Sales Department, then the host and the visitor.
+
+زائران في الاستقبال.
+Two visitors at reception.
+
+زائر في الاستقبال ثم مع مضيفه.
+A visitor at reception, then with the host.
+
+مكتب الاستقبال
+The reception desk
+
+زوار من إعدادنا، مبني على التمرين 4 ص 41. اختر الزائر واكشف المحادثة.
+Visitors we made, based on Exercise 4, p. 41. Choose the visitor and show the conversation.
+
+قائمة التحقق
+Checklist
+
+ماذا يفعل الموظف إذا لم يكن للزائر موعد؟
+What does the receptionist do if the visitor has no appointment?
+
+ما معنى <span class="en">He'll be down in a moment</span>؟
+What does <span class="en">He'll be down in a moment</span> mean?
+
+كيف تقدّم بطاقة عملك؟
+How do you give your business card?
+
+مثال 1: الوصول
+Example 1: arriving
+
+أنت أحمد صالح من Red Sea Foods، وموعدك مع الأستاذة هدى الساعة 10.
+You are Ahmed Saleh from Red Sea Foods, and your appointment is with Ms Huda at 10.
+
+مثال 2: موظف الاستقبال
+Example 2: the receptionist
+
+اطلب من الزائر الجلوس، وأخبره أن المدير سينزل.
+Ask the visitor to sit down, and tell him the manager will come down.
+
+مثال 3: الترتيب
+Example 3: the order
+
+الخطوة 1: المضيف يبدأ: <span class="en" lang="en">Hello. I'm Turki.</span>
+Step 1: the host starts: <span class="en" lang="en">Hello. I'm Turki.</span>
+
+الخطوة 2: الزائر: <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+Step 2: the visitor: <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+
+الخطوة 3: المضيف: <span class="en" lang="en">Nice to meet you, too.</span>
+Step 3: the host: <span class="en" lang="en">Nice to meet you, too.</span>
+
+هل لديك موعد؟
+Do you have an appointment?
+
+تفضل بالجلوس
+Please sit down
+
+جئت لمقابلة …
+I'm here to see …
+
+العفو
+You're welcome
+
+<i>1</i>الاستقبال
+<i>1</i>Reception
+
+<i>2</i>لقاء المضيف
+<i>2</i>Meeting the host
+
+في الاستقبال
+At reception
+
+ماذا تقول لموظف الاستقبال عند وصولك؟
+What do you say to the receptionist when you arrive?
+
+الاستقبال
+Reception
+
+حوار في الاستقبال. مرّر المؤشر لترى من يتكلم.
+A dialogue at reception. Point to see who is speaking.
+
+لقاء المضيف
+Meeting the host
+
+ماذا تقول بعد Here's my business card؟
+What do you say after Here's my business card?
+
+Here's my business card. = تفضل بطاقتي
+Here's my business card. = this is my card for you
+
+Here's mine. = وهذه بطاقتي
+Here's mine. = and this is my card
+
+تبادل البطاقات. مرّر المؤشر على كل بطاقة.
+Exchanging cards. Point at each card.
+
+<span class="en" lang="en">He'll be down</span> = سينزل من مكتبه.
+<span class="en" lang="en">He'll be down</span> = he will come down from his office.
+
+<span class="en" lang="en">mine</span> = بطاقتي، بدل أن نكرر <span class="en" lang="en">my card</span>.
+<span class="en" lang="en">mine</span> = my card, so we don't repeat <span class="en" lang="en">my card</span>.
+

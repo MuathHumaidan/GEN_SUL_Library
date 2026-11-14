@@ -36,7 +36,7 @@ function walk(el){
   if(el.tagName==='SCRIPT'||el.tagName==='STYLE')return;
   if(ownAr(el)){
     const live=el.querySelector(LIVE)||el.matches('svg *');
-    if(!live&&!el.querySelector(KEEP)){if(el.__enk==null)el.__enk=el.innerHTML;let v=look(el.innerHTML);if(v==null&&el.__enk!==el.innerHTML)v=look(el.__enk);if(v!=null){if(v!=='=')el.innerHTML=v;else{el.setAttribute('dir','rtl');el.setAttribute('lang','ar')}el.querySelectorAll('*').forEach(trAttr);return}
+    if(!live&&!el.querySelector(KEEP)){if(el.__enk==null)el.__enk=el.innerHTML;let v=look(el.innerHTML);if(v==null&&el.__enk!==el.innerHTML)v=look(el.__enk);if(v!=null){if(v!=='=')el.innerHTML=v;else{el.setAttribute('dir','rtl');el.setAttribute('lang','ar');el.classList.add('gl')}el.querySelectorAll('*').forEach(trAttr);return}
       /* لا مطابقة للعنصر كاملاً: جرّب عُقد النص منفردة */
       const hasEl=[...el.children].length>0;if(!hasEl){miss.add(norm(el.__enk));return}
       if(trText(el,true))miss.add(norm(el.__enk))}
@@ -85,6 +85,9 @@ const T=(m,f,i)=>{const v=f(m[i]);return v==null?null:(v==='='?m[i]:v)};
 B.enPat([
  [/^ص ([\d–-]+)$/,m=>pp(m[1])],
  [/^انجل-(\d+)$/,'ENG-$1'],
+ [/^(\d+) (?:دروس|درس|درسان) · ص ([\d–-]+)$/,m=>`${m[1]} lessons · ${pp(m[2])}`],
+ [/^انجل-(\d+) · الوحدات ([\d–-]+) · حقيبة نظرية$/,'ENG-$1 · Units $2 · Theory course'],
+ [/^تمارين المراجعة \(ص ([\d–-]+)\)$/,m=>`Review exercises (${pp(m[1])})`],
  [/^(إنقاص|زيادة) درجة (.+)$/,m=>`${m[1]==='زيادة'?'One more mark':'One mark less'}: ${m[2]}`],
  [/^(\d+) متدرب$/,'$1 trainees'],
  [/^الدرس ([\d.]+) · ص ([\d–-]+)$/,m=>`Lesson ${m[1]} · ${pp(m[2])}`],
@@ -135,6 +138,7 @@ B.enDict({
  'توقّع قبل أن تكمل':'Guess before you go on','اختر الصحيح:':'Choose the right answer:','خلاصة الدرس في 5 أسطر':'The lesson in 5 lines','الاستماع':'Listening',
  'تمارين الكتاب':'Book exercises','كما في الكتاب':'As in the book','المصحح':'Corrected','إخفاء الشرح':'Hide the note','لم يُرفع بعد':'Not uploaded yet',
  'من قراءتنا للصور.':'From our reading of the pictures.','من قراءتنا للصورة.':'From our reading of the picture.','حسب صورة الكتاب.':'See the picture in the book.',
+ 'ابدأ الدرس الأول':'Start the first lesson','وحدات':'Units','درساً':'Lessons','أنجزت':'Done','ابحث عن درس':'Find a lesson','لا يوجد درس بهذا الاسم.':'There is no lesson with this name.',
  'لغة الشرح:':'Lesson language:','عربي':'Arabic',
  'إخفاء الترجمة':'Hide translation','إخفاء الترجمة: تظهر بالوقوف عليها أو لمسها':'Hide translation: point at it or touch it to see it','الدرجات':'Marks',' الدرجات':' Marks',
  'أضف أسماء المتدربين، واضغط + عند كل إجابة صحيحة. الأسماء محفوظة في هذا المتصفح فقط. الضغط على − عند الصفر يحذف الاسم.':'Add the trainees\' names. Press + for each right answer. The names stay in this browser only. Press − at zero to remove a name.',

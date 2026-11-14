@@ -14,12 +14,16 @@
 - أنماط مشتركة جاهزة في i18n.js: أرقام الصفحات، «الدرس 1.1 · ص…»، «المحطة الثانية · ص…»، «تمرين N»، «يقابل تمرين N ص…»، «مثال N: …»، «N. …»، «… (مثال)»، عناوين الوحدات «English — عربي».
 - data-tip و title و aria-label و placeholder و alt تُترجم أيضاً.
 
-## خطوات مقرر/وحدة
-1. `COURSE=eng101 node enscan.js u1-l1 u1-l2 …` → `/home/claude/en/<COURSE>/<id>.json` (النصوص الناقصة بالضبط كمفاتيح) و `<id>.left.json` (العربي الظاهر المتبقي، يجب أن يكون معاني كلمات فقط).
-2. اكتب الترجمات في `dev-kit/en-src/<COURSE>/uN.txt`: كتل (سطر عربي، سطر إنجليزي، سطر فارغ). `=` يبقى عربياً. `PAT: نمط ||| بديل` للنصوص المتغيرة.
-3. `python3 mkdict.py <COURSE>` يولّد `courses/<COURSE>/en/uN.js`، ثم `python3 en_inject.py <COURSE>` يضيفها إلى index.html.
-4. كرر 1–3 حتى 0 ناقص، ثم صور الشاشة (1280 و 390، الأسلوبان، والتبويبات كلها) وتأكد ألا يوجد عرض زائد.
-5. سجّل الأصوات: saycollect في الوضع الإنجليزي ثم gen.py.
+## خطوات مقرر/وحدة (السكربتات في dev-kit/scripts/en، والمصادر في dev-kit/en-src)
+مكان العمل: `/home/claude/en` (فيه src/ و work/) و `/home/claude/book` (سكربتات المتصفح).
+1. `./scan.sh <COURSE> <TAG> u7-l1 u7-l2 …` → يشغّل enscan.js ثم labscan.js (يجرّب كل خيارات مختبرات labB حتى 400 تركيبة) ثم enwork.py، فيخرج `work/<COURSE>_<TAG>.txt` مرقماً: `[N] نص`، والنصوص التي تختلف في جزء لاتيني فقط تُجمع `[N] PAT (عدد) مثال: … ← المتغير: …`.
+2. `python3 prefill.py work/X.txt work/X.pre > /tmp/left.txt` يعيد استعمال الترجمات الموجودة في أي `src/*/*.txt` ويطبع الباقي.
+3. اكتب `work/X.a2` بأسطر `N: English`. `{x}` = `<span class="en" lang="en">x</span>`، و `=` يبقى عربياً (للمعاني العربية في المختبرات، فتأخذ `.gl` وتظهر بالوقوف)، و `$1 $2` لمتغيرات PAT.
+4. `cat X.pre X.a2 > X.ans && ./fin.sh <COURSE> <TAG>` → `src/<COURSE>/<TAG>.txt` ثم mkdict.py ثم en_inject.py.
+5. أعد scan.sh بوسم جديد حتى «0 نص 0 كتلة 0 نمط». العنوان الذي معه `ص N` يحتاج سطراً للعنوان وحده في القاموس.
+6. الصفحة الرئيسية للمقرر: `C=<COURSE> node /tmp/home.js` يطبع الناقص، ويُكتب في `src/<COURSE>/home.txt`.
+7. الفحص: test2.js، و `spillen.js <COURSE> interactive 390 1.25` (spillscan في الوضع الإنجليزي)، و svgbidi.js.
+8. الأصوات: `COURSE=x SAY=…_ar.json node saycollect.js` و `COURSE=x LANG2=en SAY=…_en.json node saycollect.js`، ثم اجمع القائمتين في ملف واحد وشغّل gen.py عليه (gen.py يكتب tts.js من القائمة التي تُعطى له، فلا بد من الاتحاد).
 
 ## أسلوب الإنجليزي
 - جمل قصيرة وكلمات شائعة (مستوى المتدرب)، بلا مصطلحات نحوية صعبة.
@@ -32,3 +36,4 @@
 - زر «إخفاء الترجمة» (`html.guess`): ضباب على `.gl` و `.lw-ar/.lw-mean/.lw-tr`. افتراضياً مشغّل في English ومطفأ في العربي، ويحفظ `elib-guess-en|ar`.
 - زر «الدرجات» 🏅: لوحة أسماء مع + و − وتصفير، `localStorage['elib-marks-<course>']`.
 - الشريط العلوي يلتف إلى سطرين في الجوال (book.css آخر سطر).
+- (نوفمبر 2026) اكتملت ترجمة المقررات الثلاثة: انجل-101 (21 درساً) وانجل-111 (23 درساً) وانجل-102 (14 درساً) مع صفحاتها الرئيسية.
