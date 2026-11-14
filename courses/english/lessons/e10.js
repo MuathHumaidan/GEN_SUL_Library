@@ -308,7 +308,7 @@ B.lesson({
    bk(6,'ص 79','أكمل الحوار بالكلمات في الصندوق.',['must',"I'd",'are',"can't","don't","I'll"])+
    bk(8,'ص 79','مع زميلك: حوارات دعوة مشابهة بأوقات وأيام مختلفة.',null)},
   {h:'الاستماع',ref:'ص 78',html:au(55,'ص 78 — التمرين 2','استمع وأكمل تحذير برج المراقبة للطيار.')},
-  {h:'مهمة ثنائية بديلة (إضافة من خارج الكتاب)',ref:'ص 79 — التمرين 5',html:`<p>كل طالب يجيب عن أسئلة زميله من بطاقته، والزميل يملأ نموذج التقرير (التاريخ، الوقت، المكان، الارتفاع، المصاب، وظيفته، الإصابة، نوع الحادثة، الوصف).</p>`+ab(eb(['Date: 12 March · Time: 09.40','Location: warehouse, loading area','Height above ground: 2 m','Name: Omar Saleh · Job title: storeman','Injury: broken arm','Type: fell from a height (a ladder)','He climbed a ladder. The ladder slipped and he fell.']),eb(['Date: 3 June · Time: 15.20','Location: workshop 2','Height above ground: 0 m','Name: Fahad Ali · Job title: technician','Injury: burnt hand','Type: received an electric shock','He touched a damaged cable. The power was on.']))}
+  {h:'مهمة ثنائية بديلة (إضافة من خارج الكتاب)',ref:'ص 79 — التمرين 5',html:`<p>كل طالب يجيب عن أسئلة زميله من بطاقته، والزميل يملأ نموذج التقرير (التاريخ، الوقت، المكان، الارتفاع، المصاب، وظيفته، الإصابة، نوع الحادثة، الوصف).</p>`+ab(eb(['Date: 12 March · Time: 09.40','Location: warehouse, loading area','Height above ground: 2 m','Name: Oliver Sullivan · Job title: storeman','Injury: broken arm','Type: fell from a height (a ladder)','He climbed a ladder. The ladder slipped and he fell.']),eb(['Date: 3 June · Time: 15.20','Location: workshop 2','Height above ground: 0 m','Name: Frank Alex · Job title: technician','Injury: burnt hand','Type: received an electric shock','He touched a damaged cable. The power was on.']))}
  ],
  stations:[
   {intro:true},

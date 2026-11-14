@@ -7,7 +7,7 @@ const IRR=[['meet','met','met'],['make','made','made'],['sell','sold','sold'],['
 const REG=[['launch','launched'],['develop','developed'],['introduce','introduced'],['move','moved'],['increase','increased'],['decrease','decreased'],['expand','expanded'],['change','changed']];
 
 /* ========== 9A Talking about company history ========== */
-const HIST=[[1985,'Two engineers','met','at university in Dhahran.'],[1990,'They','made','their first solar water heater.'],[1992,'They','launched','SunNajd Ltd.'],[2001,'The company','built','a big factory in Jubail.'],[2010,'It','developed','a new solar panel for farms.'],[2019,'It','sold','its millionth panel.']];
+const HIST=[[1985,'Two engineers','met','at university in Manchester.'],[1990,'They','made','their first solar water heater.'],[1992,'They','launched','SunNova Ltd.'],[2001,'The company','built','a big factory in Hull.'],[2010,'It','developed','a new solar panel for farms.'],[2019,'It','sold','its millionth panel.']];
 function lab9a(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c7 panel"><h3 style="margin-top:0">تاريخ شركة</h3><p class="sub">شركة من إعدادنا، مبني على التمرينين 1 و 2 ص 42. اضغط سنة.</p><div id="tl" style="max-width:420px;margin:auto"></div><div id="o"></div></div>
@@ -90,8 +90,8 @@ B.lesson({
  ],
  lab:lab9a,
  examples:[
-  {title:'مثال 1: من ملاحظة إلى جملة',ref:'ص 42',q:`<p>1992 / launch / SunNajd Ltd.</p>`,given:[],solve:()=>[{t:`الخطوة 1: الماضي: ${e('launch → launched')}.`},{t:`الخطوة 2: ${e('In 1992')} في البداية.`},{t:`الخطوة 3: ${e('In 1992, they launched SunNajd Ltd.')}`,final:true}]},
-  {title:'مثال 2: فعل شاذ',ref:'ص 42',q:`<p>2001 / build / a factory in Jubail</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('build')} شاذ: ${e('built')}.`},{t:`الخطوة 2: ${e('In 2001, the company built')}`},{t:`الخطوة 3: ${e('In 2001, the company built a factory in Jubail.')}`,final:true}]},
+  {title:'مثال 1: من ملاحظة إلى جملة',ref:'ص 42',q:`<p>1992 / launch / SunNova Ltd.</p>`,given:[],solve:()=>[{t:`الخطوة 1: الماضي: ${e('launch → launched')}.`},{t:`الخطوة 2: ${e('In 1992')} في البداية.`},{t:`الخطوة 3: ${e('In 1992, they launched SunNova Ltd.')}`,final:true}]},
+  {title:'مثال 2: فعل شاذ',ref:'ص 42',q:`<p>2001 / build / a factory in Hull</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('build')} شاذ: ${e('built')}.`},{t:`الخطوة 2: ${e('In 2001, the company built')}`},{t:`الخطوة 3: ${e('In 2001, the company built a factory in Hull.')}`,final:true}]},
   {title:'مثال 3: التغيير بالأرقام',ref:'ص 43',q:`<p>عدد الموظفين من 800 إلى 1200.</p>`,given:[],solve:()=>[{t:`الخطوة 1: العدد زاد: ${e('increased / rose')}.`},{t:`الخطوة 2: ${e('from 800 to 1,200')}.`},{t:`الخطوة 3: ${e('The number of employees increased from 800 to 1,200.')}`,final:true}]}
  ],
  quiz:[
@@ -107,7 +107,7 @@ B.lesson({
 /* ========== 9B Company changes ========== */
 const EVT=[['open','opened','opened','a new showroom'],['close','closed','closed','the old factory'],['build','built','built','a new warehouse'],['recruit','recruited','recruited','ten engineers'],['change','changed','changed','the company logo']];
 const TREF=['(no time)','last month','in 2021','yesterday','two years ago'];
-const PLAN=[['expand office space',1,'They have expanded office space.',"They haven't expanded office space yet."],['open a branch in Abha',0,'They have opened a branch in Abha.',"They haven't opened a branch in Abha yet."],['recruit bilingual secretaries',1,'They have recruited bilingual secretaries.',"They haven't recruited bilingual secretaries yet."],['find new investors',0,'They have found new investors.',"They haven't found new investors yet."]];
+const PLAN=[['expand office space',1,'They have expanded office space.',"They haven't expanded office space yet."],['open a branch in Bath',0,'They have opened a branch in Bath.',"They haven't opened a branch in Bath yet."],['recruit bilingual secretaries',1,'They have recruited bilingual secretaries.',"They haven't recruited bilingual secretaries yet."],['find new investors',0,'They have found new investors.',"They haven't found new investors yet."]];
 function lab9b(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c7 panel"><h3 style="margin-top:0">بسيط أم تام؟</h3><p class="sub">مبني على «Language focus» ص 44. اختر الحدث والزمن، وشاهد الصيغة.</p>

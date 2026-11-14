@@ -1,0 +1,86 @@
+<b>الاسم:</b> <span class="en" lang="en">My name's Steve Owens.</span> أو <span class="en" lang="en">I'm Steve Owens.</span>، ولتحدد كيف تُنادى: <span class="en" lang="en">Please call me Steve.</span>
+<b>Name:</b> <span class="en" lang="en">My name's Steve Owens.</span> or <span class="en" lang="en">I'm Steve Owens.</span> To say what people should call you: <span class="en" lang="en">Please call me Steve.</span>
+
+<b>اللقب يأتي مع اسم العائلة</b> لا الاسم الأول: <span class="en" lang="en">Mr Owens</span>
+<b>The title goes with the last name,</b> not the first name: <span class="en" lang="en">Mr Owens</span>
+
+PAT: ^الزائر\ يناديك:\ <span\ class="en">(.+?)</span>،\ والأصدقاء:\ <span\ class="en">Kevin</span>\.$ ||| A visitor calls you <span class="en">$1</span>, and friends call you <span class="en">Kevin</span>.
+
+اسمك أوليفر ويلسون، وتحب أن ينادوك أوليفر.
+Your name is Oliver Wilson, and you want people to call you Oliver.
+
+متى تقول Steve ومتى Mr Owens؟
+When do you say Steve, and when Mr Owens?
+
+اللقب Mr / Ms / Dr مع اسم العائلة: Mr Owens.
+The title Mr / Ms / Dr goes with the last name: Mr Owens.
+
+<b>مع <span class="en" lang="en">I · you · we · they</span></b> يبقى الفعل كما هو: <span class="en" lang="en">I live in London.</span>
+<b>With <span class="en" lang="en">I · you · we · they</span></b> the verb doesn't change: <span class="en" lang="en">I live in London.</span>
+
+عند تقديم شخص نستعمل <span class="en" lang="en">he</span> للرجل و <span class="en" lang="en">she</span> للمرأة: <span class="en" lang="en">This is Mark. He works in Sales.</span>
+When we introduce someone we use <span class="en" lang="en">he</span> for a man and <span class="en" lang="en">she</span> for a woman: <span class="en" lang="en">This is Mark. He works in Sales.</span>
+
+Laura = she، فنضيف s.
+Laura = she, so we add s.
+
+قدّم لورا سكوت إلى السيد شو.
+Introduce Laura Scott to Mr Shaw.
+
+أضف: مارك يعمل في قسم الإنتاج في شركتنا.
+Add: Mark works in the Production Department in our company.
+
+عرفت أن ضيفك من شركة Nova Motors. اسأله سؤالاً يفتح الحديث.
+You know your guest is from Nova Motors. Ask a question to start talking.
+
+الخطوة 1: نبدأ باسم الضيف: <span class="en" lang="en">Mr Shaw,</span>
+Step 1: start with the guest's name: <span class="en" lang="en">Mr Shaw,</span>
+
+الخطوة 1: <span class="en" lang="en">Mark works</span> (مع s).
+Step 1: <span class="en" lang="en">Mark works</span> (with s).
+
+ثم معلومة: Laura works in our Finance Department.
+Then a fact: Laura works in our Finance Department.
+
+يوم فيليكس
+Felix's day
+
+انظر! إدوارد يلعب التنس.
+Look! Edward is playing tennis.
+
+يوم فيليكس. مرّر المؤشر لترى الوقت.
+Felix's day. Point to see the time.
+
+نقارن بين شخصين بـ <span class="en" lang="en">but</span>: <span class="en" lang="en">Sean always drives to work, but I never do.</span>
+We compare two people with <span class="en" lang="en">but</span>: <span class="en" lang="en">Sean always drives to work, but I never do.</span>
+
+<span class="en" lang="en">I think</span> + الاختيار + <span class="en" lang="en">is better for</span> + الشخص: <span class="en" lang="en">I think the Garden Hotel is better for Mr Daniel</span>
+<span class="en" lang="en">I think</span> + choice + <span class="en" lang="en">is better for</span> + person: <span class="en" lang="en">I think the Garden Hotel is better for Mr Daniel</span>
+
+أكمل: Sara is a sales representative ___ Nova Motors.
+Complete: Sara is a sales representative ___ Nova Motors.
+
+<b>لمعرفة المتصل:</b> <span class="en" lang="en">Who's calling, please?</span> والمتصل يقول <span class="en" lang="en">This is Laura Scott of Nova Motors.</span>
+<b>To know who is calling:</b> <span class="en" lang="en">Who's calling, please?</span> The caller says <span class="en" lang="en">This is Laura Scott of Nova Motors.</span>
+
+في الهاتف نقول <span class="en" lang="en">This is Laura</span>، لا <span class="en" lang="en">I am Laura</span>.
+On the phone we say <span class="en" lang="en">This is Laura</span>, not <span class="en" lang="en">I am Laura</span>.
+
+أنت لورا سكوت من Nova Motors وتريد السيد ستيف.
+You are Laura Scott from Nova Motors, and you want Mr Steve.
+
+تهجَّ اسم العائلة Hamilton.
+Spell the last name Hamilton.
+
+تريد رحلة ذهاب فقط من لندن إلى القاهرة.
+You want a one-way flight from London to Cairo.
+
+<b>التعارف:</b> <span class="en" lang="en">Hello. I'm Tony Shaw.</span> والرد <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+<b>Meeting:</b> <span class="en" lang="en">Hello. I'm Tony Shaw.</span> The answer: <span class="en" lang="en">Hello. Paul Grant. Nice to meet you.</span>
+
+أنت إدوارد سوليفان من Red Sea Foods، وموعدك مع الأستاذة هيلين الساعة 10.
+You are Edward Sullivan from Red Sea Foods, and your appointment is with Ms Helen at 10.
+
+الخطوة 1: المضيف يبدأ: <span class="en" lang="en">Hello. I'm Tony.</span>
+Step 1: the host starts: <span class="en" lang="en">Hello. I'm Tony.</span>
+

@@ -4,11 +4,11 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: تعريف بالنفس",
    "title": "تعريف بالنفس وعمل",
-   "given": "اسمك Omar، من Jordan، مهندس.",
+   "given": "اسمك Oliver، من Jordan، مهندس.",
    "ask": "عرّف بنفسك.",
    "steps": [
     {
-     "t": "الخطوة 1: I'm Omar."
+     "t": "الخطوة 1: I'm Oliver."
     },
     {
      "t": "الخطوة 2: I'm from Jordan."
@@ -32,17 +32,17 @@ PLCBOOK.errs({
   {
    "ex": "مثال 2: تأكيد شخص",
    "title": "سؤال تأكيد",
-   "given": "تريد التأكد أن الرجل هو Mr Ali.",
+   "given": "تريد التأكد أن الرجل هو Mr Alex.",
    "ask": "اسأل وأجب.",
    "steps": [
     {
      "t": "الخطوة 1: Excuse me."
     },
     {
-     "t": "الخطوة 2: Is you Mr Ali?",
+     "t": "الخطوة 2: Is you Mr Alex?",
      "bad": true,
      "why": "مع you نستعمل Are.",
-     "fix": "Are you Mr Ali?",
+     "fix": "Are you Mr Alex?",
      "reasons": [
       "مع you نستعمل are لا is",
       "يجب حذف Mr",
@@ -87,7 +87,7 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: تهجئة اسم",
    "title": "تهجئة",
-   "given": "الاسم NOUR.",
+   "given": "الاسم NANCY.",
    "ask": "تهجَّ الاسم وحدد مجموعة صوت الحرف الأول.",
    "steps": [
     {
@@ -104,13 +104,13 @@ PLCBOOK.errs({
      "rc": 2
     },
     {
-     "t": "الخطوة 2: O استثناء، U مثل two، R استثناء."
+     "t": "الخطوة 2: A مثل eight، C مثل three، Y مثل five."
     },
     {
-     "t": "الخطوة 3: N-O-U-R."
+     "t": "الخطوة 3: N-A-N-C-Y."
     }
    ],
-   "answer": "N-O-U-R"
+   "answer": "N-A-N-C-Y"
   },
   {
    "ex": "مثال 2: قراءة رقم هاتف",
@@ -428,17 +428,17 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: رسالة صوتية",
    "title": "رسالة",
-   "given": "اسمك Sami، رقمك 0555 66 12 03.",
+   "given": "اسمك Sean، رقمك 0555 66 12 03.",
    "ask": "اترك رسالة.",
    "steps": [
     {
-     "t": "الخطوة 1: Hello. I'm is Sami.",
+     "t": "الخطوة 1: Hello. I'm is Sean.",
      "bad": true,
-     "why": "في الهاتف نقول This is Sami.",
-     "fix": "Hello. This is Sami.",
+     "why": "في الهاتف نقول This is Sean.",
+     "fix": "Hello. This is Sean.",
      "reasons": [
       "نقول My is",
-      "نقول Here Sami",
+      "نقول Here Sean",
       "في الهاتف This is",
       "I'm is صحيحة"
      ],
@@ -451,7 +451,7 @@ PLCBOOK.errs({
      "t": "الخطوة 3: Please call me back."
     }
    ],
-   "answer": "Hello. This is Sami. … Please call me back."
+   "answer": "Hello. This is Sean. … Please call me back."
   },
   {
    "ex": "مثال 2: تصحيح رقم",

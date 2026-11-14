@@ -71,7 +71,7 @@ PLCBOOK.study({
     {
      "k": "law",
      "f": "How do you spell…?",
-     "b": "سؤال التهجئة، والجواب حرفاً حرفاً: A-L-I.",
+     "b": "سؤال التهجئة، والجواب حرفاً حرفاً: A-L-E-X.",
      "ref": "ص 6",
      "l": "u1-l2"
     },
@@ -237,7 +237,7 @@ PLCBOOK.study({
     {
      "k": "law",
      "f": "This is …",
-     "b": "في الهاتف نعرّف بأنفسنا: This is Ali. ثم Please call me back.",
+     "b": "في الهاتف نعرّف بأنفسنا: This is Alex. ثم Please call me back.",
      "ref": "ص 14",
      "l": "u2-l3"
     },
@@ -935,8 +935,8 @@ PLCBOOK.study({
     {
      "title": "رتّب الرسالة الصوتية",
      "steps": [
-      "Hello. This is Ali.",
-      "That's A-L-I.",
+      "Hello. This is Alex.",
+      "That's A-L-E-X.",
       "My number is 0555 12 34 56.",
       "Please call me back."
      ]

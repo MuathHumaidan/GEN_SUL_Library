@@ -6,12 +6,12 @@ PLCBOOK.words({
   ['department','قسم','My brother works in the IT department.','أخي يعمل في قسم تقنية المعلومات.'],
   ['first name','الاسم الأول','Write your first name here.','اكتب اسمك الأول هنا.'],
   ['last name','اسم العائلة','What is your last name?','ما اسم عائلتك؟'],
-  ['call','ينادي / يسمّي','Please call me Abu Fahad.','نادني أبو فهد من فضلك.'],
+  ['call','ينادي / يسمّي','Please call me Frank.','نادني فرانك من فضلك.'],
   ['Nice to meet you.','سعدت بلقائك.','Nice to meet you. I am your new neighbour.','سعدت بلقائك. أنا جارك الجديد.'],
   ['colleague','زميل عمل','My colleagues are very friendly.','زملائي ودودون جداً.']
  ],
  'u1-l2':[
-  ['introduce','يقدّم (يعرّف)','Let me introduce my cousin, Saleh.','دعني أعرّفك بابن عمي صالح.'],
+  ['introduce','يقدّم (يعرّف)','Let me introduce my cousin, Shane.','دعني أعرّفك بابن عمي شين.'],
   ['I\'d like to …','أودّ أن …',"I'd like to order a coffee, please.",'أود أن أطلب قهوة من فضلك.'],
   ['director','مدير (عضو إدارة)','The director opened the new branch.','المدير افتتح الفرع الجديد.'],
   ['company','شركة','He works for a big oil company.','يعمل في شركة نفط كبيرة.'],
@@ -36,7 +36,7 @@ PLCBOOK.words({
   ['factory','مصنع','My uncle works in a cement factory.','عمي يعمل في مصنع إسمنت.'],
   ['warehouse','مستودع','The furniture is in the warehouse.','الأثاث في المستودع.'],
   ['showroom','صالة عرض','We visited the car showroom.','زرنا صالة عرض السيارات.'],
-  ['head office','المقر الرئيسي','The bank\'s head office is in Riyadh.','المقر الرئيسي للبنك في الرياض.'],
+  ['head office','المقر الرئيسي','The bank\'s head office is in London.','المقر الرئيسي للبنك في لندن.'],
   ['I\'d like to …','أودّ أن …',"I'd like to visit Japan one day.",'أود أن أزور اليابان يوماً.']
  ],
  'u3-l1':[
@@ -87,7 +87,7 @@ PLCBOOK.words({
  'u5-l1':[
   ['call','يتصل / مكالمة','I\'ll call you after work.','سأتصل بك بعد العمل.'],
   ['answer the phone','يرد على الهاتف','Can you answer the phone, please?','ترد على الهاتف من فضلك؟'],
-  ['Speaking.','معك (أنا هو).','Is that Khalid? — Speaking.','أهذا خالد؟ — معك.'],
+  ['Speaking.','معك (أنا هو).','Is that Kevin? — Speaking.','أهذا كيفن؟ — معك.'],
   ['Just a moment.','لحظة.','Just a moment, I\'m coming.','لحظة، أنا قادم.'],
   ['put through','يحوّل المكالمة','The operator put me through to the manager.','حوّلني موظف الهاتف إلى المدير.'],
   ['should','ينبغي','You should drink more water.','ينبغي أن تشرب ماءً أكثر.'],
@@ -105,7 +105,7 @@ PLCBOOK.words({
  'u6-l1':[
   ['order','يطلب / طلب','I ordered a new phone online.','طلبت جوالاً جديداً عبر الإنترنت.'],
   ['need','يحتاج','I need a new pair of shoes.','أحتاج حذاءً جديداً.'],
-  ['a few','قليل (يُعدّ)','I have a few friends in Jeddah.','لي بعض الأصدقاء في جدة.'],
+  ['a few','قليل (يُعدّ)','I have a few friends in Liverpool.','لي بعض الأصدقاء في ليفربول.'],
   ['a lot of','كثير من','There are a lot of cars on the road.','هناك سيارات كثيرة في الطريق.'],
   ['How many …?','كم عدد …؟','How many brothers do you have?','كم أخاً لك؟'],
   ['How much …?','كم (الكمية / السعر)؟','How much is this bag?','كم سعر هذه الحقيبة؟'],
@@ -133,7 +133,7 @@ PLCBOOK.words({
   ['reservation','حجز','I have a reservation for two nights.','عندي حجز لليلتين.'],
   ['single room','غرفة مفردة','A single room, please.','غرفة مفردة من فضلك.'],
   ['double room','غرفة مزدوجة','We need a double room.','نحتاج غرفة مزدوجة.'],
-  ['night','ليلة','We stayed three nights in Abha.','أقمنا ثلاث ليالٍ في أبها.'],
+  ['night','ليلة','We stayed three nights in Bath.','أقمنا ثلاث ليالٍ في باث.'],
   ['credit card','بطاقة ائتمان','Can I pay by credit card?','أستطيع الدفع بالبطاقة؟'],
   ['confirm','يؤكد','Please confirm your booking by email.','أكّد حجزك بالبريد من فضلك.'],
   ['return ticket','تذكرة ذهاب وعودة','A return ticket to Dubai, please.','تذكرة ذهاب وعودة إلى دبي من فضلك.']
@@ -162,7 +162,7 @@ PLCBOOK.words({
   ['reception','الاستقبال','Please wait at reception.','انتظر في الاستقبال من فضلك.'],
   ['take a seat','تفضل بالجلوس','Please take a seat, the doctor is coming.','تفضل بالجلوس، الطبيب قادم.'],
   ['I\'m here to see …','جئت لمقابلة …',"I'm here to see the manager.",'جئت لمقابلة المدير.'],
-  ['journey','رحلة','How was your journey from Jeddah?','كيف كانت رحلتك من جدة؟'],
+  ['journey','رحلة','How was your journey from Liverpool?','كيف كانت رحلتك من ليفربول؟'],
   ['shake hands','يصافح','We shake hands when we meet.','نتصافح عندما نلتقي.'],
   ['You\'re welcome.','العفو.',"Thank you! — You're welcome.",'شكراً! — العفو.']
  ],
@@ -190,7 +190,7 @@ PLCBOOK.words({
   ['book = reserve','يحجز','I reserved two seats.','حجزت مقعدين.'],
   ['begin = start','يبدأ','The lesson begins at eight.','يبدأ الدرس الساعة الثامنة.'],
   ['depart = leave','يغادر','The plane departs at 6 a.m.','تغادر الطائرة الساعة 6 صباحاً.'],
-  ['How long …?','كم المدة؟','How long is the trip to Makkah?','كم مدة الطريق إلى مكة؟'],
+  ['How long …?','كم المدة؟','How long is the trip to Oxford?','كم مدة الطريق إلى أكسفورد؟'],
   ['success','نجاح','The event was a big success.','كانت الفعالية نجاحاً كبيراً.']
  ],
  'u10-l1':[

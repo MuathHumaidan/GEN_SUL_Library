@@ -9,7 +9,7 @@ const BE=(ex)=>({title:'الفعل be مع الضمائر',short:'الضمائر
  ex:ex,
  note:[`السؤال: نقدّم ${e('be')} على الضمير: ${e('You are a student.')} ← ${e('Are you a student?')}`,`النفي: نضيف ${e('not')} بعد ${e('be')}: ${e("I'm not")}، ${e("he isn't")}، ${e("they aren't")}.`,`في جواب «نعم» القصير لا نختصر: ${e('Yes, I am.')} وليس ${e("Yes, I'm.")}`],
  lab:{title:'am أم is أم are؟',intro:'اختر الصحيح (أمثلة من عندنا):',items:[
-  {s:'I ___ Faisal.',o:['am','is','are'],a:0,why:'مع I نستعمل am.'},
+  {s:'I ___ Felix.',o:['am','is','are'],a:0,why:'مع I نستعمل am.'},
   {s:'She ___ an engineer.',o:['am','is','are'],a:1,why:'مع she نستعمل is.'},
   {s:'They ___ from Jordan.',o:['am','is','are'],a:2,why:'مع they نستعمل are.'},
   {s:'___ you a student?',o:['Am','Is','Are'],a:2,why:'مع you نستعمل are، وفي السؤال تأتي قبل الضمير.'},

@@ -10,7 +10,7 @@ const MON=['January','February','March','April','May','June','July','August','Se
 function lab7a(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c6 panel"><h3 style="margin-top:0">شاشة الحجز</h3><p class="sub">فندق من إعدادنا (<b>قيم توضيحية</b>: single SAR 450، double SAR 600 لليلة)، مبني على التمرين 1 ص 34.</p>
-  <div class="ph-row"><input class="ph-num" id="nm" type="text" dir="ltr" maxlength="24" value="Omar Hassan" style="width:150px" aria-label="name"><select class="ph-sel" id="rt"><option value="single">single</option><option value="double">double</option></select></div>
+  <div class="ph-row"><input class="ph-num" id="nm" type="text" dir="ltr" maxlength="24" value="Oliver Harry" style="width:150px" aria-label="name"><select class="ph-sel" id="rt"><option value="single">single</option><option value="double">double</option></select></div>
   <div class="ph-row"><label>من يوم <input class="ph-num" id="f" type="number" min="1" max="30" value="20" style="width:64px"></label><label>إلى يوم <input class="ph-num" id="t" type="number" min="2" max="31" value="22" style="width:64px"></label><select class="ph-sel" id="mo">${MON.map((m,i)=>`<option value="${i}" ${i===5?'selected':''}>${m}</option>`).join('')}</select></div><div id="cd"></div></div>
  <div class="c6 panel"><h3 style="margin-top:0">المكالمة</h3><div id="o"></div></div>
  <div class="c12 panel"><h3 style="margin-top:0">جرّب</h3><ol class="ph-try"><li>من يوم 20 إلى 22: كم ليلة؟</li><li>ما الفرق بين <span class="en">Would you like</span> و <span class="en">Do you want</span>؟</li><li>غيّر الغرفة إلى double: ماذا تغيّر؟</li></ol></div></div></div>`;
@@ -18,13 +18,13 @@ function lab7a(el,B){kcss();
  const sh=()=>{let f=Math.round(+$('#f').value),t=Math.round(+$('#t').value),w='';
   if(!(f>=1&&f<=30)){f=Math.min(30,Math.max(1,f||1));$('#f').value=f;w='صُحّح يوم الوصول (1–30). '}
   if(!(t>f&&t<=31)){t=Math.min(31,f+1);$('#t').value=t;w+='يوم المغادرة يجب أن يكون بعد يوم الوصول.'}
-  const nm=$('#nm').value.trim()||'Omar Hassan',r=$('#rt').value,n=t-f,pr=r==='single'?450:600,m=MON[+$('#mo').value];
+  const nm=$('#nm').value.trim()||'Oliver Harry',r=$('#rt').value,n=t-f,pr=r==='single'?450:600,m=MON[+$('#mo').value];
   $('#cd').innerHTML=(w?`<p class="sub" style="color:var(--red)">${w}</p>`:'')+vt([['Name',nm],['No. of nights',String(n)],['From',`${f} ${m}`],['To',`${t} ${m}`],['Room',r],['Total',`SAR ${(n*pr).toLocaleString('en')}`]],['Booking form','']);
   $('#o').innerHTML=dl([['Receptionist','Palm Hotel. Can I help you?'],['Guest',"Yes. I'd like to make a reservation, please."],['Receptionist','When would you like to stay?'],['Guest',`From the ${ORD(f)} of ${m} until the ${ORD(t)}.`],['Receptionist',`OK, so ${n} night${n>1?'s':''}. Would you like a single or a double room?`],['Guest',`A ${r} room, please.`],['Receptionist',`A ${r} is ${pr} riyals a night. May I have your name, please?`],['Guest',`It's ${nm}.`],['Receptionist','Could you spell that, please?']])};
  ['nm','rt','f','t','mo'].forEach(k=>$('#'+k).addEventListener('input',sh));sh();
 }
 /* ===== مختبرات «شرح القاعدة» الوحدة 7 ===== */
-const BQ7={when:['When would you like to stay?','From the 20th until the 22nd.','التاريخ'],room:['Would you like a single or a double room?','A single room, please.','نوع الغرفة'],name:['May I have your name, please?','Yes, it’s Khalid Al-Harbi.','الاسم'],tel:['Can I have your telephone number?','It’s 0555 123 456.','الهاتف'],pay:['How do you want to pay?','By credit card.','الدفع'],conf:['Can I confirm your booking?','Yes, please.','التأكيد']};
+const BQ7={when:['When would you like to stay?','From the 20th until the 22nd.','التاريخ'],room:['Would you like a single or a double room?','A single room, please.','نوع الغرفة'],name:['May I have your name, please?','Yes, it’s Kevin Harris.','الاسم'],tel:['Can I have your telephone number?','It’s 0555 123 456.','الهاتف'],pay:['How do you want to pay?','By credit card.','الدفع'],conf:['Can I confirm your booking?','Yes, please.','التأكيد']};
 const LAB171A={title:'أسئلة موظف الحجز',w:(el,B)=>N.labB(el,B,{intro:'اختر ما يريد الموظف أن يعرفه، وشاهد سؤاله وجواباً مناسباً.',
  controls:[{k:'q',label:'يسأل عن',opts:Object.keys(BQ7).map(k=>[k,BQ7[k][2]])}],
  out:({q})=>{const [a,b]=BQ7[q];return{pieces:[[a,'q','الموظف'],[b,'n','الزبون']],say:`${a} ${b}`,why:`أسئلة الموظف مهذبة غالباً: ${e('Would you like …? · May I have …? · Can I …?')}`}}})};
@@ -98,7 +98,7 @@ B.lesson({
  examples:[
   {title:'مثال 1: سؤال الموظف',ref:'ص 34',q:`<p>رتّب: like / would / you / When / stay / to ?</p>`,given:[],solve:()=>[{t:`الخطوة 1: كلمة السؤال أولاً: ${e('When')}.`},{t:`الخطوة 2: ${e('would you like to')} ثم الفعل.`},{t:`الخطوة 3: ${e('When would you like to stay?')}`,final:true}]},
   {title:'مثال 2: عدد الليالي',ref:'ص 34',q:`<p>من 20 يونيو إلى 22 يونيو. كم ليلة؟</p>`,given:[],solve:()=>[{t:`الخطوة 1: 22 − 20 = 2.`},{t:`الخطوة 2: ${e('two nights')}.`},{t:`الخطوة 3: ${e('OK, so two nights.')}`,final:true}]},
-  {title:'مثال 3: حجز رحلة',ref:'ص 35',q:`<p>تريد رحلة ذهاب فقط من الرياض إلى القاهرة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e("I'd like to book a flight")}`},{t:`الخطوة 2: ${e('from Riyadh to Cairo, single, please')}`},{t:`الخطوة 3: ${e("I'd like to book a flight from Riyadh to Cairo, single, please.")}`,final:true}]}
+  {title:'مثال 3: حجز رحلة',ref:'ص 35',q:`<p>تريد رحلة ذهاب فقط من لندن إلى القاهرة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e("I'd like to book a flight")}`},{t:`الخطوة 2: ${e('from London to Cairo, single, please')}`},{t:`الخطوة 3: ${e("I'd like to book a flight from London to Cairo, single, please.")}`,final:true}]}
  ],
  quiz:[
   {q:'When would you like to ___?',o:['stay','staying','stays','stayed'],c:0,e:'like to + الفعل.'},

@@ -21,7 +21,7 @@ function lab3a(el,B){kcss();
  $('#mk').innerHTML=eb(['A car company makes cars.','A bank provides banking services.','An airline provides air travel.','A phone company makes phones.']);
 }
 /* ===== مختبرات «شرح القاعدة» الوحدة 3 ===== */
-const CO3={fac:['Gulf Office','make','office equipment','product','منتج'],food:['Red Sea Foods','produce','soft drinks','product','منتج'],bank:['Najd Bank','provide','banking services','service','خدمة'],net:['SkyNet','offer','Internet access 24 hours a day','service','خدمة']};
+const CO3={fac:['Gulf Office','make','office equipment','product','منتج'],food:['Red Sea Foods','produce','soft drinks','product','منتج'],bank:['Nova Bank','provide','banking services','service','خدمة'],net:['SkyNet','offer','Internet access 24 hours a day','service','خدمة']};
 const LAB131A={title:'make أم provide أم offer؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الشركة، وشاهد الفعل المناسب لما تقدمه: منتج أم خدمة؟',
  controls:[{k:'c',label:'الشركة',opts:Object.keys(CO3).map(k=>[k,CO3[k][0]])}],
  out:({c})=>{const [n,v,o,k,ar]=CO3[c];return{pieces:[[n,'n','الشركة = it'],[v+'s','k',k==='product'?'للمنتج':'للخدمة'],[o+'.','q',ar]],say:`${n} ${v}s ${o}.`,why:`${e('make · produce')} للمنتج الذي تمسكه، و ${e('provide · offer')} للخدمة. والشركة مفردة فنضيف ${e('s')}.`}}})};
@@ -43,7 +43,7 @@ const ND3={cheap:['cheap','cheaper'],fast:['fast','faster'],comf:['comfortable',
 const LAB132B={title:'الأنسب لمن؟ ولماذا؟',w:(el,B)=>N.labB(el,B,{intro:'اختر أهم شيء عند المسافر، وشاهد الوسيلة الأنسب له مع السبب.',
  controls:[{k:'n',label:'يهمه',opts:[['cheap','السعر'],['fast','الوقت'],['comf','الراحة']]}],
  out:({n})=>{const key={cheap:'cost',fast:'time',comf:'comfort'}[n],sorted=[...OPT].sort((p,q)=>n==='comf'?q.s[key]-p.s[key]:p.s[key]-q.s[key]),W=sorted[0],L=sorted[1];
-  return{svg:bar3(key),pieces:[['I think','x',''],[W.n,'n','الاختيار'],['is better for Mr Adel','k','better for + الشخص'],['because','q','السبب'],[`it's ${ND3[n][1]} than ${L.n}.`,'x','المقارنة']],say:`I think ${W.n} is better for Mr Adel because it's ${ND3[n][1]} than ${L.n}.`,why:`${e('better')} مقارنة ${e('good')} (شاذة)، و ${e('because')} يأتي بعدها السبب.`}}})};
+  return{svg:bar3(key),pieces:[['I think','x',''],[W.n,'n','الاختيار'],['is better for Mr Daniel','k','better for + الشخص'],['because','q','السبب'],[`it's ${ND3[n][1]} than ${L.n}.`,'x','المقارنة']],say:`I think ${W.n} is better for Mr Daniel because it's ${ND3[n][1]} than ${L.n}.`,why:`${e('better')} مقارنة ${e('good')} (شاذة)، و ${e('because')} يأتي بعدها السبب.`}}})};
 const R131=N.rule({title:'المنتج والخدمة، و make / provide / offer، ووصف المنتج',ref:'ص 14–15',
  intro:`في هذا الدرس تصف ما تقدمه شركتك: هل هو منتج أم خدمة؟ وبأي فعل نصفه؟ ثم كيف تصف المنتج: ما فيه، وما يستطيعه، وسعره.`,
  parts:[
@@ -132,9 +132,9 @@ const R132=N.rule({title:'صيغة المقارنة، واختيار الأنس�
   art:art(`${[['fast → faster','قصير: + er'],['big → bigger','نضاعف g'],['tasty → tastier','y → ier'],['comfortable → more comfortable','طويل: more'],['good → better','شاذ']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="20" y="${30+i*52}" width="320" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,57+i*52,x[0],{fs:15,w:700})}</g>`).join('')}`,'المقارنة'),cap:'خمس قواعد للمقارنة. مرّر المؤشر على كل منها.',labs:[LAB132A,{title:'المقارنة',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The train is ___ than the plane.',o:['cheaper','more cheap'],a:0},{s:'Business class seats are ___ than economy seats.',o:['bigger','biger'],a:0},{s:'The food on the plane is ___ than on the train.',o:['better','gooder'],a:0},{s:'The train is ___ than the car.',o:['more comfortable','comfortabler'],a:0}]})}]},
  {t:'اختيار الأنسب مع السبب',short:'better for … because',old:[2],q:'كيف تقترح فندقاً لزائر وتذكر السبب؟',ref:'ص 17',
   lead:`عندما تختار لشخص آخر تذكر اختيارك، ثم السبب، والسبب غالباً مقارنة.`,
-  points:[`${e('I think')} + الاختيار + ${e('is better for')} + الشخص: ${e('I think the Garden Hotel is better for Mr Adel')}`,`${e('because')} + السبب: ${e("because it's near the airport.")}`,`ويمكن أن نضيف مقارنة: ${e("It's cheaper than the Palm Hotel.")}`],
-  pairs:[["It's better for Mr Adel because cheaper.","It's better for Mr Adel because it's cheaper.",'بعد because جملة كاملة.']],
-  art:art(`<g data-tip="better for + الشخص"><rect x="20" y="70" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,101,'The Garden Hotel is better for Adel',{fs:14,w:700})}</g>
+  points:[`${e('I think')} + الاختيار + ${e('is better for')} + الشخص: ${e('I think the Garden Hotel is better for Mr Daniel')}`,`${e('because')} + السبب: ${e("because it's near the airport.")}`,`ويمكن أن نضيف مقارنة: ${e("It's cheaper than the Palm Hotel.")}`],
+  pairs:[["It's better for Mr Daniel because cheaper.","It's better for Mr Daniel because it's cheaper.",'بعد because جملة كاملة.']],
+  art:art(`<g data-tip="better for + الشخص"><rect x="20" y="70" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,101,'The Garden Hotel is better for Daniel',{fs:14,w:700})}</g>
     <g data-tip="because + السبب"><rect x="20" y="140" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,171,"because it's near the airport.",{fs:14,w:700})}</g>`,'better for because'),cap:'الاختيار ثم السبب. مرّر المؤشر على كل جزء.',labs:[LAB132B,{title:'السبب',w:(el,B)=>N.cases(el,B,{intro:'أي سبب يناسب؟',cases:[{q:'A family on holiday wants shopping.',opts:[["because it's near the shopping centre",1],["because it's near the airport",0]]},{q:'A manager has only one day.',opts:[["because it's near his meetings",1],['because it has a big pool',0]]}]})}]}
  ]});
 B.lesson({
@@ -179,8 +179,8 @@ B.lesson({
  summary:'مراجعة حروف الجر للمكان، و for / in / of في الحديث عن العمل، والضمائر بدل تكرار الأسماء، والتعارف، والصفات وأضدادها، وصيغة المقارنة، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 18–19',html:vt([['حروف الجر للمكان','The pens are on the desk, under the book.','2A'],['for / in / of','I work for XYZ. I work in Accounts. He is the director of …','1A · 2B'],['الضمائر',"I work for XYZ. It's a computer company.",'1–3'],['التعارف',"I'd like to introduce you to …",'1A · 1B'],['الأضداد','cheap ≠ expensive، safe ≠ dangerous','3B'],['المقارنة','A cash machine is more convenient than a bank queue.','3B']],['النقطة','مثال','الدرس'])},
-  {h:'for · in · of',ref:'ص 18',html:vt([['I work for Delta Electric.','لدى شركة'],['I work in the Accounts Department.','في قسم'],['My office is in the suburbs.','في مكان'],['He is the director of Delta Electric.','مدير شركة …'],['She is a sales representative for Najd Motors.','مندوبة لصالح شركة']],['English','الاستعمال'])},
-  {h:'الضمائر بدل التكرار',ref:'ص 18',html:`${vt([['Laila','she'],['Majed','he'],['the office','it'],['Laila and Majed','they']],['الاسم','الضمير'])}${eb("I work for XYZ Ltd. It is a computer company.")}`},
+  {h:'for · in · of',ref:'ص 18',html:vt([['I work for Delta Electric.','لدى شركة'],['I work in the Accounts Department.','في قسم'],['My office is in the suburbs.','في مكان'],['He is the director of Delta Electric.','مدير شركة …'],['She is a sales representative for Nova Motors.','مندوبة لصالح شركة']],['English','الاستعمال'])},
+  {h:'الضمائر بدل التكرار',ref:'ص 18',html:`${vt([['Laura','she'],['Mark','he'],['the office','it'],['Laura and Mark','they']],['الاسم','الضمير'])}${eb("I work for XYZ Ltd. It is a computer company.")}`},
   {h:'تمارين المراجعة',ref:'ص 18–19',html:
    bk('Vocabulary 1','ص 18','اكتب خمس جمل عن أماكن أشياء في الصف، وزميلك يخمّن.',null)+
    bk('Language 1','ص 18','أكمل بـ in أو for أو of، ثم استبدل الأسماء المكررة بضمائر.',['a: 1 for · 2 in · 3 in · 4 of · 5 for · 6 in · in','b: 2 It (my office) · 3 They (Linda and Paul) · 4 He (Mr Chan) · 5 She (Maria) · 6 It (the Prague office)'])+
@@ -204,7 +204,7 @@ B.lesson({
   {recap:['on, in, near, above, next to, behind, under, in front of.','work for (شركة)، work in (قسم)، director of.','الضمائر بدل تكرار الاسم.','أضداد الصفات.','المقارنة: + er / more … than.']}
  ],
  examples:[
-  {title:'مثال 1: حرف الجر',ref:'ص 18',q:`<p>أكمل: Sara is a sales representative ___ Najd Motors.</p>`,given:[],solve:()=>[{t:`الخطوة 1: مندوبة لصالح شركة.`},{t:`الخطوة 2: نستعمل ${e('for')}.`},{t:`الخطوة 3: ${e('Sara is a sales representative for Najd Motors.')}`,final:true}]},
+  {title:'مثال 1: حرف الجر',ref:'ص 18',q:`<p>أكمل: Sara is a sales representative ___ Nova Motors.</p>`,given:[],solve:()=>[{t:`الخطوة 1: مندوبة لصالح شركة.`},{t:`الخطوة 2: نستعمل ${e('for')}.`},{t:`الخطوة 3: ${e('Sara is a sales representative for Nova Motors.')}`,final:true}]},
   {title:'مثال 2: الضمير',ref:'ص 18',q:`<p>أزل التكرار: My office is in Riyadh. My office is very big.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('My office')} مفرد غير عاقل: ${e('It')}.`},{t:`الخطوة 2: نستبدل الثانية.`},{t:`الخطوة 3: ${e('My office is in Riyadh. It is very big.')}`,final:true}]},
   {title:'مثال 3: مقارنة',ref:'ص 19',q:`<p>قارن: the Internet / a library (fast)</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('fast')} → ${e('faster')}.`},{t:`الخطوة 2: ${e('than a library')}.`},{t:`الخطوة 3: ${e('The Internet is faster than a library.')}`,final:true}]}
  ],

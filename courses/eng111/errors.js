@@ -4,27 +4,27 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: تقديم نفسك",
    "title": "تقديم",
-   "given": "اسمك عمر.",
+   "given": "اسمك أوليفر.",
    "ask": "قدّم نفسك.",
    "steps": [
     {
-     "t": "الخطوة 1: My name Omar.",
+     "t": "الخطوة 1: My name Oliver.",
      "bad": true,
      "why": "نحتاج 's: My name's.",
-     "fix": "My name's Omar.",
+     "fix": "My name's Oliver.",
      "reasons": [
-      "My name Omar صحيحة",
-      "My names Omar",
-      "Me name's Omar",
+      "My name Oliver صحيحة",
+      "My names Oliver",
+      "Me name's Oliver",
       "My name's = My name is"
      ],
      "rc": 3
     },
     {
-     "t": "الخطوة 2: Please call me Omar."
+     "t": "الخطوة 2: Please call me Oliver."
     }
    ],
-   "answer": "My name's Omar. Please call me Omar."
+   "answer": "My name's Oliver. Please call me Oliver."
   },
   {
    "ex": "مثال 2: القسم",
@@ -81,17 +81,17 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: تقديم",
    "title": "تقديم",
-   "given": "قدّم ليلى للسيد الشهري.",
+   "given": "قدّم لورا للسيد شو.",
    "ask": "اكتب الجملة.",
    "steps": [
     {
-     "t": "الخطوة 1: Mr Al-Shehri,"
+     "t": "الخطوة 1: Mr Shaw,"
     },
     {
-     "t": "الخطوة 2: I'd like to introduce you Laila.",
+     "t": "الخطوة 2: I'd like to introduce you Laura.",
      "bad": true,
      "why": "نحتاج to قبل الاسم: introduce you to.",
-     "fix": "I'd like to introduce you to Laila.",
+     "fix": "I'd like to introduce you to Laura.",
      "reasons": [
       "introduce to you",
       "introduce with you",
@@ -101,19 +101,19 @@ PLCBOOK.errs({
      "rc": 2
     }
    ],
-   "answer": "Mr Al-Shehri, I'd like to introduce you to Laila."
+   "answer": "Mr Shaw, I'd like to introduce you to Laura."
   },
   {
    "ex": "مثال 2: معلومة",
    "title": "معلومة",
-   "given": "ماجد يعمل في الإنتاج.",
+   "given": "مارك يعمل في الإنتاج.",
    "ask": "اكتب الجملة.",
    "steps": [
     {
-     "t": "الخطوة 1: Majed work in the Production Department.",
+     "t": "الخطوة 1: Mark work in the Production Department.",
      "bad": true,
      "why": "مع he نضيف s: works.",
-     "fix": "Majed works",
+     "fix": "Mark works",
      "reasons": [
       "work صحيحة مع he",
       "is work",
@@ -126,32 +126,32 @@ PLCBOOK.errs({
      "t": "الخطوة 2: in the Production Department."
     }
    ],
-   "answer": "Majed works in the Production Department."
+   "answer": "Mark works in the Production Department."
   },
   {
    "ex": "مثال 3: بدء الحديث",
    "title": "سؤال",
-   "given": "شركة Najd Motors.",
+   "given": "شركة Nova Motors.",
    "ask": "اسأل سؤالاً.",
    "steps": [
     {
-     "t": "المعطى: شركة Najd Motors."
+     "t": "المعطى: شركة Nova Motors."
     },
     {
-     "t": "الخطوة 1: Najd Motors is a big company?",
+     "t": "الخطوة 1: Nova Motors is a big company?",
      "bad": true,
      "why": "السؤال يبدأ بـ Is.",
-     "fix": "Is Najd Motors a big company?",
+     "fix": "Is Nova Motors a big company?",
      "reasons": [
       "Is في البداية",
       "Is في الوسط صحيحة",
-      "Does Najd Motors big",
-      "Are Najd Motors"
+      "Does Nova Motors big",
+      "Are Nova Motors"
      ],
      "rc": 0
     }
    ],
-   "answer": "Is Najd Motors a big company?"
+   "answer": "Is Nova Motors a big company?"
   }
  ],
  "u2-l1": [
@@ -473,10 +473,10 @@ PLCBOOK.errs({
      "t": "المعطى: مندوبة لشركة."
     },
     {
-     "t": "الخطوة 1: Sara is a sales representative of Najd Motors.",
+     "t": "الخطوة 1: Sara is a sales representative of Nova Motors.",
      "bad": true,
      "why": "لصالح شركة: for.",
-     "fix": "Sara is a sales representative for Najd Motors.",
+     "fix": "Sara is a sales representative for Nova Motors.",
      "reasons": [
       "at",
       "for",
@@ -486,7 +486,7 @@ PLCBOOK.errs({
      "rc": 1
     }
    ],
-   "answer": "Sara is a sales representative for Najd Motors."
+   "answer": "Sara is a sales representative for Nova Motors."
   },
   {
    "ex": "مثال 2: الضمير",
@@ -498,7 +498,7 @@ PLCBOOK.errs({
      "t": "المعطى: My office … My office …"
     },
     {
-     "t": "الخطوة 1: My office is in Riyadh. He is very big.",
+     "t": "الخطوة 1: My office is in London. He is very big.",
      "bad": true,
      "why": "المكتب غير عاقل: It.",
      "fix": "It is very big.",
@@ -511,7 +511,7 @@ PLCBOOK.errs({
      "rc": 2
     }
    ],
-   "answer": "My office is in Riyadh. It is very big."
+   "answer": "My office is in London. It is very big."
   },
   {
    "ex": "مثال 3: مقارنة",
@@ -722,14 +722,14 @@ PLCBOOK.errs({
   {
    "ex": "مثال 2: المتصل",
    "title": "متصل",
-   "given": "ليلى من Najd Motors.",
+   "given": "لورا من Nova Motors.",
    "ask": "عرّف بنفسك.",
    "steps": [
     {
-     "t": "الخطوة 1: I am Laila Saeed of Najd Motors.",
+     "t": "الخطوة 1: I am Laura Scott of Nova Motors.",
      "bad": true,
      "why": "في الهاتف: This is …",
-     "fix": "This is Laila Saeed of Najd Motors.",
+     "fix": "This is Laura Scott of Nova Motors.",
      "reasons": [
       "I am … في الهاتف",
       "Here is",
@@ -739,10 +739,10 @@ PLCBOOK.errs({
      "rc": 3
     },
     {
-     "t": "الخطوة 2: Can I speak to Mr Saad, please?"
+     "t": "الخطوة 2: Can I speak to Mr Steve, please?"
     }
    ],
-   "answer": "This is Laila Saeed of Najd Motors. Can I speak to Mr Saad, please?"
+   "answer": "This is Laura Scott of Nova Motors. Can I speak to Mr Steve, please?"
   },
   {
    "ex": "مثال 3: نصيحة",
@@ -1149,10 +1149,10 @@ PLCBOOK.errs({
      "rc": 3
     },
     {
-     "t": "الخطوة 2: from Riyadh to Cairo, single, please."
+     "t": "الخطوة 2: from London to Cairo, single, please."
     }
    ],
-   "answer": "I'd like to book a flight from Riyadh to Cairo, single, please."
+   "answer": "I'd like to book a flight from London to Cairo, single, please."
   }
  ],
  "u7-l2": [
@@ -1313,17 +1313,17 @@ PLCBOOK.errs({
   {
    "ex": "مثال 1: الوصول",
    "title": "زائر",
-   "given": "موعد مع هدى.",
+   "given": "موعد مع هيلين.",
    "ask": "قل للموظف.",
    "steps": [
     {
-     "t": "المعطى: موعد مع هدى."
+     "t": "المعطى: موعد مع هيلين."
     },
     {
-     "t": "الخطوة 1: I'm here for see Ms Huda.",
+     "t": "الخطوة 1: I'm here for see Ms Helen.",
      "bad": true,
      "why": "here to + الفعل.",
-     "fix": "I'm here to see Ms Huda.",
+     "fix": "I'm here to see Ms Helen.",
      "reasons": [
       "here seeing",
       "here see",
@@ -1333,7 +1333,7 @@ PLCBOOK.errs({
      "rc": 2
     }
    ],
-   "answer": "I'm here to see Ms Huda. I have an appointment at 10 o'clock."
+   "answer": "I'm here to see Ms Helen. I have an appointment at 10 o'clock."
   },
   {
    "ex": "مثال 2: الموظف",
@@ -1397,10 +1397,10 @@ PLCBOOK.errs({
      "t": "المعطى: 1992 / launch"
     },
     {
-     "t": "الخطوة 1: In 1992, they launch SunNajd Ltd.",
+     "t": "الخطوة 1: In 1992, they launch SunNova Ltd.",
      "bad": true,
      "why": "الماضي: launched.",
-     "fix": "In 1992, they launched SunNajd Ltd.",
+     "fix": "In 1992, they launched SunNova Ltd.",
      "reasons": [
       "have launch",
       "launched",
@@ -1410,7 +1410,7 @@ PLCBOOK.errs({
      "rc": 1
     }
    ],
-   "answer": "In 1992, they launched SunNajd Ltd."
+   "answer": "In 1992, they launched SunNova Ltd."
   },
   {
    "ex": "مثال 2: الشاذ",
@@ -1435,7 +1435,7 @@ PLCBOOK.errs({
      "rc": 2
     }
    ],
-   "answer": "In 2001, the company built a factory in Jubail."
+   "answer": "In 2001, the company built a factory in Hull."
   },
   {
    "ex": "مثال 3: التغيير",
@@ -1653,10 +1653,10 @@ PLCBOOK.errs({
      "t": "المعطى: يلعب الآن."
     },
     {
-     "t": "الخطوة 1: Look! Ahmed plays tennis.",
+     "t": "الخطوة 1: Look! Edward plays tennis.",
      "bad": true,
      "why": "الآن: is playing.",
-     "fix": "Look! Ahmed is playing tennis.",
+     "fix": "Look! Edward is playing tennis.",
      "reasons": [
       "plays",
       "played",
@@ -1666,7 +1666,7 @@ PLCBOOK.errs({
      "rc": 3
     }
    ],
-   "answer": "Look! Ahmed is playing tennis."
+   "answer": "Look! Edward is playing tennis."
   },
   {
    "ex": "مثال 3: الماضي",

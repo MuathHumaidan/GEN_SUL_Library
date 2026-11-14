@@ -9,7 +9,7 @@ const kcss=()=>{if(!document.getElementById('phk-css')){const st=document.create
 const DAY=[['get up','gets up','got up','getting up','','5.30'],['have','has','had','having','breakfast','6.00'],['leave','leaves','left','leaving','home','6.30'],['start','starts','started','starting','work','7.00'],['have','has','had','having','a meeting','9.00'],['call','calls','called','calling','his clients','11.00'],['have','has','had','having','lunch','12.30'],['finish','finishes','finished','finishing','work','3.00'],['go','goes','went','going','to the gym','5.00'],['get','gets','got','getting','home','7.00']];
 function lab10a(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
- <div class="c7 panel"><h3 style="margin-top:0">يوم فيصل</h3><p class="sub">شخصية من إعدادنا، مبني على التمرينين 1–3 ص 48. اختر الزمن ثم ساعة من اليوم.</p>
+ <div class="c7 panel"><h3 style="margin-top:0">يوم فيليكس</h3><p class="sub">شخصية من إعدادنا، مبني على التمرينين 1–3 ص 48. اختر الزمن ثم ساعة من اليوم.</p>
   <div class="ph-row"><button type="button" class="btn pri" data-t="every">every Sunday</button><button type="button" class="btn" data-t="now">now</button><button type="button" class="btn" data-t="last">last Sunday</button></div>
   <div class="ph-row" id="hs">${DAY.map((d,i)=>`<button type="button" class="btn${i?'':' pri'}" data-h="${i}">${d[5]}</button>`).join('')}</div><div id="o"></div></div>
  <div class="c5 panel"><h3 style="margin-top:0">الأزمنة الثلاثة</h3>${vt([['every Sunday','He gets up at 5.30.','المضارع البسيط'],['now','He is getting up.','المضارع المستمر'],['last Sunday','He got up at 5.30.','الماضي البسيط']],['متى','مثال','الزمن'])}</div>
@@ -17,7 +17,7 @@ function lab10a(el,B){kcss();
  const $=s=>el.querySelector(s);let t='every',h=0;
  const sh=()=>{el.querySelectorAll('[data-t]').forEach(b=>b.classList.toggle('pri',b.dataset.t===t));el.querySelectorAll('[data-h]').forEach(b=>b.classList.toggle('pri',+b.dataset.h===h));
   const d=DAY[h],c=d[4]?' '+d[4]:'';
-  $('#o').innerHTML=t==='every'?eb(`Every Sunday, Faisal ${d[1]}${c} at ${d[5]}.`):t==='now'?eb([`It's ${d[5]} now.`,`Look! Faisal is ${d[3]}${c}.`]):eb(`Last Sunday, Faisal ${d[2]}${c} at ${d[5]}.`)};
+  $('#o').innerHTML=t==='every'?eb(`Every Sunday, Felix ${d[1]}${c} at ${d[5]}.`):t==='now'?eb([`It's ${d[5]} now.`,`Look! Felix is ${d[3]}${c}.`]):eb(`Last Sunday, Felix ${d[2]}${c} at ${d[5]}.`)};
  el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{t=b.dataset.t;sh()});el.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{h=+b.dataset.h;sh()});sh();
 }
 /* ===== مختبرات «شرح القاعدة» الوحدة 10 ===== */
@@ -48,7 +48,7 @@ const R1101=N.rule({title:'أفعال الروتين، والأزمنة الثل
   points:[`${e('get up')} يستيقظ وينهض، و ${e('leave home')} يغادر البيت.`,`${e('get to work')} يصل إلى العمل، و ${e('get home')} يصل إلى البيت (بلا ${e('to')}).`,`${e('have breakfast / lunch / a break')}، و ${e('finish work')}، و ${e('go shopping / go out')}`],
   html:vt([['get up','يستيقظ وينهض'],['have breakfast / lunch / a break','يتناول الفطور / الغداء / يستريح'],['leave home','يغادر البيت'],['get to work / get home','يصل إلى العمل / البيت'],['call my clients','يتصل بعملائه'],['pick up a friend','يمرّ لأخذ صديق'],['go shopping / go out','يتسوق / يخرج'],['finish work','ينهي العمل'],['watch TV / play tennis','يشاهد التلفاز / يلعب التنس']],['English','المعنى']),
   pairs:[['I get to home at five.','I get home at five.','مع home بلا to.']],
-  art:art(`${DAY.slice(0,8).map((d,i)=>`<g data-tip="${d[5]}: ${d[0]}${d[4]?' '+d[4]:''}"><rect x="${20+(i%2)*165}" y="${26+Math.floor(i/2)*60}" width="155" height="46" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(97+(i%2)*165,54+Math.floor(i/2)*60,d[0]+(d[4]?' '+d[4]:''),{fs:12,w:700})}</g>`).join('')}`,'روتين'),cap:'يوم فيصل. مرّر المؤشر لترى الوقت.',labs:[{title:'الأفعال',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'I ___ up at six.',o:['get','have'],a:0},{s:'I ___ breakfast at home.',o:['have','make to'],a:0},{s:'I ___ home at seven.',o:['leave','go'],a:0},{s:'I ___ my friend on the way.',o:['pick up','go out'],a:0}]})}]},
+  art:art(`${DAY.slice(0,8).map((d,i)=>`<g data-tip="${d[5]}: ${d[0]}${d[4]?' '+d[4]:''}"><rect x="${20+(i%2)*165}" y="${26+Math.floor(i/2)*60}" width="155" height="46" rx="12" fill="${i%3===0?C.yel:C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(97+(i%2)*165,54+Math.floor(i/2)*60,d[0]+(d[4]?' '+d[4]:''),{fs:12,w:700})}</g>`).join('')}`,'روتين'),cap:'يوم فيليكس. مرّر المؤشر لترى الوقت.',labs:[{title:'الأفعال',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'I ___ up at six.',o:['get','have'],a:0},{s:'I ___ breakfast at home.',o:['have','make to'],a:0},{s:'I ___ home at seven.',o:['leave','go'],a:0},{s:'I ___ my friend on the way.',o:['pick up','go out'],a:0}]})}]},
  {t:'ثلاثة أزمنة: الروتين والآن والماضي',short:'leaves · is leaving · left',old:[2],q:"ما الفرق بين I play و I'm playing و I played؟",ref:'ص 48',
   lead:`لكل وقت زمن: ما نفعله كل يوم، وما يحدث الآن، وما حدث وانتهى. ونعرف الزمن غالباً من كلمة الوقت في الجملة.`,
   points:[`<b>المضارع البسيط</b> للروتين (${e('every day · every Monday')}): ${e('Every Monday, I leave home at seven.')} ومع ${e('he · she')} نضيف ${e('s')}: ${e('She leaves home at seven.')}`,
@@ -85,7 +85,7 @@ B.lesson({
  lab:lab10a,
  examples:[
   {title:'مثال 1: روتين',ref:'ص 48',q:`<p>كل اثنين تغادر سارة البيت الساعة 7.</p>`,given:[],solve:()=>[{t:`الخطوة 1: روتين ← المضارع البسيط.`},{t:`الخطوة 2: مع she: ${e('leaves')}.`},{t:`الخطوة 3: ${e('Every Monday, Sara leaves home at seven.')}`,final:true}]},
-  {title:'مثال 2: الآن',ref:'ص 48',q:`<p>انظر! أحمد يلعب التنس.</p>`,given:[],solve:()=>[{t:`الخطوة 1: يحدث الآن ← ${e('is + ing')}.`},{t:`الخطوة 2: ${e('playing')}.`},{t:`الخطوة 3: ${e("Look! Ahmed is playing tennis.")}`,final:true}]},
+  {title:'مثال 2: الآن',ref:'ص 48',q:`<p>انظر! إدوارد يلعب التنس.</p>`,given:[],solve:()=>[{t:`الخطوة 1: يحدث الآن ← ${e('is + ing')}.`},{t:`الخطوة 2: ${e('playing')}.`},{t:`الخطوة 3: ${e("Look! Edward is playing tennis.")}`,final:true}]},
   {title:'مثال 3: الماضي',ref:'ص 48',q:`<p>السبت الماضي استيقظت الساعة 10 وتناولت الفطور.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('get up → got up')}.`},{t:`الخطوة 2: ${e('have → had')}.`},{t:`الخطوة 3: ${e('Last Saturday, I got up at ten and had breakfast.')}`,final:true}]}
  ],
  quiz:[
@@ -130,8 +130,8 @@ const R1102=N.rule({title:'ظروف التكرار، و How often …?، وال�
   art:art(`<line x1="30" y1="150" x2="330" y2="150" stroke="${C.ink}" stroke-width="3"/>${ADV.map(a=>`<g data-tip="${a[1]} ≈ ${a[0]}%"><circle cx="${30+a[0]*3}" cy="150" r="9" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(30+a[0]*3,a[0]%20===0||a[0]===85?126:182,a[1],{fs:11,w:700})}${TL(30+a[0]*3,a[0]%20===0||a[0]===85?110:198,a[0]+'%',{fs:10})}</g>`).join('')}`,'adverbs'),cap:'مقياس التكرار. مرّر المؤشر على كل نقطة.',labs:[LAB1102A,LAB1102B,{title:'التكرار',w:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'I ___ drive to college. (100%)',o:['always','never'],a:0},{s:"I'm ___ late. (0%)",o:['never','always'],a:0},{s:'How ___ do you work late?',o:['often','many'],a:0},{s:'I ___ go out on Fridays. (50%)',o:['sometimes','hardly ever'],a:0}]})}]},
  {t:'قراءة جدول والمقارنة',short:'قراءة جدول',old:[2],q:'كيف تقارن بين روتينك وروتين زميلك؟',ref:'ص 50–51',
   lead:`عندما نقرأ جدولاً نقارن أرقامه، ونستعمل ما تعلمناه من المقارنة والتفضيل.`,
-  points:[`نقارن بين شخصين بـ ${e('but')}: ${e('Sami always drives to work, but I never do.')}`,`ونختار الأعلى بالتفضيل: ${e('In the UK, people work the longest hours.')}`],
-  html:eb(["Sami always drives to work, but I never do. I usually take the bus.","In the UK, people work the longest hours."]),
+  points:[`نقارن بين شخصين بـ ${e('but')}: ${e('Sean always drives to work, but I never do.')}`,`ونختار الأعلى بالتفضيل: ${e('In the UK, people work the longest hours.')}`],
+  html:eb(["Sean always drives to work, but I never do. I usually take the bus.","In the UK, people work the longest hours."]),
   art:art(`${CNT.slice(0,4).map((c,i)=>`<g data-tip="${c[0]}: ${c[1]} hours a week"><rect x="${40+i*75}" y="${240-(c[1]-30)*12}" width="55" height="${(c[1]-30)*12}" fill="${i===0?C.red:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(67+i*75,258,c[0],{fs:12,w:700})}${TL(67+i*75,232-(c[1]-30)*12,String(c[1]),{fs:12,w:700})}</g>`).join('')}`,'working hours'),cap:'ساعات العمل الأسبوعية من جدول الكتاب (المحور يبدأ من 30). مرّر المؤشر على كل عمود.',labs:[{title:'الجدول',w:(el,B)=>N.cases(el,B,{intro:'أي بلد؟',cases:[{q:'People work the shortest hours.',opts:[['Germany',1],['the UK',0]]},{q:'People save the most.',opts:[['France',1],['Canada',0]]}]})}]}
  ]});
 B.lesson({
@@ -158,7 +158,7 @@ B.lesson({
  examples:[
   {title:'مثال 1: مكان الظرف',ref:'ص 50',q:`<p>رتّب: usually / I / the bus / take</p>`,given:[],solve:()=>[{t:`الخطوة 1: الظرف قبل الفعل الأساسي.`},{t:`الخطوة 2: ${e('I usually take')}`},{t:`الخطوة 3: ${e('I usually take the bus.')}`,final:true}]},
   {title:'مثال 2: مع be',ref:'ص 50',q:`<p>رتّب: late / never / I'm</p>`,given:[],solve:()=>[{t:`الخطوة 1: مع ${e('be')} الظرف بعده.`},{t:`الخطوة 2: ${e("I'm never")}`},{t:`الخطوة 3: ${e("I'm never late.")}`,final:true}]},
-  {title:'مثال 3: الفرق',ref:'ص 50',q:`<p>زميلك دائماً يتغدى في العمل، وأنت أبداً؛ تتغدى في البيت عادة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('Omar always has lunch at work')}`},{t:`الخطوة 2: ${e("but I never do")}`},{t:`الخطوة 3: ${e("Omar always has lunch at work, but I never do. I usually have lunch at home.")}`,final:true}]}
+  {title:'مثال 3: الفرق',ref:'ص 50',q:`<p>زميلك دائماً يتغدى في العمل، وأنت أبداً؛ تتغدى في البيت عادة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('Oliver always has lunch at work')}`},{t:`الخطوة 2: ${e("but I never do")}`},{t:`الخطوة 3: ${e("Oliver always has lunch at work, but I never do. I usually have lunch at home.")}`,final:true}]}
  ],
  quiz:[
   {q:'100% =',o:['always','usually','often','sometimes'],c:0,e:'always.'},

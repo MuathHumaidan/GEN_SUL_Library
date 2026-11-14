@@ -8,8 +8,8 @@ const kcss=()=>{if(!document.getElementById('phk-css')){const st=document.create
 
 /* ========== 1.1 Basics ========== */
 const greetArt=()=>art(`
- <g data-tip="تعريف بالنفس: I'm Ali. أو My name's Ali. (I'm = I am، name's = name is)"><rect x="24" y="60" width="150" height="62" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(99,88,"Hi. I'm Ali.",{fs:14,w:700})}${TL(99,108,"I'm from Riyadh.",{fs:12})}</g>
- <g data-tip="الرد على التعارف: Pleased to meet you. أو Nice to meet you."><rect x="186" y="60" width="150" height="62" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(261,88,'Nice to meet you,',{fs:13,w:700})}${TL(261,108,'Ali.',{fs:13,w:700})}</g>
+ <g data-tip="تعريف بالنفس: I'm Alex. أو My name's Alex. (I'm = I am، name's = name is)"><rect x="24" y="60" width="150" height="62" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(99,88,"Hi. I'm Alex.",{fs:14,w:700})}${TL(99,108,"I'm from London.",{fs:12})}</g>
+ <g data-tip="الرد على التعارف: Pleased to meet you. أو Nice to meet you."><rect x="186" y="60" width="150" height="62" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2.5"/>${TL(261,88,'Nice to meet you,',{fs:13,w:700})}${TL(261,108,'Alex.',{fs:13,w:700})}</g>
  <g data-tip="السؤال عن العمل: What do you do? والجواب: I'm a technician. (a قبل الحرف الساكن، an قبل الحرف المتحرك: an electrician)"><rect x="40" y="160" width="280" height="58" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${TL(180,186,'What do you do?',{fs:14,w:700})}${TL(180,206,"I'm an electrician.",{fs:13,c:C.blue,w:700})}</g>
  <g data-tip="التعليمات (فعل الأمر): Stand up. Sit down. ونضيف please لتكون مهذبة."><rect x="70" y="240" width="220" height="44" rx="12" fill="${C.grn}" stroke="${C.ink}" stroke-width="2"/>${TL(180,268,'Stand up, please.',{fs:14,w:700,c:'#fff'})}</g>`,'تعارف وسؤال عن العمل وتعليمات');
 const OPP=[['pick up','put down','يرفع (يلتقط) ≠ يضع'],['raise','lower','يرفع ≠ يُنزل'],['read','write','يقرأ ≠ يكتب'],['say','listen','يقول ≠ يستمع'],['stand','sit','يقف ≠ يجلس'],['start','stop','يبدأ ≠ يتوقف']];
@@ -19,14 +19,14 @@ const JOBS=[['technician','a'],['electrician','an'],['engineer','an'],['builder'
 function lab11(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c7 panel"><h3 style="margin-top:0">كوّن تعارفاً</h3><p class="sub">مبني على «Start here» و«Speaking» ص 4. اختر الاسم والبلد والعمل، وشاهد الحوار يتغير، وانتبه لـ a و an.</p>
-  <div class="ph-row"><input class="ph-num" id="nm" value="Saad" aria-label="الاسم" style="width:9em;font-family:var(--font)" dir="ltr">
+  <div class="ph-row"><input class="ph-num" id="nm" value="Steve" aria-label="الاسم" style="width:9em;font-family:var(--font)" dir="ltr">
   <select class="ph-sel" id="ct">${['Saudi Arabia','Egypt','Jordan','Japan','Poland','Brazil'].map(c=>`<option>${c}</option>`).join('')}</select>
   <select class="ph-sel" id="jb">${JOBS.map((j,i)=>`<option value="${i}">${j[0]}</option>`).join('')}</select></div><div id="dlg"></div></div>
  <div class="c5 panel"><h3 style="margin-top:0">لعبة التعليمات</h3><p class="sub">مثل لعبة التمرين 5 ص 5: نفّذ الأمر فقط إذا قال المتحدث please. اضغط «أمر جديد».</p>
   <button class="btn pri" type="button" id="cmd">أمر جديد</button><div id="co" style="margin-top:10px"></div></div>
  <div class="c12 panel"><h3 style="margin-top:0">جرّب</h3><ol class="ph-try"><li>اختر <span class="en">engineer</span> ثم <span class="en">builder</span>: متى تقول <span class="en">a</span> ومتى <span class="en">an</span>؟</li><li>اكتب اسمك وبلدك، واقرأ الحوار مع زميلك بصوت عالٍ.</li><li>في لعبة التعليمات: كم أمراً نفّذته صحيحاً من عشرة؟</li></ol></div></div></div>`;
  const $=s=>el.querySelector(s);
- const show=()=>{const n=($('#nm').value||'Saad').trim()||'Saad',c=$('#ct').value,j=JOBS[+$('#jb').value];
+ const show=()=>{const n=($('#nm').value||'Steve').trim()||'Steve',c=$('#ct').value,j=JOBS[+$('#jb').value];
   $('#dlg').innerHTML=dl([['A',"Hello. What's your name?"],['B',`I'm ${cap(n)}.`],['A','Where are you from?'],['B',`I'm from ${c}.`],['A','What do you do?'],['B',`I'm ${j[1]} ${j[0]}.`],['A',`Nice to meet you, ${cap(n)}.`]])+`<p class="sub" style="margin-top:6px">${j[1]==='an'?`${e(j[0])} تبدأ بصوت متحرك (a, e, i, o, u) فنقول ${e('an')}.`:`${e(j[0])} تبدأ بصوت ساكن فنقول ${e('a')}.`}</p>`};
  ['nm','ct','jb'].forEach(k=>$('#'+k).addEventListener('input',show));show();
  const CM=['Stand up','Sit down','Raise your left arm','Lower your arm','Pick up a pen','Put down the pen','Say hello','Read your book silently','Stop','Open your book','Close your book','Write your name'];let s=7;
@@ -46,7 +46,7 @@ const LAB11A={title:'am أم is أم are؟',w:(el,B)=>N.labB(el,B,{intro:'اخت
   const Q=x[0].replace(/^./,m=>m.toUpperCase()),yes=s==='I'?'Yes, you are.':s==='you'?'Yes, I am.':`Yes, ${s} ${x[0]}.`;
   return{pieces:[[Q,'k','be في أول السؤال'],[s==='I'?'I':s,'x',''],[c+'?','n',''],[yes,'q','جواب قصير']],say:`${Q} ${s==='I'?'I':s} ${c}? ${yes}`,why:'في السؤال نقدّم be على الضمير. وفي جواب «نعم» القصير لا نختصر.'}}})};
 const LAB11B={title:'عرّف بنفسك',w:(el,B)=>N.labB(el,B,{intro:'اختر الاسم وطريقة التعريف، وشاهد التعارف والرد عليه.',
- controls:[{k:'n',label:'الاسم',opts:[['Faisal','Faisal'],['Omar','Omar'],['Badr','Badr']]},{k:'f',label:'الطريقة',opts:[['im',"I'm …"],['name',"My name's …"],['check','Are you …?']]}],
+ controls:[{k:'n',label:'الاسم',opts:[['Felix','Felix'],['Oliver','Oliver'],['Ben','Ben']]},{k:'f',label:'الطريقة',opts:[['im',"I'm …"],['name',"My name's …"],['check','Are you …?']]}],
  out:({n,f})=>{if(f==='im')return{pieces:[['Hello.','x',''],["I'm",'k','= I am'],[n+'.','n','الاسم'],['Nice to meet you.','q','الرد']],say:`Hello. I'm ${n}. Nice to meet you.`,why:"I'm = I am: أنا. والرد Nice to meet you أو Pleased to meet you."};
   if(f==='name')return{pieces:[['Hi.','x',''],["My name's",'k','= My name is'],[n+'.','n','الاسم'],['Pleased to meet you.','q','الرد']],say:`Hi. My name's ${n}. Pleased to meet you.`,why:"My name's = My name is: اسمي. والمعنى مثل I'm."};
   return{pieces:[['Excuse me.','x','للتنبيه بأدب'],['Are you','k','هل أنت'],[n+'?','n',''],['Yes, I am.','q',"أو No, I'm not."]],say:`Excuse me. Are you ${n}? Yes, I am.`,why:'للتأكد من شخص نسأل Are you …? ونجيب بجواب قصير.'}}})};
@@ -87,15 +87,15 @@ const R11=N.rule({title:'التعارف، والفعل be، والتعليمات
   labs:[LAB11A]},
  {t:'التعارف',short:'التعارف',old:[1],q:'كيف تعرّف بنفسك؟ وما الفرق بين I\'m و My name\'s؟',ref:'ص 4',
   lead:`أول ما تحتاجه في أي لغة أن تعرّف بنفسك وترد على من يعرّف بنفسه. وللتعريف صيغتان بالمعنى نفسه.`,
-  points:[`<b>${e("I'm")}</b> + الاسم (= ${e('I am')}): ${e("I'm Fahad.")}`,
-   `<b>${e("My name's")}</b> + الاسم (= ${e('My name is')}): ${e("My name's Omar.")}`,
+  points:[`<b>${e("I'm")}</b> + الاسم (= ${e('I am')}): ${e("I'm Frank.")}`,
+   `<b>${e("My name's")}</b> + الاسم (= ${e('My name is')}): ${e("My name's Oliver.")}`,
    `<b>الرد على التعارف:</b> ${e('Nice to meet you.')} أو ${e('Pleased to meet you.')}`,
    `<b>للتأكد من شخص</b> نسأل ${e('Are you …?')} ونجيب ${e('Yes, I am.')} أو ${e("No, I'm not.")}، ونبدأ بـ ${e('Excuse me.')} للتنبيه بأدب.`],
-  html:dl([['A',"Hello. I'm Fahad Al-Qahtani."],['B',"Hi, Fahad. My name's Omar."],['A','Nice to meet you, Omar.']])+vt([['I am','I\'m','أنا'],['My name is','My name\'s','اسمي'],['What is','What\'s','ما'],['you are','you\'re','أنت']],['الكاملة','المختصرة','المعنى']),
-  labs:[LAB11B,{title:'أكمل التعارف',w:(el,B)=>N.gaps(el,B,{intro:'أكمل الحوار (أمثلة من عندنا):',items:[{s:'Hello. ___ Nawaf.',o:["I'm","I"],a:0,why:"I'm = I am."},{s:"___ you Mr Hassan? — Yes, I am.",o:['Are','Is'],a:0,why:'مع you نستعمل are.'},{s:"My ___ Sara.",o:["name's","names"],a:0,why:"name's = name is."},{s:"I'm ___ Jordan.",o:['from','in'],a:0,why:'البلد بعد from.'}]})}]},
+  html:dl([['A',"Hello. I'm Frank Carter."],['B',"Hi, Frank. My name's Oliver."],['A','Nice to meet you, Oliver.']])+vt([['I am','I\'m','أنا'],['My name is','My name\'s','اسمي'],['What is','What\'s','ما'],['you are','you\'re','أنت']],['الكاملة','المختصرة','المعنى']),
+  labs:[LAB11B,{title:'أكمل التعارف',w:(el,B)=>N.gaps(el,B,{intro:'أكمل الحوار (أمثلة من عندنا):',items:[{s:'Hello. ___ Neil.',o:["I'm","I"],a:0,why:"I'm = I am."},{s:"___ you Mr Harry? — Yes, I am.",o:['Are','Is'],a:0,why:'مع you نستعمل are.'},{s:"My ___ Sara.",o:["name's","names"],a:0,why:"name's = name is."},{s:"I'm ___ Jordan.",o:['from','in'],a:0,why:'البلد بعد from.'}]})}]},
  {t:'السؤال عن الاسم والبلد والعمل، و a / an',short:'a أم an',old:[2],q:'أيهما صحيح: I\'m a electrician أم I\'m an electrician؟',ref:'ص 4',
   lead:`بعد التعارف نسأل عن الاسم والبلد والعمل. وفي جواب العمل نضع قبل اسم المهنة ${e('a')} أو ${e('an')}، ويختلف الاختيار حسب أول صوت في الكلمة.`,
-  points:[`<b>الأسئلة الثلاثة:</b><br>${e("What's your name? — I'm Badr.")}<br>${e("Where are you from? — I'm from Saudi Arabia.")}<br>${e("What do you do? — I'm a technician.")}`,
+  points:[`<b>الأسئلة الثلاثة:</b><br>${e("What's your name? — I'm Ben.")}<br>${e("Where are you from? — I'm from Saudi Arabia.")}<br>${e("What do you do? — I'm a technician.")}`,
    `<b>${e('What do you do?')}</b> معناها «ما عملك؟» وليس «ماذا تفعل الآن؟».`,
    `<b>${e('a')}</b> قبل الكلمة التي تبدأ بصوت ساكن: ${e('a technician · a builder · a student')}`,
    `<b>${e('an')}</b> قبل الكلمة التي تبدأ بصوت متحرك (${e('a, e, i, o, u')}): ${e('an electrician · an engineer · an operator')}`,
@@ -157,16 +157,16 @@ B.lesson({
  ],
  lab:lab11,
  examples:[
-  {title:'مثال 1: تعريف بالنفس',ref:'ص 4',q:`<p>عرّف بنفسك: اسمك Faisal، من Saudi Arabia، وتعمل فنياً (technician).</p>`,given:[],
-   solve:()=>[{t:`الخطوة 1: الاسم: ${e("I'm Faisal.")}`},{t:`الخطوة 2: البلد: ${e("I'm from Saudi Arabia.")}`},{t:`الخطوة 3: technician تبدأ بصوت ساكن فنقول a: ${e("I'm a technician.")}`,final:true}]},
-  {title:'مثال 2: تأكيد شخص',ref:'ص 4',q:`<p>تريد التأكد أن الرجل أمامك هو Mr Nasser. ماذا تسأل؟ وماذا يجيب إذا كان هو؟</p>`,given:[],
-   solve:()=>[{t:`الخطوة 1: نبدأ بالاعتذار المهذب: ${e('Excuse me.')}`},{t:`الخطوة 2: السؤال بـ Are: ${e('Are you Mr Nasser?')}`},{t:`الخطوة 3: الجواب القصير: ${e('Yes, I am.')}`,final:true}]},
+  {title:'مثال 1: تعريف بالنفس',ref:'ص 4',q:`<p>عرّف بنفسك: اسمك Felix، من Saudi Arabia، وتعمل فنياً (technician).</p>`,given:[],
+   solve:()=>[{t:`الخطوة 1: الاسم: ${e("I'm Felix.")}`},{t:`الخطوة 2: البلد: ${e("I'm from Saudi Arabia.")}`},{t:`الخطوة 3: technician تبدأ بصوت ساكن فنقول a: ${e("I'm a technician.")}`,final:true}]},
+  {title:'مثال 2: تأكيد شخص',ref:'ص 4',q:`<p>تريد التأكد أن الرجل أمامك هو Mr Nick. ماذا تسأل؟ وماذا يجيب إذا كان هو؟</p>`,given:[],
+   solve:()=>[{t:`الخطوة 1: نبدأ بالاعتذار المهذب: ${e('Excuse me.')}`},{t:`الخطوة 2: السؤال بـ Are: ${e('Are you Mr Nick?')}`},{t:`الخطوة 3: الجواب القصير: ${e('Yes, I am.')}`,final:true}]},
   {title:'مثال 3: تعليمة مهذبة',ref:'ص 5',q:`<p>اطلب من زميلك أن يضع المفك على الطاولة بأدب.</p>`,given:[],
    solve:()=>[{t:`الخطوة 1: الأمر يبدأ بالفعل: ${e('Put down…')}`},{t:`الخطوة 2: الشيء والمكان: ${e('the screwdriver on the table')}`},{t:`الخطوة 3: نضيف please: ${e('Please put down the screwdriver on the table.')}`,final:true}]}
  ],
  quiz:[
-  {q:"Hello. ___ Ahmed.",o:["I'm","I","Me","My"],c:0,e:"I'm = I am."},
-  {q:'What do you do?',o:["I'm from Egypt.","I'm a builder.","I'm fine.","My name's Ali."],c:1,e:'السؤال عن العمل.'},
+  {q:"Hello. ___ Edward.",o:["I'm","I","Me","My"],c:0,e:"I'm = I am."},
+  {q:'What do you do?',o:["I'm from Egypt.","I'm a builder.","I'm fine.","My name's Alex."],c:1,e:'السؤال عن العمل.'},
   {q:"I'm ___ engineer.",o:['a','an','the','—'],c:1,e:'قبل الصوت المتحرك an.'},
   {q:'ضد pick up:',o:['put down','stand up','start','raise'],c:0,e:'pick up ≠ put down.'},
   {q:'The hammer is ___ the box. (داخل)',o:['on','under','in','up'],c:2,e:'in = داخل.'},
@@ -185,7 +185,7 @@ const lettersArt=()=>art(`${Object.keys(ABC).map((g,i)=>`<g data-tip="${ABC[g].s
 function lab12(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c7 panel"><h3 style="margin-top:0">تهجئة الكلمات</h3><p class="sub">مبني على التمرينين 3 و4 ص 6. اكتب اسماً أو بريداً، وشاهد كل حرف بلون مجموعته الصوتية، واستمع للتهجئة.</p>
-  <input class="ph-num" id="wd" value="Al-Harbi" dir="ltr" aria-label="كلمة للتهجئة" style="width:16em;font-family:var(--font)"><div id="wo" style="margin-top:10px"></div></div>
+  <input class="ph-num" id="wd" value="Harris" dir="ltr" aria-label="كلمة للتهجئة" style="width:16em;font-family:var(--font)"><div id="wo" style="margin-top:10px"></div></div>
  <div class="c5 panel"><h3 style="margin-top:0">الوحدات والرموز</h3><p class="sub">مبني على التمرين 9 ص 7. اختر رمزاً لترى كيف يُقرأ.</p>
   <select class="ph-sel" id="un">${UNITS.map((u,i)=>`<option value="${i}">${u[0]}</option>`).join('')}</select><input class="ph-num" id="uv" value="230" type="number" step="any" style="max-width:110px" aria-label="الرقم"><div id="uo" style="margin-top:10px"></div></div>
  <div class="c12 panel"><h3 style="margin-top:0">جرّب</h3><ol class="ph-try"><li>اكتب بريدك مثل <span class="en">saad_99@mail.com</span>: كيف تُقرأ <span class="en">_</span> و <span class="en">@</span> و <span class="en">.</span>؟</li><li>اكتب اسم عائلتك وتهجّه لزميلك حرفاً حرفاً.</li><li>اختر <span class="en">°C</span> والرقم 1: لماذا صارت <span class="en">degree</span> مفردة؟</li></ol></div></div></div>`;
@@ -207,7 +207,7 @@ function lab12(el,B){kcss();
 const GC12={three:'#1f5fd1',eight:'#00875a',five:'#b37d00',ten:'#7a3fb0',two:'#c0392b',exc:'#555'};
 const grp12=ch=>Object.keys(ABC).find(g=>ABC[g].includes(ch));
 const LAB12A={title:'تهجّ الاسم',w:(el,B)=>N.labB(el,B,{intro:'اختر اسماً، وشاهد حروفه ملونة حسب مجموعتها الصوتية، وتحت كل حرف مجموعته.',
- controls:[{k:'n',label:'الاسم',opts:[['OTAIBI','OTAIBI'],['BADR','BADR'],['FAHAD','FAHAD'],['SALEM','SALEM'],['MULLA','MULLA']]}],
+ controls:[{k:'n',label:'الاسم',opts:[['OWENS','OWENS'],['BEN','BEN'],['FRANK','FRANK'],['SIMON','SIMON'],['MILLER','MILLER']]}],
  out:({n})=>{const L=n.split(''),pieces=[];for(let i=0;i<L.length;i++){if(L[i+1]===L[i]){pieces.push(['double '+L[i],'k','حرفان متشابهان']);i++;continue}const g=grp12(L[i]);pieces.push([L[i],'x',g==='exc'?'استثناء':g])}
   return{pieces,say:pieces.map(p=>p[0]).join(', '),ar:`السؤال: How do you spell your name? والجواب: ${n.split('').join('-')}.`,why:'نقول الحروف حرفاً حرفاً. والحرفان المتكرران نقول لهما double، مثل double L.'}}})};
 const PH12={a:'0556 33 21 08',b:'0112 44 07 90',c:'0503 00 18 66'};
@@ -229,12 +229,12 @@ const R12=N.rule({title:'الحروف والتهجئة، والهاتف والب
  {t:'الحروف والتهجئة',short:'الحروف',old:[1],q:'كيف تتهجى اسمك؟ وكيف تقول LL؟',ref:'ص 6',
   lead:`كثيراً ما يُطلب منك أن تتهجى اسمك أو اسم شركة على الهاتف أو في نموذج. والحروف الإنجليزية أسهل حفظاً إذا جمعناها حسب صوتها.`,
   points:[`<b>ست مجموعات</b> بحسب الصوت الذي ينتهي به اسم الحرف، كما في الجدول. والحرفان ${e('O')} و ${e('R')} استثناء.`,
-   `<b>السؤال عن التهجئة:</b> ${e('How do you spell …?')} والجواب حرفاً حرفاً: ${e('O-T-A-I-B-I.')}`,
+   `<b>السؤال عن التهجئة:</b> ${e('How do you spell …?')} والجواب حرفاً حرفاً: ${e('O-W-E-N-S.')}`,
    `<b>الحرفان المتكرران</b> نقول لهما ${e('double')}: ${e('LL = double L')}`,
    `<b>إذا لم تسمع جيداً:</b> ${e('Could you repeat that, please?')}`,
    `${e('Z')} تُنطق «زِد» في البريطانية و«زي» في الأمريكية.`],
   html:`<p>الكتاب يقسم الحروف حسب صوتها، فتحفظها أسهل:</p>${vt(Object.keys(ABC).map(g=>[g==='exc'?'EXCEPTIONS':g,ABC[g].split('').join(' '),GAR[g]]),['المجموعة','الحروف','الصوت'])}
-   <p>اسأل عن التهجئة بـ ${e('How do you spell…?')}:</p>${dl([['A','How do you spell your surname?'],['B','O-T-A-I-B-I.'],['A','Could you repeat that, please?']])}`,labs:[LAB12A,{title:'صنّف الحروف',w:(el,B)=>N.sort(el,B,{intro:'ضع الحرف في مجموعته:',cats:['three','eight','ten','two'],items:[['G',0],['J',1],['M',2],['W',3],['P',0],['K',1]]})}]},
+   <p>اسأل عن التهجئة بـ ${e('How do you spell…?')}:</p>${dl([['A','How do you spell your surname?'],['B','O-W-E-N-S.'],['A','Could you repeat that, please?']])}`,labs:[LAB12A,{title:'صنّف الحروف',w:(el,B)=>N.sort(el,B,{intro:'ضع الحرف في مجموعته:',cats:['three','eight','ten','two'],items:[['G',0],['J',1],['M',2],['W',3],['P',0],['K',1]]})}]},
  {t:'رقم الهاتف والبريد الإلكتروني',short:'الهاتف والبريد',old:[2],q:'كيف تقرأ 0556 33 21 08؟ وكيف تقرأ @ و _؟',ref:'ص 6',
   lead:`عند تبادل أرقام الهواتف وعناوين البريد بالإنجليزي لها طريقة قراءة ثابتة، تختلف عن قراءة الأعداد العادية.`,
   points:[`<b>الهاتف:</b> نقرؤه رقماً رقماً بمجموعاته، لا عدداً واحداً كبيراً.`,`<b>الصفر</b> نقرؤه غالباً ${e('oh')}، و<b>الرقمان المتشابهان المتتاليان</b> ${e('double')}: ${e('33 = double three')}`,

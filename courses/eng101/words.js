@@ -1,9 +1,9 @@
 /* كلمات الدرس — انجل-101. كل كلمة: [الكلمة, الترجمة, مثال من الحياة اليومية (من إعدادنا), ترجمة المثال] */
 PLCBOOK.words({
  'u1-l1':[
-  ['name','اسم',"My name's Khalid.",'اسمي خالد.'],
-  ['meet','يقابل (يتعرّف على)','Nice to meet you, Ahmed.','تشرفت بمعرفتك يا أحمد.'],
-  ['from','من (بلد أو مدينة)',"I'm from Jeddah.",'أنا من جدة.'],
+  ['name','اسم',"My name's Kevin.",'اسمي كيفن.'],
+  ['meet','يقابل (يتعرّف على)','Nice to meet you, Edward.','تشرفت بمعرفتك يا إدوارد.'],
+  ['from','من (بلد أو مدينة)',"I'm from Liverpool.",'أنا من ليفربول.'],
   ['job / occupation','وظيفة / مهنة',"What's your job? I'm a driver.",'ما وظيفتك؟ أنا سائق.'],
   ['technician','فني','The technician fixed my air conditioner.','أصلح الفني مكيّفي.'],
   ['stand up ≠ sit down','يقف ≠ يجلس','Please sit down and open your book.','اجلس من فضلك وافتح كتابك.'],
@@ -15,7 +15,7 @@ PLCBOOK.words({
  ],
  'u1-l2':[
   ['spell','يتهجّى','How do you spell your surname?','كيف تتهجّى اسم عائلتك؟'],
-  ['surname','اسم العائلة','My surname is Al-Dosari.','اسم عائلتي الدوسري.'],
+  ['surname','اسم العائلة','My surname is Dawson.','اسم عائلتي داوسون.'],
   ['letter','حرف','My name has five letters.','اسمي فيه خمسة أحرف.'],
   ['number','رقم','What is your phone number?','ما رقم جوالك؟'],
   ['email address','عنوان البريد الإلكتروني','Please send the photos to my email address.','أرسل الصور إلى بريدي الإلكتروني من فضلك.'],
@@ -34,7 +34,7 @@ PLCBOOK.words({
   ['time','الوقت',"What time is it? It's half past seven.",'كم الساعة؟ إنها السابعة والنصف.'],
   ['am / pm','قبل الظهر / بعد الظهر','The class starts at 8 am and finishes at 1 pm.','يبدأ الدرس 8 صباحاً وينتهي 1 ظهراً.'],
   ['depart / arrive','يغادر / يصل','The bus departs at 6.00 and arrives at 7.30.','تغادر الحافلة 6:00 وتصل 7:30.'],
-  ['flight','رحلة طيران','My flight to Dammam is at nine.','رحلتي إلى الدمام الساعة التاسعة.'],
+  ['flight','رحلة طيران','My flight to Leeds is at nine.','رحلتي إلى ليدز الساعة التاسعة.'],
   ['party','حفلة','There is a party at my uncle\'s house on Thursday.','هناك حفلة في بيت عمي يوم الخميس.']
  ],
  'u2-l1':[

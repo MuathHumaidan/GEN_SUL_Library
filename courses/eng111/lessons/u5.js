@@ -5,9 +5,9 @@ const K=window.PHK,N=window.ENK,{C,art,T,TL}=K,{e,eb,dl,vt,bk,au,ab,sp}=N;
 const kcss=()=>{if(!document.getElementById('phk-css')){const st=document.createElement('style');st.id='phk-css';st.textContent=K.css;document.head.appendChild(st)}};
 
 /* ========== 5A Answering the phone ========== */
-const CALLS=[{t:'تطلب شخصاً فيرد هو نفسه',L:[['A','Hello, Al-Noor Hospital.'],['B','Can I speak to Dr Khalid, please?'],['A','Speaking.'],['B','Ah, hello, Dr Khalid. My name is Fahad Saleh.']]},
- {t:'السكرتير يحوّل المكالمة',L:[['A','Delta Electric. Can I help you?'],['B',"Hello. Mr Saad's office, please."],['A',"Who's calling, please?"],['B','Laila Saeed.'],['A',"Just a moment. I'll put you through."]]},
- {t:'لا تعرف هل يتكلم الإنجليزية',L:[['A','Marhaba.'],['B','Hello … Do you speak English?'],['A','Yes, a little.'],['B','Oh, good. This is Tom Baker of Blue Line Shipping. Can I speak to Mr Majed, please?'],['A','Just a moment, please.']]}];
+const CALLS=[{t:'تطلب شخصاً فيرد هو نفسه',L:[['A','Hello, Northfield Hospital.'],['B','Can I speak to Dr Kevin, please?'],['A','Speaking.'],['B','Ah, hello, Dr Kevin. My name is Frank Sullivan.']]},
+ {t:'السكرتير يحوّل المكالمة',L:[['A','Delta Electric. Can I help you?'],['B',"Hello. Mr Steve's office, please."],['A',"Who's calling, please?"],['B','Laura Scott.'],['A',"Just a moment. I'll put you through."]]},
+ {t:'لا تعرف هل يتكلم الإنجليزية',L:[['A','Marhaba.'],['B','Hello … Do you speak English?'],['A','Yes, a little.'],['B','Oh, good. This is Tom Baker of Blue Line Shipping. Can I speak to Mr Mark, please?'],['A','Just a moment, please.']]}];
 const PLACES=[['in the mosque',0,'switch off your phone'],['at the cinema',0,'switch it off or make it silent'],['when you drive',0,'use it'],['in a hospital',0,'talk loudly on it'],['in a meeting',0,'answer it'],['in your car (parked)',1,'make a call'],['at home',1,'use it']];
 function lab5a(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
@@ -22,7 +22,7 @@ function lab5a(el,B){kcss();
 }
 /* ===== مختبرات «شرح القاعدة» الوحدة 5 ===== */
 const PH5={r:{greet:['Hello, Delta Electric.','يذكر اسم الشركة'],help:['Can I help you?','يعرض المساعدة'],who:["Who's calling, please?",'يسأل عن المتصل'],me:['Speaking.','أنا الشخص المطلوب'],wait:['Just a moment, please.','يطلب الانتظار'],put:["I'll put you through.",'يحوّل المكالمة']},
- c:{ask:['Can I speak to Mr Saad, please?','يطلب شخصاً'],off:["Mr Saad's office, please.",'يطلب مكتباً'],me:['This is Laila Saeed of Najd Motors.','يعرّف بنفسه'],lang:['Do you speak English?','يسأل عن اللغة']}};
+ c:{ask:['Can I speak to Mr Steve, please?','يطلب شخصاً'],off:["Mr Steve's office, please.",'يطلب مكتباً'],me:['This is Laura Scott of Nova Motors.','يعرّف بنفسه'],lang:['Do you speak English?','يسأل عن اللغة']}};
 const LAB151A={title:'عبارات الهاتف',w:(el,B)=>N.labB(el,B,{intro:'اختر وظيفة العبارة في المكالمة، وشاهد العبارة ومن يقولها.',
  controls:[{k:'f',label:'الوظيفة',opts:[...Object.keys(PH5.r).map(k=>['r.'+k,PH5.r[k][1]]),...Object.keys(PH5.c).map(k=>['c.'+k,PH5.c[k][1]])]}],
  out:({f})=>{const [r,k]=f.split('.'),[a,ar]=PH5[r][k];return{pieces:[[r==='r'?'من يرد':'المتصل','x',''],[a,r==='r'?'n':'q',ar]],say:a,why:f==='c.me'?`في الهاتف نقول ${e('This is …')} لا ${e('I am …')}.`:f==='r.me'?`${e('Speaking.')} = أنا الشخص الذي تطلبه.`:'عبارات الهاتف ثابتة، فنحفظها كما هي.'}}})};
@@ -30,7 +30,7 @@ const SH5={mosque:['in the mosque','should','switch off your phone'],drive:['whe
 const LAB151B={title:'should أم shouldn\'t؟',w:(el,B)=>N.labB(el,B,{intro:'اختر المكان، وشاهد النصيحة المناسبة.',
  controls:[{k:'p',label:'المكان',opts:Object.keys(SH5).map(k=>[k,SH5[k][0]])}],
  out:({p})=>{const [pl,m,v]=SH5[p];return{pieces:[['You','x',''],[m,m==="shouldn't"?'r':'k',m==='should'?'من الأفضل أن':m==='can'?'تستطيع':'من الأفضل ألا'],[v,'n','الفعل كما هو'],[pl.replace(' (parked)','')+'.','q','المكان']],say:`You ${m} ${v} ${pl.replace(' (parked)','')}.`,why:`${e('should')} نصيحة، و ${e("shouldn't")} نصيحة بعدم الفعل، وبعدهما الفعل كما هو.`}}})};
-const DT5={name:['name','Ibrahim Al-Fahd'],addr:['address','12 King Fahd Road, Riyadh'],fax:['fax number','017 555 6648'],ph:['contact phone number','014 555 7350']};
+const DT5={name:['name','Ian Fisher'],addr:['address','12 King Fahd Road, Riyadh'],fax:['fax number','017 555 6648'],ph:['contact phone number','014 555 7350']};
 const LAB152A={title:'اطلب البيانات',w:(el,B)=>N.labB(el,B,{intro:'اختر المعلومة وأسلوب الطلب، وشاهد السؤال والجواب.',
  controls:[{k:'d',label:'المعلومة',opts:Object.keys(DT5).map(k=>[k,DT5[k][0]])},{k:'m',label:'الأسلوب',opts:[['Can','Can I have'],['Could','Could I have']]}],
  out:({d,m})=>{const [w,a]=DT5[d];return{pieces:[[m+' I have','q',m==='Could'?'ألطف قليلاً':'طلب'],['your '+w+',','n','المعلومة'],['please?','x',''],[`Yes, it's ${a}.`,'k','الجواب']],say:`${m} I have your ${w}, please? Yes, it's ${a}.`,why:`${e('Can I have …?')} و ${e('Could I have …?')} كلاهما طلب، و ${e('Could')} ألطف قليلاً.`}}})};
@@ -43,12 +43,12 @@ const R151=N.rule({title:'عبارات الرد على الهاتف، وآداب
  parts:[
  {t:'عبارات الرد على الهاتف',short:'Speaking · This is',old:[1],q:'ماذا تقول إذا طلب المتصل شخصاً وكنت أنت هو؟',ref:'ص 24',
   lead:`مكالمات العمل لها عبارات ثابتة يعرفها الطرفان. نحفظها كما هي.`,
-  points:[`<b>من يرد</b> يبدأ باسم الشركة: ${e('Hello, Delta Electric. Can I help you?')}`,`<b>المتصل يطلب شخصاً:</b> ${e('Can I speak to Mr Saad, please?')}`,`<b>إذا كنت أنت المطلوب:</b> ${e('Speaking.')}`,
-   `<b>لمعرفة المتصل:</b> ${e("Who's calling, please?")} والمتصل يقول ${e('This is Laila Saeed of Najd Motors.')}`,`<b>للتحويل:</b> ${e('Just a moment, please.')} ثم ${e("I'll put you through.")}`,`في الهاتف نقول ${e('This is Laila')}، لا ${e('I am Laila')}.`],
-  html:vt([['Hello, Delta Electric.','يذكر اسم الشركة'],['Can I help you?','هل أخدمك؟'],['Speaking.','معك (أنا الشخص المطلوب)'],["Who's calling, please?",'من المتصل؟'],['Just a moment, please.','لحظة من فضلك'],["I'll put you through.",'سأحوّلك']],['من يرد','المعنى'])+vt([['Can I speak to Mr Saad, please?','هل أستطيع التحدث إلى …؟'],["Mr Saad's office, please.",'مكتب … من فضلك'],['This is Laila Saeed of Najd Motors.','معك … من شركة …'],['Do you speak English?','هل تتكلم الإنجليزية؟']],['المتصل','المعنى']),
-  pairs:[['I am Laila Saeed.','This is Laila Saeed.','في الهاتف نقول This is.']],
+  points:[`<b>من يرد</b> يبدأ باسم الشركة: ${e('Hello, Delta Electric. Can I help you?')}`,`<b>المتصل يطلب شخصاً:</b> ${e('Can I speak to Mr Steve, please?')}`,`<b>إذا كنت أنت المطلوب:</b> ${e('Speaking.')}`,
+   `<b>لمعرفة المتصل:</b> ${e("Who's calling, please?")} والمتصل يقول ${e('This is Laura Scott of Nova Motors.')}`,`<b>للتحويل:</b> ${e('Just a moment, please.')} ثم ${e("I'll put you through.")}`,`في الهاتف نقول ${e('This is Laura')}، لا ${e('I am Laura')}.`],
+  html:vt([['Hello, Delta Electric.','يذكر اسم الشركة'],['Can I help you?','هل أخدمك؟'],['Speaking.','معك (أنا الشخص المطلوب)'],["Who's calling, please?",'من المتصل؟'],['Just a moment, please.','لحظة من فضلك'],["I'll put you through.",'سأحوّلك']],['من يرد','المعنى'])+vt([['Can I speak to Mr Steve, please?','هل أستطيع التحدث إلى …؟'],["Mr Steve's office, please.",'مكتب … من فضلك'],['This is Laura Scott of Nova Motors.','معك … من شركة …'],['Do you speak English?','هل تتكلم الإنجليزية؟']],['المتصل','المعنى']),
+  pairs:[['I am Laura Scott.','This is Laura Scott.','في الهاتف نقول This is.']],
   art:art(`<g data-tip="من يرد: يذكر الشركة ويعرض المساعدة"><rect x="20" y="40" width="200" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(120,68,'Delta. Can I help you?',{fs:13,w:700})}</g>
-    <g data-tip="المتصل يطلب شخصاً"><rect x="140" y="100" width="200" height="44" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(240,128,'Can I speak to Saad?',{fs:13,w:700})}</g>
+    <g data-tip="المتصل يطلب شخصاً"><rect x="140" y="100" width="200" height="44" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(240,128,'Can I speak to Steve?',{fs:13,w:700})}</g>
     <g data-tip="Speaking = أنا هو"><rect x="20" y="160" width="200" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(120,188,'Speaking.',{fs:13,w:700})}</g>
     <g data-tip="أو: من المتصل؟ ثم التحويل"><rect x="20" y="220" width="320" height="44" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,248,"Who's calling? … I'll put you through.",{fs:13,w:700})}</g>`,'مكالمة'),cap:'بداية مكالمة. مرّر المؤشر على كل سطر.',labs:[LAB151A,{title:'الرد',w:(el,B)=>N.cases(el,B,{intro:'ماذا تقول؟',cases:[{q:'المتصل طلبك أنت.',opts:[['Speaking.',1],['Who are you?',0]]},{q:'تريد أن تعرف اسم المتصل.',opts:[["Who's calling, please?",1],["What's your problem?",0]]},{q:'ستحوّل المكالمة.',opts:[["Just a moment. I'll put you through.",1],['Goodbye.',0]]}]})}]},
  {t:'آداب الجوال بـ should و shouldn\'t',short:'should',old:[2],q:'كيف تنصح زميلك ألا يستعمل الجوال وهو يقود؟',ref:'ص 25',
@@ -80,21 +80,21 @@ B.lesson({
  lab:lab5a,
  examples:[
   {title:'مثال 1: الرد',ref:'ص 24',q:`<p>ترد على هاتف شركة Gulf Cables.</p>`,given:[],solve:()=>[{t:`الخطوة 1: اسم الشركة: ${e('Gulf Cables.')}`},{t:`الخطوة 2: عرض المساعدة: ${e('Can I help you?')}`},{t:`الخطوة 3: ${e('Hello, Gulf Cables. Can I help you?')}`,final:true}]},
-  {title:'مثال 2: المتصل',ref:'ص 24',q:`<p>أنت ليلى سعيد من Najd Motors وتريد السيد سعد.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('This is Laila Saeed of Najd Motors.')}`},{t:`الخطوة 2: ${e('Can I speak to Mr Saad, please?')}`},{t:`الخطوة 3: ${e('This is Laila Saeed of Najd Motors. Can I speak to Mr Saad, please?')}`,final:true}]},
+  {title:'مثال 2: المتصل',ref:'ص 24',q:`<p>أنت لورا سكوت من Nova Motors وتريد السيد ستيف.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e('This is Laura Scott of Nova Motors.')}`},{t:`الخطوة 2: ${e('Can I speak to Mr Steve, please?')}`},{t:`الخطوة 3: ${e('This is Laura Scott of Nova Motors. Can I speak to Mr Steve, please?')}`,final:true}]},
   {title:'مثال 3: نصيحة',ref:'ص 25',q:`<p>انصح بعدم استعمال الجوال أثناء القيادة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: النفي: ${e("shouldn't")}.`},{t:`الخطوة 2: ${e('use your mobile phone when you drive')}`},{t:`الخطوة 3: ${e("You shouldn't use your mobile phone when you drive.")}`,final:true}]}
  ],
  quiz:[
   {q:'Can I speak to Ms Jackson? — ___',o:['Speaking.','Talking.','I am.','Yes, speak.'],c:0,e:'Speaking.'},
   {q:"___ calling, please?",o:["Who's","What's","Where's","Whose"],c:0,e:"Who's calling?"},
   {q:"I'll put you ___.",o:['through','on','in','to'],c:0,e:'put you through.'},
-  {q:'في الهاتف تقول:',o:['This is Laila.','I is Laila.','Here Laila.','My Laila.'],c:0,e:'This is …'},
+  {q:'في الهاتف تقول:',o:['This is Laura.','I is Laura.','Here Laura.','My Laura.'],c:0,e:'This is …'},
   {q:"You ___ use your phone when you drive.",o:["shouldn't","should","don't should","not should"],c:0,e:"shouldn't."},
   {q:'You should ___ your phone.',o:['switch off','switching off','to switch off','switches off'],c:0,e:'should + الفعل.'}
  ]
 });
 
 /* ========== 5B Calling for information ========== */
-const CALLERS=[{nm:'Salem',sn:'Al-Rashid',co:'Tabuk Trading',ph:'014 555 7350',it:'price list'},{nm:'Nora',sn:'Hamdan',co:'Bright Schools',ph:'013 555 1902',it:'brochure'},{nm:'Ibrahim',sn:'Al-Fahd',co:'Desert Farms',ph:'017 555 6648',it:'catalogue'}];
+const CALLERS=[{nm:'Simon',sn:'Reed',co:'Bristol Trading',ph:'014 555 7350',it:'price list'},{nm:'Nina',sn:'Hamilton',co:'Bright Schools',ph:'013 555 1902',it:'brochure'},{nm:'Ian',sn:'Fisher',co:'Desert Farms',ph:'017 555 6648',it:'catalogue'}];
 const spell=s=>s.toUpperCase().replace(/[^A-Z-]/g,'').split('').map(c=>c==='-'?'dash':c).join(' - ');
 const digits=s=>s.replace(/\D/g,'').split('').map(d=>d==='0'?'oh':d).join(' ');
 function lab5b(el,B){kcss();
@@ -149,7 +149,7 @@ B.lesson({
  lab:lab5b,
  examples:[
   {title:'مثال 1: سبب الاتصال',ref:'ص 26',q:`<p>تتصل لتطلب كتالوج الشركة.</p>`,given:[],solve:()=>[{t:`الخطوة 1: ${e("I'm calling to ask for")}`},{t:`الخطوة 2: ${e('your catalogue')}`},{t:`الخطوة 3: ${e("Hello, I'm calling to ask for your catalogue.")}`,final:true}]},
-  {title:'مثال 2: تهجئة',ref:'ص 26',q:`<p>تهجَّ اسم العائلة Hamdan.</p>`,given:[],solve:()=>[{t:`الخطوة 1: نفصل الحروف.`},{t:`الخطوة 2: ${e('H-A-M-D-A-N')}`},{t:`الخطوة 3: ${e("It's Hamdan. That's H-A-M-D-A-N.")}`,final:true}]},
+  {title:'مثال 2: تهجئة',ref:'ص 26',q:`<p>تهجَّ اسم العائلة Hamilton.</p>`,given:[],solve:()=>[{t:`الخطوة 1: نفصل الحروف.`},{t:`الخطوة 2: ${e('H-A-M-I-L-T-O-N')}`},{t:`الخطوة 3: ${e("It's Hamilton. That's H-A-M-I-L-T-O-N.")}`,final:true}]},
   {title:'مثال 3: رقم',ref:'ص 26',q:`<p>اقرأ الرقم 0566.</p>`,given:[],solve:()=>[{t:`الخطوة 1: 0 = ${e('oh')}.`},{t:`الخطوة 2: 66 = ${e('double six')}.`},{t:`الخطوة 3: ${e('oh five double six')}`,final:true}]}
  ],
  quiz:[

@@ -58,9 +58,9 @@ const TV32={saw:['A saw','cuts','wood and metal','يقطع'],pliers:['Pliers','g
 const LAB32B={title:'ماذا تفعل الأداة؟',w:(el,B)=>N.labB(el,B,{intro:'اختر الأداة، وشاهد جملة وظيفتها. لاحظ الفعل مع المفرد والجمع.',
  controls:[{k:'t',label:'الأداة',opts:Object.keys(TV32).map(k=>[k,k])}],
  out:({t})=>{const [a,v,o,ar]=TV32[t];const pl=a==='Pliers';return{pieces:[[a,'n',pl?'جمع = they':'مفرد = it'],[v,'k',ar],[o+'.','x','']],say:`${a} ${v} ${o}.`,why:pl?`${e('pliers')} جمع، فالفعل بلا ${e('s')}.`:`الأداة مفردة (${e('it')})، فنضيف ${e('s')} للفعل.`}}})};
-const JB32={you:['What do you do?',"I'm a mechanic.",'Where do you work?','I work at a car company.'],he:['What does Ahmed do?',"He's a student.",'Where does he study?','He studies at the technical college.'],she:['What does Hind do?',"She's an engineer.",'Where does she work?','She works in a factory.']};
+const JB32={you:['What do you do?',"I'm a mechanic.",'Where do you work?','I work at a car company.'],he:['What does Edward do?',"He's a student.",'Where does he study?','He studies at the technical college.'],she:['What does Hannah do?',"She's an engineer.",'Where does she work?','She works in a factory.']};
 const LAB32C={title:'السؤال عن العمل والدراسة',w:(el,B)=>N.labB(el,B,{intro:'اختر الشخص والسؤال، وشاهد السؤال وجوابه.',
- controls:[{k:'p',label:'عن',opts:[['you','أنت'],['he','أحمد'],['she','هند']]},{k:'q',label:'السؤال',opts:[['1','ما عمله؟'],['2','أين يعمل أو يدرس؟']]}],
+ controls:[{k:'p',label:'عن',opts:[['you','أنت'],['he','إدوارد'],['she','هانا']]},{k:'q',label:'السؤال',opts:[['1','ما عمله؟'],['2','أين يعمل أو يدرس؟']]}],
  out:({p,q})=>{const J=JB32[p],i=q==='1'?0:2;return{pieces:[[J[i],'q',p==='you'?'do مع you':'does مع he / she'],[J[i+1],'n','الجواب']],say:`${J[i]} ${J[i+1]}`,why:q==='1'?`${e('What do you do?')} معناها «ما عملك؟».`:`مع ${e('he · she')} نسأل بـ ${e('does')}، وفي الجواب يأخذ الفعل ${e('s')}.`}}})};
 const g33=(r,c,clk)=>{let s='<svg viewBox="0 0 240 170" width="260"><rect x="10" y="10" width="220" height="150" rx="8" fill="#fff" stroke="#555" stroke-width="3"/>';for(let i=1;i<3;i++){s+=`<line x1="${10+i*73.3}" y1="10" x2="${10+i*73.3}" y2="160" stroke="#ddd" stroke-dasharray="4"/><line x1="10" y1="${10+i*50}" x2="230" y2="${10+i*50}" stroke="#ddd" stroke-dasharray="4"/>`}
  s+=`<rect x="${20+c*73.3}" y="${20+r*50}" width="53" height="30" rx="6" fill="#1f8a5b"/><text x="${46+c*73.3}" y="${40+r*50}" font-size="11" fill="#fff" text-anchor="middle">START</text></svg>`;return s};
@@ -176,7 +176,7 @@ const R32=N.rule({title:'مصادر الطاقة ووظائف الأجزاء، �
   labs:[{title:'الوظيفة',w:(el,B)=>N.cases(el,B,{intro:'ما الوظيفة؟',cases:[{q:'The compass …',opts:[['finds North',1],['tells the time',0]]},{q:'The thermometer …',opts:[['measures temperature',1],['makes electricity',0]]},{q:'The alarm …',opts:[['makes a loud noise',1],['shines a light',0]]}]})}]},
  {t:'المضارع البسيط مع كل الضمائر',short:'المضارع البسيط',old:[2],q:'لماذا نقول I work لكن He works؟',ref:'ص 23',
   lead:`نستعمل المضارع البسيط لشيء ثابت أو متكرر: وظيفة جهاز، أو عمل نقوم به كل يوم. وقاعدته الأساسية تخص ${e('he · she · it')}.`,
-  points:[`<b>مع ${e('I · you · we · they')}</b> يبقى الفعل كما هو: ${e('I work in Jeddah.')}`,`<b>مع ${e('he · she · it')}</b> نضيف ${e('s')}: ${e('He works in a factory.')} ${e('It measures temperature.')}`,
+  points:[`<b>مع ${e('I · you · we · they')}</b> يبقى الفعل كما هو: ${e('I work in Liverpool.')}`,`<b>مع ${e('he · she · it')}</b> نضيف ${e('s')}: ${e('He works in a factory.')} ${e('It measures temperature.')}`,
    `<b>السؤال:</b> ${e('Do')} أو ${e('Does')} + الفاعل + الفعل بلا ${e('s')}: ${e('Does it measure temperature?')}`,`<b>النفي:</b> ${e("don't")} أو ${e("doesn't")} + الفعل بلا ${e('s')}: ${e("It doesn't measure speed.")}`,
    `<b>إملاء s:</b><br>المنتهي بـ ${e('s · sh · ch · x · o')} نضيف له ${e('es')}: ${e('watch → watches · go → goes')}<br>المنتهي بحرف ساكن + ${e('y')} نحذف ${e('y')} ونضيف ${e('ies')}: ${e('study → studies')}`],
   grid:{head:['','I / you / we / they','he / she / it'],rows:[['إثبات','I work.','He works.'],['نفي',"I don't work.","He doesn't work."],['سؤال','Do you work?','Does he work?'],['جواب قصير',"Yes, I do. / No, I don't.","Yes, he does. / No, he doesn't."]]},
@@ -188,10 +188,10 @@ const R32=N.rule({title:'مصادر الطاقة ووظائف الأجزاء، �
   lead:`لكل أداة فعل يصف عملها. ونطبق عليه قاعدة المضارع البسيط نفسها.`,
   points:[`${e('cut')} يقطع، و ${e('grip')} يمسك بإحكام، و ${e('drive in')} يدق، و ${e('tighten')} يشد، و ${e('loosen')} يرخي.`,`<b>الأداة المفردة</b> (${e('it')}) يأخذ فعلها ${e('s')}: ${e('A saw cuts wood.')}`,`<b>${e('pliers')} و ${e('scissors')}</b> جمع (${e('they')})، فالفعل بلا ${e('s')}: ${e('Pliers grip wire.')}`],
   art:art(`${[['A saw cuts wood.','cut'],['Pliers grip wire.','grip'],['A hammer drives in nails.','drive in'],['A spanner tightens nuts.','tighten']].map((x,i)=>`<g data-tip="${x[1]}: ${x[0]}"><rect x="30" y="${50+i*62}" width="300" height="48" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,80+i*62,x[0],{fs:15,w:700})}</g>`).join('')}`,'أفعال الأدوات'),cap:'أربع أدوات وأفعالها. مرّر المؤشر على كل منها.',labs:[LAB32B,{title:'فعل الأداة',w:(el,B)=>N.gaps(el,B,{intro:'اختر الفعل:',items:[{s:'Scissors ___ paper.',o:['cut','cuts'],a:0,why:'scissors جمع.'},{s:'A screwdriver ___ screws.',o:['drives in','drive in'],a:0},{s:'Pliers ___ wire.',o:['grip','grips'],a:0}]})}]},
- {t:'السؤال عن العمل والدراسة',short:'What do you do?',q:'كيف تسأل عن عمل زميلك أحمد؟',ref:'ص 23',
+ {t:'السؤال عن العمل والدراسة',short:'What do you do?',q:'كيف تسأل عن عمل زميلك إدوارد؟',ref:'ص 23',
   lead:`نستعمل المضارع البسيط أيضاً للكلام عن عمل الشخص ودراسته، لأنهما شيء ثابت.`,
-  points:[`${e('What do you do?')} = ما عملك؟ والجواب ${e("I'm a mechanic.")}`,`${e('Where do you work?')} والجواب ${e('I work at a car company.')}`,`عن شخص آخر نستعمل ${e('does')}: ${e('What does Ahmed do?')} والجواب ${e('He studies at the technical college.')}`],
-  html:dl([['A','What do you do?'],['B',"I'm a mechanic."],['A','Where do you work?'],['B','I work at a car company in Jeddah.'],['A','What does Ahmed do?'],['B',"He's a student. He studies at the technical college."]]),
+  points:[`${e('What do you do?')} = ما عملك؟ والجواب ${e("I'm a mechanic.")}`,`${e('Where do you work?')} والجواب ${e('I work at a car company.')}`,`عن شخص آخر نستعمل ${e('does')}: ${e('What does Edward do?')} والجواب ${e('He studies at the technical college.')}`],
+  html:dl([['A','What do you do?'],['B',"I'm a mechanic."],['A','Where do you work?'],['B','I work at a car company in Liverpool.'],['A','What does Edward do?'],['B',"He's a student. He studies at the technical college."]]),
   labs:[LAB32C]}
  ]});
 B.lesson({
@@ -218,7 +218,7 @@ B.lesson({
  stations:[
   {intro:true},
   ...R32.stations,
-  {recap:['الوظيفة بالمضارع البسيط: The compass finds North.','مع he / she / it نضيف s: works, measures, watches, studies.','السؤال والنفي: Do / Does و don\'t / doesn\'t، والفعل بعدها بلا s.','pliers و scissors جمع: Pliers grip wire.','What do you do? — I\'m a mechanic. What does Ahmed do?']}
+  {recap:['الوظيفة بالمضارع البسيط: The compass finds North.','مع he / she / it نضيف s: works, measures, watches, studies.','السؤال والنفي: Do / Does و don\'t / doesn\'t، والفعل بعدها بلا s.','pliers و scissors جمع: Pliers grip wire.','What do you do? — I\'m a mechanic. What does Edward do?']}
  ],
  lab:lab32,
  examples:[

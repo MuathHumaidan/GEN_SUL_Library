@@ -63,16 +63,16 @@ const OP22={put:['put on','take off','يضع','ينزع','Put the wheel on.','Ta
 const LAB22C={title:'الفعل وضده',w:(el,B)=>N.labB(el,B,{intro:'اختر الفعل، ثم اقلبه إلى ضده.',
  controls:[{k:'v',label:'الفعل',opts:Object.keys(OP22).map(k=>[k,OP22[k][0]])},{k:'f',label:'',opts:[['a','الفعل'],['b','ضده']]}],
  out:({v,f})=>{const o=OP22[v],a=f==='a';return{pieces:[[a?o[4]:o[5],a?'n':'q',a?o[2]:o[3]]],say:a?o[4]:o[5],why:`${e(o[0])} ${o[2]}، وضده ${e(o[1])} ${o[3]}.`}}})};
-const NM23={nawaf:['Nawaf Al-Shehri','S-H-E-H-R-I','Delta Tools','00966 50 311 7788'],badr:['Badr Al-Harbi','H-A-R-B-I','Star Parts','00966 55 420 1199']};
+const NM23={nawaf:['Neil Shaw','S-H-A-W','Delta Tools','00966 50 311 7788'],badr:['Ben Harris','H-A-R-R-I-S','Star Parts','00966 55 420 1199']};
 const LAB23A={title:'رسالة صوتية',w:(el,B)=>N.labB(el,B,{intro:'اختر المتصل، ثم اختر السطر لترى ترتيب الرسالة الصوتية.',
- controls:[{k:'p',label:'المتصل',opts:[['nawaf','نواف'],['badr','بدر']]},{k:'s',label:'السطر',opts:[['1','1 من أنت'],['2','2 التهجئة'],['3','3 الشركة والرقم'],['4','4 الختام']]}],
+ controls:[{k:'p',label:'المتصل',opts:[['nawaf','نيل'],['badr','بن']]},{k:'s',label:'السطر',opts:[['1','1 من أنت'],['2','2 التهجئة'],['3','3 الشركة والرقم'],['4','4 الختام']]}],
  out:({p,s})=>{const [n,sp,c,ph]=NM23[p];const L={1:[['Hello. This is','k','في الهاتف: This is'],[n+'.','n','الاسم']],2:[["That's",'x',''],[sp+'.','q','حرفاً حرفاً']],3:[["I'm from",'x',''],[c+'.','n','الشركة'],['My phone number is','x',''],[ph+'.','q','00 = double oh']],4:[['Please call me back.','k','الختام'],['Thanks.','x','']]}[s];
   return{pieces:L,say:L.map(x=>x[0]).join(' '),why:"في الهاتف نبدأ بـ This is … لا I'm …، ونتهجى الاسم، ونذكر الرقم، ونختم بـ Please call me back."}}})};
-const Q23={colour:['What colour?','Black.','اللون'],size:['What size?','Large.','المقاس'],many:['How many?','Two, please.','العدد'],name:["What's your name, please?","It's Hamad. H-A-M-A-D.",'الاسم'],phone:["What's your phone number?",'0556 33 21 08.','الرقم']};
+const Q23={colour:['What colour?','Black.','اللون'],size:['What size?','Large.','المقاس'],many:['How many?','Two, please.','العدد'],name:["What's your name, please?","It's Henry. H-E-N-R-Y.",'الاسم'],phone:["What's your phone number?",'0556 33 21 08.','الرقم']};
 const LAB23B={title:'أسئلة الطلب بالهاتف',w:(el,B)=>N.labB(el,B,{intro:'اختر ما يريد البائع أن يعرفه، وشاهد السؤال وجواباً مناسباً.',
  controls:[{k:'q',label:'يريد أن يعرف',opts:Object.keys(Q23).map(k=>[k,Q23[k][2]])}],
  out:({q})=>{const [a,b,t]=Q23[q];return{pieces:[[a,'q','البائع'],[b,'n','الزبون']],say:`${a} ${b}`,why:`للسؤال عن ${t} نقول ${e(a)}`}}})};
-const PP23={saud:['Saud','He','student'],hind:['Hind','She','engineer'],omar:['Omar','He','technician']};
+const PP23={saud:['Stuart','He','student'],hind:['Hannah','She','engineer'],omar:['Oliver','He','technician']};
 const LAB23C={title:'عرّف شخصاً آخر',w:(el,B)=>N.labB(el,B,{intro:'اختر الشخص، وشاهد كيف تعرّفه لغيرك.',
  controls:[{k:'p',label:'الشخص',opts:Object.keys(PP23).map(k=>[k,PP23[k][0]])}],
  out:({p})=>{const [n,h,j]=PP23[p];return{pieces:[['This is','k','لتعريف شخص'],[n+'.','n','الاسم'],[h+"'s",'x',h==='He'?'هو':'هي'],[an2(j)+' '+j+',','q','المهنة'],['too.','x','أيضاً']],say:`This is ${n}. ${h}'s ${an2(j)} ${j}, too.`,why:`نعرّف غيرنا بـ This is …، ثم He's أو She's. و too في الآخر تعني «أيضاً».`}}})};
@@ -242,13 +242,13 @@ B.lesson({
 function lab23(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c7 panel"><h3 style="margin-top:0">اترك رسالة هاتفية</h3><p class="sub">مبني على التمرين 4 ص 14. أكمل البيانات وشاهد الرسالة وطريقة تهجئتها وقراءة الرقم.</p>
-  <div class="ph-row"><input class="ph-num" id="nm" value="Majed" style="width:7em;font-family:var(--font)" aria-label="الاسم"><input class="ph-num" id="co" value="Rawabi" style="width:7em;font-family:var(--font)" aria-label="الشركة"><input class="ph-num" id="ph" value="00966 55 410 2233" style="width:12em" aria-label="الهاتف"></div><div id="o"></div></div>
+  <div class="ph-row"><input class="ph-num" id="nm" value="Mark" style="width:7em;font-family:var(--font)" aria-label="الاسم"><input class="ph-num" id="co" value="Riverside" style="width:7em;font-family:var(--font)" aria-label="الشركة"><input class="ph-num" id="ph" value="00966 55 410 2233" style="width:12em" aria-label="الهاتف"></div><div id="o"></div></div>
  <div class="c5 panel"><h3 style="margin-top:0">اطلب بالهاتف</h3><p class="sub">مبني على التمرين 5 ص 15: اللون والمقاس والعدد.</p>
   <div class="ph-row"><select class="ph-sel" id="it">${['helmet','deck','pads'].map(v=>`<option>${v}</option>`).join('')}</select><select class="ph-sel" id="cl">${['red','blue','black','white','green'].map(v=>`<option>${v}</option>`).join('')}</select><select class="ph-sel" id="sz">${['small','medium','large'].map(v=>`<option>${v}</option>`).join('')}</select><input class="ph-num" id="q" type="number" value="2" min="1" style="width:4em" aria-label="العدد"></div><div id="oo"></div></div>
  <div class="c12 panel"><h3 style="margin-top:0">جرّب</h3><ol class="ph-try"><li>اكتب اسمك وشركة، واقرأ الرسالة كأنك تتركها في البريد الصوتي.</li><li>في رقم الهاتف: أين تقول <span class="en">double</span>؟</li><li>اطلب <span class="en">pads</span> بعدد 1: هل تتغير الجملة؟</li></ol></div></div></div>`;
  const $=s=>el.querySelector(s);const NUMW=['oh','one','two','three','four','five','six','seven','eight','nine'];
  const rd=p=>{const d=p.replace(/\D/g,'').split('');const out=[];for(let i=0;i<d.length;i++){if(d[i+1]===d[i]&&d[i+2]!==d[i]){out.push('double '+NUMW[+d[i]]);i++}else out.push(NUMW[+d[i]])}return out.join(' ')};
- const msg=()=>{const n=$('#nm').value.trim()||'Majed',c=$('#co').value.trim()||'Rawabi',p=$('#ph').value;const spell=w=>w.toUpperCase().replace(/[^A-Z]/g,'').split('').join('-');
+ const msg=()=>{const n=$('#nm').value.trim()||'Mark',c=$('#co').value.trim()||'Riverside',p=$('#ph').value;const spell=w=>w.toUpperCase().replace(/[^A-Z]/g,'').split('').join('-');
   $('#o').innerHTML=eb([`Hello. This is ${n}. That's ${spell(n)}.`,`I'm from ${c}. That's ${spell(c)}.`,`My phone number is ${p}.`,'Please call me back. Thank you.'])+`<p class="sub">قراءة الرقم: <span class="en">${rd(p)}</span></p>`};
  ['nm','co','ph'].forEach(k=>$('#'+k).addEventListener('input',msg));msg();
  const ord=()=>{const it=$('#it').value,c=$('#cl').value,s=$('#sz').value,q=+$('#q').value||1;const pl=it==='pads'?'pads':(q>1?it+'s':it);
@@ -260,12 +260,12 @@ const R23=N.rule({title:'الرسالة الصوتية، والطلب بالها
  parts:[
  {t:'الرسالة الصوتية والأرقام الدولية',short:'الرسالة الصوتية',old:[1],q:"لماذا نقول This is … في الهاتف؟",ref:'ص 14',
   lead:`إذا اتصلت ولم يرد أحد تترك رسالة صوتية. والرسالة الجيدة قصيرة ومرتبة حتى يعرف السامع من أنت وكيف يتصل بك.`,
-  points:[`<b>نبدأ بـ</b> ${e('This is …')} لا ${e("I'm …")}: ${e('Hello. This is Nawaf Al-Shehri.')}`,`<b>نتهجى</b> الاسم الصعب: ${e("That's S-H-E-H-R-I.")}`,`<b>نذكر</b> الشركة والرقم: ${e("I'm from Delta Tools. My phone number is …")}`,`<b>نختم</b> بـ ${e('Please call me back.')}`,
+  points:[`<b>نبدأ بـ</b> ${e('This is …')} لا ${e("I'm …")}: ${e('Hello. This is Neil Shaw.')}`,`<b>نتهجى</b> الاسم الصعب: ${e("That's S-H-A-W.")}`,`<b>نذكر</b> الشركة والرقم: ${e("I'm from Delta Tools. My phone number is …")}`,`<b>نختم</b> بـ ${e('Please call me back.')}`,
    `<b>الرقم الدولي:</b> ${e('00')} نقرؤه ${e('double oh')} أو ${e('zero zero')}، و ${e('966')} رمز السعودية ${e('nine six six')}.`],
-  html:eb(["Hello. This is Nawaf Al-Shehri. That's S-H-E-H-R-I.","I'm from Delta Tools. My phone number is 00966 50 311 7788.",'Please call me back. Thanks.'])+vt([['00','double oh / zero zero','رمز الاتصال الدولي'],['966','nine six six','رمز السعودية'],['55','double five / five five',''],['0','oh / zero','']],['المكتوب','نقرؤه','ملاحظة']),
+  html:eb(["Hello. This is Neil Shaw. That's S-H-A-W.","I'm from Delta Tools. My phone number is 00966 50 311 7788.",'Please call me back. Thanks.'])+vt([['00','double oh / zero zero','رمز الاتصال الدولي'],['966','nine six six','رمز السعودية'],['55','double five / five five',''],['0','oh / zero','']],['المكتوب','نقرؤه','ملاحظة']),
   art:art(`<rect x="110" y="40" width="140" height="240" rx="20" fill="${C.ink}"/><rect x="122" y="62" width="116" height="180" rx="8" fill="${C.paper}"/>
-    <g data-tip="This is … — في الهاتف نعرّف بأنفسنا بـ This is.">${TL(180,96,'This is Majed.',{fs:12,w:700})}</g><g data-tip="That's M-A-J-E-D. — نتهجى الاسم.">${TL(180,126,"That's M-A-J-E-D.",{fs:11})}</g>
-    <g data-tip="My phone number is … — نقرأ الرقم رقماً رقماً.">${TL(180,160,'My number is …',{fs:11})}</g><g data-tip="Please call me back. — اتصل بي من فضلك.">${TL(180,196,'Please call me back.',{fs:11,w:700,c:C.red})}</g>`,'رسالة صوتية'),cap:'رسالة صوتية في أربعة أجزاء. مرّر المؤشر على كل جزء.',labs:[LAB23A,{title:'رتّب الرسالة',w:(el,B)=>N.order(el,B,{intro:'رتّب الرسالة:',steps:["Hello. This is Omar Saleh.","That's S-A-L-E-H.",'My phone number is 0555 21 04 66.','Please call me back. Thanks.']})}]},
+    <g data-tip="This is … — في الهاتف نعرّف بأنفسنا بـ This is.">${TL(180,96,'This is Mark.',{fs:12,w:700})}</g><g data-tip="That's M-A-R-K. — نتهجى الاسم.">${TL(180,126,"That's M-A-R-K.",{fs:11})}</g>
+    <g data-tip="My phone number is … — نقرأ الرقم رقماً رقماً.">${TL(180,160,'My number is …',{fs:11})}</g><g data-tip="Please call me back. — اتصل بي من فضلك.">${TL(180,196,'Please call me back.',{fs:11,w:700,c:C.red})}</g>`,'رسالة صوتية'),cap:'رسالة صوتية في أربعة أجزاء. مرّر المؤشر على كل جزء.',labs:[LAB23A,{title:'رتّب الرسالة',w:(el,B)=>N.order(el,B,{intro:'رتّب الرسالة:',steps:["Hello. This is Oliver Sullivan.","That's S-U-L-L-I-V-A-N.",'My phone number is 0555 21 04 66.','Please call me back. Thanks.']})}]},
  {t:'طلب البضائع بالهاتف',short:'الطلب بالهاتف',old:[2],q:'ماذا يسألك البائع عندما تطلب غطاء مقعد؟',ref:'ص 15',
   lead:`عندما تطلب بضاعة بالهاتف لا يرى البائع ما تريد، فيسألك أسئلة قصيرة ليعرف التفاصيل.`,
   points:[`${e('What do you need?')} ماذا تحتاج؟ والجواب ${e('I need two seat covers.')}`,`${e('What colour?')} ما اللون؟`,`${e('What size?')} ما المقاس؟`,`${e('How many?')} كم العدد؟`,`${e("What's your name, please?")} و ${e('Please spell that.')}`],
@@ -273,9 +273,9 @@ const R23=N.rule({title:'الرسالة الصوتية، والطلب بالها
   art:art(`${[['What colour?',C.red],['What size?',C.blue],['How many?',C.grn]].map((q,i)=>`<g data-tip="${q[0]}"><rect x="40" y="${60+i*72}" width="280" height="54" rx="14" fill="${C.paper}" stroke="${q[1]}" stroke-width="3"/>${TL(180,93+i*72,q[0],{fs:18,w:700,c:q[1]})}</g>`).join('')}`,'أسئلة البائع'),cap:'أسئلة البائع الثلاثة. مرّر المؤشر على كل منها.',labs:[LAB23B,{title:'السؤال المناسب',w:(el,B)=>N.cases(el,B,{intro:'اختر السؤال المناسب للجواب:',cases:[{q:'Medium.',opts:[['What size?',1],['What colour?',0]]},{q:'Three, please.',opts:[['How many?',1],['What size?',0]]},{q:'Red.',opts:[['What colour?',1],['How many?',0]]}]})}]},
  {t:'تعريف شخص آخر',short:'This is …',q:'كيف تعرّف زميلك لشخص آخر؟',ref:'ص 15',
   lead:`عرفت كيف تعرّف بنفسك. وتحتاج أحياناً أن تعرّف زميلك لغيرك.`,
-  points:[`<b>نبدأ بـ</b> ${e('This is …')}: ${e('This is Saud.')}`,`<b>ثم</b> ${e("He's")} أو ${e("She's")}: ${e("He's a student.")}`,`<b>${e('too')}</b> في آخر الجملة تعني «أيضاً»: ${e("He's a student, too.")}`],
-  html:dl([['A',"I'm Hamad. I'm a student. And this is Saud. He's a student, too."],['B','Hello, Hamad. Hello, Saud. Nice to meet you.']]),
-  pairs:[["He's Saud.",'This is Saud.','لتعريف شخص نقول This is.']],
+  points:[`<b>نبدأ بـ</b> ${e('This is …')}: ${e('This is Stuart.')}`,`<b>ثم</b> ${e("He's")} أو ${e("She's")}: ${e("He's a student.")}`,`<b>${e('too')}</b> في آخر الجملة تعني «أيضاً»: ${e("He's a student, too.")}`],
+  html:dl([['A',"I'm Henry. I'm a student. And this is Stuart. He's a student, too."],['B','Hello, Henry. Hello, Stuart. Nice to meet you.']]),
+  pairs:[["He's Stuart.",'This is Stuart.','لتعريف شخص نقول This is.']],
   labs:[LAB23C]}
  ]});
 B.lesson({
@@ -297,23 +297,23 @@ B.lesson({
  stations:[
   {intro:true},
   ...R23.stations,
-  {recap:['في الهاتف: This is … ثم التهجئة والرقم، ثم Please call me back.','00 = double oh، والرقمان المتشابهان double.','أسئلة الطلب: What colour? What size? How many?','تعريف شخص آخر: This is Saud. He\'s a student, too.']}
+  {recap:['في الهاتف: This is … ثم التهجئة والرقم، ثم Please call me back.','00 = double oh، والرقمان المتشابهان double.','أسئلة الطلب: What colour? What size? How many?','تعريف شخص آخر: This is Stuart. He\'s a student, too.']}
  ],
  lab:lab23,
  examples:[
-  {title:'مثال 1: رسالة صوتية',ref:'ص 14',q:`<p>اترك رسالة: اسمك Ali Fahd، رقمك 0501 23 45 67، واطلب أن يتصلوا بك.</p>`,given:[],
-   solve:()=>[{t:`الخطوة 1: ${e("Hello. This is Ali Fahd.")}`},{t:`الخطوة 2: ${e('My phone number is oh five oh one, two three, four five, six seven.')}`},{t:`الخطوة 3: ${e('Please call me back. Thanks.')}`,final:true}]},
+  {title:'مثال 1: رسالة صوتية',ref:'ص 14',q:`<p>اترك رسالة: اسمك Alex Fisher، رقمك 0501 23 45 67، واطلب أن يتصلوا بك.</p>`,given:[],
+   solve:()=>[{t:`الخطوة 1: ${e("Hello. This is Alex Fisher.")}`},{t:`الخطوة 2: ${e('My phone number is oh five oh one, two three, four five, six seven.')}`},{t:`الخطوة 3: ${e('Please call me back. Thanks.')}`,final:true}]},
   {title:'مثال 2: تصحيح رقم',ref:'ص 14',q:`<p>كتبتَ ${e('00 974 44 9128')} وسمعت ${e('double oh nine seven one, double four, nine one two eight')}. صحّح.</p>`,given:[],
    solve:()=>[{t:'الخطوة 1: double oh = 00 ✓.'},{t:'الخطوة 2: nine seven one = 971 لا 974.'},{t:`الخطوة 3: ${e('00 971 44 9128')}`,final:true}]},
   {title:'مثال 3: طلب بالهاتف',ref:'ص 15',q:`<p>تريد خوذة (helmet) زرقاء متوسطة، واحدة. أجب عن أسئلة البائع.</p>`,given:[],
    solve:()=>[{t:`الخطوة 1: ${e('I need a helmet.')}`},{t:`الخطوة 2: What colour? ${e('Blue.')} What size? ${e('Medium.')}`},{t:`الخطوة 3: How many? ${e('One, please.')}`,final:true}]}
  ],
  quiz:[
-  {q:'في بداية رسالة صوتية نقول:',o:["This is Ali.","I'm is Ali.","Here Ali.","My is Ali."],c:0,e:'في الهاتف This is.'},
+  {q:'في بداية رسالة صوتية نقول:',o:["This is Alex.","I'm is Alex.","Here Alex.","My is Alex."],c:0,e:'في الهاتف This is.'},
   {q:'Please call me ___.',o:['back','again','return','up'],c:0,e:'call back = يعاود الاتصال.'},
   {q:'00 في الرقم الدولي:',o:['double oh','hundred','oh-oh-one','zero hundred'],c:0,e:'double oh.'},
   {q:'Large. هو جواب:',o:['What size?','What colour?','How many?','What time?'],c:0,e:'المقاس.'},
-  {q:'This is Fahad. ___ a technician, too.',o:["He's","His","He","Is"],c:0,e:"He's = He is."},
+  {q:'This is Frank. ___ a technician, too.',o:["He's","His","He","Is"],c:0,e:"He's = He is."},
   {q:'Please ___ that. (التهجئة)',o:['spell','speak','call','say'],c:0,e:'Please spell that.'}
  ]
 });

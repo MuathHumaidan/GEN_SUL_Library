@@ -336,7 +336,7 @@ PLCBOOK.study({
     {
      "k": "law",
      "f": "This is … of …",
-     "b": "في الهاتف: This is Laila of Najd Motors.",
+     "b": "في الهاتف: This is Laura of Nova Motors.",
      "ref": "ص 24",
      "l": "u5-l1"
     },
@@ -799,15 +799,15 @@ PLCBOOK.study({
      "title": "وصّل الجملة بالنصيحة",
      "pairs": [
       [
-       "I'd like to introduce you to Laila.",
+       "I'd like to introduce you to Laura.",
        "introduce"
       ],
       [
-       "Laila works in Finance.",
+       "Laura works in Finance.",
        "add information"
       ],
       [
-       "Nice to meet you, Mr Saad.",
+       "Nice to meet you, Mr Steve.",
        "use the name"
       ],
       [

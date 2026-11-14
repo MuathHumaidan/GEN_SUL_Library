@@ -7,7 +7,7 @@ BX.add('u8-l1',[
   model:[['A',"What's the problem?"],['B','My car has broken down.'],['A','What has happened?'],['B','I think the battery has gone flat.']]},
  {n:4,ref:'ص 58',st:1,kind:'typ',intro:'أكمل كل جملة بكلمتين: have/has + التصريف الثالث للفعل بين القوسين.',items:[
   T('The printer ___ (stop). It isn\'t working.','has stopped'),T('Somebody ___ (take) my phone charger.','has taken'),T('Oh no! We ___ (lose) the office key.','have lost'),
-  T('The picture ___ (fall) off the wall.','has fallen'),T('Ali ___ (cut) his finger on the glass.','has cut'),T('They ___ (sell) the old car.','have sold')]},
+  T('The picture ___ (fall) off the wall.','has fallen'),T('Alex ___ (cut) his finger on the glass.','has cut'),T('They ___ (sell) the old car.','have sold')]},
  {n:5,ref:'ص 58',st:2,kind:'typ',intro:'اكتب التصريف الثالث لكل فعل. انتبه: بعضها شاذ (لا ينتهي بـ ed).',items:[
   T('go','gone'),T('see','seen'),T('do','done'),T('make','made'),T('find','found'),T('give','given'),T('build','built'),
   T('fix','fixed'),T('open','opened'),T('start','started'),T('forget','forgotten'),T('leave','left'),T('finish','finished')]},

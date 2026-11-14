@@ -8,7 +8,7 @@ PLCBOOK.acts({
   ],
   "exit": [
    {
-    "q": "My ___ Ali.",
+    "q": "My ___ Alex.",
     "o": [
      "name's",
      "name",
@@ -50,7 +50,7 @@ PLCBOOK.acts({
   ],
   "exit": [
    {
-    "q": "I'd like to ___ you to Majed.",
+    "q": "I'd like to ___ you to Mark.",
     "o": [
      "introduce",
      "meet",
@@ -61,7 +61,7 @@ PLCBOOK.acts({
     "e": "ص 9."
    },
    {
-    "q": "Laila ___ in our Finance Department.",
+    "q": "Laura ___ in our Finance Department.",
     "o": [
      "works",
      "work",
@@ -256,7 +256,7 @@ PLCBOOK.acts({
   "open": [
    "Where is your bag now?",
    "A product that is economical",
-   "Compare your town and Riyadh"
+   "Compare your town and London"
   ],
   "exit": [
    {
