@@ -1,0 +1,5 @@
+/* مولّد آلياً من en/src — لا تعدّل هنا */
+PLCBOOK.enDict({
+"<b>الرد:</b> أول من يحيّي يقول <span class=\"en\" lang=\"en\">Nice to meet you.</span> بلا too، ومن يرد عليه يضيف too: <span class=\"en\" lang=\"en\">Nice to meet you, too.</span> أو <span class=\"en\" lang=\"en\">Good to meet you, too.</span>": "<b>Answer:</b> the person who speaks first says <span class=\"en\" lang=\"en\">Nice to meet you.</span> with no too, and the person who answers adds too: <span class=\"en\" lang=\"en\">Nice to meet you, too.</span> or <span class=\"en\" lang=\"en\">Good to meet you, too.</span>",
+"الأول بلا too، والرد عليه يضيف too (أو Good to meet you, too).": "The first person says it with no too, and the answer adds too (or Good to meet you, too)."
+});

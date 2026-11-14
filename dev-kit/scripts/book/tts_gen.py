@@ -25,6 +25,8 @@ def speakable(s):
   t=re.sub(r'^\s*=\s*','',t)
   t=t.replace('≠',', or ').replace('→',', ').replace(' = ',', ').replace('·','. ').replace('—',', ').replace(' / ',', ').replace('…','...')
   return t
+import sys,os;sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+from names import has,phon
 k=Kokoro('/home/claude/tts/kokoro-v1.0.onnx','/home/claude/tts/voices-v1.0.bin')
 texts=[norm(x) for x in json.load(open(_o.environ.get('SAY','/home/claude/tts/say.json')))]
 done=0
@@ -35,7 +37,8 @@ for s in texts:
   if COURSE!='english' and os.path.exists(src):
     import shutil;shutil.copy(src,f);continue
   try:
-    a,sr=k.create(speakable(s),voice='am_michael',speed=0.9,lang='en-us');sf.write('/tmp/t.wav',a,sr)
+    t=speakable(s)
+    a,sr=(k.create(phon(k.tokenizer,t),voice='am_michael',speed=0.9,lang='en-us',is_phonemes=True) if has(t) else k.create(t,voice='am_michael',speed=0.9,lang='en-us'));sf.write('/tmp/t.wav',a,sr)
     subprocess.run(['ffmpeg','-y','-loglevel','error','-i','/tmp/t.wav','-ac','1','-b:a','48k',f],check=True);done+=1
   except Exception as e: print('FAIL',s,e,file=sys.stderr)
   if done%25==0: print(done,flush=True)

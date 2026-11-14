@@ -75,9 +75,9 @@ const R111=N.rule({title:'الفعل be، وتقديم نفسك، والاسم �
   lead:`عندما تقابل شخصاً لأول مرة تذكر اسمك، ثم معلومة أو اثنتين عن عملك أو بلدك. وله عبارات ثابتة.`,
   points:[`<b>الاسم:</b> ${e("My name's Saad Al-Otaibi.")} أو ${e("I'm Saad Al-Otaibi.")}، ولتحدد كيف تُنادى: ${e('Please call me Saad.')}`,
    `<b>القسم</b> مع ${e('in')}: ${e("I'm in the Sales Department.")}`,`<b>الشركة</b> مع ${e('for')}: ${e('I work for Delta Electric.')}`,`<b>البلد:</b> ${e("I'm from Abha in Saudi Arabia.")}`,
-   `<b>الرد:</b> إذا قال لك أحد ${e('Nice to meet you.')} فرد بـ ${e('Nice to meet you, too.')}`],
+   `<b>الرد:</b> أول من يحيّي يقول ${e('Nice to meet you.')} بلا too، ومن يرد عليه يضيف too: ${e('Nice to meet you, too.')} أو ${e('Good to meet you, too.')}`],
   html:dl([['A',"Hello. I'm Fahad. I'm new here."],['B',"Nice to meet you, Fahad. I'm Salem. I'm in the IT Department."],['A','Good to meet you, too. Where are you from, Salem?'],['B',"I'm from Tabuk."]]),
-  pairs:[['I work in Delta Electric.','I work for Delta Electric.','مع الشركة: for.'],['Nice to meet you.','Nice to meet you, too.','في الرد نضيف too.']],
+  pairs:[['I work in Delta Electric.','I work for Delta Electric.','مع الشركة: for.'],['A: Nice to meet you. B: Nice to meet you.','A: Nice to meet you. B: Nice to meet you, too.','الأول بلا <span class="en">too</span>، والرد عليه يضيف <span class="en">too</span> أو يقول <span class="en">Good to meet you, too.</span>']],
   art:art(`<g data-tip="My name's … = اسمي …"><rect x="20" y="40" width="320" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,68,"Hello. My name's Saad.",{fs:15,w:700})}</g>
     <g data-tip="Please call me … = نادني …"><rect x="20" y="96" width="320" height="44" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,124,'Please call me Saad.',{fs:15,w:700})}</g>
     <g data-tip="I'm in the … Department = أنا في قسم …"><rect x="20" y="152" width="320" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,180,"I'm in the Sales Department.",{fs:15,w:700})}</g>
