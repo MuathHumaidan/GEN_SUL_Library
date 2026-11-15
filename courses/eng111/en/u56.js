@@ -452,6 +452,7 @@ PLCBOOK.enDict({
 "الإجراء": "The action",
 "شكوى وإجراء. مرّر المؤشر على كل منهما.": "A complaint and an action. Point at each one.",
 "مختبر مصغّر: الوحدة 6": "Mini lab: Unit 6",
-"not much + غير معدود، not many + معدود.": "not much + uncountable, not many + countable."
+"not much + غير معدود، not many + معدود.": "not much + uncountable, not many + countable.",
+"تحقق من إجاباتك في جمل التمرين 2.": "Check your answers to the sentences in Exercise 2."
 });
 PLCBOOK.enPat([[new RegExp("^<span\\ class=\"en\"\\ lang=\"en\">(.+?)</span>\\ \u0648\\ <span\\ class=\"en\"\\ lang=\"en\">(.+?)</span>\\ \u0643\u0644\u0627\u0647\u0645\u0627\\ \u0637\u0644\u0628\u060c\\ \u0648\\ <span\\ class=\"en\"\\ lang=\"en\">Could</span>\\ \u0623\u0644\u0637\u0641\\ \u0642\u0644\u064a\u0644\u0627\u064b\\.$"),"<span class=\"en\" lang=\"en\">$1</span> and <span class=\"en\" lang=\"en\">$2</span> are both requests, and <span class=\"en\" lang=\"en\">Could</span> is a little more polite."],[new RegExp("^\u0627\u0644\u0645\u062a\u0635\u0644\\ (.+?)$"),"Caller $1"],[new RegExp("^\u0627\u0644\u062e\u0637\u0648\u0629\\ (.+?)\\ =\\ <span\\ class=\"en\"\\ lang=\"en\">(.+?)</span>\\.$"),"Step $1 = <span class=\"en\" lang=\"en\">$2</span>."],[new RegExp("^\u0627\u0644\u0645\u0627\u0636\u064a\\ \u0628\u0640\\ (.+?)$"),"Past with $1"],[new RegExp("^(.+?)\\ \\(\u0645\u062b\u0627\u0644\\)\\ \u00b7\\ (.+?)$"),"$1 (example) \u00b7 $2"],[new RegExp("^\u0635\u062d\u0651\u062d:\\ (.+?)$"),"Correct: $1"]]);
