@@ -99,7 +99,7 @@ function fill(el,x){const P=G.PLCBOOK&&G.PLCBOOK.perm;const G2=[];let k=0;
   el.innerHTML=(x.intro?`<p class="pk-in" style="direction:rtl;text-align:right">${x.intro}</p>`:'')+`<div class="fx">${box?`<div class="fx-box">${box.map(w=>`<button type="button" data-w="${esc(w)}">${w}</button>`).join('')}</div>`:''}${body}</div><div class="fx-ft"><span class="sc"></span><button type="button" data-a="show">أظهر الإجابات</button><button type="button" data-a="reset">من جديد</button></div>`;
   let selW=null,selG=null;const gb=[...el.querySelectorAll('.gp2')];const sc=el.querySelector('.sc');
   const score=()=>{const n=G2.length,f=G2.filter(g=>g.v!=null).length,ok=G2.filter(g=>g.v!=null&&g.acc.includes(g.v)).length;sc.textContent=f?`${ok} / ${n}`:'';if(f===n&&ok===n)sc.textContent=`${(B&&B.lang&&B.lang()==='en')?'Well done!':'أحسنت!'} ${ok} / ${n}`};
-  const put=(i,v)=>{const g=G2[i],b=gb[i];g.v=v;b.textContent=v;const ok=g.acc.includes(v);b.classList.toggle('ok',ok);b.classList.toggle('bad',!ok);b.classList.remove('sel');if(window.ENK&&ok&&N.say)try{}catch(e){}score()};
+  const put=(i,v)=>{const g=G2[i],b=gb[i];const m=g.acc.find(z=>z.toLowerCase()===String(v).toLowerCase());if(m)v=m;g.v=v;b.textContent=v;const ok=!!m;b.classList.toggle('ok',ok);b.classList.toggle('bad',!ok);b.classList.remove('sel');if(window.ENK&&ok&&N.say)try{}catch(e){}score()};
   const tray=i=>{el.querySelectorAll('.fx-tray').forEach(t=>t.remove());const g=G2[i];if(!g.opts)return;const order=P?P(g.opts.join('|')+i,g.opts.length):g.opts.map((_,j)=>j);
     const t=document.createElement('div');t.className='fx-tray';t.innerHTML=order.map(j=>`<button type="button">${g.opts[j]}</button>`).join('');
     const host=gb[i].closest('li,tr');(host.tagName==='TR'?host.closest('.fx-tw'):host).after(t);
@@ -128,17 +128,33 @@ function run(el,x){addCss();try{
   if(x.kind==='speak')return speak(el,x);
  }catch(e){console.error(e);el.textContent='تعذّر عرض التمرين.'}}
 
+
+/* تحويل تمرين الكتاب من نوع gaps إلى شكل الكتاب: أسطر بالترتيب، وصندوق كلمات إذا كانت الخيارات واحدة في كل البنود */
+function g2f(k){if(k.kind!=='gaps'||!Array.isArray(k.items))return k;const I=k.items;const key=it=>JSON.stringify(it.o);
+  const same=I.length>1&&I.every(it=>key(it)===key(I[0]))&&I[0].o.length>=3;
+  const lines=I.map(it=>{const ok=it.o[it.a];const g=same?`{${ok}}`:`{${[ok,...it.o.filter((_,j)=>j!==it.a)].join('|')}}`;return it.s.replace('___',g)});
+  return Object.assign({},k,{kind:'fill',layout:k.layout||'list',box:same?I[0].o:null,lines})}
+/* مقاطع الصوت المربوطة بالتمرين (من قسم «الاستماع» الملغى) */
+const trkOf=(lid,n)=>{const T=(B.trk&&B.trk[lid])||[];return T.filter(t=>t.n!=null&&String(t.n)===String(n).replace(/[^0-9].*$/,''))};
+const audT=t=>`<div class="bx-aud"><p>🎧 المقطع <span dir="ltr">${t.id}</span> من صوتيات الكتاب</p>${t.task?`<div style="font-weight:400;margin:0 0 6px">${t.task}</div>`:''}<audio controls preload="metadata" src="${t.src}" onerror="this.hidden=true;this.nextElementSibling.hidden=false"></audio><p class="miss" hidden style="font-weight:400">مقطع الصوت لم يُرفع بعد، وسيضيفه المدرب.</p></div>`;
+const aqBox=(host,id)=>{const tq=id&&AQ[id];if(!tq)return;const d=document.createElement('details');d.className='bx-aq';d.innerHTML='<summary>أسئلة إضافية على المقطع (من إعدادنا)</summary><div></div>';host.appendChild(d);run(d.querySelector('div'),tq)};
 const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<a href="${u}" target="_blank" rel="noopener" title="تكبير الصورة"><img src="${u}" alt="صورة من الكتاب" loading="lazy"></a>`).join('')}${k.cap?`<figcaption>${k.cap} <span class="zh">(اضغط الصورة لتكبيرها)</span></figcaption>`:''}</figure>`:'';
 const box=(lid,x)=>{const w=document.createElement('div');w.dataset.bx=lid+':'+x.n;
-  if(x.bk){const b=document.createElement('div');b.className='bx bkx';
-   b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${aud(x.bk)}${fig(x.bk)}<div></div></div>`;
-   run(b.querySelector('.bx-b>div:last-child'),x.bk);
-   const tq=x.bk.track&&AQ[String(x.bk.track).padStart(2,'0')];if(tq){const d=document.createElement('details');d.className='bx-aq';d.dataset.aqIn=1;d.innerHTML='<summary>أسئلة إضافية على المقطع (من إعدادنا)</summary><div></div>';b.querySelector('.bx-b').appendChild(d);run(d.querySelector('div'),tq)}
+  if(x.bk){const b=document.createElement('div');b.className='bx bkx';const k=g2f(x.bk);
+   const T=k.track?[{id:String(k.track).padStart(2,'0'),src:`audio/track-${String(k.track).padStart(2,'0')}.mp3`}]:trkOf(lid,x.n);T.forEach(t=>t.used=1);
+   b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${T.map(audT).join('')}${fig(k)}<div class="bx-run"></div></div>`;
+   run(b.querySelector('.bx-run'),k);T.forEach(t=>aqBox(b.querySelector('.bx-b'),t.id));
    w.appendChild(b)}
   if(x.kind){const d=document.createElement('div');d.className='bx hlp';
    d.innerHTML=`<div class="bx-h"><span class="tg">تمرين مساعد</span><b>مساعد لتمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b"></div>`;
    run(d.querySelector('.bx-b'),x);w.appendChild(d)}
   return w};
+/* مقطع بلا تمرين تفاعلي (مثل «استمع وتحقق من إجاباتك»): مربع صوت وحده بعد تمرينه السابق */
+const audBox=(lid,t)=>{const w=document.createElement('div');w.dataset.ab=lid+':'+t.id;const b=document.createElement('div');b.className='bx bkx';
+  b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>${t.ref?t.ref.replace(/^ص [^—]*— /,'').replace(/^التمرين/,'تمرين'):'استمع'}</b></div><div class="bx-b">${audT(t)}</div>`;aqBox(b.querySelector('.bx-b'),t.id);w.appendChild(b);return w};
+function orphans(view,lid,inStations){const T=((B.trk&&B.trk[lid])||[]).filter(t=>!t.used);T.forEach(t=>{if(view.querySelector(`[data-ab="${lid}:${t.id}"]`))return;const n=+t.n||0;
+  const all=[...view.querySelectorAll('[data-bx^="'+lid+':"]')];let prev=null;all.forEach(e=>{const m=+String(e.dataset.bx.split(':')[1]).replace(/[^0-9].*$/,'');if(m<n&&(!prev||m>=+String(prev.dataset.bx.split(':')[1]).replace(/[^0-9].*$/,'')))prev=e});
+  const a=audBox(lid,t);if(prev)prev.after(a);else{const f=all[0]||view.querySelector('.ebk');if(f)f.before(a);else{const h=[...view.querySelectorAll('h2.th')].find(x=>x.textContent.includes('تمارين الكتاب'));if(h)h.after(a);else view.appendChild(a)}}})}
 
 /* الحقن: بعد مربع «في كتابك» (رسمي) أو في آخر المحطة (تفاعلي) */
 const HK='elib-hlp-'+((B.C&&B.C.key)||location.pathname.split('/').slice(-2)[0]);
@@ -150,10 +166,10 @@ function tgl(view){if(view.querySelector('.bx-tgl'))return;const f=view.querySel
 function inject(){const view=document.getElementById('view');if(!view)return;document.documentElement.classList.toggle('bx-nohlp',!hlpOn());try{_inject(view)}finally{addCss();tgl(view)}}
 function _inject(view){injectAQ(view);const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
   const sts=view.querySelectorAll('section[id^="st-"]');
-  if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const h=window.BKH&&window.BKH[x.n+'|'+x.ref];if(h){const w=document.createElement('div');w.className='bk-st';w.innerHTML=h;s.appendChild(w)}s.appendChild(box(lid,x))});return}
+  if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const h=window.BKH&&window.BKH[x.n+'|'+x.ref];if(h){const w=document.createElement('div');w.className='bk-st';w.innerHTML=h;s.appendChild(w)}s.appendChild(box(lid,x))});orphans(view,lid,1);return}
   const bks=[...view.querySelectorAll('.ebk')];if(!bks.length)return;
   X.forEach(x=>{if(view.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const t=bks.find(b=>{const h=b.querySelector('.eh b');return h&&h.textContent.trim()==='تمرين '+x.n});
-    if(t)t.after(box(lid,x))})}
+    if(t)t.after(box(lid,x))});orphans(view,lid,0)}
 /* تمرين على مقطع من صوتيات الكتاب (أسئلة من إعدادنا عمّا يُقال في المقطع): AQ.add('<رقم المقطع>',{kind,intro,items})
    يظهر تحت مشغّل المقطع في الأسلوبين */
 const AQ={};

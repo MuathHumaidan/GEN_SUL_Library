@@ -102,6 +102,7 @@ B.lesson({
  summary:'وظائف أجزاء الآلة بالمضارع البسيط (What does it do? It drives…)، وصيغ الغرض والوظيفة (The purpose of … is to …)، وأفعال التثبيت attached to / connected to / mounted on / suspended from.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 68–69',html:`<ol><li>تشرح وظيفة كل جزء في آلة: ${e('The engine drives the fan.')}</li><li>تسأل ${e('What does … do?')} و ${e('Does … ?')} وتجيب.</li><li>تكتب الوظيفة بثلاث صيغ: ${e('purpose / function / job')}.</li><li>تصف كيف يُثبّت جزء على آخر.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l1'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 68–69',html:vt(VOC91)},
   ...R91.theory,
   {h:'تمارين الكتاب',ref:'ص 68–69',html:
@@ -116,6 +117,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l1'](el,B),title:'شرح مرئي'}]},
   ...R91.stations,
   {recap:['الوظيفة بالمضارع البسيط: It drives… / They control….','What does … do? و Does …? — No, it doesn\'t.','The purpose / function / job of … is to + فعل أصلي.','attached to · connected to · mounted on · suspended from.']}
  ],
@@ -220,6 +222,7 @@ B.lesson({
  summary:'لغة المكالمة مع خط الدعم الفني، وتوصيل الراوتر والمودم والكمبيوتر، والأجوبة القصيرة بكل الأفعال المساعدة (is, are, do, does, have, did, can).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 70–71',html:`<ol><li>تتصل بخط الدعم وتشرح المشكلة.</li><li>تسأل وتجيب عن التوصيلات: ${e('Is the router connected to the modem?')}</li><li>تجيب إجابات قصيرة بالفعل المساعد الصحيح.</li><li>تقارن مخططي توصيل وتصف الفرق.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l2'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 70–71',html:vt(VOC92)},
   ...R92.theory,
   {h:'تمارين الكتاب',ref:'ص 70–71',html:
@@ -233,6 +236,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l2'](el,B),title:'شرح مرئي'}]},
   ...R92.stations,
   {recap:["عبارات خط الدعم: This is … speaking. How can I help you? I'll talk you through it.",'Is the … connected to the …? — Yes, it is. / No, it isn\'t.','الجواب القصير يعيد الفعل المساعد: do, does, did, is, are, have, has, can.','Are you …? — Yes, I am. / No, I\'m not.']}
  ],
@@ -327,6 +331,7 @@ B.lesson({
  summary:'تعليمات حل الأعطال بجمل If (If the light is off, press the button)، وقراءة مخطط السير ورسمه، وكتابة دليل أعطال من حوار، والأجوبة القصيرة في التعارف.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 72–73',html:`<ol><li>تكتب تعليمات بشرط: ${e('If …, do ….')}</li><li>تقرأ مخطط سير (Yes / No) وترسمه من نص.</li><li>تحوّل حوار دعم فني إلى دليل أعطال مكتوب.</li><li>تجيب إجابات قصيرة في حديث اجتماعي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l3'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 72–73',html:vt(VOC93)},
   ...R93.theory,
   {h:'تمارين الكتاب',ref:'ص 72–73',html:
@@ -340,6 +345,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l3'](el,B),title:'شرح مرئي'}]},
   ...R93.stations,
   {recap:['If + مضارع بسيط، ثم أمر بفعل أصلي: If the light is off, press the button.','في مخطط السير: المعيّن سؤال، والمستطيل خطوة، وكل فرع جملة If.','دليل الأعطال يُكتب بالترتيب، سطر لكل حالة.']}
  ],

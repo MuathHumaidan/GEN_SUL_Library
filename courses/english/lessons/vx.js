@@ -12,10 +12,11 @@ const css=`
 .vx-scene .dim.on{opacity:1}
 .vx-scene .dim.on .ln{stroke-dasharray:400;stroke-dashoffset:400;animation:vxdraw .7s ease-out forwards}
 @keyframes vxdraw{to{stroke-dashoffset:0}}
+.vx-scene .hl{opacity:.35;transition:opacity .35s}.vx-scene .hl.on{opacity:1}
 .vx-scene .dim.on .val{animation:vxpop .4s .5s both}
 @keyframes vxpop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .vx-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px}
-.vx-chips button{font:inherit;border:2px solid #c9d7e1;background:#fff;border-radius:12px;padding:6px 2px;cursor:pointer;line-height:1.3}
+.vx-chips button{min-width:0;overflow-wrap:anywhere;font:inherit;border:2px solid #c9d7e1;background:#fff;border-radius:12px;padding:6px 2px;cursor:pointer;line-height:1.3}
 .vx-chips button b{display:block;font-family:var(--font-la,var(--font));font-size:1.05em;direction:ltr}
 .vx-chips button small{color:var(--muted);font-size:.8em}
 .vx-chips button.on{border-color:#2f6b8f;background:#2f6b8f;color:#fff}.vx-chips button.on small{color:#dce9f2}
@@ -37,7 +38,7 @@ const css=`
 .vx-bub.r{background:#e2f2e8;justify-self:end;border-bottom-right-radius:4px;animation-delay:.35s}
 .vx-quiz{border-top:1px dashed var(--line);padding-top:10px;margin-top:4px}
 .vx-quiz .opts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
-.vx-quiz .opts button{font:inherit;font-family:var(--font-la,var(--font));font-weight:700;border:2px solid #d9d2c4;background:#fff;border-radius:10px;padding:8px 2px;cursor:pointer}
+.vx-quiz .opts button{min-width:0;overflow-wrap:anywhere;font:inherit;font-family:var(--font-la,var(--font));font-weight:700;border:2px solid #d9d2c4;background:#fff;border-radius:10px;padding:8px 2px;cursor:pointer}
 .vx-quiz .opts button.ok{background:#e2f2e8;border-color:#1f8a5b}.vx-quiz .opts button.no{background:#fbe9e4;border-color:#c4553f}
 .vx-fb{min-height:1.6em;margin-top:6px;font-weight:700}
 `;
@@ -45,13 +46,46 @@ const addCss=()=>{if(document.getElementById('vx-css'))return;const s=document.c
 /* قطع جملة مع حركة: tiles=[[مفتاح,نص,لون]] — القطعة بنفس المفتاح تنتقل من مكانها القديم إلى الجديد */
 function tiles(host,T){const old={};host.querySelectorAll('.vx-t').forEach(t=>{old[t.dataset.k]=t.getBoundingClientRect()});
  host.innerHTML=T.map(([k,t,c])=>`<span class="vx-t ${c||''}${old[k]?'':' new'}" data-k="${k}">${t}</span>`).join('');
- {let f=18;const W=()=>host.scrollWidth>host.clientWidth+1;while(W()&&f>11){f--;host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize=f+'px';x.style.padding='5px '+Math.max(4,f-10)+'px'})}}
+ {host.style.flexWrap='nowrap';let f=18;const W=()=>host.scrollWidth>host.clientWidth+1;while(W()&&f>11){f--;host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize=f+'px';x.style.padding='5px '+Math.max(4,f-10)+'px'})}if(W()){host.style.flexWrap='wrap';host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize='15px';x.style.padding='5px 8px';x.style.whiteSpace='normal'})}}
  host.querySelectorAll('.vx-t').forEach(t=>{const o=old[t.dataset.k];if(!o)return;const n=t.getBoundingClientRect();const dx=o.left-n.left,dy=o.top-n.top;if(!dx&&!dy)return;
   t.style.transition='none';t.style.transform=`translate(${dx}px,${dy}px)`;requestAnimationFrame(()=>requestAnimationFrame(()=>{t.style.transition='';t.style.transform=''}))})}
 const EN=B=>!!(B&&B.lang&&B.lang()==='en');
 const sp=t=>(G.ENK&&G.ENK.sp)?G.ENK.sp(t):'';
 const shell=(el,title,sub,B)=>{addCss();el.innerHTML=`<div class="vx"><div class="vx-h"><span class="tg">${EN(B)?'See the idea':'شاهد الفكرة'}</span><b>${title}</b></div><div class="vx-b">${sub?`<p style="margin:0 0 8px">${sub}</p>`:''}<div class="vx-in"></div></div></div>`;return el.querySelector('.vx-in')};
 G.VX={css:addCss,tiles,sp,shell,EN,L:{}};
+/* ========== قالب عام: مشهد + أزرار + جملة تتحول + سؤال وجواب + اختبار ==========
+ cfg={title:[ar,en],sub:[ar,en],scene:en=>svg (مجموعات data-d بصنف dim أو hl),cols:4,
+  items:[{k,chip:[نص الزر, شرح عربي, شرح إنجليزي],A:{t:[[مفتاح,نص,لون]],why:[ar,en]},B:{…}?,qa:[[سؤال,جواب]],tip:[ar,en],cue:[ar,en]}],
+  h1:[ar,en],h2:[ar,en],sw:[[إلى B ar,en],[إلى A ar,en]],quiz:[ar,en]} — الألوان: a أخضر، n أزرق، k أصفر، q فاتح */
+function make(el,B,cfg){const en=EN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):p;
+ const h=shell(el,L(cfg.title),L(cfg.sub),B);const I=cfg.items;const cols=cfg.cols||Math.min(4,I.length);
+ h.innerHTML=`${cfg.scene?`<div class="vx-scene">${cfg.scene(en)}</div>`:''}
+  <div class="vx-chips" style="grid-template-columns:repeat(auto-fit,minmax(max(74px,calc(${100/cols}% - 6px)),1fr))">${I.map(x=>`<button type="button" data-d="${x.k}"><b>${x.chip[0]}</b>${x.chip[1]?`<small>${en?(x.chip[2]||''):x.chip[1]}</small>`:''}</button>`).join('')}</div>
+  <div class="vx-card"><h4>${L(cfg.h1||['1. الجملة','1. The sentence'])}</h4><div class="vx-row" id="r1"></div><p class="vx-why" id="w1"></p>${I.some(x=>x.B)?'<button type="button" class="vx-sw" id="sw"></button>':''}</div>
+  ${I.some(x=>x.qa)?`<div class="vx-card"><h4>${L(cfg.h2||['2. سؤال وجواب','2. Question and answer'])}</h4><div class="vx-qa" id="qa"></div></div>`:''}
+  ${cfg.quiz!==false?`<div class="vx-quiz"><b>${L(['اختبر نفسك:','Test yourself:'])}</b> <small>${L(['(اضغط أي زر للبدء)','(tap any button to start)'])}</small> <span class="vq">${L(cfg.quiz||['',''])}</span><div class="vx-cue" style="margin-top:6px;font-weight:700"></div><div class="opts" style="grid-template-columns:repeat(auto-fit,minmax(max(74px,calc(${100/cols}% - 6px)),1fr))">${I.map(x=>`<button type="button" data-q="${x.k}">${x.chip[0]}</button>`).join('')}</div><div class="vx-fb"></div></div>`:''}`;
+ const $=q=>h.querySelector(q);let cur=I[0].k,alt=false,quiz=null,qn=0,qok=0;const X=k=>I.find(x=>x.k===k);
+ const hl=k=>h.querySelectorAll('.vx-scene [data-d]').forEach(g=>{g.classList.remove('on');if(g.dataset.d===k){if(g.getBBox)try{g.getBBox()}catch(e){}requestAnimationFrame(()=>g.classList.add('on'))}});
+ const draw=()=>{const x=X(cur);const f=(alt&&x.B)?x.B:x.A;hl(cur);
+  h.querySelectorAll('.vx-chips button').forEach(b=>b.classList.toggle('on',b.dataset.d===cur));
+  tiles($('#r1'),f.t);const say=f.say||f.t.map(z=>z[1]).join(' ').replace(/<[^>]+>/g,'').replace(/\s+([.,?!])/g,'$1');
+  $('#w1').innerHTML=`${L(f.why||'')} ${sp(say)}${x.tip?`<br><small>${L(x.tip)}</small>`:''}`;
+  if($('#sw')){$('#sw').hidden=!x.B;$('#sw').textContent=L(cfg.sw?cfg.sw[alt?1:0]:[alt?'↔ رجوع':'↔ حوّل',alt?'↔ Back':'↔ Change'])}
+  if($('#qa'))$('#qa').innerHTML=(x.qa||[]).map(([q,a])=>`${q?`<div class="vx-bub q">${q} ${sp(q)}</div>`:''}${a?`<div class="vx-bub r">${a} ${sp(a)}</div>`:''}`).join('')};
+ h.querySelectorAll('.vx-chips button').forEach(b=>b.onclick=()=>{cur=b.dataset.d;alt=false;quiz=null;if($('.vx-fb'))$('.vx-fb').textContent='';if($('.vx-cue'))$('.vx-cue').textContent='';draw()});
+ if($('#sw'))$('#sw').onclick=()=>{alt=!alt;draw()};
+ const ask=()=>{const ks=I.map(x=>x.k).filter(k=>k!==quiz);quiz=ks[(qn*7+3)%ks.length];const x=X(quiz);
+  if(cfg.scene&&!x.cue)hl(quiz);else{hl(null)}
+  $('.vx-cue').innerHTML=x.cue?L(x.cue):'';h.querySelectorAll('.vx-chips button').forEach(b=>b.classList.remove('on'));
+  if(x.qo){const P=(G.PLCBOOK&&G.PLCBOOK.perm)||(n=>[...Array(n).keys()]);const o=P(quiz+x.qo.join(),x.qo.length);const box=$('.opts');box.style.gridTemplateColumns='repeat(auto-fit,minmax(90px,1fr))';box.innerHTML=o.map(j=>`<button type="button" data-q="${j===0?quiz:'_'+j}">${x.qo[j]}</button>`).join('');bind()}
+  h.querySelectorAll('.opts button').forEach(b=>b.className='')};
+ const bind=()=>h.querySelectorAll('.opts button').forEach(b=>b.onclick=()=>{if(!quiz){ask();$('.vx-fb').textContent='';return}
+  const ok=b.dataset.q===quiz;b.className=ok?'ok':'no';qn++;if(ok)qok++;
+  const right=X(quiz).qo?X(quiz).qo[0]:X(quiz).chip[0];$('.vx-fb').innerHTML=ok?L([`✔ صحيح (${qok} من ${qn})`,`✔ Correct (${qok} of ${qn})`]):L([`✘ الصحيح: ${right}`,`✘ The answer is ${right}`]);
+  if(ok)setTimeout(()=>{if(qn<6)ask();else{$('.vx-fb').innerHTML+=L([' انتهى الاختبار.',' The test is over.']);quiz=null;$('.vx-cue').textContent='';cur=I[0].k;draw()}},900)});
+ bind();draw()}
+G.VX.make=make;
+
 
 /* ========== انجل-102 الدرس 7.1: الأبعاد الأربعة ========== */
 const D71={

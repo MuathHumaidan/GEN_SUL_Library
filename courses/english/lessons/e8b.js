@@ -109,6 +109,7 @@ B.lesson({
  summary:'الماضي البسيط (المنتظم والشاذ) للأحداث في وقت محدد، والسؤال When did…? والتواريخ (on the 5th of October، in May، in 2005)، و ago، ومكالمة إصلاح جهاز.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 62–63',html:`<ol><li>تتكلم عن أحداث في وقت محدد بالماضي البسيط: ${e('They launched it in 1957.')}</li><li>تسأل ${e('When did…?')} وتجيب بتاريخ.</li><li>تقرأ التواريخ وتكتبها، وتستعمل ${e('ago')}.</li><li>تفرّق بين الماضي البسيط والمضارع التام.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l3'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 62–63',html:vt(VOC83)},
   ...R83.theory,
   {h:'تمارين الكتاب',ref:'ص 62–63',html:
@@ -126,6 +127,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l3'](el,B),title:'شرح مرئي'}]},
   ...R83.stations,
   {recap:['الماضي البسيط لحدث في وقت محدد: launched, sent, flew, became.','السؤال: When did + فاعل + فعل أصلي? والنفي didn\'t + فعل أصلي.','on the 5th of October 1957 · in October · in 1957.','ago = قبل الآن: two days ago, an hour ago.']}
  ],
@@ -178,6 +180,7 @@ B.lesson({
  title:'Review Unit D — مراجعة الوحدتين 7 و 8',
  summary:'مراجعة الأبعاد وأسئلة How، والمعدود وغير المعدود، و will، والمضارع التام والماضي البسيط، ووصف التلف، مع إجابات تمارين المراجعة D كلها.',
  theory:[
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l4'](el,B)},
   {h:'ماذا تراجع؟',ref:'ص 64–67',html:`<div class="tbx"><table class="vt"><thead><tr><th>النقطة</th><th>مثال</th><th>الدرس</th></tr></thead><tbody>
    <tr><td>How + صفة</td><td class="en">How wide is the road?</td><td>7.1</td></tr><tr><td>الصفة والاسم</td><td class="en">high → height</td><td>7.1</td></tr>
    <tr><td>How many / How much</td><td class="en">How much cement do you need?</td><td>7.2</td></tr><tr><td>will / won't</td><td class="en">It'll be 40 km long.</td><td>7.3</td></tr>
@@ -204,6 +207,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القواعد بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 7',title:'خلاصة الوحدة 7: المواصفات',q:'كم قالباً تحتاج لتصف منشأة كاملة؟',ref:'ص 64–65',
    art:art(`${[['How + adj','How high is it?',70],['many / much','How much steel?',140],['will','It will be 2 km long.',210]].map(([a,b,y],i)=>`<g data-tip="${a}: ${b}"><rect x="30" y="${y-30}" width="300" height="50" rx="10" fill="${[C.paper,C.yel,C.paper][i]}" stroke="${C.ink}" stroke-width="2"/>${TL(180,y,b,{fs:15,w:700})}</g>`).join('')}`,'ثلاثة قوالب للوحدة 7'),
    cap:'قوالب الوحدة 7. مرّر المؤشر على كل قالب.',

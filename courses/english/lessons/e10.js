@@ -95,6 +95,7 @@ B.lesson({
  summary:'قواعد السلامة بـ must / mustn\'t / always / never / do not، وأنواع لوحات السلامة الثلاثة بألوانها وأشكالها، والنتائج المحتملة للخطر بـ might و could.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 74–75',html:`<ol><li>تكتب قواعد السلامة: ${e('You must wear a hard hat.')}</li><li>تميّز لوحات التحذير والمنع والإلزام.</li><li>تحوّل اللوحة إلى جملة: ${e('Do not smoke here.')}</li><li>تقول النتيجة المحتملة للخطر: ${e('You might burn your arm.')}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l1'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 74–75',html:vt(VOC101)},
   ...R101.theory,
   {h:'تمارين الكتاب',ref:'ص 74–75',html:
@@ -109,6 +110,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l1'](el,B),title:'شرح مرئي'}]},
   ...R101.stations,
   {recap:["القواعد: Always / Never / Do / Don't / must / mustn't + فعل أصلي.",'لوحة التحذير مثلث أصفر، والمنع دائرة حمراء، والإلزام دائرة زرقاء.','You might / could + فعل للنتيجة المحتملة.']}
  ],
@@ -213,6 +215,7 @@ B.lesson({
  summary:'التحذير من الخطر ونتيجته، ووصف مخاطر ورشة بـ There is / There are، وتحويلها إلى الماضي There was / There were و was / were في تقرير التفتيش، وكتابة قواعد للورشة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 76–77',html:`<ol><li>تحذّر من خطر وتذكر نتيجته: ${e("Look out! There's a low beam. You could injure your head.")}</li><li>تصف ما تراه في ورشة: ${e('There are some boxes on the stairs.')}</li><li>تكتب تقرير تفتيش بالماضي: ${e('There were some boxes on the stairs.')}</li><li>تكتب قواعد سلامة للورشة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l2'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 76–77',html:vt(VOC102)},
   ...R102.theory,
   {h:'تمارين الكتاب',ref:'ص 76–77',html:
@@ -227,6 +230,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l2'](el,B),title:'شرح مرئي'}]},
   ...R102.stations,
   {recap:["التحذير: Look out! There's … You could / might ….","الوصف: There is / are + المكان، و The … is / are + الحالة.",'التقرير بالماضي: is → was و are → were.','قواعد الورشة: Always … / Never … / Staff must / must not ….']}
  ],
@@ -298,6 +302,7 @@ B.lesson({
  summary:'تحديد الاتجاه بالساعة (at two o\'clock)، وتحذير برج المراقبة، وأسئلة التحقيق بالماضي (Where were…? When did… happen?)، وتقرير الحادثة، والدعوة والاعتذار في الحديث الاجتماعي.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 78–79',html:`<ol><li>تحدد اتجاه شيء بالنسبة إليك بالساعة: ${e("Unknown traffic at two o'clock.")}</li><li>تقرأ خبراً عن حادثة وتملأ تقريرها.</li><li>تسأل أسئلة التحقيق بالماضي وتجيب.</li><li>تدعو زميلاً أو تعتذر بلباقة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l3'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 78–79',html:vt(VOC103)},
   ...R103.theory,
   {h:'تمارين الكتاب',ref:'ص 78–79',html:
@@ -312,6 +317,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l3'](el,B),title:'شرح مرئي'}]},
   ...R103.stations,
   {recap:["at … o'clock: 12 أمامك و 3 يمينك و 6 خلفك و 9 يسارك.",'أسئلة الماضي: Where were …? How high was …? When did … happen?','take place = happen.']}
  ],
@@ -359,6 +365,7 @@ B.lesson({
  title:'Review Unit E — مراجعة الوحدتين 9 و 10',
  summary:'مراجعة وظائف الأجزاء والتثبيت، والأجوبة القصيرة وجمل If ومخطط السير، وقواعد السلامة والتحذيرات، وتقرير السلامة بالماضي وأسئلة التحقيق، مع إجابات تمارين المراجعة E.',
  theory:[
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l4'](el,B)},
   {h:'ماذا تراجع؟',ref:'ص 80–83',html:`<div class="tbx"><table class="vt"><thead><tr><th>النقطة</th><th>مثال</th><th>الدرس</th></tr></thead><tbody>
    <tr><td>الوظيفة</td><td class="en">The engine drives the fan.</td><td>9.1</td></tr><tr><td>التثبيت</td><td class="en">The lamp is suspended from the ceiling.</td><td>9.1</td></tr>
    <tr><td>الأجوبة القصيرة</td><td class="en">Is it connected? — No, it isn't.</td><td>9.2</td></tr><tr><td>If والمخطط</td><td class="en">If the light is off, press the button.</td><td>9.3</td></tr>
@@ -381,6 +388,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القواعد بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 9',title:'خلاصة الوحدة 9: حل الأعطال',q:'ما الأدوات اللغوية التي يحتاجها فني الدعم؟',ref:'ص 80–81',
    art:art(`${[['What does it do?','It drives the fan.',70],['Is it connected?',"No, it isn't.",140],['If …,','check the fuse.',210]].map(([a,b,y],i)=>`<g data-tip="${a} ${b}"><rect x="20" y="${y-30}" width="320" height="50" rx="10" fill="${[C.paper,C.yel,C.paper][i]}" stroke="${C.ink}" stroke-width="2"/>${TL(180,y,a+' '+b,{fs:14,w:700})}</g>`).join('')}`,'ثلاثة قوالب للوحدة 9'),
    cap:'قوالب الوحدة 9. مرّر المؤشر على كل قالب.',

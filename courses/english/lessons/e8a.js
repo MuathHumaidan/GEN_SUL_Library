@@ -129,6 +129,7 @@ B.lesson({
  summary:'المضارع التام (have/has + التصريف الثالث) للأفعال الحديثة، والأفعال الشاذة، وسؤال Have you…? وجوابه القصير، ولماذا لا يأتي المضارع التام مع yesterday و in 2005.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 58–59',html:`<ol><li>تبلّغ عن مشكلة حدثت للتو: ${e('My car has broken down.')}</li><li>تكوّن المضارع التام بـ ${e('have / has')} + التصريف الثالث.</li><li>تعرف التصريف الثالث للأفعال المنتظمة والشاذة.</li><li>تسأل ${e('Have you checked…?')} وتجيب ${e("Yes, I have. / No, I haven't.")}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l1'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 58–59',html:vt(VOC81)},
   ...R81.theory,
   {h:'تمارين الكتاب',ref:'ص 58–59',html:
@@ -142,6 +143,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l1'](el,B),title:'شرح مرئي'}]},
   ...R81.stations,
   {recap:['المضارع التام: have/has + التصريف الثالث لحدث قريب ونتيجته أمامنا.','المنتظم يضاف له ed، والشاذ يُحفظ (break → broken، take → taken).','السؤال: Have you …? والجواب: Yes, I have. / No, I haven\'t.','لا نستعمله مع yesterday أو in 2005 أو ago؛ معها الماضي البسيط.']}
  ],
@@ -260,6 +262,7 @@ B.lesson({
  summary:'أفعال التلف (bend, break, burn, crack, cut, dent, scratch, tear) وتصريفها، ووصف الضرر بالتركيز على الفعل أو على النتيجة، و There\'s a dent in…، والإبلاغ عن شيء مفقود، وأجزاء السيارة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 60–61',html:`<ol><li>تصف الضرر في جهاز أو سيارة بثماني أفعال.</li><li>تفرّق بين ${e('I have dented it')} (الفعل) و ${e("It's dented")} (النتيجة).</li><li>تستعمل ${e("There's a … / There are some …")} لوصف الضرر.</li><li>تبلّغ عن شيء ناقص: ${e("The manual is missing. / There's no manual.")}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l2'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 60–61',html:vt(VOC82,['English','المعنى','الاسم / ملاحظة'])},
   ...R82.theory,
   {h:'تمارين الكتاب',ref:'ص 60–61',html:
@@ -276,6 +279,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l2'](el,B),title:'شرح مرئي'}]},
   ...R82.stations,
   {recap:['أفعال التلف: bend (bent)، break (broken)، burn (burnt)، crack، cut (cut)، dent، scratch، tear (torn).','الفعل: I have dented it. النتيجة: It is dented.',"There's a dent in … / There are some scratches on ….","الناقص: The manual is missing. / There's no manual. / It doesn't have a manual."]}
  ],

@@ -162,6 +162,13 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
     if(s){const p=gramParts(s);
       if(Array.isArray(L.theory)){const i=L.theory.findIndex(b=>b.h==='ماذا ستتعلم؟');L.theory.splice(i+1,0,...p.theory)}
       if(Array.isArray(L.stations)){const i=L.stations.findIndex(b=>b.intro);L.stations.splice(i+1,0,p.station)}}
+    /* صوتيات الكتاب داخل تماريننا (قرار المدرب، نوفمبر 2026): قسم «الاستماع» يُلغى، وكل مقطع يُربط بتمرينه في bx.js */
+    if(Array.isArray(L.theory)&&!L.__trk){L.__trk=1;const A=L.theory.filter(b=>b.h==='الاستماع'&&b.html);
+      if(A.length){const T=[];let rest='';
+        A.forEach(b=>{rest+=b.html.replace(/<div class="aud">([\s\S]*?)<p class="miss" hidden>[\s\S]*?<\/p><\/div>/g,(m,inn)=>{const src=(inn.match(/src="([^"]+)"/)||[])[1];const ref=((inn.match(/class="ref"[^>]*>([^<]*)</)||[])[1]||'');const task=((inn.match(/<p style="margin:4px 0">([\s\S]*?)<\/p>/)||[])[1]||'');const n=(ref.match(/التما?رين(?:ان)?\s+([0-9]+)/)||[])[1];const id=((src||'').match(/track-([^.\/]+)\.mp3/)||[])[1];if(src)T.push({src,id,n,ref,task});return ''})});
+        (G.PLCBOOK.trk=G.PLCBOOK.trk||{})[L.id]=T;
+        L.theory=L.theory.filter(b=>A.indexOf(b)<0);
+        if(rest.replace(/\s+/g,'')){const X=L.theory.find(b=>b.h==='تمارين الكتاب'&&typeof b.html==='string');if(X)X.html+=rest;else L.theory.push({h:'تمارين الكتاب',html:rest})}}}
     /* صوتيات الكتاب في «التفاعلي»: قسم «الاستماع» في الرسمي يصير محطة أخيرة بنفس المقاطع */
     if(Array.isArray(L.stations)&&Array.isArray(L.theory)&&!L.stations.some(b=>b._aud)){
       const A=L.theory.filter(b=>b.h==='الاستماع'&&b.html);

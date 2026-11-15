@@ -194,6 +194,7 @@ B.lesson({
  summary:'الاسم المعدود وغير المعدود، و some/any، والسؤال بـ How many و How much، وعبوات البيع (tin, tube, bag, packet)، وأسئلة المواصفات عن مبنى.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 54–55',html:`<ol><li>تفرّق بين الاسم <b>المعدود</b> ${e('screws')} و<b>غير المعدود</b> ${e('cement')}.</li><li>تسأل عن الكمية بـ ${e('How many')} و ${e('How much')}.</li><li>تطلب مواد من محل: الكمية والنوع والمقاس واللون والعبوة.</li><li>تقرأ أسئلة وأجوبة عن مواصفات مبنى عالٍ.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u7-l2'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 54–55',html:vt(VOC72)},
   ...R72.theory,
   {h:'تمارين الكتاب',ref:'ص 54–55',html:
@@ -206,6 +207,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u7-l2'](el,B),title:'شرح مرئي'}]},
   ...R72.stations,
   {st:4,short:'أسئلة عن مبنى',title:'أسئلة شائعة عن مبنى عالٍ',q:'ما السؤال الذي جوابه «It has 60 storeys»؟',ref:'ص 54',
    art:art(`<g data-tip="How high is it? — الارتفاع"><rect x="140" y="40" width="80" height="240" fill="${C.paper}" stroke="${C.ink}" stroke-width="2.5"/>${[...Array(10)].map((_,i)=>`<line x1="140" x2="220" y1="${60+i*22}" y2="${60+i*22}" stroke="${C.mut}"/>`).join('')}</g>
@@ -337,6 +339,7 @@ B.lesson({
  summary:'التوقع بـ will و won\'t، والسؤال بـ When will…? و Will…? وأجوبته القصيرة، وجدول مواصفات مشروع مستقبلي، وجدول تنفيذ المشروع بالسنوات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 56–57',html:`<ol><li>تتوقع حقيقة أو حدثاً في المستقبل بـ ${e("will / 'll / won't")}.</li><li>تسأل ${e('When will…?')} و ${e('Will…?')} وتجيب باختصار.</li><li>تقرأ مواصفات مشروع لم يُبنَ بعد، وتحوّلها إلى جدول.</li><li>تتكلم عن جدول تنفيذ مشروع بالسنوات.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u7-l3'](el,B)},
   {h:'جدول المفردات كاملاً',ref:'ص 56–57',html:vt(VOC73)},
   ...R73.theory,
   {h:'تمارين الكتاب',ref:'ص 56–57',html:
@@ -350,6 +353,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u7-l3'](el,B),title:'شرح مرئي'}]},
   ...R73.stations,
   {recap:["للمستقبل: الفاعل + will أو 'll + الفعل الأصلي، بلا s وبلا to.","النفي: won't + الفعل الأصلي.","نعترض بجملتين: They won't … ثم They'll ….","السؤال: When will you …? و Will …? — Yes, they will. / No, they won't."]}
  ],

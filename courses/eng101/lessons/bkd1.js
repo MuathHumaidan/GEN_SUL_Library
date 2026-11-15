@@ -5,7 +5,10 @@ const I=n=>'img/'+n+'.jpg';
 const BE=['am','are',"I'm",'is',"name's",'Are'];
 const TL=['adapter','antenna','bolts','cable','chisel','nuts','plug','saw','screws','screwdriver','spanner','washers'];
 BX.bk('u1-l1',{
- 1:{kind:'gaps',intro:'استمع (المقطع 02 في قسم الاستماع) وأكمل الحوارات بكلمات الصندوق.',items:[A('1 ● Hello. I (1) am Hans Beck. ○ Hi. My name (2) ___ Pedro Lopez.',BE,3),A('2 ● Excuse me. (3) ___ you Mr Rossi? ○ Yes, I am.',BE,5),A('2 ● Pleased to meet you, Mr Rossi. (4) ___ Danielle Martin.',BE,2),A('3 ● Hi. My (5) ___ Jamal.',BE,4),A('3 ○ Hello, Jamal. (6) ___ Borys.',BE,2),A('3 ● Good to meet you, Borys. (7) ___ you from Russia?',BE,5),A('3 ○ No, (8) ___ from Poland.',BE,2)]},
+ 1:{kind:'fill',layout:'dlg',intro:'استمع وأكمل الحوارات بكلمات الصندوق: اضغط الكلمة ثم الفراغ (الكلمة تُستعمل أكثر من مرة).',box:['am','are',"I'm",'is',"name's"],lines:[
+  ['1','●','<i>Hello. I (1) <u>am</u> Hans Beck.</i>'],['','○','Hi. My name (2) {is} Pedro Lopez.'],['','●','<i>Pleased to meet you.</i>'],
+  ['2','●','<i>Excuse me. (3) {Are} you Mr Rossi?</i>'],['','○','Yes, I am.'],['','●',"<i>Pleased to meet you, Mr Rossi. (4) {I'm} Danielle Martin.</i>"],['','○','Nice to meet you, Danielle.'],
+  ['3','●',"<i>Hi. My (5) {name's} Jamal.</i>"],['','○',"Hello, Jamal. (6) {I'm} Borys."],['','●','<i>Good to meet you, Borys. (7) {Are} you from Russia?</i>'],['','○',"No, (8) {I'm} from Poland."]]},
  2:{kind:'speak',goal:'مع زميلك: تدرّب على حوارات التمرين 1، ثم تحدّث عن نفسك.'},
  3:{kind:'speak',goal:'أكمل النموذج عن نفسك بالحروف الكبيرة: Name · Country · Occupation.',model:[['','Name: AHMED ALI · Country: SAUDI ARABIA · Occupation: STUDENT']]},
  4:{kind:'speak',goal:'مع زميلك: اسأل وأجب.',model:[['A',"Hello. What's your name?"],['B',"I'm Kato."],['A','Where are you from?'],['B',"I'm from Japan."],['A','What do you do?'],['B',"I'm a builder / an electrician / a student."]]},
