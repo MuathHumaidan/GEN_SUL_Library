@@ -86,7 +86,7 @@ BX.add('u4-l3',[
   kind:'speak',goal:'من إعدادنا: ارسم مخططاً بسيطاً لنظام تعرفه (شبكة Wi-Fi في البيت، أو نظام إنذار الحريق) ودوّن ملاحظات.',useful:['The router sends signals to …, which …','The sensor detects smoke and sends a signal to the alarm, which …']},
  {n:9,ref:'ص 31',st:3,
   bk:{kind:'speak',img:[I('u4-l3-setup')],cap:'رسم الكتاب ص 31.',goal:'صِف النظام واشرح للصف كيف يعمل.',model:[['','The signal goes by cable from the satellite to the transmitting horn, which sends radio beams to the transmitting dish. The dish reflects the beams across to the receiving dish, which reflects them to the receiving horn. The horn is connected via a cable to the TV, which displays the picture.']]},
-  kind:'speak',goal:'من إعدادنا: اشرح لزميلك نظامك من التمرين المقابل 8 مستعملاً which و who.',useful:['…, which …','…, who …','via','First … Then … Finally …']}
+  kind:'speak',goal:'من إعدادنا: اشرح لزميلك نظامك من التمرين المساعد 8 مستعملاً which و who.',useful:['…, which …','…, who …','via','First … Then … Finally …']}
 ]);
 BX.add('u4-l4',[
  {n:1,ref:'ص 32',st:1,

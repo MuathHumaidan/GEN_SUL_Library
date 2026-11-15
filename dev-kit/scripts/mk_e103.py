@@ -10,5 +10,5 @@ files=[f for f in files if L(f)]
 h=ns['course']('eng103','انجل-103',files)
 h=h.replace('المكتبة الرقمية للتقنية الكهربائية','المكتبة الرقمية للدراسات العامة').replace('content="مكتبة الكهرباء"','content="مكتبة الدراسات العامة"')
 import sys as _s;_s.path.insert(0,'/home/claude');from en_inject import inject;h=inject('eng103',h)
-h=h.replace('<html lang="ar" dir="rtl">','<html lang="ar" dir="rtl" data-en-off>',1)  # until EN translation
+# data-en-off removed: EN mode enabled
 open('courses/eng103/index.html','w').write(h);print(files)

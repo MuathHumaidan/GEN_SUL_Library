@@ -121,7 +121,7 @@ const R2=N.rule({title:'النصيحة والضرورة في الطوارئ',ref
   pairs:[['What we should do if …?','What should we do if …?','should قبل we في السؤال.'],['You should to locate them.','You should locate them.','لا to بعد should.']]},
  {t:'must و should و should + passive',short:'should be purchased',old:[2],q:'كيف تكتب توصية في تقرير؟',ref:'ص 45',
   lead:`${e('Must')}: الفعل ضروري. ${e('Should')}: نوصي أو نقترح. ${e('Should + passive')}: في قسم التوصيات في التقرير.`,
-  rows:[['must = ضروري','Safety helmets must be worn at all times.'],['should = اقتراح','In my opinion, they should be yellow.'],['should + passive = توصية','New first aid equipment should be purchased immediately.']],head:['المعنى','مثال'],labs:[LAB6B]}
+  rows:[['must','Safety helmets must be worn at all times.','ضروري'],['should','In my opinion, they should be yellow.','اقتراح'],['should + passive','New first aid equipment should be purchased immediately.','توصية في تقرير']],head:['الصيغة','مثال','الاستعمال'],labs:[LAB6B]}
  ]});
 B.lesson({
  id:'u6-l2',unit:6,order:2,pages:'44–45',
