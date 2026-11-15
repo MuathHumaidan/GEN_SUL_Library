@@ -72,7 +72,7 @@ function run(el,x){addCss();try{
   if(x.kind==='speak')return speak(el,x);
  }catch(e){console.error(e);el.textContent='تعذّر عرض التمرين.'}}
 
-const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<img src="${u}" alt="صورة من الكتاب" loading="lazy">`).join('')}${k.cap?`<figcaption>${k.cap}</figcaption>`:''}</figure>`:'';
+const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<a href="${u}" target="_blank" rel="noopener" title="تكبير الصورة"><img src="${u}" alt="صورة من الكتاب" loading="lazy"></a>`).join('')}${k.cap?`<figcaption>${k.cap} <span class="zh">(اضغط الصورة لتكبيرها)</span></figcaption>`:''}</figure>`:'';
 const box=(lid,x)=>{const w=document.createElement('div');w.dataset.bx=lid+':'+x.n;
   if(x.bk){const b=document.createElement('div');b.className='bx bkx';
    b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${fig(x.bk)}<div></div></div>`;
@@ -104,7 +104,7 @@ function injectAQ(view){view.querySelectorAll('.aud').forEach(a=>{const au=a.que
   addCss();const d=document.createElement('div');d.className='bx';d.dataset.aq=m[1];
   d.innerHTML=`<div class="bx-h"><span class="tg">تمرين على المقطع</span><b>المقطع ${en(m[1])}</b><span class="sub">استمع للمقطع ثم أجب (أسئلة من إعدادنا)</span></div><div class="bx-b"></div>`;
   a.after(d);run(d.querySelector('.bx-b'),x)})}
-G.BX={add:(lid,arr)=>{D[lid]=(D[lid]||[]).concat(arr)},data:D,inject};
+G.BX={add:(lid,arr)=>{D[lid]=(D[lid]||[]).concat(arr)},bk:(lid,o)=>{(D[lid]||[]).forEach(x=>{if(o[x.n])x.bk=o[x.n]})},data:D,inject};
 G.AQ={add:(t,x)=>{AQ[t]=x},data:AQ};
 const go=()=>{const v=document.getElementById('view');if(!v)return;inject();let q=0;new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;inject()})}).observe(v,{childList:true,subtree:true})};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
