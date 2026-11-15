@@ -50,6 +50,7 @@ B.lesson({
  summary:'فريق الصيانة في سباق السيارات: أسماء الفرق والقطع (wheel gun, jack, nozzle, hose, socket, flap)، والتعليمات بفعل الأمر في قوائم العمل، ووصف خطوات العمل المتكررة بالمضارع البسيط.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 4–5',html:`<p>تقرأ عن فريق يغيّر عجلات سيارة سباق في عشر ثوانٍ. ستتعلم:</p><ol><li>أسماء أدوات الفريق وقطع السيارة.</li><li>كتابة التعليمات بفعل الأمر.</li><li>وصف خطوات العمل بالمضارع البسيط.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 4–5',html:
    bk(1,'ص 4','ناقش مع زميلك: كم ميكانيكياً في فريق الصيانة في سباق كبير؟ وما أعمالهم؟',['c) about 20 (twenty mechanics)','wheel-gun · wheel-on · wheel-off · wheel-jack · fuel'],'الإجابات من النص في التمرين 2.')+
@@ -59,6 +60,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:['wheel gun · jack · nozzle · hose · socket · flap','التعليمة بفعل الأمر: Loosen the nuts. · WAIT. · Don\'t move.','loosen ↔ tighten · raise ↔ lower','الوصف بالمضارع البسيط: They bring out the wheels. · The driver presses a button.']}
  ],
@@ -130,6 +132,7 @@ B.lesson({
  summary:'تدريب ميكانيكي على تغيير العجلة: الأفعال المركبة (take off, put on, lift up…) ومكان الضمير فيها، والمضارع المستمر لما تفعله الآن والمضارع التام لما أنجزته، و yet في السؤال والنفي، وعبارات كسب الوقت.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 6–7',html:`<p>أنت متدرب في فريق صيانة، والمدرب يعطيك التعليمات ويتابعك. ستتعلم:</p><ol><li>أفعالاً مركبة مثل ${e('take off')} و ${e('put on')} ومكان المفعول معها.</li><li>كيف تؤكد ما تفعله الآن وما أنجزته.</li><li>السؤال والنفي بـ ${e('yet')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 6–7، ص 111',html:
    bk(1,'ص 6','استمع إلى المدرب، ورقّم التعليمات من 1 إلى 10 بترتيبها الصحيح.',['1 Bring the new wheel out.','2 Adjust the air pressure in the tyre.','3 Loosen the wheel nuts.','4 Put the jack under the car.','5 Raise the car with the jack.','6 Take the old wheel off.','7 Put the new wheel on.','8 Tighten the wheel nuts.','9 Lower the car and take the jack away.','10 Take the old wheel away.'])+
@@ -143,6 +146,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:['Take the tyres off. = Take off the tyres. · Take them off (لا: take off them).',"I'm taking them off now. (الآن)","I've taken them off. (انتهى)","Have you adjusted it yet? — No, I haven't done that yet.",'Hang on. · Just a minute. · Almost done.']}
  ],
@@ -207,6 +211,7 @@ B.lesson({
  summary:'كيف تشغّل الأجهزة أو تفعّلها: السؤال بـ How do you…? والجواب بـ by + الفعل بـ ing، والأداة بعد using و by means of، مع قراءة عن روبوت يقود دراجة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 8–9',html:`<p>تشرح كيف يعمل جهاز وكيف نشغّله. ستتعلم:</p><ol><li>السؤال عن الطريقة بـ ${e('How')}.</li><li>الجواب بـ ${e('by')} + الفعل بـ ${e('ing')}.</li><li>ذكر الأداة بـ ${e('using')} و ${e('by means of')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 8–9',html:
    bk(1,'ص 8','كيف تشغّل هذه الأجهزة أو تفعّلها؟',null,'نقاش؛ الإجابات في التمرين 2.')+
@@ -221,6 +226,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['How do you start the outboard motor?','You start it by pulling the cord. · By pulling the cord.','by + فعل بـ ing','using · by using · by means of + الأداة','It works by means of sensors and wireless technology.']}
  ],

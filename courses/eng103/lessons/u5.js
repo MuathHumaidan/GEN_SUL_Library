@@ -57,6 +57,7 @@ B.lesson({
  summary:'أجهزة مبتكرة (X-beam wrench, Simple Start, Sea Breacher, Loc8tor) وكيف نتحدث عن استعمالها: What\'s it for? It\'s for + ing، و used for، و to + الفعل، و act as + اسم، وأسماء الفاعل بـ -er / -or.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 36–37',html:`<p>تقرأ إعلانات عن أجهزة مفيدة وتستمع إلى مخترعين. ستتعلم:</p><ol><li>السؤال عن الاستعمال والإجابة عنه.</li><li>${e('for + ing')} و ${e('to + verb')} و ${e('act as')}.</li><li>أسماء الفاعل: ${e('calculator, generator, transmitter')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 36–37',html:
    bk(1,'ص 36','فكّر في أدوات وأجهزة تستعملها، وناقش مع زميلك فائدتها.',null)+
@@ -73,6 +74,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:["What's it for? — It's for finding lost items.","What's it used for? — It's used for charging batteries.",'You can use it to move under water.','It acts as a jetski.','calculator · generator · transmitter · receiver']}
  ],
@@ -145,6 +147,7 @@ B.lesson({
  summary:'مبانٍ مشهورة حول العالم ووصف شكلها: looks like و is shaped like و in the shape of والصفة -shaped، وأسماء الأشكال وصفاتها (circle → circular, cylinder → cylindrical) ونبرها، وأسماء قطع بشكل الحروف (U-bolt, G-clamp)، ولعبة العشرين سؤالاً.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 38–39',html:`<p>تتعرف على مبانٍ مشهورة وتصف شكلها. ستتعلم:</p><ol><li>${e('looks like / is shaped like / in the shape of')}.</li><li>أسماء الأشكال وصفاتها.</li><li>أسماء قطع على شكل حروف: ${e('U-bolt, T-junction, G-clamp')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 38–39',html:
    bk(1,'ص 38','هل تعرف أين هذه المباني؟',['A Plaza of the Three Powers, Brasília','B Guggenheim Museum, Bilbao','C CCTV Tower, Beijing','D Oriental Pearl Tower, Shanghai','E Shanghai World Financial Center','F Burj Al Arab, Dubai'],'من صفحة الإجابات في الكتاب ص 115.')+
@@ -162,6 +165,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:['The building looks like a TV transmitter.','It is shaped like a dome. — a dome-shaped building','It is in the shape of an L. — an L-shaped plan','circle → circular · cylinder → cylindrical · cone → conical','TRIangle · triANgular']}
  ],
@@ -229,6 +233,7 @@ B.lesson({
  summary:'مخترعون يعرضون أفكارهم على برنامج تلفزيوني، وكتابة التعريف بجملة واحدة: الكلمة + is + النوع + which / who / that + الوظيفة، وكلمات النوع (device, tool, instrument, vehicle, system, technician)، ونظام إنذار السقوط من القارب (alarm pod, hydrophone, display).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 40–41',html:`<p>تستمع إلى مخترعين يقدّمون أفكارهم وتقرأ إعلاناً عن نظام إنذار. ستتعلم:</p><ol><li>التعريف بجملة واحدة بـ ${e('which / who / that')}.</li><li>كلمات النوع: ${e('device, tool, instrument')}.</li><li>شرح طريقة عمل نظام.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 40–41',html:
    bk(1,'ص 40','أي هذه الأفكار نجحت في البرنامج في رأيك؟',['الأفكار الأربع كلها نجحت (صفحة الإجابات في الكتاب ص 113).'])+
@@ -241,6 +246,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['Word + is + Type + which / who / that + Function','which → things · who → people · that → both','LifeGuard is an alarm system which can find an MOB.','device · tool · instrument · vehicle · system','visible = able to be seen · audible = able to be heard']}
  ],

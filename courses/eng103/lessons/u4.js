@@ -46,6 +46,7 @@ B.lesson({
  summary:'آلة حفر الأنفاق MB471/316 ومواصفاتها وأجزاؤها (cutter face, teeth, conveyor belt, shoe, leg)، وأسماء أعضاء الجسم في السياق التقني، والمبني للمجهول (is pushed, are collected) لوصف العمليات، وتحويل التعليمات إلى وصف عملية، وعناوين المراحل بـ ing.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 26–27',html:`<p>تتعرف على واحدة من أكبر آلات حفر الأنفاق في العالم. ستتعلم:</p><ol><li>المبني للمجهول في وصف العمليات.</li><li>تحويل التعليمات إلى وصف عملية.</li><li>كلمات أعضاء الجسم في الآلات: ${e('teeth, arms, legs, shoes')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 26–27',html:
    bk(1,'ص 26','ما هذه الآلة؟ ماذا تفعل؟ كيف تعمل؟ ناقش مع زميلك.',null)+
@@ -62,6 +63,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:['Hydraulic cylinders push the cutter. (معلوم)','The cutter is pushed by hydraulic cylinders. (مجهول)','is / are + التصريف الثالث (+ by …)','First the engine is run … Then it is switched off …','Cutting the rock surface · Collecting the rocks']}
  ],
@@ -120,6 +122,7 @@ B.lesson({
  summary:'أجزاء السيارة (body, chassis, drive shaft, axle, transmission) ومراحل تجميعها في المصنع، وعناوين المراحل بـ ing، والمبني للمجهول في وصف خط الإنتاج، والغرض بـ to + الفعل، والأسئلة بالمبني للمجهول (How are the parts delivered?).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 28–29',html:`<p>تتابع سيارة من وصول قطعها إلى خروجها من المصنع. ستتعلم:</p><ol><li>مراحل تجميع السيارة وأسماء أجزائها.</li><li>الغرض بـ ${e('to')} + الفعل.</li><li>الأسئلة بالمبني للمجهول.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
    bk(1,'ص 28','ناقش موقع هذه الأجزاء ووظيفتها: body, chassis, drive shaft, axle, transmission.',null)+
@@ -132,6 +135,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:['Delivering → Welding → Painting → Adding parts → Installing → Attaching → Testing','The car body is painted to protect it from rust.','Why …? — To + verb.','How are the parts delivered? — By truck or rail.','Who is the body checked by? — By human workers.']}
  ],
@@ -195,6 +199,7 @@ B.lesson({
  summary:'الأقمار الصناعية للاتصالات واستقبال البث الرقمي (satellite, dish, feed horn, DTV card)، وربط الجمل بـ which و who، والكلمات المتقاربة (transmit = send)، والصفات المركبة بالشرطة (a high-frequency signal, a 13-amp fuse)، ووصف نظام بالرسم.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 30–31',html:`<p>تقرأ نشرة عن استقبال البث الرقمي من القمر الصناعي. ستتعلم:</p><ol><li>ربط الجمل بـ ${e('which')} و ${e('who')}.</li><li>كلمات تقنية ومقابلها البسيط.</li><li>الصفات المركبة بالشرطة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 30–31',html:
    bk(1,'ص 30','ماذا تعرف عن أقمار الاتصالات؟ أجب عن الاختبار مع زميلك.',['1 c) 35,000 km','2 b) 11,000 km/h','3 a) 12 GHz','4 b) 1500 MHz'],'من صفحات Speed search: 35,700 km · 11,000 kph · 10.7–12.75 GHz · 950–2150 MHz.')+
@@ -209,6 +214,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['satellite → dish → feed horn → DTV card → monitor','…, which … (شيء) · …, who … (شخص)','via = by means of','transmit = send · convert = change · extract = take out','a high-frequency signal · a 13-amp fuse']}
  ],
@@ -236,6 +242,7 @@ B.lesson({
  summary:'مراجعة المقارنة والتفضيل بمقارنة ثلاث سيارات وأنواع الوقود، والعبارات المهذبة في الهاتف و one، ومواصفات 4x4، والمبني للمجهول في وصف العمليات والأسئلة، وتحويل الوصف إلى تعليمات، وعناوين المراحل بـ ing، والصفات المركبة، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 32–35',html:`<p>هذه المراجعة تغطي الوحدتين 3 و 4.</p>`+vt([['المقارنة','faster than · more common · less noisy'],['التفضيل','the least harmful · the cleanest · the quietest'],['الهاتف',"I'd like … · Would you like me to …? · Did you say …?"],['one',"There's one with a cable, and there's a wireless one."],['المبني للمجهول','The car parts are delivered by truck or rail.'],['الغرض','to + verb: to protect it from rust'],['الصفة المركبة','a six-metre cable · a voice-activated computer']],['الموضوع','مثال'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l4'](el,B)},
   {h:'مقارنة السيارات الثلاث',ref:'ص 32',html:vt([['Length (mm)','4178','4091','4635'],['Width (mm)','1842','1781','2038'],['Top speed (mph)','149','137','127'],['Acceleration (sec)','6.6','8.2','11.0'],['Fuel consumption (mpg)','36.7','37.7','37.2'],['CO₂ emission (g/km)','183','181','233']],['','Audi TT','BMW Z4','Saab 93'])+`<p>بيانات الكتاب ص 32. لاحظ أن ${e('mpg')} (أميال لكل جالون): الرقم الأكبر أفضل، و ${e('CO₂')} الرقم الأصغر أفضل.</p>`},
   {h:'تمارين المراجعة',ref:'ص 32–35',html:
    bk(1,'ص 32','اختر سيارتين وقارن بينهما.',['e.g. The Audi is faster than the BMW. Its top speed is 149 mph.','The BMW is shorter and narrower than the Audi.','The BMW has lower fuel consumption than the Audi (37.7 mpg).'],'إجابات نموذجية.')+
@@ -256,6 +263,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 3',title:'خلاصة: المقارنة والتفضيل',q:'أي السيارات الثلاث الأسرع؟ وأيها الأنظف (أقل CO₂)؟',ref:'ص 32',
    side:[{tip:`المقارنة بين اثنين بـ ${e('than')}، والتفضيل بين ثلاثة بـ ${e('the')}.`}],
    body:[{html:vt(Object.keys(RC).map(k=>[k,RC[k].speed+' mph',RC[k].co2+' g/km']),['Car','Top speed','CO₂'])},{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'The Audi is ___ than the BMW.',o:['faster','fastest'],a:0},{s:'The Saab is ___ car.',o:['the longest','longer'],a:0},{s:'The BMW has ___ CO₂ emission.',o:['the lowest','lower'],a:0},{s:'LPG is ___ fuel of the three.',o:['the cleanest','cleaner'],a:0},{s:'Diesel engines are ___ than petrol ones.',o:['noisier','noisiest'],a:0}]}),title:'تدريب سريع'}]},

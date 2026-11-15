@@ -8,5 +8,6 @@ PLCBOOK.enDict({
 "ضروري": "necessary",
 "اقتراح": "a suggestion",
 "توصية في تقرير": "a recommendation in a report",
-"الاستعمال": "Use"
+"الاستعمال": "Use",
+"(اضغط الصورة لتكبيرها)": "(tap the picture to enlarge it)"
 });

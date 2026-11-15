@@ -53,6 +53,7 @@ B.lesson({
  summary:'العمل على منصة نفط بحرية: المضارع البسيط للعادة ووصف الوظيفة والعمليات، والمضارع المستمر لما يحدث الآن أو مؤقتاً أو للخطط القريبة، ووصف الوظيفة بـ operate و maintain و supervise و report to.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>تتعرف على عمال منصة نفط بحرية وجداول عملهم. ستتعلم:</p><ol><li>الفرق بين المضارع البسيط والمضارع المستمر.</li><li>وصف وظيفتك ومن تشرف عليه ولمن ترفع تقاريرك.</li><li>مفردات العمل: ${e('offshore, on duty, on leave')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11',html:
    bk(1,'ص 10','هل تحب العمل على منصة نفط بحرية؟ لماذا؟ ناقش.',null)+
@@ -68,6 +69,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:['He usually supervises the deck crew. (عادة)',"Today he's operating the main crane. (مؤقت)","I'm flying to France tomorrow. (خطة)",'I operate … · I supervise … · I report to …','onshore ≠ offshore · on duty ≠ off duty · on leave']}
  ],
@@ -134,6 +136,7 @@ B.lesson({
  summary:'ترتيب اجتماع بالهاتف، والتحدث عن الخطط بالمضارع المستمر و going to، و want / intend / hope + to، وعبارات البريد الرسمي لكل وظيفة (الشكر، التأكيد، الخبر السيئ، الطلب، المرفق، الختام).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>ضابط سلامة على منصة نفط يرتب اجتماعات الأسبوع ويكتب رسائل. ستتعلم:</p><ol><li>الخطط بالمضارع المستمر و ${e('going to')}.</li><li>${e('want / intend / hope / plan')} + ${e('to')}.</li><li>عبارات البريد الرسمي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13',html:
    bk(1,'ص 12','ما مهام ضابط السلامة على منصة نفط بحرية؟ ناقش.',null)+
@@ -150,6 +153,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:["I'm holding a meeting next Thursday.","I'm going to tell them about the new rules.",'When are you having the meeting?','I want / intend / hope to + verb','With reference to … · Unfortunately, … · Please do not hesitate to contact me if … · I attach …']}
  ],
@@ -213,6 +217,7 @@ B.lesson({
  summary:'قراءة سيرة ذاتية والإجابة عن أسئلتها، وحكاية السيرة بالماضي البسيط (worked, left, became, studied, received, started)، وعائلات كلمات المهن (engineer, engineering, mechanic, mechanics, mechanical…) ونبرها، والاستعداد لمقابلة عمل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>تقرأ سيرة ذاتية لفنية صوتيات وتستعد لمقابلة عمل. ستتعلم:</p><ol><li>أجزاء السيرة الذاتية.</li><li>حكاية السيرة بالماضي البسيط.</li><li>الفرق بين الشخص والمادة والصفة في كلمات المهن، ونبرها.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15',html:
    bk(1,'ص 14','هل كتبت سيرة ذاتية؟ ما المعلومات التي تكتبها فيها؟',null)+
@@ -233,6 +238,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['CV = Curriculum Vitae','From 2003 until 2005, I worked … · In 2005, I left … · In 2006, I received …','Where did you work in 2004? · When did you join …?','mechanic (شخص) · mechanics (مادة) · mechanical (صفة)','ENgine · engiNEER · elecTRIcian · eLECtrical']}
  ],
@@ -260,6 +266,7 @@ B.lesson({
  summary:'مراجعة الأفعال المركبة ومكان الضمير، والمضارع التام والمضارع المستمر مع yet، والفرق بين المضارع التام والماضي البسيط مع الوقت المحدد، و by + ing، ووصف الوظائف والهيكل التنظيمي، والخطط، وعائلات الكلمات، وعبارات البريد، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 16–19',html:`<p>هذه المراجعة تغطي الوحدتين 1 و 2.</p>`+vt([['الأفعال المركبة','Take it off. · Pick them up. · Put them down.'],['انتهى أم ما زال؟',"Have you switched it off yet? — No, not yet. I'm switching it off now."],['وقت محدد',"Have you checked the tyres? — Yes, we checked them this morning."],['الطريقة','by + ing: by touching the screen'],['الوظيفة','manage · supervise · report to · work for'],['الخطط',"I'm attending … · I'm going to … · I'm planning to …"]],['الموضوع','مثال'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l4'](el,B)},
   {h:'المضارع التام أم الماضي البسيط؟',ref:'ص 17',html:`<p>في تقرير الميكانيكي يسأل المشرف بالمضارع التام (${e('Have you checked the tyres yet?')})، لأنه يهمه أن العمل انتهى الآن. ويجيب الميكانيكي بالماضي البسيط (${e('Yes, we checked all the tyres first thing this morning.')})، لأنه يذكر <b>وقتاً محدداً</b>.</p>`+vt([['Have you … yet? / I\'ve …','المضارع التام: بلا وقت محدد'],['this morning · at ten · an hour ago · yesterday','الماضي البسيط: وقت محدد']],['الكلمات','الزمن'])},
   {h:'تمارين المراجعة',ref:'ص 16–19',html:
    bk(1,'ص 16','طابق الصور بالتعليمات في الصندوق.',['1 Take it away.','2 Switch it on.','3 Take it off.','4 Pick them up.','5 Switch it off.','6 Push them down.','7 Pull it back.','8 Pull it out.','9 Put it on.','10 Take them out.','11 Put them down.','12 Pour it out.','13 Put it in.','14 Push it forward.','15 Push it in.','16 Pour it in.'],'من قراءتنا للصور؛ الصورتان 2 و 5 (on/off) و 13 و 15 قد تُقرأ بطريقة أخرى.')+
@@ -279,6 +286,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 1',title:'خلاصة: الأفعال المركبة والمضارع التام',q:"أكمل: Have you taken the wheels off yet? — No, I'm ___ now.",ref:'ص 16',
    side:[{tip:`الضمير بين الفعل والأداة: ${e('Take it off.')}، والمستمر لما تفعله الآن، والتام لما أنجزته.`}],
    body:[{html:vt(PPV.map(x=>[`${x[0].split(' ')[0]} it ${x[0].split(' ')[1]}`,`I'm ${x[2]} it ${x[0].split(' ')[1]} now.`,`I've ${x[1]} it ${x[0].split(' ')[1]}.`]),['الأمر','الآن','انتهى'])},{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:"Has she brought out the jack yet? — No. Look, she's ___ now.",o:['bringing it out','bringing out it'],a:0},{s:'Take ___ away.',o:['them','off them'],a:0},{s:"I've ___ the new wheels on.",o:['put','putted'],a:0},{s:'Have you switched it off ___?',o:['yet','still'],a:0}]}),title:'تدريب سريع'}]},

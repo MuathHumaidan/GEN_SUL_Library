@@ -54,6 +54,7 @@ B.lesson({
  summary:'مخاطر المستودع وقواعد السلامة (hand truck, pallet, aisle, forklift, ramp)، والفعل المساعد مع المبني للمجهول (must be worn, should not be stacked)، وملصقات الشحن (Fragile, This way up, Keep dry, Perishable, Keep frozen)، والتحويل إلى المعلوم، وترتيب إجراءات الطوارئ الثلاثة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 42–43',html:`<p>تكتشف المخاطر في مستودع وتقرأ قواعد السلامة. ستتعلم:</p><ol><li>${e('must / should / have to / need to + be + التصريف الثالث')}.</li><li>معاني ملصقات الشحن.</li><li>ترتيب خطوات إجراء طوارئ.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 42–43',html:
    bk(1,'ص 42','اكتب قائمة بالمخاطر (A–H) في المستودع على شكل ملاحظات.',['A large boxes on a high shelf','B boxes sticking out from the shelf','C several boxes taken from a shelf at one time','D a man riding on the forks of a forklift','E pallets blocking the aisle','F gas cylinders not strapped to the hand truck','G an overloaded hand truck','H a truck pushed up the ramp'],'من قراءتنا للصورة؛ الكتاب لا يعطي الإجابة.')+
@@ -67,6 +68,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:['Helmets must be worn here.','Hand trucks must not be overloaded.','This item needs to be handled carefully.',"You need to handle this item carefully. You mustn't drop it.",'Fragile · This way up · Keep dry · Perishable · Keep frozen']}
  ],
@@ -129,6 +131,7 @@ B.lesson({
  summary:'خطة لإنقاذ غواص عالق تحت الماء: العصف الذهني بالمهام ثم ترتيبها، وسؤال What should we do if …? والإجابة You should …، والفرق بين must و should و should + passive في التوصيات، وبريد إلكتروني فيه معلومة قديمة وجديدة وطلب.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 44–45',html:`<p>غواص عالق تحت الماء ورفاقه يخططون لإنقاذه. ستتعلم:</p><ol><li>ترتيب خطوات الإنقاذ.</li><li>${e('What should we do if …? — You should …')}</li><li>كتابة توصيات بـ ${e('should + passive')} في بريد إلكتروني.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 44–45',html:
    bk(1,'ص 44','في مجموعات: ضعوا خطة لإنقاذ الغواص. اكتبوا كل المهام ثم رتبوها.',null)+
@@ -141,6 +144,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:['What should we do if the diver is trapped?','You should free them with a knife.','must = ضروري · should = اقتراح','New first aid equipment should be purchased.','old information → new information → action']}
  ],
@@ -203,6 +207,7 @@ B.lesson({
  summary:'معالم الطرق (motorway, slip road, roundabout, flyover, underpass, gantry, T-junction, crossroads)، وإعطاء الاتجاهات بفعل الأمر والأرقام الترتيبية، ووصف الموقف قبل التعليمة، وقراءة خريطة من بريد إلكتروني ومن مكالمة هاتفية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 46–47',html:`<p>تقرأ خرائط وتستمع إلى اتجاهات بالهاتف. ستتعلم:</p><ol><li>أسماء معالم الطرق.</li><li>فعل الأمر في الاتجاهات: ${e('turn, take, go, leave')}.</li><li>وصف الموقف قبل التعليمة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 46–47',html:
    bk(1,'ص 46','حدّد هذه المعالم في الصورة.',['1 flyover','2 slip road','3 gantry','4 motorway','5 roundabout','6 underpass'],'من قراءتنا للصورة؛ الكتاب لا يعطي الإجابة.')+
@@ -215,6 +220,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['take the third exit from the roundabout','turn right at the T-junction','go straight ahead at the crossroads',"You'll see a police station on your left. Take the second turning on the left.","If you cross a bridge, you've gone too far. Do a U-turn."]}
  ],
@@ -241,6 +247,7 @@ B.lesson({
  summary:'مراجعة الحديث عن الاستعمال والوظيفة (for + ing, used to, designed to, act as) بمعدات الغوص، والتعريفات بـ which / who، والأسئلة عن جهاز، ووصف الشكل، والمبني للمجهول مع الأفعال المساعدة، والاتجاهات، وطفاية الحريق، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 48–51',html:`<p>هذه المراجعة تغطي الوحدتين 5 و 6.</p>`+vt([['الاستعمال',"It's for controlling … · It's used to store … · It acts as …"],['التعريف','An MP3 player is a device which …'],['أسئلة الجهاز',"What's it called? What's it for? How does it work?"],['الشكل','It\'s shaped like an egg.'],['المجهول مع الأفعال المساعدة','Two air cylinders must be carried.'],['الاتجاهات','Go along … Turn right at …']],['الموضوع','مثال'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l4'](el,B)},
   {h:'تمارين المراجعة',ref:'ص 48–51',html:
    bk(1,'ص 48','أكمل بالصيغة الصحيحة للأفعال: carry · convert · detect · start · treat',['1 starting','2 detect','3 convert','4 treating','5 carry'])+
    bk(2,'ص 48','ناقش مع زميلك وظيفة كل قطعة من معدات الغواص.',null)+
@@ -258,6 +265,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 5',title:'خلاصة: الاستعمال والتعريف',q:"What's the depth gauge for?",ref:'ص 48–50',
    side:[{tip:`${e("It's for … · It's used to … · It's designed to … · It acts as …")}`}],
    body:[{widget:(el,B)=>N.gaps(el,B,{intro:'اختر:',items:[{s:'Jump leads are used for ___ a car with a flat battery.',o:['starting','start'],a:0},{s:'The purpose of a hydrophone is to ___ signals under water.',o:['detect','detecting'],a:0},{s:'The harness acts ___ a support.',o:['as','for'],a:0},{s:'A depth gauge is an instrument ___ calculates depth.',o:['which','who'],a:0},{s:'A sub-sea mechanic is a technician ___ repairs pipes.',o:['who','which'],a:0}]}),title:'تدريب سريع'}]},

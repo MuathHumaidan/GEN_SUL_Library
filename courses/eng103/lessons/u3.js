@@ -60,6 +60,7 @@ B.lesson({
  summary:'لافتات الحدود على الطرق، والسؤال عن المقاسات (How long/wide/high is it?)، و must not be + المقارنة + than، وصيغة المقارنة (wider, noisier, more expensive, better)، ووصف المشكلة بـ too … for و not … enough for، وقراءة شروط عبّارة السيارات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 20–21',html:`<p>تريد عميلة أن تصعد بسيارتها إلى عبّارة، وللعبّارة حدود. ستتعلم:</p><ol><li>السؤال عن المقاسات والإجابة عنها.</li><li>صيغة المقارنة.</li><li>وصف المشكلة بـ ${e('too')} و ${e('enough')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l1'](el,B)},
   ...R1.theory,
   {h:'تمارين الكتاب',ref:'ص 20–21',html:
    bk(1,'ص 20','ماذا تخبرك لافتات الطريق هذه؟',['7.5T: no vehicles heavier than 7.5 tonnes','4.4 m (14\'5"): no vehicles higher than 4.4 m','2.0 m (6\'6"): no vehicles wider than 2.0 m','10.0 m: no vehicles longer than 10 m','Safe height 5.3 m: overhead electric cables; vehicles must not be higher than 5.3 m','17T mgw / WEAK BRIDGE: the bridge is weak; maximum gross weight 17 tonnes'],'إجابات نموذجية بصياغتنا.')+
@@ -73,6 +74,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l1'](el,B),title:'شرح مرئي'}]},
   ...R1.stations,
   {recap:['How long / wide / high is it? — just under · exactly · just over','The vehicle must not be wider than 2 metres.','wider · noisier · bigger · more expensive · better','The lorry is too high for the bridge.','The bridge is not high enough for the lorry.']}
  ],
@@ -138,6 +140,7 @@ B.lesson({
  summary:'مكالمات خدمة العملاء وسجل المكالمات، والعبارات المهذبة لقول ما تريد وعرض الخدمة والطلب والتحقق (I\'d like … · Would you like me to … · Could you … · Would you mind …ing)، والمقارنة بين هاتفين بـ much، واستعمال one بدل تكرار الاسم.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 22–23',html:`<p>تعمل في خدمة العملاء لشركة إلكترونيات. ستتعلم:</p><ol><li>العبارات المهذبة في الهاتف ووظائفها.</li><li>المقارنة بين منتجين بـ ${e('much')}.</li><li>${e('one')} بدل تكرار الاسم.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l2'](el,B)},
   ...R2.theory,
   {h:'تمارين الكتاب',ref:'ص 22–23',html:
    bk(1,'ص 22','ما أهم المزايا لك في الهاتف المحمول؟ رتّبها حسب الأهمية وقارن مع زميلك.',null)+
@@ -155,6 +158,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l2'](el,B),title:'شرح مرئي'}]},
   ...R2.stations,
   {recap:["I'd like to … (ما تريد)",'Would you like me to …? · Shall I …? (عرض)','Could you …? · Would you mind …ing? (طلب)','Sorry, could you repeat that? · Did you say …? (تحقق)','much lighter · Which one? The black one.']}
  ],
@@ -211,6 +215,7 @@ B.lesson({
  summary:'الأرقام القياسية، وبريد عن اختبار محركات القوارب، والقراءة السريعة في جداول المواصفات ونتائج الاختبار، وصيغة التفضيل (the fastest, the most expensive, the best)، و as … as، ومهمة اختيار سيارة 4x4 لفريق منصة نفط في الصحراء وكتابة تقرير.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 24–25',html:`<p>تختار أفضل محرك وأفضل سيارة لفريق العمل. ستتعلم:</p><ol><li>صيغة التفضيل.</li><li>${e('as … as')} للتساوي.</li><li>كتابة تقرير قصير عن اجتماع ومقارنة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l3'](el,B)},
   ...R3.theory,
   {h:'تمارين الكتاب',ref:'ص 24–25',html:
    bk(1,'ص 24','ناقش في مجموعة: هل ما زال كل رقم قياسي قائماً؟',['1 لا: الرقم الحالي 9.58 ثانية (Usain Bolt، 2009)','2 لا: الأعلى اليوم برج خليفة في دبي (نحو 828 م، 2010)','3 لا: صُنعت ترانزستورات أصغر كثيراً بعد صدور الكتاب','4 نعم: ما زال 437 يوماً (Valeri Polyakov)'],'معلومة محدّثة من خارج الكتاب (الكتاب طبعة 2008).')+
@@ -223,6 +228,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l3'](el,B),title:'شرح مرئي'}]},
   ...R3.stations,
   {recap:['the longest · the biggest · the noisiest · the most expensive','best · worst · farthest · most · least','Engine C is as powerful as Engine E.','The Toyota Land Cruiser has the longest wheelbase.','We decided to buy the … because …']}
  ],
