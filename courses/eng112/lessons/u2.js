@@ -45,6 +45,7 @@ B.lesson({
  summary:'رحلة المنتج من المصمم إلى الزبون (designer، manufacturer، wholesaler، retailer، exporter، importer)، وتكوين الأسماء من الأفعال بـ er و or، والأسماء المركبة لأنواع الشركات (law firm، estate agent، car dealer)، وإعلانات الشركات في الإذاعة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>تصف أنواع الشركات وما تفعله. ستتعلم:</p><ol><li>أسماء من يصنع ومن يبيع ومن يشتري.</li><li>تكوين الأسماء من الأفعال.</li><li>الأسماء المركبة لأنواع الشركات وعبارات الإعلان عنها.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l1'](el,B)},
   ...R21.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11، ص 89',html:
    bk(1,'ص 10','أكمل أسماء المخطط من النص، ثم أكمل الجدول.',['a: 1 designer · 2 manufacturer · 3 wholesalers · 4 retailers · 5 customers · 6 exporter · 7 importer','b: designer / design / design · exporter / export / exports · importer / import / imports · manufacturer / manufacture / manufacturing · retailer / retail / retail'])+
@@ -57,6 +58,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l1'](el,B),title:'شرح مرئي'}]},
   ...R21.stations,
   {recap:['designer → manufacturer → wholesaler → retailer → customer.','exporter يبيع للخارج، importer يشتري من الخارج.','الفعل + er / or = الشخص: design → designer · act → actor.','car dealer · law firm · estate agent · insurance company.',"We're based in … · We specialize in … · We provide a service to …"]}
  ],
@@ -119,6 +121,7 @@ B.lesson({
  summary:'قراءة ملفات تعريفية لشركات وكتابتها (was established، is based in، specializes in، branches، philosophy)، والمبني للمجهول في المضارع والماضي (is offered، was started، were opened) مع by، والسؤال به (When was … established?).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>تقرأ وتكتب ملفاً تعريفياً لشركة. ستتعلم:</p><ol><li>كلمات الملف التعريفي.</li><li>المبني للمجهول في المضارع والماضي.</li><li>السؤال بالمبني للمجهول.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l2'](el,B)},
   ...R22.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13، ص 88',html:
    bk(1,'ص 12','اقرأ الملفات الثلاثة وأكمل الجدول، ثم أجب عن الأسئلة.',['a: Allen and Overy: London · 1930 — Relocations Asia-Pacific: Bangkok · 25 years ago — Ford Motor Company: Detroit, Michigan · the early twentieth century','b1 international legal advice (capital markets, banking, property, corporate law)','b2 in 1978','b3 26','b4 it was voted \'Best Global Law Firm\'','b5 high quality rental accommodation (houses or apartments) in Bangkok','b6 nothing (a no-cost service)','b7 a highly personalized service; many clients are friends','b8 all over the world','b9 to develop products to meet the needs of people facing industrialization','b10 to design and manufacture products to meet the changing needs of people in the global community'])+
@@ -129,6 +132,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l2'](el,B),title:'شرح مرئي'}]},
   ...R22.stations,
   {recap:['المبني للمجهول = be + التصريف الثالث.','المضارع: is offered / are manufactured.','الماضي: was established / were opened.','by لمن قام بالفعل.','When was … established? · Where are … manufactured?']}
  ],

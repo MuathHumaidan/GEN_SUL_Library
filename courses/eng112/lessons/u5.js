@@ -49,6 +49,7 @@ B.lesson({
  summary:'معايير اختيار الخدمة (speed، price، convenience، reliability) وصفاتها وأضدادها، والمقارنة والتفضيل (cheaper than، the fastest، more convenient)، وكلمات التقوية والتضعيف (very، extremely، quite، fairly، much، a bit)، واختيار شركة توصيل وفندق للمؤتمر.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 24–25',html:`<p>تقارن بين خدمات الشركات لتختار الأفضل. ستتعلم:</p><ol><li>معايير الاختيار وصفاتها.</li><li>المقارنة والتفضيل.</li><li>تقوية الصفة وتضعيفها وحجم الفرق.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l1'](el,B)},
   ...R51.theory,
   {h:'تمارين الكتاب',ref:'ص 24–25، ص 94–95',html:
    bk(1,'ص 24','ما الأهم عند اختيار خدمة؟ ما الصفات من الأسماء؟ ثم اقرأ إعلانات شركات التوصيل وأجب.',['b: speed fast / slow · price cheap / expensive · convenience convenient / inconvenient · reliability reliable / unreliable','c1 Royal Star (guaranteed before 10.00 a.m.) · c2 NTN Express (the cheapest price) · c3 Royal Star (collects and delivers door-to-door)','d: Royal Star: guaranteed next-day delivery before 10.00 a.m.'],'c1 و c3 من قراءتنا للإعلانات.')+
@@ -61,6 +62,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l1'](el,B),title:'شرح مرئي'}]},
   ...R51.stations,
   {recap:['fast / cheap / convenient / reliable وأضدادها.','شيئان: cheaper than · more convenient than.','ثلاثة: the cheapest · the most convenient.','good → better → best · bad → worse → worst.','very / quite + صفة · much / a bit + مقارنة.']}
  ],
@@ -120,6 +122,7 @@ B.lesson({
  summary:'طلب الرأي وإبداؤه (What do you think? I think … If you ask me, …)، والموافقة الكاملة (I agree. Good point.) والجزئية (I see what you mean, but … That\'s true, but …)، ومزايا الدورات التدريبية وعيوبها، والرد المكتوب على زميل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 26–27',html:`<p>تناقش مع زملائك أي دورة تدريبية تختارون. ستتعلم:</p><ol><li>طلب الرأي وإبداؤه.</li><li>الموافقة الكاملة والجزئية.</li><li>الرد المكتوب على رأي مخالف.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l2'](el,B)},
   ...R52.theory,
   {h:'تمارين الكتاب',ref:'ص 26–27، ص 95',html:
    bk(1,'ص 26','استمع إلى المديرين: ضع الأفكار في أعمدة المزايا والعيوب.',['Computer skills: advantages 2، 5 · disadvantages 6','Time-management skills: advantages 1، 3 · disadvantages 4'])+
@@ -131,6 +134,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l2'](el,B),title:'شرح مرئي'}]},
   ...R52.stations,
   {recap:['What do you think?',"I think … · If you ask me, … · I don't think …","موافقة كاملة: I agree. · Good point. I didn't think of that.","موافقة جزئية: I see what you mean / I suppose so / That's true, but …",'في الرسالة: الشكر، ثم الموافقة الجزئية، ثم رأيك وسببه.']}
  ],

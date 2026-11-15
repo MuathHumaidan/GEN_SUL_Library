@@ -56,6 +56,7 @@ B.lesson({
  summary:'صفات الأجهزة وأضدادها (fast ↔ slow، reliable ↔ unreliable)، وشرح المشكلة بـ too و not … enough، والسبب والنتيجة بـ because و so، و one / ones بدل تكرار الاسم، والمقارنة عند طلب جهاز أفضل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 20–21',html:`<p>تطلب أجهزة جديدة لمكتبك وتشرح السبب. ستتعلم:</p><ol><li>صفات الأجهزة وأضدادها.</li><li>${e('too · not … enough · so · because · one')}.</li><li>المقارنة عند طلب البديل.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l1'](el,B)},
   ...R41.theory,
   {h:'تمارين الكتاب',ref:'ص 20–21، ص 92–93',html:
    bk(1,'ص 20','طابق الصفات بأضدادها.',['1 e · 2 h · 3 a · 4 g','5 f · 6 c · 7 d · 8 b'])+
@@ -68,6 +69,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l1'](el,B),title:'شرح مرئي'}]},
   ...R41.stations,
   {recap:['fast ↔ slow · light ↔ heavy · reliable ↔ unreliable · simple ↔ complicated.',"too + صفة · not + صفة + enough · not enough + اسم.",'so للنتيجة، because للسبب.','a new one · new ones.','a faster / bigger / quieter one.']}
  ],
@@ -124,6 +126,7 @@ B.lesson({
  summary:'الفرق بين ميزات المنتج (features) وفوائده للزبون (benefits)، وعبارات شرح الفائدة (This means that … This enables you to … You\'ll be able to … You don\'t need to …)، واختيار أجهزة العرض المناسبة لكل شخص.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 22–23',html:`<p>تشرح لزبون لماذا المنتج مفيد له. ستتعلم:</p><ol><li>الفرق بين الميزة والفائدة.</li><li>عبارات شرح الفائدة.</li><li>اختيار المنتج المناسب لحاجة الشخص.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l2'](el,B)},
   ...R42.theory,
   {h:'تمارين الكتاب',ref:'ص 22–23، ص 93',html:
    bk(1,'ص 22','استمع إلى المدرّب: أكمل التعريفين، ورتّب الميزات، وطابقها بالفوائد.',['a1 important parts of','a2 the features are important for','b: b 1 · f 2 · c 3 · a 4 · e 5 · d 6','c: 1 f · 2 d · 3 e · 4 b · 5 a · 6 c'])+
@@ -135,6 +138,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l2'](el,B),title:'شرح مرئي'}]},
   ...R42.stations,
   {recap:['Feature = جزء مهم من المنتج · Benefit = ماذا يعني للزبون.','This means that + جملة.','This enables you to + الفعل.',"You'll be able to / You can + الفعل.","You don't need to / don't have to + الفعل."]}
  ],

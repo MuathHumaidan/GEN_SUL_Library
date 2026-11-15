@@ -59,6 +59,7 @@ B.lesson({
  summary:'عبارات اللقاء الأول (Nice to meet you، How do you do?، Are you new here?، I\'m …, by the way) وعبارات اللقاء مع شخص تعرفه (It\'s good to see you again، How are things?، How\'s business?)، ونصائح الحديث الاجتماعي: ما يناسب وما لا يناسب.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 52–53',html:`<p>تبدأ حديثاً قصيراً مهذباً مع شخص في العمل. ستتعلم:</p><ol><li>عبارات اللقاء الأول وعبارات اللقاء مع شخص تعرفه.</li><li>كيف تبدأ الحديث وتقدّم نفسك.</li><li>ما يناسب وما لا يناسب في الحديث الاجتماعي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u11-l1'](el,B)},
   ...R111.theory,
   {h:'تمارين الكتاب',ref:'ص 52–53، ص 105',html:
    bk(1,'ص 52','متى تستعمل كل عبارة؟ مع شخص تلتقيه أول مرة أم مع شخص تعرفه؟',["أول مرة: Nice to meet you. · I'm Jo, by the way. · Are you new here? · How do you do?","شخص تعرفه: It's good to see you again. · How's business? · How are things?","How are you? تصلح للحالين."])+
@@ -71,6 +72,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u11-l1'](el,B),title:'شرح مرئي'}]},
   ...R111.stations,
   {recap:["أول مرة: Nice to meet you. · How do you do? · Are you new here?","من تعرفه: It's good to see you again. · How are things? · How's business?","I'm …, by the way. (by the way في آخر الجملة)",'ابدأ بمعلومة عن نفسك، وتكلم في الأشياء السهلة.','لا عمر ولا راتب ولا سياسة ولا تعليق على الملابس.']}
  ],
@@ -147,6 +149,7 @@ B.lesson({
  summary:'answer plus: الجواب ثم معلومة أو سؤال أو تعليق، والمضارع التام مع How long …? و for و since، وعبارات الرد القصيرة (Really? Me, too. Sure. I\'d love to!)، وأسئلة مناسبة وغير مناسبة لزميل العمل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 54–55',html:`<p>تُبقي الحديث مستمراً مع زميل أو زائر. ستتعلم:</p><ol><li>${e('answer plus')}: أن تضيف شيئاً إلى جوابك.</li><li>السؤال عن المدة: ${e('How long have you …?')} مع ${e('for')} و ${e('since')}.</li><li>عبارات قصيرة تُظهر اهتمامك.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u11-l2'](el,B)},
   ...R112.theory,
   {h:'تمارين الكتاب',ref:'ص 54–55، ص 105–106',html:
    bk(1,'ص 54','استمع إلى Werner و Michelle وأجب، ثم أكمل أجوبة Werner.',["a1 لا: تحدثا بالهاتف فقط، وهذا أول لقاء","a2 تأخذه Michelle في جولة في سيدني (دار الأوبرا ثم الغداء عند الميناء)","b: the hotel ✔ · the flight ✔ · sightseeing ✔ (dinner ✘ · television ✘)","c1 This is a very nice building.","c2 How long have you worked here?","c3 It's near Darling Harbour station on the Metro Monorail.","c4 Do I need to bring anything?"])+
@@ -161,6 +164,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u11-l2'](el,B),title:'شرح مرئي'}]},
   ...R112.stations,
   {recap:['answer plus: الجواب + معلومة أو سؤال أو تعليق.','How about you? تعيد الكلام للطرف الآخر.',"How long have you worked here? — For three years. / Since 2023.",'for + مدة · since + بداية.',"Really? · Me, too. · Sure. · Great. · I'd love to!"]}
  ],

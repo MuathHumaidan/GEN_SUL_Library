@@ -68,6 +68,7 @@ B.lesson({
  summary:'التوصية بطبق في مطعم (I recommend …، You should try …، I suggest …) والرد عليها بالقبول أو الرفض بلطف، وكلمات طريقة الطبخ والطعم (grilled، steamed، spicy، savoury)، ووصف الطبق بالمبني للمجهول (It\'s made with …).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 62–63',html:`<p>تستضيف زائراً في مطعم وتساعده على الاختيار. ستتعلم:</p><ol><li>كيف توصي بطبق، وكيف تقبل أو ترفض بلطف.</li><li>كلمات طريقة الطبخ والطعم.</li><li>وصف الطبق بالمبني للمجهول.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u13-l1'](el,B)},
   ...R131.theory,
   {h:'تمارين الكتاب',ref:'ص 62–63، ص 109–110',html:
    bk(1,'ص 62','ضع علامة على الطرق الصحيحة للتوصية بطعام، ثم تبادلوا التوصية والرد.',["✔ I recommend the steak. · The chicken is good here. · You should try the shrimp. · I suggest the curry.","✘ Eat the salad. · You will have the noodles. · It's up to you."])+
@@ -82,6 +83,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u13-l1'](el,B),title:'شرح مرئي'}]},
   ...R131.stations,
   {recap:['I recommend … · I suggest … · You should try … · The … is good here.',"OK, I'll have that. · Sounds delicious. I'll try it.","I'm sorry, I don't like … much. · I'm afraid I don't eat …",'الطبخ: boiled · steamed · fried · grilled · baked · roasted · الطعم: sweet · sour · salty · spicy · savoury.',"المبني للمجهول: It's made with … · It's eaten with …"]}
  ],
@@ -146,6 +148,7 @@ B.lesson({
  summary:'دعوة زائر إلى نشاط (Would you like to …?)، والقبول ثم سؤال (Yes, I\'d love to. What time shall we meet?)، والرفض المهذب ثم سبب (Oh, I\'m sorry. I\'m very tired.)، والرد المكتوب على دعوة صديق ودعوة شركة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 64–65',html:`<p>تدعو زائراً إلى نشاط وترد على الدعوات. ستتعلم:</p><ol><li>${e('Would you like to …?')}</li><li>القبول مع سؤال، والرفض المهذب مع سبب.</li><li>الرد المكتوب الرسمي وغير الرسمي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u13-l2'](el,B)},
   ...R132.theory,
   {h:'تمارين الكتاب',ref:'ص 64–65، ص 110',html:
    bk(1,'ص 64','ماذا تحب أن تفعل في زيارة لبلد آخر؟ أضف أفكاراً وقارن مع زميلك.',null)+
@@ -158,6 +161,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u13-l2'](el,B),title:'شرح مرئي'}]},
   ...R132.stations,
   {recap:['Would you like to + الفعل كما هو?',"قبول: Yes, I'd love to. · Yes, that would be nice. ثم: What time shall we meet?","رفض: … Oh, I'm sorry. / Oh, thank you, but … ثم السبب.","No, I'm not hungry. غير مهذب.",'لصديق: Dear Lucia · Best wishes. لشركة: Dear Ms Irvine · Yours sincerely.']}
  ],

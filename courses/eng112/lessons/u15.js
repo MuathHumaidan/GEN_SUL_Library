@@ -53,6 +53,7 @@ B.lesson({
  summary:'الطلب المهذب (Can you …? Could you …? Would you mind …ing?) وتحويل الأمر إلى طلب، والرد بالقبول (Sure. Not at all.) أو التأجيل (I\'ll do it after that.) أو الرفض مع سبب، وكتابة رسالة تطلب معلومات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 70–71',html:`<p>تطلب من زملائك أشياء في العمل وترد على طلباتهم. ستتعلم:</p><ol><li>صيغ الطلب من العادي إلى الأكثر أدباً.</li><li>الرد بنعم أو لاحقاً أو لا.</li><li>رسالة قصيرة تطلب فيها معلومات.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u15-l1'](el,B)},
   ...R151.theory,
   {h:'تمارين الكتاب',ref:'ص 70–71، ص 112',html:
    bk(1,'ص 70','أكمل الطلبات (أيها الأكثر أدباً؟)، وأعد كتابة الجمل بأدب، ثم استمع وأكمل الردود.',['a: 1 make · 2 Could … make · 3 mind making — الأكثر أدباً: 3','b (نماذج): 1 Would you mind staying late to finish the report? · 2 Could you call the travel agent and book a flight to Frankfurt for me, please? · 3 Could you show me how to use the fax machine? · 4 Would you mind giving me the sales figures for last month, please? · 5 Could you help me with my PowerPoint presentation? · 6 Could you send these letters, please?',"c1 I'm sorry, but I've got plans for this evening.",'c2 Sure.','c3 OK. Do you want to use it now?','c4 OK. No problem.',"c5 Sorry, I'm not very good with PowerPoint.","c6 I'm sorry, I've got a meeting now."])+
@@ -63,6 +64,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u15-l1'](el,B),title:'شرح مرئي'}]},
   ...R151.stations,
   {recap:['Can you / Could you + الفعل … please?','Would you mind + الفعل ing … please? (الأكثر أدباً)','نعم: Sure. · No problem. · Not at all.',"لاحقاً: OK, but I've got a meeting now.","لا: Sorry, I can't. + السبب."]}
  ],
@@ -125,6 +127,7 @@ B.lesson({
  summary:'أنواع الاجتماعات، وصيغ الاقتراح (We could …، Let\'s …، Why don\'t we …? How about …ing? What about …ing?)، والموافقة (I agree. That\'s a good idea.) والاعتراض بأدب (Yes, but …)، وطرق تسويق منتج، واتخاذ قرار في اجتماع.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 72–73',html:`<p>تشارك في اجتماع لتسويق منتج جديد. ستتعلم:</p><ol><li>خمس صيغ للاقتراح وشكل الفعل بعد كل منها.</li><li>الموافقة والاعتراض بأدب.</li><li>كلمات التسويق: ${e('advertise on TV · displays in stores · a competition · a website')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u15-l2'](el,B)},
   ...R152.theory,
   {h:'تمارين الكتاب',ref:'ص 72–73، ص 112',html:
    bk(1,'ص 72','اقرأ وصف ثلاثة أنواع من الاجتماعات: هل اجتماعاتكم مثلها؟ أيها تفضّل؟',null)+
@@ -136,6 +139,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u15-l2'](el,B),title:'شرح مرئي'}]},
   ...R152.stations,
   {recap:["We could / Let's / Why don't we + الفعل.",'How about / What about + الفعل ing.',"موافقة: I agree. · That's a good idea.",'اعتراض بأدب: Yes, but … · I agree, but … + السبب.','advertise on TV · have displays in stores · organize a competition · build a website.']}
  ],
@@ -162,6 +166,7 @@ B.lesson({
  summary:'مراجعة كلمات الطبخ والطعم، والمبني للمجهول في وصف الطعام، والدعوات وقبولها ورفضها، وكلمات الحجز والتسويق، والطلبات والاقتراحات، والتعليمات بالخطوات، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 74–75',html:vt([['الطبخ والطعم','baked · steamed · fried · boiled · spicy · salty · sweet · sour','13A'],['المبني للمجهول','A lot of tea is drunk in Britain.','13A'],['الدعوات',"Would you like to …? — Yes, I'd love to. / Oh, I'm sorry …",'13B'],['التعليمات','First, close all the programs. Then, click …','14A'],['الطلبات','Could you …? · Would you mind …ing?','15A'],['الاقتراحات',"How about …ing? · Let's … · That's a good idea, but …",'15B']],['الموضوع','أمثلة','من'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u15-l3'](el,B)},
   {h:'متى يكون المبني للمجهول أفضل؟',ref:'ص 74',html:`<p>حين لا نعرف من فعل الشيء، أو لا يهمنا: ${e('Someone serves delicious food …')} ← ${e('Delicious food is served …')}. أما حين يكون الفاعل مهماً (${e('Mr Dunn makes very nice cakes.')}) أو الفعل لا يصلح للمجهول (${e('has')}) فنبقي الجملة كما هي.</p>`},
   {h:'تمارين المراجعة',ref:'ص 74–75',html:
    bk('Vocabulary 1','ص 74','أكمل الكلمات المتقاطعة بكلمات الطبخ والطعم.',['Across: 3 baked · 4 spicy · 6 steamed · 7 salty','Down: 1 sweet · 2 fried · 3 boiled · 5 savoury · 6 sour'],'من قراءتنا لشبكة الكلمات المتقاطعة.')+
@@ -173,6 +178,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u15-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 13',title:'خلاصة: الطعام والدعوات',q:'أكمل: Chips are ___ in hot oil.',ref:'ص 74',
    art:art(`${[['baked','oven'],['steamed','over water'],['boiled','in water'],['fried','in oil']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="${20+(i%2)*165}" y="${30+Math.floor(i/2)*60}" width="155" height="48" rx="10" fill="${C.yel}" stroke="${C.ink}" stroke-width="1.5"/>${TL(97+(i%2)*165,52+Math.floor(i/2)*60,x[0],{fs:14,w:700})}${TL(97+(i%2)*165,70+Math.floor(i/2)*60,x[1],{fs:11})}</g>`).join('')}${[['sweet'],['salty'],['spicy'],['sour']].map((x,i)=>`<g data-tip="طعم"><rect x="${20+i*82}" y="160" width="74" height="36" rx="10" fill="${C.paper}" stroke="${C.ink}" stroke-width="1.5"/>${TL(57+i*82,183,x[0],{fs:12,w:700})}</g>`).join('')}`,'cooking'),
    cap:'طرق الطبخ والطعم. مرّر المؤشر.',side:[{tip:`المبني للمجهول: ${e('be')} + التصريف الثالث: ${e('A lot of rice is eaten in Asia.')}`}],

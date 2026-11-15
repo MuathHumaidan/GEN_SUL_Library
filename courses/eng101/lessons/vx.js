@@ -17,7 +17,8 @@ const css=`
 @keyframes vxpop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .vx-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px}
 .vx-chips button{min-width:0;font:inherit;border:2px solid #c9d7e1;background:#fff;border-radius:12px;padding:6px 2px;cursor:pointer;line-height:1.3}
-.vx-chips button b{display:block;font-family:var(--font-la,var(--font));font-size:clamp(11px,3.3vw,16px);direction:ltr}
+.vx-chips button b{display:block;font-family:var(--font-la,var(--font));font-size:clamp(10px,3vw,16px);direction:ltr}
+.wx-r>span{overflow-wrap:anywhere;min-width:0}
 .vx-chips button small{color:var(--muted);font-size:.8em}
 .vx-chips button.on{border-color:#2f6b8f;background:#2f6b8f;color:#fff}.vx-chips button.on small{color:#dce9f2}
 .vx-card{background:#f7f5f0;border-radius:12px;padding:10px 12px;margin-bottom:10px}

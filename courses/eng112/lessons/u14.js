@@ -50,6 +50,7 @@ B.lesson({
  summary:'إعطاء التعليمات خطوة خطوة بظروف الترتيب (First، Then، Next، After that، Finally) وصيغة الأمر (Press …، Don\'t …)، مع حجز تذكرة على الإنترنت واستعمال آلة التصوير.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 66–67',html:`<p>تشرح لزميل كيف يستعمل جهازاً أو موقعاً. ستتعلم:</p><ol><li>كلمات ترتيب الخطوات.</li><li>صيغة الأمر المثبت والمنفي.</li><li>كلمات حجز التذاكر على الإنترنت.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u14-l1'](el,B)},
   ...R141.theory,
   {h:'تمارين الكتاب',ref:'ص 66–67، ص 111',html:
    bk(1,'ص 66','إلى ماذا تشير كل معلومة في حجز تذكرة طائرة؟ ثم رقّمها بترتيب الاستماع، وأكمل التعليمات بالأفعال.',['a: 7.40 a.m. time · Visa payment (card) · 29 August date · EQ485/3 booking reference number · 1 adult, no children number of people · London Heathrow airport airport','b: 1 London Heathrow airport · 2 29 August · 3 1 adult, no children · 4 7.40 a.m. · 5 Visa · 6 EQ485/3','c: 1 select · 2 choose · 3 click · 4 decide · 5 enter · 6 note'])+
@@ -61,6 +62,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u14-l1'](el,B),title:'شرح مرئي'}]},
   ...R141.stations,
   {recap:['First, … · Then, … · Next, … · After that, … · Finally, …','الأمر: الفعل كما هو بلا فاعل: Press the green button.',"النفي: Don't leave the lid open.",'Please + الفعل، بلا to.','select · choose · click · decide · enter · note']}
  ],
@@ -124,6 +126,7 @@ B.lesson({
  summary:'تقديم النصيحة (I think you should …، I don\'t think you should …، Why don\'t you …?)، ووصف مسؤوليات الموظفين (in charge of، responsible for، looks after)، ونصح الزملاء بمن يتصلون حسب المشكلة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 68–69',html:`<p>يخبرك زملاؤك بمشكلاتهم في العمل وتنصحهم. ستتعلم:</p><ol><li>ثلاث صيغ للنصيحة.</li><li>عبارات مسؤوليات الموظفين.</li><li>كيف توجّه الشخص إلى الموظف المناسب.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u14-l2'](el,B)},
   ...R142.theory,
   {h:'تمارين الكتاب',ref:'ص 68–69، ص 111',html:
    bk(1,'ص 68','طابق المشكلات بالنصائح.',['1 c','2 a','3 b'])+
@@ -136,6 +139,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u14-l2'](el,B),title:'شرح مرئي'}]},
   ...R142.stations,
   {recap:['I think you should + الفعل.',"I don't think you should + الفعل.","Why don't you + الفعل?",'in charge of · responsible for · look after · supervise.','انصح الزميل بالموظف المسؤول عن المشكلة.']}
  ],

@@ -52,6 +52,7 @@ B.lesson({
  summary:'حكاية المسيرة الدراسية والمهنية بالماضي البسيط (finished، went، graduated، left، did an MBA)، وحروف الجر الثابتة (in 2002، at university، graduated from / in، work for / in، left بلا حرف جر)، وقراءة إعلانين لبرامج دراسة عن بُعد.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 56–57',html:`<p>تحكي قصة دراستك وعملك خطوة خطوة. ستتعلم:</p><ol><li>حروف الجر مع السنوات والجامعات والشركات والمدن.</li><li>ترتيب أحداث المسيرة بالماضي البسيط.</li><li>قراءة إعلان عن برنامج دراسة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u12-l1'](el,B)},
   ...R121.theory,
   {h:'تمارين الكتاب',ref:'ص 56–57، ص 107',html:
    bk(1,'ص 56','استمع إلى Inga: صِل حجارة الطريق بالترتيب، ثم طابق السنوات بالخطوات.',['a: left Iceland → graduated from University of Hull → worked in London → left Rainbow Advertising Agency → did an MBA at Cranfield → went back to Iceland → running her own business','b: 1988 left Iceland · 1991 graduated from University of Hull · 2000 left Rainbow · 2002 went back to Iceland'])+
@@ -63,6 +64,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u12-l1'](el,B),title:'شرح مرئي'}]},
   ...R121.stations,
   {recap:['in + سنة · from 2002 to 2004.','study at · go to · graduate from (مكان) / in (تخصص).','work for (شركة) · work in (مدينة).','leave / start / finish / study / do: بلا حرف جر.','القصة بالماضي البسيط: went · left · did · graduated.']}
  ],
@@ -125,6 +127,7 @@ B.lesson({
  summary:'المضارع التام للتجارب (Have you ever …? Yes, I have. I\'ve never …)، والانتقال إلى الماضي البسيط حين نذكر الوقت (When did you …?)، و ever / never، و been / gone، والحديث عن التجارب الشخصية مع answer plus.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 58–59',html:`<p>تسأل زملاءك عن تجاربهم وتحكي تجاربك. ستتعلم:</p><ol><li>${e('Have you ever …?')} والجواب القصير.</li><li>متى نستعمل المضارع التام ومتى الماضي البسيط.</li><li>${e('ever · never · been · gone')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u12-l2'](el,B)},
   ...R122.theory,
   {h:'تمارين الكتاب',ref:'ص 58–59، ص 107–108',html:
    bk(1,'ص 58','استمع إلى مقابلة Philippe: ما الذي فعله وما الذي لم يفعله؟ ثم أكمل الأسئلة والأجوبة، واختر القاعدة الصحيحة.',['a: 1 ✘ · 2 ✔ · 3 ✘ · 4 ✔ · 5 ✔ · 6 ✘ · 7 ✔ · 8 ✔',"b1 Have you ever run your own business?","b2 No, I haven't, but I've helped my father with his business.",'b3 And have you worked for an American company?',"b4 Yes, I have, in my country, but I haven't worked in the US.",'c: 1 some time · 2 an exact time · 3 at any time'])+
@@ -137,6 +140,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u12-l2'](el,B),title:'شرح مرئي'}]},
   ...R122.stations,
   {recap:["Have you ever …? — Yes, I have. / No, I haven't.","تجربة بلا وقت: I've lived abroad.",'وقت محدد: I lived there in 2001. · When did you …?',"never مع فعل مثبت: I've never …","gone = ما زال هناك · been = ذهب ورجع."]}
  ],
@@ -164,6 +168,7 @@ B.lesson({
  summary:'مراجعة أفعال الروتين (leave home، get home، pick up، have lunch، finish work)، وظروف التكرار، وأسئلة الحديث الاجتماعي، والمضارع التام والماضي البسيط والمضارع المستمر، وحجارة الطريق ليوم لا يُنسى، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 60–61',html:`<p>هذه المراجعة تغطي الوحدات 10 و 11 و 12. الوحدة 10 (الروتين) درستها في انجل-111، وهنا تذكير قصير بها.</p>`+vt([['أفعال الروتين','leave home · get home · have lunch · finish work','الوحدة 10'],['ظروف التكرار','always · usually · often · sometimes · never','الوحدة 10'],['أسئلة الحديث',"Is this your first day? · How long have you worked for this company?",'الوحدة 11'],['المسيرة والتجارب',"I graduated in 2015. · I've worked here for three years.",'الوحدة 12']],['الموضوع','أمثلة','من']),ref:''},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u12-l3'](el,B)},
   {h:'ظروف التكرار من 100% إلى 0%',ref:'ص 61',html:vt(AL.map(x=>[x[0],x[1]]),['English','المعنى'])+`<p>تأتي قبل الفعل الأساسي، وبعد ${e('be')}: ${e("I usually take a break at 11. · He's always late.")}</p>`},
   {h:'تمارين المراجعة',ref:'ص 60–61',html:
    bk('Vocabulary 1','ص 60','أكمل الكلمات المتقاطعة بالأفعال المناسبة.',['Across: 2 leave · 4 get · 6 pick up · 8 watch','Down: 1 have · 3 finish · 5 take · 7 play · 9 call'],'من قراءتنا لشبكة الكلمات المتقاطعة.')+
@@ -175,6 +180,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u12-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدات 10–11',title:'خلاصة: الروتين والحديث الاجتماعي',q:'أكمل: What time do you usually ___ lunch?',ref:'ص 60',
    art:art(`${AL.map((x,i)=>`<g data-tip="${x[1]}"><rect x="${20+(i%2)*165}" y="${30+Math.floor(i/2)*50}" width="155" height="40" rx="10" fill="${i<4?C.yel:C.paper}" stroke="${C.ink}" stroke-width="1.5"/>${TL(97+(i%2)*165,55+Math.floor(i/2)*50,x[0],{fs:13,w:700})}</g>`).join('')}`,'frequency'),
    cap:'ظروف التكرار من الأكثر إلى الأقل. مرّر المؤشر على كل منها.',side:[{tip:`ظرف التكرار قبل الفعل: ${e('I usually leave home at 7.')}`}],

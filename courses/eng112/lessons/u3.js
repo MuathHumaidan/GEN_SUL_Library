@@ -48,6 +48,7 @@ B.lesson({
  summary:'الوظائف وأماكن العمل والمسؤوليات (graphic designer، studio، quality control)، وعبارات وصف العمل (What do you do? I\'m responsible for … I\'m in charge of … It\'s my job to …)، والمضارع التام مع for و since لمدة العمل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>تصف عملك ومسؤولياتك. ستتعلم:</p><ol><li>أسماء الوظائف وأماكن العمل والمسؤوليات.</li><li>عبارات ${e("responsible for · in charge of · It's my job to")}.</li><li>مدة العمل بـ ${e('for')} و ${e('since')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l1'](el,B)},
   ...R31.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15، ص 90–91',html:
    bk(1,'ص 14','استعمل كلمة من كل مجموعة لتصف وظائف الأشخاص في الصور.',['graphic designer · studio · brochure design','engineer · laboratory · quality control','customer service agent · call centre · dealing with customers\' questions','sales representative · customers\' offices · finding new customers'],'ترتيب الصور من قراءتنا للصور الصغيرة.')+
@@ -61,6 +62,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l1'](el,B),title:'شرح مرئي'}]},
   ...R31.stations,
   {recap:["What do you do? — I'm a … · Who do you work for? — I work for …","I'm responsible for / in charge of + اسم أو ing.","It's my job to + الفعل.",'office · factory · studio · laboratory · call centre.',"I've worked here for five years / since 2020."]}
  ],
@@ -122,6 +124,7 @@ B.lesson({
  summary:'الصفات والمهارات المطلوبة في العمل (be flexible، have experience، be able to work under pressure)، و need to و have to و don\'t need to للضروري وغير الضروري، و can و be able to للقدرات، واختيار أفضل مرشح لوظيفة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 16–17',html:`<p>تتحدث عن متطلبات الوظيفة وعن قدراتك. ستتعلم:</p><ol><li>الصفات والمهارات مع ${e('be · have · be able to')}.</li><li>${e("need to · have to · don't need to")}.</li><li>${e("can · can't · be able to")}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l2'](el,B)},
   ...R32.theory,
   {h:'تمارين الكتاب',ref:'ص 16–17، ص 90–91',html:
    bk(1,'ص 16','استمع إلى Karen و Peter: صح أم خطأ؟ ثم صنّف الكلمات.',['a: 1 T · 2 F · 3 T · 4 F','b: be: flexible · creative · ambitious · experienced · organized — have: experience · good communication skills · good computer skills — be able to: work under pressure · work well in a team · speak a foreign language'])+
@@ -134,6 +137,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l2'](el,B),title:'شرح مرئي'}]},
   ...R32.stations,
   {recap:['be + صفة · have + اسم · be able to + فعل.','You need to / have to be flexible.',"You don't need to be experienced.","I can … · I can't …",'have to be able to (لا have to can).']}
  ],
@@ -160,6 +164,7 @@ B.lesson({
  summary:'مراجعة الصفات الشخصية (experienced، confident، punctual، flexible)، واستقبال الزائر في المطار، والأسماء المركبة لأنواع الشركات، والمضارع البسيط والماضي البسيط والمضارع التام والمستمر والمبني للمجهول، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 18–19',html:vt([['استقبال الزائر',"Hello. Are you …? I'm … We spoke on the phone. Can I take one of those bags?",'الوحدة 1'],['أنواع الشركات','car dealer · estate agent · law firm · ticket agent','الوحدة 2'],['الصفات','experienced · confident · creative · punctual · flexible · patient','الوحدة 3'],['الأزمنة','I work … · I started … · I was moved … · I have been … · they are training me …','1–3']],['الموضوع','أمثلة','من'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l3'](el,B)},
   {h:'الأزمنة في قصة واحدة',ref:'ص 19',html:vt([['I work for a big company.','المضارع البسيط: حقيقة ثابتة'],['I started six years ago.','الماضي البسيط: وقت محدد'],['I was moved to Head Office.','الماضي المجهول: الشركة نقلته'],["I've been here for a month.",'المضارع التام: مستمر حتى الآن'],["They're training me at the moment.",'المضارع المستمر: الآن'],["I'm not enjoying the training.",'المضارع المستمر المنفي']],['جملة','الزمن'])},
   {h:'تمارين المراجعة',ref:'ص 18–19',html:
    bk('Vocabulary 1','ص 18','أكمل الكلمات المتقاطعة.',['Across: 1 experienced · 4 confident · 6 creative · 7 ambitious · 9 qualified','Down: 2 punctual · 3 patient · 5 flexible · 8 skills'],'من قراءتنا لشبكة الكلمات المتقاطعة.')+
@@ -171,6 +176,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدتان 1 و 3',title:'خلاصة: الزائر والصفات',q:'ما الصفة: Never late؟',ref:'ص 18',
    art:art(`${[['experienced','did it for a long time'],['confident','sure of yourself'],['creative','good at new ideas'],['ambitious','wants success'],['punctual','never late'],['patient','stays calm'],['flexible','can change'],['qualified','passed exams']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="${20+(i%2)*165}" y="${20+Math.floor(i/2)*52}" width="155" height="42" rx="10" fill="${i%3?C.paper:C.yel}" stroke="${C.ink}" stroke-width="1.5"/>${TL(97+(i%2)*165,46+Math.floor(i/2)*52,x[0],{fs:13,w:700})}</g>`).join('')}`,'qualities'),
    cap:'الصفات الشخصية. مرّر المؤشر لترى معنى كل صفة بالإنجليزية.',side:[{tip:`الصفة بعد ${e('be')}: ${e('He is punctual.')}`}],

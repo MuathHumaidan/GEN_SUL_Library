@@ -48,6 +48,7 @@ B.lesson({
  summary:'عبارات المضيف والزائر في المطار (I\'m here to take you to our office. Can I help you with your bags? This way.)، والحديث في الطريق عن الرحلة والطقس والعمل، والمضارع البسيط للعادات والعمل والماضي البسيط لما حدث.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 6–7',html:`<p>تستقبل زائراً لشركتك في المطار. ستتعلم:</p><ol><li>عبارات المضيف وردود الزائر.</li><li>مواضيع الحديث في الطريق: الرحلة والطقس والعمل.</li><li>المضارع البسيط والماضي البسيط في الأسئلة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l1'](el,B)},
   ...R11.theory,
   {h:'تمارين الكتاب',ref:'ص 6–7، ص 86–87',html:
    bk(1,'ص 6','أي المواضيع تتوقع أن يتحدث عنها Jon و Maria؟ ثم استمع وضع علامة على ما ذكراه.',['b: ✔ 1 Jon\'s flight · 3 Maria\'s job · 5 the weather · 7 transport to the office · 8 the time it takes to get to the office','✘ 2 Maria\'s family · 4 politics · 6 Jon\'s last holiday'])+
@@ -60,6 +61,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l1'](el,B),title:'شرح مرئي'}]},
   ...R11.stations,
   {recap:["I'm here to take you to our office.","Can I help you with your bags? — Thank you. That's very kind.",'Did you have a good flight? · Do you travel abroad a lot?',"It's very hot today. It's about 30 degrees.",'المضارع البسيط: do / does · الماضي البسيط: did · be بلا did.']}
  ],
@@ -122,6 +124,7 @@ B.lesson({
  summary:'نصائح الحديث القصير في العمل، والتحية في أول لقاء (Nice to meet you) وفي لقاء مرة أخرى (Nice to see you again)، والضيافة (Please take a seat. Would you like a coffee?)، والسؤال عن التجارب بالمضارع التام ثم الماضي البسيط.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 8–9',html:`<p>تستقبل زائراً في مكتبك. ستتعلم:</p><ol><li>نصائح الحديث القصير قبل العمل.</li><li>التحية في أول لقاء وفي لقاء مرة أخرى، والضيافة.</li><li>${e('Have you … before?')} ثم ${e('When …?')}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l2'](el,B)},
   ...R12.theory,
   {h:'تمارين الكتاب',ref:'ص 8–9، ص 87',html:
    bk(1,'ص 8','اقرأ نصائح الحديث القصير، واختر أهم ثلاث، وقارن مع زميلك.',null)+
@@ -134,6 +137,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l2'](el,B),title:'شرح مرئي'}]},
   ...R12.stations,
   {recap:['أول مرة: Nice to meet you. — Nice to meet you, too.','مرة أخرى: Nice to see you again. — Nice to see you, too.','Please take a seat. · Would you like a coffee? — Yes, please.','Thank you for coming today. — Not at all. Thank you for seeing me.','Have you been here before? — When was that?']}
  ],
