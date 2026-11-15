@@ -105,6 +105,7 @@ B.lesson({
  summary:'أجزاء لوح التزلج (deck، truck، axle، wheel…)، والسؤال عن اسم الشيء بـ What\'s this called (in English)? وأسماء الإشارة this و that و these و those، والجواب It\'s called… / They\'re called…، ومثبتات مثل nails و staples.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>في الورشة تحتاج أن تسأل عن اسم قطعة لا تعرفها. ستتعلم:</p><ol><li>أسماء أجزاء لوح التزلج.</li><li>السؤال ${e("What's this called?")} والجواب ${e("It's called…")}.</li><li>الفرق بين ${e('this, that, these, those')}.</li><li>أسماء مثبتات وأدوات جديدة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l1'](el,B)},
   ...R21.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11',html:
    bk(1,'ص 10','استمع وأكمل جدول أرقام التزلج القياسية.',['High jump: 7.1 metres · 19/06/03','Long jump: 24 metres · 08/08/04'])+
@@ -122,6 +123,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l1'](el,B),title:'شرح مرئي'}]},
   ...R21.stations,
   {recap:['أجزاء اللوح: nose, tail, deck, truck, axle, wheel, plate.',"What's this called (in English)? — It's called a/an …",'What are these called? — They\'re called … (بلا a).','this/that للمفرد، these/those للجمع؛ this/these قريب، that/those بعيد.']}
  ],
@@ -201,6 +203,7 @@ B.lesson({
  summary:'طلب القطع في المحل (What size? How many?) وقراءة المقاسات (10 mm، M5)، وترتيب خطوات التركيب، والتعليمات بقالب فعل + شيء + مكان (Put the plate on the bolts)، والأفعال put on/take off و tighten/loosen و push/pull.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>${e('assemble')} = يركّب الأجزاء معاً. ستتعلم:</p><ol><li>طلب القطع في المحل بالمقاس والعدد.</li><li>ترتيب خطوات تركيب لوح تزلج.</li><li>كتابة التعليمات بقالب: فعل + شيء + مكان.</li><li>أفعال التركيب وأضدادها.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l2'](el,B)},
   ...R22.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13',html:
    bk(1,'ص 12','مع زميلك: تريد تركيب لوح تزلج. ماذا تحتاج من كلمات التمرين 7 ص 11؟',null)+
@@ -216,6 +219,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l2'](el,B),title:'شرح مرئي'}]},
   ...R22.stations,
   {recap:['لشيء واحد a / an، ولأكثر some + جمع، أو العدد + جمع.','في المحل: What size? How many? — والاسم بعد How many جمع.','10 mm = ten millimetres (ten mil)، و M5 مقاس البرغي.','التعليمة: فعل + شيء + مكان: Put the plate on the bolts.','put on ≠ take off، tighten ≠ loosen، push ≠ pull.']}
  ],
@@ -284,6 +288,7 @@ B.lesson({
  summary:'الرسائل الهاتفية والبريد الصوتي (Please call me back)، وتهجئة الأسماء وقراءة أرقام الهاتف الدولية (double، zero/oh)، وطلب البضائع بالهاتف بأسئلة What colour / What size / How many، وتعريف شخص آخر (This is…).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>كثيراً ما تطلب قطعاً بالهاتف أو تترك رسالة. ستتعلم:</p><ol><li>ترك رسالة صوتية وتسجيل رسالة من شخص.</li><li>تهجئة الأسماء وقراءة الأرقام الدولية.</li><li>طلب البضائع بالهاتف.</li><li>تعريف شخص آخر.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l3'](el,B)},
   ...R23.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15',html:
    bk(1,'ص 14','استمع إلى الرسالة الصوتية وأكمل الملاحظات.',['Name: Ben Johnson','Phone number: 0044 208 8947'])+
@@ -296,6 +301,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l3'](el,B),title:'شرح مرئي'}]},
   ...R23.stations,
   {recap:['في الهاتف: This is … ثم التهجئة والرقم، ثم Please call me back.','00 = double oh، والرقمان المتشابهان double.','أسئلة الطلب: What colour? What size? How many?','تعريف شخص آخر: This is Stuart. He\'s a student, too.']}
  ],
@@ -324,6 +330,7 @@ B.lesson({
  title:'Review Unit A — مراجعة الوحدتين 1 و 2',
  summary:'مراجعة الفعل be في الإثبات والسؤال والنفي والاختصارات، وأسئلة What/How، والأضداد، وقراءة الأرقام والتواريخ والأوقات، وتعليمات التركيب، مع إجابات تمارين المراجعة A كلها.',
  theory:[
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l4'](el,B)},
   {h:'ماذا تراجع؟',ref:'ص 16–19',html:`<div class="tbx"><table class="vt"><thead><tr><th>النقطة</th><th>مثال</th><th>الدرس</th></tr></thead><tbody>
    <tr><td>be: السؤال</td><td class="en">Is the machine on?</td><td>1.1</td></tr><tr><td>be: النفي والاختصار</td><td class="en">No, it isn't. It's off.</td><td>1.1</td></tr>
    <tr><td>a / an</td><td class="en">I'm an engineer.</td><td>1.1</td></tr><tr><td>الحروف والأرقام</td><td class="en">one oh one · 8850</td><td>1.2</td></tr>
@@ -354,6 +361,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 1',title:'خلاصة الوحدة 1: البداية',q:'كيف تحوّل The machine is on إلى سؤال؟',ref:'ص 16–18',
    art:art(`${[['سؤال','Is the machine on?',70],['نفي','No, it isn\'t. It\'s off.',140],['رقم','101 = one oh one',210]].map(([a,b,y],i)=>`<g data-tip="${a}: ${b}"><rect x="30" y="${y-30}" width="300" height="50" rx="10" fill="${[C.paper,C.yel,C.paper][i]}" stroke="${C.ink}" stroke-width="2"/>${TL(180,y,b,{fs:15,w:700})}</g>`).join('')}`,'قوالب الوحدة 1'),
    cap:'قوالب الوحدة 1. مرّر المؤشر على كل قالب.',side:[{tip:'السؤال بقلب الفعل: <span class="en">It is → Is it…?</span> والنفي بـ <span class="en">not</span>: <span class="en">It isn\'t.</span>'}],

@@ -108,6 +108,7 @@ B.lesson({
  summary:'أسماء أدوات الأداة المتعددة (hammer، pliers، saw، blade، can opener…)، والفعل have في السؤال والنفي (Does it have…? Yes, it does / No, it doesn\'t)، و a pair of مع pliers و scissors، وأجزاء الأداة (handle، shaft، head، blade، jaws)، والمقارنة بـ but.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 20–21',html:`<p>تصف أداة: ماذا فيها وماذا ليس فيها، وما أجزاؤها. ستتعلم:</p><ol><li>أسماء أدوات شائعة.</li><li>السؤال والجواب بـ ${e('Does … have …?')}</li><li>${e('a pair of')} مع الأدوات التي لها جزءان.</li><li>أجزاء الأداة، والمقارنة بـ ${e('but')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l1'](el,B)},
   ...R31.theory,
   {h:'تمارين الكتاب',ref:'ص 20–21',html:
    bk(1,'ص 20','استمع وأكمل إعلان التلفاز.',['(1) hammer','(2) pliers','(3) saw','(4) blade','(5) can opener'])+
@@ -124,6 +125,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l1'](el,B),title:'شرح مرئي'}]},
   ...R31.stations,
   {recap:['Does it have a saw? — Yes, it does. / No, it doesn\'t.','do مع I/you/we/they، و does مع he/she/it، وبعد does: have.','a pair of pliers / a pair of scissors.','أجزاء الأداة: handle, shaft, head, blade, jaws.','المقارنة: It has a ruler, but the other tool doesn\'t.']}
  ],
@@ -200,6 +202,7 @@ B.lesson({
  summary:'مصادر الطاقة الكهربائية (mains، solar، dynamo، batteries)، وأجزاء راديو الطوارئ ووظائفها، والمضارع البسيط مع he/she/it بإضافة s (It measures temperature)، والسؤال والنفي بـ does / doesn\'t، وأفعال الأدوات (cut، grip، drive in، tighten، loosen)، والسؤال عن العمل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 22–23',html:`<p>تصف ماذا يفعل كل جزء في جهاز. ستتعلم:</p><ol><li>مصادر الطاقة الكهربائية.</li><li>أجزاء جهاز ووظيفة كل جزء.</li><li>المضارع البسيط: ${e('It measures temperature.')}</li><li>أفعال الأدوات، والسؤال عن العمل.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l2'](el,B)},
   ...R32.theory,
   {h:'تمارين الكتاب',ref:'ص 22–23',html:
    bk(1,'ص 22','طابق مصادر الطاقة مع الصور.',['A → 4 batteries','B → 1 mains electricity + AC adapter','C → 2 solar power','D → 3 dynamo'])+
@@ -217,6 +220,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l2'](el,B),title:'شرح مرئي'}]},
   ...R32.stations,
   {recap:['الوظيفة بالمضارع البسيط: The compass finds North.','مع he / she / it نضيف s: works, measures, watches, studies.','السؤال والنفي: Do / Does و don\'t / doesn\'t، والفعل بعدها بلا s.','pliers و scissors جمع: Pliers grip wire.','What do you do? — I\'m a mechanic. What does Edward do?']}
  ],
@@ -282,6 +286,7 @@ B.lesson({
  summary:'تحديد مكان الأشياء على الشاشة أو الرف: at the top / at the bottom، on the left / on the right، in the middle / in the centre، والمكان بالنسبة لشيء آخر: to the left of، to the right of، above، below.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 24–25',html:`<p>تصف مكان شيء على الشاشة أو في الورشة. ستتعلم:</p><ol><li>${e('at the top / at the bottom')}.</li><li>${e('on the left / on the right')}.</li><li>${e('in the middle / in the centre')}.</li><li>المكان بالنسبة لشيء آخر: ${e('to the left of, above, below')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l3'](el,B)},
   ...R33.theory,
   {h:'تمارين الكتاب',ref:'ص 24–25',html:
    bk(1,'ص 24','استمع إلى درس الحاسوب وأكمل الحوار بكلمات الصندوق.',['at · bottom · left','on · right · top'])+
@@ -296,6 +301,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l3'](el,B),title:'شرح مرئي'}]},
   ...R33.stations,
   {recap:['at the top / at the bottom.','on the left / on the right.','in the middle = in the centre.','on the left (في المكان كله) ≠ to the left of (بالنسبة لشيء).','above فوق، below تحت.']}
  ],

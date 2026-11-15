@@ -85,6 +85,7 @@ B.lesson({
  summary:'اختبار المواد (strike، stretch، bend، compress، drop، cut، heat، scratch)، والمضارع المستمر (am/is/are + ing) لوصف ما يحدث الآن في الإثبات والنفي والسؤال، وتغيّر الإملاء مع ing (striking، dropping، cutting)، ووصف صورة لأشخاص يتحركون.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 42–43',html:`<p>تصف تجربة تحدث أمامك الآن. ستتعلم:</p><ol><li>أفعال اختبار المواد.</li><li>المضارع المستمر: ${e("I'm pulling the rope.")}</li><li>تغيّر الإملاء مع ${e('ing')}.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l1'](el,B)},
   ...R61.theory,
   {h:'تمارين الكتاب',ref:'ص 42–43',html:
    bk(1,'ص 42','مع زميلك: من أي مادة الخوذة والحبل؟ صمّم اختبارات لهما.',null)+
@@ -99,6 +100,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l1'](el,B),title:'شرح مرئي'}]},
   ...R61.stations,
   {recap:['strike, stretch, compress, bend, drop, cut, heat, scratch.','am / is / are + ing لما يحدث الآن.','Is it breaking? — No, it isn\'t.','strike → striking، drop → dropping، cut → cutting.']}
  ],
@@ -156,6 +158,7 @@ B.lesson({
  summary:'أسماء المواد (aluminium، ceramic، fibreglass، nylon، polycarbonate، steel…) والنبر في نطقها، والسؤال What\'s it made of? / What are they made of?، وخصائص المواد وأضدادها (tough ≠ brittle، rigid ≠ flexible، heat-resistant، corrosion-resistant)، والسبيكة والمادة المركبة، وقراءة وصف مواد سيارة سباق.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 44–45',html:`<p>تصف ممّ صُنع شيء ولماذا. ستتعلم:</p><ol><li>أسماء المواد ونطقها.</li><li>${e('What\'s it made of? It\'s made of …')}</li><li>خصائص المواد وأضدادها.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l2'](el,B)},
   ...R62.theory,
   {h:'تمارين الكتاب',ref:'ص 44–45',html:
    bk(1,'ص 44','ما أهم خصائص هذه المواد؟ ناقش زميلك.',null)+
@@ -169,6 +172,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l2'](el,B),title:'شرح مرئي'}]},
   ...R62.stations,
   {recap:['aluminium, ceramic, fibreglass, nylon, polycarbonate, steel…','What\'s it made of? — It\'s made of …','tough ≠ brittle، hard ≠ soft، rigid ≠ flexible، strong ≠ weak، light ≠ heavy.','heat-resistant، corrosion-resistant.','alloy = معادن، composite = مادتان مختلفتان.']}
  ],
@@ -227,6 +231,7 @@ B.lesson({
  summary:'الشراء بالهاتف: نطق أرقام الهاتف (double oh)، والبريد الإلكتروني وعناوين المواقع (at، dot، underscore، dash، forward slash)، وطلب الإعادة والتهجئة (Could you repeat / spell that?)، والتمييز بين ‑teen و ‑ty، وتعبئة نموذج طلب، وبداية المكالمة الهاتفية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 46–47',html:`<p>تطلب منتجاً بالهاتف. ستتعلم:</p><ol><li>نطق الأرقام والعناوين.</li><li>طلب الإعادة والتهجئة.</li><li>${e('-teen')} و ${e('-ty')}.</li><li>بداية المكالمة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l3'](el,B)},
   ...R63.theory,
   {h:'تمارين الكتاب',ref:'ص 46–47',html:
    bk(1,'ص 46','استمع وأكمل نموذج المكالمة.',['Name: Manuel Vargas','Phone number: 00 34 94 66 389','<span style="overflow-wrap:anywhere">Email address: mvargas17@xtreme_sports.co.es</span>','Message: Please send your catalogue of sports equipment.'])+
@@ -241,6 +246,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l3'](el,B),title:'شرح مرئي'}]},
   ...R63.stations,
   {recap:['@ at · . dot · _ underscore · - dash · / forward slash.','00 = double oh.','Could you repeat / spell that, please?','seventeen (النبر آخراً) ≠ seventy (النبر أولاً).','Hello? — Is that …? — Yes, it\'s me.']}
  ],
@@ -266,6 +272,7 @@ B.lesson({
  title:'Review Unit C — مراجعة الوحدتين 5 و 6',
  summary:'مراجعة التعليمات بفعل الأمر وأفعال الأدوات، والمضارع البسيط للحقائق والعمليات، والمضارع المستمر لما يحدث الآن، والشرط If، والأضداد، وخصائص المواد، وأجزاء الكلمات (sol-، poly-)، مع إجابات تمارين المراجعة.',
  theory:[
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l4'](el,B)},
   {h:'ماذا تراجع؟',ref:'ص 48–51',html:vt([['التعليمات','Grip the nail. Use a pair of pliers.','2.2 · 3.2'],['المضارع البسيط','Hot water rises to the top.','5.1 · 5.3'],['If','If you heat water to 100°C, it boils.','5.2'],['المضارع المستمر',"I'm pressing the pedal, but the truck isn't going faster.",'6.1'],['المواد والخصائص',"It's made of rubber. It's flexible.",'6.2']],['النقطة','مثال','الدرس'])},
   {h:'البسيط أم المستمر؟',ref:'ص 49–51',html:`${vt([['حقيقة أو عملية تتكرر','The hammer strikes the material.','المضارع البسيط'],['شيء يحدث الآن','The hammer is striking the bar now.','المضارع المستمر']],['متى','مثال','الزمن'])}`},
   {h:'تمارين المراجعة (ص 48–49)',ref:'ص 48–49',html:
@@ -287,6 +294,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 5',title:'خلاصة الوحدة 5: التدفق',q:'ماذا يحدث للماء إذا سخّنته إلى 100°C؟',ref:'ص 48–50',
    art:art(`<g data-tip="المضارع البسيط للحقائق."><rect x="20" y="56" width="320" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,87,'Hot water rises to the top.',{fs:15,w:700})}</g>
     <g data-tip="If + مضارع بسيط, + مضارع بسيط."><rect x="20" y="124" width="320" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,155,'If you heat water to 100°C, it boils.',{fs:14,w:700})}</g>

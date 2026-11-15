@@ -94,7 +94,7 @@ function fill(el,x){const P=G.PLCBOOK&&G.PLCBOOK.perm;const G2=[];let k=0;
   const tx=t=>String(t).replace(/\{([^}]+)\}/g,(_,g)=>gap(g));
   let body='';
   if(x.layout==='table'){body=`<div class="fx-tw"><table>${x.head?`<tr>${x.head.map(h=>Array.isArray(h)?`<th colspan="${h[1]}">${h[0]}</th>`:`<th>${h}</th>`).join('')}</tr>`:''}${x.lines.map(r=>`<tr>${r.map(c=>`<td>${tx(c)}</td>`).join('')}</tr>`).join('')}</table></div>`}
-  else body=`<ul class="fx-l">${x.lines.map(l=>{let [n,w,t]=Array.isArray(l)?(l.length===3?l:['',l[0],l[1]]):['','',l];if(!n&&typeof t==='string'){const m=t.match(/^([0-9]+|[a-z]\))\s+/);if(m){n=m[1];t=t.slice(m[0].length)}}return `<li><span class="no">${n||''}</span>${x.layout==='dlg'?`<span class="who">${w||''}</span>`:''}<span class="tx">${tx(t)}</span></li>`}).join('')}</ul>`;
+  else body=`<ul class="fx-l">${x.lines.map(l=>{let [n,w,t]=Array.isArray(l)?(l.length===3?l:['',l[0],l[1]]):['','',l];if(!n&&x.layout!=='dlg'&&typeof t==='string'){const m=t.match(/^([0-9]+|[a-z]\))\s+/);if(m){n=m[1];t=t.slice(m[0].length)}}return `<li><span class="no">${n||''}</span>${x.layout==='dlg'?`<span class="who">${w||''}</span>`:''}<span class="tx">${tx(t)}</span></li>`}).join('')}</ul>`;
   const box=x.box?x.box:null;
   el.innerHTML=(x.intro?`<p class="pk-in" style="direction:rtl;text-align:right">${x.intro}</p>`:'')+`<div class="fx">${box?`<div class="fx-box">${box.map(w=>`<button type="button" data-w="${esc(w)}">${w}</button>`).join('')}</div>`:''}${body}</div><div class="fx-ft"><span class="sc"></span><button type="button" data-a="show">أظهر الإجابات</button><button type="button" data-a="reset">من جديد</button></div>`;
   let selW=null,selG=null;const gb=[...el.querySelectorAll('.gp2')];const sc=el.querySelector('.sc');
@@ -133,6 +133,9 @@ function run(el,x){addCss();try{
 function g2f(k){if(k.kind!=='gaps'||!Array.isArray(k.items))return k;const I=k.items;const key=it=>JSON.stringify(it.o);
   const same=I.length>1&&I.every(it=>key(it)===key(I[0]))&&I[0].o.length>=3;
   const lines=I.map(it=>{const ok=it.o[it.a];const g=same?`{${ok}}`:`{${[ok,...it.o.filter((_,j)=>j!==it.a)].join('|')}}`;return it.s.replace('___',g)});
+  if(lines.some(l=>/[●○]/.test(l))){const L2=[];lines.forEach(l=>{const m=l.match(/^([0-9]+)\s+(?=[●○])/);let n=m?m[1]:'';const body=m?l.slice(m[0].length):l;
+     const segs=body.split(/(?=[●○])/).map(x=>x.trim()).filter(Boolean);segs.forEach((g,i)=>{const w=/^[●○]/.test(g)?g[0]:'';L2.push([i===0?n:'',w,w?g.slice(1).trim():g])})});
+    return Object.assign({},k,{kind:'fill',layout:'dlg',box:same?I[0].o:null,lines:L2})}
   return Object.assign({},k,{kind:'fill',layout:k.layout||'list',box:same?I[0].o:null,lines})}
 /* مقاطع الصوت المربوطة بالتمرين (من قسم «الاستماع» الملغى) */
 const trkOf=(lid,n)=>{const T=(B.trk&&B.trk[lid])||[];return T.filter(t=>t.n!=null&&String(t.n)===String(n).replace(/[^0-9].*$/,''))};

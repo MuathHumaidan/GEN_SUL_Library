@@ -98,6 +98,7 @@ B.lesson({
  summary:'كلمات الاتجاه (up، down، forwards، backwards، sideways، straight، diagonally)، والخطوط (vertical، horizontal، diagonal)، والقدرة بـ can / can\'t في الإثبات والسؤال والجواب القصير، والدوران rotate حول محور، وحركات الذراع والمفاصل (wrist، elbow، shoulder، pivot).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 26–27',html:`<p>تصف كيف يتحرك شيء: طائرة، مروحية، ذراع روبوت. ستتعلم:</p><ol><li>كلمات الاتجاه.</li><li>${e('can / can\'t')} للقدرة.</li><li>الدوران ${e('rotate')} والمحور ${e('axis')}.</li><li>مفاصل الذراع وحركاتها.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l1'](el,B)},
   ...R41.theory,
   {h:'تمارين الكتاب',ref:'ص 26–27',html:
    bk(1,'ص 26','سمِّ حركات رجل الحقيبة النفاثة بكلمات الصندوق.',['1 up','4 down','2، 3، 5: forwards / backwards / sideways حسب الأسهم في الصورة'],'من قراءتنا للصورة.')+
@@ -115,6 +116,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l1'](el,B),title:'شرح مرئي'}]},
   ...R41.stations,
   {recap:['up, down, forwards, backwards, sideways.','straight up (عمودي) ≠ diagonally up (مائل).','can / can\'t + الفعل كما هو.','Can it…? — Yes, it can. / No, it can\'t.','rotate on an axis؛ الذراع: wrist, elbow, shoulder.']}
  ],
@@ -193,6 +195,7 @@ B.lesson({
  summary:'وحدات السرعة (km/h، mph، m/s، rpm) وقراءة الأرقام الكبيرة، وأجزاء جهاز التحكم بالطائرة (joystick، slider، switch، antenna)، وأفعال الحركة (push، pull، slide، accelerate، slow down، ascend ≠ descend، roll)، والضمير it ومرجعه في النص، وسؤال القدرة Can you…?',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 28–29',html:`<p>تقرأ دليل استعمال جهاز وتتبع تعليماته. ستتعلم:</p><ol><li>وحدات السرعة.</li><li>أجزاء جهاز التحكم.</li><li>أفعال الحركة: ${e('push, pull, slide')}.</li><li>${e('Can you…?')} عن مهاراتك.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l2'](el,B)},
   ...R42.theory,
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
    bk(1,'ص 28','اختبار: ما السرعات؟',['1 b) 9800 rpm','2 b) 1200 km/h (746 mph)','3 a) 1228 km/h (763 mph)','4 a) 154 m/s <span class="sub">(إضافة من خارج الكتاب: الرقم القياسي الرسمي المسجّل منذ 1978 نحو 511 km/h، أي قرابة 142 m/s)</span>','5 a) 1000 mph (1609 km/h)','6 a) 67,000 mph (107,825 km/h)'])+
@@ -208,6 +211,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l2'](el,B),title:'شرح مرئي'}]},
   ...R42.stations,
   {recap:['km/h, mph, m/s, rpm.','push (بعيداً) ≠ pull (نحوك)، slide.','accelerate ≠ slow down، ascend ≠ descend.','it يعود على اسم مفرد قبله.','Can you swim? — Yes, I can. / No, I can\'t.']}
  ],
@@ -271,6 +275,7 @@ B.lesson({
  summary:'أدوات التحكم في الرافعة الشوكية (lever، pedal، steering wheel، brake، accelerator، fork)، وحركاتها (moves up/down، tilts up/down، reverses)، وتعليمات القيادة بفعل الأمر (Drive forwards، Slow down، Turn round)، وجمل الشرط والنتيجة بـ when و you.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 30–31',html:`<p>تشرح كيف تُشغَّل آلة. ستتعلم:</p><ol><li>أدوات التحكم في الرافعة الشوكية.</li><li>حركات الشوكة والشاحنة.</li><li>تعليمات القيادة بفعل الأمر.</li><li>${e('When you …, …')}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l3'](el,B)},
   ...R43.theory,
   {h:'تمارين الكتاب',ref:'ص 30–31',html:
    bk(1,'ص 30','انظر إلى الرسم وأجب.',['1 two pedals','2 four levers (G, B, C, D)','3 on the left'],'من قراءتنا للرسم.')+
@@ -283,6 +288,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l3'](el,B),title:'شرح مرئي'}]},
   ...R43.stations,
   {recap:['lever (باليد)، pedal (بالقدم)، steering wheel.','brake ≠ accelerator.','moves up/down ≠ tilts up/down.','When you + الحركة, + النتيجة.','Drive forwards. Reverse. Slow down. Turn round.']}
  ],
@@ -308,6 +314,7 @@ B.lesson({
  title:'Review Unit B — مراجعة الوحدتين 3 و 4',
  summary:'مراجعة have / has في السؤال والنفي، والمضارع البسيط (does، s)، و can / can\'t، والاختصارات، والأجزاء والأدوات والمواقع، و a / an / some / a pair of، والحروف الصامتة، والاتجاهات والتعليمات، مع إجابات تمارين المراجعة.',
  theory:[
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l4'](el,B)},
   {h:'ماذا تراجع؟',ref:'ص 32–35',html:vt([['have: سؤال ونفي','Does John have the spanners?','3.1'],['الأجزاء','a handle, a shaft, a blade','3.1'],['المضارع البسيط','The dynamo produces electricity.','3.2'],['المواقع','to the left of, above, below','3.3'],['can / can\'t','It can open bottles, but it can\'t open tins.','4.1'],['الاتجاهات','Fly diagonally down.','4.1'],['التعليمات','Move sideways three boxes.','4.2–4.3']],['النقطة','مثال','الدرس'])},
   {h:'have و do / does',ref:'ص 32',html:`${vt([['John has the spanners.','Does John have the spanners?',"No, he doesn't. He has the pliers."],['They have solar panels.','Do they have solar panels?',"No, they don't."]],['إثبات','سؤال','نفي'])}`},
   {h:'الاختصارات',ref:'ص 32',html:vt([['does not','doesn\'t'],['do not','don\'t'],['is not','isn\'t'],['can not / cannot','can\'t'],['I am','I\'m']],['الكاملة','المختصرة'])},
@@ -338,6 +345,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l4'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدة 3',title:'خلاصة الوحدة 3: الأدوات والوظائف والمواقع',q:'كيف تحوّل John has the spanners إلى سؤال؟',ref:'ص 32–33',
    art:art(`<g data-tip="سؤال have: Does + الفاعل المفرد + have."><rect x="30" y="50" width="300" height="50" rx="14" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,81,'Does John have the spanners?',{fs:15,w:700})}</g>
     <g data-tip="المضارع البسيط: الفعل + s مع المفرد."><rect x="30" y="118" width="300" height="50" rx="14" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,149,'The dynamo produces electricity.',{fs:15,w:700})}</g>

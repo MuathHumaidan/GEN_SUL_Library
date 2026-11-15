@@ -92,6 +92,7 @@ B.lesson({
  summary:'أجزاء السخان الشمسي (solar panel، tank، pipes، inlet، valve، shower head)، ووصف حركة الماء بالمضارع البسيط وحروف الجر (into، out of، through، around، to، from)، وأفعال الحركة (enter، leave، rise، sink)، ومرجع الضمائر it و here، ومخطط تسلسل العملية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 36–37',html:`<p>تشرح كيف يسري الماء في نظام. ستتعلم:</p><ol><li>أجزاء السخان الشمسي.</li><li>حروف الجر مع الحركة.</li><li>${e('enter, leave, rise, sink')}.</li><li>رسم مخطط تسلسل (flow chart).</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l1'](el,B)},
   ...R51.theory,
   {h:'تمارين الكتاب',ref:'ص 36–37',html:
    bk(1,'ص 36','ارسم أسهماً لاتجاه الماء في النظام.',['inlet → tank → solar panel → tank → valve → shower head'])+
@@ -106,6 +107,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l1'](el,B),title:'شرح مرئي'}]},
   ...R51.stations,
   {recap:['solar panel, tank, pipes, inlet, valve, shower head.','into, out of, through, around, to, from.','rise = go up، sink = go down، enter = go into، leave = go out of.','goes / passes مع المفرد.','it و here تعودان على كلمة قبلها.']}
  ],
@@ -179,6 +181,7 @@ B.lesson({
  summary:'رموز الدائرة الكهربائية (battery، lamp، switch، fuse، conductor، terminal، positive/negative)، ونظام الطاقة الشمسية (solar panel، controller، battery، lamps، cables) ومواصفاته (V، W، A، Ah، DC)، ومسار التيار، وجملة الشرط بـ if للنتيجة الدائمة (If the Sun shines, the current flows from the panel).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 38–39',html:`<p>تشرح مسار التيار في نظام طاقة شمسية. ستتعلم:</p><ol><li>رموز الدائرة الكهربائية.</li><li>أجزاء النظام ومواصفاتها.</li><li>${e('If …, …')} للنتيجة التي تحدث دائماً.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l2'](el,B)},
   ...R52.theory,
   {h:'تمارين الكتاب',ref:'ص 38–39',html:
    bk(1,'ص 38','سمِّ رموز الدائرة.',['(1) lamp','(2) conductor','(3) negative','(4) battery','(5) positive','(6) switch','(7) terminal','(8) fuse'],'من قراءتنا للرسم؛ الإجابات في مسرد ص 109.')+
@@ -192,6 +195,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l2'](el,B),title:'شرح مرئي'}]},
   ...R52.stations,
   {recap:['lamp, switch, fuse, battery, conductor, terminal, + / −.','solar panel → controller → battery / lamps.','W, V, A, Ah, DC.','If + مضارع بسيط, + مضارع بسيط.','convert = change.']}
  ],
@@ -262,6 +266,7 @@ B.lesson({
  summary:'درجات الحرارة بالسلسيوس والفهرنهايت والتحويل بينهما، وأجزاء نظام تبريد السيارة (engine، water pump، thermostat، top hose، radiator، bottom hose، fan) ووصف حركة الماء، ومرجع الضمائر this و it و here، وتبريد البيت بالبرج والمدخنة الشمسية، والجدول الأسبوعي (every Tuesday، on Mondays).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 40–41',html:`<p>تشرح كيف يُبرَّد محرك أو بيت. ستتعلم:</p><ol><li>السلسيوس والفهرنهايت.</li><li>أجزاء نظام تبريد السيارة.</li><li>وصف العملية بالأفعال وحروف الجر.</li><li>الحديث عن جدولك الأسبوعي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l3'](el,B)},
   ...R53.theory,
   {h:'تمارين الكتاب',ref:'ص 40–41',html:
    `<p>${B.bkCtl('shw101','حرارة ماء الدش:')} ${B.bkCtl('hot101','أعلى حرارة هواء:')}</p>`+
@@ -278,6 +283,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l3'](el,B),title:'شرح مرئي'}]},
   ...R53.stations,
   {recap:['°F = °C × 9 / 5 + 32.','engine → thermostat → top hose → radiator → bottom hose → pump → engine.','push, cool, control, connect, blow, flow.','This / it / here تعود على كلمة قبلها.','every Tuesday = on Tuesdays.']}
  ],
