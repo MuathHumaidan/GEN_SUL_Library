@@ -125,5 +125,467 @@ PLCBOOK.acts({
     "e": "ص 8."
    }
   ]
+ },
+ "u2-l1": {
+  "open": [
+   "Would you like to work offshore? Why?",
+   "Describe your routine on a training day",
+   "Who do you report to at college?"
+  ],
+  "exit": [
+   {
+    "q": "He usually ___ the deck crew.",
+    "o": [
+     "supervises",
+     "is supervising",
+     "supervise",
+     "supervising"
+    ],
+    "c": 0,
+    "e": "ص 10."
+   },
+   {
+    "q": "Today he ___ the crane.",
+    "o": [
+     "'s operating",
+     "operates",
+     "operate",
+     "operated"
+    ],
+    "c": 0,
+    "e": "ص 10."
+   },
+   {
+    "q": "Who do you report ___?",
+    "o": [
+     "to",
+     "for",
+     "at",
+     "with"
+    ],
+    "c": 0,
+    "e": "ص 11."
+   }
+  ]
+ },
+ "u2-l2": {
+  "open": [
+   "Your plans for next weekend",
+   "Something you hope to do next year",
+   "A formal phrase for bad news"
+  ],
+  "exit": [
+   {
+    "q": "I ___ a meeting next Thursday.",
+    "o": [
+     "'m holding",
+     "hold",
+     "held",
+     "holds"
+    ],
+    "c": 0,
+    "e": "ص 12."
+   },
+   {
+    "q": "I want ___ the report.",
+    "o": [
+     "to finish",
+     "finish",
+     "finishing",
+     "finished"
+    ],
+    "c": 0,
+    "e": "ص 12."
+   },
+   {
+    "q": "Bad news:",
+    "o": [
+     "Unfortunately, …",
+     "Fortunately, …",
+     "I attach …",
+     "Kind regards"
+    ],
+    "c": 0,
+    "e": "ص 13."
+   }
+  ]
+ },
+ "u2-l3": {
+  "open": [
+   "What is in a good CV?",
+   "A job you want after your training",
+   "A question you can ask at an interview"
+  ],
+  "exit": [
+   {
+    "q": "In 2005, I ___ Comet.",
+    "o": [
+     "left",
+     "leaved",
+     "leave",
+     "have left"
+    ],
+    "c": 0,
+    "e": "ص 14."
+   },
+   {
+    "q": "He studied ___ at college.",
+    "o": [
+     "mechanics",
+     "mechanic",
+     "mechanism",
+     "mechanical"
+    ],
+    "c": 0,
+    "e": "ص 15."
+   },
+   {
+    "q": "Where ___ in 2004?",
+    "o": [
+     "did you work",
+     "you worked",
+     "did you worked",
+     "do you worked"
+    ],
+    "c": 0,
+    "e": "ص 15."
+   }
+  ]
+ },
+ "u2-l4": {
+  "open": [
+   "Describe your department's organisation",
+   "A job you have done today",
+   "Advice for a job interview"
+  ],
+  "exit": [
+   {
+    "q": "Pick ___ up.",
+    "o": [
+     "them",
+     "up them",
+     "they",
+     "their"
+    ],
+    "c": 0,
+    "e": "ص 16."
+   },
+   {
+    "q": "We ___ them this morning.",
+    "o": [
+     "checked",
+     "have checked",
+     "check",
+     "checks"
+    ],
+    "c": 0,
+    "e": "ص 17."
+   },
+   {
+    "q": "The Junior Technician ___ the Senior Technician.",
+    "o": [
+     "reports to",
+     "manages",
+     "supervises",
+     "works"
+    ],
+    "c": 0,
+    "e": "ص 17."
+   }
+  ]
+ },
+ "u3-l1": {
+  "open": [
+   "A road sign near your home and its meaning",
+   "Compare your car with your friend's car",
+   "Something too big for your room"
+  ],
+  "exit": [
+   {
+    "q": "The vehicle must not be ___ than 2 m.",
+    "o": [
+     "wider",
+     "more wide",
+     "widest",
+     "wide"
+    ],
+    "c": 0,
+    "e": "ص 20."
+   },
+   {
+    "q": "The lorry is ___ for the bridge.",
+    "o": [
+     "too high",
+     "high enough",
+     "enough high",
+     "too much high"
+    ],
+    "c": 0,
+    "e": "ص 21."
+   },
+   {
+    "q": "noisy →",
+    "o": [
+     "noisier",
+     "noisyer",
+     "more noisy",
+     "noisiest"
+    ],
+    "c": 0,
+    "e": "ص 21."
+   }
+  ]
+ },
+ "u3-l2": {
+  "open": [
+   "The most important feature in a phone for you",
+   "A polite phrase you use on the phone",
+   "Compare two phones you know"
+  ],
+  "exit": [
+   {
+    "q": "Would you mind ___ me your name?",
+    "o": [
+     "giving",
+     "to give",
+     "give",
+     "gave"
+    ],
+    "c": 0,
+    "e": "ص 22."
+   },
+   {
+    "q": "___ I put you through?",
+    "o": [
+     "Shall",
+     "Would",
+     "Do",
+     "Could you"
+    ],
+    "c": 0,
+    "e": "ص 22."
+   },
+   {
+    "q": "The white one or the black ___?",
+    "o": [
+     "one",
+     "ones",
+     "it",
+     "that"
+    ],
+    "c": 0,
+    "e": "ص 23."
+   }
+  ]
+ },
+ "u3-l3": {
+  "open": [
+   "A world record you know",
+   "The best car for the desert and why",
+   "Compare three mobile networks"
+  ],
+  "exit": [
+   {
+    "q": "Engine D is ___ engine.",
+    "o": [
+     "the cheapest",
+     "cheapest",
+     "the cheaper",
+     "the most cheap"
+    ],
+    "c": 0,
+    "e": "ص 24."
+   },
+   {
+    "q": "good → the ___",
+    "o": [
+     "best",
+     "goodest",
+     "better",
+     "most good"
+    ],
+    "c": 0,
+    "e": "ص 24."
+   },
+   {
+    "q": "Engine C is ___ Engine E.",
+    "o": [
+     "as powerful as",
+     "as powerful than",
+     "more powerful as",
+     "powerful as"
+    ],
+    "c": 0,
+    "e": "ص 24."
+   }
+  ]
+ },
+ "u4-l1": {
+  "open": [
+   "A big machine you have seen",
+   "Describe a process you know in three steps",
+   "Why do we use the passive in processes?"
+  ],
+  "exit": [
+   {
+    "q": "The rocks ___ by large scoops.",
+    "o": [
+     "are collected",
+     "is collected",
+     "collect",
+     "collected"
+    ],
+    "c": 0,
+    "e": "ص 27."
+   },
+   {
+    "q": "The propeller is ___ by an engine.",
+    "o": [
+     "driven",
+     "drove",
+     "drive",
+     "drived"
+    ],
+    "c": 0,
+    "e": "ص 27."
+   },
+   {
+    "q": "Heading:",
+    "o": [
+     "Collecting the rocks",
+     "Collect the rocks",
+     "Collected rocks",
+     "Rocks collect"
+    ],
+    "c": 0,
+    "e": "ص 26."
+   }
+  ]
+ },
+ "u4-l2": {
+  "open": [
+   "A factory near your city and what it makes",
+   "Why do factories use robots?",
+   "One stage of making a car"
+  ],
+  "exit": [
+   {
+    "q": "The body is painted ___ it from rust.",
+    "o": [
+     "to protect",
+     "for protect",
+     "protecting",
+     "to protecting"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   },
+   {
+    "q": "How ___ the parts delivered?",
+    "o": [
+     "are",
+     "do",
+     "is",
+     "does"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   },
+   {
+    "q": "Who is the body checked ___?",
+    "o": [
+     "by",
+     "with",
+     "from",
+     "to"
+    ],
+    "c": 0,
+    "e": "ص 29."
+   }
+  ]
+ },
+ "u4-l3": {
+  "open": [
+   "How does your home get the internet?",
+   "A device that receives signals",
+   "Explain a system with which"
+  ],
+  "exit": [
+   {
+    "q": "…the feed horn, ___ converts the signal.",
+    "o": [
+     "which",
+     "who",
+     "what",
+     "it"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   },
+   {
+    "q": "transmit =",
+    "o": [
+     "send",
+     "get",
+     "show",
+     "work"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   },
+   {
+    "q": "It's a 13-___ fuse.",
+    "o": [
+     "amp",
+     "amps",
+     "ampere's",
+     "amped"
+    ],
+    "c": 0,
+    "e": "ص 31."
+   }
+  ]
+ },
+ "u4-l4": {
+  "open": [
+   "Which fuel is the best for the environment?",
+   "Describe a process with the passive",
+   "A car you like and why"
+  ],
+  "exit": [
+   {
+    "q": "LPG is the ___ harmful fuel.",
+    "o": [
+     "least",
+     "less",
+     "little",
+     "lower"
+    ],
+    "c": 0,
+    "e": "ص 32."
+   },
+   {
+    "q": "Sorry, ___ you say db13?",
+    "o": [
+     "did",
+     "do",
+     "would",
+     "shall"
+    ],
+    "c": 0,
+    "e": "ص 33."
+   },
+   {
+    "q": "First the spark plug cover ___ off.",
+    "o": [
+     "is taken",
+     "takes",
+     "is took",
+     "taken"
+    ],
+    "c": 0,
+    "e": "ص 34."
+   }
+  ]
  }
 });

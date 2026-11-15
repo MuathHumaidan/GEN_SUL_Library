@@ -54,7 +54,7 @@ B.lesson({
   {h:'تمارين الكتاب',ref:'ص 4–5',html:
    bk(1,'ص 4','ناقش مع زميلك: كم ميكانيكياً في فريق الصيانة في سباق كبير؟ وما أعمالهم؟',['c) about 20 (twenty mechanics)','wheel-gun · wheel-on · wheel-off · wheel-jack · fuel'],'الإجابات من النص في التمرين 2.')+
    bk(2,'ص 4','اقرأ المقابلة مع رئيس الفريق، وتحقق من إجاباتك في 1.',['20 mechanics · 5 teams: wheel-gun, wheel-on, wheel-off, wheel-jack, fuel'])+
-   bk(3,'ص 5','سمِّ الأجزاء في الصورة.',['1 wheel gun','2 jack','3 hose','4 nozzle','5 socket','6 flap'])+
+   bk(3,'ص 5','سمِّ الأجزاء في الصورة.',['1 wheel gun','2 jack','3 hose','4 nozzle','5 flap','6 socket'])+
    bk(4,'ص 5','أكمل قائمة التعليمات لكل فريق.',['Team 1: 1 Place the jacks under the car. · 4 Lower the car. · 5 Take the jacks away.','Team 2: 4 Raise a hand (to signal that everything is OK).','Team 3: 2 Take the old wheels away.','Team 4: 2 Adjust the air pressure. · 4 Take the covers off the new wheels. · 5 Put the new wheels on.','Team 5: 1 Push the nozzle into the fuel socket. · 2 Pump fuel into the car. · 3 Pull out the fuel nozzle. · 4 Clean spilled fuel off the car.'],'إجابات نموذجية من النص؛ تُقبل صياغات قريبة.')}
  ],
  stations:[

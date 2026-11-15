@@ -230,5 +230,852 @@ PLCBOOK.errs({
    ],
    "answer": "It receives instructions by means of a wireless receiver."
   }
+ ],
+ "u2-l1": [
+  {
+   "ex": "مثال 1: عادة أم اليوم؟",
+   "title": "جدول",
+   "given": "usually check / today repair",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "الخطوة 1: Adel usually checks the generators."
+    },
+    {
+     "t": "الخطوة 2: But today he repairs a power line.",
+     "bad": true,
+     "why": "المؤقت بالمستمر.",
+     "fix": "But today he's repairing a power line.",
+     "reasons": [
+      "المستمر للمؤقت",
+      "البسيط للمؤقت",
+      "الماضي",
+      "المضارع التام"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Adel usually checks the generators, but today he's repairing a power line."
+  },
+  {
+   "ex": "مثال 2: الوظيفة",
+   "title": "وصف",
+   "given": "Assistant Driller",
+   "ask": "صِف.",
+   "steps": [
+    {
+     "t": "الخطوة 1: I'm an Assistant Driller."
+    },
+    {
+     "t": "الخطوة 2: I report the Driller.",
+     "bad": true,
+     "why": "report to.",
+     "fix": "I report to the Driller.",
+     "reasons": [
+      "report at",
+      "report to",
+      "report بلا to",
+      "report for"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "I'm an Assistant Driller. I report to the Driller."
+  },
+  {
+   "ex": "مثال 3: الفاعل المفرد",
+   "title": "وصف",
+   "given": "He / operate",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: He / operate"
+    },
+    {
+     "t": "الخطوة 1: He operate the cranes.",
+     "bad": true,
+     "why": "المفرد + s.",
+     "fix": "He operates the cranes.",
+     "reasons": [
+      "operating",
+      "is operate",
+      "operates",
+      "operate"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "He operates the cranes."
+  }
+ ],
+ "u2-l2": [
+  {
+   "ex": "مثال 1: خطة",
+   "title": "مفكرة",
+   "given": "TUE 10.00 meet engineers",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: TUE 10.00 meet engineers"
+    },
+    {
+     "t": "الخطوة 1: On Tuesday at 10, I meeting the engineers.",
+     "bad": true,
+     "why": "المستمر: am + ing.",
+     "fix": "On Tuesday at 10, I'm meeting the engineers.",
+     "reasons": [
+      "I meeting",
+      "I meet",
+      "I'm meet",
+      "I'm meeting"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "On Tuesday at 10, I'm meeting the engineers."
+  },
+  {
+   "ex": "مثال 2: want to",
+   "title": "نية",
+   "given": "finish the report",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: finish the report"
+    },
+    {
+     "t": "الخطوة 1: I want finish the report next week.",
+     "bad": true,
+     "why": "want to + الفعل.",
+     "fix": "I want to finish the report next week.",
+     "reasons": [
+      "want to finish",
+      "want finish",
+      "want finishing",
+      "want to finishing"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "I want to finish the report next week."
+  },
+  {
+   "ex": "مثال 3: بريد",
+   "title": "رسمي",
+   "given": "Sorry, I can't come.",
+   "ask": "اجعلها رسمية.",
+   "steps": [
+    {
+     "t": "المعطى: Sorry, I can't come."
+    },
+    {
+     "t": "الخطوة 1: Fortunately, I cannot attend the meeting.",
+     "bad": true,
+     "why": "خبر سيئ: Unfortunately.",
+     "fix": "Unfortunately, I cannot attend the meeting.",
+     "reasons": [
+      "I attach",
+      "Unfortunately",
+      "Fortunately",
+      "Many thanks"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Unfortunately, I cannot attend the meeting."
+  }
+ ],
+ "u2-l3": [
+  {
+   "ex": "مثال 1: السيرة",
+   "title": "ماضٍ",
+   "given": "2005 leave Comet",
+   "ask": "احكِ.",
+   "steps": [
+    {
+     "t": "المعطى: 2005 leave Comet"
+    },
+    {
+     "t": "الخطوة 1: In 2005, I leaved Comet.",
+     "bad": true,
+     "why": "leave → left.",
+     "fix": "In 2005, I left Comet.",
+     "reasons": [
+      "leave",
+      "have left",
+      "left",
+      "leaved"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "In 2005, I left Comet."
+  },
+  {
+   "ex": "مثال 2: السؤال",
+   "title": "مقابلة",
+   "given": "where / work / 2004",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: where / work / 2004"
+    },
+    {
+     "t": "الخطوة 1: Where you worked in 2004?",
+     "bad": true,
+     "why": "السؤال بـ did.",
+     "fix": "Where did you work in 2004?",
+     "reasons": [
+      "you worked",
+      "did you worked",
+      "do you work",
+      "did you work"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Where did you work in 2004?"
+  },
+  {
+   "ex": "مثال 3: الكلمة",
+   "title": "عائلة",
+   "given": "mechanic / mechanics",
+   "ask": "اختر.",
+   "steps": [
+    {
+     "t": "المعطى: mechanic / mechanics"
+    },
+    {
+     "t": "الخطوة 1: He studied mechanic at college.",
+     "bad": true,
+     "why": "المادة: mechanics.",
+     "fix": "He studied mechanics at college.",
+     "reasons": [
+      "mechanics",
+      "mechanic",
+      "mechanical",
+      "mechanism"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "He studied mechanics at college."
+  }
+ ],
+ "u2-l4": [
+  {
+   "ex": "مثال 1: الضمير",
+   "title": "فعل مركب",
+   "given": "putting / them / on",
+   "ask": "رتّب.",
+   "steps": [
+    {
+     "t": "المعطى: putting / them / on"
+    },
+    {
+     "t": "الخطوة 1: I'm putting on them right now.",
+     "bad": true,
+     "why": "الضمير بين الفعل والأداة.",
+     "fix": "I'm putting them on right now.",
+     "reasons": [
+      "putting on",
+      "putting them on",
+      "putting on them",
+      "put them on"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "I'm putting them on right now."
+  },
+  {
+   "ex": "مثال 2: وقت محدد",
+   "title": "زمن",
+   "given": "this morning",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: this morning"
+    },
+    {
+     "t": "الخطوة 1: We have checked the tyres this morning.",
+     "bad": true,
+     "why": "وقت محدد: الماضي البسيط.",
+     "fix": "We checked the tyres this morning.",
+     "reasons": [
+      "check",
+      "are checking",
+      "checked",
+      "have checked"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "We checked the tyres this morning."
+  },
+  {
+   "ex": "مثال 3: الهيكل",
+   "title": "تنظيم",
+   "given": "Junior Technician → Senior Technician",
+   "ask": "صِف.",
+   "steps": [
+    {
+     "t": "المعطى: Junior Technician → Senior Technician"
+    },
+    {
+     "t": "الخطوة 1: The Junior Technician manages the Senior Technician.",
+     "bad": true,
+     "why": "الأدنى يرفع تقاريره إلى الأعلى.",
+     "fix": "The Junior Technician reports to the Senior Technician.",
+     "reasons": [
+      "manages",
+      "supervises",
+      "works",
+      "reports to"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "The Junior Technician reports to the Senior Technician."
+  }
+ ],
+ "u3-l1": [
+  {
+   "ex": "مثال 1: الحد",
+   "title": "عبّارة",
+   "given": "2.9 m",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: 2.9 m"
+    },
+    {
+     "t": "الخطوة 1: The vehicle must not be more high than 2.9 m.",
+     "bad": true,
+     "why": "high → higher.",
+     "fix": "The vehicle must not be higher than 2.9 m.",
+     "reasons": [
+      "higher than",
+      "more high than",
+      "highest",
+      "high than"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "The vehicle must not be higher than 2.9 m."
+  },
+  {
+   "ex": "مثال 2: المقارنة",
+   "title": "صفة",
+   "given": "big",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: big"
+    },
+    {
+     "t": "الخطوة 1: The box is biger than the CD.",
+     "bad": true,
+     "why": "نضاعف g.",
+     "fix": "The box is bigger than the CD.",
+     "reasons": [
+      "biggest",
+      "bigger",
+      "biger",
+      "more big"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "The box is bigger than the CD."
+  },
+  {
+   "ex": "مثال 3: too",
+   "title": "مشكلة",
+   "given": "ship 12.2 m / canal 11.5 m",
+   "ask": "اشرح.",
+   "steps": [
+    {
+     "t": "المعطى: ship 12.2 m / canal 11.5 m"
+    },
+    {
+     "t": "الخطوة 1: The ship is enough wide for the canal.",
+     "bad": true,
+     "why": "المشكلة: too wide.",
+     "fix": "The ship is too wide for the canal.",
+     "reasons": [
+      "wide enough",
+      "wider",
+      "too wide",
+      "enough wide"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "The ship is too wide for the canal."
+  }
+ ],
+ "u3-l2": [
+  {
+   "ex": "مثال 1: mind",
+   "title": "هاتف",
+   "given": "telling",
+   "ask": "اطلب.",
+   "steps": [
+    {
+     "t": "المعطى: telling"
+    },
+    {
+     "t": "الخطوة 1: Would you mind to tell me the problem?",
+     "bad": true,
+     "why": "mind + ing.",
+     "fix": "Would you mind telling me what the problem is?",
+     "reasons": [
+      "to tell",
+      "tell",
+      "told",
+      "telling"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Would you mind telling me what the problem is?"
+  },
+  {
+   "ex": "مثال 2: العرض",
+   "title": "هاتف",
+   "given": "send a table",
+   "ask": "اعرض.",
+   "steps": [
+    {
+     "t": "المعطى: send a table"
+    },
+    {
+     "t": "الخطوة 1: Would you like me send you a table?",
+     "bad": true,
+     "why": "me to + الفعل.",
+     "fix": "Would you like me to send you a specification table?",
+     "reasons": [
+      "me to send",
+      "me send",
+      "me sending",
+      "I send"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Would you like me to send you a specification table?"
+  },
+  {
+   "ex": "مثال 3: much",
+   "title": "مقارنة",
+   "given": "94 g / 135 g",
+   "ask": "قارن.",
+   "steps": [
+    {
+     "t": "المعطى: 94 g / 135 g"
+    },
+    {
+     "t": "الخطوة 1: The Fonarama is very lighter than the Classic.",
+     "bad": true,
+     "why": "much + المقارنة.",
+     "fix": "The Fonarama is much lighter than the Classic.",
+     "reasons": [
+      "too",
+      "much",
+      "very",
+      "more"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "The Fonarama is much lighter than the Classic."
+  }
+ ],
+ "u3-l3": [
+  {
+   "ex": "مثال 1: التفضيل",
+   "title": "محرك",
+   "given": "cheap",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: cheap"
+    },
+    {
+     "t": "الخطوة 1: Engine D is cheapest engine.",
+     "bad": true,
+     "why": "نحتاج the.",
+     "fix": "Engine D is the cheapest engine.",
+     "reasons": [
+      "the cheaper",
+      "the most cheap",
+      "the cheapest",
+      "cheapest"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Engine D is the cheapest engine."
+  },
+  {
+   "ex": "مثال 2: صفة طويلة",
+   "title": "محرك",
+   "given": "expensive",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: expensive"
+    },
+    {
+     "t": "الخطوة 1: Engine B is the expensivest engine.",
+     "bad": true,
+     "why": "the most + صفة طويلة.",
+     "fix": "Engine B is the most expensive engine.",
+     "reasons": [
+      "the expensivest",
+      "the more expensive",
+      "most expensive",
+      "the most expensive"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Engine B is the most expensive engine."
+  },
+  {
+   "ex": "مثال 3: التساوي",
+   "title": "محرك",
+   "given": "115 hp",
+   "ask": "قارن.",
+   "steps": [
+    {
+     "t": "المعطى: 115 hp"
+    },
+    {
+     "t": "الخطوة 1: Engine C is as powerful than Engine E.",
+     "bad": true,
+     "why": "as … as.",
+     "fix": "Engine C is as powerful as Engine E.",
+     "reasons": [
+      "as … as",
+      "as … than",
+      "more … as",
+      "so … as"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Engine C is as powerful as Engine E."
+  }
+ ],
+ "u4-l1": [
+  {
+   "ex": "مثال 1: المجهول",
+   "title": "عملية",
+   "given": "Scoops collect the rocks.",
+   "ask": "حوّل.",
+   "steps": [
+    {
+     "t": "المعطى: Scoops collect the rocks."
+    },
+    {
+     "t": "الخطوة 1: The rocks is collected by scoops.",
+     "bad": true,
+     "why": "الجمع مع are.",
+     "fix": "The rocks are collected by scoops.",
+     "reasons": [
+      "collected",
+      "are collected",
+      "is collected",
+      "are collect"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "The rocks are collected by scoops."
+  },
+  {
+   "ex": "مثال 2: التصريف الثالث",
+   "title": "شاذ",
+   "given": "drive",
+   "ask": "حوّل.",
+   "steps": [
+    {
+     "t": "المعطى: drive"
+    },
+    {
+     "t": "الخطوة 1: The propeller is drove by an engine.",
+     "bad": true,
+     "why": "drive → driven.",
+     "fix": "The propeller is driven by an engine.",
+     "reasons": [
+      "drived",
+      "drive",
+      "driven",
+      "drove"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "The propeller is driven by an engine."
+  },
+  {
+   "ex": "مثال 3: العنوان",
+   "title": "مرحلة",
+   "given": "collect the rocks",
+   "ask": "اكتب العنوان.",
+   "steps": [
+    {
+     "t": "المعطى: collect the rocks"
+    },
+    {
+     "t": "الخطوة 1: Collect the rocks",
+     "bad": true,
+     "why": "العنوان بـ ing.",
+     "fix": "Collecting the rocks",
+     "reasons": [
+      "Collect",
+      "Collected",
+      "To collect",
+      "Collecting"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Collecting the rocks"
+  }
+ ],
+ "u4-l2": [
+  {
+   "ex": "مثال 1: الغرض",
+   "title": "لماذا؟",
+   "given": "protect it from rust",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: protect it from rust"
+    },
+    {
+     "t": "الخطوة 1: The body is painted for protect it from rust.",
+     "bad": true,
+     "why": "الغرض بـ to.",
+     "fix": "The body is painted to protect it from rust.",
+     "reasons": [
+      "to protect",
+      "for protect",
+      "protecting",
+      "to protecting"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "The body is painted to protect it from rust."
+  },
+  {
+   "ex": "مثال 2: السؤال",
+   "title": "مجهول",
+   "given": "How / parts / deliver",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: How / parts / deliver"
+    },
+    {
+     "t": "الخطوة 1: How the parts are delivered?",
+     "bad": true,
+     "why": "are قبل الشيء.",
+     "fix": "How are the parts delivered?",
+     "reasons": [
+      "are the parts deliver",
+      "are the parts delivered",
+      "the parts are delivered",
+      "do the parts delivered"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "How are the parts delivered?"
+  },
+  {
+   "ex": "مثال 3: by",
+   "title": "فاعل",
+   "given": "human workers",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: human workers"
+    },
+    {
+     "t": "الخطوة 1: Who is the body checked with?",
+     "bad": true,
+     "why": "by للفاعل.",
+     "fix": "Who is the body checked by?",
+     "reasons": [
+      "from",
+      "to",
+      "by",
+      "with"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Who is the body checked by?"
+  }
+ ],
+ "u4-l3": [
+  {
+   "ex": "مثال 1: which",
+   "title": "ربط",
+   "given": "the feed horn",
+   "ask": "اربط.",
+   "steps": [
+    {
+     "t": "المعطى: the feed horn"
+    },
+    {
+     "t": "الخطوة 1: The dish reflects the signal to the feed horn, who converts it.",
+     "bad": true,
+     "why": "للأشياء which.",
+     "fix": "The dish reflects the signal to the feed horn, which converts it.",
+     "reasons": [
+      "who",
+      "what",
+      "that it",
+      "which"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "The dish reflects the signal to the feed horn, which converts it."
+  },
+  {
+   "ex": "مثال 2: who",
+   "title": "ربط",
+   "given": "our technician",
+   "ask": "اربط.",
+   "steps": [
+    {
+     "t": "المعطى: our technician"
+    },
+    {
+     "t": "الخطوة 1: Contact our technician, which will repair it.",
+     "bad": true,
+     "why": "للأشخاص who.",
+     "fix": "Contact our technician, who will repair it.",
+     "reasons": [
+      "who",
+      "which",
+      "what",
+      "he"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Contact our technician, who will repair it."
+  },
+  {
+   "ex": "مثال 3: الصفة المركبة",
+   "title": "شرطة",
+   "given": "13 amps",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: 13 amps"
+    },
+    {
+     "t": "الخطوة 1: It's a 13-amps fuse.",
+     "bad": true,
+     "why": "الوحدة مفردة.",
+     "fix": "It's a 13-amp fuse.",
+     "reasons": [
+      "amps-13",
+      "13-amp",
+      "13-amps",
+      "13 amps"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "It's a 13-amp fuse."
+  }
+ ],
+ "u4-l4": [
+  {
+   "ex": "مثال 1: التفضيل",
+   "title": "وقود",
+   "given": "harmful",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: harmful"
+    },
+    {
+     "t": "الخطوة 1: LPG is the less harmful fuel.",
+     "bad": true,
+     "why": "التفضيل: the least.",
+     "fix": "LPG is the least harmful fuel.",
+     "reasons": [
+      "the most less",
+      "less",
+      "the least",
+      "the less"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "LPG is the least harmful fuel."
+  },
+  {
+   "ex": "مثال 2: المجهول",
+   "title": "عملية",
+   "given": "loosen the spark plug",
+   "ask": "صِف.",
+   "steps": [
+    {
+     "t": "المعطى: loosen the spark plug"
+    },
+    {
+     "t": "الخطوة 1: Then the spark plug loosened.",
+     "bad": true,
+     "why": "نحتاج is.",
+     "fix": "Then the spark plug is loosened.",
+     "reasons": [
+      "loosened",
+      "is loosen",
+      "are loosened",
+      "is loosened"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Then the spark plug is loosened."
+  },
+  {
+   "ex": "مثال 3: one",
+   "title": "هاتف",
+   "given": "external hard drive",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: external hard drive"
+    },
+    {
+     "t": "الخطوة 1: There's with a cable, and there's a wireless.",
+     "bad": true,
+     "why": "نحتاج one.",
+     "fix": "There's one with a cable, and there's a wireless one.",
+     "reasons": [
+      "one … one",
+      "بلا one",
+      "it … it",
+      "ones … ones"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "There's one with a cable, and there's a wireless one."
+  }
  ]
 });

@@ -69,6 +69,217 @@ PLCBOOK.study({
      "l": "u1-l3"
     }
    ]
+  },
+  "u2": {
+   "title": "Work — العمل",
+   "cards": [
+    {
+     "k": "law",
+     "f": "He usually supervises … / Today he's operating …",
+     "b": "المضارع البسيط للعادة، والمستمر للمؤقت والآن.",
+     "ref": "ص 10",
+     "l": "u2-l1"
+    },
+    {
+     "k": "def",
+     "f": "onshore ≠ offshore · on duty ≠ off duty · on leave",
+     "b": "مفردات العمل البحري.",
+     "ref": "ص 10",
+     "l": "u2-l1"
+    },
+    {
+     "k": "law",
+     "f": "I operate … · I supervise … · I report to …",
+     "b": "وصف الوظيفة بالمضارع البسيط.",
+     "ref": "ص 11",
+     "l": "u2-l1"
+    },
+    {
+     "k": "law",
+     "f": "I'm holding / I'm going to hold a meeting.",
+     "b": "الخطط بالمستمر أو going to.",
+     "ref": "ص 12",
+     "l": "u2-l2"
+    },
+    {
+     "k": "law",
+     "f": "want / intend / hope / plan + to",
+     "b": "بعدها to + الفعل كما هو.",
+     "ref": "ص 12",
+     "l": "u2-l2"
+    },
+    {
+     "k": "def",
+     "f": "With reference to · Unfortunately, · I attach · Kind regards",
+     "b": "عبارات البريد الرسمي.",
+     "ref": "ص 13",
+     "l": "u2-l2"
+    },
+    {
+     "k": "law",
+     "f": "From 2003 until 2005, I worked … · In 2006, I received …",
+     "b": "السيرة بالماضي البسيط.",
+     "ref": "ص 14",
+     "l": "u2-l3"
+    },
+    {
+     "k": "def",
+     "f": "mechanic (شخص) · mechanics (مادة) · mechanical (صفة)",
+     "b": "عائلة الكلمة.",
+     "ref": "ص 15",
+     "l": "u2-l3"
+    },
+    {
+     "k": "law",
+     "f": "We checked them this morning. (وقت محدد)",
+     "b": "مع الوقت المحدد: الماضي البسيط لا التام.",
+     "ref": "ص 17",
+     "l": "u2-l4"
+    },
+    {
+     "k": "def",
+     "f": "manage · supervise · report to · work for",
+     "b": "الهيكل التنظيمي.",
+     "ref": "ص 17",
+     "l": "u2-l4"
+    }
+   ]
+  },
+  "u3": {
+   "title": "Comparison — المقارنة",
+   "cards": [
+    {
+     "k": "law",
+     "f": "How long / wide / high is it?",
+     "b": "السؤال عن المقاسات.",
+     "ref": "ص 20",
+     "l": "u3-l1"
+    },
+    {
+     "k": "law",
+     "f": "The vehicle must not be wider than 2 metres.",
+     "b": "الحد: must not be + المقارنة + than.",
+     "ref": "ص 20",
+     "l": "u3-l1"
+    },
+    {
+     "k": "law",
+     "f": "wider · noisier · bigger · more expensive · better",
+     "b": "صيغة المقارنة.",
+     "ref": "ص 21",
+     "l": "u3-l1"
+    },
+    {
+     "k": "law",
+     "f": "too high for · not high enough for",
+     "b": "وصف المشكلة.",
+     "ref": "ص 21",
+     "l": "u3-l1"
+    },
+    {
+     "k": "law",
+     "f": "Could you …? · Would you mind …ing? · Shall I …?",
+     "b": "العبارات المهذبة في الهاتف.",
+     "ref": "ص 22",
+     "l": "u3-l2"
+    },
+    {
+     "k": "law",
+     "f": "much lighter than · only 94 g",
+     "b": "much للفرق الكبير.",
+     "ref": "ص 23",
+     "l": "u3-l2"
+    },
+    {
+     "k": "def",
+     "f": "Which one? The black one.",
+     "b": "one بدل تكرار الاسم.",
+     "ref": "ص 23",
+     "l": "u3-l2"
+    },
+    {
+     "k": "law",
+     "f": "the fastest · the most expensive · the best",
+     "b": "صيغة التفضيل مع the.",
+     "ref": "ص 24",
+     "l": "u3-l3"
+    },
+    {
+     "k": "law",
+     "f": "as powerful as",
+     "b": "التساوي.",
+     "ref": "ص 24",
+     "l": "u3-l3"
+    }
+   ]
+  },
+  "u4": {
+   "title": "Processes — العمليات",
+   "cards": [
+    {
+     "k": "law",
+     "f": "The rocks are collected by large scoops.",
+     "b": "المبني للمجهول: is/are + التصريف الثالث (+ by).",
+     "ref": "ص 27",
+     "l": "u4-l1"
+    },
+    {
+     "k": "law",
+     "f": "First the engine is run … Then it is switched off.",
+     "b": "من التعليمات إلى وصف العملية.",
+     "ref": "ص 27",
+     "l": "u4-l1"
+    },
+    {
+     "k": "def",
+     "f": "Cutting the rock surface · Collecting the rocks",
+     "b": "عناوين المراحل بـ ing.",
+     "ref": "ص 26",
+     "l": "u4-l1"
+    },
+    {
+     "k": "law",
+     "f": "The body is painted to protect it from rust.",
+     "b": "الغرض: to + الفعل.",
+     "ref": "ص 29",
+     "l": "u4-l2"
+    },
+    {
+     "k": "law",
+     "f": "How are the parts delivered?",
+     "b": "السؤال بالمبني للمجهول.",
+     "ref": "ص 29",
+     "l": "u4-l2"
+    },
+    {
+     "k": "law",
+     "f": "…, which … (شيء) · …, who … (شخص)",
+     "b": "ربط جملتين.",
+     "ref": "ص 31",
+     "l": "u4-l3"
+    },
+    {
+     "k": "def",
+     "f": "transmit = send · convert = change · extract = take out",
+     "b": "كلمات متقاربة.",
+     "ref": "ص 31",
+     "l": "u4-l3"
+    },
+    {
+     "k": "law",
+     "f": "a high-frequency signal · a 13-amp fuse",
+     "b": "الصفة المركبة بالشرطة.",
+     "ref": "ص 31",
+     "l": "u4-l3"
+    },
+    {
+     "k": "law",
+     "f": "the least harmful · the cleanest",
+     "b": "مراجعة التفضيل.",
+     "ref": "ص 32",
+     "l": "u4-l4"
+    }
+   ]
   }
  },
  "lessons": {
@@ -142,6 +353,281 @@ PLCBOOK.study({
       [
        "voice-operated computer",
        "by speaking to it"
+      ]
+     ]
+    }
+   ]
+  },
+  "u2-l1": {
+   "match": [
+    {
+     "title": "وصّل الكلمة بضدها أو معناها",
+     "pairs": [
+      [
+       "onshore",
+       "offshore"
+      ],
+      [
+       "on duty",
+       "off duty"
+      ],
+      [
+       "on leave",
+       "on holiday"
+      ],
+      [
+       "usually",
+       "today (مؤقت)"
+      ]
+     ]
+    }
+   ]
+  },
+  "u2-l2": {
+   "match": [
+    {
+     "title": "وصّل العبارة بوظيفتها",
+     "pairs": [
+      [
+       "Many thanks for …",
+       "شكر"
+      ],
+      [
+       "Unfortunately, …",
+       "خبر سيئ"
+      ],
+      [
+       "I attach …",
+       "مرفق"
+      ],
+      [
+       "Kind regards",
+       "ختام"
+      ]
+     ]
+    }
+   ]
+  },
+  "u2-l3": {
+   "match": [
+    {
+     "title": "وصّل الفعل بماضيه",
+     "pairs": [
+      [
+       "leave",
+       "left"
+      ],
+      [
+       "become",
+       "became"
+      ],
+      [
+       "study",
+       "studied"
+      ],
+      [
+       "receive",
+       "received"
+      ]
+     ]
+    }
+   ]
+  },
+  "u2-l4": {
+   "match": [
+    {
+     "title": "وصّل الصورة بالتعليمة",
+     "pairs": [
+      [
+       "The light is off.",
+       "Switch it on."
+      ],
+      [
+       "The plug is in.",
+       "Pull it out."
+      ],
+      [
+       "Tools on the floor.",
+       "Pick them up."
+      ],
+      [
+       "Old oil in the bottle.",
+       "Pour it out."
+      ]
+     ]
+    }
+   ]
+  },
+  "u3-l1": {
+   "match": [
+    {
+     "title": "وصّل الصفة بالمقارنة",
+     "pairs": [
+      [
+       "wide",
+       "wider"
+      ],
+      [
+       "noisy",
+       "noisier"
+      ],
+      [
+       "big",
+       "bigger"
+      ],
+      [
+       "expensive",
+       "more expensive"
+      ]
+     ]
+    }
+   ]
+  },
+  "u3-l2": {
+   "match": [
+    {
+     "title": "وصّل العبارة بوظيفتها",
+     "pairs": [
+      [
+       "I'd like to …",
+       "ما تريد"
+      ],
+      [
+       "Shall I …?",
+       "عرض خدمة"
+      ],
+      [
+       "Could you …?",
+       "طلب"
+      ],
+      [
+       "Did you say …?",
+       "تحقق"
+      ]
+     ]
+    }
+   ]
+  },
+  "u3-l3": {
+   "match": [
+    {
+     "title": "وصّل الصفة بالتفضيل",
+     "pairs": [
+      [
+       "fast",
+       "the fastest"
+      ],
+      [
+       "good",
+       "the best"
+      ],
+      [
+       "noisy",
+       "the noisiest"
+      ],
+      [
+       "expensive",
+       "the most expensive"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l1": {
+   "match": [
+    {
+     "title": "وصّل المعلوم بالمجهول",
+     "pairs": [
+      [
+       "Scoops collect the rocks.",
+       "The rocks are collected."
+      ],
+      [
+       "Cylinders push the cutter.",
+       "The cutter is pushed."
+      ],
+      [
+       "Workers fill the holes.",
+       "The holes are filled."
+      ],
+      [
+       "An engine drives the propeller.",
+       "The propeller is driven."
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l2": {
+   "match": [
+    {
+     "title": "وصّل العمل بغرضه",
+     "pairs": [
+      [
+       "weld metal sheets",
+       "to make the car body"
+      ],
+      [
+       "wear special clothes",
+       "to protect the paint"
+      ],
+      [
+       "put the car on rollers",
+       "to check the wheels"
+      ],
+      [
+       "check the body by hand",
+       "to look for faults"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l3": {
+   "match": [
+    {
+     "title": "وصّل الكلمة بمعناها",
+     "pairs": [
+      [
+       "transmit",
+       "send"
+      ],
+      [
+       "receive",
+       "get"
+      ],
+      [
+       "convert",
+       "change"
+      ],
+      [
+       "display",
+       "show"
+      ]
+     ]
+    }
+   ]
+  },
+  "u4-l4": {
+   "match": [
+    {
+     "title": "وصّل الوصف بمعناه",
+     "pairs": [
+      [
+       "high clearance",
+       "space between the ground and the chassis"
+      ],
+      [
+       "low fuel consumption",
+       "a long way on one tank"
+      ],
+      [
+       "strong towing power",
+       "pulls a trailer easily"
+      ],
+      [
+       "good visibility",
+       "the driver can see all around"
       ]
      ]
     }
