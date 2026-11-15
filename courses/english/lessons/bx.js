@@ -130,9 +130,27 @@ function run(el,x){addCss();try{
 
 
 /* تحويل تمرين الكتاب من نوع gaps إلى شكل الكتاب: أسطر بالترتيب، وصندوق كلمات إذا كانت الخيارات واحدة في كل البنود */
-function g2f(k){if(k.kind!=='gaps'||!Array.isArray(k.items))return k;const I=k.items;const key=it=>JSON.stringify(it.o);
+/* أسطر الكتاب الناقصة (سطر حوار أو مثال أو جملة بلا فراغ): BX.ctx({'lid#n':{ins:{رقم البند:[أسطر]},rep:{رقم البند:سطر|null},lines:[…],box:[…]}})
+   السطر نص عادي، والفراغ فيه بصيغة {الإجابة|خيار|خيار} أو {الإجابة} مع صندوق الكلمات. 'e' في ins = بعد آخر بند */
+const CTX={};
+function withCtx(lid,n,k){const c=CTX[lid+'#'+n];if(!c||!k||k.kind!=='gaps')return k;
+  if(c.lines){const dl=c.lines.some(l=>typeof l==='string'&&/^[●○]/.test(l));return Object.assign({},k,{kind:'fill',layout:c.layout||(dl?'dlg':'list'),box:c.box||null,lines:dl?c.lines.map(l=>{const m=String(l).match(/^([●○])\s*/);return m?[m[1],l.slice(m[0].length)]:['',l]}):c.lines})}
+  const out=[];k.items.forEach((it,i)=>{(c.ins&&c.ins[i]||[]).forEach(l=>out.push(l));if(c.rep&&i in c.rep){if(c.rep[i]!=null)out.push(c.rep[i])}else out.push(it)});
+  (c.ins&&c.ins.e||[]).forEach(l=>out.push(l));return Object.assign({},k,{items:out})}
+function g2f(k){if(k.kind!=='gaps'||!Array.isArray(k.items))return k;const ALL=k.items,I=ALL.filter(it=>typeof it!=='string');const key=it=>JSON.stringify(it.o);
   const same=I.length>1&&I.every(it=>key(it)===key(I[0]))&&I[0].o.length>=3;
-  const lines=I.map(it=>{const ok=it.o[it.a];const g=same?`{${ok}}`:`{${[ok,...it.o.filter((_,j)=>j!==it.a)].join('|')}}`;return it.s.replace('___',g)});
+  const G1=it=>{const ok=it.o[it.a];return same?`{${ok}}`:`{${[ok,...it.o.filter((_,j)=>j!==it.a)].join('|')}}`};
+  /* دمج الجملة المقسّمة على بندين: (أ) نفس الجملة بفراغين مختلفين، (ب) بند ينتهي بـ … وما بعده يبدأ بـ … */
+  const lines=[];let prev=null;const MK=/\(\d+\)\s*/g,um=t=>t.replace(MK,'');
+  const build=pv=>{let t=pv.U;[...pv.reps].sort((x,y)=>y.q-x.q).forEach(r=>{t=t.slice(0,r.q)+r.m+r.g+t.slice(r.q+r.a.length)});return t};
+  const rep=(it,p,ans,g)=>{const pre=it.s.slice(0,p),mm=pre.match(/\(\d+\)\s*$/);return {q:um(pre).length,a:ans,g,m:mm?mm[0]:''}};
+  ALL.forEach(it=>{if(typeof it==='string'){lines.push(it);prev=null;return}
+    const ans=it.o[it.a],p=it.s.indexOf('___'),full=p<0?it.s:it.s.slice(0,p)+ans+it.s.slice(p+3),g=G1(it),U=um(full);
+    if(prev&&prev.U===U&&p>=0){const r=rep(it,p,ans,g);if(!prev.reps.some(x=>x.q===r.q)&&U.substr(r.q,ans.length)===ans){prev.reps.push(r);lines[lines.length-1]=build(prev);return}}
+    let line=p<0?it.s:it.s.slice(0,p)+g+it.s.slice(p+3);
+    if(prev&&/\s*…\s*$/.test(lines[lines.length-1])&&/^(\S+\s+)?…\s/.test(line)){const m=line.match(/^(\S+\s+)?…\s+/);const lead=m[1]||'';const L=lines[lines.length-1];
+      if(!lead||L.startsWith(lead)){lines[lines.length-1]=L.replace(/\s*…\s*$/,' ')+line.slice(m[0].length);prev={U:null,reps:[]};return}}
+    lines.push(line);prev={U,reps:p<0?[]:[rep(it,p,ans,g)]}});
   if(lines.some(l=>/[●○]/.test(l))){const L2=[];lines.forEach(l=>{const m=l.match(/^([0-9]+)\s+(?=[●○])/);let n=m?m[1]:'';const body=m?l.slice(m[0].length):l;
      const segs=body.split(/(?=[●○])/).map(x=>x.trim()).filter(Boolean);segs.forEach((g,i)=>{const w=/^[●○]/.test(g)?g[0]:'';L2.push([i===0?n:'',w,w?g.slice(1).trim():g])})});
     return Object.assign({},k,{kind:'fill',layout:'dlg',box:same?I[0].o:null,lines:L2})}
@@ -143,7 +161,7 @@ const audT=t=>`<div class="bx-aud"><p>🎧 المقطع <span dir="ltr">${t.id}<
 const aqBox=(host,id)=>{const tq=id&&AQ[id];if(!tq)return;const d=document.createElement('details');d.className='bx-aq';d.innerHTML='<summary>أسئلة إضافية على المقطع (من إعدادنا)</summary><div></div>';host.appendChild(d);run(d.querySelector('div'),tq)};
 const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<a href="${u}" target="_blank" rel="noopener" title="تكبير الصورة"><img src="${u}" alt="صورة من الكتاب" loading="lazy"></a>`).join('')}${k.cap?`<figcaption>${k.cap} <span class="zh">(اضغط الصورة لتكبيرها)</span></figcaption>`:''}</figure>`:'';
 const box=(lid,x)=>{const w=document.createElement('div');w.dataset.bx=lid+':'+x.n;
-  if(x.bk){const b=document.createElement('div');b.className='bx bkx';const k=g2f(x.bk);
+  if(x.bk){const b=document.createElement('div');b.className='bx bkx';const k=g2f(withCtx(lid,x.n,x.bk));
    const T=k.track?[{id:String(k.track).padStart(2,'0'),src:`audio/track-${String(k.track).padStart(2,'0')}.mp3`}]:trkOf(lid,x.n);T.forEach(t=>t.used=1);
    b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${T.map(audT).join('')}${fig(k)}<div class="bx-run"></div></div>`;
    run(b.querySelector('.bx-run'),k);T.forEach(t=>aqBox(b.querySelector('.bx-b'),t.id));
@@ -181,7 +199,7 @@ function injectAQ(view){view.querySelectorAll('.aud').forEach(a=>{const au=a.que
   addCss();const d=document.createElement('div');d.className='bx';d.dataset.aq=m[1];
   d.innerHTML=`<div class="bx-h"><span class="tg">تمرين على المقطع</span><b>المقطع ${en(m[1])}</b><span class="sub">استمع للمقطع ثم أجب (أسئلة من إعدادنا)</span></div><div class="bx-b"></div>`;
   a.after(d);run(d.querySelector('.bx-b'),x)})}
-G.BX={add:(lid,arr)=>{D[lid]=(D[lid]||[]).concat(arr)},bk:(lid,o)=>{(D[lid]||[]).forEach(x=>{if(o[x.n])x.bk=o[x.n]})},data:D,inject};
+G.BX={ctx:o=>Object.assign(CTX,o),view:(lid,n)=>{const x=(D[lid]||[]).find(z=>String(z.n)===String(n));return x&&x.bk?g2f(withCtx(lid,x.n,x.bk)):null},add:(lid,arr)=>{D[lid]=(D[lid]||[]).concat(arr)},bk:(lid,o)=>{(D[lid]||[]).forEach(x=>{if(o[x.n])x.bk=o[x.n]})},data:D,inject};
 G.AQ={add:(t,x)=>{AQ[t]=x},data:AQ};
 const go=()=>{const v=document.getElementById('view');if(!v)return;inject();let q=0;new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;inject()})}).observe(v,{childList:true,subtree:true})};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();

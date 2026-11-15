@@ -293,17 +293,21 @@ const GAP='input,select,textarea,.gp2,[data-gap]';
 const BLK=/^(DIV|P|LI|UL|OL|TABLE|THEAD|TBODY|TR|TD|TH|DETAILS|SUMMARY|H[1-6]|SECTION|FIGURE|FIGCAPTION|BLOCKQUOTE|DL|DT|DD|FORM|FIELDSET|NAV|HEADER|FOOTER|ARTICLE|ASIDE|MAIN|BR|IMG)$/;
 const INL=/^(B|I|EM|STRONG|SPAN|U|SUB|SUP|SMALL|CODE|BDI|MARK|A|BR|ABBR|Q|S)$/;
 const EXQ='.fx,.bx,.ebk,.pk-b,.pk-body,.pk-q,.pk-it,.vx-quiz,.lb-out,[data-ex]';
-const txt=n=>{if(n.nodeType===3)return n.nodeValue;if(n.nodeType!==1)return '';if(n.matches(GAP))return ' ___ ';if(n.matches('.tr-ar,.tr-btn,.say,script,style,svg,.lw-pop,[data-notr]'))return '';
+const gv=n=>{if(n.matches('.gp2.ok'))return n.textContent;if(n.tagName==='SELECT'&&n.classList.contains('ok')&&n.selectedIndex>0)return n.options[n.selectedIndex].text;if(n.tagName==='INPUT'&&n.classList.contains('ok'))return n.value;return null};
+let SOLV=false;/* SOLV: نص الجملة بعد الحل (الفراغ المحلول صحيحاً يُستبدل بإجابته) */
+const txt=n=>{if(n.nodeType===3)return n.nodeValue;if(n.nodeType!==1)return '';if(n.matches(GAP)){const v=SOLV&&gv(n);return v?' '+v+' ':' ___ '}if(n.matches('.tr-ar,.tr-btn,.say,script,style,svg,.lw-pop,[data-notr]'))return '';
  if(n.tagName==='BUTTON'&&!n.matches('.gp2'))return '';let s='';for(const c of n.childNodes)s+=txt(c);if(n.classList&&(n.classList.contains('enli')||n.classList.contains('vx-br')||n.classList.contains('vx-t')))s+=' ';return s};
-const norm=s=>String(s).replace(/<[^>]+>/g,' ').replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/🔊/g,'').replace(/_{2,}/g,'___').replace(/\s+/g,' ').replace(/\s+([.,?!:;])/g,'$1').trim()
+const norm=s=>String(s).replace(/<[^>]+>/g,' ').replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/🔊/g,'').replace(/_{2,}/g,'___').replace(/\s+/g,' ').replace(/\s+([.,?!:;])/g,'$1').replace(/(\w)\s+'(d|s|m|re|ve|ll)\b/g,"$1'$2").trim()
  .replace(/^(?:(?:\d+[.)]?|[a-h][.)]|[●○•·–✔✓:;-])\s*)+(?=\S)/,'').trim();
 const two=t=>/[A-Za-z][\w'-]*[\s/]+[^\s]*[A-Za-z]/.test(t);
+/* كلمة مفردة: تُترجم في خلية جدول إذا لم يكن في صفها معنى عربي */
+const one=(el,t)=>{if(!/^[A-Za-z][\w'-]*[.!?]?$/.test(t)||t.length<2)return false;const c=el.closest('td,th');if(!c)return false;const r=c.closest('tr');return !!r&&!AR.test(txt(r))};
 const NB=/^(inline|contents|none)$/;const blockKids=el=>[...el.children].some(c=>{if(c.matches(GAP+',.tr-ar,.tr-btn,.say,.ltr,.ltrw,.gp2'))return false;if(BLK.test(c.tagName)||c.classList.contains('enli')||c.classList.contains('vx-br')||c.classList.contains('vx-t'))return true;return !NB.test(getComputedStyle(c).display)});
 /* المرشحون: أصغر عنصر يحوي جملة إنجليزية كاملة بلا عربي */
 function cands(root,all){const out=[];const visit=el=>{if(el.nodeType!==1||el.matches(SKIP))return;if(!all&&el.dataset.tr)return;
   if(el.tagName==='BUTTON')return;
   const raw=txt(el);if(!raw.trim())return;if(/^\s*[✘✗]/.test(raw))return;const t=norm(raw);
-  if(t&&!AR.test(t)&&two(t)&&(el.classList.contains('vx-row')||!blockKids(el))){out.push([el,t]);return}
+  if(t&&!AR.test(t)&&(two(t)||one(el,t))&&(el.classList.contains('vx-row')||!blockKids(el))){out.push([el,t]);return}
   for(const c of el.children)visit(c)};visit(root);return out}
 /* 1 و 2: الترتيب */
 function tidy(root){
@@ -323,6 +327,7 @@ function tidy(root){
 /* 3: الترجمة */
 const drop=el=>{(el._trb||[]).forEach(x=>x.remove());el._trb=null;delete el.dataset.tr;el.classList.remove('tr-tap')};
 function attach(root){const D=G.ENTR||{};
+ root.querySelectorAll('[data-tr*="___"]').forEach(el=>{const b=(el._trb||[]).find(x=>x.classList&&x.classList.contains('tr-ar'));if(!b)return;SOLV=true;const k=norm(txt(el));SOLV=false;const v=(!k.includes('___')&&D[k])||D[el.dataset.tr];if(v&&b.textContent!==v)b.textContent=v});
  root.querySelectorAll('[data-tr]').forEach(el=>{if(norm(txt(el))!==el.dataset.tr)drop(el)});
  if(!Object.keys(D).length)return;
  cands(root).forEach(([el,t])=>{el.dataset.tr=t;const ar=D[t];if(!ar)return;
@@ -344,7 +349,7 @@ const css=document.createElement('style');css.textContent=`
 html.dark .tr-ar,[data-theme=dark] .tr-ar{background:#1f3329;color:#cfe9da}
 .fx-l li{flex-wrap:wrap}`;document.head.appendChild(css);
 let q=0;const run=()=>{q=0;const v=document.getElementById('view')||document.querySelector('main');if(!v)return;tidy(v);attach(v)};
-G.ENTRK={cands,norm,run,tidy,txt};
+G.ENTRK={solved:el=>{SOLV=true;const k=norm(txt(el));SOLV=false;return k},cands,norm,run,tidy,txt};
 const st=()=>{run();new MutationObserver(ms=>{if(ms.every(m=>[...m.addedNodes,...m.removedNodes].every(n=>n.nodeType===1&&n.matches&&n.matches('.tr-ar,.tr-btn'))))return;if(!q){q=1;setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})};
 if(document.readyState==='loading')addEventListener('DOMContentLoaded',st);else st();
 })(window);

@@ -1,0 +1,41 @@
+/* أسطر الكتاب الناقصة في تمارين «تمرين الكتاب» (من صفحات الكتاب) — انظر BX.ctx في bx.js */
+BX.ctx({
+'u2-l4#17':{lines:[
+ "How to take the truck off the skateboard",
+ "Step 1: (a) {Loosen} the large nut. (b) {Use} the large spanner.",
+ "Step 2: (c) {Take} the large nut (d) {off} the bolt.",
+ "Step 3: (e) {Take} the truck (f) {off} the bolts.",
+ "How to take the wheels off the truck",
+ "Step 4: (g) {Loosen} the small nuts. (h) {Use} the small spanner.",
+ "Step 5: (i) {Take} the small nuts (j) {off} the axle.",
+ "Step 6: (k) {Take} the wheels (l) {off} the axle."],box:['loosen','off','on','put','take','tighten','use']},
+'u3-l1#1':{ins:{0:["This is the new Multi Tool!","Use it at home. Use it on the building site. Use it when you travel."],e:["The Multi Tool has everything you need! Only £29.99. Buy one now!"]}},
+'u4-l4#5':{lines:[
+ "● Look at my radio. Do you like it?",
+ "○ Yes, it's great. What (1) {does|do} (do) that handle (2) {do|does} (do)?",
+ "● It (3) {turns|turn} (turn) a dynamo. The dynamo (4) {produces|produce} (produce) electricity for the radio.",
+ "○ What are those, at the top?",
+ "● They're solar panels. They (5) {charge|charges} (charge) the internal battery on a sunny day.",
+ "○ Can the radio also (6) {use|uses} (use) mains electricity?",
+ "● Yes, it can. And it also (7) {uses|use} (use) AA external batteries.",
+ "○ So your radio (8) {has|have} (have) four power sources!",
+ "● That's right."]},
+'u5-l2#7':{ins:{2:["The controller short-circuits the panel."]}},
+'u6-l4#4':{lines:[
+ "● How does the thermosiphon (1) {work|works} (work)?",
+ "○ Well, the cold water (2) {enters|enter} (enter) the system through the inlet. The water pressure (3) {pushes|push} (push) the water around the system.",
+ "● So how (4) {does|do} (do) the water (5) {become|becomes} (become) hot?",
+ "○ It (6) {flows|flow} (flow) into the panel and the sun's rays (7) {heat|heats} (heat) it. The warm water (8) {rises|rise} (rise) to the top of the panel and it (9) {passes|pass} (pass) from the panel into the tank.",
+ "● (10) {Does|Do} (do) the tank (11) {have|has} (have) a heater?",
+ "○ No, it (12) {doesn't|don't} (do not). The hot water (13) {stays|stay} (stay) at the top of the tank. If you (14) {open|opens} (open) the valve, the hot water (15) {flows|flow} (flow) from the top of the tank to the outlet."]},
+'u3-l3#1':{lines:[
+ "● OK, now put the cursor on the START button.",
+ "○ Where's the START button?",
+ "● It's {at} the {bottom}. On the {left}. Do you see it?",
+ "○ Yes. Is that it?",
+ "● Yes, that's correct. ... Now, move the cursor up to the CLOSE button.",
+ "○ Where's that?",
+ "● It's an X. It's {on} the {right}. At the {top}.",
+ "○ Is that it?",
+ "● Yes, that's it. Now click."],box:['at','bottom','on','left','right','top']},
+});
