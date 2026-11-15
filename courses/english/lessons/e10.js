@@ -369,7 +369,7 @@ B.lesson({
    bk(2,'ص 80','أكمل وصف الحوامة بالصيغة الصحيحة للأفعال.',['work','drives','suck','contains','moves'])+
    bk(3,'ص 80','أكمل الجمل عن مخطط التوصيل بالكلمات والعبارات.',null,'الإجابة حسب مواضع المقابس في رسم كتابك (above, below, between, in the centre, on the left/right, to the left/right).')+
    bk(4,'ص 81','تعرّف على الجهاز من الوصف.',['digital receiver','battery','router','modem','starter motor','disk drive'])+
-   bk(5,'ص 81','أكمل الجمل عن الصور بعبارات التثبيت.',['suspended from','connected to','mounted on','connected to','attached to · suspended from','mounted on · connected to'],'قراءتنا للصور: مفتاح معلّق، طابعة بمقبس، ملزمة على طاولة، فأرة بالكمبيوتر، خطاف بحبل على قضيب، سماعة على قاعدة.')+
+   bk(5,'ص 81','أكمل الجمل عن الصور بعبارات التثبيت.',['suspended from','disconnected from','mounted on','connected to','attached to · suspended from','mounted on · connected to'],'قراءتنا للصور: مفتاح معلّق، طابعة قابسها خارج المقبس، ملزمة على طاولة، فأرة بالكمبيوتر، خطاف بحبل على قضيب، سماعة على قاعدة.')+
    bk(6,'ص 81','ارسم مخطط السير وأكمله من النص.',['Does the computer start? NO → Check the adapter.','Is it connected? NO → Connect it to the computer.','YES → Check the disk drive.','Is there a disk in the drive? YES → Take it out.','NO → Press the power button.'])+
    bk(7,'ص 81','اكتب دليل أعطال من المخطط.',["If the radio doesn't work, check the adapter. (begin)","If it isn't connected, connect the adapter.","If it is connected, check the LED.","If it is on, press the START button.","If it isn't on, check the power switch."])},
   {h:'تمارين المراجعة (ص 82–83)',ref:'ص 82–83',html:

@@ -334,7 +334,7 @@ B.lesson({
    bk(3,'ص 72','كوّن جملاً بـ If من الحوارات الست القصيرة.',["If the light isn't on, press the switch. (example)","If the airboard doesn't start, turn the key.","If there aren't any numbers on the screen, press the keys.","If the LEDs are off, push the power button.","If the battery is flat, either replace it or recharge it.","If the speakers work, connect them to the computer."])+
    bk(4,'ص 73','ارسم مخطط سير من النص (السيارة).',['Turn the key.','Does the car start? Yes → Drive away.','No → Check the battery.','Does the battery work? No → Recharge it.','Yes → Check the starter motor.'])+
    bk(5,'ص 73','اكتب دليل أعطال من ست جمل من حوار الطابعة.',['If you can\'t print, check the cable between the printer and the computer.','If the cable is loose, connect it and check the power.','If the power is off, switch it on and try to print.','If it doesn\'t print, check the paper.','If there isn\'t any paper, put some paper in the printer and try again.','If it still doesn\'t print, switch off, wait ten seconds and switch on again.'],'صياغتنا؛ أي صياغة صحيحة بالقالب نفسه مقبولة.')+
-   bk(6,'ص 73','أكمل الحوارات بأجوبة قصيرة.',["No, I don't.","No, I don't.","No, I'm not.","Yes, we have.","No, I didn't."])+
+   bk(6,'ص 73','أكمل الحوارات بأجوبة قصيرة.',["Yes, I do.","No, I don't.","No, I'm not.","Yes, we have.","No, I didn't."])+
    bk(8,'ص 73','مع زميلك: حوارات مشابهة بالمعلومات المعطاة.',null)},
   {h:'الاستماع',ref:'ص 72',html:au(52,'ص 72 — التمرين 1','استمع وأكمل مخطط السير.')}
  ],
