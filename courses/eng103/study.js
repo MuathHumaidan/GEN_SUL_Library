@@ -280,6 +280,142 @@ PLCBOOK.study({
      "l": "u4-l4"
     }
    ]
+  },
+  "u5": {
+   "title": "Descriptions — الأوصاف",
+   "cards": [
+    {
+     "k": "law",
+     "f": "What's it for? — It's for finding lost items.",
+     "b": "for + الفعل بـ ing.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "law",
+     "f": "You use it to charge batteries.",
+     "b": "to + الفعل كما هو.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "law",
+     "f": "The fan acts as a propeller.",
+     "b": "act as + اسم.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "def",
+     "f": "calculator · generator · transmitter · receiver",
+     "b": "أسماء الفاعل -er / -or.",
+     "ref": "ص 37",
+     "l": "u5-l1"
+    },
+    {
+     "k": "law",
+     "f": "It looks like a TV transmitter.",
+     "b": "looks like + اسم.",
+     "ref": "ص 38",
+     "l": "u5-l2"
+    },
+    {
+     "k": "law",
+     "f": "It's an L-shaped plan.",
+     "b": "الصفة -shaped.",
+     "ref": "ص 38",
+     "l": "u5-l2"
+    },
+    {
+     "k": "def",
+     "f": "circle → circular · cylinder → cylindrical",
+     "b": "الأشكال وصفاتها.",
+     "ref": "ص 39",
+     "l": "u5-l2"
+    },
+    {
+     "k": "law",
+     "f": "Inventors are people who create new devices.",
+     "b": "التعريف: Word + be + Type + who/which/that.",
+     "ref": "ص 40",
+     "l": "u5-l3"
+    },
+    {
+     "k": "def",
+     "f": "device · tool · instrument · vehicle · system",
+     "b": "كلمات النوع.",
+     "ref": "ص 41",
+     "l": "u5-l3"
+    }
+   ]
+  },
+  "u6": {
+   "title": "Procedures — الإجراءات",
+   "cards": [
+    {
+     "k": "law",
+     "f": "Helmets must be worn here.",
+     "b": "الفعل المساعد + be + التصريف الثالث.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "Hand trucks must not be overloaded.",
+     "b": "النفي.",
+     "ref": "ص 42",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "This item needs to be handled carefully. → You need to handle it.",
+     "b": "من المجهول إلى المعلوم.",
+     "ref": "ص 43",
+     "l": "u6-l1"
+    },
+    {
+     "k": "def",
+     "f": "Fragile · This way up · Keep dry · Perishable · Keep frozen",
+     "b": "ملصقات الشحن.",
+     "ref": "ص 43",
+     "l": "u6-l1"
+    },
+    {
+     "k": "law",
+     "f": "What should we do if …? — You should …",
+     "b": "السؤال عن الإجراء.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "law",
+     "f": "New equipment should be purchased.",
+     "b": "should + passive في التوصيات.",
+     "ref": "ص 45",
+     "l": "u6-l2"
+    },
+    {
+     "k": "law",
+     "f": "Take the third exit from the roundabout.",
+     "b": "الاتجاهات.",
+     "ref": "ص 46",
+     "l": "u6-l3"
+    },
+    {
+     "k": "law",
+     "f": "You'll see a police station on your left. Turn …",
+     "b": "الموقف ثم التعليمة.",
+     "ref": "ص 46",
+     "l": "u6-l3"
+    },
+    {
+     "k": "law",
+     "f": "The depth gauge is designed to indicate the depth.",
+     "b": "الوظيفة.",
+     "ref": "ص 48",
+     "l": "u6-l4"
+    }
+   ]
   }
  },
  "lessons": {
@@ -628,6 +764,181 @@ PLCBOOK.study({
       [
        "good visibility",
        "the driver can see all around"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l1": {
+   "match": [
+    {
+     "title": "وصّل الفعل باسم الفاعل",
+     "pairs": [
+      [
+       "generate",
+       "generator"
+      ],
+      [
+       "receive",
+       "receiver"
+      ],
+      [
+       "transmit",
+       "transmitter"
+      ],
+      [
+       "conduct",
+       "conductor"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l2": {
+   "match": [
+    {
+     "title": "وصّل الاسم بصفته",
+     "pairs": [
+      [
+       "circle",
+       "circular"
+      ],
+      [
+       "cone",
+       "conical"
+      ],
+      [
+       "sphere",
+       "spherical"
+      ],
+      [
+       "triangle",
+       "triangular"
+      ]
+     ]
+    }
+   ]
+  },
+  "u5-l3": {
+   "match": [
+    {
+     "title": "وصّل الشيء بنوعه",
+     "pairs": [
+      [
+       "an ammeter",
+       "instrument"
+      ],
+      [
+       "a hovercraft",
+       "vehicle"
+      ],
+      [
+       "a torque wrench",
+       "tool"
+      ],
+      [
+       "GPS",
+       "system"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l1": {
+   "match": [
+    {
+     "title": "وصّل الملصق بمعناه",
+     "pairs": [
+      [
+       "FRAGILE",
+       "it breaks easily"
+      ],
+      [
+       "PERISHABLE",
+       "it goes bad quickly"
+      ],
+      [
+       "KEEP DRY",
+       "protect it from water"
+      ],
+      [
+       "KEEP FROZEN",
+       "keep it in a freezer"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l2": {
+   "match": [
+    {
+     "title": "وصّل الموقف بالإجراء",
+     "pairs": [
+      [
+       "Diver trapped?",
+       "Free diver with knife."
+      ],
+      [
+       "Air supply low?",
+       "Give extra gas cylinder."
+      ],
+      [
+       "Not breathing?",
+       "Give artificial respiration."
+      ],
+      [
+       "Serious injury?",
+       "Call helicopter."
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l3": {
+   "match": [
+    {
+     "title": "وصّل المعلم بمعناه",
+     "pairs": [
+      [
+       "roundabout",
+       "cars go round it"
+      ],
+      [
+       "flyover",
+       "a road over another road"
+      ],
+      [
+       "underpass",
+       "a road under another road"
+      ],
+      [
+       "slip road",
+       "a road on or off the motorway"
+      ]
+     ]
+    }
+   ]
+  },
+  "u6-l4": {
+   "match": [
+    {
+     "title": "وصّل القطعة بوظيفتها",
+     "pairs": [
+      [
+       "cylinder",
+       "stores air"
+      ],
+      [
+       "depth gauge",
+       "shows the depth"
+      ],
+      [
+       "harness",
+       "fastens the equipment"
+      ],
+      [
+       "diving mask",
+       "helps the diver see"
       ]
      ]
     }

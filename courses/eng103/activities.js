@@ -587,5 +587,299 @@ PLCBOOK.acts({
     "e": "ص 34."
    }
   ]
+ },
+ "u5-l1": {
+  "open": [
+   "A useful device you use every day",
+   "An unusual use for a tin can",
+   "A new invention you want"
+  ],
+  "exit": [
+   {
+    "q": "It's for ___ lost items.",
+    "o": [
+     "finding",
+     "find",
+     "to find",
+     "found"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   },
+   {
+    "q": "You use it ___ charge batteries.",
+    "o": [
+     "to",
+     "for",
+     "as",
+     "by"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   },
+   {
+    "q": "transmit →",
+    "o": [
+     "transmitter",
+     "transmiter",
+     "transmittor",
+     "transmitor"
+    ],
+    "c": 0,
+    "e": "ص 37."
+   }
+  ]
+ },
+ "u5-l2": {
+  "open": [
+   "A famous building in Saudi Arabia",
+   "What shape is your phone?",
+   "Describe a building without saying its name"
+  ],
+  "exit": [
+   {
+    "q": "The skyscraper is shaped ___ a sail.",
+    "o": [
+     "like",
+     "as",
+     "of",
+     "to"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   },
+   {
+    "q": "TVs have ___ screens.",
+    "o": [
+     "rectangular",
+     "rectangle",
+     "rectangles",
+     "rectangled"
+    ],
+    "c": 0,
+    "e": "ص 39."
+   },
+   {
+    "q": "It's an ___ plan.",
+    "o": [
+     "L-shaped",
+     "L-shape",
+     "L shaped of",
+     "L-shapes"
+    ],
+    "c": 0,
+    "e": "ص 38."
+   }
+  ]
+ },
+ "u5-l3": {
+  "open": [
+   "Define a tool in one sentence",
+   "An invention that helps people",
+   "A system in your college"
+  ],
+  "exit": [
+   {
+    "q": "Inventors are people ___ create new devices.",
+    "o": [
+     "who",
+     "which",
+     "what",
+     "where"
+    ],
+    "c": 0,
+    "e": "ص 40."
+   },
+   {
+    "q": "An ammeter is an ___.",
+    "o": [
+     "instrument",
+     "vehicle",
+     "technician",
+     "tool"
+    ],
+    "c": 0,
+    "e": "ص 41."
+   },
+   {
+    "q": "able to be seen =",
+    "o": [
+     "visible",
+     "audible",
+     "submerged",
+     "digital"
+    ],
+    "c": 0,
+    "e": "ص 41."
+   }
+  ]
+ },
+ "u6-l1": {
+  "open": [
+   "A hazard in your workshop",
+   "A safety rule in your college",
+   "What does FRAGILE mean?"
+  ],
+  "exit": [
+   {
+    "q": "Helmets must ___ worn.",
+    "o": [
+     "be",
+     "been",
+     "to be",
+     "being"
+    ],
+    "c": 0,
+    "e": "ص 42."
+   },
+   {
+    "q": "This item needs to be ___ carefully.",
+    "o": [
+     "handled",
+     "handle",
+     "handling",
+     "handles"
+    ],
+    "c": 0,
+    "e": "ص 43."
+   },
+   {
+    "q": "It must not be dropped. = You ___ drop it.",
+    "o": [
+     "mustn't",
+     "don't must",
+     "not must",
+     "must to not"
+    ],
+    "c": 0,
+    "e": "ص 43."
+   }
+  ]
+ },
+ "u6-l2": {
+  "open": [
+   "What should we do if there is a fire?",
+   "A rule you think is important",
+   "First aid you know"
+  ],
+  "exit": [
+   {
+    "q": "What ___ we do if the diver is trapped?",
+    "o": [
+     "should",
+     "must to",
+     "are",
+     "did"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   },
+   {
+    "q": "You should ___ them with a knife.",
+    "o": [
+     "free",
+     "to free",
+     "freed",
+     "freeing"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   },
+   {
+    "q": "New equipment should ___ purchased.",
+    "o": [
+     "be",
+     "been",
+     "to be",
+     "is"
+    ],
+    "c": 0,
+    "e": "ص 45."
+   }
+  ]
+ },
+ "u6-l3": {
+  "open": [
+   "Directions from your house to the college",
+   "A roundabout in your city",
+   "A landmark near the college"
+  ],
+  "exit": [
+   {
+    "q": "Take the second ___ from the roundabout.",
+    "o": [
+     "exit",
+     "turning off",
+     "road on",
+     "way out of"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "Turn right ___ the T-junction.",
+    "o": [
+     "at",
+     "in",
+     "on",
+     "by"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   },
+   {
+    "q": "A road that goes over another road:",
+    "o": [
+     "flyover",
+     "underpass",
+     "slip road",
+     "aisle"
+    ],
+    "c": 0,
+    "e": "ص 46."
+   }
+  ]
+ },
+ "u6-l4": {
+  "open": [
+   "A useful device in your field",
+   "Describe a fire extinguisher",
+   "A safety rule for divers"
+  ],
+  "exit": [
+   {
+    "q": "The cylinder is used ___ air.",
+    "o": [
+     "to store",
+     "for store",
+     "storing",
+     "to storing"
+    ],
+    "c": 0,
+    "e": "ص 48."
+   },
+   {
+    "q": "A wheel wrench is a ___ which tightens nuts.",
+    "o": [
+     "tool",
+     "vehicle",
+     "technician",
+     "system"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   },
+   {
+    "q": "Boxes must not ___ in the aisles.",
+    "o": [
+     "be stacked",
+     "stacked",
+     "stack",
+     "be stack"
+    ],
+    "c": 0,
+    "e": "ص 50."
+   }
+  ]
  }
 });

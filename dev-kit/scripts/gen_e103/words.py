@@ -167,6 +167,88 @@ W['u4-l4']=[
  ['corrosion','تآكل / صدأ','Salt water causes corrosion.','الماء المالح يسبب التآكل.'],
  ['antenna','هوائي','The radio has a long antenna.','للراديو هوائي طويل.'],
  ['insulation','عازل','The wire has plastic insulation.','للسلك عازل بلاستيكي.']]
+W['u5-l1']=[
+ ['device','جهاز','This device finds lost keys.','هذا الجهاز يجد المفاتيح الضائعة.'],
+ ['tool','أداة','A hammer is a useful tool.','المطرقة أداة مفيدة.'],
+ ['wrench','مفتاح ربط','Use a wrench to loosen the bolt.','استعمل مفتاح الربط لفك المسمار.'],
+ ['flat battery','بطارية فارغة','My car has a flat battery.','بطارية سيارتي فارغة.'],
+ ['plug into','يوصل بمقبس','Plug the charger into the socket.','وصّل الشاحن بالمقبس.'],
+ ['design','يصمم','This car is designed to save fuel.','هذه السيارة مصممة لتوفير الوقود.'],
+ ['act as','يعمل كـ','The table can act as a desk.','الطاولة يمكن أن تعمل كمكتب.'],
+ ['calculator','آلة حاسبة','Use a calculator for the sums.','استعمل الآلة الحاسبة للعمليات.'],
+ ['generator','مولد كهرباء','The hospital has a generator.','في المستشفى مولد كهرباء.'],
+ ['conductor','موصل','Copper is a good conductor.','النحاس موصل جيد.'],
+ ['receiver','مستقبل','The receiver gets the TV signal.','المستقبل يلتقط إشارة التلفاز.']]
+W['u5-l2']=[
+ ['shape','شكل','What shape is the box?','ما شكل الصندوق؟'],
+ ['look like','يشبه (في المظهر)','The tower looks like a pencil.','البرج يشبه قلم الرصاص.'],
+ ['circle','دائرة','Draw a circle on the board.','ارسم دائرة على السبورة.'],
+ ['circular','دائري','The table is circular.','الطاولة دائرية.'],
+ ['triangle','مثلث','A triangle has three sides.','للمثلث ثلاثة أضلاع.'],
+ ['rectangular','مستطيل الشكل','Phones have rectangular screens.','للهواتف شاشات مستطيلة.'],
+ ['cylinder','أسطوانة','A gas bottle is a cylinder.','قارورة الغاز أسطوانة.'],
+ ['sphere','كرة (مجسم)','The Earth is almost a sphere.','الأرض كرة تقريباً.'],
+ ['cone','مخروط','Put the traffic cones on the road.','ضع المخاريط المرورية على الطريق.'],
+ ['dome','قبة','The mosque has a big dome.','للمسجد قبة كبيرة.'],
+ ['skyscraper','ناطحة سحاب','Dubai has many skyscrapers.','في دبي ناطحات سحاب كثيرة.']]
+W['u5-l3']=[
+ ['definition','تعريف','Write a definition of the word.','اكتب تعريفاً للكلمة.'],
+ ['invention','اختراع','The phone was a great invention.','كان الهاتف اختراعاً عظيماً.'],
+ ['inventor','مخترع','The inventor showed his device.','عرض المخترع جهازه.'],
+ ['instrument','أداة قياس / جهاز دقيق','An ammeter is an instrument.','الأميتر أداة قياس.'],
+ ['vehicle','مركبة','A bus is a large vehicle.','الحافلة مركبة كبيرة.'],
+ ['system','نظام','The building has a fire alarm system.','في المبنى نظام إنذار حريق.'],
+ ['technician','فني','The technician fixed the machine.','أصلح الفني الآلة.'],
+ ['alarm','إنذار','The alarm rang at night.','رنّ الإنذار ليلاً.'],
+ ['submerged','مغمور بالماء','The pod works when it is submerged.','يعمل الجهاز حين يُغمر بالماء.'],
+ ['visible','مرئي','The light is visible from far away.','الضوء مرئي من بعيد.'],
+ ['audible','مسموع','The alarm is audible in every room.','الإنذار مسموع في كل غرفة.']]
+W['u6-l1']=[
+ ['hazard','خطر','A wet floor is a hazard.','الأرضية المبتلة خطر.'],
+ ['warehouse','مستودع','The boxes are in the warehouse.','الصناديق في المستودع.'],
+ ['shelf','رف','Put the box on the top shelf.','ضع الصندوق على الرف العلوي.'],
+ ['aisle','ممر','Keep the aisle clear.','أبقِ الممر خالياً.'],
+ ['pallet','منصة خشبية (طبلية)','The bags are on a pallet.','الأكياس على منصة خشبية.'],
+ ['forklift truck','رافعة شوكية','He drives a forklift truck.','يقود رافعة شوكية.'],
+ ['ramp','منحدر','Push the trolley up the ramp.','ادفع العربة على المنحدر.'],
+ ['overload','يحمّل فوق الطاقة','Do not overload the lift.','لا تحمّل المصعد فوق طاقته.'],
+ ['fragile','قابل للكسر','Be careful, the box is fragile.','انتبه، الصندوق قابل للكسر.'],
+ ['perishable','سريع التلف','Milk is perishable.','الحليب سريع التلف.'],
+ ['must be worn','يجب ارتداؤه','Helmets must be worn here.','يجب ارتداء الخوذ هنا.']]
+W['u6-l2']=[
+ ['emergency','حالة طوارئ','Call 997 in an emergency.','اتصل بـ 997 في حالة الطوارئ.'],
+ ['rescue','ينقذ / إنقاذ','The team rescued the diver.','أنقذ الفريق الغواص.'],
+ ['diver','غواص','The diver went down to the ship.','نزل الغواص إلى السفينة.'],
+ ['trapped','عالق','His leg is trapped.','رجله عالقة.'],
+ ['locate','يحدد المكان','We need to locate the problem.','نحتاج إلى تحديد مكان المشكلة.'],
+ ['buoy','عوامة','The buoy marks the place.','العوامة تحدد المكان.'],
+ ['surface','سطح (الماء)','Bring him to the surface.','أحضره إلى السطح.'],
+ ['artificial respiration','التنفس الاصطناعي','He needs artificial respiration.','يحتاج إلى تنفس اصطناعي.'],
+ ['first aid','إسعافات أولية','She knows first aid.','تعرف الإسعافات الأولية.'],
+ ['tow','يسحب (بحبل)','The truck towed the car.','سحبت الشاحنة السيارة.'],
+ ['recommendation','توصية','The report has six recommendations.','في التقرير ست توصيات.']]
+W['u6-l3']=[
+ ['directions','الاتجاهات / وصف الطريق','Can you give me directions?','هل تصف لي الطريق؟'],
+ ['roundabout','دوّار','Take the second exit at the roundabout.','خذ المخرج الثاني من الدوار.'],
+ ['exit','مخرج','Take the third exit.','خذ المخرج الثالث.'],
+ ['motorway','طريق سريع','Drive on the motorway.','قُد على الطريق السريع.'],
+ ['slip road','طريق جانبي للدخول أو الخروج','Leave the motorway by the slip road.','اخرج من الطريق السريع من الطريق الجانبي.'],
+ ['flyover','جسر علوي','Turn left under the flyover.','انعطف يساراً تحت الجسر.'],
+ ['T-junction','تقاطع على شكل T','Turn right at the T-junction.','انعطف يميناً عند التقاطع.'],
+ ['crossroads','تقاطع طرق','Go straight ahead at the crossroads.','اذهب مستقيماً عند التقاطع.'],
+ ['traffic lights','إشارات المرور','Stop at the traffic lights.','قف عند إشارات المرور.'],
+ ['turning','منعطف','Take the first turning on the right.','خذ أول منعطف على اليمين.'],
+ ['U-turn','دوران للخلف','Do a U-turn here.','اعمل دوراناً للخلف هنا.']]
+W['u6-l4']=[
+ ['cylinder','أسطوانة','The air cylinder is heavy.','أسطوانة الهواء ثقيلة.'],
+ ['valve','صمام','Open the valve slowly.','افتح الصمام ببطء.'],
+ ['gauge','عدّاد / مقياس','Check the pressure gauge.','افحص مقياس الضغط.'],
+ ['harness','حزام (عُدّة)','Fasten your harness.','اربط حزامك.'],
+ ['fasten','يربط / يثبّت','Fasten your seat belt.','اربط حزام الأمان.'],
+ ['material','مادة','Fibreglass is a light material.','الألياف الزجاجية مادة خفيفة.'],
+ ['casualty','مصاب','The casualty needs help.','المصاب يحتاج مساعدة.'],
+ ['fire extinguisher','طفاية حريق','Where is the fire extinguisher?','أين طفاية الحريق؟'],
+ ['nozzle','فوهة','Point the nozzle at the fire.','وجّه الفوهة نحو النار.']]
 import json
 open('/home/claude/lib/courses/eng103/words.js','w').write('/* كلمات الدرس — انجل-103. كل كلمة: [الكلمة, الترجمة, مثال من الحياة اليومية (من إعدادنا), ترجمة المثال] */\nPLCBOOK.words('+json.dumps(W,ensure_ascii=False,indent=0)+');\n')
 print({k:len(v) for k,v in W.items()})

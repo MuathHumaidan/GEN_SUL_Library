@@ -1077,5 +1077,544 @@ PLCBOOK.errs({
    ],
    "answer": "There's one with a cable, and there's a wireless one."
   }
+ ],
+ "u5-l1": [
+  {
+   "ex": "مثال 1: for + ing",
+   "title": "استعمال",
+   "given": "What's it for? (find)",
+   "ask": "أجب.",
+   "steps": [
+    {
+     "t": "المعطى: What's it for? (find)"
+    },
+    {
+     "t": "الخطوة 1: It's for find lost items.",
+     "bad": true,
+     "why": "بعد for الفعل بـ ing.",
+     "fix": "It's for finding lost items.",
+     "reasons": [
+      "found",
+      "finding",
+      "find",
+      "to find"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "It's for finding lost items."
+  },
+  {
+   "ex": "مثال 2: to + الفعل",
+   "title": "غرض",
+   "given": "charge batteries",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: charge batteries"
+    },
+    {
+     "t": "الخطوة 1: You use it to charging batteries.",
+     "bad": true,
+     "why": "بعد to الفعل كما هو.",
+     "fix": "You use it to charge batteries.",
+     "reasons": [
+      "for charge",
+      "charging",
+      "to charge",
+      "to charging"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "You use it to charge batteries."
+  },
+  {
+   "ex": "مثال 3: اسم الفاعل",
+   "title": "er",
+   "given": "receive",
+   "ask": "اكتب الاسم.",
+   "steps": [
+    {
+     "t": "المعطى: receive"
+    },
+    {
+     "t": "الخطوة 1: receiveer",
+     "bad": true,
+     "why": "احذف e.",
+     "fix": "receiver",
+     "reasons": [
+      "receiveer",
+      "receivor",
+      "receiving",
+      "receiver"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "receiver"
+  }
+ ],
+ "u5-l2": [
+  {
+   "ex": "مثال 1: looks like",
+   "title": "تشبيه",
+   "given": "TV transmitter",
+   "ask": "صف.",
+   "steps": [
+    {
+     "t": "المعطى: TV transmitter"
+    },
+    {
+     "t": "الخطوة 1: The building looks a TV transmitter.",
+     "bad": true,
+     "why": "نحتاج like.",
+     "fix": "The building looks like a TV transmitter.",
+     "reasons": [
+      "looks like",
+      "looks",
+      "look like",
+      "is like"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "The building looks like a TV transmitter."
+  },
+  {
+   "ex": "مثال 2: الصفة",
+   "title": "شكل",
+   "given": "rectangle",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: rectangle"
+    },
+    {
+     "t": "الخطوة 1: TVs have rectangle screens.",
+     "bad": true,
+     "why": "قبل الاسم صفة.",
+     "fix": "TVs have rectangular screens.",
+     "reasons": [
+      "rectangling",
+      "rectangular",
+      "rectangle",
+      "rectangles"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "TVs have rectangular screens."
+  },
+  {
+   "ex": "مثال 3: -shaped",
+   "title": "حرف",
+   "given": "in the shape of an L",
+   "ask": "حوّل.",
+   "steps": [
+    {
+     "t": "المعطى: in the shape of an L"
+    },
+    {
+     "t": "الخطوة 1: It's a L-shaped plan.",
+     "bad": true,
+     "why": "L تبدأ بصوت علة.",
+     "fix": "It's an L-shaped plan.",
+     "reasons": [
+      "the",
+      "بلا أداة",
+      "an",
+      "a"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "It's an L-shaped plan."
+  }
+ ],
+ "u5-l3": [
+  {
+   "ex": "مثال 1: who",
+   "title": "شخص",
+   "given": "inventors",
+   "ask": "عرّف.",
+   "steps": [
+    {
+     "t": "المعطى: inventors"
+    },
+    {
+     "t": "الخطوة 1: Inventors are people which create new devices.",
+     "bad": true,
+     "why": "للأشخاص who.",
+     "fix": "Inventors are people who create new devices.",
+     "reasons": [
+      "which",
+      "what",
+      "where",
+      "who"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "Inventors are people who create new devices."
+  },
+  {
+   "ex": "مثال 2: النوع",
+   "title": "قياس",
+   "given": "ammeter",
+   "ask": "عرّف.",
+   "steps": [
+    {
+     "t": "المعطى: ammeter"
+    },
+    {
+     "t": "الخطوة 1: An ammeter is a vehicle which measures current.",
+     "bad": true,
+     "why": "أداة قياس.",
+     "fix": "An ammeter is an instrument which measures electric current.",
+     "reasons": [
+      "instrument",
+      "vehicle",
+      "technician",
+      "system"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "An ammeter is an instrument which measures electric current."
+  },
+  {
+   "ex": "مثال 3: which",
+   "title": "شيء",
+   "given": "LifeGuard",
+   "ask": "عرّف.",
+   "steps": [
+    {
+     "t": "المعطى: LifeGuard"
+    },
+    {
+     "t": "الخطوة 1: LifeGuard is an alarm system who can find an MOB.",
+     "bad": true,
+     "why": "للأشياء which.",
+     "fix": "LifeGuard is an alarm system which can find an MOB.",
+     "reasons": [
+      "where",
+      "which",
+      "who",
+      "what"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "LifeGuard is an alarm system which can find an MOB."
+  }
+ ],
+ "u6-l1": [
+  {
+   "ex": "مثال 1: قاعدة",
+   "title": "مجهول",
+   "given": "wear helmets",
+   "ask": "اكتب القاعدة.",
+   "steps": [
+    {
+     "t": "المعطى: wear helmets"
+    },
+    {
+     "t": "الخطوة 1: Helmets must worn.",
+     "bad": true,
+     "why": "نحتاج be.",
+     "fix": "Helmets must be worn.",
+     "reasons": [
+      "must be wear",
+      "must to be worn",
+      "must be worn",
+      "must worn"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "Helmets must be worn."
+  },
+  {
+   "ex": "مثال 2: مفرد",
+   "title": "need",
+   "given": "handle carefully",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: handle carefully"
+    },
+    {
+     "t": "الخطوة 1: This item need to be handled carefully.",
+     "bad": true,
+     "why": "مفرد: needs.",
+     "fix": "This item needs to be handled carefully.",
+     "reasons": [
+      "need",
+      "is need",
+      "needing",
+      "needs"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "This item needs to be handled carefully."
+  },
+  {
+   "ex": "مثال 3: المعلوم",
+   "title": "خطاب",
+   "given": "It must not be dropped.",
+   "ask": "حوّل.",
+   "steps": [
+    {
+     "t": "المعطى: It must not be dropped."
+    },
+    {
+     "t": "الخطوة 1: You mustn't to drop it.",
+     "bad": true,
+     "why": "لا to بعد must.",
+     "fix": "You mustn't drop it.",
+     "reasons": [
+      "mustn't drop",
+      "mustn't to drop",
+      "mustn't dropped",
+      "don't must drop"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "You mustn't drop it."
+  }
+ ],
+ "u6-l2": [
+  {
+   "ex": "مثال 1: السؤال",
+   "title": "طوارئ",
+   "given": "diver trapped",
+   "ask": "اسأل.",
+   "steps": [
+    {
+     "t": "المعطى: diver trapped"
+    },
+    {
+     "t": "الخطوة 1: What we should do if the diver is trapped?",
+     "bad": true,
+     "why": "should قبل we.",
+     "fix": "What should we do if the diver is trapped?",
+     "reasons": [
+      "What do we should",
+      "What should we do",
+      "What we should do",
+      "What should do we"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "What should we do if the diver is trapped?"
+  },
+  {
+   "ex": "مثال 2: الجواب",
+   "title": "إجراء",
+   "given": "free with a knife",
+   "ask": "أجب.",
+   "steps": [
+    {
+     "t": "المعطى: free with a knife"
+    },
+    {
+     "t": "الخطوة 1: You should to free them with a knife.",
+     "bad": true,
+     "why": "لا to بعد should.",
+     "fix": "You should free them with a knife.",
+     "reasons": [
+      "should freed",
+      "should freeing",
+      "should free",
+      "should to free"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "You should free them with a knife."
+  },
+  {
+   "ex": "مثال 3: توصية",
+   "title": "تقرير",
+   "given": "purchase equipment",
+   "ask": "اكتب.",
+   "steps": [
+    {
+     "t": "المعطى: purchase equipment"
+    },
+    {
+     "t": "الخطوة 1: New equipment should purchased.",
+     "bad": true,
+     "why": "نحتاج be.",
+     "fix": "New equipment should be purchased.",
+     "reasons": [
+      "should purchased",
+      "should be purchase",
+      "should been purchased",
+      "should be purchased"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "New equipment should be purchased."
+  }
+ ],
+ "u6-l3": [
+  {
+   "ex": "مثال 1: الدوار",
+   "title": "اتجاه",
+   "given": "third exit",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: third exit"
+    },
+    {
+     "t": "الخطوة 1: Take the three exit from the roundabout.",
+     "bad": true,
+     "why": "الرقم الترتيبي.",
+     "fix": "Take the third exit from the roundabout.",
+     "reasons": [
+      "third",
+      "three",
+      "the three",
+      "thirdly"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "Take the third exit from the roundabout."
+  },
+  {
+   "ex": "مثال 2: التقاطع",
+   "title": "حرف جر",
+   "given": "T-junction",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: T-junction"
+    },
+    {
+     "t": "الخطوة 1: Turn right in the T-junction.",
+     "bad": true,
+     "why": "at.",
+     "fix": "Turn right at the T-junction.",
+     "reasons": [
+      "to",
+      "at",
+      "in",
+      "on"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Turn right at the T-junction."
+  },
+  {
+   "ex": "مثال 3: الموقف",
+   "title": "وصف",
+   "given": "police station",
+   "ask": "أكمل.",
+   "steps": [
+    {
+     "t": "المعطى: police station"
+    },
+    {
+     "t": "الخطوة 1: You see a police station on your left.",
+     "bad": true,
+     "why": "المستقبل: You'll see.",
+     "fix": "You'll see a police station on your left.",
+     "reasons": [
+      "You saw",
+      "You seeing",
+      "You'll see",
+      "You see"
+     ],
+     "rc": 2
+    }
+   ],
+   "answer": "You'll see a police station on your left."
+  }
+ ],
+ "u6-l4": [
+  {
+   "ex": "مثال 1: الوظيفة",
+   "title": "for",
+   "given": "demand valve",
+   "ask": "صف.",
+   "steps": [
+    {
+     "t": "المعطى: demand valve"
+    },
+    {
+     "t": "الخطوة 1: The demand valve is for control the flow of air.",
+     "bad": true,
+     "why": "for + ing.",
+     "fix": "The demand valve is for controlling the flow of air to the diver.",
+     "reasons": [
+      "control",
+      "to control",
+      "controlled",
+      "controlling"
+     ],
+     "rc": 3
+    }
+   ],
+   "answer": "The demand valve is for controlling the flow of air to the diver."
+  },
+  {
+   "ex": "مثال 2: التعريف",
+   "title": "who",
+   "given": "sub-sea mechanic",
+   "ask": "عرّف.",
+   "steps": [
+    {
+     "t": "المعطى: sub-sea mechanic"
+    },
+    {
+     "t": "الخطوة 1: A sub-sea mechanic is a technician which repairs pipes.",
+     "bad": true,
+     "why": "شخص: who.",
+     "fix": "A sub-sea mechanic is a technician who repairs underwater pipes and machines.",
+     "reasons": [
+      "who",
+      "which",
+      "what",
+      "where"
+     ],
+     "rc": 0
+    }
+   ],
+   "answer": "A sub-sea mechanic is a technician who repairs underwater pipes and machines."
+  },
+  {
+   "ex": "مثال 3: المجهول",
+   "title": "قاعدة",
+   "given": "You must carry two cylinders.",
+   "ask": "حوّل.",
+   "steps": [
+    {
+     "t": "المعطى: You must carry two cylinders."
+    },
+    {
+     "t": "الخطوة 1: Two air cylinders must carried.",
+     "bad": true,
+     "why": "نحتاج be.",
+     "fix": "Two air cylinders must be carried at all times during a dive.",
+     "reasons": [
+      "must to be carried",
+      "must be carried",
+      "must carried",
+      "must be carry"
+     ],
+     "rc": 1
+    }
+   ],
+   "answer": "Two air cylinders must be carried at all times during a dive."
+  }
  ]
 });

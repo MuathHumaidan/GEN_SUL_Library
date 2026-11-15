@@ -1,0 +1,97 @@
+/* الوحدة 5 — تمارين الكتاب تفاعلياً (bk: بجمل الكتاب وصوره، قرار المدرب) + تمرين مساعد بجمل جديدة من إعدادنا */
+(function(){
+const A=(s,o,a,why)=>({s,o,a,why}),Q=(q,ok,no,why)=>({q,opts:[[ok,1],...(Array.isArray(no)?no:[no]).map(n=>[n,0,why])]}),T=(q,a,why)=>({q:/[\u0600-\u06FF]/.test(q)?q:`<span class="en" lang="en" dir="ltr">${q}</span>`,a:Array.isArray(a)?a:[a],why});
+const I=n=>'img/'+n+'.jpg';
+const AG=['calculator','conductor','container','generator','receiver','stabiliser','transmitter'];
+const TY=['device','instrument','system','technician','tool','vehicle'];
+const SHP=['circle','cone','cube','cylinder','hemisphere','rectangle','semicircle','sphere','square','triangle'];
+const LET=['A-frame','E-clip','G-clamp','G-clip','T-junction','U-bend','U-bolt','V-engine'];
+BX.add('u5-l1',[
+ {n:1,ref:'ص 36',st:1,
+  bk:{kind:'speak',goal:'فكّر في أدوات وأجهزة تستعملها، وناقش مع زميلك لماذا هي مفيدة.',useful:["It's for …","I use it to …","It's useful because …"]},
+  kind:'match',intro:'صِل الأداة باستعمالها (من إعدادنا).',pairs:[['a screwdriver','for turning screws'],['a multimeter','for measuring voltage'],['a torch','for giving light'],['a stapler','for joining papers']]},
+ {n:2,ref:'ص 36',st:1,
+  bk:{kind:'gaps',img:[I('u5-l1-ads')],cap:'إعلانات الكتاب ص 36.',intro:'طابق كل جهاز (A–D) بوصفه (1–4).',items:[A('A (orange box with a cable) = text ___',['1','2','3','4'],1),A('B (hand-held device with a screen) = text ___',['1','2','3','4'],3),A('C (wrench) = text ___',['1','2','3','4'],0),A('D (vehicle shaped like a dolphin) = text ___',['1','2','3','4'],2)]},
+  kind:'choose',intro:'أي جهاز من الإعلانات؟ (أسئلة من إعدادنا)',items:[Q('It plugs into the 12-volt socket in your car.','Simple Start',['Loc8tor','Sea Breacher']),Q('It has an electronic tag that beeps.','Loc8tor',['X-beam wrench','Simple Start']),Q('It is a two-seat underwater vehicle.','Sea Breacher',['Loc8tor','Simple Start']),Q('Its ends are at ninety degrees to each other.','X-beam wrench',['Sea Breacher','Loc8tor'])]},
+ {n:3,ref:'ص 36',st:1,
+  bk:{kind:'speak',goal:'ناقش الأجهزة في 2 مع زميلك: ما رأيك فيها؟ هل تفيدك؟',useful:["I think … is very useful because …","I don't need … because …"]},
+  kind:'gaps',intro:'من إعدادنا: عبّر عن رأيك.',items:[A('I think the Loc8tor is ___ useful.',['very','much'],0),A("I ___ need a Sea Breacher. I don't live near the sea.",["don't",'not'],0)]},
+ {n:4,ref:'ص 36',st:1,
+  bk:{kind:'gaps',intro:'استمع إلى المقطع 13 وحدّد رقم الاختراع (من أوصاف التمرين 2).',items:[A('a) Invention number ___',['1','2','3','4'],3),A('b) Invention number ___',['1','2','3','4'],1),A('c) Invention number ___',['1','2','3','4'],2)]},
+  kind:'listen',intro:'استمع إلى وصف من إعدادنا لاختراع جديد، ثم أجب.',text:"My invention is a small robot. It's for cleaning windows on tall buildings. It climbs up the glass and washes it with water and soap. You can use it to save time and keep workers safe.",
+  then:{kind:'choose',items:[Q("What's it for?",'cleaning windows',['washing cars','painting walls']),Q('Why is it useful?','It saves time and keeps workers safe.',['It is cheap.','It is very fast.'])]}},
+ {n:5,ref:'ص 36',st:1,
+  bk:{kind:'gaps',intro:'استمع مرة أخرى وأكمل الحوارات.',items:[A("A: What's it for? B: It's (1) ___ lost items.",['for finding','for find','to finding'],0),A("A: What's it used for? B: It's (2) ___ a flat battery from inside the car.",['used for charging','used to charging','for charge'],0),A('A: What can it be used for? B: You (3) ___ move quickly over and under water.',['can use it to','can use it for','use for'],0)]},
+  kind:'typ',intro:'أجب بالصيغة المطلوبة (من إعدادنا).',items:[T("What's a kettle for? (for + ing)",["It's for boiling water.","It's for boiling water","It is for boiling water."]),T('What can you use a ladder for? (to + verb)',['You can use it to climb up.','You can use it to reach high places.','You can use it to climb.'])]},
+ {n:6,ref:'ص 37',st:1,
+  bk:{kind:'speak',goal:'اسأل زميلك وأجبه عن استعمالات الأجهزة في 2.',model:[['A',"What's this device used for?"],['B',"It's used for turning nuts and bolts without hurting your hand."]],useful:["What's it for?","It's used for …","You can use it to …"]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A("What's the Loc8tor used ___? — For finding keys.",['for','to'],0),A('You use it ___ find your keys.',['to','for'],0)]},
+ {n:7,ref:'ص 37',st:1,
+  bk:{kind:'choose',img:[I('u5-l1-dev')],cap:'صور الكتاب ص 37.',intro:'ما استعمال هذه الأجهزة في رأيك؟ (الكتاب لا يعطي إجابة؛ هذه أقرب الإجابات.)',items:[Q('Device 1 (round blade, handle) is for …','cutting paper and cloth',['measuring wind','finding keys']),Q('Device 2 (on a swimmer\'s head) is for …','listening to music while swimming',['measuring speed','cutting cloth']),Q('Device 3 (small fan on top, screen) is for …','measuring wind speed',['turning nuts','listening to music']),Q('Device 4 (round dial with N-S lines) is for …','showing direction',['measuring current','cutting wood']),Q('Device 5 (wrench with a round head) is for …','turning nuts of different sizes',['measuring wind','giving light'])]},
+  kind:'typ',intro:'من إعدادنا: ماذا يفعل؟',items:[T("What's a thermometer for?",["It's for measuring temperature.","It's for measuring temperature","It is for measuring temperature."])]},
+ {n:8,ref:'ص 37',st:2,
+  bk:{kind:'gaps',intro:'اكتب اسم الفاعل لكل فعل.',items:[A('calculate → ___',AG,0),A('conduct → ___',AG,1),A('contain → ___',AG,2),A('generate → ___',AG,3),A('receive → ___',AG,4),A('stabilise → ___',AG,5),A('transmit → ___',AG,6)]},
+  kind:'typ',intro:'اكتب اسم الفاعل (من إعدادنا).',items:[T('compute →',['computer']),T('operate →',['operator']),T('propel →',['propeller'])]},
+ {n:9,ref:'ص 37',st:2,
+  bk:{kind:'gaps',intro:'املأ الفراغات بأسماء من 8.',items:[A('1 The number pad on a computer can be used as a ___.',AG,0),A('2 Your body can act as a ___ of electricity in a thunderstorm.',AG,1),A('3 A car engine functions as a ___ when it recharges the battery.',AG,3),A('4 The antenna on a mobile phone operates as a ___ and as a receiver of radio signals.',AG,6)]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('A plastic bottle can act as a water ___.',['container','conductor'],0),A('Copper is a good ___.',['conductor','container'],0)]},
+ {n:10,ref:'ص 37',st:1,
+  bk:{kind:'speak',goal:'في مجموعات: اختاروا علبة أو حزاماً أو طوبة أو إطاراً أو أنبوب ماء، واقترحوا أكبر عدد من الاستعمالات غير العادية، ثم اعرضوا أفضلها.',model:[['','A tin can – You can use it to store pencils. You can put flowers in it. You can use it as a cup.']],useful:['You can use it to …','It can act as …','You can use it as …']},
+  kind:'choose',intro:'من إعدادنا: أي الجمل صحيحة؟ (استعمال غير عادي لزجاجة بلاستيك)',items:[Q('You can use it ___ water plants.','to',['for','as']),Q('You can use it ___ a lamp.','as',['to','for']),Q('It can act ___ a flower pot.','as',['to','for'])]}
+]);
+BX.add('u5-l2',[
+ {n:1,ref:'ص 38',st:1,
+  bk:{kind:'choose',img:[I('u5-l2-bld')],cap:'صور الكتاب ص 38. الإجابات من صفحة الإجابات ص 115.',intro:'هل تعرف أين هذه المباني؟',items:[Q('A','Brasília',['Dubai','Bilbao']),Q('B','Bilbao',['Beijing','Shanghai']),Q('C','Beijing',['Brasília','Dubai']),Q('D','Shanghai (Oriental Pearl Tower)',['Bilbao','Brasília']),Q('E','Shanghai (World Financial Center)',['Dubai','Beijing']),Q('F','Dubai',['Bilbao','Shanghai'])]},
+  kind:'choose',intro:'من إعدادنا: أين؟',items:[Q('The Kingdom Centre with an empty space at the top is in …','Riyadh',['Jeddah','Dammam'])]},
+ {n:2,ref:'ص 38',st:1,
+  bk:{kind:'speak',img:[I('u5-l2-bld')],cap:'صور الكتاب ص 38.',goal:'اختر مبنى ولا تخبر زميلك به. صف شكله. هل يعرفه من وصفك؟',useful:['It looks like …','It is shaped like …','It has …']},
+  kind:'choose',intro:'من إعدادنا: أي مبنى في الصورة؟',items:[Q('It is very tall and thin, with a hole near the top.','E',['A','B']),Q('It has two tall towers and two domes.','A',['D','F'])]},
+ {n:3,ref:'ص 38',st:1,
+  bk:{kind:'gaps',img:[I('u5-l2-text')],cap:'قصاصات الكتاب ص 38.',intro:'طابق كل وصف بالمبنى (A–F).',items:[A('1 (a huge ship) = ___',['A','B','C','D','E','F'],1),A('2 (a TV transmitter) = ___',['A','B','C','D','E','F'],3),A('3 (a huge chisel) = ___',['A','B','C','D','E','F'],4),A('4 (a giant sail) = ___',['A','B','C','D','E','F'],5),A('5 (H-shaped, domes) = ___',['A','B','C','D','E','F'],0),A('6 (L-shaped, a chain link) = ___',['A','B','C','D','E','F'],2)]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('The building ___ a TV transmitter.',['looks like','looks'],0),A('The skyscraper is ___ a sail.',['shaped like','shape of'],0)]},
+ {n:4,ref:'ص 38',st:1,
+  bk:{kind:'speak',img:[I('u5-l2-bld')],cap:'صور الكتاب ص 38.',goal:'صف المباني في الصور وأنت تغطي النصوص في 3.',useful:['It looks like …','It is shaped like …','It is in the shape of …',"It's a …-shaped building."]},
+  kind:'typ',intro:'حوّل إلى -shaped (من إعدادنا).',items:[T('The plan is in the shape of a T.',["It's a T-shaped plan.","It is a T-shaped plan."])]},
+ {n:5,ref:'ص 39',st:2,
+  bk:{kind:'gaps',img:[I('u5-l2-shapes')],cap:'الأشكال في الكتاب ص 39.',intro:'طابق الأسماء بالأشكال.',items:[1,2,3,4,5,6,7,8,9,10].map((n,i)=>A(`${n} = ___`,SHP,SHP.indexOf(['cylinder','rectangle','triangle','cube','cone','semicircle','sphere','square','circle','hemisphere'][i])))},
+  kind:'choose',intro:'من إعدادنا: ما شكله؟',items:[Q('a football','sphere',['cube','cone']),Q('a can of juice','cylinder',['triangle','hemisphere']),Q('an ice-cream cone','cone',['cylinder','square'])]},
+ {n:6,ref:'ص 39',st:2,
+  bk:{kind:'typ',intro:'اكتب صفة لكل اسم (المثال: cylinder – cylindrical).',items:[T('circle',['circular']),T('cone',['conical']),T('cube',['cubic']),T('hemisphere',['hemispherical']),T('rectangle',['rectangular']),T('semicircle',['semicircular','semi-circular']),T('sphere',['spherical']),T('square',['square']),T('triangle',['triangular'])]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('a ___ table (circle)',['circular','circle'],0),A('a ___ box (cube)',['cubic','cube'],0)]},
+ {n:7,ref:'ص 39',st:2,
+  bk:{kind:'choose',intro:'أين المقطع المنبور؟ (تحقق بالمقطع 14)',items:[Q('triangle','TRI-ang-le',['tri-ANG-le']),Q('rectangular','rect-ANG-u-lar',['RECT-ang-u-lar']),Q('circular','CIR-cu-lar',['cir-CU-lar']),Q('cylinder','CY-lin-der',['cy-LIN-der']),Q('triangular','tri-ANG-u-lar',['TRI-ang-u-lar']),Q('circle','CIR-cle',['cir-CLE']),Q('rectangle','RECT-ang-le',['rect-ANG-le']),Q('cylindrical','cy-LIND-ric-al',['CY-lind-ric-al'])]},
+  kind:'choose',intro:'من إعدادنا.',items:[Q('spherical','SPHER-i-cal',['spher-I-cal']),Q('conical','CON-i-cal',['con-I-cal'])]},
+ {n:8,ref:'ص 39',st:2,
+  bk:{kind:'speak',goal:'استمع إلى المقطع 14 وتحقق من إجاباتك في 7، ثم ردّد الكلمات.',useful:['TRIangle · triANgular','CIRcle · CIRcular','CYLinder · cyLINdrical']},
+  kind:'choose',intro:'من إعدادنا: أي الكلمتين يتغير فيها النبر؟',items:[Q('triangle → triangular','يتغير',['لا يتغير']),Q('circle → circular','لا يتغير',['يتغير'])]},
+ {n:9,ref:'ص 39',st:2,
+  bk:{kind:'gaps',intro:'اختر الكلمة الصحيحة.',items:[A('1 A surfboard sail is roughly ___ in shape, with one curved side.',['triangle','triangular'],1),A('2 A food tin (or can) is basically a metal ___.',['cylinder','cylindrical'],0),A('3 TVs and computers normally have ___ screens.',['rectangle','rectangular'],1),A("4 Don't cut that wood with the hand saw. It's quicker to use the ___ saw.",['circle','circular'],1),A("5 My bass amplifier is the new ___ model. It's exactly 30 x 30 x 30 cm.",['cube','cubic'],1),A('6 The Earth is not a perfect ___. It is flatter at the poles.',['sphere','spherical'],0),A("7 The spaceship's re-entry capsule is in the shape of a ___.",['cone','conical'],0),A('8 A protractor is a ___ instrument for measuring angles.',['semi-circle','semi-circular'],1)]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('The water tank is ___.',['cylindrical','cylinder'],0),A('The tank is in the shape of a ___.',['cylinder','cylindrical'],0)]},
+ {n:10,ref:'ص 39',st:1,
+  bk:{kind:'gaps',img:[I('u5-l2-objs')],cap:'صور الكتاب ص 39.',intro:'طابق أسماء القطع بصورها.',items:['A-frame','U-bend','V-engine','T-junction','E-clip','G-clip','G-clamp','U-bolt'].map((w,i)=>A(`${i+1} = ___`,LET,LET.indexOf(w)))},
+  kind:'choose',intro:'من إعدادنا.',items:[Q('A road sign shows where one road meets another, like a T:','T-junction',['U-bend','A-frame']),Q('A pipe under the sink, shaped like a U:','U-bend',['U-bolt','G-clip'])]},
+ {n:11,ref:'ص 39',st:2,
+  bk:{kind:'speak',goal:'«عشرون سؤالاً»: الطالب A يفكر في شيء يومي، والطالب B يسأل حتى 20 سؤالاً ليعرفه دون أن يقول What is it?',useful:['What does it look like? What shape is it?',"What's it used for? What does it do?","What's it made of?",'How long is it?','Is it flexible? Is it water-resistant?']},
+  kind:'order',intro:'من إعدادنا: رتّب أسئلة لتعرف الشيء (من العام إلى الخاص).',steps:["What's it used for?",'What shape is it?',"What's it made of?",'How long is it?','Is it water-resistant?']}
+]);
+BX.add('u5-l3',[
+ {n:1,ref:'ص 40',st:1,
+  bk:{kind:'choose',img:[I('u5-l3-ideas')],cap:'أفكار من البرنامج في الكتاب ص 40.',intro:'أي الأفكار نجحت في رأيك؟ (الإجابة من صفحة الإجابات ص 113)',items:[Q('How many of the four ideas were successful?','all four',['one','two'])]},
+  kind:'choose',intro:'من إعدادنا: ماذا يفعل كل اختراع؟',items:[Q('The boat alarm system is for …','finding a man overboard',['boiling eggs','mixing music']),Q('The seat belt adjuster is for …','protecting children',['finding keys','downloading music'])]},
+ {n:2,ref:'ص 40',st:1,
+  bk:{kind:'gaps',intro:'استمع إلى المقطع 15 وأكمل بـ which أو who أو that (كما في التسجيل).',items:[A('1 My invention is an electronic device (1) ___ can boil eggs without using water.',['which','who','what'],0),A('2 LifeGuard is an alarm system (2) ___ can find someone …',['that','who','what'],0),A('… (3) ___ has fallen off a boat.',['who','which','what'],0),A('3 This is a music website (4) ___ allows you to download and mix dance music.',['which','who','what'],0),A("4 It's a seat belt adjuster (5) ___ protects children in car booster seats.",['that','who','what'],0)]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('A pilot is a person ___ flies planes.',['who','which'],0),A('A drone is a small aircraft ___ flies without a pilot.',['which','who'],0)]},
+ {n:3,ref:'ص 41',st:2,
+  bk:{kind:'gaps',intro:'املأ الفراغ بأنسب اسم نوع.',items:[A('1 A solar panel is a/an ___. It converts sunlight into electricity.',TY,0),A('2 The hovercraft is a/an ___. It carries people over land and sea.',TY,5),A('3 A lab assistant is a/an ___. He or she maintains the equipment in a laboratory.',TY,3),A('4 A torque wrench is a/an ___. It tightens nuts and bolts.',TY,4),A('5 GPS is a satellite ___. It gives the location of objects on the ground.',TY,2),A('6 An ammeter is a/an ___. It measures electric current.',TY,1)]},
+  kind:'gaps',intro:'من إعدادنا.',items:[A('A thermometer is an ___. It measures temperature.',['instrument','vehicle'],0),A('A bus is a ___. It carries passengers.',['vehicle','tool'],0)]},
+ {n:4,ref:'ص 41',st:1,
+  bk:{kind:'typ',intro:'ادمج كل جملتين في 3 في تعريف واحد بـ which أو who أو that على نمط مثال الكتاب في البند 1.',items:[T('2 The hovercraft …',['The hovercraft is a vehicle which carries people over land and sea.','The hovercraft is a vehicle that carries people over land and sea.']),T('3 A lab assistant …',['A lab assistant is a technician who maintains the equipment in a laboratory.','A lab assistant is a technician that maintains the equipment in a laboratory.']),T('4 A torque wrench …',['A torque wrench is a tool which tightens nuts and bolts.','A torque wrench is a tool that tightens nuts and bolts.']),T('5 GPS …',['GPS is a satellite system which gives the location of objects on the ground.','GPS is a satellite system that gives the location of objects on the ground.']),T('6 An ammeter …',['An ammeter is an instrument which measures electric current.','An ammeter is an instrument that measures electric current.'])]},
+  kind:'typ',intro:'عرّف (من إعدادنا).',items:[T('A voltmeter. It measures voltage.',['A voltmeter is an instrument which measures voltage.','A voltmeter is an instrument that measures voltage.','A voltmeter is a device which measures voltage.','A voltmeter is a device that measures voltage.'])]},
+ {n:5,ref:'ص 41',st:1,
+  bk:{kind:'choose',img:[I('u5-l3-ad'),I('u5-l3-dev')],cap:'الإعلان في الكتاب ص 41.',intro:'اقرأ الإعلان وأجب.',items:[Q('1a Which device acts as the transmitter?','the alarm pod',['the hydrophone','the display']),Q('1b … the receiver?','the hydrophone',['the alarm pod','the display']),Q('1c … the controller?','the display',['the hydrophone','the alarm pod']),Q('2a Which device is fixed inside the hull?','the hydrophone',['the display','the alarm pod']),Q("2b … on the crew's body?",'the alarm pod',['the hydrophone','the display']),Q('2c … on the deck (on the dashboard)?','the display',['the alarm pod','the hydrophone']),Q('3 Does the alarm sound if drops of rain fall on the pins?','No, the pins must be in constant contact with water for one second.',['Yes, any water starts the alarm.']),Q('4 The signal travels from the pod to the display …','b) via the hydrophone',['a) directly','c) via GPS']),Q('5a able to be seen =','visible',['audible','digital']),Q('5b able to be heard =','audible',['visible','submerged'])]},
+  kind:'order',intro:'رتّب ما يحدث (من إعدادنا، من نص الكتاب).',steps:['A crew member falls into the water.','The alarm pod is submerged.','The pod sends a signal under the water.','The hydrophone picks up the signal.','The display shows the alarm and the location.']},
+ {n:6,ref:'ص 41',st:1,
+  bk:{kind:'speak',goal:'في مجموعات: فكّروا في اختراع جديد. عرّفوه في جملة واحدة، ثم اشرحوا كيف يعمل في جمل قليلة.',useful:['… is a device which …','It consists of …','When …, the … sends a signal to …']},
+  kind:'choose',intro:'من إعدادنا: أي تعريف صحيح؟',items:[Q('A smart doorbell …','is a device which shows you who is at the door.',['is a device who shows you the door.','is a technician which opens the door.'])]}
+]);
+})();
