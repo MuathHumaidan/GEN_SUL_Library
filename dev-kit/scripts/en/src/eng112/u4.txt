@@ -1,0 +1,441 @@
+صفات الأجهزة وأضدادها (fast ↔ slow، reliable ↔ unreliable)، وشرح المشكلة بـ too و not … enough، والسبب والنتيجة بـ because و so، و one / ones بدل تكرار الاسم، والمقارنة عند طلب جهاز أفضل.
+Adjectives for machines and their opposites (fast ↔ slow, reliable ↔ unreliable), explaining the problem with too and not … enough, cause and result with because and so, one / ones instead of repeating the noun, and comparing when you ask for a better machine.
+
+تطلب أجهزة جديدة لمكتبك وتشرح السبب. ستتعلم:
+You ask for new equipment for your office and explain why. You will learn:
+
+صفات الأجهزة وأضدادها.
+Adjectives for machines and their opposites.
+
+المقارنة عند طلب البديل.
+Comparing when you ask for a replacement.
+
+شرح القاعدة: صفات الأجهزة، و too و enough، والمقارنة، و so و because <span class="ref">ص 20–21، ص 92–93</span>
+Rule explanation: adjectives for machines, too and enough, comparing, and so and because <span class="ref">pp. 20–21, pp. 92–93</span>
+
+حين تطلب جهازاً جديداً لمكتبك تشرح ما المشكلة في الجهاز القديم، ولماذا تحتاج غيره، وما الذي تريده بدلاً منه.
+When you ask for a new machine for your office, you explain what the problem is with the old machine, why you need another one, and what you want instead.
+
+1. صفات الأجهزة وأضدادها <span class="ref">ص 20، ص 93</span>
+1. Adjectives for machines and their opposites <span class="ref">p. 20, p. 93</span>
+
+صفات نصف بها الأجهزة، ولكل منها ضد.
+Adjectives we use to describe machines, and each one has an opposite.
+
+إيجابية
+Positive
+
+سلبية
+Negative
+
+الضد بـ in.
+The opposite with in.
+
+ضد noisy كلمة مختلفة.
+The opposite of noisy is a different word.
+
+مختبر مصغّر: الصفة وعكسها
+Mini lab: the adjective and its opposite
+
+اختر الصفة.
+Choose the adjective.
+
+ضد بكلمة مختلفة.
+An opposite with a different word.
+
+2. too و enough، و so و because، و one <span class="ref">ص 20، ص 92</span>
+2. too and enough, so and because, and one <span class="ref">p. 20, p. 92</span>
+
+طريقتان لتقول إن الجهاز لا يناسب، ثم <span class="en" lang="en">so</span> للنتيجة و <span class="en" lang="en">because</span> للسبب.
+Two ways to say that a machine is not suitable, then <span class="en" lang="en">so</span> for the result and <span class="en" lang="en">because</span> for the reason.
+
+too + صفة:
+too + adjective:
+
+not + صفة + enough:
+not + adjective + enough:
+
+not + enough + اسم:
+not + enough + noun:
+
+<b>so</b> (النتيجة): <span class="en" lang="en">This PC is really old, so I need a new one.</span>
+<b>so</b> (the result): <span class="en" lang="en">This PC is really old, so I need a new one.</span>
+
+<b>because</b> (السبب): <span class="en" lang="en">I need a new PC because this one is too old.</span>
+<b>because</b> (the reason): <span class="en" lang="en">I need a new PC because this one is too old.</span>
+
+<span class="en" lang="en">one / ones</span> بدل تكرار الاسم: <span class="en" lang="en">My phone is broken, so I need a new one. · Our PCs are too slow, so we need new ones.</span>
+<span class="en" lang="en">one / ones</span> instead of repeating the noun: <span class="en" lang="en">My phone is broken, so I need a new one. · Our PCs are too slow, so we need new ones.</span>
+
+enough بعد الصفة.
+enough after the adjective.
+
+✘ It's too modern. (مشكلة)
+✘ It's too modern. (a problem)
+
+too مع الصفة السلبية.
+too with the negative adjective.
+
+one بدل الاسم.
+one instead of the noun.
+
+مختبر مصغّر: too و enough و so و because
+Mini lab: too, enough, so and because
+
+اختر التركيب.
+Choose the structure.
+
+التركيب
+The structure
+
+too + صفة سلبية
+too + negative adjective
+
+not + صفة + enough
+not + adjective + enough
+
+not + enough + اسم
+not + enough + noun
+
+so = النتيجة
+so = the result
+
+because = السبب
+because = the reason
+
+<span class="en" lang="en">too</span> قبل الصفة: أكثر من اللازم.
+<span class="en" lang="en">too</span> before the adjective: more than necessary.
+
+3. المقارنة <span class="ref">ص 21</span>
+3. Comparing <span class="ref">p. 21</span>
+
+حين تطلب بديلاً تقارنه بالقديم: الصفة القصيرة + <span class="en" lang="en">er</span>، والطويلة مع <span class="en" lang="en">more</span> (مراجعة).
+When you ask for a replacement, you compare it with the old one: a short adjective + <span class="en" lang="en">er</span>, and a long one with <span class="en" lang="en">more</span> (review).
+
+قصيرة: er.
+Short: er.
+
+PAT: ^طويلة:\ ([^؀-ۿ]+)$ ||| Long: $1
+
+مختبر مصغّر: المقارنة
+Mini lab: comparing
+
+اختر الصفة، وشاهد صيغة المقارنة.
+Choose the adjective, and see the comparative form.
+
+بدل الاسم
+Instead of the noun
+
+مراجعة: الصفة القصيرة + <span class="en" lang="en">er</span>، والطويلة مع <span class="en" lang="en">more</span>.
+Review: a short adjective + <span class="en" lang="en">er</span>, and a long one with <span class="en" lang="en">more</span>.
+
+طابق الصفات بأضدادها.
+Match the adjectives to their opposites.
+
+وصّل الصفة بضدها.
+Match the adjective with its opposite.
+
+أكمل الشكويين، ثم كوّن جملاً عن الأجهزة واطلب ما تحتاجه بـ so و because.
+Complete the two complaints, then make sentences about the machines and ask for what you need with so and because.
+
+b (نماذج): The phone is too old. / It isn't modern enough. · The copier is too slow. / It isn't fast enough. · The printer is too noisy. / It isn't quiet enough. · The fax is unreliable. / It isn't reliable enough.
+b (models): The phone is too old. / It isn't modern enough. · The copier is too slow. / It isn't fast enough. · The printer is too noisy. / It isn't quiet enough. · The fax is unreliable. / It isn't reliable enough.
+
+أكمل الشكوى.
+Complete the complaint.
+
+استمع إلى مدير المكتب: ماذا يحتاجون؟ ولماذا؟ ثم أكمل المقارنة.
+Listen to the office manager: what do they need? Why? Then complete the comparison.
+
+c: إجابات حرة.
+c: free answers.
+
+استمع إلى موظف (من إعدادنا) يطلب أشياء لمكتبه.
+Listen to an employee (our own) asking for things for his office.
+
+اكتب جهازاً يحتاجه مكتبك وأسبابه، ثم قرروا في المجموعة أيها تشترون.
+Write a machine your office needs and the reasons, then decide in the group which ones to buy.
+
+كل واحد في المجموعة يحتاج جهازاً جديداً، والمال لشيء واحد. اشرح حاجتك، ثم قرروا معاً.
+Everyone in the group needs a new machine, and the money is for one thing. Explain your need, then decide together.
+
+أكمل بـ too و enough، ثم صِل النصفين بـ so و because.
+Complete with too and enough, then join the two halves with so and because.
+
+البند 5 غير واضح في نسخة الحقيبة الممسوحة.
+Item 5 is not clear in the scanned copy of the course book.
+
+وصّل نصفي الجملة.
+Match the two halves of the sentence.
+
+أكمل الجمل بالصفات.
+Complete the sentences with the adjectives.
+
+أكمل بالصفة.
+Complete with the adjective.
+
+مدير المكتب يخبر مدير المرافق بما يحتاجه مكتبه.
+The office manager tells the facilities manager what his office needs.
+
+الجهاز والمشكلة
+The machine and the problem
+
+مبني على التمارين 2 و 3 ص 20–21. اختر الجهاز والمشكلة وطريقة الشكوى.
+Based on Exercises 2 and 3, pp. 20–21. Choose the machine, the problem and the way to complain.
+
+too + صفة
+too + adjective
+
+PAT: ^<span\ class="en"\ lang="en">too</span>\ \+\ الصفة\ السلبية\.\ والمقارنة:\ <span\ class="en"\ lang="en">(.+?)</span>\.$ ||| <span class="en" lang="en">too</span> + the negative adjective. And the comparative: <span class="en" lang="en">$1</span>.
+
+متى نستعمل الصفة الأصلية ومتى عكسها؟
+When do we use the adjective itself and when its opposite?
+
+لماذا نقول <span class="en">a new one</span> لا <span class="en">a new printer</span>؟
+Why do we say <span class="en">a new one</span>, not <span class="en">a new printer</span>?
+
+<span class="en" lang="en">not</span> + الصفة الإيجابية + <span class="en" lang="en">enough</span>. والمقارنة: <span class="en" lang="en">simpler</span>.
+<span class="en" lang="en">not</span> + the positive adjective + <span class="en" lang="en">enough</span>. And the comparative: <span class="en" lang="en">simpler</span>.
+
+الطابعة تُحدث ضجيجاً كثيراً. اشتكِ بـ <span class="en" lang="en">too</span>.
+The printer makes a lot of noise. Complain with <span class="en" lang="en">too</span>.
+
+الشاشة صغيرة. اشتكِ بـ <span class="en" lang="en">enough</span>.
+The screen is small. Complain with <span class="en" lang="en">enough</span>.
+
+مثال 3: because و one
+Example 3: because and one
+
+اطلب حاسوباً جديداً لأن القديم بطيء جداً.
+Ask for a new computer because the old one is very slow.
+
+الخطوة 1: الصفة السلبية: <span class="en" lang="en">noisy</span>.
+Step 1: the negative adjective: <span class="en" lang="en">noisy</span>.
+
+الخطوة 2: <span class="en" lang="en">too</span> قبلها.
+Step 2: <span class="en" lang="en">too</span> before it.
+
+الخطوة 1: الصفة الإيجابية: <span class="en" lang="en">big</span>.
+Step 1: the positive adjective: <span class="en" lang="en">big</span>.
+
+الخطوة 2: السبب: <span class="en" lang="en">because</span> + <span class="en" lang="en">this one</span> بدل تكرار PC.
+Step 2: the reason: <span class="en" lang="en">because</span> + <span class="en" lang="en">this one</span> instead of repeating PC.
+
+وصّل الصفة بضدها
+Match the adjective with its opposite
+
+صفات الأجهزة وأضدادها
+Adjectives for machines and their opposites
+
+ما ضد reliable؟
+What is the opposite of reliable?
+
+too و enough، و so و because، و one
+too and enough, so and because, and one
+
+المقارنة
+Comparative
+
+كيف تطلب طابعة أهدأ؟
+How do you ask for a quieter printer?
+
+too + صفة · not + صفة + enough · not enough + اسم.
+too + adjective · not + adjective + enough · not enough + noun.
+
+so للنتيجة، because للسبب.
+so for the result, because for the reason.
+
+PAT: ^بعض\ الأضداد\ بإضافة\ <span\ class="en"\ lang="en">(.+?)</span>\ في\ أولها\.$ ||| Some opposites are made by adding <span class="en" lang="en">$1</span> at the beginning.
+
+<span class="en" lang="en">enough</span> بعد الصفة.
+<span class="en" lang="en">enough</span> after the adjective.
+
+<span class="en" lang="en">enough</span> قبل الاسم.
+<span class="en" lang="en">enough</span> before the noun.
+
+<span class="en" lang="en">one</span> بدل تكرار الاسم.
+<span class="en" lang="en">one</span> instead of repeating the noun.
+
+حرف مكرر + er
+Double letter + er
+
+الفرق بين ميزات المنتج (features) وفوائده للزبون (benefits)، وعبارات شرح الفائدة (This means that … This enables you to … You'll be able to … You don't need to …)، واختيار أجهزة العرض المناسبة لكل شخص.
+The difference between a product's features and its benefits for the customer, phrases for explaining the benefit (This means that … This enables you to … You'll be able to … You don't need to …), and choosing the right presentation equipment for each person.
+
+تشرح لزبون لماذا المنتج مفيد له. ستتعلم:
+You explain to a customer why the product is useful for them. You will learn:
+
+الفرق بين الميزة والفائدة.
+The difference between a feature and a benefit.
+
+عبارات شرح الفائدة.
+Phrases for explaining the benefit.
+
+اختيار المنتج المناسب لحاجة الشخص.
+Choosing the right product for the person's need.
+
+شرح القاعدة: الميزات والفوائد، وعبارات شرح الفائدة <span class="ref">ص 22–23، ص 93</span>
+Rule explanation: features and benefits, and phrases for explaining the benefit <span class="ref">pp. 22–23, p. 93</span>
+
+البائع الجيد لا يكتفي بوصف ميزات المنتج، بل يشرح لماذا تهم الزبون: الفائدة.
+A good salesperson doesn't just describe the product's features, but explains why they matter to the customer: the benefit.
+
+1. الميزة والفائدة <span class="ref">ص 22</span>
+1. The feature and the benefit <span class="ref">p. 22</span>
+
+<span class="en" lang="en">Features</span> = الأجزاء المهمة في المنتج. <span class="en" lang="en">Benefits</span> = لماذا هذه الميزات مهمة للزبون.
+<span class="en" lang="en">Features</span> = the important parts of the product. <span class="en" lang="en">Benefits</span> = why these features are important for the customer.
+
+ميزة:
+Feature:
+
+فائدة:
+Benefit:
+
+الفائدة ما يكسبه الزبون.
+The benefit is what the customer gains.
+
+2. عبارات شرح الفائدة <span class="ref">ص 22، ص 93</span>
+2. Phrases for explaining the benefit <span class="ref">p. 22, p. 93</span>
+
+عبارات ثابتة تربط الميزة بالفائدة.
+Fixed phrases that link the feature to the benefit.
+
+<span class="en" lang="en">This means that it is easy to read.</span> (+ جملة)
+<span class="en" lang="en">This means that it is easy to read.</span> (+ a clause)
+
+<span class="en" lang="en">This enables you to read it easily.</span> (+ <span class="en" lang="en">to</span> + الفعل)
+<span class="en" lang="en">This enables you to read it easily.</span> (+ <span class="en" lang="en">to</span> + verb)
+
+can بلا to.
+can with no to.
+
+مختبر مصغّر: عبارات الفائدة
+Mini lab: benefit phrases
+
+اختر العبارة، ولاحظ ما يأتي بعدها.
+Choose the phrase, and notice what comes after it.
+
++ جملة كاملة
++ a full clause
+
+<span class="en" lang="en">This means that</span> + جملة فيها فاعل.
+<span class="en" lang="en">This means that</span> + a clause with a subject.
+
+استمع إلى المدرّب: أكمل التعريفين، ورتّب الميزات، وطابقها بالفوائد.
+Listen to the trainer: complete the two definitions, put the features in order, and match them to the benefits.
+
+وصّل ميزة الساعة الذكية (من إعدادنا) بفائدتها.
+Match the feature of the smartwatch (our own) to its benefit.
+
+أكمل جمل المدرّب، ثم استمع وتحقق.
+Complete the trainer's sentences, then listen and check.
+
+أكمل جمل الفائدة.
+Complete the benefit sentences.
+
+اقرأ ما يريده أربعة أشخاص، واختر لكل منهم جهاز العرض الأنسب.
+Read what four people want, and choose the best presentation equipment for each of them.
+
+1 Shane Hooper: portable overhead projector (خفيف، ويحضّر الشرائح مسبقاً بلا حاسوب)
+1 Shane Hooper: portable overhead projector (light, and he prepares the slides in advance with no computer)
+
+2 Paola Mirelli: presentation software (جداول ورسوم، وتحب التقنية، ولديها سيارة)
+2 Paola Mirelli: presentation software (tables and charts, she likes technology, and she has a car)
+
+3 Eva Lozowski: mobile flipchart (تكتب أفكار المشاركين وتحتفظ بها، وله عجلات)
+3 Eva Lozowski: mobile flipchart (she writes the participants' ideas and keeps them, and it has wheels)
+
+4 Joe Matthews: dry-wipe whiteboard (يكتب ولا يحتاج سجلاً)
+4 Joe Matthews: dry-wipe whiteboard (he writes and doesn't need a record)
+
+إجابات من قراءتنا؛ قد يُقبل غيرها مع التعليل.
+Answers from our reading; others may be accepted with a reason.
+
+أي جهاز من المختبر يناسب كل شخص؟ (أشخاص من إعدادنا)
+Which equipment from the lab suits each person? (people of our own)
+
+ما عيوب كل جهاز؟ وأيها تفضّل؟ ناقشوا.
+What are the disadvantages of each piece of equipment? Which do you prefer? Discuss.
+
+ناقشوا: ما عيوب كل جهاز عرض؟ وأيها تفضّل لعروضك؟
+Discuss: what are the disadvantages of each piece of presentation equipment? Which do you prefer for your presentations?
+
+صحّح فوائد جهاز الهاتف والفاكس، ثم طابقها بالميزات.
+Correct the benefits of the phone and fax machine, then match them to the features.
+
+بداية الدورة التدريبية: الميزات والفوائد.
+The start of the training course: features and benefits.
+
+المدرّب يشرح فوائد برنامج العروض.
+The trainer explains the benefits of the presentation software.
+
+المنتج
+The product
+
+منتجان من إعدادنا، مبنيان على التمرينين 1 و 3 ص 22–23. اختر المنتج ثم الميزة.
+Two products of our own, based on Exercises 1 and 3, pp. 22–23. Choose the product, then the feature.
+
+الميزة والفائدة
+The feature and the benefit
+
+الميزة: جزء من المنتج. الفائدة: ماذا تعني للزبون.
+The feature: a part of the product. The benefit: what it means for the customer.
+
+ما الفرق بين الميزة (<span class="en">feature</span>) والفائدة (<span class="en">benefit</span>)؟
+What is the difference between a feature (<span class="en">feature</span>) and a benefit (<span class="en">benefit</span>)?
+
+أي العبارات يأتي بعدها <span class="en">to</span>؟
+Which phrases are followed by <span class="en">to</span>?
+
+اكتب ميزة وفائدة لحقيبتك.
+Write a feature and a benefit for your bag.
+
+مثال 1: من ميزة إلى فائدة
+Example 1: from a feature to a benefit
+
+الميزة: <span class="en" lang="en">The laptop is very light.</span> اكتب الفائدة.
+The feature: <span class="en" lang="en">The laptop is very light.</span> Write the benefit.
+
+كل الكوابل مع الجهاز. اكتب الفائدة.
+All the cables come with the machine. Write the benefit.
+
+صحّح: <span class="en" lang="en">You will able to send emails quickly.</span>
+Correct: <span class="en" lang="en">You will able to send emails quickly.</span>
+
+الخطوة 1: ما الذي يكسبه الزبون؟ يحمله بسهولة.
+Step 1: what does the customer gain? He carries it easily.
+
+الخطوة 2: + <span class="en" lang="en">buy extra cables</span>
+Step 2: + <span class="en" lang="en">buy extra cables</span>
+
+الخطوة 1: ينقص <span class="en" lang="en">be</span>.
+Step 1: <span class="en" lang="en">be</span> is missing.
+
+وصّل الميزة بالفائدة
+Match the feature to the benefit
+
+عبارات شرح الفائدة
+Phrases for explaining the benefit
+
+ما الذي يأتي بعد This enables you؟
+What comes after This enables you?
+
+Feature = جزء مهم من المنتج · Benefit = ماذا يعني للزبون.
+Feature = an important part of the product · Benefit = what it means for the customer.
+
+This means that + جملة.
+This means that + a clause.
+
++ to + الفعل
++ to + verb
+
++ الفعل
++ verb
+
++ الفعل بلا to
++ verb with no to
+
+بعد <span class="en" lang="en">can</span> الفعل بلا <span class="en" lang="en">to</span>.
+After <span class="en" lang="en">can</span>, the verb with no <span class="en" lang="en">to</span>.
+

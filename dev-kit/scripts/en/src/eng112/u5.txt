@@ -1,0 +1,458 @@
+معايير اختيار الخدمة (speed، price، convenience، reliability) وصفاتها وأضدادها، والمقارنة والتفضيل (cheaper than، the fastest، more convenient)، وكلمات التقوية والتضعيف (very، extremely، quite، fairly، much، a bit)، واختيار شركة توصيل وفندق للمؤتمر.
+Criteria for choosing a service (speed, price, convenience, reliability) and their adjectives and opposites, comparatives and superlatives (cheaper than, the fastest, more convenient), words that make adjectives stronger or weaker (very, extremely, quite, fairly, much, a bit), and choosing a delivery company and a hotel for the conference.
+
+تقارن بين خدمات الشركات لتختار الأفضل. ستتعلم:
+You compare the services of companies to choose the best. You will learn:
+
+معايير الاختيار وصفاتها.
+Criteria for choosing and their adjectives.
+
+المقارنة والتفضيل.
+Comparatives and superlatives.
+
+تقوية الصفة وتضعيفها وحجم الفرق.
+Making an adjective stronger or weaker, and the size of the difference.
+
+شرح القاعدة: المقارنة والتفضيل، وكلمات تقوية الصفة وتضعيفها <span class="ref">ص 24–25، ص 94–95</span>
+Rule explanation: comparatives and superlatives, and words that make an adjective stronger or weaker <span class="ref">pp. 24–25, pp. 94–95</span>
+
+حين تختار خدمة تقارن بين الشركات في السرعة والسعر والراحة والموثوقية.
+When you choose a service, you compare companies on speed, price, convenience and reliability.
+
+1. الاسم والصفة، والمقارنة والتفضيل <span class="ref">ص 24، ص 94</span>
+1. The noun and the adjective, comparatives and superlatives <span class="ref">p. 24, p. 94</span>
+
+لكل معيار اسم وصفة وضد: <span class="en" lang="en">speed → fast / slow · price → cheap / expensive · convenience → convenient / inconvenient · reliability → reliable / unreliable</span>.
+Each criterion has a noun, an adjective and an opposite: <span class="en" lang="en">speed → fast / slow · price → cheap / expensive · convenience → convenient / inconvenient · reliability → reliable / unreliable</span>.
+
+مقطع واحد:
+One syllable:
+
+نكرر الحرف الأخير بعد حرف علة واحد: <span class="en" lang="en">big → bigger</span>، ولا نكرره بعد حرفي علة أو مع <span class="en" lang="en">w / y</span>: <span class="en" lang="en">cheap → cheaper · slow → slower</span>
+We double the last letter after one vowel: <span class="en" lang="en">big → bigger</span>, and we don't double it after two vowels or with <span class="en" lang="en">w / y</span>: <span class="en" lang="en">cheap → cheaper · slow → slower</span>
+
+ينتهي بـ y:
+Ending in y:
+
+طويلة:
+Long:
+
+شاذة:
+Irregular:
+
+شيئان: <span class="en" lang="en">Smithsons are cheaper than Westons.</span>، وثلاثة: <span class="en" lang="en">BigPlane is the fastest airline.</span>
+Two things: <span class="en" lang="en">Smithsons are cheaper than Westons.</span>, and three: <span class="en" lang="en">BigPlane is the fastest airline.</span>
+
+التفضيل
+Superlative
+
+than بعد المقارنة.
+than after the comparative.
+
+the قبل التفضيل.
+the before the superlative.
+
+مختبر مصغّر: المقارنة والتفضيل
+Mini lab: comparatives and superlatives
+
+PAT: ^([^؀-ۿ]+)\ المقارنة\ بين\ شيئين\ مع\ <span\ class="en"\ lang="en">than</span>،\ والتفضيل\ بين\ ثلاثة\ أو\ أكثر\ مع\ <span\ class="en"\ lang="en">the</span>\.$ ||| $1 We compare two things with <span class="en" lang="en">than</span>, and three or more with <span class="en" lang="en">the</span> and the superlative.
+
+2. تقوية الصفة وتضعيفها <span class="ref">ص 25، ص 95</span>
+2. Making the adjective stronger or weaker <span class="ref">p. 25, p. 95</span>
+
+كلمات قبل الصفة تقوّيها أو تضعّفها، وكلمات قبل المقارنة تبيّن حجم الفرق.
+Words before the adjective make it stronger or weaker, and words before the comparative show the size of the difference.
+
+<b>تقوية:</b> <span class="en" lang="en">very · extremely · really</span> + صفة: <span class="en" lang="en">They're really expensive.</span>
+<b>Stronger:</b> <span class="en" lang="en">very · extremely · really</span> + adjective: <span class="en" lang="en">They're really expensive.</span>
+
+تقوية:
+Stronger:
+
+<b>تضعيف:</b> <span class="en" lang="en">quite · fairly</span> + صفة: <span class="en" lang="en">ParcelSpeed is fairly fast.</span>
+<b>Weaker:</b> <span class="en" lang="en">quite · fairly</span> + adjective: <span class="en" lang="en">ParcelSpeed is fairly fast.</span>
+
+تضعيف:
+Weaker:
+
+<b>فرق كبير:</b> <span class="en" lang="en">much · a lot · far</span> + مقارنة: <span class="en" lang="en">Cybernet is much faster than Webspeed.</span>
+<b>A big difference:</b> <span class="en" lang="en">much · a lot · far</span> + comparative: <span class="en" lang="en">Cybernet is much faster than Webspeed.</span>
+
+فرق كبير:
+A big difference:
+
+<b>فرق صغير:</b> <span class="en" lang="en">a bit</span> + مقارنة: <span class="en" lang="en">Western Rail is a bit cheaper than TrainWest.</span>
+<b>A small difference:</b> <span class="en" lang="en">a bit</span> + comparative: <span class="en" lang="en">Western Rail is a bit cheaper than TrainWest.</span>
+
+فرق صغير:
+A small difference:
+
+<span class="en" lang="en">really</span> أقل رسمية من <span class="en" lang="en">very</span>.
+<span class="en" lang="en">really</span> is less formal than <span class="en" lang="en">very</span>.
+
+قبل المقارنة: much.
+Before the comparative: much.
+
+قبل الصفة العادية: quite.
+Before a normal adjective: quite.
+
+مختبر مصغّر: very و much و a bit
+Mini lab: very, much and a bit
+
+اختر الكلمة، وشاهد الصفة المناسبة لها.
+Choose the word, and see the adjective that suits it.
+
+يقوّي الصفة
+Makes the adjective stronger
+
+<span class="en" lang="en">very · extremely · really · quite · fairly</span> قبل الصفة العادية.
+<span class="en" lang="en">very · extremely · really · quite · fairly</span> before a normal adjective.
+
+ما الأهم عند اختيار خدمة؟ ما الصفات من الأسماء؟ ثم اقرأ إعلانات شركات التوصيل وأجب.
+What is most important when you choose a service? Which adjectives come from the nouns? Then read the adverts of delivery companies and answer.
+
+c1 و c3 من قراءتنا للإعلانات.
+c1 and c3 are from our reading of the adverts.
+
+اقرأ إعلانات تأجير السيارات (من إعدادنا) وأجب. CityCar: SAR 90 a day, collect at the airport. QuickRent: SAR 150 a day, we bring the car to your door. BudgetDrive: SAR 70 a day, collect from our office in town.
+Read the car rental adverts (our own) and answer. CityCar: SAR 90 a day, collect at the airport. QuickRent: SAR 150 a day, we bring the car to your door. BudgetDrive: SAR 70 a day, collect from our office in town.
+
+استمع إلى Ben و Judy وضع علامة في الجدول.
+Listen to Ben and Judy and tick the table.
+
+استمع إلى زميلين (من إعدادنا) يختاران فندقاً.
+Listen to two colleagues (our own) choosing a hotel.
+
+أكمل جمل Judy، ثم أين يمكن أن تأتي الكلمات؟
+Complete Judy's sentences, then where can the words go?
+
+PAT: ^([^؀-ۿ]+)،\ ([^؀-ۿ]+)$ ||| $1, $2
+
+أكمل بكلمة تقوية مناسبة.
+Complete with a suitable intensifier.
+
+نشاط ثنائي: اطلب من زميلك أن يوصي بمطبعة، وأوصِه بقاعة مؤتمرات.
+Pair activity: ask your partner to recommend a printing company, and recommend a conference hall to them.
+
+نشاط ثنائي: اطلب من زميلك أن يوصي بمطعم لعشاء عمل، ثم أوصِه بشركة نقل. قارن السعر والسرعة والراحة.
+Pair activity: ask your partner to recommend a restaurant for a business dinner, then recommend a transport company to them. Compare price, speed and convenience.
+
+اكتب جملاً بالمقارنة أو التفضيل.
+Write sentences with the comparative or the superlative.
+
+المقارنة أم التفضيل؟
+Comparative or superlative?
+
+اختر كلمة التقوية المناسبة في المقال.
+Choose the right intensifier in the article.
+
+اختر الكلمة المناسبة.
+Choose the right word.
+
+Ben يسأل Judy عن شركة توصيل.
+Ben asks Judy about a delivery company.
+
+مقارنة شركات التوصيل
+Comparing delivery companies
+
+شركات من إعدادنا (<b>قيم توضيحية</b>)، مبنية على التمرين 1 ص 24. اختر الصفة وعدد الشركات.
+Companies of our own (<b>example values</b>), based on Exercise 1, p. 24. Choose the adjective and the number of companies.
+
+شركتان
+Two companies
+
+ثلاث شركات
+Three companies
+
+شيئان: المقارنة + <span class="en" lang="en">than</span>.
+Two things: the comparative + <span class="en" lang="en">than</span>.
+
+متى نستعمل <span class="en">than</span> ومتى <span class="en">the</span>؟
+When do we use <span class="en">than</span> and when <span class="en">the</span>?
+
+لماذا <span class="en">cheaper</span> لكن <span class="en">more reliable</span>؟
+Why <span class="en">cheaper</span> but <span class="en">more reliable</span>?
+
+تريد إرسال وثيقة مهمة غداً صباحاً: أي شركة تختار؟
+You want to send an important document tomorrow morning: which company do you choose?
+
+ثلاثة أو أكثر: <span class="en" lang="en">the</span> + صيغة التفضيل.
+Three or more: <span class="en" lang="en">the</span> + the superlative.
+
+FastBox بـ 45 ريالاً، و SkyPost بـ 90. قارن السعر.
+FastBox costs 45 riyals, and SkyPost costs 90. Compare the price.
+
+مثال 2: التفضيل
+Example 2: the superlative
+
+ثلاثة فنادق، و Park Hotel أقربها إلى المحطة. اكتب.
+Three hotels, and the Park Hotel is the nearest to the station. Write it.
+
+مثال 3: فرق صغير
+Example 3: a small difference
+
+القطار أ أغلى قليلاً من القطار ب. اكتب.
+Train A is a bit more expensive than train B. Write it.
+
+PAT: ^الخطوة\ 2:\ \+\ <span\ class="en"\ lang="en">(.+?)</span>$ ||| Step 2: + <span class="en" lang="en">$1</span>
+
+الخطوة 1: <span class="en" lang="en">convenient</span> طويلة: <span class="en" lang="en">most</span>.
+Step 1: <span class="en" lang="en">convenient</span> is long: <span class="en" lang="en">most</span>.
+
+الخطوة 1: فرق صغير: <span class="en" lang="en">a bit</span>.
+Step 1: a small difference: <span class="en" lang="en">a bit</span>.
+
+وصّل الصفة بصيغتيها
+Match the adjective to its two forms
+
+الاسم والصفة، والمقارنة والتفضيل
+The noun and the adjective, comparatives and superlatives
+
+متى نقول cheaper than ومتى the cheapest؟
+When do we say cheaper than and when the cheapest?
+
+تقوية الصفة وتضعيفها
+Making the adjective stronger or weaker
+
+كيف تقول إن الفرق في السعر صغير؟
+How do you say that the difference in price is small?
+
+fast / cheap / convenient / reliable وأضدادها.
+fast / cheap / convenient / reliable and their opposites.
+
+شيئان: cheaper than · more convenient than.
+Two things: cheaper than · more convenient than.
+
+ثلاثة: the cheapest · the most convenient.
+Three: the cheapest · the most convenient.
+
+very / quite + صفة · much / a bit + مقارنة.
+very / quite + adjective · much / a bit + comparative.
+
+حرف مكرر. المقارنة بين شيئين مع <span class="en" lang="en">than</span>، والتفضيل بين ثلاثة أو أكثر مع <span class="en" lang="en">the</span>.
+A double letter. We compare two things with <span class="en" lang="en">than</span>, and three or more with <span class="en" lang="en">the</span> and the superlative.
+
+لا تكرار بعد حرفين. المقارنة بين شيئين مع <span class="en" lang="en">than</span>، والتفضيل بين ثلاثة أو أكثر مع <span class="en" lang="en">the</span>.
+No double letter after two vowels. We compare two things with <span class="en" lang="en">than</span>, and three or more with <span class="en" lang="en">the</span> and the superlative.
+
+طويلة: more. المقارنة بين شيئين مع <span class="en" lang="en">than</span>، والتفضيل بين ثلاثة أو أكثر مع <span class="en" lang="en">the</span>.
+Long: more. We compare two things with <span class="en" lang="en">than</span>, and three or more with <span class="en" lang="en">the</span> and the superlative.
+
+شاذة. المقارنة بين شيئين مع <span class="en" lang="en">than</span>، والتفضيل بين ثلاثة أو أكثر مع <span class="en" lang="en">the</span>.
+Irregular. We compare two things with <span class="en" lang="en">than</span>, and three or more with <span class="en" lang="en">the</span> and the superlative.
+
+يقوّي جداً
+Makes it much stronger
+
+يقوّي (أقل رسمية)
+Makes it stronger (less formal)
+
+يضعّف
+Makes it weaker
+
+فرق كبير
+A big difference
+
+مقارنة
+Comparative
+
+<span class="en" lang="en">much · a lot · a bit</span> قبل صيغة المقارنة.
+<span class="en" lang="en">much · a lot · a bit</span> before the comparative.
+
+فرق صغير
+A small difference
+
+طلب الرأي وإبداؤه (What do you think? I think … If you ask me, …)، والموافقة الكاملة (I agree. Good point.) والجزئية (I see what you mean, but … That's true, but …)، ومزايا الدورات التدريبية وعيوبها، والرد المكتوب على زميل.
+Asking for and giving opinions (What do you think? I think … If you ask me, …), full agreement (I agree. Good point.) and partial agreement (I see what you mean, but … That's true, but …), the advantages and disadvantages of training courses, and the written reply to a colleague.
+
+تناقش مع زملائك أي دورة تدريبية تختارون. ستتعلم:
+You discuss with your colleagues which training course to choose. You will learn:
+
+طلب الرأي وإبداؤه.
+Asking for and giving opinions.
+
+الموافقة الكاملة والجزئية.
+Full and partial agreement.
+
+الرد المكتوب على رأي مخالف.
+The written reply to a different opinion.
+
+شرح القاعدة: إبداء الرأي، والموافقة الكاملة والجزئية <span class="ref">ص 26–27، ص 95</span>
+Rule explanation: giving opinions, and full and partial agreement <span class="ref">pp. 26–27, p. 95</span>
+
+في الاجتماعات نطلب الرأي، ونعطي رأينا، ونوافق كلياً أو جزئياً بأدب.
+In meetings we ask for opinions, give our opinion, and agree fully or partly in a polite way.
+
+1. إبداء الرأي والموافقة <span class="ref">ص 26، ص 95</span>
+1. Giving opinions and agreeing <span class="ref">p. 26, p. 95</span>
+
+ثلاث وظائف: طلب الرأي، وإعطاؤه، والرد عليه.
+Three functions: asking for an opinion, giving it, and replying to it.
+
+طلب الرأي:
+Asking for an opinion:
+
+الرأي:
+The opinion:
+
+موافقة كاملة:
+Full agreement:
+
+موافقة جزئية:
+Partial agreement:
+
+الرأي
+The opinion
+
+موافقة كاملة
+Full agreement
+
+موافقة جزئية
+Partial agreement
+
+PAT: ^بلا\ ([^؀-ۿ]+)$ ||| No $1
+
+مختبر مصغّر: الرأي والموافقة
+Mini lab: opinions and agreement
+
+اختر العبارة.
+Choose the phrase.
+
+سؤال عن الرأي
+A question about the opinion
+
+سؤال عن الرأي.
+A question about the opinion.
+
+2. الرد المكتوب على رأي <span class="ref">ص 27</span>
+2. The written reply to an opinion <span class="ref">p. 27</span>
+
+نستعمل العبارات نفسها في الرسالة: نشكر، ونوافق جزئياً، ثم نعرض رأينا وأسبابه.
+We use the same phrases in a message: we thank, agree partly, then give our opinion and our reasons.
+
+استمع إلى المديرين: ضع الأفكار في أعمدة المزايا والعيوب.
+Listen to the managers: put the ideas in the columns for advantages and disadvantages.
+
+دورة اللغة الإنجليزية (من إعدادنا): ميزة أم عيب؟
+The English course (our own): an advantage or a disadvantage?
+
+أكمل عبارات المديرين، ثم حدد وظيفة كل عبارة.
+Complete the managers' phrases, then decide the function of each phrase.
+
+وصّل العبارة بوظيفتها.
+Match the phrase to its function.
+
+اكتب رداً على رسالة Roger.
+Write a reply to Roger's message.
+
+زميلك كتب: "I don't think we need an English course. It's too expensive." اكتب رداً توافقه فيه جزئياً وتعطي رأيك.
+Your colleague wrote: "I don't think we need an English course. It's too expensive." Write a reply that agrees with him partly and gives your opinion.
+
+ناقشوا مزايا الدورات وعيوبها، وقرروا أفضلها لموظفيكم.
+Discuss the advantages and disadvantages of the courses, and decide which is best for your employees.
+
+في مجموعة: ناقشوا ثلاث دورات (إسعافات أولية، لغة إنجليزية، مبيعات) واختاروا أفضلها لزملائكم.
+In a group: discuss three courses (first aid, English, sales) and choose the best one for your colleagues.
+
+احذف الكلمة الزائدة.
+Delete the extra word.
+
+ص 26 — التمرينان 1 و 2
+p. 26 — Exercises 1 and 2
+
+مديران يناقشان دورة جديدة.
+Two managers discuss a new course.
+
+الاجتماع
+The meeting
+
+دورات من إعدادنا، مبنية على التمرينين 1 و 2 ص 26. اختر الدورة، ثم الرد.
+Courses of our own, based on Exercises 1 and 2, p. 26. Choose the course, then the reply.
+
+موافقة جزئية: نبدأ بقبول، ثم <span class="en" lang="en">but</span> والعيب.
+Partial agreement: we start by accepting, then <span class="en" lang="en">but</span> and the disadvantage.
+
+أي الردود موافقة كاملة؟ وأيها موافقة جزئية؟
+Which replies are full agreement? Which are partial agreement?
+
+كيف يعطي المتكلم رأيه؟
+How does the speaker give his opinion?
+
+أي دورة تفضّل لزملائك؟ ولماذا؟
+Which course do you prefer for your colleagues? Why?
+
+موافقة كاملة.
+Full agreement.
+
+مثال 1: الرأي
+Example 1: the opinion
+
+عبّر عن رأيك: دورة الهاتف هي الأفضل.
+Give your opinion: the telephone course is the best.
+
+مثال 2: موافقة جزئية
+Example 2: partial agreement
+
+زميلك قال إن دورة الحاسوب مفيدة، وأنت ترى أنها طويلة.
+Your colleague said the computer course is useful, and you think it is long.
+
+مثال 3: تصحيح
+Example 3: correcting
+
+صحّح: <span class="en" lang="en">I think of that we need more training.</span>
+Correct: <span class="en" lang="en">I think of that we need more training.</span>
+
+الخطوة 1: نقبل جزئياً: <span class="en" lang="en">That's true,</span>
+Step 1: we accept partly: <span class="en" lang="en">That's true,</span>
+
+الخطوة 2: <span class="en" lang="en">but</span> + السبب.
+Step 2: <span class="en" lang="en">but</span> + the reason.
+
+الخطوة 1: <span class="en" lang="en">of</span> زائدة.
+Step 1: <span class="en" lang="en">of</span> is extra.
+
+الخطوة 2: <span class="en" lang="en">I think</span> + جملة.
+Step 2: <span class="en" lang="en">I think</span> + a clause.
+
+وصّل العبارة بوظيفتها
+Match the phrase to its function
+
+إبداء الرأي والموافقة
+Giving opinions and agreeing
+
+كيف توافق زميلك جزئياً دون أن تحرجه؟
+How do you agree partly with your colleague without embarrassing him?
+
+رأي ثم موافقة كاملة أو جزئية. مرّر المؤشر.
+An opinion, then full or partial agreement. Move the pointer.
+
+الرد المكتوب على رأي
+The written reply to an opinion
+
+كيف ترد بالبريد على زميل يخالفك الرأي؟
+How do you reply by email to a colleague who has a different opinion?
+
+موافقة كاملة: I agree. · Good point. I didn't think of that.
+Full agreement: I agree. · Good point. I didn't think of that.
+
+موافقة جزئية: I see what you mean / I suppose so / That's true, but …
+Partial agreement: I see what you mean / I suppose so / That's true, but …
+
+في الرسالة: الشكر، ثم الموافقة الجزئية، ثم رأيك وسببه.
+In the message: thanks, then partial agreement, then your opinion and its reason.
+
+رأي
+Opinion
+
+رأي.
+An opinion.
+
+رأي منفي
+A negative opinion
+
+النفي مع <span class="en" lang="en">think</span>: <span class="en" lang="en">I don't think …</span> لا <span class="en" lang="en">I think … not</span>.
+The negative is with <span class="en" lang="en">think</span>: <span class="en" lang="en">I don't think …</span>, not <span class="en" lang="en">I think … not</span>.
+
+الموافقة الجزئية تنتهي بـ <span class="en" lang="en">but</span> وسبب.
+Partial agreement ends with <span class="en" lang="en">but</span> and a reason.
+

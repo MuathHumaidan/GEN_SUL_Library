@@ -104,7 +104,7 @@ function lab4b(el,B){kcss();
 const BN4={means:['This means that','you can use it all day.','+ جملة كاملة'],enables:['This enables you to','read documents easily.','+ to + الفعل'],able:["You'll be able to",'take great photos.','+ الفعل'],can:['You can','move it easily.','+ الفعل بلا to'],dont:["You don't need to",'buy extra batteries.','غير ضروري']};
 const LAB444D={title:'عبارات الفائدة',w:(el,B)=>N.labB(el,B,{intro:'اختر العبارة، ولاحظ ما يأتي بعدها.',
  controls:[{k:'b',label:'العبارة',opts:Object.keys(BN4).map(k=>[k,BN4[k][0]])}],
- out:({b})=>{const [a,c,ar]=BN4[b];return{pieces:[[a,'k',ar],[c,'n','']],say:`${a} ${c}`,why:b==='means'?`${e('This means that')} + جملة فيها فاعل.`:b==='can'?`بعد ${e('can')} الفعل بلا ${e('to')}.`:`بعد ${e(a.split(' ').slice(-1)[0])} ${b==='enables'||b==='dont'?e('to')+' + ':''}الفعل.`}}})};
+ out:({b})=>{const [a,c,ar]=BN4[b];return{pieces:[[a,'k',ar],[c,'n','']],say:`${a} ${c}`,why:b==='means'?`${e('This means that')} + جملة فيها فاعل.`:b==='can'?`بعد ${e('can')} الفعل بلا ${e('to')}.`:`بعد ${e(a)} الفعل كما هو.`}}})};
 const R42=N.rule({title:'الميزات والفوائد، وعبارات شرح الفائدة',ref:'ص 22–23، ص 93',
  intro:`البائع الجيد لا يكتفي بوصف ميزات المنتج، بل يشرح لماذا تهم الزبون: الفائدة.`,
  parts:[
