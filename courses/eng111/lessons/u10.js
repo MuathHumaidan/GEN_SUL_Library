@@ -145,7 +145,7 @@ B.lesson({
    bk(1,'ص 50','ضع ظروف تكرار أخرى على المقياس.',['never (0%) · hardly ever · sometimes (50%) · often · usually · always (100%)'])+
    bk(2,'ص 50','أكمل الجدول عن نفسك ثم اسأل زميلين.',null)+
    bk(3,'ص 50','أخبر الصف بفرقين بينك وبين زميل.',["Sam always drives to work, but I never do. I usually take the train. (مثال)"])+
-   bk(4,'ص 51','انظر إلى الجدول وأجب.',['1 the UK (43.7 hours)','2 Germany (38.7 hours)','3 France (10.4 years)','4 France (14.1%)','5 Canada (1.2%)'])+
+   bk(4,'ص 51','انظر إلى الجدول وأجب.',['1 the UK (43.7 hours)','2 Germany (38.7 hours)','3 Germany (10.8 years)','4 France (14.1%)','5 Canada (1.2%)'])+
    bk(5,'ص 51','خمّن أرقام الولايات المتحدة، ثم استمع وقارن.',['b: 42.8 hours a week · 7.4 years in one company · 0.5% of income saved'])},
   {h:'الاستماع',ref:'ص 51',html:au('10B-5b','ص 51 — التمرين 5b','أرقام الولايات المتحدة.')}
  ],
