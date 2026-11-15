@@ -8,5 +8,11 @@ PLCBOOK.enDict({
 "القواعد والتحذيرات ولوحات السلامة، والمخاطر وتقرير التفتيش، والتحقيق في الحوادث، ومراجعة E.": "Rules, warnings and safety signs, hazards and the inspection report, investigating incidents, and Review E.",
 "المرجع: كتاب <span class=\"en\">Technical English 1 – Course Book</span>، تأليف <span class=\"en\">David Bonamy</span>، الناشر <span class=\"en\">Pearson Education</span> (2008)، <span class=\"en\">ISBN 978-1-4058-4545-8</span> (الوحدات 7–10 ومراجعتا D و E، الصفحات 52–83)، كما وصل في حقيبة المقرر. أرقام الصفحات هي المطبوعة في الكتاب. الشرح والأمثلة والحوارات في هذا الموقع من إعدادنا وليست منقولة من الكتاب؛ تمارين الكتاب يُحال إليها برقمها وصفحتها لتُحل في الكتاب نفسه.": "Source: <span class=\"en\">Technical English 1 – Course Book</span> by <span class=\"en\">David Bonamy</span>, <span class=\"en\">Pearson Education</span> (2008), <span class=\"en\">ISBN 978-1-4058-4545-8</span> (Units 7–10 and Reviews D and E, pages 52–83), as it came in the course pack. Page numbers are the numbers printed in the book. The explanations, examples and dialogues on this site are our own and are not copied from the book. Book exercises are named by number and page, to be done in the book itself.",
 "الاستماع من صوتيات الكتاب": "Listening from the book audio",
-"استمع إلى مقاطع الكتاب وحل تمارينها في كتابك.": "Listen to the book tracks and do their exercises in your book."
+"استمع إلى مقاطع الكتاب وحل تمارينها في كتابك.": "Listen to the book tracks and do their exercises in your book.",
+"تمرين على المقطع": "Track exercise",
+"استمع للمقطع ثم أجب (أسئلة من إعدادنا)": "Listen to the track, then answer (our own questions)",
+"استمع إلى المقطع، ثم اختر الإجابة الصحيحة.": "Listen to the track, then choose the correct answer.",
+"استمع إلى المقطع، ثم أجب.": "Listen to the track, then answer.",
+"في كتابك": "In your book"
 });
+PLCBOOK.enPat([[new RegExp("^\u0627\u0644\u0645\u0642\u0637\u0639 (<span class=\"en\"[\\s\\S]*</span>)$"),"Track $1"]]);

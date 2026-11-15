@@ -22,6 +22,7 @@ const css=`
 .bx-sp .ul span{background:var(--surface-2);border-radius:8px;padding:3px 9px}
 .bx-sp details{margin-top:8px}.bx-sp summary{cursor:pointer;font-weight:700}
 .bx-dl{margin:6px 0;padding:0;list-style:none}.bx-dl li{margin:4px 0}
+.bx[data-aq] .pk-it{direction:ltr;text-align:left}
 .bx-ls{background:var(--surface-2);border-radius:12px;padding:10px 12px;margin-bottom:10px}
 .bx-ls .play{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 14px;background:var(--accent,#1f7a55);color:#fff;cursor:pointer}
 `;
@@ -70,13 +71,22 @@ const box=(lid,x)=>{const d=document.createElement('div');d.className='bx';d.dat
   run(d.querySelector('.bx-b'),x);return d};
 
 /* الحقن: بعد مربع «في كتابك» (رسمي) أو في آخر المحطة (تفاعلي) */
-function inject(){const view=document.getElementById('view');if(!view)return;const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
+function inject(){const view=document.getElementById('view');if(!view)return;injectAQ(view);const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
   const sts=view.querySelectorAll('section[id^="st-"]');
-  if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;s.appendChild(box(lid,x))});return}
+  if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const h=window.BKH&&window.BKH[x.n+'|'+x.ref];if(h){const w=document.createElement('div');w.className='bk-st';w.innerHTML=h;s.appendChild(w)}s.appendChild(box(lid,x))});return}
   const bks=[...view.querySelectorAll('.ebk')];if(!bks.length)return;
   X.forEach(x=>{if(view.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const t=bks.find(b=>{const h=b.querySelector('.eh b');return h&&h.textContent.trim()==='تمرين '+x.n});
     if(t)t.after(box(lid,x))})}
+/* تمرين على مقطع من صوتيات الكتاب (أسئلة من إعدادنا عمّا يُقال في المقطع): AQ.add('<رقم المقطع>',{kind,intro,items})
+   يظهر تحت مشغّل المقطع في الأسلوبين */
+const AQ={};
+function injectAQ(view){view.querySelectorAll('.aud').forEach(a=>{const au=a.querySelector('audio');if(!au)return;const m=(au.getAttribute('src')||'').match(/track-([^.\/]+)\.mp3$/);if(!m)return;const x=AQ[m[1]];
+  if(!x||a.nextElementSibling&&a.nextElementSibling.dataset&&a.nextElementSibling.dataset.aq===m[1])return;
+  addCss();const d=document.createElement('div');d.className='bx';d.dataset.aq=m[1];
+  d.innerHTML=`<div class="bx-h"><span class="tg">تمرين على المقطع</span><b>المقطع ${en(m[1])}</b><span class="sub">استمع للمقطع ثم أجب (أسئلة من إعدادنا)</span></div><div class="bx-b"></div>`;
+  a.after(d);run(d.querySelector('.bx-b'),x)})}
 G.BX={add:(lid,arr)=>{D[lid]=(D[lid]||[]).concat(arr)},data:D,inject};
+G.AQ={add:(t,x)=>{AQ[t]=x},data:AQ};
 const go=()=>{const v=document.getElementById('view');if(!v)return;inject();let q=0;new MutationObserver(()=>{if(q)return;q=1;requestAnimationFrame(()=>{q=0;inject()})}).observe(v,{childList:true,subtree:true})};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })(window);
