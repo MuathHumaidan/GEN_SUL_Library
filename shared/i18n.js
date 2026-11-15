@@ -13,7 +13,9 @@ const D=new Map(),PAT=[];
 B.enDict=o=>{for(const k in o)D.set(norm(k),o[k])};
 B.enPat=a=>{a.forEach(x=>PAT.push(x))};
 let lang='ar';try{lang=localStorage.getItem('elib-lang')==='en'?'en':'ar'}catch(e){}
-{const q=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];if(q){lang=q;try{localStorage.setItem('elib-lang',q)}catch(e){}}}
+/* مقرر لم تكتمل ترجمته بعد: <html data-en-off> يبقيه بالعربي ويخفي الزر */
+const EN_OFF=document.documentElement.hasAttribute('data-en-off');if(EN_OFF)lang='ar';
+{const q=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];if(q&&!EN_OFF){lang=q;try{localStorage.setItem('elib-lang',q)}catch(e){}}}
 B.lang=()=>lang;
 const root=document.documentElement;
 const miss=window.__enMissing=new Set();
@@ -70,7 +72,7 @@ function setLang(l){lang=l;try{localStorage.setItem('elib-lang',l)}catch(e){}loc
 /* الزر */
 function button(){const ta=document.querySelector('.top-actions');if(!ta||ta.querySelector('.langbtn'))return;
   /* أثناء التجربة: الزر يظهر فقط إذا فُعّل للمقرر (B.enShow) أو كان المتصفح على الإنجليزي (?lang=en) */
-  if(lang!=='en'&&!B.enShow)return;
+  if(EN_OFF||lang!=='en'&&!B.enShow)return;
   const b=document.createElement('button');b.type='button';b.className='stylebtn langbtn';
   b.innerHTML=lang==='en'?'<span class="sl">Language: </span><b><span class="lg-l">English</span><span class="lg-s">EN</span></b>':'<span class="sl">لغة الشرح: </span><b><span class="lg-l">عربي</span><span class="lg-s">ع</span></b>';
   b.title=lang==='en'?'Switch to Arabic':'حوّل المقرر إلى إنجليزية مبسطة';b.setAttribute('aria-label',b.title);
@@ -79,7 +81,7 @@ if(lang==='en'){root.setAttribute('lang','en');root.setAttribute('dir','ltr');ro
 B.enStart=()=>{button();if(lang!=='en')return;obs=new MutationObserver(()=>{if(!busy)requestAnimationFrame(run)});run();
   const t=document.querySelector('title');if(t&&AR.test(t.textContent)){const v=look(t.textContent);if(v&&v!=='=')t.textContent=v}};
 /* ===== نصوص الواجهة المشتركة في كل مقررات الإنجليزي ===== */
-const ORD=['','1','2','3','4','5','6','7','8','9','10'],ARO={'الأولى':1,'الثانية':2,'الثالثة':3,'الرابعة':4,'الخامسة':5,'السادسة':6,'السابعة':7,'الثامنة':8,'التاسعة':9,'العاشرة':10};
+const ORD=['','1','2','3','4','5','6','7','8','9','10'],ARO={'الأولى':1,'الثانية':2,'الثالثة':3,'الرابعة':4,'الخامسة':5,'السادسة':6,'السابعة':7,'الثامنة':8,'التاسعة':9,'العاشرة':10,'الحادية عشرة':11,'الثانية عشرة':12,'الثالثة عشرة':13,'الرابعة عشرة':14,'الخامسة عشرة':15};
 const pp=x=>/[–-]/.test(x)?'pp. '+x:'p. '+x;
 const T=(m,f,i)=>{const v=f(m[i]);return v==null?null:(v==='='?m[i]:v)};
 B.enPat([
@@ -92,7 +94,7 @@ B.enPat([
  [/^(إنقاص|زيادة) درجة (.+)$/,m=>`${m[1]==='زيادة'?'One more mark':'One mark less'}: ${m[2]}`],
  [/^(\d+) متدرب$/,'$1 trainees'],
  [/^الدرس ([\d.]+) · ص ([\d–-]+)$/,m=>`Lesson ${m[1]} · ${pp(m[2])}`],
- [/^الوحدة (\S+)$/,m=>ARO[m[1]]?`Unit ${ARO[m[1]]}`:null],
+ [/^الوحدة (\S+(?: عشرة)?)$/,m=>ARO[m[1]]?`Unit ${ARO[m[1]]}`:null],
  [/^المحطة (\S+) · ص ([\d–-]+)$/,m=>ARO[m[1]]?`Station ${ARO[m[1]]} · ${pp(m[2])}`:null],
  [/^تمرين ([\w. ]+)$/,m=>`Exercise ${m[1]}`],
  [/^يقابل تمرين ([\w. ]+) ص ([\d–-]+)$/,m=>`Like Exercise ${m[1]}, ${pp(m[2])}`],

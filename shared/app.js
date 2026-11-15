@@ -6,14 +6,21 @@
 "use strict";
 const B=G.PLCBOOK; const {createPLC,ctrlCircuit,ladNetwork,fbdNetwork,stlTable,W,esc,fmtTime}=B;
 const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>[...(r||document).querySelectorAll(s)];
-const AR=['','الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة'];
+const AR=['','الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة','الحادية عشرة','الثانية عشرة','الثالثة عشرة','الرابعة عشرة','الخامسة عشرة'];
 
 B.UNITS=[];  // {n,title,pages,blurb}
 B.COURSE={key:'plcbook',code:'205 كهر',title:'تقنية التحكم المبرمج',sub:'(عملي)',eyebrow:'205 كهر · القوى الكهربائية — الآلات والمعدات الكهربائية',lead:'',source:''};
 B.course=c=>{Object.assign(B.COURSE,c)};
 const KK=n=>B.COURSE.key+'-'+n;
 B.unit=u=>{B.UNITS.push(u)};
-B.lesson=L=>{B.LESSONS.push(L)};
+/* ترتيب العرض: u.ord إن وُجد (لمقرر يجمع وحدات من كتابين، مثل 11–15 ثم 1–5)، وإلا رقم الوحدة */
+const UR=n=>{const u=B.UNITS.find(x=>x.n===n);return u&&u.ord!=null?u.ord:n};
+/* ترتيب ثابت للخيارات (نوفمبر 2026): كانت الإجابة الصحيحة أولاً في أغلب الأسئلة. نرتّب الخيارات حسب بصمة نص السؤال،
+   فيبقى الترتيب نفسه في كل فتح، و c يُعدَّل ليشير إلى الخيار الصحيح بعد الترتيب. */
+const PMH=s=>{let h=0x811c9dc5;s=String(s);for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h};
+B.perm=(key,n)=>{const a=[...Array(n).keys()];let x=PMH(key)||1;for(let i=n-1;i>0;i--){x=Math.imul(x^(x>>>15),0x2c1b3c6d)>>>0;x=(x^(x>>>12))>>>0;const j=x%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+B.mixQ=q=>{if(!q||!Array.isArray(q.o)||q.o.length<2||typeof q.c!=='number'||q._mx)return q;const p=B.perm(q.q,q.o.length);return {...q,o:p.map(i=>q.o[i]),c:p.indexOf(q.c),_mx:1}};
+B.lesson=L=>{if(Array.isArray(L.quiz))L.quiz=L.quiz.map(B.mixQ);B.LESSONS.push(L)};
 /* محتوى «الأنشطة التفاعلية» الجاهز لكل درس (ملف courses/<id>/activities.js، اختياري):
    PLCBOOK.acts({'u1-l1':{open:['سؤال مفتوح',…], exit:[{q,o:[4 خيارات],c,e},…]}, …})
    يُدمج حسب رقم الدرس؛ المقرر الذي ليس له ملف لا يكون فيه محتوى جاهز. */
@@ -45,7 +52,7 @@ const chIOmap=pre=>{const f=CH.on&&CH.fault&&CH.fault.io;if(!f||typeof f!=='obje
   Object.keys(f).forEach(k=>{const a=String(k).replace(/\s+/g,'').toUpperCase();if(a[0]!==pre)return;const v=f[k];o[a]=v==='inv'?'inv':v?1:0;n++});return n?o:null};
 const chInIO=()=>chIOmap('I'),chOutIO=()=>chIOmap('Q');
 B.chF=f=>!!(CH.on&&CH.fault&&String(CH.fault.x||'').split(/\s+/).includes(f));
-B.acts=o=>{Object.keys(o||{}).forEach(id=>{const v=o[id]||{},cur=B.ACTS[id]||(B.ACTS[id]={});['open','exit'].forEach(k=>{if(Array.isArray(v[k]))cur[k]=(cur[k]||[]).concat(v[k])})})};
+B.acts=o=>{Object.keys(o||{}).forEach(id=>{const v=o[id]||{},cur=B.ACTS[id]||(B.ACTS[id]={});['open','exit'].forEach(k=>{if(Array.isArray(v[k]))cur[k]=(cur[k]||[]).concat(k==='exit'?v[k].map(B.mixQ):v[k])})})};
 
 /* ---------------- motor plant helper ----------------
    B.motorPlant(fn) : fn(st) -> {target: rpm signed, tau, I: (n)=>current} | null (no supply) */
@@ -80,7 +87,7 @@ const RUNG=`<svg viewBox="0 0 360 120" role="img" aria-label="سلّم برمج�
 function renderHome(){
   const root=$('#view');const C=B.COURSE;document.title=C.title+' — الكتاب التفاعلي';
   const seen=store.get(KK('seen'),{}),last=store.get(KK('last'),null);
-  const lastL=last&&B.LESSONS.find(l=>l.id===last);const first=B.LESSONS.slice().sort((a,b)=>a.unit-b.unit||a.order-b.order)[0];
+  const lastL=last&&B.LESSONS.find(l=>l.id===last);const first=B.LESSONS.slice().sort((a,b)=>UR(a.unit)-UR(b.unit)||a.order-b.order)[0];
   const done=store.get(KK('done'),{});const nSeen=B.LESSONS.filter(l=>done[l.id]).length;
   const pct=Math.round(nSeen/B.LESSONS.length*100);
   let h=`<section class="cover">
@@ -93,7 +100,7 @@ function renderHome(){
    <div class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
    <input id="q" type="search" placeholder="${C.hint||'ابحث عن درس…'}" aria-label="ابحث عن درس"></div>`;
   h+=`<div class="toc" id="units">`;
-  B.UNITS.sort((a,b)=>a.n-b.n).forEach(u=>{
+  B.UNITS.sort((a,b)=>UR(a.n)-UR(b.n)).forEach(u=>{
     const ls=B.LESSONS.filter(l=>l.unit===u.n).sort((a,b)=>a.order-b.order);const sn=ls.filter(l=>done[l.id]).length;
     const open=false;
     h+=`<details class="unit" id="unit-${u.n}" ${open?'open':''}><summary><span class="un">${String(u.n).padStart(2,'0')}</span><span class="ut"><b>${u.title}</b><small>${ls.length} دروس · ص ${u.pages}</small></span><span class="up"><span class="uprog"><i style="width:${ls.length?Math.round(sn/ls.length*100):0}%"></i></span><small>${sn}/${ls.length}</small></span><span class="chev" aria-hidden="true"></span></summary>
@@ -114,7 +121,7 @@ function renderLesson(L,tab){
   {const sn=store.get(KK('seen'),{});sn[L.id]=1;store.set(KK('seen'),sn);store.set(KK('last'),L.id)}
   const root=$('#view');document.title=L.title+' — '+B.COURSE.title;
   const u=B.UNITS.find(x=>x.n===L.unit)||{title:''};
-  const all=B.LESSONS.slice().sort((a,b)=>a.unit-b.unit||a.order-b.order);const i=all.indexOf(L);
+  const all=B.LESSONS.slice().sort((a,b)=>UR(a.unit)-UR(b.unit)||a.order-b.order);const i=all.indexOf(L);
   const prev=all[i-1],next=all[i+1];
   const hasLab=!!(L.program||L.lab||L.plant);const hasProg=!!(L.program||L.variants);
   const tabs=[['theory','الشرح'],hasLab&&['lab','المختبر'],hasProg&&['plc','برنامج الـ PLC'],L.examples&&L.examples.length&&['examples','الأمثلة المحلولة'],L.quiz&&L.quiz.length&&['quiz','اختبر نفسك'],['acts','الأنشطة التفاعلية']].filter(Boolean);
@@ -126,7 +133,7 @@ function renderLesson(L,tab){
    <aside class="lside" aria-label="دروس الوحدة"><a class="lside-back" href="#home">‹ فهرس المقرر</a>
     <div class="lside-unit"><span class="unum sm">${L.unit}</span><div><small>الوحدة ${AR[L.unit]}</small><b>${u.title}</b></div></div>
     <ol>${ul.map(x=>`<li><a href="#${x.id}" class="${x===L?'on':''} ${done[x.id]?'done':seen[x.id]?'seen':''}"><span class="k">${x.unit}.${x.order}</span><span>${x.title}</span></a></li>`).join('')}</ol>
-    <details class="lside-more"><summary>الوحدات الأخرى</summary><ul>${B.UNITS.filter(x=>x.n!==L.unit).map(x=>{const f=all.find(y=>y.unit===x.n);return f?`<li><a href="#${f.id}"><span class="k">${x.n}</span>${x.title}</a></li>`:''}).join('')}</ul></details>
+    <details class="lside-more"><summary>الوحدات الأخرى</summary><ul>${B.UNITS.slice().sort((a,b)=>UR(a.n)-UR(b.n)).filter(x=>x.n!==L.unit).map(x=>{const f=all.find(y=>y.unit===x.n);return f?`<li><a href="#${f.id}"><span class="k">${x.n}</span>${x.title}</a></li>`:''}).join('')}</ul></details>
    </aside>
    <div class="lmain">
    <div class="crumbs"><a href="#home">الفهرس</a> › <a href="#home" data-unit="${L.unit}">الوحدة ${AR[L.unit]}</a></div>

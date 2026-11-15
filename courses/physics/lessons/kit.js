@@ -104,7 +104,7 @@ function sort(el,B,o){let h=start(el,o.intro);
    if(Object.keys(done).length===o.items.length){const s=q(el,'.pk-score'),k=Object.values(done).filter(Boolean).length;
     s.innerHTML=`أصبت ${lt(k+' / '+o.items.length)}. <button type="button" class="pk-b" data-rs>أعد المحاولة</button>`;s.hidden=false;q(s,'[data-rs]').onclick=()=>sort(el,B,o)}})})}
 /* مواقف: cases [{q, opts:[[نص, صحيح؟, السبب]]}] */
-function cases(el,B,o){let h=start(el,o.intro);
+function cases(el,B,o){const PM=window.PLCBOOK&&window.PLCBOOK.perm;if(PM)o={...o,cases:o.cases.map(c=>{if(!Array.isArray(c.opts)||c.opts.length<2)return c;const p=PM(String(c.q).replace(/<[^>]+>/g,''),c.opts.length);return {...c,opts:p.map(i=>c.opts[i])}})};let h=start(el,o.intro);
  h+=o.cases.map((c,i)=>`<div class="pk-it" data-i="${i}"><p>${o.cases.length>1?`<b>${i+1}.</b> `:''}${c.q}</p><div class="pk-pool">${c.opts.map((x,j)=>`<button type="button" class="pk-b" data-j="${j}">${x[0]}</button>`).join('')}</div><div class="pk-why" hidden></div></div>`).join('');
  el.innerHTML=h;fin(el,B);
  qa(el,'.pk-it').forEach(box=>{const c=o.cases[+box.dataset.i],w=q(box,'.pk-why'),bs=qa(box,'[data-j]');

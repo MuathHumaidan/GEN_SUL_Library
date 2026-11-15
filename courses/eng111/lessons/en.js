@@ -114,7 +114,7 @@ const upd=html=>`<div class="upd"><b>معلومة محدّثة (إضافة من 
 const ab=(a,b)=>`<div class="card-ab"><div><h4>الطالب أ</h4>${a}</div><div><h4>الطالب ب</h4>${b}</div></div>`;
 
 /* ---- املأ الفراغ بالاختيار: items [{s:'... ___ ...', o:[خيارات], a:رقم الصحيح, why}] (الجملة إنجليزية) ---- */
-function gaps(el,B,o){el.classList.add('pk','gp');
+function gaps(el,B,o){el.classList.add('pk','gp');const PM=G.PLCBOOK&&G.PLCBOOK.perm;if(PM)o={...o,items:o.items.map(it=>{if(!Array.isArray(it.o)||it.o.length<2||typeof it.a!=='number')return it;const p=PM(it.s,it.o.length);return {...it,o:p.map(i=>it.o[i]),a:p.indexOf(it.a)}})};
  let h=o.intro?`<p class="pk-in">${o.intro}</p>`:'';
  h+=o.items.map((it,i)=>`<div class="pk-it" data-i="${i}"><p class="gp-s" lang="en">${(o.items.length>1?`<b>${i+1}.</b> `:'')+it.s.replace('___',`<select aria-label="اختر الكلمة"><option value="">…</option>${it.o.map((x,j)=>`<option value="${j}">${x}</option>`).join('')}</select>`)}</p><div class="pk-why" hidden></div></div>`).join('');
  h+='<div class="pk-score" hidden></div>';el.innerHTML=h;const done={};
