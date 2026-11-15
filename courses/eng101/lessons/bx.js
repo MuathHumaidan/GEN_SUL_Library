@@ -30,6 +30,30 @@ const css=`
 .bx.bkx{border-color:#b9773a}.bx.bkx .bx-h{background:#f6eadb}.bx.bkx .bx-h .tg{background:#8a5321}
 .bx-tgl{display:flex;align-items:center;gap:8px;margin:10px 0;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;background:var(--surface-2);font-size:14px}.bx-tgl input{width:20px;height:20px;accent-color:var(--accent,#1f7a55)}
 html.bx-nohlp .bx.hlp{display:none}
+.fx{direction:ltr;text-align:left}
+.fx-box{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;margin:0 0 12px;background:#efe6d6;border-radius:10px}
+.fx-box button,.fx-tray button{font:inherit;font-family:var(--font-la,var(--font));font-weight:600;border:1.5px solid #c9b99c;background:#fff;border-radius:9px;padding:5px 12px;cursor:pointer;min-height:38px}
+.fx-box button.sel,.fx-tray button.sel{background:#8a5321;color:#fff;border-color:#8a5321}
+.fx .fx-l{margin:0!important;padding:0!important;list-style:none}
+.fx-l li{display:flex;gap:8px;align-items:baseline;padding:5px 0;line-height:2.1}
+.fx-l .no{min-width:1.4em;font-weight:700;color:#8a5321}
+.fx-l .who{min-width:1.1em;font-size:.9em}
+.fx-l .tx{flex:1}
+.fx-l .tx i{font-style:italic}
+.fx .gp2{font:inherit;font-family:var(--font-la,var(--font));display:inline-block;min-width:4.6em;padding:0 8px;margin:0 2px;border:0;border-bottom:2px solid #8a5321;background:#fbf6ee;border-radius:6px 6px 0 0;cursor:pointer;line-height:1.7;color:var(--ink)}
+.fx .gp2.sel{outline:2px solid #8a5321;background:#fff1dc}
+.fx .gp2.ok{border-color:#2e9d6a;background:#e4f5ec;color:#145c3b;font-weight:700}
+.fx .gp2.bad{border-color:#c4553f;background:#fbe9e4;color:#8d2c1c;text-decoration:line-through}
+.fx-tray{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px;padding:8px;background:#efe6d6;border-radius:10px}
+.fx table{border-collapse:collapse;width:100%;font-size:.95em}.fx td,.fx th{border:1px solid var(--line);padding:6px 8px;vertical-align:middle}.fx th{background:#f3ebde;text-align:left}
+.fx-tw{overflow-x:auto}
+.fx-ft{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;direction:rtl}
+.fx-ft button{font:inherit;border:1px solid var(--line);background:var(--surface-2);border-radius:9px;padding:5px 12px;cursor:pointer}
+.fx-ft .sc{font-weight:700}
+.bx-aud{background:#f6eadb;border-radius:12px;padding:10px 12px;margin:0 0 12px}
+.bx-aud p{margin:0 0 6px;font-weight:700}.bx-aud audio{width:100%}
+.bx-aq{margin-top:12px}.bx-aq>summary{cursor:pointer;font-weight:700;padding:6px 0}
+
 .bx-ls .play{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 14px;background:var(--accent,#1f7a55);color:#fff;cursor:pointer}
 `;
 const addCss=()=>{if(document.getElementById('bx-css'))return;const s=document.createElement('style');s.id='bx-css';s.textContent=css;document.head.appendChild(s)};
@@ -61,7 +85,39 @@ function listen(el,x){const id='ls'+Math.random().toString(36).slice(2,7);
    <details style="margin-top:8px"><summary>أظهر النص</summary><p lang="en" dir="ltr">${x.text}</p></details></div><div id="${id}"></div>`;
   run(el.querySelector('#'+id),x.then)}
 
+
+/* تمرين الكتاب بشكله في الكتاب: kind:'fill'
+   layout:'dlg' (lines:[[رقم,●/○,نص]]) · 'list' (lines:[نص]) · 'table' (head:[…], lines:[[خلية,…]])
+   الفراغ {الجواب} من صندوق الكلمات box، أو {الصحيح|خيار|خيار} بخيارات خاصة تظهر عند لمس الفراغ؛ ~ لإجابات مقبولة أخرى */
+function fill(el,x){const P=G.PLCBOOK&&G.PLCBOOK.perm;const G2=[];let k=0;
+  const gap=t=>{const p=t.split('|'),acc=p[0].split('~'),opts=p.length>1?p.map(z=>z.split('~')[0]):null;const i=k++;G2.push({acc,opts,v:null});return `<button type="button" class="gp2" data-g="${i}" aria-label="فراغ"></button>`};
+  const tx=t=>String(t).replace(/\{([^}]+)\}/g,(_,g)=>gap(g));
+  let body='';
+  if(x.layout==='table'){body=`<div class="fx-tw"><table>${x.head?`<tr>${x.head.map(h=>Array.isArray(h)?`<th colspan="${h[1]}">${h[0]}</th>`:`<th>${h}</th>`).join('')}</tr>`:''}${x.lines.map(r=>`<tr>${r.map(c=>`<td>${tx(c)}</td>`).join('')}</tr>`).join('')}</table></div>`}
+  else body=`<ul class="fx-l">${x.lines.map(l=>{let [n,w,t]=Array.isArray(l)?(l.length===3?l:['',l[0],l[1]]):['','',l];if(!n&&typeof t==='string'){const m=t.match(/^([0-9]+|[a-z]\))\s+/);if(m){n=m[1];t=t.slice(m[0].length)}}return `<li><span class="no">${n||''}</span>${x.layout==='dlg'?`<span class="who">${w||''}</span>`:''}<span class="tx">${tx(t)}</span></li>`}).join('')}</ul>`;
+  const box=x.box?x.box:null;
+  el.innerHTML=(x.intro?`<p class="pk-in" style="direction:rtl;text-align:right">${x.intro}</p>`:'')+`<div class="fx">${box?`<div class="fx-box">${box.map(w=>`<button type="button" data-w="${esc(w)}">${w}</button>`).join('')}</div>`:''}${body}</div><div class="fx-ft"><span class="sc"></span><button type="button" data-a="show">أظهر الإجابات</button><button type="button" data-a="reset">من جديد</button></div>`;
+  let selW=null,selG=null;const gb=[...el.querySelectorAll('.gp2')];const sc=el.querySelector('.sc');
+  const score=()=>{const n=G2.length,f=G2.filter(g=>g.v!=null).length,ok=G2.filter(g=>g.v!=null&&g.acc.includes(g.v)).length;sc.textContent=f?`${ok} / ${n}`:'';if(f===n&&ok===n)sc.textContent=`${(B&&B.lang&&B.lang()==='en')?'Well done!':'أحسنت!'} ${ok} / ${n}`};
+  const put=(i,v)=>{const g=G2[i],b=gb[i];g.v=v;b.textContent=v;const ok=g.acc.includes(v);b.classList.toggle('ok',ok);b.classList.toggle('bad',!ok);b.classList.remove('sel');if(window.ENK&&ok&&N.say)try{}catch(e){}score()};
+  const tray=i=>{el.querySelectorAll('.fx-tray').forEach(t=>t.remove());const g=G2[i];if(!g.opts)return;const order=P?P(g.opts.join('|')+i,g.opts.length):g.opts.map((_,j)=>j);
+    const t=document.createElement('div');t.className='fx-tray';t.innerHTML=order.map(j=>`<button type="button">${g.opts[j]}</button>`).join('');
+    const host=gb[i].closest('li,tr');(host.tagName==='TR'?host.closest('.fx-tw'):host).after(t);
+    t.querySelectorAll('button').forEach(b=>b.onclick=()=>{put(i,b.textContent);t.remove();selG=null})};
+  gb.forEach((b,i)=>b.onclick=()=>{if(b.classList.contains('ok'))return;
+    if(!G2[i].opts&&selW!=null){put(i,selW);return}
+    gb.forEach(z=>z.classList.remove('sel'));b.classList.add('sel');selG=i;tray(i)});
+  el.querySelectorAll('.fx-box button').forEach(w=>w.onclick=()=>{const v=w.dataset.w;
+    if(selG!=null&&!G2[selG].opts){put(selG,v);selG=null;return}
+    el.querySelectorAll('.fx-box button').forEach(z=>z.classList.toggle('sel',z===w&&selW!==v));selW=selW===v?null:v});
+  el.querySelector('[data-a=show]').onclick=()=>{G2.forEach((g,i)=>put(i,g.acc[0]))};
+  el.querySelector('[data-a=reset]').onclick=()=>fill(el,x);
+}
+/* صوت تمرين الكتاب: مشغّل المقطع داخل التمرين، وأسئلة «تمرين على المقطع» تحته */
+const aud=x=>x.track?`<div class="bx-aud"><p>🎧 المقطع <span dir="ltr">${x.track}</span> من صوتيات الكتاب</p><audio controls preload="metadata" src="audio/track-${String(x.track).padStart(2,'0')}.mp3" onerror="this.hidden=true;this.nextElementSibling.hidden=false"></audio><p class="miss" hidden style="font-weight:400">مقطع الصوت لم يُرفع بعد، وسيضيفه المدرب.</p></div>`:'';
+
 function run(el,x){addCss();try{
+  if(x.kind==='fill')return fill(el,x);
   if(x.kind==='gaps')return N.gaps(el,B,{intro:x.intro,items:x.items});
   if(x.kind==='typ')return N.typ(el,B,{intro:x.intro,items:x.items});
   if(x.kind==='choose')return N.cases(el,B,{intro:x.intro,cases:x.items});
@@ -75,8 +131,10 @@ function run(el,x){addCss();try{
 const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<a href="${u}" target="_blank" rel="noopener" title="تكبير الصورة"><img src="${u}" alt="صورة من الكتاب" loading="lazy"></a>`).join('')}${k.cap?`<figcaption>${k.cap} <span class="zh">(اضغط الصورة لتكبيرها)</span></figcaption>`:''}</figure>`:'';
 const box=(lid,x)=>{const w=document.createElement('div');w.dataset.bx=lid+':'+x.n;
   if(x.bk){const b=document.createElement('div');b.className='bx bkx';
-   b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${fig(x.bk)}<div></div></div>`;
-   run(b.querySelector('.bx-b>div:last-child'),x.bk);w.appendChild(b)}
+   b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${aud(x.bk)}${fig(x.bk)}<div></div></div>`;
+   run(b.querySelector('.bx-b>div:last-child'),x.bk);
+   const tq=x.bk.track&&AQ[String(x.bk.track).padStart(2,'0')];if(tq){const d=document.createElement('details');d.className='bx-aq';d.dataset.aqIn=1;d.innerHTML='<summary>أسئلة إضافية على المقطع (من إعدادنا)</summary><div></div>';b.querySelector('.bx-b').appendChild(d);run(d.querySelector('div'),tq)}
+   w.appendChild(b)}
   if(x.kind){const d=document.createElement('div');d.className='bx hlp';
    d.innerHTML=`<div class="bx-h"><span class="tg">تمرين مساعد</span><b>مساعد لتمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b"></div>`;
    run(d.querySelector('.bx-b'),x);w.appendChild(d)}

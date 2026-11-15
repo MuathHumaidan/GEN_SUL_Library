@@ -58,11 +58,11 @@ p.en,div.en,li.en{display:block;text-align:left}
 .lb-btns button[aria-pressed=true]{border-color:var(--blue);background:var(--blue);color:#fff}
 .lb-svg svg{max-width:min(560px,100%);height:auto;display:block;margin:8px auto 0}.lb-svg svg:not([width]){width:100%}
 .lb-out{background:var(--surface-2);border-radius:14px;padding:14px;margin-top:10px;display:flex;flex-direction:column;gap:10px}
-.lb-sent{display:flex;flex-wrap:wrap;gap:10px 6px;direction:ltr;align-items:flex-start}
+.lb-sent{display:flex;flex-wrap:nowrap;gap:10px 5px;direction:ltr;align-items:flex-start}.lb-sent>.say,.lb-sent>button{align-self:center}
 .lb-p{display:flex;flex-direction:column;align-items:stretch;gap:4px;max-width:100%}
-.lb-p .pc{font-weight:700;font-size:19px;padding:6px 12px;border-radius:10px;font-family:var(--font-la,var(--font));text-align:center;white-space:normal}
+.lb-p .pc{font-weight:700;font-size:clamp(14px,4.3vw,19px);padding:5px clamp(6px,2vw,12px);border-radius:10px;font-family:var(--font-la,var(--font));text-align:center;white-space:nowrap}
 .pc.n{background:#00875a;color:#fff}.pc.k{background:#f2a900;color:#3a2a00}.pc.q{background:#1f5fd1;color:#fff}.pc.x{background:var(--surface);color:var(--fg);border:1px solid var(--line)}.pc.r{background:#d2452f;color:#fff;text-decoration:line-through}
-.lb-p small{font-size:12px;direction:rtl;border-top:3px solid currentColor;padding-top:3px;text-align:center;color:var(--muted);font-family:var(--font)}
+.lb-p small{font-size:12px;direction:rtl;white-space:nowrap;border-top:3px solid currentColor;padding-top:3px;text-align:center;color:var(--muted);font-family:var(--font)}
 .lb-p.n small{color:#00875a}.lb-p.k small{color:#a87500}.lb-p.q small{color:#1f5fd1}.lb-p.r small{color:#d2452f}
 .lb-why{font-weight:600;line-height:1.8}
 .lb-bad{background:var(--stop-soft);color:var(--stop);border-radius:10px;padding:8px 12px;font-weight:700;line-height:1.8}
@@ -184,7 +184,7 @@ const labB=(el,B,o)=>{const s={};o.controls.forEach(c=>{s[c.k]=c.init!=null?c.in
     r.querySelectorAll('button').forEach(b=>b.onclick=()=>{s[c.k]=b.dataset.v;draw()});C.appendChild(r);c._r=r});
   function draw(){o.controls.forEach(c=>c._r.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===String(s[c.k]))));
     const r=o.out(s)||{};SV.innerHTML=r.svg||'';
-    OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${/[\u0600-\u06FF]/.test(r.ar)?r.ar:e(r.ar)}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;
+    OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${/[\u0600-\u06FF]/.test(r.ar)?r.ar:e(r.ar)}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;{const S=OUT.querySelector('.lb-sent');if(S){let f=19;S.querySelectorAll('.pc').forEach(x=>x.style.fontSize='');const W=()=>S.scrollWidth>S.clientWidth+1;if(W()){S.style.flexWrap='nowrap';while(W()&&f>11){f-=1;S.querySelectorAll('.pc').forEach(x=>{x.style.fontSize=f+'px';x.style.paddingInline=Math.max(4,f-9)+'px'})}if(W()){S.style.flexWrap='wrap';S.querySelectorAll('.pc').forEach(x=>{x.style.whiteSpace='normal';x.style.fontSize='';x.style.paddingInline=''})}}}}
     if(B&&B.ltrU)try{B.ltrU(OUT)}catch(e){}}
   draw()};
 /* ===== «شرح القاعدة»: قسم شامل واحد يدمج شرح قاعدة الدرس =====
