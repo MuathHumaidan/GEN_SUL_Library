@@ -269,7 +269,7 @@ B.lesson({
    bk(2,'ص 40','استمع وتحقق من إجاباتك.',null)+
    bk(3,'ص 40','سمِّ أجزاء الرسم بكلمات الصندوق.',['1 engine (مثال)','3 thermostat','4 radiator','2، 5، 6: top hose · bottom hose · water pump حسب الرسم'],'من قراءتنا للرسم.')+
    bk(4,'ص 40','اقرأ النص وتحقق من إجاباتك في التمرين 3.',null)+
-   bk(5,'ص 40','على أي كلمة يعود كل ضمير؟',['1 b) thermostat (مثال)','2 b) thermostat','3 b) radiator','4 a) water'])+
+   bk(5,'ص 40','على أي كلمة يعود كل ضمير؟',['1 b) thermostat (مثال)','2 c) water','3 b) radiator','4 a) water'])+
    bk(6,'ص 40','كوّن جملاً صحيحة.',['(1) The water pump pushes water around the engine.','(2) The thermostat controls the temperature of the water.','(3) The two hoses connect the radiator to the engine.','(4) The radiator cools the hot water from the engine.','(5) The fan blades blow air onto the radiator.','(6) Cool water sinks to the bottom of the radiator.','(7) Hot water rises to the top of the engine.','(8) Water flows through the two hoses.'])+
    bk(7,'ص 41','كيف يعمل تبريد البيت؟ ماذا يحدث في كل مرحلة؟',null)+
    bk(8,'ص 41','أكمل الوصف بالأفعال وحروف الجر.',['(3) Hot air enters the tower through the air inlet.','(4) The shower of cold water cools the air. (5) The cool air then sinks to the bottom of the tower.','(6) The cool air enters (flows into) the house, and then it rises (7).','(8) It leaves the house and enters the solar chimney.','(9) The Sun heats the chimney, and the hot air rises (10).','(11) The hot air finally flows out of the chimney through the air outlet.'],'(7) إجابة نموذجية، وبعض المواضع تقبل أكثر من فعل.')+
