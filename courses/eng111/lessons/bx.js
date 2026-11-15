@@ -1,4 +1,6 @@
-/* التمارين المقابلة لتمارين الكتاب (قرار المنسق، نوفمبر 2026)
+/* تمارين الكتاب التفاعلية والتمارين المقابلة (انجل-103، قرار المنسق نوفمبر 2026)
+   bk:{kind,…,img:[…],cap} = تمرين الكتاب نفسه تفاعلياً بجمله وصوره، ثم التمرين المقابل (kind,…) بجمل جديدة.
+   (الأصل:) التمارين المقابلة لتمارين الكتاب (قرار المنسق، نوفمبر 2026)
    لكل تمرين في الكتاب تمرين مقابل بنفس رقمه ونوعه وعدد بنوده وقاعدته وكلماته، لكن بجمل جديدة من إعدادنا.
    يظهر بعد مربع «في كتابك» في الأسلوب الرسمي، وفي آخر المحطة st في الأسلوب التفاعلي.
    البيانات: BX.add('<درس>',[{n, ref, st, kind, intro, ...}]) في ملفات bxd*.js
@@ -24,6 +26,10 @@ const css=`
 .bx-dl{margin:6px 0;padding:0;list-style:none}.bx-dl li{margin:4px 0}
 .bx[data-aq] .pk-it{direction:ltr;text-align:left}
 .bx-ls{background:var(--surface-2);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.bx-fig{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}.bx-fig img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}.bx-fig figcaption{width:100%;font-size:13px;color:var(--muted)}
+.bx.bkx{border-color:#b9773a}.bx.bkx .bx-h{background:#f6eadb}.bx.bkx .bx-h .tg{background:#8a5321}
+.bx-tgl{display:flex;align-items:center;gap:8px;margin:10px 0;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;background:var(--surface-2);font-size:14px}.bx-tgl input{width:20px;height:20px;accent-color:var(--accent,#1f7a55)}
+html.bx-nohlp .bx.hlp{display:none}
 .bx-ls .play{font:inherit;font-weight:700;border:0;border-radius:10px;padding:8px 14px;background:var(--accent,#1f7a55);color:#fff;cursor:pointer}
 `;
 const addCss=()=>{if(document.getElementById('bx-css'))return;const s=document.createElement('style');s.id='bx-css';s.textContent=css;document.head.appendChild(s)};
@@ -66,12 +72,25 @@ function run(el,x){addCss();try{
   if(x.kind==='speak')return speak(el,x);
  }catch(e){console.error(e);el.textContent='تعذّر عرض التمرين.'}}
 
-const box=(lid,x)=>{const d=document.createElement('div');d.className='bx';d.dataset.bx=lid+':'+x.n;
-  d.innerHTML=`<div class="bx-h"><span class="tg">تمرين مقابل</span><b>يقابل تمرين ${x.n}${x.ref?' '+x.ref:''}</b><span class="sub">بنفس فكرة تمرين الكتاب وبجمل جديدة</span></div><div class="bx-b"></div>`;
-  run(d.querySelector('.bx-b'),x);return d};
+const fig=k=>k.img?`<figure class="bx-fig">${k.img.map(u=>`<img src="${u}" alt="صورة من الكتاب" loading="lazy">`).join('')}${k.cap?`<figcaption>${k.cap}</figcaption>`:''}</figure>`:'';
+const box=(lid,x)=>{const w=document.createElement('div');w.dataset.bx=lid+':'+x.n;
+  if(x.bk){const b=document.createElement('div');b.className='bx bkx';
+   b.innerHTML=`<div class="bx-h"><span class="tg">تمرين الكتاب</span><b>تمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b">${fig(x.bk)}<div></div></div>`;
+   run(b.querySelector('.bx-b>div:last-child'),x.bk);w.appendChild(b)}
+  if(x.kind){const d=document.createElement('div');d.className='bx hlp';
+   d.innerHTML=`<div class="bx-h"><span class="tg">تمرين مساعد</span><b>مساعد لتمرين ${x.n}${x.ref?' '+x.ref:''}</b></div><div class="bx-b"></div>`;
+   run(d.querySelector('.bx-b'),x);w.appendChild(d)}
+  return w};
 
 /* الحقن: بعد مربع «في كتابك» (رسمي) أو في آخر المحطة (تفاعلي) */
-function inject(){const view=document.getElementById('view');if(!view)return;injectAQ(view);const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
+const HK='elib-hlp-'+((B.C&&B.C.key)||location.pathname.split('/').slice(-2)[0]);
+const hlpOn=()=>{try{return localStorage.getItem(HK)!=='0'}catch(e){return true}};
+const setHlp=v=>{try{localStorage.setItem(HK,v?'1':'0')}catch(e){}document.documentElement.classList.toggle('bx-nohlp',!v);document.querySelectorAll('.bx-tgl input').forEach(i=>i.checked=v)};
+function tgl(view){if(view.querySelector('.bx-tgl'))return;const f=view.querySelector('.ebk, .bk-st, [data-bx]');if(!f||!view.querySelector('.bx.hlp'))return;const t=document.createElement('label');t.className='bx-tgl';
+ t.innerHTML='<input type="checkbox"> <span>إظهار التمارين المساعدة</span>';const i=t.querySelector('input');i.checked=hlpOn();i.onchange=()=>setHlp(i.checked);
+ f.parentNode.insertBefore(t,f)}
+function inject(){const view=document.getElementById('view');if(!view)return;document.documentElement.classList.toggle('bx-nohlp',!hlpOn());try{_inject(view)}finally{addCss();tgl(view)}}
+function _inject(view){injectAQ(view);const lid=(location.hash||'').slice(1).split(/[/?]/)[0];const X=D[lid];if(!X)return;
   const sts=view.querySelectorAll('section[id^="st-"]');
   if(sts.length){const SM=(B.stMap&&B.stMap[lid])||{};X.forEach(x=>{const s=view.querySelector('#st-'+(SM[x.st||1]||x.st||1));if(!s||s.querySelector(`[data-bx="${lid}:${x.n}"]`))return;const h=window.BKH&&window.BKH[x.n+'|'+x.ref];if(h){const w=document.createElement('div');w.className='bk-st';w.innerHTML=h;s.appendChild(w)}s.appendChild(box(lid,x))});return}
   const bks=[...view.querySelectorAll('.ebk')];if(!bks.length)return;
