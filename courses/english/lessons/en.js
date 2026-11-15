@@ -104,7 +104,7 @@ const vt=(rows,h)=>`<div class="tbx"><table class="vt"><thead><tr><th>${(h&&h[0]
 /* تمرين في الكتاب: يُحال إليه برقمه وصفحته، مع المطلوب بالعربي وإجابات البنود (للمراجعة) */
 const bk=(n,ref,task,ans,note)=>`<div class="ebk"><div class="eh"><span class="tg">في كتابك</span><b>تمرين ${n}</b><span class="ref">${ref}</span></div><p>${task}</p>${ans?`<details><summary>${Array.isArray(ans)?'الإجابات (بأرقام البنود)':'الإجابة'}</summary>${Array.isArray(ans)?`<ol class="ans" lang="en">${ans.map(a=>`<li>${a}</li>`).join('')}</ol>`:`<p>${ans}</p>`}${note?`<p class="ans-n">${note}</p>`:''}</details>`:''}</div>`;
 /* مقطع من صوتيات الكتاب: يُرفع الملف إلى courses/english/audio/track-NN.mp3 */
-const au=(track,ref,task)=>`<div class="aud"><div class="eh"><span class="tg">استمع</span><b>المقطع ${track}</b><span class="ref" style="color:var(--muted);font-size:13px">${ref}</span></div><p style="margin:4px 0">${task}</p>
+const au=(track,ref,task)=>`<div class="aud"><div class="eh"><span class="tg">استمع</span><b>المقطع <span class="ltr" dir="ltr">${track}</span></b><span class="ref" style="color:var(--muted);font-size:13px">${ref}</span></div><p style="margin:4px 0">${task}</p>
  <audio controls preload="metadata" src="audio/track-${String(track).padStart(2,'0')}.mp3" onerror="this.hidden=true;this.nextElementSibling.hidden=false"></audio><p class="miss" hidden>مقطع الصوت ${track} من صوتيات الكتاب لم يُرفع بعد، وسيضيفه المدرب. شغّله الآن من قرص الكتاب إن توفّر.</p></div>`;
 /* معلومة محدّثة: ما في الكتاب صحيح وقت طباعته وتغيّر بعدها */
 const upd=html=>`<div class="upd"><b>معلومة محدّثة (إضافة من خارج الكتاب):</b> ${html}</div>`;
@@ -160,6 +160,11 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
     if(s){const p=gramParts(s);
       if(Array.isArray(L.theory)){const i=L.theory.findIndex(b=>b.h==='ماذا ستتعلم؟');L.theory.splice(i+1,0,...p.theory)}
       if(Array.isArray(L.stations)){const i=L.stations.findIndex(b=>b.intro);L.stations.splice(i+1,0,p.station)}}
+    /* صوتيات الكتاب في «التفاعلي»: قسم «الاستماع» في الرسمي يصير محطة أخيرة بنفس المقاطع */
+    if(Array.isArray(L.stations)&&Array.isArray(L.theory)&&!L.stations.some(b=>b._aud)){
+      const A=L.theory.filter(b=>b.h==='الاستماع'&&b.html);
+      if(A.length)L.stations.push({st:0,_aud:1,short:'الاستماع',title:'الاستماع من صوتيات الكتاب',q:'استمع إلى مقاطع الكتاب وحل تمارينها في كتابك.',
+        ref:A.map(b=>b.ref).filter(Boolean).join('، '),body:A.map(b=>({html:b.html}))})}
     if(Array.isArray(L.stations)){let n=0;const M={};
       /* تمارين «يقابل» (bx.js) مربوطة برقم المحطة الأصلي: نحفظ خريطة الرقم القديم ← الجديد */
       L.stations.forEach(b=>{if(b.st==null)return;const nw=++n;if(b.st>0&&!b._old)M[b.st]=nw;(b._old||[]).forEach(o=>{M[o]=nw});b.st=nw});

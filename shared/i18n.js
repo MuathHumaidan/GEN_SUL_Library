@@ -84,6 +84,7 @@ const pp=x=>/[–-]/.test(x)?'pp. '+x:'p. '+x;
 const T=(m,f,i)=>{const v=f(m[i]);return v==null?null:(v==='='?m[i]:v)};
 B.enPat([
  [/^ص ([\d–-]+)$/,m=>pp(m[1])],
+ [/^المقطع (<span class="ltr" dir="ltr">[\s\S]*<\/span>)$/,'Track $1'],
  [/^انجل-(\d+)$/,'ENG-$1'],
  [/^(\d+) (?:دروس|درس|درسان) · ص ([\d–-]+)$/,m=>`${m[1]} lessons · ${pp(m[2])}`],
  [/^انجل-(\d+) · الوحدات ([\d–-]+) · حقيبة نظرية$/,'ENG-$1 · Units $2 · Theory course'],
