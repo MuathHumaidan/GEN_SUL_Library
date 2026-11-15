@@ -63,8 +63,8 @@ const en=t=>`<span class="en" lang="en" dir="ltr">${t}</span>`;
 const perm=n=>{const a=[...Array(n).keys()];let s=n*13+5;for(let i=n-1;i>0;i--){s=(s*48271)%2147483647;const j=s%(i+1);[a[i],a[j]]=[a[j],a[i]]}if(n>1&&a.every((v,i)=>v===i))a.push(a.shift());return a};
 
 /* وصّل: pairs [[يسار, يمين, سبب؟]] — اليمين مرقّم بالحروف ومخلوط */
-function match(el,x){const P=x.pairs,m=perm(P.length),L='ABCDEFGHIJ';
-  el.innerHTML=(x.intro?`<p class="pk-in">${x.intro}</p>`:'')+`<div class="bx-opts" lang="en" dir="ltr">${m.map((i,k)=>`<div><b>${L[k]}</b> ${P[i][1]} ${sayB(P[i][1])}</div>`).join('')}</div>
+function match(el,x){const P=x.pairs,m=perm(P.length),L='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  el.innerHTML=(x.intro?`<p class="pk-in">${x.intro}</p>`:'')+`<div class="bx-opts" lang="en" dir="ltr">${m.map((i,k)=>`<div><b data-notr>${L[k]}</b> ${P[i][1]} ${sayB(P[i][1])}</div>`).join('')}</div>
    <div class="bx-mt">${P.map((p,i)=>`<div class="row" data-i="${i}"><b>${i+1}.</b> ${/[\u0600-\u06FF]/.test(p[0])?`<span>${p[0]}</span>`:`<span lang="en" dir="ltr">${p[0]}</span>`} ${sayB(p[0])} <select aria-label="اختر الحرف"><option value="">…</option>${m.map((j,k)=>`<option value="${j}">${L[k]}</option>`).join('')}</select><span class="pk-why" hidden></span></div>`).join('')}</div><div class="pk-score" hidden></div>`;
   const done={};el.querySelectorAll('.row').forEach(r=>{const i=+r.dataset.i,s=r.querySelector('select'),w=r.querySelector('.pk-why');
     s.onchange=()=>{if(s.value==='')return;const ok=+s.value===i;s.classList.toggle('ok',ok);s.classList.toggle('no',!ok);w.innerHTML=ok?`<b>صحيح.</b> ${P[i][2]||''}`:'<b>ليس هذا.</b> جرّب حرفاً آخر.';w.hidden=false;if(ok)done[i]=1;
