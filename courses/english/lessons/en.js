@@ -282,3 +282,66 @@ const obs=new MutationObserver(()=>mark());
 function start(){buttons();mark();obs.observe(document.body,{childList:true,subtree:true})}
 if(document.readyState==='loading')addEventListener('DOMContentLoaded',start);else start();
 })();
+/* ===== ترتيب الجمل الإنجليزية وترجمتها (قرار المدرب، نوفمبر 2026) =====
+   1) الجملة الإنجليزية الخالصة داخل صفحة عربية تُثبَّت من اليسار لليمين (فلا تقفز النقطة وعلامة السؤال لأول السطر).
+   2) قائمة جمل مفصولة بـ « · » في آخر السطر: كل جملة في سطر مستقل تحت عنوانها.
+   3) الترجمة: G.ENTR[المفتاح]=ترجمة عربية (ملف tr.js لكل مقرر). في الشرح والأمثلة: لمس الجملة يُظهر ترجمتها تحتها.
+      في التمارين والاختبارات: زر صغير «ترجمة» جنب الجملة، والفراغ يبقى ___ في الترجمة. */
+(function(G){const AR=/[؀-ۿ]/,LAT=/[A-Za-z]/;
+const SKIP='script,style,svg,select,input,textarea,.tr-ar,.tr-btn,.say,.lw-pop,.lw-tr,.lw-ar,.lw-mean,[data-notr],.ltabs,.vx-chips,.fx-box,.fx-tray,.opts';
+const GAP='input,select,textarea,.gp2,[data-gap]';
+const BLK=/^(DIV|P|LI|UL|OL|TABLE|THEAD|TBODY|TR|TD|TH|DETAILS|SUMMARY|H[1-6]|SECTION|FIGURE|FIGCAPTION|BLOCKQUOTE|DL|DT|DD|FORM|FIELDSET|NAV|HEADER|FOOTER|ARTICLE|ASIDE|MAIN|BR|IMG)$/;
+const INL=/^(B|I|EM|STRONG|SPAN|U|SUB|SUP|SMALL|CODE|BDI|MARK|A|BR|ABBR|Q|S)$/;
+const EXQ='.fx,.bx,.ebk,.pk-b,.pk-body,.pk-q,.pk-it,.vx-quiz,.lb-out,[data-ex]';
+const txt=n=>{if(n.nodeType===3)return n.nodeValue;if(n.nodeType!==1)return '';if(n.matches(GAP))return ' ___ ';if(n.matches('.tr-ar,.tr-btn,.say,script,style,svg,.lw-pop'))return '';
+ if(n.tagName==='BUTTON'&&!n.matches('.gp2'))return '';let s='';for(const c of n.childNodes)s+=txt(c);if(n.classList&&(n.classList.contains('enli')||n.classList.contains('vx-br')||n.classList.contains('vx-t')))s+=' ';return s};
+const norm=s=>String(s).replace(/<[^>]+>/g,' ').replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/🔊/g,'').replace(/_{2,}/g,'___').replace(/\s+/g,' ').replace(/\s+([.,?!:;])/g,'$1').trim()
+ .replace(/^(?:(?:\d+[.)]?|[a-h][.)]|[●○•·–✔✓:;-])\s*)+(?=\S)/,'').trim();
+const two=t=>/[A-Za-z][\w'-]*[\s/]+[^\s]*[A-Za-z]/.test(t);
+const NB=/^(inline|contents|none)$/;const blockKids=el=>[...el.children].some(c=>{if(c.matches(GAP+',.tr-ar,.tr-btn,.say,.ltr,.ltrw,.gp2'))return false;if(BLK.test(c.tagName)||c.classList.contains('enli')||c.classList.contains('vx-br')||c.classList.contains('vx-t'))return true;return !NB.test(getComputedStyle(c).display)});
+/* المرشحون: أصغر عنصر يحوي جملة إنجليزية كاملة بلا عربي */
+function cands(root,all){const out=[];const visit=el=>{if(el.nodeType!==1||el.matches(SKIP))return;if(!all&&el.dataset.tr)return;
+  if(el.tagName==='BUTTON')return;
+  const raw=txt(el);if(!raw.trim())return;if(/^\s*[✘✗]/.test(raw))return;const t=norm(raw);
+  if(t&&!AR.test(t)&&two(t)&&(el.classList.contains('vx-row')||!blockKids(el))){out.push([el,t]);return}
+  for(const c of el.children)visit(c)};visit(root);return out}
+/* 1 و 2: الترتيب */
+function tidy(root){
+ root.querySelectorAll('span.en:not([data-tdy])').forEach(s=>{s.dataset.tdy=1;const t=s.textContent;if(!t.includes(' · '))return;
+  let n=s.nextSibling,last=true;while(n){if(n.nodeType===3?n.nodeValue.trim():!(n.matches&&n.matches('.say'))){last=false;break}n=n.nextSibling}
+  if(!last)return;const parts=s.innerHTML.split(/\s·\s/);const pl=p=>p.replace(/<[^>]+>/g,'').trim();
+  if(parts.length<2||!parts.some(p=>/[.?!]$/.test(pl(p))||pl(p).split(/\s+/).length>=3))return;
+  s.classList.add('enl');s.innerHTML=parts.map(p=>`<span class="enli">${p.trim()}</span>`).join('')});
+ root.querySelectorAll('p,li,div,td,th,span,b,strong,h3,h4,h5,label,summary,button,figcaption,em,i').forEach(el=>{
+  if(el.hasAttribute('dir')&&!el.dataset.tdl)return;if([...el.children].some(c=>!INL.test(c.tagName)&&!c.matches(GAP+',.say,.gp2,.tr-ar,.tr-btn')))return;
+  if(el.closest('svg'))return;const t=txt(el);
+  if(el.dataset.tdl){if(AR.test(t)){el.removeAttribute('dir');delete el.dataset.tdl}return}
+  if(!LAT.test(t)||AR.test(t))return;if(getComputedStyle(el).direction!=='rtl')return;el.setAttribute('dir','ltr');el.dataset.tdl=1})}
+/* 3: الترجمة */
+const drop=el=>{(el._trb||[]).forEach(x=>x.remove());el._trb=null;delete el.dataset.tr;el.classList.remove('tr-tap')};
+function attach(root){const D=G.ENTR||{};
+ root.querySelectorAll('[data-tr]').forEach(el=>{if(norm(txt(el))!==el.dataset.tr)drop(el)});
+ if(!Object.keys(D).length)return;
+ cands(root).forEach(([el,t])=>{el.dataset.tr=t;const ar=D[t];if(!ar)return;
+  const ex=t.includes('___')||!!el.closest(EXQ);const inside=!el.classList.contains('vx-row')&&(BLK.test(el.tagName)||/^(flex|grid|block|list-item|table-cell)$/.test(getComputedStyle(el).display));
+  const box=document.createElement('span');box.className='tr-ar';box.lang='ar';box.hidden=true;box.textContent=ar;const parts=[box];
+  let b=null;if(ex){b=document.createElement('button');b.type='button';b.className='tr-btn';b.textContent='ترجمة';b.title='ترجمة الجملة';parts.unshift(b)}
+  if(inside)parts.forEach(x=>el.appendChild(x));else{let a=el;parts.forEach(x=>{a.after(x);a=x})}
+  el._trb=parts;
+  if(b)b.onclick=ev=>{ev.stopPropagation();box.hidden=!box.hidden;b.classList.toggle('on',!box.hidden)};
+  else if(!el._trl){el._trl=1;el.classList.add('tr-tap');el.addEventListener('click',ev=>{if(ev.target.closest('button,a,input,select,.say'))return;const bx=(el._trb||[]).find(x=>x.classList.contains('tr-ar'));if(bx)bx.hidden=!bx.hidden})}
+  else el.classList.add('tr-tap')})}
+const css=document.createElement('style');css.textContent=`
+.enl{display:block;margin:4px 0 2px}.enli{display:block;text-align:left;padding:2px 0}.enli::before{content:'• ';color:var(--muted)}
+.tr-tap{cursor:pointer;text-decoration:underline dotted rgba(47,107,143,.45);text-underline-offset:4px;text-decoration-thickness:1.5px}
+.tr-ar{display:block;flex-basis:100%;width:100%;box-sizing:border-box;font-family:var(--font);font-weight:400;font-size:.92em;color:#2f4f3c;background:#eef6f0;border-inline-start:3px solid #7dbb98;border-radius:6px;padding:3px 9px;margin:4px 0 2px;text-align:right;direction:rtl;line-height:1.7;white-space:normal}
+.tr-ar[hidden]{display:none}
+.tr-btn{font:inherit;font-size:12px;font-weight:600;border:1px solid #9fc8b1;background:#f3faf6;color:#2f6b4f;border-radius:999px;padding:0 8px;margin-inline:6px;cursor:pointer;vertical-align:middle;line-height:1.7;white-space:nowrap;direction:rtl}
+.tr-btn.on{background:#2f8a5b;color:#fff;border-color:#2f8a5b}
+html.dark .tr-ar,[data-theme=dark] .tr-ar{background:#1f3329;color:#cfe9da}
+.fx-l li{flex-wrap:wrap}`;document.head.appendChild(css);
+let q=0;const run=()=>{q=0;const v=document.getElementById('view')||document.querySelector('main');if(!v)return;tidy(v);attach(v)};
+G.ENTRK={cands,norm,run,tidy,txt};
+const st=()=>{run();new MutationObserver(ms=>{if(ms.every(m=>[...m.addedNodes,...m.removedNodes].every(n=>n.nodeType===1&&n.matches&&n.matches('.tr-ar,.tr-btn'))))return;if(!q){q=1;setTimeout(run,60)}}).observe(document.body,{childList:true,subtree:true})};
+if(document.readyState==='loading')addEventListener('DOMContentLoaded',st);else st();
+})(window);

@@ -19,6 +19,7 @@ const css=`
 .vx-chips button{min-width:0;font:inherit;border:2px solid #c9d7e1;background:#fff;border-radius:12px;padding:6px 2px;cursor:pointer;line-height:1.3}
 .vx-chips button b{display:block;font-family:var(--font-la,var(--font));font-size:clamp(10px,3vw,16px);direction:ltr}
 .wx-r>span{overflow-wrap:anywhere;min-width:0}
+.vx-br{flex-basis:100%;height:0}
 .vx-chips button small{color:var(--muted);font-size:.8em}
 .vx-chips button.on{border-color:#2f6b8f;background:#2f6b8f;color:#fff}.vx-chips button.on small{color:#dce9f2}
 .vx-card{background:#f7f5f0;border-radius:12px;padding:10px 12px;margin-bottom:10px}
@@ -46,8 +47,9 @@ const css=`
 const addCss=()=>{if(document.getElementById('vx-css'))return;const s=document.createElement('style');s.id='vx-css';s.textContent=css;document.head.appendChild(s)};
 /* قطع جملة مع حركة: tiles=[[مفتاح,نص,لون]] — القطعة بنفس المفتاح تنتقل من مكانها القديم إلى الجديد */
 function tiles(host,T){const old={};host.querySelectorAll('.vx-t').forEach(t=>{old[t.dataset.k]=t.getBoundingClientRect()});
- host.innerHTML=T.map(([k,t,c])=>`<span class="vx-t ${c||''}${old[k]?'':' new'}" data-k="${k}">${t}</span>`).join('');
- {host.style.flexWrap='nowrap';let f=18;const W=()=>host.scrollWidth>host.clientWidth+1;while(W()&&f>11){f--;host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize=f+'px';x.style.padding='5px '+Math.max(4,f-10)+'px'})}if(W()){host.style.flexWrap='wrap';host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize='15px';x.style.padding='5px 8px';x.style.whiteSpace='normal'})}}
+ const brk=T.some(([k,t],i)=>i<T.length-1&&/[.?!:]$/.test(String(t).replace(/<[^>]+>/g,'').trim()));
+ host.innerHTML=T.map(([k,t,c],i)=>`<span class="vx-t ${c||''}${old[k]?'':' new'}" data-k="${k}">${t}</span>${i<T.length-1&&/[.?!:]$/.test(String(t).replace(/<[^>]+>/g,'').trim())?'<span class="vx-br"></span>':''}`).join('');
+ if(brk){host.style.flexWrap='wrap';host.style.rowGap='8px';host.querySelectorAll('.vx-t').forEach(x=>{if(x.offsetWidth>host.clientWidth)x.style.whiteSpace='normal'})}else{host.style.flexWrap='nowrap';let f=18;const W=()=>host.scrollWidth>host.clientWidth+1;while(W()&&f>11){f--;host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize=f+'px';x.style.padding='5px '+Math.max(4,f-10)+'px'})}if(W()){host.style.flexWrap='wrap';host.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize='15px';x.style.padding='5px 8px';x.style.whiteSpace='normal'})}}
  host.querySelectorAll('.vx-t').forEach(t=>{const o=old[t.dataset.k];if(!o)return;const n=t.getBoundingClientRect();const dx=o.left-n.left,dy=o.top-n.top;if(!dx&&!dy)return;
   t.style.transition='none';t.style.transform=`translate(${dx}px,${dy}px)`;requestAnimationFrame(()=>requestAnimationFrame(()=>{t.style.transition='';t.style.transform=''}))})}
 const EN=B=>!!(B&&B.lang&&B.lang()==='en');
@@ -64,7 +66,7 @@ function make(el,B,cfg){const en=EN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):p;
   <div class="vx-chips" style="${cfg.ltr?'direction:ltr;':''}grid-template-columns:repeat(auto-fit,minmax(max(74px,calc(${100/cols}% - 6px)),1fr))">${I.map(x=>`<button type="button" data-d="${x.k}"><b>${x.chip[0]}</b>${x.chip[1]?`<small>${en?(x.chip[2]||''):x.chip[1]}</small>`:''}</button>`).join('')}</div>
   <div class="vx-card"><h4>${L(cfg.h1||['1. الجملة','1. The sentence'])}</h4><div class="vx-row" id="r1"></div><p class="vx-why" id="w1"></p>${I.some(x=>x.B)?'<button type="button" class="vx-sw" id="sw"></button>':''}</div>
   ${I.some(x=>x.qa)?`<div class="vx-card"><h4>${L(cfg.h2||['2. سؤال وجواب','2. Question and answer'])}</h4><div class="vx-qa" id="qa"></div></div>`:''}
-  ${cfg.quiz!==false?`<div class="vx-quiz"><b>${L(['اختبر نفسك:','Test yourself:'])}</b> <small>${L(['(اضغط أي زر للبدء)','(tap any button to start)'])}</small> <span class="vq">${L(cfg.quiz||['',''])}</span><div class="vx-cue" style="margin-top:6px;font-weight:700"></div><div class="opts" style="grid-template-columns:repeat(auto-fit,minmax(max(74px,calc(${100/cols}% - 6px)),1fr))">${I.map(x=>`<button type="button" data-q="${x.k}">${x.chip[0]}</button>`).join('')}</div><div class="vx-fb"></div></div>`:''}`;
+  ${cfg.quiz!==false?`<div class="vx-quiz"><b>${L(['اختبر نفسك:','Test yourself:'])}</b> <small>${L(['(اضغط أي زر للبدء)','(tap any button to start)'])}</small> <span class="vq">${L(cfg.quiz||['',''])}</span><div class="vx-cue" dir="auto" style="margin-top:6px;font-weight:700"></div><div class="opts" style="grid-template-columns:repeat(auto-fit,minmax(max(74px,calc(${100/cols}% - 6px)),1fr))">${I.map(x=>`<button type="button" data-q="${x.k}">${x.chip[0]}</button>`).join('')}</div><div class="vx-fb"></div></div>`:''}`;
  const $=q=>h.querySelector(q);let cur=I[0].k,alt=false,quiz=null,qn=0,qok=0;const X=k=>I.find(x=>x.k===k);
  const hl=k=>h.querySelectorAll('.vx-scene [data-d]').forEach(g=>{g.classList.remove('on');if(g.dataset.d===k){if(g.getBBox)try{g.getBBox()}catch(e){}requestAnimationFrame(()=>g.classList.add('on'))}});
  const draw=()=>{const x=X(cur);const f=(alt&&x.B)?x.B:x.A;hl(cur);
@@ -78,11 +80,11 @@ function make(el,B,cfg){const en=EN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):p;
  const ask=()=>{const ks=I.map(x=>x.k).filter(k=>k!==quiz);quiz=ks[(qn*7+3)%ks.length];const x=X(quiz);
   if(cfg.scene&&!x.cue)hl(quiz);else{hl(null)}
   $('.vx-cue').innerHTML=x.cue?L(x.cue):'';h.querySelectorAll('.vx-chips button').forEach(b=>b.classList.remove('on'));
-  if(x.qo){const P=(G.PLCBOOK&&G.PLCBOOK.perm)||(n=>[...Array(n).keys()]);const o=P(quiz+x.qo.join(),x.qo.length);const box=$('.opts');box.style.gridTemplateColumns='repeat(auto-fit,minmax(90px,1fr))';box.innerHTML=o.map(j=>`<button type="button" data-q="${j===0?quiz:'_'+j}">${x.qo[j]}</button>`).join('');bind()}
+  if(x.qo){const P=(G.PLCBOOK&&G.PLCBOOK.perm)||(n=>[...Array(n).keys()]);const o=P(quiz+x.qo.join(),x.qo.length);const box=$('.opts');box.style.gridTemplateColumns='repeat(auto-fit,minmax(90px,1fr))';box.innerHTML=o.map(j=>`<button type="button" dir="auto" data-q="${j===0?quiz:'_'+j}">${x.qo[j]}</button>`).join('');bind()}
   h.querySelectorAll('.opts button').forEach(b=>b.className='')};
  const bind=()=>h.querySelectorAll('.opts button').forEach(b=>b.onclick=()=>{if(!quiz){ask();$('.vx-fb').textContent='';return}
   const ok=b.dataset.q===quiz;b.className=ok?'ok':'no';qn++;if(ok)qok++;
-  const right=X(quiz).qo?X(quiz).qo[0]:X(quiz).chip[0];$('.vx-fb').innerHTML=ok?L([`✔ صحيح (${qok} من ${qn})`,`✔ Correct (${qok} of ${qn})`]):L([`✘ الصحيح: ${right}`,`✘ The answer is ${right}`]);
+  const right=X(quiz).qo?X(quiz).qo[0]:X(quiz).chip[0];$('.vx-fb').innerHTML=ok?L([`✔ صحيح (${qok} من ${qn})`,`✔ Correct (${qok} of ${qn})`]):L([`✘ الصحيح: <bdi>${right}</bdi>`,`✘ The answer is ${right}`]);
   if(ok)setTimeout(()=>{if(qn<6)ask();else{$('.vx-fb').innerHTML+=L([' انتهى الاختبار.',' The test is over.']);quiz=null;$('.vx-cue').textContent='';cur=I[0].k;draw()}},900)});
  bind();draw()}
 G.VX.make=make;
