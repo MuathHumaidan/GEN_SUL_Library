@@ -91,6 +91,7 @@ B.lesson({
  summary:'السؤال عن الطريق (How do I get to …?)، وإعطاء الاتجاهات بفعل الأمر (turn left، take the second right، go straight on، get off at، change at)، ووسائل النقل (by train، on foot)، وخطوط المترو (northbound، platform)، والأماكن (opposite، on the left)، والتحقق بتكرار التعليمات (So, I need …).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 38–39',html:`<p>تصف الطريق إلى مكتبك، وتفهم وصف طريق. ستتعلم:</p><ol><li>${e('How do I get to …?')}</li><li>أفعال الاتجاهات.</li><li>المترو والمحطات.</li><li>التحقق بتكرار التعليمات.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l1'](el,B)},
   ...R181.theory,
   {h:'تمارين الكتاب',ref:'ص 38–39',html:
    bk(1,'ص 38','اقرأ الرسالة وجِد مبنى المكتب على الخريطة.',null,'حسب خريطة الكتاب: المبنى الرمادي ذو الاثني عشر طابقاً على اليسار بعد أول شارع يميناً.')+
@@ -102,6 +103,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l1'](el,B),title:'شرح مرئي'}]},
   ...R181.stations,
   {recap:['How do I get to …?','Turn left / right. Take the second right. Go straight on.','Take the … line northbound. Change at … Get off at …',"You'll see … on the left. It's opposite …",'So, I need …']}
  ],
@@ -155,6 +157,7 @@ B.lesson({
  summary:'الوصول إلى استقبال شركة (I\'m here to see … · I have an appointment at …)، وأسئلة موظف الاستقبال (Do you have an appointment? What department is that?)، وعبارات الانتظار (Please take a seat. He\'ll be down in a moment.)، ولقاء المضيف وتبادل بطاقات العمل (Here\'s my business card. Did you have a good journey?)، وعادات التحية.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 40–41',html:`<p>تصل إلى شركة لموعد، أو تستقبل زائراً. ستتعلم:</p><ol><li>عبارات الزائر.</li><li>عبارات موظف الاستقبال.</li><li>لقاء المضيف وبطاقات العمل.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u8-l2'](el,B)},
   ...R182.theory,
   {h:'تمارين الكتاب',ref:'ص 40–41',html:
    bk(1,'ص 40','استمع: ضع علامة على المذكور، ثم أكمل المحادثتين.',['a Visitor 1: name ✓ · company ✓ · person ✓ · appointment ✓ (no department)','a Visitor 2: name ✓ · person ✓ · department ✓ · appointment ✓ (no company)',"b1: My name's · I'm here to see · Do you have","b2: I'd like to see · is that · I have an · I'm"])+
@@ -165,6 +168,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u8-l2'](el,B),title:'شرح مرئي'}]},
   ...R182.stations,
   {recap:["I'm here to see … · I have an appointment at …",'Do you have an appointment? · What department is that?',"Please take a seat. He'll be down in a moment.","Here's my business card. — Here's mine.",'Did you have a good journey?']}
  ],

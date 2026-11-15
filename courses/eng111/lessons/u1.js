@@ -98,6 +98,7 @@ B.lesson({
  summary:'تقديم النفس في العمل: My name\'s … / I\'m …، و Please call me …، و I\'m in the … Department، و I\'m from …، والرد Nice / Good to meet you (too)، والاسم الأول واسم العائلة واللقب، وماذا يناديك الناس في ثقافات مختلفة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 6–7',html:`<p>تقدّم نفسك لزميل أو زائر في العمل. ستتعلم:</p><ol><li>قول اسمك وكيف يناديك الناس.</li><li>قول قسمك أو دراستك ومن أين أنت.</li><li>الرد على التحية.</li><li>الاسم الأول واسم العائلة واللقب.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l1'](el,B)},
   ...R111.theory,
   {h:'تمارين الكتاب',ref:'ص 6–7',html:
    bk(1,'ص 6','انظر إلى الصورة وأجب، ثم استمع.',['a1 Andrew Walsh (موظف جديد: أول يوم له)','a2 names · departments · hometowns','b Andrew هو الجديد، وتحدثا عن الأسماء والأقسام والمدن.'])+
@@ -108,6 +109,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l1'](el,B),title:'شرح مرئي'}]},
   ...R111.stations,
   {recap:['be: I am · he / she / it is · you / we / they are، والاختصار I\'m, she\'s, we\'re.','My name\'s … / I\'m … / Please call me …','I\'m in the … Department. I work for … I\'m from …','Nice to meet you. — Nice to meet you, too.','اللقب Mr / Ms / Dr مع اسم العائلة: Mr Owens.']}
  ],
@@ -178,6 +180,7 @@ B.lesson({
  summary:'تقديم شخصين بعضهما لبعض: I\'d like to introduce you to …، و This is …، وإضافة معلومة عن كل شخص (works in …، is a director of …)، واستعمال اسم الشخص مبكراً، وسؤال يفتح الحديث (Do you have …?، Is … a big company?)، وعادات التعارف في البلدان.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 8–9',html:`<p>تقدّم زميلاً لضيف. ستتعلم:</p><ol><li>${e("I'd like to introduce you to …")}</li><li>إضافة معلومة عن كل شخص.</li><li>استعمال الاسم وبدء الحديث.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u1-l2'](el,B)},
   ...R112.theory,
   {h:'تمارين الكتاب',ref:'ص 8–9',html:
    bk(1,'ص 8','اقرأ النص وأجب.',['a1 لتساعدهما على الحديث مع بعضهما.','a2 لأنه يساعدك على تذكّر الاسم.'])+
@@ -188,6 +191,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u1-l2'](el,B),title:'شرح مرئي'}]},
   ...R112.stations,
   {recap:['المضارع البسيط: I live / work، و He lives / works.','Where do you work? Where does she live?','I\'d like to introduce you to … / This is …','ثم معلومة: Laura works in our Finance Department.','Where are you from? Which department do you work in?']}
  ],

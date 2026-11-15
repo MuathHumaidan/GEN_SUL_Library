@@ -72,6 +72,7 @@ B.lesson({
  summary:'طرق الشراء (by phone، on the Internet…)، وتقديم طلب شراء بالهاتف (I\'d like to place an order. I\'d like to order …)، والكميات (a few، a lot of، How many …? How much …?) مع المعدود وغير المعدود، و pairs of، وقراءة شاشة طلب وحساب المجموع.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 28–29',html:`<p>تطلب ما تحتاجه شركتك من مورّد. ستتعلم:</p><ol><li>عبارات الطلب بالهاتف.</li><li>الكميات: ${e('a few, a lot of, many, much')}.</li><li>السؤال عن العدد والسعر.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l1'](el,B)},
   ...R161.theory,
   {h:'تمارين الكتاب',ref:'ص 28–29',html:
    bk(1,'ص 28','استمع: كم يحتاج الزميلان من كل شيء؟ ثم أكمل شاشة الطلب.',['a: Ben: 6 lab coats · 20 pairs of goggles — Ron: 3 pairs of overalls · 30 pairs of gloves','b: account MX 343467 · P21G5 lab coats 30 × €45 = €1350 · P2251 overalls 25 × €58 = €1450 · WB91 goggles 50 × €8 = €400 · S32 gloves 50 × €5 = €250 · Grand Total €3450'])+
@@ -82,6 +83,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l1'](el,B),title:'شرح مرئي'}]},
   ...R161.stations,
   {recap:["I'd like to place an order. · I'd like to order …",'How many + معدود؟ How much + غير معدود / السعر؟','a few / a little / a lot of.','pairs of goggles / overalls / gloves.',"Can I just check your order? · We'll send the goods immediately."]}
  ],
@@ -143,6 +145,7 @@ B.lesson({
  summary:'ما قد يخطئ في الطلب، وقراءة فاتورة (discount، VAT، grand total)، والشكوى بالماضي البسيط (I ordered ten but I\'ve got twenty. The salesman promised …)، والاعتذار (I\'m sorry about that)، والإجراء بالمستقبل البسيط (I\'ll check that. We\'ll send …) والطلب (Could you …?)، والرد.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 30–31',html:`<p>تشتكي من خطأ في طلب، أو تعتذر وتحل المشكلة. ستتعلم:</p><ol><li>قراءة الفاتورة.</li><li>الشكوى والاعتذار والإجراء والرد.</li><li>${e('ordered')} للماضي و ${e("I'll")} للإجراء.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l2'](el,B)},
   ...R162.theory,
   {h:'تمارين الكتاب',ref:'ص 30–31',html:
    bk(1,'ص 30','اكتب مع زميلك ما قد يخطئ في الطلب.',['wrong address (مثال) · wrong items · wrong quantity · wrong price · late delivery · damaged goods · no discount (نماذج)'])+
@@ -153,6 +156,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l2'](el,B),title:'شرح مرئي'}]},
   ...R162.stations,
   {recap:['invoice, discount, VAT, grand total.',"Complaint: I ordered … but I've got …","Apology: I'm sorry about that.","Action: I'll … / Could you …?","Response: Thank you. That's very helpful."]}
  ],
@@ -179,6 +183,7 @@ B.lesson({
  summary:'مراجعة قول الوقت وفروق التوقيت، وعبارات الهاتف، وتخطيط جدول يوم، والكميات (not much، a few، How many …?)، والشكوى والإجراء، وتقديم طلب بالهاتف، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 32–33',html:vt([['الوقت','five to eight · nine thirty','4A'],['الهاتف',"Who's calling, please? · I'll put you through.",'5A'],['الجدول','At 10.00, you can visit the factory.','4B'],['الكميات','not many problems · a little money','6A'],['الشكوى والإجراء',"We ordered 100 but we've got 110. — Can you give ten back to the driver?",'6B']],['النقطة','مثال','الدرس'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u6-l3'](el,B)},
   {h:'أخطاء شائعة في الهاتف',ref:'ص 32',html:vt([['I can help you?','Can I help you?'],['Can I speaking to …?','Can I speak to …?'],['Who calls?',"Who's calling?"],['I am Marco (في الهاتف)','This is Marco.'],['I put you through.',"I'll put you through."]],['خطأ','صواب'])},
   {h:'تمارين المراجعة',ref:'ص 32–33',html:
    bk('Vocabulary 1','ص 32','طابق الأوقات بالساعات، ثم احسب الوقت في نيوزيلندا.',['1 b','2 e','3 d','4 c','5 a','6 f'],'من قراءتنا لصور الساعات. نيوزيلندا GMT +12 على خريطة ص 20.')+
@@ -190,6 +195,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u6-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدتان 4 و 5',title:'خلاصة: الوقت والهاتف',q:'صحّح: Who calls, please?',ref:'ص 32',
    art:art(`<g data-tip="five to eight = 7.55"><rect x="20" y="40" width="150" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(95,68,'7.55 five to eight',{fs:12,w:700})}</g>
     <g data-tip="nine thirty = 9.30"><rect x="190" y="40" width="150" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(265,68,'9.30 nine thirty',{fs:12,w:700})}</g>

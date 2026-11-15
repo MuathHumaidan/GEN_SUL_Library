@@ -81,6 +81,7 @@ B.lesson({
  summary:'حجز غرفة فندق ورحلة طيران بالهاتف: أسئلة موظف الحجز (When would you like to stay? Would you like a single or a double room? May I have your name? How do you want to pay?)، و want to / would like to، والتاريخ (May the 13th)، وتأكيد الحجز (Can I confirm your booking?) ورقم المرجع.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 34–35',html:`<p>تحجز غرفة أو رحلة، أو تأخذ حجزاً. ستتعلم:</p><ol><li>أسئلة موظف الحجز.</li><li>${e('want to / would like to')}</li><li>قول التاريخ وتأكيد الحجز.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u7-l1'](el,B)},
   ...R171.theory,
   {h:'تمارين الكتاب',ref:'ص 34–35',html:
    bk(1,'ص 34','اكتب مع زميلك كل الأسئلة التي قد يسألها موظف الاستقبال.',['May I have your name, please? (مثال) · Can I have your telephone number? · How many nights? · When would you like to stay? · Single or double? (نماذج)'])+
@@ -91,6 +92,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u7-l1'](el,B),title:'شرح مرئي'}]},
   ...R171.stations,
   {recap:['When would you like to stay?','Would you like a single or a double room?','May I have your name? · Could you spell that?',"I'd like to … / I want to …",'How do you want to pay? · Can I confirm your booking?']}
  ],
@@ -155,6 +157,7 @@ B.lesson({
  summary:'صيغة التفضيل (the cheapest، the biggest، the most comfortable، the best) مع المقارنة، واختيار سيارة إيجار، وكتابة التاريخ وقراءته بالطريقتين البريطانية والأمريكية، واستئجار سيارة بالهاتف، وتعبئة نموذج حجز، وتبرير الاختيار (because it was cheaper / the most helpful).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 36–37',html:`<p>تختار الخدمة الأنسب وتشرح السبب. ستتعلم:</p><ol><li>صيغة التفضيل.</li><li>كتابة التاريخ وقراءته.</li><li>استئجار سيارة بالهاتف.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u7-l2'](el,B)},
   ...R172.theory,
   {h:'تمارين الكتاب',ref:'ص 36–37',html:
    bk(1,'ص 36','أكمل الجمل عن سيارات الإيجار، ثم اختر الأنسب.',['1 cheaper (مثال)','2 the fastest','3 bigger','4 more comfortable','5 the most expensive','6 better'])+
@@ -166,6 +169,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u7-l2'](el,B),title:'شرح مرئي'}]},
   ...R172.stations,
   {recap:['the cheapest, the biggest, the most comfortable, the best.','cheaper than (اثنان) ≠ the cheapest (الكل).','UK: day/month · US: month/day.','How many days do you want the car for? · What kind of car would you like?','I chose … because …']}
  ],

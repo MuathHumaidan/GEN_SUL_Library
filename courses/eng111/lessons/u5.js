@@ -65,6 +65,7 @@ B.lesson({
  summary:'عبارات الرد على الهاتف وبدء المكالمة (Can I help you? Can I speak to …? Speaking. Who\'s calling, please? Just a moment. I\'ll put you through. This is …)، وسؤال Do you speak English?، وآداب الجوال في الأماكن العامة بـ should / shouldn\'t.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 24–25',html:`<p>ترد على مكالمة عمل أو تبدأها. ستتعلم:</p><ol><li>عبارات من يرد على الهاتف.</li><li>عبارات المتصل.</li><li>${e("should / shouldn't")} للنصيحة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l1'](el,B)},
   ...R151.theory,
   {h:'تمارين الكتاب',ref:'ص 24–25',html:
    bk(1,'ص 24','استمع: من المتصل؟ ثم أكمل المحادثات.',['a: 1 b Chris Fleming · 2 b Juliette Winter · 3 a Doug Gibbs',"b: 1 B: Can I speak to Ms Jackson, please? · A: Speaking.","2 A: … Can I help you? · A: Who's calling, please? · A: Just a moment. I'll put you through.","3 B: Uh … hello … Do you speak English? · B: Oh, good. This is Doug Gibbs … · A: Just a moment, please."])+
@@ -74,6 +75,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l1'](el,B),title:'شرح مرئي'}]},
   ...R151.stations,
   {recap:["Can I help you? · Speaking. · Who's calling, please?","Just a moment. I'll put you through.",'Can I speak to …, please?','This is … of …',"You should … / You shouldn't …"]}
  ],
@@ -133,6 +135,7 @@ B.lesson({
  summary:'طلب معلومات أو كتالوج بالهاتف (I\'m calling to ask for …)، وطلب البيانات (Can I have your name / address / fax number?)، والتحقق (Could you spell that? Can you say that again? I\'ll say it more slowly.)، وتهجئة الأسماء وقراءة الأرقام، وتعبئة نموذج طلب عميل.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 26–27',html:`<p>تتصل لتطلب معلومات، أو تستقبل مكالمة وتعبّئ نموذجاً. ستتعلم:</p><ol><li>سبب الاتصال.</li><li>طلب البيانات.</li><li>التحقق والتهجئة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u5-l2'](el,B)},
   ...R152.theory,
   {h:'تمارين الكتاب',ref:'ص 26–27',html:
    bk(1,'ص 26','من يقول كل جملة: المتصلة (F) أم من يرد (R)؟ ثم استمع.',['1 R (مثال)','2 F','3 R','4 R','5 F','6 R','7 R','8 F','9 R','10 R','11 R'])+
@@ -143,6 +146,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u5-l2'](el,B),title:'شرح مرئي'}]},
   ...R152.stations,
   {recap:["I'm calling to ask for …",'Can I have your name / address / phone number?','Could you spell that, please?','Can you say that again, please?',"I'll say it more slowly. · I'll do that right now."]}
  ],

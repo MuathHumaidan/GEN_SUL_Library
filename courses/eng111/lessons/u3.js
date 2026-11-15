@@ -69,6 +69,7 @@ B.lesson({
  summary:'المنتجات والخدمات وأفعالها (make، produce، provide، offer)، ووصف منتج أو خدمة بـ It has / It can / You can / It costs، وقراءة الأرقام والأسعار في إعلان، وكتابة فقرة عن شركة من أرقامها.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 14–15',html:`<p>تصف ما تقدمه شركة. ستتعلم:</p><ol><li>الفرق بين المنتج والخدمة.</li><li>${e('make, produce, provide, offer')}</li><li>${e('It has / It can / You can / It costs')}</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l1'](el,B)},
   ...R131.theory,
   {h:'تمارين الكتاب',ref:'ص 14–15',html:
    bk(1,'ص 14','طابق الشركات بالمنتجات والخدمات، ثم تحدث عنها.',['Pepsi: a soft drinks','Nokia: b mobile phones','T-Online: c Internet access','Barclays: d banking','Virgin Atlantic: e air travel'])+
@@ -79,6 +80,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l1'](el,B),title:'شرح مرئي'}]},
   ...R131.stations,
   {recap:['product ≠ service.','make / produce منتجات، provide / offer خدمات.','It has … / It can … / You can … / It costs …','بعد can الفعل كما هو.']}
  ],
@@ -143,6 +145,7 @@ B.lesson({
  summary:'صيغة المقارنة (faster، bigger، tastier، more comfortable، better) مع than، وقواعد بنائها، ومقارنة طريقتين للسفر من جدول، وقراءة إعلانات فنادق واختيار الأنسب لكل زائر مع ذكر السبب.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 16–17',html:`<p>تقارن بين منتجين أو خدمتين. ستتعلم:</p><ol><li>صيغة المقارنة و ${e('than')}.</li><li>قواعد بنائها.</li><li>اختيار الأنسب مع السبب.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l2'](el,B)},
   ...R132.theory,
   {h:'تمارين الكتاب',ref:'ص 16–17',html:
    bk(1,'ص 16','صح أم خطأ؟ ثم استمع وصحّح الخاطئ.',['1 F — Club World is for business class passengers.','2 T','3 T'])+
@@ -153,6 +156,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l2'](el,B),title:'شرح مرئي'}]},
   ...R132.stations,
   {recap:['short + er: faster، cheaper.','big → bigger، tasty → tastier.','more + long: more comfortable.','good → better، bad → worse.','… is better for … because …']}
  ],
@@ -179,6 +183,7 @@ B.lesson({
  summary:'مراجعة حروف الجر للمكان، و for / in / of في الحديث عن العمل، والضمائر بدل تكرار الأسماء، والتعارف، والصفات وأضدادها، وصيغة المقارنة، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 18–19',html:vt([['حروف الجر للمكان','The pens are on the desk, under the book.','2A'],['for / in / of','I work for XYZ. I work in Accounts. He is the director of …','1A · 2B'],['الضمائر',"I work for XYZ. It's a computer company.",'1–3'],['التعارف',"I'd like to introduce you to …",'1A · 1B'],['الأضداد','cheap ≠ expensive، safe ≠ dangerous','3B'],['المقارنة','A cash machine is more convenient than a bank queue.','3B']],['النقطة','مثال','الدرس'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u3-l3'](el,B)},
   {h:'for · in · of',ref:'ص 18',html:vt([['I work for Delta Electric.','لدى شركة'],['I work in the Accounts Department.','في قسم'],['My office is in the suburbs.','في مكان'],['He is the director of Delta Electric.','مدير شركة …'],['She is a sales representative for Nova Motors.','مندوبة لصالح شركة']],['English','الاستعمال'])},
   {h:'الضمائر بدل التكرار',ref:'ص 18',html:`${vt([['Laura','she'],['Mark','he'],['the office','it'],['Laura and Mark','they']],['الاسم','الضمير'])}${eb("I work for XYZ Ltd. It is a computer company.")}`},
   {h:'تمارين المراجعة',ref:'ص 18–19',html:
@@ -191,6 +196,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u3-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدتان 1 و 2',title:'خلاصة: التعارف والمكان',q:'قدّم نفسك وقل أين مكتبك.',ref:'ص 18',
    art:art(`<g data-tip="for + الشركة"><rect x="20" y="50" width="320" height="44" rx="12" fill="${C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,78,'I work for Delta Electric.',{fs:14,w:700})}</g>
     <g data-tip="in + القسم"><rect x="20" y="106" width="320" height="44" rx="12" fill="${C.paper}" stroke="${C.ink}" stroke-width="2"/>${TL(180,134,"I'm in the Accounts Department.",{fs:14,w:700})}</g>

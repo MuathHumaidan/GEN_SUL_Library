@@ -75,6 +75,7 @@ B.lesson({
  summary:'الماضي البسيط في سرد تاريخ شركة: الأفعال المنتظمة (launched، developed، introduced) والشاذة (met، made، sold، built، left)، وأفعال التغيير (increase / decrease، rise / fall، go up / go down، expand، move، change)، وكتابة فقرة عن تاريخ شركة من ملاحظات.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 42–43',html:`<p>تحكي تاريخ شركة. ستتعلم:</p><ol><li>الماضي البسيط المنتظم والشاذ.</li><li>أفعال التغيير.</li><li>كتابة فقرة من ملاحظات.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l1'](el,B)},
   ...R191.theory,
   {h:'تمارين الكتاب',ref:'ص 42–43',html:
    bk(1,'ص 42','استمع ورتّب مراحل تاريخ الشركة، واكتب الماضي تحت كل مرحلة.',['a: c → f → b → d → a → e','b: c met · f made · b launched · d developed · a sold · e introduced'])+
@@ -85,6 +86,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l1'](el,B),title:'شرح مرئي'}]},
   ...R191.stations,
   {recap:['regular: launched, developed, introduced.','irregular: met, made, sold, built, left.','increase / rise / go up ≠ decrease / fall / go down.','from … to …','expand, move, change, build.']}
  ],
@@ -155,6 +157,7 @@ B.lesson({
  summary:'المضارع التام (have / has + التصريف الثالث) للتغيّرات دون زمن محدد، والماضي البسيط مع زمن ماضٍ محدد (last month، in 2001، yesterday)، و already / just / yet، والسؤال Have they …?، والربط بـ and، but، so، because في كتابة تقرير عن تغيّرات شركة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 44–45',html:`<p>تتحدث وتكتب عن تغيّرات في شركة. ستتعلم:</p><ol><li>المضارع التام.</li><li>الفرق بينه وبين الماضي البسيط.</li><li>${e('already, just, yet')}.</li><li>أدوات الربط.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l2'](el,B)},
   ...R192.theory,
   {h:'تمارين الكتاب',ref:'ص 44–45',html:
    bk(1,'ص 44','ضع خطاً تحت الأفعال، ثم أكمل بالماضي البسيط أو المضارع التام.',['a: has left · left · has closed · closed','b: 1 rose · 2 have joined · 3 built · 4 have opened · 5 went down · 6 have reduced'])+
@@ -164,6 +167,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l2'](el,B),title:'شرح مرئي'}]},
   ...R192.stations,
   {recap:['have / has + past participle.','لا زمن محدد ← has closed؛ زمن محدد ← closed last month.','just, already (قبل الفعل) · yet (في الآخر، نفي وسؤال).','and, but, so, because.']}
  ],
@@ -190,6 +194,7 @@ B.lesson({
  summary:'مراجعة المترادفات (book = reserve، hire = rent)، وأسئلة الحجز (How many / How much / How long / When / May I have)، وأفعال تاريخ الشركة وتغيّراتها (increase، expand، launch، recruit)، والماضي البسيط والمضارع التام، مع إجابات تمارين المراجعة.',
  theory:[
   {h:'ماذا تراجع؟',ref:'ص 46–47',html:vt([['الحجز','How many nights do you want to stay?','7A'],['الاتجاهات','Ask for directions to the office.','8A'],['الاستقبال','Arrive at reception. Introduce yourself.','8B'],['تاريخ الشركة','When did the company start?','9A'],['التغيّرات','Has it expanded recently?','9B']],['النقطة','مثال','الدرس'])},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u9-l3'](el,B)},
   {h:'مترادفات',ref:'ص 46',html:vt([['make','produce'],['get on (a bus)','take'],['reserve','book'],['station','stop'],['start','begin'],['booking','reservation'],['rent','hire'],['leave','depart']],['الكلمة','مرادفها'])},
   {h:'كلمات السؤال',ref:'ص 46',html:vt([['How many …?','العدد: How many nights?'],['How much …?','السعر: How much is the room?'],['How long …?','المدة: How long does it take?'],['When …?','الوقت: When will you arrive?'],['How …?','الطريقة: How would you like to pay?'],['May I have …?','طلب: May I have your name?']],['English','الاستعمال'])},
   {h:'تمارين المراجعة',ref:'ص 46–47',html:
@@ -202,6 +207,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u9-l3'](el,B),title:'شرح مرئي'}]},
   {st:1,short:'الوحدتان 7 و 8',title:'خلاصة: الحجز والتنقل',q:'ما الكلمة المناسبة: How many أم How long؟',ref:'ص 46',
    art:art(`${[['How many nights?','العدد'],['How much is the room?','السعر'],['How long does it take?','المدة'],['When will you arrive?','الوقت'],['May I have your name?','طلب']].map((x,i)=>`<g data-tip="${x[1]}"><rect x="30" y="${26+i*52}" width="300" height="42" rx="12" fill="${i%2?C.paper:C.yel}" stroke="${C.ink}" stroke-width="2"/>${TL(180,53+i*52,x[0],{fs:14,w:700})}</g>`).join('')}`,'question words'),
    cap:'خمس صيغ سؤال. مرّر المؤشر على كل منها.',side:[{tip:`${e('hire a car')} = ${e('rent a car')}.`}],

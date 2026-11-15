@@ -85,6 +85,7 @@ B.lesson({
  summary:'قول الوقت (past / to، quarter، half، o\'clock، midday)، وصيغة الأرقام (9.30، a.m. / p.m.)، وفروق التوقيت (GMT)، وحروف الجر للزمن (at 9.00، on Saturday، from … to، around)، وساعات العمل والغداء في بلدان مختلفة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 20–21',html:`<p>تقول الوقت وتسأل عنه وتتحدث عن يوم عملك. ستتعلم:</p><ol><li>قول الوقت بطريقتين.</li><li>فروق التوقيت بين المدن.</li><li>حروف الجر للزمن.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l1'](el,B)},
   ...R141.theory,
   {h:'تمارين الكتاب',ref:'ص 20–21',html:
    bk(1,'ص 20','طابق الأوقات بالساعات.',['1 b','2 a','3 f','4 c','5 e','6 d'],'من قراءتنا لصور الساعات.')+
@@ -96,6 +97,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l1'](el,B),title:'شرح مرئي'}]},
   ...R141.stations,
   {recap:["o'clock, quarter past, half past, quarter to.",'a.m. / p.m.، twelve midday.',"When it's … in London, what time is it in …?",'GMT +3 = Riyadh.','at 9.00، on Sunday، in the morning، from … to، around.']}
  ],
@@ -158,6 +160,7 @@ B.lesson({
  summary:'قراءة رسالة طلبات زائر وتصحيح الملاحظات، والأفعال مع الأسماء (plan a schedule، book a hotel، give a presentation، have dinner، go shopping)، والطلب المهذب (Could you …? I\'d like to …)، والاقتراح والعرض (We can … / I\'ll …)، وتخطيط جدول وكتابة رسالة تشرحه.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 22–23',html:`<p>تخطط برنامج زيارة لضيف. ستتعلم:</p><ol><li>قراءة رسالة طلبات.</li><li>الأفعال مع الأسماء.</li><li>الطلب والعرض والاقتراح.</li><li>كتابة رسالة الجدول.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u4-l2'](el,B)},
   ...R142.theory,
   {h:'تمارين الكتاب',ref:'ص 22–23',html:
    bk(1,'ص 22','اقرأ رسالة الزائرة وصحّح الأخطاء في الملاحظات.',['arrives Fri 14 Nov (not 4 Nov), 18.35','returns Mon 17 Nov, 13.25','needs hotel – three nights (not two)','presentation – one hour, Saturday morning','wants to go shopping and sightseeing (not "but not sightseeing")'])+
@@ -167,6 +170,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u4-l2'](el,B),title:'شرح مرئي'}]},
   ...R142.stations,
   {recap:['plan a schedule، book a hotel، give a presentation، have dinner، go shopping.','Could you …, please?',"I'd like to …","I'll … / We can …",'Dear … · Thanks for your email. · Best regards.']}
  ],

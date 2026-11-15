@@ -79,6 +79,7 @@ B.lesson({
  summary:'أسماء أدوات المكتب (calculator، ruler، notepad، rubber، correction fluid، highlighter…)، ووصف شيء لا تعرف اسمه (It\'s a thing for …ing / It\'s stuff for … / It\'s something we use to …)، وحروف الجر للمكان (next to، under، on، in front of، near، behind).',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 10–11',html:`<p>تتحدث عن الأشياء في المكتب. ستتعلم:</p><ol><li>أسماء أدوات المكتب.</li><li>وصف شيء لا تعرف اسمه.</li><li>حروف الجر للمكان.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l1'](el,B)},
   ...R121.theory,
   {h:'تمارين الكتاب',ref:'ص 10–11',html:
    bk(1,'ص 10','اكتب أسماء الأشياء في صورة المكتب (1–15).',null,'حسب صورة الكتاب؛ الكلمات في «Vocabulary file 1» ص 84 (مثل lamp, monitor, keyboard, printer, filing cabinet, drawer, telephone).')+
@@ -90,6 +91,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l1'](el,B),title:'شرح مرئي'}]},
   ...R121.stations,
   {recap:['calculator, ruler, notepad, rubber, correction fluid, highlighter.',"It's a thing for …ing.","It's stuff for …","It's something we use to …",'next to, under, on, in front of, near, behind.']}
  ],
@@ -156,6 +158,7 @@ B.lesson({
  summary:'الجهات (north، southeast…) والمواقع (in the centre، in the suburbs، in the country، on the east coast)، والتنقل للعمل (commute، commuter، teleworker)، والرغبة بـ would like to / wouldn\'t like to، وأماكن عمل الشركة (head office، branch office، factory، warehouse، showroom)، ووصف مواقعها.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 12–13',html:`<p>تصف أين تعيش وتعمل، وأين أماكن شركة. ستتعلم:</p><ol><li>الجهات والمواقع.</li><li>${e("I'd like to / I wouldn't like to")}</li><li>أماكن العمل في الشركة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u2-l2'](el,B)},
   ...R122.theory,
   {h:'تمارين الكتاب',ref:'ص 12–13',html:
    bk(1,'ص 12','اقرأ عن الشخصين واكتب أسماء الأماكن على الخريطة.',['1 Tadlow (شمال لندن)','2 Westminster (وسط لندن)','3 Croydon (جنوب لندن)'],'من قراءتنا للخريطة.')+
@@ -167,6 +170,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u2-l2'](el,B),title:'شرح مرئي'}]},
   ...R122.stations,
   {recap:['in the centre / suburbs / country، on the east coast.','north, southeast, northwest…',"I'd like to … / I wouldn't like to …",'head office, branch office, factory, warehouse, showroom.','commute, commuter, teleworker.']}
  ],

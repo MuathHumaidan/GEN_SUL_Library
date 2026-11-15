@@ -69,6 +69,7 @@ B.lesson({
  summary:'أفعال الروتين اليومي (get up، have breakfast، leave home، pick up، go out، get home)، والمضارع البسيط للروتين (every Monday)، والمضارع المستمر لما يحدث الآن (She\'s playing tennis)، والماضي البسيط لما حدث (last Saturday: got up، had، drove)، وترتيب قصتين متداخلتين.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 48–49',html:`<p>تتحدث عن روتينك وعما فعلته. ستتعلم:</p><ol><li>أفعال الروتين.</li><li>الفرق بين ثلاثة أزمنة.</li><li>رواية يوم في الماضي.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l1'](el,B)},
   ...R1101.theory,
   {h:'تمارين الكتاب',ref:'ص 48–49',html:
    bk(1,'ص 48','أكمل تحت الصور بالأفعال.',['a have lunch · b leave home · c have breakfast · d call my clients · e watch TV','f go shopping · g pick up my friend · h have a break · i finish work · j get home','k go out · l get up · m have a meeting · n play tennis · o have lunch'],'من قراءتنا للصور؛ b و j: leave home / get home حسب الصورة.')+
@@ -79,6 +80,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l1'](el,B),title:'شرح مرئي'}]},
   ...R1101.stations,
   {recap:['get up, have breakfast, leave home, get to work, get home.','every Monday ← المضارع البسيط (+ s مع he / she).',"now / Look! ← am / is / are + ing.",'last Saturday / yesterday ← الماضي البسيط.','got, had, drove, made, ate, went.']}
  ],
@@ -140,6 +142,7 @@ B.lesson({
  summary:'ظروف التكرار (always، usually، often، sometimes، hardly ever، never) ومكانها في الجملة، والسؤال How often …?، والمقارنة بين روتينك وروتين زميلك، وقراءة جدول عن ساعات العمل وسنوات البقاء في الشركة والادخار في بلدان مختلفة.',
  theory:[
   {h:'ماذا ستتعلم؟',ref:'ص 50–51',html:`<p>تقارن عاداتك بعادات غيرك. ستتعلم:</p><ol><li>ظروف التكرار.</li><li>مكانها في الجملة.</li><li>${e('How often …?')}</li><li>قراءة جدول مقارنة.</li></ol>`},
+  {h:'شاهد الفكرة',widget:(el,B)=>window.VX.L['u10-l2'](el,B)},
   ...R1102.theory,
   {h:'تمارين الكتاب',ref:'ص 50–51',html:
    bk(1,'ص 50','ضع ظروف تكرار أخرى على المقياس.',['never (0%) · hardly ever · sometimes (50%) · often · usually · always (100%)'])+
@@ -151,6 +154,7 @@ B.lesson({
  ],
  stations:[
   {intro:true},
+  {st:0,short:'شاهد الفكرة',title:'شاهد الفكرة',q:'شاهد القاعدة بعينك قبل التمارين.',body:[{widget:(el,B)=>window.VX.L['u10-l2'](el,B),title:'شرح مرئي'}]},
   ...R1102.stations,
   {recap:['always, usually, often, sometimes, hardly ever, never.','قبل الفعل الأساسي، وبعد be.','How often do you …?',"Sam always drives, but I never do.",'the longest / the shortest / the most / the least.']}
  ],
