@@ -196,6 +196,15 @@ const labB=(el,B,o)=>{const s={};o.controls.forEach(c=>{s[c.k]=c.init!=null?c.in
     OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${/[\u0600-\u06FF]/.test(r.ar)?r.ar:e(r.ar)}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;{const S=OUT.querySelector('.lb-sent');if(S){let f=19;S.querySelectorAll('.pc').forEach(x=>x.style.fontSize='');const W=()=>S.scrollWidth>S.clientWidth+1;if(W()){S.style.flexWrap='nowrap';while(W()&&f>11){f-=1;S.querySelectorAll('.pc').forEach(x=>{x.style.fontSize=f+'px';x.style.paddingInline=Math.max(4,f-9)+'px'})}if(W()){S.style.flexWrap='wrap';S.querySelectorAll('.pc').forEach(x=>{x.style.whiteSpace='normal';x.style.fontSize='';x.style.paddingInline=''})}}}}
     if(B&&B.ltrU)try{B.ltrU(OUT)}catch(e){}}
   draw()};
+/* يحوّل الصيغ المختلطة (إنجليزي + عربي بينها +) داخل النص العربي إلى سطر صيغة من اليسار لليمين */
+const fmAR=/[؀-ۿ]/;
+const fmAuto=h=>{if(!h||typeof h!=='string'||h.indexOf('+')<0)return h;
+  h=h.replace(/<span class="en" lang="en"[^>]*>([^<]*\+[^<]*)<\/span>/g,(m,x)=>fmAR.test(x)?x.split(/\s*\+\s*/).map(t=>fmAR.test(t)?t:`<span class="en" lang="en">${t}</span>`).join(' + '):m);
+  const PH=['التصريف الثالث للفعل','التصريف الثالث','الفعل الأصلي','الفعل كما هو','الفعل بلا s','الفعل','الفاعل','الصفة القصيرة','الصفة الطويلة','الصفة','صفة','الاسم','اسم','فعل','المادة','العبوة','الرقم','رقم','كلمة السؤال','مدة','نقطة البداية','بداية','سنة','مكان','شركة','الجامعة','التخصص','المقارنة','مقارنة','الباقي','الشيء','المكان'].join('|');
+  const EN1=`(?:<span class="en" lang="en"[^>]*>[^<]*</span>|[A-Za-z][A-Za-z'’…\\-]*(?: [A-Za-z'’…\\-]+){0,3})`;
+  const TOK=`(?:(?<![\\u0621-\\u064A])(?:${PH})(?![\\u0621-\\u064A])(?:\\s*(?:بـ|بلا|مع)?\\s*<span class="en" lang="en"[^>]*>[^<]{1,4}</span>)?|${EN1}(?:\\s*(?:/|·|أو)\\s*${EN1})*)`;
+  const re=new RegExp(`${TOK}(?:\\s*\\+\\s*${TOK})+`,'g');
+  return h.replace(re,m=>{const pl=m.split(/\s*\+\s*/).map(t=>{const x=t.replace(/<[^>]+>/g,'').trim();return /[A-Za-z]/.test(x)&&/(^|\s)أو(\s|$)/.test(x)?x.replace(/\s*أو\s*/g,' / '):x});if(!pl.some(t=>fmAR.test(t))||!pl.some(t=>/[A-Za-z]/.test(t)))return m;const o=[];pl.forEach((t,i)=>{if(i)o.push('+');o.push(t)});return fm(...o)})};
 /* ===== نهج الشرح (dev-kit/guides/TEACHING_APPROACH.md): مربع «الفكرة» لكل جزء من «شرح القاعدة» =====
    G.NH[عنوان الجزء]={say:[ar,en],life:[[en,ar]],scene:{title,ctrl,svg,ask,out},think:[[ar,en]]}
    الألوان الثابتة: a فاعل أخضر · k فعل أصفر · n شيء أزرق · x كلمة القاعدة أحمر · q باقي الجملة */
@@ -242,7 +251,7 @@ const nhEN=B=>!!(B&&B.lang&&B.lang()==='en');
 const nhGl=(ar,en)=>`<span class="nh-gl hid" data-keep-ar dir="rtl" title="${en?'Tap to see the meaning':'المس لترى المعنى'}">${ar}</span>`;
 const nhTap=el=>el.addEventListener('click',ev=>{const g=ev.target.closest('.nh-gl');if(g)g.classList.remove('hid')});
 const nhBd=t=>/</.test(t)?t:String(t).replace(/[A-Za-z][A-Za-z0-9'’,.\/…+\- ]*[A-Za-z0-9'’.…?!]/g,m=>`<bdi dir="ltr"${m.length<=16?' class="nw"':''}>${m}</bdi>`);
-const nhThink=(x,en)=>`<ol>${x.map(q=>`<li>${en?q[1]:nhBd(q[0])}</li>`).join('')}</ol>`;
+const nhThink=(x,en)=>`<ol>${x.map(q=>`<li>${en?q[1]:nhBd(fmAuto(q[0]))}</li>`).join('')}</ol>`;
 const nhScene=(host,sc,B)=>{const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):(p||'');const st={};
   (sc.ctrl||[]).forEach(c=>{st[c.k]=c.init!=null?c.init:(c.range?c.range[0]:c.opts[0][0])});
   host.innerHTML=`<div class="nh-ctl">${(sc.ctrl||[]).map(c=>`<div class="nh-row" data-k="${c.k}"><span class="lb">${L(c.label)}</span>${c.range?`<input type="range" min="${c.range[0]}" max="${c.range[1]}" step="${c.range[2]}" value="${st[c.k]}" aria-label="${esc(L(c.label))}"><span class="v"></span>`:`<div class="bt">${c.opts.map(([v,t])=>`<button type="button" data-v="${esc(v)}">${Array.isArray(t)?L(t):t}</button>`).join('')}</div>`}</div>`).join('')}</div>
@@ -251,7 +260,7 @@ const nhScene=(host,sc,B)=>{const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]
   const show=()=>{const r=sc.out(st)||{};OUT.hidden=false;const row=OUT.querySelector('.vx-row');
     if(G.VX&&G.VX.tiles){G.VX.tiles(row,r.t||[]);row.style.flexWrap='wrap';row.style.rowGap='8px';row.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize='';x.style.padding='';x.style.whiteSpace='normal'})}else row.innerHTML=(r.t||[]).map(z=>`<span class="vx-t ${z[2]||''}">${z[1]}</span>`).join(' ');
     const say=r.say||(r.t||[]).map(z=>z[1]).join(' ').replace(/<[^>]+>/g,'').replace(/\s+([.,?!])/g,'$1');
-    OUT.querySelector('.nh-why').innerHTML=`${sp(say)} ${L(r.why)}`;OUT.querySelector('.nh-m').innerHTML=r.ar?nhGl(r.ar,en):''};
+    OUT.querySelector('.nh-why').innerHTML=`${sp(say)} ${en?L(r.why):fmAuto(L(r.why))}`;OUT.querySelector('.nh-m').innerHTML=r.ar?nhGl(r.ar,en):''};
   const draw=(fresh)=>{(sc.ctrl||[]).forEach(c=>{const row=host.querySelector(`.nh-row[data-k="${c.k}"]`);if(c.range){row.querySelector('.v').textContent=(c.fmt?c.fmt(st[c.k]):st[c.k])+(c.unit?' '+c.unit:'')}else row.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===String(st[c.k])))});
     SV.innerHTML=sc.svg?sc.svg(st,en):'';SV.hidden=!sc.svg;
     const a=sc.ask&&sc.ask(st);if(fresh)solved=false;
@@ -264,7 +273,7 @@ const nhScene=(host,sc,B)=>{const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]
   draw(true)};
 const nhW=(x,t)=>(el,B)=>{nhCssAdd();const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):(p||'');
   el.innerHTML=`<div class="nh" data-notr><div class="nh-h"><span class="tg">${en?'The idea':'الفكرة'}</span><b>${L(x.title)||nhBd(t)}</b><small style="color:var(--muted)">${en?'(not from the book)':'(إضافة من خارج الكتاب)'}</small></div><div class="nh-b">
-   ${x.say?`<div class="nh-s"><h4><i>1</i>${en?'From your life':'من حياتك'}</h4><p class="nh-say">${L(x.say)}</p>${x.life?`<div class="nh-life">${x.life.map(([s,a])=>`<div class="nh-l"><span class="nh-en" lang="en">${s} ${sp(s)}</span>${nhGl(a,en)}</div>`).join('')}</div>`:''}</div>`:''}
+   ${x.say?`<div class="nh-s"><h4><i>1</i>${en?'From your life':'من حياتك'}</h4><p class="nh-say">${fmAuto(L(x.say))}</p>${x.life?`<div class="nh-life">${x.life.map(([s,a])=>`<div class="nh-l"><span class="nh-en" lang="en">${s} ${sp(s)}</span>${nhGl(a,en)}</div>`).join('')}</div>`:''}</div>`:''}
    ${x.scene?`<div class="nh-s"><h4><i>2</i>${en?'Try it yourself':'جرّب بيدك'}${x.scene.title?': '+L(x.scene.title):''}</h4><div class="nh-scene"></div></div>`:''}
    ${x.think?`<div class="nh-s nh-th"><h4><i>3</i>${en?'Before you answer, ask yourself':'قبل ما تحل، اسأل نفسك'}</h4>${nhThink(x.think,en)}</div>`:''}
   </div></div>`;
@@ -278,11 +287,11 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
   const labW=l=>l?(l.w||((el,B)=>gaps(el,B,{intro:l.intro,items:l.items}))):null;
   const isLat=x=>/^[\x20-\x7E·—–…’→✔✘]+$/.test(String(x));
   /* جدول مرتب: أعمدة متساوية، والخلية الإنجليزية من اليسار لليمين */
-  const grid=g=>g?`<div class="rt-wrap"><table class="rt"><thead><tr>${g.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g.rows.map(r=>`<tr>${r.map((c,j)=>`<td${isLat(c)?' class="en" lang="en" dir="ltr"':''}${j===0?' data-k="1"':''}>${c}${j===r.length-1&&isLat(c)&&/[a-z]{2}/i.test(c)?' '+sp(c.replace(/ · .*/,'')):''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
+  const grid=g=>g?`<div class="rt-wrap"><table class="rt"><thead><tr>${g.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g.rows.map(r=>`<tr>${r.map((c,j)=>`<td${isLat(c)?' class="en" lang="en" dir="ltr"':''}${j===0?' data-k="1"':''}>${isLat(c)?c:fmAuto(c)}${j===r.length-1&&isLat(c)&&/[a-z]{2}/i.test(c)?' '+sp(c.replace(/ · .*/,'')):''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
   const pairsH=ps=>ps&&ps.length?`<div class="wx">${ps.map(p=>`<div class="wx-r"><span class="wx-x">✘ ${W(p[0])}</span><span class="wx-ok">✔ ${W(p[1])}</span>${p[2]?`<span class="wx-why">${p[2]}</span>`:''}</div>`).join('')}</div>`:'';
   const watchH=p=>{const w=p.watch?(Array.isArray(p.watch)?p.watch.map(x=>`<p>${x}</p>`).join(''):`<p>${p.watch}</p>`):'';return pairsH(p.pairs)+w};
   const pts=a=>(a||[]).map(x=>`<p class="rpt">${x}</p>`).join('');
-  const body=p=>`${p.lead?`<p class="rlead">${p.lead}</p>`:''}${pts(p.points)}${(p.subs||[]).map(s=>`<h4 class="rsub">${s.h}</h4>${pts(s.points)}`).join('')}${p.text?`<p class="rpt">${p.text}</p>`:''}`;
+  const body=p=>`${p.lead?`<p class="rlead">${fmAuto(p.lead)}</p>`:''}${pts((p.points||[]).map(fmAuto))}${(p.subs||[]).map(s=>`<h4 class="rsub">${s.h}</h4>${pts((s.points||[]).map(fmAuto))}`).join('')}${p.text?`<p class="rpt">${fmAuto(p.text)}</p>`:''}`;
   const theory=[{h:'شرح القاعدة: '+R.title,ref:R.ref,html:R.intro?`<p>${R.intro}</p>`:''}];
   const stations=[];
   const NH=G.NH||{},TH=[];
@@ -299,7 +308,7 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
   return {theory,stations}};
 /* سطر صيغة: يُعرض من اليسار لليمين بترتيب الجملة الإنجليزية، والأجزاء العربية رقع داخلها */
 const fm=(...p)=>`<span class="fm" dir="ltr">${p.map(x=>x==='+'?'<i>+</i>':/[\u0600-\u06FF]/.test(x)?`<span class="fm-ar" dir="rtl">${x}</span>`:`<b lang="en">${x}</b>`).join('')}</span>`;
-G.ENK={fm,e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
+G.ENK={fm,fmAuto,e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
 /* ===== «إخفاء الترجمة» (التخمين) و«الدرجات» — من مختبر المدرب =====
    - خلايا المعنى العربي في الجداول (.gl) وترجمات «كلمات الدرس» تُغطّى بضباب عند تشغيل «إخفاء الترجمة»؛ تظهر بالوقوف عليها أو لمسها.
