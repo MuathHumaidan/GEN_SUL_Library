@@ -162,6 +162,8 @@ if(G.PLCBOOK&&!G.PLCBOOK.__gram){const ol=G.PLCBOOK.lesson;G.PLCBOOK.__gram=1;
     if(s){const p=gramParts(s);
       if(Array.isArray(L.theory)){const i=L.theory.findIndex(b=>b.h==='ماذا ستتعلم؟');L.theory.splice(i+1,0,...p.theory)}
       if(Array.isArray(L.stations)){const i=L.stations.findIndex(b=>b.intro);L.stations.splice(i+1,0,p.station)}}
+    if(Array.isArray(L.theory)&&!L.__nh){L.__nh=1;const TH=[].concat(...L.theory.filter(b=>b&&b._think).map(b=>b._think));
+      if(TH.length){const i=L.theory.findIndex(b=>b.h==='تمارين الكتاب');if(i>=0)L.theory.splice(i,0,{widget:nhAllThink(TH)})}}
     /* صوتيات الكتاب داخل تماريننا (قرار المدرب، نوفمبر 2026): قسم «الاستماع» يُلغى، وكل مقطع يُربط بتمرينه في bx.js */
     if(Array.isArray(L.theory)&&!L.__trk){L.__trk=1;const A=L.theory.filter(b=>b.h==='الاستماع'&&b.html);
       if(A.length){const T=[];let rest='';
@@ -194,6 +196,80 @@ const labB=(el,B,o)=>{const s={};o.controls.forEach(c=>{s[c.k]=c.init!=null?c.in
     OUT.innerHTML=`${r.bad?`<div class="lb-bad">${r.bad}</div>`:''}${r.pieces?`<div class="lb-sent">${r.pieces.map(([t,c,l])=>`<span class="lb-p ${c}"><span class="pc ${c}">${t}</span>${l?`<small>${l}</small>`:''}</span>`).join('')}${r.say?sp(r.say):''}</div>`:''}${r.ar?`<div class="lb-ar">${/[\u0600-\u06FF]/.test(r.ar)?r.ar:e(r.ar)}</div>`:''}${r.why?`<div class="lb-why">${r.why}</div>`:''}`;{const S=OUT.querySelector('.lb-sent');if(S){let f=19;S.querySelectorAll('.pc').forEach(x=>x.style.fontSize='');const W=()=>S.scrollWidth>S.clientWidth+1;if(W()){S.style.flexWrap='nowrap';while(W()&&f>11){f-=1;S.querySelectorAll('.pc').forEach(x=>{x.style.fontSize=f+'px';x.style.paddingInline=Math.max(4,f-9)+'px'})}if(W()){S.style.flexWrap='wrap';S.querySelectorAll('.pc').forEach(x=>{x.style.whiteSpace='normal';x.style.fontSize='';x.style.paddingInline=''})}}}}
     if(B&&B.ltrU)try{B.ltrU(OUT)}catch(e){}}
   draw()};
+/* ===== نهج الشرح (dev-kit/guides/TEACHING_APPROACH.md): مربع «الفكرة» لكل جزء من «شرح القاعدة» =====
+   G.NH[عنوان الجزء]={say:[ar,en],life:[[en,ar]],scene:{title,ctrl,svg,ask,out},think:[[ar,en]]}
+   الألوان الثابتة: a فاعل أخضر · k فعل أصفر · n شيء أزرق · x كلمة القاعدة أحمر · q باقي الجملة */
+const NHcss=`
+.nh{border:2px solid #1f8a5b;border-radius:16px;overflow:hidden;background:var(--surface,#fff);margin:6px 0 16px}
+.nh-h{background:#e2f2e8;padding:9px 14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nh-h .tg{background:#1f8a5b;color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.nh-b{padding:12px 14px;display:flex;flex-direction:column;gap:12px}
+.nh-s{border-radius:12px;padding:10px 12px;background:var(--surface-2,#f4f6f5)}
+.nh-s>h4{margin:0 0 6px;font-size:.95em;line-height:1.7}
+.nh-s>h4 i{font-style:normal;margin-inline-end:6px;background:#1f8a5b;color:#fff;border-radius:7px;padding:0 7px;font-size:.85em}
+.nh-say{font-size:1.06em;line-height:1.9;margin:0}
+.nh-life{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.nh-l{display:flex;flex-direction:column;gap:2px;background:var(--surface,#fff);border-radius:10px;padding:6px 10px}
+.nh-en{direction:ltr;text-align:left;font-family:var(--font-la,var(--font));font-weight:700;font-size:1.05em}
+.nh-gl{align-self:flex-end;cursor:pointer;border-radius:7px;padding:0 6px;color:var(--muted);transition:filter .2s}
+.nh-gl.hid{filter:blur(6px);background:var(--surface-2,#eef1ef);user-select:none}
+.nh-ctl{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.nh-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nh-row .lb{font-weight:700;color:var(--muted);font-size:14px;min-width:5.5em}
+.nh-row .bt{display:flex;gap:6px;flex-wrap:wrap}
+.nh-row button{font:inherit;font-weight:700;border:2px solid #c9d7e1;background:var(--surface,#fff);color:inherit;border-radius:10px;padding:5px 12px;cursor:pointer}
+.nh-row button[aria-pressed="true"]{background:#2f6b8f;border-color:#2f6b8f;color:#fff}
+.nh-row input[type=range]{flex:1 1 200px;accent-color:#2f6b8f;height:28px;direction:ltr}
+.nh-row .v{font-family:var(--font-la,var(--font));font-weight:700;direction:ltr;min-width:4em}
+.nh-svg{background:#f4f8fb;border-radius:12px;padding:4px}
+.nh-svg svg{width:100%;height:auto;display:block;max-height:340px}
+.nh-ask{margin-top:8px;font-weight:700}
+.nh-ask .q{margin-bottom:6px}
+.nh-ask .op{display:flex;gap:6px;flex-wrap:wrap}
+.nh-ask .op button{font:inherit;font-weight:700;border:2px solid #d9d2c4;background:var(--surface,#fff);color:inherit;border-radius:10px;padding:6px 14px;cursor:pointer}
+.nh-ask .op button.ok{background:#e2f2e8;border-color:#1f8a5b}.nh-ask .op button.no{background:#fbe9e4;border-color:#c4553f}
+.nh-ask .hn{color:#c4553f;margin-top:4px;font-weight:600}
+.nh-out{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.nh-out[hidden]{display:none}
+.nh-why{font-weight:600;line-height:1.8}
+.nh bdi.nw{white-space:nowrap}
+.nh-th ol{margin:0;padding-inline-start:1.4em;line-height:1.9;font-weight:600}
+.vx-t.x{background:#c4553f;color:#fff;border-color:#c4553f}
+html[data-theme=dark] .nh-svg{background:#e8eef2}
+`;
+const nhCssAdd=()=>{if(document.getElementById('nh-css'))return;const s=document.createElement('style');s.id='nh-css';s.textContent=NHcss;document.head.appendChild(s);if(G.VX)G.VX.css()};
+const nhEN=B=>!!(B&&B.lang&&B.lang()==='en');
+const nhGl=(ar,en)=>`<span class="nh-gl hid" data-keep-ar dir="rtl" title="${en?'Tap to see the meaning':'المس لترى المعنى'}">${ar}</span>`;
+const nhTap=el=>el.addEventListener('click',ev=>{const g=ev.target.closest('.nh-gl');if(g)g.classList.remove('hid')});
+const nhBd=t=>/</.test(t)?t:String(t).replace(/[A-Za-z][A-Za-z0-9'’,.\/…+\- ]*[A-Za-z0-9'’.…?!]/g,m=>`<bdi dir="ltr"${m.length<=16?' class="nw"':''}>${m}</bdi>`);
+const nhThink=(x,en)=>`<ol>${x.map(q=>`<li>${en?q[1]:nhBd(q[0])}</li>`).join('')}</ol>`;
+const nhScene=(host,sc,B)=>{const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):(p||'');const st={};
+  (sc.ctrl||[]).forEach(c=>{st[c.k]=c.init!=null?c.init:(c.range?c.range[0]:c.opts[0][0])});
+  host.innerHTML=`<div class="nh-ctl">${(sc.ctrl||[]).map(c=>`<div class="nh-row" data-k="${c.k}"><span class="lb">${L(c.label)}</span>${c.range?`<input type="range" min="${c.range[0]}" max="${c.range[1]}" step="${c.range[2]}" value="${st[c.k]}" aria-label="${esc(L(c.label))}"><span class="v"></span>`:`<div class="bt">${c.opts.map(([v,t])=>`<button type="button" data-v="${esc(v)}">${Array.isArray(t)?L(t):t}</button>`).join('')}</div>`}</div>`).join('')}</div>
+   <div class="nh-svg"></div><div class="nh-ask"></div><div class="nh-out"><div class="vx-row"></div><div class="nh-why"></div><div class="nh-m"></div></div>`;
+  const $=q=>host.querySelector(q),SV=$('.nh-svg'),AS=$('.nh-ask'),OUT=$('.nh-out');let solved=false;
+  const show=()=>{const r=sc.out(st)||{};OUT.hidden=false;const row=OUT.querySelector('.vx-row');
+    if(G.VX&&G.VX.tiles){G.VX.tiles(row,r.t||[]);row.style.flexWrap='wrap';row.style.rowGap='8px';row.querySelectorAll('.vx-t').forEach(x=>{x.style.fontSize='';x.style.padding='';x.style.whiteSpace='normal'})}else row.innerHTML=(r.t||[]).map(z=>`<span class="vx-t ${z[2]||''}">${z[1]}</span>`).join(' ');
+    const say=r.say||(r.t||[]).map(z=>z[1]).join(' ').replace(/<[^>]+>/g,'').replace(/\s+([.,?!])/g,'$1');
+    OUT.querySelector('.nh-why').innerHTML=`${sp(say)} ${L(r.why)}`;OUT.querySelector('.nh-m').innerHTML=r.ar?nhGl(r.ar,en):''};
+  const draw=(fresh)=>{(sc.ctrl||[]).forEach(c=>{const row=host.querySelector(`.nh-row[data-k="${c.k}"]`);if(c.range){row.querySelector('.v').textContent=(c.fmt?c.fmt(st[c.k]):st[c.k])+(c.unit?' '+c.unit:'')}else row.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===String(st[c.k])))});
+    SV.innerHTML=sc.svg?sc.svg(st,en):'';SV.hidden=!sc.svg;
+    const a=sc.ask&&sc.ask(st);if(fresh)solved=false;
+    if(a&&!solved){OUT.hidden=true;const hs=o=>[...String(o)].reduce((h,c)=>(h*31+c.charCodeAt(0))%9973,7);const OP=[...a.opts].sort((x,y)=>hs(x)-hs(y));AS.innerHTML=`<div class="q">${L(a.q)}</div><div class="op" dir="ltr">${OP.map(o=>`<button type="button" data-o="${esc(o)}">${o}</button>`).join('')}</div><div class="hn"></div>`;
+      AS.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(b.dataset.o===String(a.a)){b.classList.add('ok');solved=true;AS.querySelectorAll('button').forEach(x=>x.disabled=true);show()}else{b.classList.add('no');AS.querySelector('.hn').textContent=L(a.hint||['جرّب مرة ثانية.','Try again.'])}})}
+    else{if(!a)AS.innerHTML='';show()}};
+  (sc.ctrl||[]).forEach(c=>{const row=host.querySelector(`.nh-row[data-k="${c.k}"]`);
+    if(c.range){const i=row.querySelector('input');i.oninput=()=>{st[c.k]=+i.value;draw(true)}}
+    else row.querySelectorAll('button').forEach(b=>b.onclick=()=>{const v=b.dataset.v;st[c.k]=isNaN(+v)||v===''?v:(typeof c.opts[0][0]==='number'?+v:v);draw(true)})});
+  draw(true)};
+const nhW=(x,t)=>(el,B)=>{nhCssAdd();const en=nhEN(B),L=p=>Array.isArray(p)?(en?p[1]:p[0]):(p||'');
+  el.innerHTML=`<div class="nh" data-notr><div class="nh-h"><span class="tg">${en?'The idea':'الفكرة'}</span><b>${L(x.title)||nhBd(t)}</b><small style="color:var(--muted)">${en?'(not from the book)':'(إضافة من خارج الكتاب)'}</small></div><div class="nh-b">
+   ${x.say?`<div class="nh-s"><h4><i>1</i>${en?'From your life':'من حياتك'}</h4><p class="nh-say">${L(x.say)}</p>${x.life?`<div class="nh-life">${x.life.map(([s,a])=>`<div class="nh-l"><span class="nh-en" lang="en">${s} ${sp(s)}</span>${nhGl(a,en)}</div>`).join('')}</div>`:''}</div>`:''}
+   ${x.scene?`<div class="nh-s"><h4><i>2</i>${en?'Try it yourself':'جرّب بيدك'}${x.scene.title?': '+L(x.scene.title):''}</h4><div class="nh-scene"></div></div>`:''}
+   ${x.think?`<div class="nh-s nh-th"><h4><i>3</i>${en?'Before you answer, ask yourself':'قبل ما تحل، اسأل نفسك'}</h4>${nhThink(x.think,en)}</div>`:''}
+  </div></div>`;
+  nhTap(el);if(x.scene)nhScene(el.querySelector('.nh-scene'),x.scene,B);if(B&&B.ltrU)try{B.ltrU(el)}catch(e){}};
+const nhAllThink=TH=>(el,B)=>{nhCssAdd();const en=nhEN(B);el.innerHTML=`<div class="nh" data-notr><div class="nh-h"><span class="tg">${en?'Before the exercises':'قبل التمارين'}</span><b>${en?'Before you answer, ask yourself':'قبل ما تحل، اسأل نفسك'}</b></div><div class="nh-b nh-th">${TH.map(([h,q])=>`<div class="nh-s"><h4>${en?h:nhBd(h)}</h4>${nhThink(q,en)}</div>`).join('')}</div></div>`};
 /* ===== «شرح القاعدة»: قسم شامل واحد يدمج شرح قاعدة الدرس =====
    const R=ENK.rule({title,ref,intro,parts:[{t,short,q,ref,add,text,head,rows,ex,html,watch,art,cap,dlg,lab:{title,w|intro+items}}]})
    ثم في الدرس: theory:[…ماذا ستتعلم، ...R.theory, …]  و stations:[{intro:true}, ...R.stations, …]
@@ -209,14 +285,17 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
   const body=p=>`${p.lead?`<p class="rlead">${p.lead}</p>`:''}${pts(p.points)}${(p.subs||[]).map(s=>`<h4 class="rsub">${s.h}</h4>${pts(s.points)}`).join('')}${p.text?`<p class="rpt">${p.text}</p>`:''}`;
   const theory=[{h:'شرح القاعدة: '+R.title,ref:R.ref,html:R.intro?`<p>${R.intro}</p>`:''}];
   const stations=[];
+  const NH=G.NH||{},TH=[];
   R.parts.forEach((p,i)=>{const tbl=(p.rows?vt(p.rows,p.head):'')+grid(p.grid);const ex=p.ex&&p.ex.length?eb(p.ex):'';const dlg=p.dlg?dl(p.dlg):'';
-    const hasW=p.watch||(p.pairs&&p.pairs.length);
-    theory.push({html:`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3><div class="rbody">${body(p)}</div>${tbl}${ex}${dlg}${p.html||''}`});
+    const hasW=p.watch||(p.pairs&&p.pairs.length);const nh=NH[p.t];const h3=`<h3 class="rh">${i+1}. ${p.t}${p.add?` <small>(${TAG})</small>`:''}${p.ref?` <span class="ref">${p.ref}</span>`:''}</h3>`;
+    if(nh){const pb=nh.say?Object.assign({},p,{lead:''}):p;theory.push({html:h3});theory.push({widget:nhW(nh,p.t)});theory.push({html:`<div class="rbody">${body(pb)}</div>${tbl}${ex}${dlg}${p.html||''}`});if(nh.think)TH.push([`${i+1}. ${p.t}`,nh.think])}
+    else theory.push({html:`${h3}<div class="rbody">${body(p)}</div>${tbl}${ex}${dlg}${p.html||''}`});
     if(hasW)theory.push({note:`<b>انتبه: الخطأ والصحيح</b>${watchH(p)}`});
     (p.labs||(p.lab?[p.lab]:[])).forEach(l=>{theory.push({html:`<p><b>مختبر مصغّر: ${l.title}</b></p>`});theory.push({widget:labW(l)})});
     const sb=body(p);const side=sb?[p.add?{add:sb}:{tip:sb}]:[];
     stations.push({st:0,_old:p.old||[],short:p.short||p.t,title:p.t,q:p.q,ref:p.ref,...(p.art?{art:p.art,cap:p.cap}:{}),side,
-      body:[...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.labs||(p.lab?[p.lab]:[])).map(l=>({widget:labW(l),title:'مختبر مصغّر: '+l.title}))]})});
+      body:[...(nh?[{widget:nhW(nh,p.t)}]:[]),...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.labs||(p.lab?[p.lab]:[])).map(l=>({widget:labW(l),title:'مختبر مصغّر: '+l.title}))]})});
+  if(TH.length)theory[0]._think=TH;
   return {theory,stations}};
 G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
@@ -288,7 +367,7 @@ if(document.readyState==='loading')addEventListener('DOMContentLoaded',start);el
    3) الترجمة: G.ENTR[المفتاح]=ترجمة عربية (ملف tr.js لكل مقرر). في الشرح والأمثلة: لمس الجملة يُظهر ترجمتها تحتها.
       في التمارين والاختبارات: زر صغير «ترجمة» جنب الجملة، والفراغ يبقى ___ في الترجمة. */
 (function(G){const AR=/[؀-ۿ]/,LAT=/[A-Za-z]/;
-const SKIP='script,style,svg,select,input,textarea,.tr-ar,.tr-btn,.say,.lw-pop,.lw-tr,.lw-ar,.lw-mean,[data-notr],.ltabs,.vx-chips,.fx-box,.fx-tray,.opts,.lb-sent';
+const SKIP='script,style,svg,select,input,textarea,.tr-ar,.tr-btn,.say,.lw-pop,.lw-tr,.lw-ar,.lw-mean,[data-notr],.ltabs,.vx-chips,.fx-box,.fx-tray,.opts,.lb-sent,.nh';
 const GAP='input,select,textarea,.gp2,[data-gap]';
 const BLK=/^(DIV|P|LI|UL|OL|TABLE|THEAD|TBODY|TR|TD|TH|DETAILS|SUMMARY|H[1-6]|SECTION|FIGURE|FIGCAPTION|BLOCKQUOTE|DL|DT|DD|FORM|FIELDSET|NAV|HEADER|FOOTER|ARTICLE|ASIDE|MAIN|BR|IMG)$/;
 const INL=/^(B|I|EM|STRONG|SPAN|U|SUB|SUP|SMALL|CODE|BDI|MARK|A|BR|ABBR|Q|S)$/;

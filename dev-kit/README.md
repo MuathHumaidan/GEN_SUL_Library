@@ -25,6 +25,7 @@ STATIONS_GUIDE.md and create fragments from scratch.
 ## Contents
 - guides/API_THEORY.md, API_LAB.md, API_CIRC.md, API_NEW.md, TP_GUIDE.md — how a course and its lessons are written
   (theory, labs, circuits, worked examples, trainer values).
+- guides/TEACHING_APPROACH.md — **read first**: the coordinator's teaching approach (10 principles + 5 build questions) that every lesson in every course follows; NH entries in English courses.
 - guides/STATIONS_GUIDE.md, MINILAB_GUIDE.md — the second explanation style «التفاعلي» and its mini-labs.
 - guides/EN_MODE_GUIDE.md — «لغة الشرح: عربي / English» for the English courses (i18n.js, dictionaries, enscan).
 - guides/FIXNOTE_GUIDE.md — book-error handling: «كما في الكتاب / المصحح» switch, «إخفاء الشرح».
