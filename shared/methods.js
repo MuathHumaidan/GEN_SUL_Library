@@ -172,7 +172,7 @@ const usable=(L,m)=>{const gr=gradeOf(L,m).g;return (gr==='rec'||gr==='ok')&&(m.
    التبويب: theory الشرح · lab المختبر · plc البرنامج · examples الأمثلة · quiz اختبر نفسك · acts الأنشطة
    الأسلوب (للشرح فقط): i التفاعلي · f رسمي — بدونه يبقى أسلوب المستخدم الحالي
    النص: جزء من عنوان في التبويب (عنوان محطة، لوحة، بطاقة نشاط، سؤال…). بدون نص = أعلى التبويب */
-const TABN={theory:'الشرح',lab:'المختبر',plc:'برنامج الـ PLC',examples:'الأمثلة المحلولة',quiz:'اختبر نفسك',acts:'الأنشطة التفاعلية'};
+const TABN={theory:'الشرح',lab:'المختبر',plc:'برنامج الـ PLC',examples:'الأمثلة المحلولة',quiz:'اختبر نفسك',real:'من الواقع',acts:'الأنشطة التفاعلية'};
 function parseT(s){const m=String(s).match(/^\s*([a-z]+)(?::([if]))?\s*(?:>\s*(.*))?$/);if(!m)return null;return {tab:m[1],view:m[2]||'',text:(m[3]||'').trim()}}
 function tLabel(s){const t=parseT(s);if(!t)return String(s);return (TABN[t.tab]||t.tab)+(t.view==='i'?' (التفاعلي)':t.view==='f'?' (الرسمي)':'')+(t.text?' › '+t.text:'')}
 const norm=s=>String(s||'').replace(/[ـً-ْ]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').trim();

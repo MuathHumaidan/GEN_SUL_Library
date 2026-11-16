@@ -120,7 +120,7 @@ B.enDict({
  'اختر أسلوب الشرح':'Choose the lesson style','أسلوب الشرح الحالي رسمي، اضغط للتبديل':'Style: Classic. Click to change.','أسلوب الشرح الحالي التفاعلي، اضغط للتبديل':'Style: Interactive. Click to change.',
  'أسلوب الشرح:':'Style:','رسمي':'Classic','التفاعلي':'Interactive','الوضع الليلي':'Dark mode','تبديل الوضع الليلي':'Dark mode on/off',
  'دروس الوحدة':'Unit lessons','‹ فهرس المقرر':'‹ Course contents','الوحدات الأخرى':'Other units','الفهرس':'Contents',
- 'الشرح':'Lesson','المختبر':'Lab','الأمثلة المحلولة':'Worked examples','اختبر نفسك':'Test yourself','الأنشطة التفاعلية':'Activities',
+ 'الشرح':'Lesson','من الواقع':'Real life','الواقع':'Real life','المختبر':'Lab','الأمثلة المحلولة':'Worked examples','اختبر نفسك':'Test yourself','الأنشطة التفاعلية':'Activities',
  'الأمثلة':'Examples','اختبر':'Test','الأنشطة':'Activities','أنهيت الدرس':'I finished the lesson','التالي':'Next','السابق':'Previous',
  'كلمات الدرس':'Lesson words','مرّر المؤشر على الكلمة (أو المسها) لترى مثالاً من الحياة اليومية.':'Point at a word (or touch it) to see an example from daily life.','مثال':'Example',
  'استمع للنطق':'Listen','🔊 استمع':'🔊 Listen','استمع':'Listen','أظهر النص':'Show the text','أخفِ النص':'Hide the text',

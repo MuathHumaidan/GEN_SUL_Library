@@ -308,6 +308,67 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
   return {theory,stations}};
 /* سطر صيغة: يُعرض من اليسار لليمين بترتيب الجملة الإنجليزية، والأجزاء العربية رقع داخلها */
 const fm=(...p)=>`<span class="fm" dir="ltr">${p.map(x=>x==='+'?'<i>+</i>':/[\u0600-\u06FF]/.test(x)?`<span class="fm-ar" dir="rtl">${x}</span>`:`<b lang="en">${x}</b>`).join('')}</span>`;
+
+/* ===== «من الواقع» (تبويب في الدرس): حوار من الحياة اليومية لشاب في المملكة يطبق فيه درس اليوم =====
+   البيانات في ملف المقرر: G.REAL['<lesson id>']={title:[ar,en],scene:[ar,en],me:[ar,en],them:{n,role:[ar,en]},
+   steps:[{who:'them',t,ar} | {who:'me',pick:[{t,ok:1}|{t,why:[ar,en]}],ar,hint?} | {who:'me',fill:'… ___ …',opts,a,why:[ar,en],ar}
+          | {who:'note',t:[ar,en]}], used:[[ar,en]]}. إضافة من خارج الكتاب. */
+const RLcss=`.rl{border:1px solid var(--line,#d7e0e6);border-radius:14px;background:var(--card,#fff);overflow:hidden;margin:6px 0 14px}
+.rl-h{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#eef6f1;border-bottom:1px solid var(--line,#d7e0e6)}
+.rl-h .tg{background:#1f7a4d;color:#fff;border-radius:999px;padding:2px 10px;font-size:.8em}
+.rl-sc{padding:10px 14px;color:var(--ink,#1f2a33);line-height:1.8;border-bottom:1px dashed var(--line,#d7e0e6)}
+.rl-who{display:flex;gap:14px;flex-wrap:wrap;font-size:.85em;color:var(--muted,#5b6b75);margin-top:4px}
+.rl-who b{color:var(--ink,#1f2a33)}
+.rl-chat{display:flex;flex-direction:column;gap:8px;padding:12px}
+.rl-m{max-width:88%;padding:8px 12px;border-radius:14px;line-height:1.6}
+.rl-m .nm{display:block;font-size:.75em;color:var(--muted,#5b6b75);margin-bottom:2px}
+.rl-them{align-self:flex-end;background:#eef1f3;border-bottom-left-radius:4px}
+.rl-me{align-self:flex-start;background:#dcf1e3;border-bottom-right-radius:4px}
+.rl-them .tx,.rl-me .tx{direction:ltr;text-align:left;display:block;font-weight:600}
+.rl-note{align-self:center;background:#fff8e1;border:1px dashed #e5c46a;border-radius:10px;padding:6px 12px;font-size:.92em;max-width:95%}
+.rl-ask{border-top:1px solid var(--line,#d7e0e6);padding:12px;background:#fafcfd}
+.rl-ask .q{font-weight:700;margin-bottom:8px}
+.rl-ask .fl{direction:ltr;text-align:left;font-weight:600;margin-bottom:8px}
+.rl-ask .fl u{display:inline-block;min-width:3em;border-bottom:2px solid #c0392b;text-decoration:none;text-align:center}
+.rl-op{display:flex;flex-wrap:wrap;gap:8px}
+.rl-op button{direction:ltr;text-align:left;border:1.5px solid var(--line,#c9d4db);background:#fff;border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;max-width:100%;white-space:normal}
+.rl-op button.no{border-color:#c0392b;background:#fbe9e4;opacity:.75}
+.rl-why{margin-top:8px;color:#a23b26;font-size:.92em}
+.rl-hint{margin-top:6px;color:var(--muted,#5b6b75);font-size:.88em}
+.rl-end{padding:12px 14px;border-top:1px solid var(--line,#d7e0e6);background:#eef6f1}
+.rl-end ul{margin:6px 0;padding-inline-start:20px;line-height:1.8}
+.rl-ex{direction:ltr;text-align:left;font-weight:600;color:#1f5f8b}
+.rl-btn{border:none;background:#1f7a4d;color:#fff;border-radius:10px;padding:8px 14px;font:inherit;cursor:pointer;margin-top:6px}`;
+const realRender=(L,el,B)=>{const R=(G.REAL||{})[L.id];if(!R){el.innerHTML='';return}
+  nhCssAdd();if(!document.getElementById('rl-css')){const st=document.createElement('style');st.id='rl-css';st.textContent=RLcss;document.head.appendChild(st)}
+  const en=nhEN(B),T=p=>Array.isArray(p)?(en?p[1]:p[0]):(p||'');
+  el.innerHTML=`<div class="rl" data-notr><div class="rl-h"><span class="tg">${en?'Real life':'من الواقع'}</span><b>${T(R.title)}</b><small style="color:var(--muted)">${en?'(not from the book)':'(إضافة من خارج الكتاب)'}</small></div>
+   <div class="rl-sc">${fmAuto(T(R.scene))}<div class="rl-who"><span>${en?'You':'أنت'}: <b>${T(R.me)}</b></span><span>${en?'With':'مع'}: <b lang="en">${R.them.n}</b> (${T(R.them.role)})</span></div></div>
+   <div class="rl-chat"></div><div class="rl-ask"></div><div class="rl-end" hidden></div></div>`;
+  nhTap(el);
+  const chat=el.querySelector('.rl-chat'),ask=el.querySelector('.rl-ask'),end=el.querySelector('.rl-end');let i=0,errs=0;
+  const bub=(who,t,ar,n)=>{const d=document.createElement('div');d.className='rl-m rl-'+who;d.innerHTML=`<span class="nm">${who==='me'?T(R.me):(n||R.them.n)}</span><span class="tx" lang="en">${t} ${sp(t)}</span>${ar?nhGl(ar,en):''}`;chat.appendChild(d)};
+  const note=t=>{const d=document.createElement('div');d.className='rl-note';d.innerHTML=fmAuto(T(t));chat.appendChild(d)};
+  const next=()=>{ask.innerHTML='';
+    while(i<R.steps.length&&R.steps[i].who!=='me'){const s=R.steps[i++];if(s.who==='them')bub('them',s.t,s.ar,s.n);else note(s.t)}
+    if(B&&B.ltrU)try{B.ltrU(chat)}catch(e){}
+    if(i>=R.steps.length){ask.hidden=true;end.hidden=false;
+      end.innerHTML=`<b>${en?'What you used from today\'s lesson':'وش استعملت من درس اليوم'}</b><ul>${(R.used||[]).map(u=>`<li>${T(u.t)}${u.ex?`<div class="rl-ex" dir="ltr" lang="en">${u.ex}</div>`:''}</li>`).join('')}</ul>
+       <div>${errs?(en?`Wrong tries: ${errs}. Try again for a clean run!`:`محاولات خاطئة: ${errs}. جرّب مرة ثانية بدون أخطاء!`):(en?'Perfect, no mistakes!':'ممتاز، بدون أي خطأ!')}</div>
+       <button type="button" class="rl-btn">${en?'Start again':'ابدأ من جديد'}</button>`;
+      end.querySelector('.rl-btn').onclick=()=>realRender(L,el,B);return}
+    ask.hidden=false;const s=R.steps[i];
+    const opts=s.pick?s.pick.map(o=>o.t):s.opts;const ord=opts.map((o,k)=>[o,k]).sort((a,b)=>((ttsKey(a[0]+L.id)>ttsKey(b[0]+L.id))?1:-1));
+    ask.innerHTML=`<div class="q">${s.pick?(en?'What do you say?':'وش تقول؟'):(en?'Complete your sentence:':'كمّل جملتك:')}</div>
+      ${s.fill?`<div class="fl" lang="en">${s.fill.replace('___','<u>?</u>')}</div>`:''}
+      <div class="rl-op">${ord.map(([o,k])=>`<button type="button" data-k="${k}" lang="en">${o}</button>`).join('')}</div>
+      ${s.hint?`<div class="rl-hint">${fmAuto(T(s.hint))}</div>`:''}<div class="rl-why"></div>`;
+    ask.querySelectorAll('.rl-op button').forEach(b=>b.onclick=()=>{const k=+b.dataset.k;
+      const good=s.pick?!!s.pick[k].ok:opts[k]===s.a;
+      if(!good){errs++;b.classList.add('no');b.disabled=true;const w=s.pick?s.pick[k].why:s.why;ask.querySelector('.rl-why').innerHTML=fmAuto(T(w)||(en?'Not quite. Try again.':'مو هذا. جرّب مرة ثانية.'));return}
+      const t=s.pick?s.pick[k].t:s.fill.replace('___',s.a);bub('me',t,s.ar);i++;next();chat.lastElementChild&&chat.lastElementChild.scrollIntoView({block:'nearest'})})};
+  next()};
+G.realRender=realRender;G.REAL=G.REAL||{};
 G.ENK={fm,fmAuto,e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
 /* ===== «إخفاء الترجمة» (التخمين) و«الدرجات» — من مختبر المدرب =====
