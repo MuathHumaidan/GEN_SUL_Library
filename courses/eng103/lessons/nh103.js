@@ -1,6 +1,6 @@
 /* نهج الشرح لانجل-103 (dev-kit/guides/TEACHING_APPROACH.md) — مربع «الفكرة» لكل جزء من «شرح القاعدة».
    المفتاح = عنوان الجزء (t) في u1…u6. الأمثلة والمشاهد من إعدادنا (إضافة من خارج الكتاب). */
-(function(G){const NH=G.NH=G.NH||{};const E=t=>`<span class="en" lang="en" dir="ltr">${t}</span>`;
+(function(G){const NH=G.NH=G.NH||{};const FM=(...p)=>G.ENK.fm(...p);const E=t=>`<span class="en" lang="en" dir="ltr">${t}</span>`;
 /* ---------- أدوات الرسم ---------- */
 const ink='#3b4a54',grn='#1f8a5b',red='#c4553f',blu='#2f6b8f',yel='#f1b33c',gry='#9aa3aa',lgt='#dfe7ec',sand='#e9dcc3';
 const F='font-family="IBM Plex Sans,Segoe UI,Arial,sans-serif"';
@@ -14,7 +14,7 @@ const ar=(x1,y1,x2,y2,c=grn,w=3)=>ln(x1,y1,x2,y2,c,w)+head(x2,y2,Math.atan2(y2-y
 const ar2=(x1,y1,x2,y2,c=yel,w=3)=>ln(x1,y1,x2,y2,c,w)+head(x2,y2,Math.atan2(y2-y1,x2-x1),c)+head(x1,y1,Math.atan2(y1-y2,x1-x2),c);
 const man=(x,y,c=blu,s=1,op)=>`<g transform="translate(${x},${y}) scale(${s})"${op!=null?` opacity="${op}"`:''}><circle cx="0" cy="-34" r="10" fill="#e8c7a5" stroke="${ink}" stroke-width="1.5"/><path d="M-13 14 v-30 q13 -9 26 0 v30z" fill="${c}"/><rect x="-11" y="14" width="9" height="16" fill="${ink}"/><rect x="2" y="14" width="9" height="16" fill="${ink}"/></g>`;
 const wh=(x,y,r=13)=>ci(x,y,r,'#222')+ci(x,y,r*.4,gry);
-const lorry=(x,g,L,H,c=grn,lab)=>`${rc(x,g-H,L*0.72,H-14,c,{rx:5})}<path d="M${x+L*0.72} ${g-14-H*0.6} H${x+L*0.88} L${x+L} ${g-14-H*0.3} V${g-14} H${x+L*0.72}Z" fill="#0b4d34"/>${wh(x+L*0.18,g-10)}${wh(x+L*0.86,g-10)}${lab?tx(x+L*0.36,g-H/2,lab,{c:'#fff'}):''}`;
+const lorry=(x,g,L,H,c=grn,lab)=>G.VXA?G.VXA.lorry(x,g,L,H,c,{lab}):'';
 const car=(x,g,L,H,c=blu,lab)=>`<path d="M${x} ${g-12} V${g-H*0.55} Q${x+L*0.2} ${g-H} ${x+L*0.4} ${g-H} H${x+L*0.66} Q${x+L*0.85} ${g-H} ${x+L} ${g-H*0.45} V${g-12}Z" fill="${c}"/>${wh(x+L*0.22,g-10,11)}${wh(x+L*0.78,g-10,11)}${lab?tx(x+L/2,g-H*0.45,lab,{c:'#fff',fs:12}):''}`;
 const grd=(y,w=400)=>ln(0,y,w,y,gry,4);
 const ok=(x,y,s=1)=>`<g transform="translate(${x},${y}) scale(${s})">${ci(0,0,16,grn)}<path d="M-7 0 L-2 6 L8 -6" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
@@ -29,18 +29,20 @@ G.NHK={svg,tx,rc,ci,ln,ar,ar2,man,wh,lorry,car,grd,ok,no,bub,S,R,cap,E,C:{ink,gr
 /* =================== الوحدة 1 =================== */
 const WK={loosen:['loosen the wheel nuts','فكّ صواميل العجلة','لا تفكّ صواميل العجلة'],tighten:['tighten the wheel nuts','اربط صواميل العجلة','لا تربط صواميل العجلة'],raise:['raise the car','ارفع السيارة','لا ترفع السيارة'],lower:['lower the car','نزّل السيارة','لا تنزّل السيارة']};
 NH['التعليمات بفعل الأمر']={
- say:[`لما أبوك يقول لك «سكّر الباب!» ما يقول «أنت سكّر». يبدأ بالفعل على طول. الإنجليزي نفس الشي: ${E('Close the door.')} وإذا يبي يمنعك يحط ${E("Don't")} قبل الفعل: ${E("Don't open the door.")}`,
+ say:[`لما أبوك يقول لك «سكّر الباب!» ما يقول «أنت سكّر». يبدأ بالفعل على طول. الإنجليزي نفس الشي: ${E('Close the door.')} وإذا يبي يمنعك يحط ${E("Don't")} قبل الفعل:${FM("Don't",'+','الفعل')}${E("Don't open the door.")}`,
   `When your father says "Close the door!", he doesn't say "You close the door". He starts with the action. English is the same: ${E('Close the door.')} To stop you, he puts ${E("Don't")} before the action: ${E("Don't open the door.")}`],
  life:[['Close the door, please.','سكّر الباب لو سمحت.'],["Don't touch the hot pan.",'لا تلمس القدر الحار.']],
  scene:{title:['فريق الصيانة يغيّر الكفر','The pit crew changes a wheel'],
   ctrl:[{k:'v',label:['الحركة','Action'],opts:[['loosen','loosen'],['tighten','tighten'],['raise','raise'],['lower','lower']]},{k:'d',label:['الطلب','Order'],opts:[['do',['سوِّ','Do it']],['dont',['لا تسوّي',"Don't"]]]}],
-  svg:s=>{const up=s.v==='raise'?-22:0;let b=grd(176)+`<g transform="translate(0,${up})">${car(90,176,220,90,red)}</g>`;
-   if(s.v==='loosen'||s.v==='tighten'){const cw=s.v==='tighten';b+=ci(138,166,20,'none',{st:yel,sw:4})+ln(138,166,40,140,ink,8)+rc(30,128,22,24,ink,{rx:4})+`<path d="M${cw?100:176} 196 A42 42 0 0 ${cw?0:1} ${cw?176:100} 196" stroke="${grn}" stroke-width="4" fill="none"/>`+head(cw?176:100,196,cw?0.7:2.4,grn)+tx(70,120,cw?'clockwise':'anticlockwise',{fs:11,c:grn})}
-   else{b+=rc(300,150+up,40,14,blu)+ln(320,164+up,320,178,ink,6)+ar(360,s.v==='raise'?170:120,360,s.v==='raise'?120:170,grn,4)}
-   if(s.d==='dont')b+=no(350,40,1.6);return svg(205,b)},
+  svg:s=>{const A=G.VXA,X=40,Gd=176,sc=.8,up=s.v==='raise'?-16:0;const P=(rx,ry)=>[X+rx*sc,Gd+ry*sc];const [wx,wy]=P(58,-26),[fx,fy]=P(300,-2);
+   let b=`<rect width="400" height="210" fill="#e9eef1"/><rect y="${Gd}" width="400" height="34" fill="#8d969c"/><rect y="${Gd+16}" width="400" height="3" fill="#fff" opacity=".6"/>`;
+   if(s.v==='raise'||s.v==='lower'){b+=`<g transform="rotate(${s.v==='raise'?-4:0} ${X+60} ${Gd})">${A.raceCar({x:X,y:Gd,s:sc})}</g>`+A.jack(fx+6,fy,.8)+A.crew(fx+58,Gd,'#2f6b8f',.9,-1)+ar(fx+20,s.v==='raise'?Gd-70:Gd-120,fx+20,s.v==='raise'?Gd-120:Gd-70,grn,5)+tx(fx+20,s.v==='raise'?Gd-128:Gd-60,s.v==='raise'?'up':'down',{c:grn,fs:15})}
+   else{const cw=s.v==='tighten';b+=A.raceCar({x:X,y:Gd,s:sc})+A.gun(wx,wy,.85)+A.crew(wx-62,Gd,'#2f6b8f',.9,1,'reach')+(()=>{const r=30,a0=cw?-2.6:-0.5,a1=cw?-0.5:-2.6,p=a=>[wx+r*Math.cos(a),wy+r*Math.sin(a)],[x0,y0]=p(a0),[x1,y1]=p(a1);return `<path d="M${x0} ${y0} A${r} ${r} 0 0 ${cw?1:0} ${x1} ${y1}" stroke="${grn}" stroke-width="5" fill="none"/>`+head(x1,y1,a1+(cw?Math.PI/2:-Math.PI/2),grn,13)})()+tx(230,34,cw?'tighten = clockwise':'loosen = anticlockwise',{c:grn,fs:15})}
+   if(s.d==='dont')b+=`<g>${ci(330,48,30,'#fff',{st:red,sw:6})}${ln(310,28,350,68,red,6)}</g>`+tx(330,98,"DON'T",{c:red,fs:15});
+   return svg(210,b)},
   ask:s=>{const v=s.d==='dont'?"Don't":cap(s.v);return{q:['بأي كلمة تبدأ التعليمة؟','Which word starts the instruction?'],opts:[v,'You','The'],a:v,hint:['التعليمة ما فيها You، تبدأ بالفعل.','No You: start with the action.']}},
-  out:s=>{const w=WK[s.v],dn=s.d==='dont';const[v,...r]=w[0].split(' ');return{t:S(`${dn?"x:Don't|":''}k:${dn?v:cap(v)}|n:${r.join(' ')}.`),ar:dn?w[2]+'.':w[1]+'.',why:dn?['المنع: Don\'t + الفعل.',"To stop someone: Don't + the action."]:['التعليمة تبدأ بالفعل مباشرة.','The instruction starts with the action.']}}},
- think:[['أطلب من شخص يسوي شي؟ ← ابدأ بالفعل مباشرة، بدون You.','Am I telling someone to do something? → Start with the action, no You.'],["أمنعه؟ ← Don't + الفعل.","Am I stopping him? → Don't + the action."]]};
+  out:s=>{const w=WK[s.v],dn=s.d==='dont';const[v,...r]=w[0].split(' ');return{t:S(`${dn?"x:Don't|":''}k:${dn?v:cap(v)}|n:${r.join(' ')}.`),ar:dn?w[2]+'.':w[1]+'.',why:dn?[`المنع:${FM("Don't",'+','الفعل')}`,"To stop someone: Don't + the action."]:['التعليمة تبدأ بالفعل مباشرة.','The instruction starts with the action.']}}},
+ think:[['أطلب من شخص يسوي شي؟ ← ابدأ بالفعل مباشرة، بدون You.','Am I telling someone to do something? → Start with the action, no You.'],[`أمنعه؟${FM("Don't",'+','الفعل')}`,"Am I stopping him? → Don't + the action."]]};
 
 const WHO={driver:['the driver',1,'press','es','a button','السائق يضغط زراً.'],mech:['the mechanics',4,'bring','','out the new wheels','الميكانيكيون يُخرجون العجلات الجديدة.'],lead:['the team leader',1,'adjust','s','the air pressure','قائد الفريق يضبط ضغط الهواء.'],crew:['the crew',3,'work','s','together','الطاقم يعمل معاً.']};
 NH['وصف خطوات العمل بالمضارع البسيط']={
@@ -49,10 +51,16 @@ NH['وصف خطوات العمل بالمضارع البسيط']={
  life:[['My father drinks coffee every morning.','أبوي يشرب قهوة كل صباح.'],['My brothers play football on Fridays.','إخواني يلعبون كورة كل جمعة.']],
  scene:{title:['من يسوي الخطوة؟','Who does the step?'],
   ctrl:[{k:'w',label:['الفاعل','Who'],opts:[['driver','the driver'],['mech','the mechanics'],['lead','the team leader'],['crew','the crew']]}],
-  svg:s=>{const w=WHO[s.w];let b=grd(170);const n=w[1];for(let i=0;i<n;i++)b+=man(200-(n-1)*30+i*60,140,s.w==='crew'?grn:blu,1);if(s.w==='crew')b+=rc(60,70,280,96,'none',{st:grn,da:'6 5',rx:16})+tx(200,64,'one crew',{c:grn});b+=tx(200,190,w[0],{fs:15});return svg(200,b)},
+  svg:s=>{const A=G.VXA,w=WHO[s.w];let b=`<rect width="400" height="200" fill="#e9eef1"/><rect y="170" width="400" height="30" fill="#8d969c"/>`;
+   if(s.w==='driver'){b+=A.raceCar({x:60,y:170,s:.85})+ci(60+166*.85,170-70*.85,16,'none',{st:red,sw:4})+tx(200,24,'the driver = one',{fs:15,c:red})}
+   else{const n=w[1],cols=s.w==='crew'?['#2f6b8f','#2f6b8f','#2f6b8f']:s.w==='lead'?['#c4553f']:['#2f6b8f','#2f6b8f','#2f6b8f','#2f6b8f'];for(let i=0;i<n;i++)b+=A.crew(200-(n-1)*45+i*90,168,cols[i],1.05);
+    if(s.w==='crew')b+=rc(70,46,260,128,'none',{st:grn,da:'7 6',rx:18})+tx(200,38,'one crew',{c:grn,fs:15});
+    if(s.w==='lead')b+=ci(232,98,14,'#fff',{st:ink,sw:2})+ln(232,98,240,90,red,3)+tx(200,24,'one team leader',{fs:15,c:red});
+    if(s.w==='mech')b+=tx(200,24,'four mechanics',{fs:15,c:blu})}
+   return svg(200,b)},
   ask:s=>({q:['كم واحد يسوي الفعل؟','How many do the action?'],opts:['one','more than one'],a:WHO[s.w][1]===4?'more than one':'one',hint:s.w==='crew'?['crew مجموعة وحدة ← واحد.','A crew is one group → one.']:['عدّ اللي يسوون الفعل.','Count the doers.']}),
-  out:s=>{const w=WHO[s.w],one=w[1]!==4;return{t:S(`a:${cap(w[0])}|k:${w[2]}${one?R(w[3]):''}|n:${w[4]}.`),ar:w[5],why:one?['واحد ← الفعل + s.','One → verb + s.']:['أكثر من واحد ← الفعل بدون s.','More than one → no s.']}}},
- think:[['هل الشي يتكرر بنفس الطريقة كل مرة؟ ← الفعل العادي.','Does it happen the same way every time? → the simple verb.'],['اللي يسوي الفعل واحد (he, she, it, the team)؟ ← زد s.','Is the doer one (he, she, it, the team)? → add s.']]};
+  out:s=>{const w=WHO[s.w],one=w[1]!==4;return{t:S(`a:${cap(w[0])}|k:${w[2]}${one?R(w[3]):''}|n:${w[4]}.`),ar:w[5],why:one?[`واحد:${FM('الفعل','+','s')}`,'One → verb + s.']:['أكثر من واحد ← الفعل بدون s.','More than one → no s.']}}},
+ think:[['هل الشي يتكرر بنفس الطريقة كل مرة؟ ← الفعل العادي.','Does it happen the same way every time? → the simple verb.'],[`اللي يسوي الفعل واحد (${E('he, she, it, the team')})؟${FM('الفعل','+','s')}`,'Is the doer one (he, she, it, the team)? → add s.']]};
 
 const PV={off:['take','off','the wheels','them','يفكّ العجلات'],on:['put','on','the new wheels','them','يركّب العجلات الجديدة'],out:['bring','out','the new wheels','them','يُخرج العجلات الجديدة'],up:['pick','up','the wheel nut','it','يلتقط صامولة العجلة']};
 NH['الأفعال المركبة ومكان المفعول']={
@@ -215,7 +223,7 @@ NH['عائلات الكلمات: الشخص والجهاز والمادة وال
 const DM={long:['long','length',[6.8,7.2],7,'طولها'],wide:['wide','width',[1.8,2.0],1.9,'عرضها'],high:['high','height',[3.1,3.3],3.2,'ارتفاعها']};
 const near=(v,r)=>Math.abs(v-r)<0.001?'exactly':v<r?'just under':'just over';
 NH['السؤال عن المقاسات، و must not be … than']={
- say:[`بالعربي نسأل «كم عرضها؟». بالإنجليزي: ${E('How wide is it?')} والجواب: الرقم + الصفة: ${E("It's 1.8 metres wide.")} وإذا الرقم أقل بشوي نقول ${E('just under')}، وأكثر بشوي ${E('just over')}، وبالضبط ${E('exactly')}. والحد «ممنوع أعرض من 2 م» = ${E('It must not be wider than 2 metres.')}`,
+ say:[`بالعربي نسأل «كم عرضها؟». بالإنجليزي:${FM('How','+','الصفة','+','is it?')}${E('How wide is it?')} والجواب:${FM("It's",'+','الرقم','+','metres','+','الصفة')}${E("It's 1.8 metres wide.")} وإذا الرقم أقل بشوي نقول ${E('just under')}، وأكثر بشوي ${E('just over')}، وبالضبط ${E('exactly')}. والحد «ممنوع أعرض من 2 م»:${FM('It must not be','+','الصفة','+','er','+','than','+','الرقم')}${E('It must not be wider than 2 metres.')}`,
   `We ask ${E('How wide is it?')} and answer with the number + the adjective: ${E("It's 1.8 metres wide.")} A little less → ${E('just under')}, a little more → ${E('just over')}, the same → ${E('exactly')}. A limit: ${E('It must not be wider than 2 metres.')}`],
  life:[['How tall are you?','كم طولك؟'],['How far is your house?','كم يبعد بيتك؟']],
  scene:{title:['قِس الفان','Measure the van'],
@@ -224,8 +232,8 @@ NH['السؤال عن المقاسات، و must not be … than']={
    if(s.d==='long')b+=ar2(110,30,300,30)+tx(205,22,v+' m',{fs:15,c:'#b37d00'});if(s.d==='high')b+=ar2(330,170,330,60)+tx(365,118,v+' m',{fs:15,c:'#b37d00'});if(s.d==='wide')b+=rc(10,60,70,100,'none',{st:ink})+ar2(14,150,76,150)+tx(45,140,v+' m',{fs:13,c:'#b37d00'})+tx(45,52,'from behind',{fs:10,c:gry});
    b+=tx(205,195,`${near(v,d[3])} ${d[3]} m`,{fs:14,c:red});return svg(205,b)},
   ask:s=>{const d=DM[s.d],v=+(d[3]+s.v).toFixed(2);return{q:[`الرقم ${v} مقارنة بـ ${d[3]}؟`,`${v} compared with ${d[3]}?`],opts:['just under','exactly','just over'],a:near(v,d[3])}},
-  out:s=>{const d=DM[s.d],v=+(d[3]+s.v).toFixed(2),w=near(v,d[3]);return{t:S(`x:How|k:${d[0]}|q:is it?|q:— It's|x:${w}|n:${d[3]} metres|k:${d[0]}.`),ar:`كم ${d[4]}؟ — ${w==='exactly'?'بالضبط':w==='just under'?'أقل بقليل من':'أكثر بقليل من'} ${d[3]} م.`,why:['السؤال How + الصفة، والجواب الرقم + الصفة.','Question: How + adjective. Answer: number + adjective.']}}},
- think:[['أسأل عن أي مقاس؟ ← How + صفته (long, wide, high, heavy).','Which size? → How + its adjective.'],['الرقم أقل بشوي؟ أكثر بشوي؟ بالضبط؟','A little less? A little more? Exactly?']]};
+  out:s=>{const d=DM[s.d],v=+(d[3]+s.v).toFixed(2),w=near(v,d[3]);return{t:S(`x:How|k:${d[0]}|q:is it?|q:— It's|x:${w}|n:${d[3]} metres|k:${d[0]}.`),ar:`كم ${d[4]}؟ — ${w==='exactly'?'بالضبط':w==='just under'?'أقل بقليل من':'أكثر بقليل من'} ${d[3]} م.`,why:[`السؤال:${FM('How','+','الصفة','+','is it?')}الجواب:${FM("It's",'+','الرقم','+','الصفة')}`,'Question: How + adjective. Answer: number + adjective.']}}},
+ think:[[`أسأل عن أي مقاس؟ اختر صفته:${FM('How','+','(long / wide / high / heavy)','+','is it?')}`,'Which size? → How + its adjective.'],['الرقم أقل بشوي؟ أكثر بشوي؟ بالضبط؟','A little less? A little more? Exactly?']]};
 
 const OB={lorry:{h:3.2,l:8,w:8000,p:90000},van:{h:2.4,l:5.5,w:3000,p:45000},car:{h:1.5,l:4.5,w:1500,p:30000}};
 const AD={high:['h',1,'higher','أعلى'],low:['h',-1,'lower','أوطى'],long:['l',1,'longer','أطول'],short:['l',-1,'shorter','أقصر'],heavy:['w',1,'heavier','أثقل'],light:['w',-1,'lighter','أخف'],expensive:['p',1,'more expensive','أغلى'],cheap:['p',-1,'cheaper','أرخص']};
@@ -233,7 +241,7 @@ const ARN={lorry:'الشاحنة',van:'الفان',car:'السيارة'};
 const cmpWin=s=>{const a=AD[s.a],x=OB[s.x][a[0]],y=OB[s.y][a[0]];return (x-y)*a[1]>0?s.x:s.y};
 const UN={h:'m',l:'m',w:'kg',p:'SAR'};
 NH['صيغة المقارنة']={
- say:[`لما تقارن بين شيئين بالعربي تقول «أطول من». بالإنجليزي: الصفة + ${E('er')} + ${E('than')}: ${E('longer than')}. الصفة الطويلة ما تاخذ er، نحط قبلها ${E('more')}: ${E('more expensive than')}.`,
+ say:[`لما تقارن بين شيئين بالعربي تقول «أطول من». بالإنجليزي:${FM('الصفة','+','er','+','than')}${E('longer than')}. والصفة الطويلة ما تاخذ ${E('er')}، نحط قبلها ${E('more')}:${FM('more','+','الصفة','+','than')}${E('more expensive than')}`,
   `To compare two things, use the adjective + ${E('er')} + ${E('than')}: ${E('longer than')}. Long adjectives don't take er; put ${E('more')} before them: ${E('more expensive than')}.`],
  life:[['My brother is taller than me.','أخوي أطول مني.'],['Gold is more expensive than silver.','الذهب أغلى من الفضة.']],
  scene:{title:['أيهما أكبر؟','Which one is more?'],
@@ -241,8 +249,8 @@ NH['صيغة المقارنة']={
   svg:s=>{const a=AD[s.a],k=a[0];const D=(o,x)=>{const O=OB[o],L=O.l*24,H=O.h*40;return (o==='lorry'?lorry(x,180,L,H,grn):o==='van'?lorry(x,180,L,H,blu):car(x,180,L,H,red))+tx(x+L/2,200,o,{fs:13})+(k==='h'?ar2(x+L+12,180,x+L+12,180-H)+tx(x+L+12,170-H,O.h+' m',{fs:12,c:'#b37d00'}):k==='l'?ar2(x,186-H-14,x+L,186-H-14)+tx(x+L/2,180-H-22,O.l+' m',{fs:12,c:'#b37d00'}):tx(x+L/2,180-H-10,(k==='w'?O.w+' kg':O.p.toLocaleString('en')+' SAR'),{fs:12,c:'#b37d00'}))};
    if(s.x===s.y)return svg(210,grd(180)+tx(200,100,'choose two different things',{c:red}));return svg(210,grd(180)+D(s.x,10)+D(s.y,225))},
   ask:s=>s.x===s.y?null:{q:[`Which is ${AD[s.a][2]}?`,`Which is ${AD[s.a][2]}?`],opts:['the '+s.x,'the '+s.y],a:'the '+cmpWin(s)},
-  out:s=>{if(s.x===s.y)return{t:S('q:—'),why:['اختر شيئين مختلفين.','Choose two different things.']};const a=AD[s.a],w=cmpWin(s),l=w===s.x?s.y:s.x;const c=a[2].startsWith('more ')?`x:more|k:${a[2].slice(5)}`:`k:${a[2].replace(/(ier|er|r)$/,m=>R(m))}`;return{t:S(`a:The ${w}|q:is|${c}|x:than|n:the ${l}.`),ar:`${ARN[w]} ${a[3]} من ${ARN[l]}.`,why:a[2].startsWith('more ')?['صفة طويلة ← more + الصفة + than.','Long adjective → more + adjective + than.']:['صفة قصيرة ← الصفة + er + than.','Short adjective → adjective + er + than.']}}},
- think:[['أقارن بين شيئين؟ ← than.','Am I comparing two things? → than.'],['الصفة قصيرة؟ ← er. طويلة؟ ← more.','Short adjective? → er. Long? → more.'],['آخرها y؟ ← ier. حرف واحد بعد حركة (big)؟ ← نكرره: bigger.','Ends in y? → ier. Short like big? → double: bigger.']]};
+  out:s=>{if(s.x===s.y)return{t:S('q:—'),why:['اختر شيئين مختلفين.','Choose two different things.']};const a=AD[s.a],w=cmpWin(s),l=w===s.x?s.y:s.x;const c=a[2].startsWith('more ')?`x:more|k:${a[2].slice(5)}`:`k:${a[2].replace(/(ier|er|r)$/,m=>R(m))}`;return{t:S(`a:The ${w}|q:is|${c}|x:than|n:the ${l}.`),ar:`${ARN[w]} ${a[3]} من ${ARN[l]}.`,why:a[2].startsWith('more ')?[`صفة طويلة:${FM('more','+','الصفة','+','than')}`,'Long adjective → more + adjective + than.']:[`صفة قصيرة:${FM('الصفة','+','er','+','than')}`,'Short adjective → adjective + er + than.']}}},
+ think:[['أقارن بين شيئين؟ ← than.','Am I comparing two things? → than.'],[`الصفة قصيرة؟${FM('الصفة','+','er')}طويلة؟${FM('more','+','الصفة')}`,'Short adjective? → er. Long? → more.'],['آخرها y؟ ← ier. حرف واحد بعد حركة (big)؟ ← نكرره: bigger.','Ends in y? → ier. Short like big? → double: bigger.']]};
 
 NH['too و enough']={
  say:[`لو الشي أكبر من مكانه: نقول عن الشي «زيادة عن اللزوم» ${E('too')}، ونقول عن المكان «مو كافي» ${E('not … enough')}. نفس المشكلة بطريقتين، والفرق مين نتكلم عنه.`,
@@ -253,8 +261,8 @@ NH['too و enough']={
   svg:s=>{const g=190,px=m=>g-m*45,fits=s.h>2.9+1e-9,sh=fits?150:0;let b=grd(g)+rc(240,px(s.h)-22,130,22,gry,{rx:2})+rc(240,px(s.h),16,g-px(s.h),lgt,{rx:0})+rc(354,px(s.h),16,g-px(s.h),lgt,{rx:0})+tx(305,px(s.h)-28,(+s.h).toFixed(1)+' m',{fs:14,c:blu});
    b+=`<g transform="translate(${sh},0)">${lorry(30,g,170,2.9*45,grn)}${tx(95,px(2.9)-8,'2.9 m',{fs:14,c:grn})}</g>`;b+=fits?ok(370,30,1.2):no(370,30,1.2)+tx(200,30,'STOP',{fs:22,c:red});return svg(205,b)},
   ask:s=>{const fits=s.h>2.9+1e-9;return fits?{q:['تمر الشاحنة؟','Can the lorry go under?'],opts:['yes','no'],a:'yes'}:{q:['مين الكبير هنا؟','Which one is too big?'],opts:['the lorry','the bridge'],a:'the lorry',hint:['الشاحنة أعلى من الجسر.','The lorry is higher than the bridge.']}},
-  out:s=>{const fits=s.h>2.9+1e-9;if(fits)return{t:S('a:The bridge|q:is|k:high|x:enough|n:for the lorry.'),ar:'الجسر عالٍ بما يكفي للشاحنة — تمر.',why:['المكان كافي ← صفة + enough.','The space is OK → adjective + enough.']};return s.v==='lorry'?{t:S('a:The lorry|q:is|x:too|k:high|n:for the bridge.'),ar:'الشاحنة عالية زيادة عن اللزوم على الجسر.',why:['عن الشي الكبير ← too + الصفة.','About the big thing → too + adjective.']}:{t:S("a:The bridge|x:isn't|k:high|x:enough|n:for the lorry."),ar:'الجسر مو عالي بما يكفي للشاحنة.',why:['عن المكان الصغير ← not + الصفة + enough.','About the small space → not + adjective + enough.']}}},
- think:[['مين الكبير؟ ← too + الصفة.','Which is too big? → too + adjective.'],['مين الصغير (المكان)؟ ← not + الصفة + enough.','Which is too small (the space)? → not + adjective + enough.'],['enough بعد الصفة، و too قبلها.','enough comes after the adjective; too comes before it.']]};
+  out:s=>{const fits=s.h>2.9+1e-9;if(fits)return{t:S('a:The bridge|q:is|k:high|x:enough|n:for the lorry.'),ar:'الجسر عالٍ بما يكفي للشاحنة — تمر.',why:[`المكان كافي:${FM('الصفة','+','enough')}`,'The space is OK → adjective + enough.']};return s.v==='lorry'?{t:S('a:The lorry|q:is|x:too|k:high|n:for the bridge.'),ar:'الشاحنة عالية زيادة عن اللزوم على الجسر.',why:[`عن الشي الكبير:${FM('too','+','الصفة','+','for')}`,'About the big thing → too + adjective.']}:{t:S("a:The bridge|x:isn't|k:high|x:enough|n:for the lorry."),ar:'الجسر مو عالي بما يكفي للشاحنة.',why:[`عن المكان الصغير:${FM('not','+','الصفة','+','enough','+','for')}`,'About the small space → not + adjective + enough.']}}},
+ think:[[`مين الكبير؟${FM('too','+','الصفة')}`,'Which is too big? → too + adjective.'],[`مين الصغير (المكان)؟${FM('not','+','الصفة','+','enough')}`,'Which is too small (the space)? → not + adjective + enough.']]};
 
 const PO={want:["Give me a catalogue.","I'd like a catalogue, please.",'ودّي كتالوج لو سمحت.','Saying what you want'],offer:["I send you the table.","Would you like me to send you the table?",'تبي أرسل لك الجدول؟','Offering'],ask:["What's your name?","Could I have your name, please?",'ممكن اسمك لو سمحت؟','Asking someone'],check:["What?","Sorry, could you repeat that, please?",'عفواً، ممكن تعيد لو سمحت؟','Checking']};
 NH['العبارات المهذبة في الهاتف']={

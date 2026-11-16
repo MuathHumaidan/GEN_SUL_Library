@@ -1,5 +1,45 @@
 /* «شاهد الفكرة» لدروس انجل-103. القالب في vx.js (VX.make) */
-(function(G){const V=G.VX;if(!V)return;
+(function(G){/* ---------- رسوم مشتركة احترافية (سيارة سباق، فريق الصيانة، شاحنة، أبعاد) — تستعملها vx103 و nh103 و u1 ---------- */
+G.VXA=(()=>{const ink='#2c3a43';
+const wheel=(cx,cy,r=24,nut='#f1b33c')=>`<g><circle cx="${cx}" cy="${cy}" r="${r}" fill="#1a1a1a"/><circle cx="${cx}" cy="${cy}" r="${r-4}" fill="none" stroke="#3a3a3a" stroke-width="2"/><path d="M${cx-r+5} ${cy} A${r-5} ${r-5} 0 0 1 ${cx} ${cy-r+5}" stroke="#e8c13a" stroke-width="2" fill="none" opacity=".8"/><circle cx="${cx}" cy="${cy}" r="${r*0.56}" fill="#c9d1d6"/>${[0,72,144,216,288].map(a=>`<line x1="${cx}" y1="${cy}" x2="${(cx+r*0.52*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(cy+r*0.52*Math.sin(a*Math.PI/180)).toFixed(1)}" stroke="#7d878e" stroke-width="3"/>`).join('')}<circle cx="${cx}" cy="${cy}" r="${r*0.22}" fill="${nut}" stroke="${ink}" stroke-width="1.5"/></g>`;
+/* سيارة سباق جانبية تتجه يميناً؛ الأرض y=0، العجلتان عند x=58 و 242 (نسبي) */
+const raceCar=(o={})=>{const c=o.c||'#c4553f';return `<g transform="translate(${o.x||0},${o.y||0}) scale(${o.s||1})">
+ <rect x="22" y="-18" width="262" height="7" rx="3" fill="#2b2b2b"/>
+ <rect x="0" y="-92" width="46" height="9" rx="3" fill="${ink}"/><rect x="2" y="-80" width="40" height="6" rx="3" fill="${ink}"/><rect x="8" y="-92" width="9" height="62" rx="2" fill="${c}" stroke="${ink}" stroke-width="1.5"/>
+ <path d="M18 -26 L22 -44 L70 -48 Q96 -50 108 -60 L124 -76 Q130 -84 142 -82 L150 -70 L198 -62 L262 -50 Q292 -44 306 -30 L306 -24 Z" fill="${c}" stroke="${ink}" stroke-width="2" stroke-linejoin="round"/>
+ <path d="M30 -36 L120 -40 L262 -40 Q288 -36 300 -30" stroke="#fff" stroke-width="4" fill="none" opacity=".85"/>
+ <path d="M126 -76 L134 -94 L150 -92 L146 -78Z" fill="${ink}"/>
+ <ellipse cx="170" cy="-64" rx="22" ry="6" fill="#1e2a31"/>
+ <circle cx="166" cy="-70" r="10" fill="#f1b33c" stroke="${ink}" stroke-width="1.5"/><rect x="167" y="-74" width="10" height="5" rx="2" fill="#1e2a31"/>
+ <path d="M146 -66 Q166 -90 192 -64" stroke="${ink}" stroke-width="3.5" fill="none"/>
+ <rect x="262" y="-16" width="54" height="6" rx="3" fill="${ink}"/><rect x="308" y="-26" width="8" height="18" rx="2" fill="${c}" stroke="${ink}" stroke-width="1.2"/>
+ ${o.noWheels?'':wheel(58,-26)+wheel(242,-26)}${o.extra||''}</g>`};
+/* عضو فريق الصيانة: بدلة وخوذة، يتجه يميناً (f=-1 يساراً)؛ الأرض y=0 */
+const crew=(x,y,c='#2f6b8f',s=1,f=1,pose='')=>`<g transform="translate(${x},${y}) scale(${s*f},${s})">
+ <rect x="-9" y="-30" width="8" height="30" rx="4" fill="${ink}"/><rect x="2" y="-30" width="8" height="30" rx="4" fill="${ink}"/>
+ <rect x="-11" y="-64" width="22" height="38" rx="9" fill="${c}"/><rect x="-11" y="-44" width="22" height="5" fill="#fff" opacity=".7"/>
+ ${pose==='reach'?`<path d="M2 -56 L22 -46" stroke="${c}" stroke-width="8" stroke-linecap="round"/>`:`<path d="M0 -56 L8 -36" stroke="${c}" stroke-width="8" stroke-linecap="round"/>`}
+ <circle cx="0" cy="-74" r="11" fill="#e7ecef" stroke="${ink}" stroke-width="1.5"/><path d="M2 -78 h9 v7 h-9z" fill="#1e2a31"/></g>`;
+const gun=(x,y,s=1)=>`<g transform="translate(${x},${y}) scale(${s})"><path d="M-46 -6 H-6 V6 H-46Z" fill="#f1b33c" stroke="${ink}" stroke-width="1.5"/><rect x="-6" y="-4" width="8" height="8" fill="#7d878e"/><path d="M-38 6 L-34 22 H-26 L-28 6Z" fill="${ink}"/><path d="M-46 0 Q-70 0 -72 30" stroke="#222" stroke-width="3" fill="none"/></g>`;
+const jack=(x,y,s=1)=>`<g transform="translate(${x},${y}) scale(${s})"><path d="M0 0 L46 -48" stroke="${ink}" stroke-width="6" stroke-linecap="round"/><rect x="40" y="-60" width="18" height="10" rx="4" fill="#2f6b8f"/><circle cx="6" cy="-4" r="6" fill="#222"/><rect x="-14" y="-14" width="20" height="8" rx="2" fill="#2f6b8f"/></g>`;
+const nozzle=(x,y,s=1)=>`<g transform="translate(${x},${y}) scale(${s})"><path d="M-120 -120 Q-40 -110 -14 -12" stroke="#222" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="-22" y="-16" width="20" height="14" rx="3" fill="#9aa3aa" stroke="${ink}" stroke-width="1.5"/><rect x="-2" y="-12" width="8" height="6" fill="${ink}"/></g>`;
+
+/* شاحنة جانبية تتجه يميناً: الأرض y=0، الطول L والارتفاع H بالبكسل */
+const lorry=(x,y,L,H,c='#c4553f',o={})=>{const cab=Math.min(54,L*0.26),bx=L-cab-4;return `<g transform="translate(${x},${y})">
+ <rect x="0" y="${-H}" width="${bx}" height="${H-16}" rx="4" fill="${c}" stroke="${ink}" stroke-width="2"/>
+ <line x1="6" y1="${-H+10}" x2="${bx-6}" y2="${-H+10}" stroke="#fff" stroke-width="2" opacity=".5"/>
+ <path d="M${bx+4} -16 V${-H*0.72} Q${bx+4} ${-H*0.8} ${bx+12} ${-H*0.8} H${L-14} L${L} ${-H*0.5} V-16Z" fill="#e8ecef" stroke="${ink}" stroke-width="2"/>
+ <path d="M${L-16} ${-H*0.76} L${L-3} ${-H*0.52} H${bx+18} V${-H*0.76}Z" fill="#9fc3d8" stroke="${ink}" stroke-width="1.2"/>
+ <rect x="-2" y="-18" width="${L+2}" height="6" rx="2" fill="#3a3a3a"/>
+ ${wheel(L*0.16,-12,12)}${wheel(L*0.36,-12,12)}${wheel(L-cab*0.5,-12,12)}${o.lab?`<text x="${bx/2}" y="${-H/2+4}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="13" text-anchor="middle" fill="#fff">${o.lab}</text>`:''}</g>`};
+/* شاحنة من الأمام: عرض W وارتفاع H */
+const lorryFront=(cx,y,W,H,c='#c4553f')=>`<g transform="translate(${cx},${y})"><rect x="${-W/2}" y="${-H}" width="${W}" height="${H*0.55}" rx="4" fill="${c}" stroke="${ink}" stroke-width="2"/><rect x="${-W/2+4}" y="${-H*0.45}" width="${W-8}" height="${H*0.38}" rx="4" fill="#e8ecef" stroke="${ink}" stroke-width="2"/><rect x="${-W/2+10}" y="${-H*0.42}" width="${W-20}" height="${H*0.16}" rx="3" fill="#9fc3d8"/><rect x="${-W/2-2}" y="-12" width="${W+4}" height="8" rx="3" fill="#3a3a3a"/><rect x="${-W/2+2}" y="-6" width="12" height="6" fill="#1a1a1a"/><rect x="${W/2-14}" y="-6" width="12" height="6" fill="#1a1a1a"/></g>`;
+const dimV=(x,y1,y2,t,c,side=1)=>`<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}" stroke="${c}" stroke-width="2.5"/><path d="M${x} ${y1} l-5 9 h10z M${x} ${y2} l-5 -9 h10z" fill="${c}"/><text x="${x+side*8}" y="${(y1+y2)/2+5}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="14" text-anchor="${side>0?'start':'end'}" fill="${c}">${t}</text>`;
+const dimH=(x1,x2,y,t,c,up=1)=>`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${c}" stroke-width="2.5"/><path d="M${x1} ${y} l9 -5 v10z M${x2} ${y} l-9 -5 v10z" fill="${c}"/><text x="${(x1+x2)/2}" y="${y-up*7+(up<0?12:0)}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="14" text-anchor="middle" fill="${c}">${t}</text>`;
+
+
+return {ink,wheel,raceCar,crew,gun,jack,nozzle,lorry,lorryFront,dimV,dimH}})();
+const V=G.VX;if(!V)return;
 const M=(id,cfg)=>{V.L[id]=(el,B)=>V.make(el,B,cfg)};
 const ink='#3b4a54',grn='#1f8a5b',red='#c4553f',blu='#2f6b8f',yel='#f1b33c',gry='#9aa3aa';
 const svg=(h,body,lab)=>`<svg viewBox="0 0 360 ${h}" role="img" aria-label="${lab||''}">${body}</svg>`;
@@ -12,12 +52,18 @@ const PR=(k,chip,a,b,cue,qo,why)=>({k,chip,A:{t:[['a',a,'a']],why:(why||[])[0]||
 const REV=(title,items)=>({title,sub:['المس قاعدة لترى مثالها، ثم حوّله.','Tap a rule to see its example, then change it.'],cols:3,sw:[['↔ الصيغة الأخرى','↔ The other form'],['↔ رجوع','↔ Back']],quiz:['اختر الكلمة الناقصة:','Choose the missing word:'],items});
 
 /* ---------- 1.1 فريق الصيانة ---------- */
-const S11=en=>svg(170,`<rect width="360" height="170" fill="#e8ecef"/><path d="M60 110 L110 80 L250 80 L300 110 L300 124 L60 124z" fill="${red}" stroke="${ink}" stroke-width="2"/><circle cx="105" cy="128" r="18" fill="#222"/><circle cx="255" cy="128" r="18" fill="#222"/>
- <g class="hl" data-d="gun"><rect x="70" y="140" width="34" height="10" fill="${yel}"/><rect x="96" y="134" width="8" height="22" fill="${ink}"/>${tx(80,164,'wheel gun',{fs:10})}</g>
- <g class="hl" data-d="jack"><rect x="300" y="110" width="50" height="10" fill="${blu}"/><line x1="320" y1="120" x2="320" y2="150" stroke="${ink}" stroke-width="4"/>${tx(326,164,'jack',{fs:10})}</g>
- <g class="hl" data-d="nozzle"><path d="M10 40 q60 0 90 40" fill="none" stroke="#222" stroke-width="6"/><rect x="96" y="74" width="16" height="10" fill="${gry}"/>${tx(30,30,'hose + nozzle',{fs:10})}</g>
- <g class="hl" data-d="flap"><rect x="180" y="62" width="30" height="20" fill="#fff" stroke="${ink}" stroke-width="2" transform="rotate(-20 180 82)"/>${tx(220,54,'flap',{fs:10})}</g>
- <g class="hl" data-d="socket"><rect x="186" y="84" width="18" height="12" fill="${ink}"/>${tx(196,108,'socket',{fs:9,c:'#fff'})}</g>`,'سيارة سباق وفريق الصيانة');
+const S11=en=>{const L=window.VXA;
+const T2=(x,y,t,c='#2c3a43',fs=11)=>`<text x="${x}" y="${y}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="${fs}" text-anchor="middle" fill="${c}">${t}</text>`;
+const lab=(x,y,t,lx,ly)=>`<line x1="${x}" y1="${y+4}" x2="${lx}" y2="${ly}" stroke="#2c3a43" stroke-width="1.2"/><rect x="${x-t.length*3.6-6}" y="${y-12}" width="${t.length*7.2+12}" height="17" rx="8" fill="#fff" stroke="#2c3a43" stroke-width="1"/>${T2(x,y+1,t)}`;
+const G=160,X=34,s=.82,P=(rx,ry)=>[X+rx*s,G+ry*s];
+ const [gx,gy]=P(58,-26),[jx,jy]=P(300,-2),[sx,sy]=P(98,-40),[fx,fy]=P(112,-46);
+ return svg(200,`<rect width="360" height="200" fill="#e9eef1"/><rect y="${G}" width="360" height="40" fill="#8d969c"/><rect y="${G+16}" width="360" height="3" fill="#fff" opacity=".6"/>
+ ${L.raceCar({x:X,y:G,s})}
+ <g class="hl" data-d="gun">${L.gun(gx,gy,.85)}${lab(42,G+30,'wheel gun',gx-20,gy+6)}</g>
+ <g class="hl" data-d="jack">${L.jack(jx,jy,.8)}${lab(318,G+30,'jack',jx+10,jy-6)}</g>
+ <g class="hl" data-d="nozzle">${L.nozzle(sx+2,sy+4,.8)}${lab(60,30,'hose + nozzle',60,48)}</g>
+ <g class="hl" data-d="socket"><rect x="${sx-6}" y="${sy-5}" width="12" height="10" rx="2" fill="#111"/>${lab(150,40,'socket',sx,sy-6)}</g>
+ <g class="hl" data-d="flap"><rect x="${fx}" y="${fy}" width="12" height="12" rx="2" fill="#fff" stroke="#2c3a43" stroke-width="1.5" transform="rotate(35 ${fx} ${fy})"/>${lab(215,58,'flap',fx+6,fy)}</g>`,'سيارة سباق وأدوات فريق الصيانة')};
 const T11=(k,chip,ins,fn,ar,e2)=>({k,chip:[chip,ar,e2],A:{t:S(ins.split(' | '),['a','k','']),why:['قائمة التعليمات: فعل الأمر في أول السطر.','A checklist: the instruction verb starts the line.']},B:{t:S(fn.split(' | '),['','a','k']),why:['وظيفة الأداة بالمضارع البسيط.','The tool\'s function in the present simple.']}});
 M('u1-l1',{title:['فريق الصيانة: التعليمات والأدوات','The pit crew: instructions and tools'],sub:['المس أداة لترى التعليمة التي تُستعمل فيها، ثم وظيفتها.','Tap a tool to see the instruction for it, then its function.'],
  scene:S11,cols:3,sw:[['↔ وظيفة الأداة','↔ The tool\'s function'],['↔ التعليمة','↔ The instruction']],quiz:['ما الأداة المحاطة بالأخضر؟','Which tool is in green?'],
@@ -71,17 +117,32 @@ M('u2-l4',REV(['مراجعة A: الوحدتان 1 و 2','Review A: Units 1 and 
  RV('plan',['going to','الخطة','plan'],["We're",'going to','build','a new rig.'],['','a','k',''],["We're",'meeting','the client','tomorrow.'],['','n','',''],["They're ___ open a new office.","They're ___ open a new office."],['going to','go','going'])]));
 
 /* ---------- 3.1 الحدود: الشاحنة والجسر ---------- */
-const S31=en=>svg(190,`<rect width="360" height="190" fill="#eaf3f9"/><rect x="0" y="160" width="360" height="30" fill="#8b8f93"/>
- <path d="M200 60 h150 v100 h-16 v-80 h-118 v80 h-16z" fill="#b8a07a" stroke="${ink}" stroke-width="2"/>${tx(275,52,'bridge 2.7 m',{fs:11})}
- <rect x="20" y="62" width="140" height="84" rx="6" fill="${red}" stroke="${ink}" stroke-width="2"/><rect x="130" y="80" width="40" height="66" rx="6" fill="#d66a54" stroke="${ink}"/><circle cx="50" cy="150" r="12" fill="#222"/><circle cx="140" cy="150" r="12" fill="#222"/>${tx(80,108,'lorry 3.2 m',{fs:12,c:'#fff'})}
- <g class="dim" data-d="high"><line x1="12" y1="62" x2="12" y2="160" stroke="${red}" stroke-width="3"/><line x1="192" y1="80" x2="192" y2="160" stroke="${grn}" stroke-width="3"/><line x1="0" y1="62" x2="360" y2="62" stroke="${red}" stroke-dasharray="5 4"/><line x1="180" y1="80" x2="360" y2="80" stroke="${grn}" stroke-dasharray="5 4"/>${tx(100,36,'3.2 m > 2.7 m',{fs:12,c:red})}</g>
- <g class="dim" data-d="wide">${tx(100,36,'width: 2.6 m > 2.5 m',{fs:12,c:red})}<line x1="216" y1="150" x2="334" y2="150" stroke="${grn}" stroke-width="3"/></g>
- <g class="dim" data-d="heavy">${tx(100,36,'18 t > 7.5 t',{fs:12,c:red})}<circle cx="300" cy="30" r="18" fill="#fff" stroke="${red}" stroke-width="4"/>${tx(300,35,'7.5T',{fs:11})}</g>
- <g class="dim" data-d="long">${tx(100,36,'length: 12 m > 10 m',{fs:12,c:red})}<line x1="20" y1="174" x2="170" y2="174" stroke="${red}" stroke-width="3"/></g>`,'شاحنة ارتفاعها 3.2 م أمام جسر ارتفاعه 2.7 م');
+const S31=en=>{const L=window.VXA;
+const T3=(x,y,t,c=ink,fs=12)=>`<text x="${x}" y="${y}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="${fs}" text-anchor="middle" fill="${c}">${t}</text>`;
+const G=176,m=34;/* 1 م = 34 بكسل */
+ const ground=`<rect width="360" height="230" fill="#eaf3f9"/><rect y="${G}" width="360" height="54" fill="#8d969c"/>`;
+ /* الارتفاع: جانبي */
+ const hi=`<g class="dim" data-d="high"><rect x="196" y="${G-2.7*m-30}" width="164" height="30" fill="#b8a07a" stroke="${ink}" stroke-width="2"/><rect x="${330}" y="${G-2.7*m}" width="16" height="${2.7*m}" fill="#cdb894" stroke="${ink}" stroke-width="1.5"/>
+  ${L.lorry(24,G,170,3.2*m,red)}${L.dimV(14,G,G-3.2*m,'',red)}${T3(60,G-3.2*m-10,'lorry 3.2 m',red,13)}
+  ${L.dimV(214,G,G-2.7*m,'2.7 m',grn)}${T3(278,G-2.7*m-36,'bridge',ink,12)}
+  <line x1="24" y1="${G-3.2*m}" x2="360" y2="${G-3.2*m}" stroke="${red}" stroke-dasharray="5 4" stroke-width="1.5"/><line x1="196" y1="${G-2.7*m}" x2="196" y2="${G-2.7*m}" />
+  <rect x="190" y="${G-3.2*m}" width="12" height="${0.5*m}" fill="${red}" opacity=".35"/>${T3(180,22,'3.2 m > 2.7 m',red,15)}</g>`;
+ /* العرض: من الأمام */
+ const wd=`<g class="dim" data-d="wide"><path d="M190 ${G} V${G-118} H${190+2.5*m+40} V${G}" fill="none"/><rect x="${200}" y="${G-120}" width="${2.5*m+36}" height="18" fill="#b8a07a" stroke="${ink}" stroke-width="2"/><rect x="200" y="${G-102}" width="18" height="102" fill="#cdb894" stroke="${ink}" stroke-width="1.5"/><rect x="${218+2.5*m}" y="${G-102}" width="18" height="102" fill="#cdb894" stroke="${ink}" stroke-width="1.5"/>
+  ${L.dimH(218,218+2.5*m,G+18,'2.5 m',grn,-1)}${T3(218+1.25*m,G-128,'bridge (front view)',ink,11)}
+  ${L.lorryFront(90,G,2.6*m,110,red)}${L.dimH(90-1.3*m,90+1.3*m,G+18,'2.6 m',red,-1)}${T3(90,G-120,'lorry (front view)',ink,11)}${T3(180,30,'2.6 m > 2.5 m',red,15)}</g>`;
+ /* الوزن */
+ const hv=`<g class="dim" data-d="heavy"><rect x="190" y="${G-40}" width="170" height="16" fill="#b8a07a" stroke="${ink}" stroke-width="2"/><rect x="200" y="${G-24}" width="14" height="24" fill="#cdb894"/><rect x="336" y="${G-24}" width="14" height="24" fill="#cdb894"/>
+  <line x1="300" y1="${G-40}" x2="300" y2="${G-96}" stroke="${ink}" stroke-width="3"/><circle cx="300" cy="${G-112}" r="20" fill="#fff" stroke="${red}" stroke-width="5"/>${T3(300,G-107,'7.5t',ink,13)}${T3(300,G-140,'max weight',ink,11)}
+  ${L.lorry(14,G,170,3.0*m,red,{lab:'18 t'})}${T3(150,30,'18 t > 7.5 t',red,15)}</g>`;
+ /* الطول: سطح العبّارة */
+ const lg=`<g class="dim" data-d="long"><path d="M10 ${G} L30 ${G+22} H330 L350 ${G}Z" fill="#5d7f96"/>
+  ${L.lorry(30,G-6,300,2.4*m,red)}${L.dimH(30,280,G+22,'ferry space 10 m',grn,-1)}${L.dimH(30,330,G-2.4*m-18,'lorry 12 m',red)}<line x1='280' y1='${G-110}' x2='280' y2='${G+30}' stroke='${grn}' stroke-dasharray='5 4' stroke-width='2'/>${T3(180,24,'12 m > 10 m',red,15)}</g>`;
+ return svg(230,ground+hi+wd+hv+lg,'شاحنة وحدود الجسر والعبّارة: الارتفاع والعرض والوزن والطول')};
 const LM=(k,adj,cmp,lim,ar,e2)=>({k,chip:[adj,ar,e2],A:{t:[['s','The lorry'],['b','is'],['t','too','a'],['a',adj,'k'],['f','for the bridge.']],why:['too + صفة + for: الشيء الكبير أكبر من الحد.','too + adjective + for: the big thing is over the limit.']},B:{t:[['s','The bridge'],['b',"isn't"],['a',adj,'k'],['e','enough','n'],['f','for the lorry.']],why:['not + صفة + enough + for: المكان أصغر من اللازم. لاحظ أن الفاعل تغيّر.','not + adjective + enough + for: the place is too small. Notice the subject changes.']},qa:[[`How ${adj} is it?`,`It's ${cmp} than ${lim}. It mustn't be ${cmp} than ${lim}.`]],cue:[`The lorry is too ${adj} for the bridge. = The bridge isn't ${adj} ___ for the lorry.`,`The lorry is too ${adj} for the bridge. = The bridge isn't ${adj} ___ for the lorry.`],qo:['enough','too','very']});
-M('u3-l1',{title:['الحدود: too و not … enough','Limits: too and not … enough'],sub:['الشاحنة والجسر جنباً إلى جنب. المس بُعداً لترى المشكلة، ثم قلها بالطريقة الأخرى.','The lorry and the bridge side by side. Tap a dimension to see the problem, then say it the other way.'],
+M('u3-l1',{title:['الحدود: too و not … enough','Limits: too and not … enough'],sub:['المس بُعداً: يظهر مقاس الشاحنة ومقاس الحد بالأرقام في رسم واحد، ثم قل المشكلة بالطريقة الأخرى.','Tap a dimension: you see the lorry and the limit with their numbers, then say it the other way.'],
  scene:S31,cols:4,sw:[['↔ من جهة الجسر','↔ From the bridge\'s side'],['↔ من جهة الشاحنة','↔ From the lorry\'s side']],h2:['2. المقارنة بالحد','2. Comparing with the limit'],quiz:['أكمل الجملة:','Complete the sentence:'],
- items:[LM('high','high','higher','2.7 metres','الارتفاع','height'),LM('wide','wide','wider','2.5 metres','العرض','width'),LM('heavy','heavy','heavier','7.5 tonnes','الوزن','weight'),LM('long','long','longer','10 metres','الطول','length')].map(x=>{if(x.k==='heavy'){x.B.t=[['s','The bridge'],['b',"isn't"],['a','strong','k'],['e','enough','n'],['f','for the lorry.']];}if(x.k==='long'){x.B.t=[['s','The road'],['b',"isn't"],['a','long','k'],['e','enough','n'],['f','for the lorry.']]}return x})});
+ items:[LM('high','high','higher','2.7 metres','الارتفاع','height'),LM('wide','wide','wider','2.5 metres','العرض','width'),LM('heavy','heavy','heavier','7.5 tonnes','الوزن','weight'),LM('long','long','longer','10 metres','الطول','length')].map(x=>{if(x.k==='heavy'){x.B.t=[['s','The bridge'],['b',"isn't"],['a','strong','k'],['e','enough','n'],['f','for the lorry.']];}if(x.k==='long'){x.A.t=[['s','The lorry'],['b','is'],['t','too','a'],['a','long','k'],['f','for the ferry.']];x.B.t=[['s','The ferry'],['b',"isn't"],['a','long','k'],['e','enough','n'],['f','for the lorry.']]}return x})});
 
 /* ---------- 3.2 خدمة العملاء ---------- */
 M('u3-l2',{title:['خدمة العملاء: عبارات مهذبة','Customer service: polite phrases'],sub:['المس عبارة لترى الصيغة المباشرة والصيغة المهذبة.','Tap a phrase to see the direct form and the polite form.'],cols:2,

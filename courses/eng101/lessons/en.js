@@ -297,7 +297,9 @@ const rule=R=>{const TAG='إضافة من خارج الكتاب';
       body:[...(nh?[{widget:nhW(nh,p.t)}]:[]),...(tbl||ex||dlg||p.html?[{html:tbl+ex+dlg+(p.html||'')}]:[]),...(hasW?[{watch:watchH(p)}]:[]),...(p.labs||(p.lab?[p.lab]:[])).map(l=>({widget:labW(l),title:'مختبر مصغّر: '+l.title}))]})});
   if(TH.length)theory[0]._think=TH;
   return {theory,stations}};
-G.ENK={e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
+/* سطر صيغة: يُعرض من اليسار لليمين بترتيب الجملة الإنجليزية، والأجزاء العربية رقع داخلها */
+const fm=(...p)=>`<span class="fm" dir="ltr">${p.map(x=>x==='+'?'<i>+</i>':/[\u0600-\u06FF]/.test(x)?`<span class="fm-ar" dir="rtl">${x}</span>`:`<b lang="en">${x}</b>`).join('')}</span>`;
+G.ENK={fm,e,eb,dl,vt,bk,au,upd,ab,sp,speak,speakP,gaps,typ,norm,esc,cases,tf,sort,order,W,gram,rule,labB};
 })(window);
 /* ===== «إخفاء الترجمة» (التخمين) و«الدرجات» — من مختبر المدرب =====
    - خلايا المعنى العربي في الجداول (.gl) وترجمات «كلمات الدرس» تُغطّى بضباب عند تشغيل «إخفاء الترجمة»؛ تظهر بالوقوف عليها أو لمسها.
@@ -367,7 +369,7 @@ if(document.readyState==='loading')addEventListener('DOMContentLoaded',start);el
    3) الترجمة: G.ENTR[المفتاح]=ترجمة عربية (ملف tr.js لكل مقرر). في الشرح والأمثلة: لمس الجملة يُظهر ترجمتها تحتها.
       في التمارين والاختبارات: زر صغير «ترجمة» جنب الجملة، والفراغ يبقى ___ في الترجمة. */
 (function(G){const AR=/[؀-ۿ]/,LAT=/[A-Za-z]/;
-const SKIP='script,style,svg,select,input,textarea,.tr-ar,.tr-btn,.say,.lw-pop,.lw-tr,.lw-ar,.lw-mean,[data-notr],.ltabs,.vx-chips,.fx-box,.fx-tray,.opts,.lb-sent,.nh';
+const SKIP='script,style,svg,select,input,textarea,.tr-ar,.tr-btn,.say,.lw-pop,.lw-tr,.lw-ar,.lw-mean,[data-notr],.ltabs,.vx-chips,.fx-box,.fx-tray,.opts,.lb-sent,.nh,.fm';
 const GAP='input,select,textarea,.gp2,[data-gap]';
 const BLK=/^(DIV|P|LI|UL|OL|TABLE|THEAD|TBODY|TR|TD|TH|DETAILS|SUMMARY|H[1-6]|SECTION|FIGURE|FIGCAPTION|BLOCKQUOTE|DL|DT|DD|FORM|FIELDSET|NAV|HEADER|FOOTER|ARTICLE|ASIDE|MAIN|BR|IMG)$/;
 const INL=/^(B|I|EM|STRONG|SPAN|U|SUB|SUP|SMALL|CODE|BDI|MARK|A|BR|ABBR|Q|S)$/;
@@ -419,7 +421,7 @@ function attach(root){const D=G.ENTR||{};
   else if(!el._trl){el._trl=1;el.classList.add('tr-tap');el.addEventListener('click',ev=>{if(ev.target.closest('button,a,input,select,.say'))return;const bx=(el._trb||[]).find(x=>x.classList.contains('tr-ar'));if(bx)bx.hidden=!bx.hidden})}
   else el.classList.add('tr-tap')})}
 const css=document.createElement('style');css.textContent=`
-.enl{display:block;margin:4px 0 2px}li[data-tdl]{list-style-position:inside}.enblk{display:block;text-align:left;margin:3px 0}.vx-row.tr-tap,.vx-row.tr-tap .vx-t{text-decoration:none}.enli{display:block;text-align:left;padding:2px 0}.enli::before{content:'• ';color:var(--muted)}
+.fm{display:flex;flex-wrap:wrap;gap:5px;align-items:center;direction:ltr;justify-content:flex-start;margin:6px 0;unicode-bidi:isolate}.fm b{font-family:var(--font-la,var(--font));background:#e8f0f6;color:#1d4f6e;border-radius:8px;padding:1px 9px}.fm .fm-ar{background:#fff1c9;color:#6b4d00;border-radius:8px;padding:1px 9px;font-weight:700}.fm i{font-style:normal;color:var(--muted);font-weight:700}html[data-theme=dark] .fm b{background:#1e3445;color:#cfe3f1}html[data-theme=dark] .fm .fm-ar{background:#3a300f;color:#f5d98a}.enl{display:block;margin:4px 0 2px}li[data-tdl]{list-style-position:inside}.enblk{display:block;text-align:left;margin:3px 0}.vx-row.tr-tap,.vx-row.tr-tap .vx-t{text-decoration:none}.enli{display:block;text-align:left;padding:2px 0}.enli::before{content:'• ';color:var(--muted)}
 .tr-tap{cursor:pointer;text-decoration:underline dotted rgba(47,107,143,.45);text-underline-offset:4px;text-decoration-thickness:1.5px}
 .tr-ar{display:block;flex-basis:100%;width:100%;box-sizing:border-box;font-family:var(--font);font-weight:400;font-size:.92em;color:#2f4f3c;background:#eef6f0;border-inline-start:3px solid #7dbb98;border-radius:6px;padding:3px 9px;margin:4px 0 2px;text-align:right;direction:rtl;line-height:1.7;white-space:normal}
 .tr-ar[hidden]{display:none}

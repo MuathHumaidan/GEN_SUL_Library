@@ -6,6 +6,19 @@ const kcss=()=>{if(!document.getElementById('phk-css')){const st=document.create
 
 /* ========== 1 Teamwork ========== */
 const PIT=[[0,'wheel-gun','The wheel-gun mechanics loosen the nuts.','يفكّون الصواميل'],[1,'wheel-jack','The wheel-jack team raises the car off the ground.','يرفعون السيارة'],[1.5,'fuel','The fuel team pushes the nozzle into the socket.','يدخلون الفوهة في المقبس'],[2,'wheel-off','The wheel-off mechanics take the old wheels off.','يخلعون العجلات القديمة'],[2.5,'wheel-on','The wheel-on mechanics put the new wheels on.','يركّبون العجلات الجديدة'],[3,'wheel-gun','The wheel-gun mechanics tighten the nuts.','يشدّون الصواميل'],[4,'wheel-jack','The wheel-jack team lowers the car and takes the jacks away.','ينزلون السيارة'],[6.5,'fuel','The fuel team pulls out the nozzle.','يسحبون الفوهة'],[7,'driver','The driver leaves the pit lane.','السائق يغادر']];
+/* مشهد وقفة الصيانة: الفريق النشط واضح والبقية باهتة */
+const pitSvg=act=>{const A=window.VXA,X=120,Gd=168,sc=.68,P=(rx,ry)=>[X+rx*sc,Gd+ry*sc];const [rx,ry]=P(58,-26),[jx,jy]=P(300,-2),[sx,sy]=P(98,-40);
+ const on=t=>t===act,op=t=>on(t)?1:.22,lab=(x,y,t,k)=>`<g opacity="${on(k)?1:.4}"><rect x="${x-t.length*3.7-7}" y="${y-13}" width="${t.length*7.4+14}" height="19" rx="9" fill="${on(k)?'#f1b33c':'#fff'}" stroke="#2c3a43"/><text x="${x}" y="${y+1}" font-family="IBM Plex Sans,Arial" font-weight="700" font-size="12" text-anchor="middle" fill="#2c3a43">${t}</text></g>`;
+ return `<svg viewBox="0 0 460 215" role="img" aria-label="pit stop" style="width:100%;height:auto;display:block;border-radius:12px"><rect width="460" height="215" fill="#e9eef1"/><rect y="${Gd}" width="460" height="47" fill="#8d969c"/><rect y="${Gd+18}" width="460" height="3" fill="#fff" opacity=".6"/>
+ <g opacity="${op('fuel')}">${A.crew(sx+30,Gd-8,'#1f8a5b',.78,-1,'reach')}</g>
+ ${A.raceCar({x:X,y:on('wheel-jack')?Gd-6:Gd,s:sc})}
+ ${on('driver')?`<circle cx="${X+166*sc}" cy="${Gd-70*sc}" r="14" fill="none" stroke="#f1b33c" stroke-width="5"/>`:''}
+ <g opacity="${op('fuel')}">${A.nozzle(sx+2,sy+4,.7)}</g>
+ <g opacity="${op('wheel-gun')}">${A.gun(rx,ry,.7)}${A.crew(rx-58,Gd,'#2f6b8f',.82,1,'reach')}</g>
+ <g opacity="${op('wheel-off')}">${A.crew(44,Gd,'#5d7f96',.82,-1)}${A.wheel(22,Gd-44,15)}</g>
+ <g opacity="${op('wheel-jack')}">${A.jack(jx+4,jy,.7)}${A.crew(jx+58,Gd,'#c4553f',.82,-1)}</g>
+ <g opacity="${op('wheel-on')}">${A.crew(432,Gd,'#8a5d96',.82,-1)}${A.wheel(410,Gd-44,15)}</g>
+ ${lab(44,22,'wheel-off','wheel-off')}${lab(120,22,'wheel-gun','wheel-gun')}${lab(200,22,'fuel','fuel')}${lab(275,22,'driver','driver')}${lab(350,22,'wheel-jack','wheel-jack')}${lab(424,46,'wheel-on','wheel-on')}</svg>`};
 function lab1(el,B){kcss();
  el.innerHTML=`<div class="phl"><div class="grid">
  <div class="c5 panel"><h3 style="margin-top:0">توقف الصيانة ثانية بثانية</h3><p class="sub">وقفة صيانة من إعدادنا مبنية على فكرة نص الكتاب ص 4–5. حرّك المؤشر الزمني، وشاهد ماذا يفعل كل فريق الآن، ثم اكتب التعليمة بفعل الأمر.</p>
@@ -16,7 +29,7 @@ function lab1(el,B){kcss();
  const $=s=>el.querySelector(s);
  const teams=['wheel-gun','wheel-jack','fuel','wheel-off','wheel-on','driver'];
  const sh=()=>{const k=+$('#t').value,x=PIT[k];$('#tv').textContent=x[0];
-  $('#d').innerHTML=art(`${teams.map((t,i)=>`<g data-tip="${t}"><rect x="${10+(i%3)*115}" y="${110+Math.floor(i/3)*60}" width="105" height="44" rx="10" fill="${t===x[1]?C.yel:C.paper}" stroke="${C.ink}" stroke-width="${t===x[1]?3:1.5}"/>${TL(62+(i%3)*115,137+Math.floor(i/3)*60,t,{fs:12,w:t===x[1]?700:400})}</g>`).join('')}`,'pit');
+  $('#d').innerHTML=pitSvg(x[1]);
   const imp=x[2].replace(/^The [a-z- ]+ (mechanics|team|driver) /,'').replace(/^(loosen|raises|pushes|take|put|tighten|lowers|pulls|leaves)/,v=>({raises:'raise',pushes:'push',lowers:'lower',pulls:'pull',leaves:'leave'})[v]||v).replace('takes','take');
   $('#o').innerHTML=`<p class="sub">الوصف (المضارع البسيط):</p>${eb([x[2]])}<p class="sub">التعليمة في قائمة الفريق (فعل الأمر):</p>${eb([imp.charAt(0).toUpperCase()+imp.slice(1)])}<p class="sub">${x[3]}.</p>`};
  $('#t').oninput=sh;sh();
@@ -34,13 +47,13 @@ const R1=N.rule({title:'التعليمات بفعل الأمر، ووصف خطو
  parts:[
  {t:'التعليمات بفعل الأمر',short:'Loosen the nuts.',old:[1],q:'كيف تكتب تعليمة قصيرة في قائمة عمل؟',ref:'ص 5',
   lead:`التعليمة تبدأ بالفعل مباشرة، بلا فاعل (لا نكتب ${e('You')}). هذا هو <b>فعل الأمر</b>، ويناسب قوائم التعليمات لأنه قصير وواضح.`,
-  points:[`<b>الإثبات:</b> الفعل كما هو + الباقي: ${e('Raise the car off the ground. · Tighten the wheel nuts.')}`,`<b>النفي:</b> ${e("Don't")} + الفعل: ${e("Don't move the car.")}`,`<b>كلمة واحدة:</b> بعض التعليمات كلمة واحدة: ${e('WAIT. · STOP. · GO.')}`,`<b>أفعال الصيانة في الدرس:</b> ${e('loosen ↔ tighten · raise ↔ lower · bring out · adjust · push · pump')}`],
+  points:[`<b>الإثبات:</b>${N.fm('الفعل','+','الباقي')}${e('Raise the car off the ground. · Tighten the wheel nuts.')}`,`<b>النفي:</b>${N.fm("Don't",'+','الفعل','+','الباقي')}${e("Don't move the car.")}`,`<b>كلمة واحدة:</b> بعض التعليمات كلمة واحدة: ${e('WAIT. · STOP. · GO.')}`,`<b>أفعال الصيانة في الدرس:</b> ${e('loosen ↔ tighten · raise ↔ lower · bring out · adjust · push · pump')}`],
   grid:{head:['الوصف','التعليمة'],rows:[['The mechanics loosen the nuts.','Loosen the nuts.'],['They raise the car.','Raise the car.'],['He pushes the nozzle in.','Push the nozzle in.'],['They take the jacks away.','Take the jacks away.']]},
   pairs:[['You loosen the nuts.','Loosen the nuts.','في القائمة لا نكتب الفاعل.'],['Not move the car.',"Don't move the car.",'النهي بـ Don\'t.'],['Raises the car.','Raise the car.','فعل الأمر بلا s.']],
   art:art(`${[['loosen','ضدها','tighten'],['raise','ضدها','lower'],['put on','ضدها','take off']].map((r,i)=>`<g data-tip="فعلان متضادان"><rect x="20" y="${88+i*52}" width="120" height="36" rx="10" fill="${C.paper}" stroke="${C.ink}"/>${TL(80,111+i*52,r[0],{fs:13,w:700})}<path d="M145 ${106+i*52} L215 ${106+i*52}" stroke="${C.ink}" stroke-width="2"/><path d="M145 ${106+i*52} l8 -5 M145 ${106+i*52} l8 5 M215 ${106+i*52} l-8 -5 M215 ${106+i*52} l-8 5" stroke="${C.ink}" stroke-width="2"/><rect x="220" y="${88+i*52}" width="120" height="36" rx="10" fill="${C.yel}" stroke="${C.ink}"/>${TL(280,111+i*52,r[2],{fs:13,w:700})}</g>`).join('')}`,'opposites'),cap:'أفعال متضادة في الصيانة. مرّر المؤشر.',labs:[LAB1A]},
  {t:'وصف خطوات العمل بالمضارع البسيط',short:'They loosen the nuts.',old:[2],q:'لماذا يقول قائد الفريق They loosen the nuts وليس They are loosening؟',ref:'ص 4–5',
   lead:`حين نصف عملاً يتكرر بنفس الطريقة كل مرة نستعمل المضارع البسيط. ونربط الخطوات بكلمات الترتيب.`,
-  points:[`<b>الجمع (they):</b> الفعل كما هو: ${e('The four wheel-on mechanics bring out the new wheels.')}`,`<b>المفرد (he / she / it):</b> الفعل + ${e('s')}: ${e('The driver presses a button. · The team leader adjusts the air pressure.')}`,`<b>كلمات الترتيب:</b> ${e('Then · Now · Finally · Immediately')}: ${e('Then they move back quickly.')}`,`<b>انتبه:</b> ${e('team')} و ${e('crew')} مفرد في الغالب: ${e('The team works together.')}`],
+  points:[`<b>الجمع (they):</b> الفعل كما هو: ${e('The four wheel-on mechanics bring out the new wheels.')}`,`<b>المفرد (he / she / it):</b>${N.fm('الفعل','+','s')}${e('The driver presses a button. · The team leader adjusts the air pressure.')}`,`<b>كلمات الترتيب:</b> ${e('Then · Now · Finally · Immediately')}: ${e('Then they move back quickly.')}`,`<b>انتبه:</b> ${e('team')} و ${e('crew')} مفرد في الغالب: ${e('The team works together.')}`],
   grid:{head:['الفاعل','الفعل','مثال'],rows:[['they','verb','They tighten the nuts.'],['he / she / it','verb + s','He signals to the driver.'],['the team','verb + s','The team moves back.']]},
   pairs:[['The driver press the button.','The driver presses the button.','المفرد + s.'],['The mechanics moves forward.','The mechanics move forward.','الجمع بلا s.']],labs:[LAB1B]}
  ]});
