@@ -1,6 +1,6 @@
 /* نهج الشرح لانجل-103 (dev-kit/guides/TEACHING_APPROACH.md) — مربع «الفكرة» لكل جزء من «شرح القاعدة».
    المفتاح = عنوان الجزء (t) في u1…u6. الأمثلة والمشاهد من إعدادنا (إضافة من خارج الكتاب). */
-(function(G){const NH=G.NH=G.NH||{};const FM=(...p)=>G.ENK.fm(...p);const E=t=>`<span class="en" lang="en" dir="ltr">${t}</span>`;
+(function(G){const NH=G.NH=G.NH||{};const FM=(...p)=>G.ENK.fm(...p);const E=t=>`<span class="en" lang="en" dir="ltr"${t.replace(/<[^>]+>/g,'').length<=18?' style="white-space:nowrap"':''}>${t}</span>`;
 /* ---------- أدوات الرسم ---------- */
 const ink='#3b4a54',grn='#1f8a5b',red='#c4553f',blu='#2f6b8f',yel='#f1b33c',gry='#9aa3aa',lgt='#dfe7ec',sand='#e9dcc3';
 const F='font-family="IBM Plex Sans,Segoe UI,Arial,sans-serif"';
@@ -253,15 +253,15 @@ NH['صيغة المقارنة']={
  think:[['أقارن بين شيئين؟ ← than.','Am I comparing two things? → than.'],[`الصفة قصيرة؟${FM('الصفة','+','er')}طويلة؟${FM('more','+','الصفة')}`,'Short adjective? → er. Long? → more.'],['آخرها y؟ ← ier. حرف واحد بعد حركة (big)؟ ← نكرره: bigger.','Ends in y? → ier. Short like big? → double: bigger.']]};
 
 NH['too و enough']={
- say:[`لو الشي أكبر من مكانه: نقول عن الشي «زيادة عن اللزوم» ${E('too')}، ونقول عن المكان «مو كافي» ${E('not … enough')}. نفس المشكلة بطريقتين، والفرق مين نتكلم عنه.`,
-  `If a thing is bigger than its space, we say the thing is ${E('too')} big, and the space is ${E('not')} big ${E('enough')}. The same problem two ways; the difference is who we talk about.`],
- life:[['This shirt is too small for me.','هالقميص صغير عليّ.'],["The room isn't big enough for us.",'الغرفة مو كبيرة بما يكفي لنا.']],
+ say:[`لو الشي أكبر من مكانه، نقدر نقولها بطريقتين، والفرق مين نتكلم عنه:<br>عن الشي الكبير «زيادة عن اللزوم»:${FM('too','+','الصفة')}عن المكان الصغير «مو كافي»:${FM('not','+','الصفة','+','enough')}`,
+  `If a thing is bigger than its space, there are two ways to say it; the difference is who we talk about:<br>About the big thing:${FM('too','+','adjective')}About the small space:${FM('not','+','adjective','+','enough')}`],
+ life:[['This shirt is too small for me.','هذا القميص صغير عليّ.'],["The room isn't big enough for us.",'الغرفة ليست كبيرة بما يكفي لنا.']],
  scene:{title:['ارفع الجسر أو نزّله','Move the bridge up or down'],
   ctrl:[{k:'h',label:['ارتفاع الجسر','Bridge height'],range:[2.5,3.3,0.1],init:2.7,fmt:x=>(+x).toFixed(1),unit:'m'},{k:'v',label:['نتكلم عن','Talk about'],opts:[['lorry','the lorry'],['bridge','the bridge']]}],
-  svg:s=>{const g=190,px=m=>g-m*45,fits=s.h>2.9+1e-9,sh=fits?150:0;let b=grd(g)+rc(240,px(s.h)-22,130,22,gry,{rx:2})+rc(240,px(s.h),16,g-px(s.h),lgt,{rx:0})+rc(354,px(s.h),16,g-px(s.h),lgt,{rx:0})+tx(305,px(s.h)-28,(+s.h).toFixed(1)+' m',{fs:14,c:blu});
-   b+=`<g transform="translate(${sh},0)">${lorry(30,g,170,2.9*45,grn)}${tx(95,px(2.9)-8,'2.9 m',{fs:14,c:grn})}</g>`;b+=fits?ok(370,30,1.2):no(370,30,1.2)+tx(200,30,'STOP',{fs:22,c:red});return svg(205,b)},
-  ask:s=>{const fits=s.h>2.9+1e-9;return fits?{q:['تمر الشاحنة؟','Can the lorry go under?'],opts:['yes','no'],a:'yes'}:{q:['مين الكبير هنا؟','Which one is too big?'],opts:['the lorry','the bridge'],a:'the lorry',hint:['الشاحنة أعلى من الجسر.','The lorry is higher than the bridge.']}},
-  out:s=>{const fits=s.h>2.9+1e-9;if(fits)return{t:S('a:The bridge|q:is|k:high|x:enough|n:for the lorry.'),ar:'الجسر عالٍ بما يكفي للشاحنة — تمر.',why:[`المكان كافي:${FM('الصفة','+','enough')}`,'The space is OK → adjective + enough.']};return s.v==='lorry'?{t:S('a:The lorry|q:is|x:too|k:high|n:for the bridge.'),ar:'الشاحنة عالية زيادة عن اللزوم على الجسر.',why:[`عن الشي الكبير:${FM('too','+','الصفة','+','for')}`,'About the big thing → too + adjective.']}:{t:S("a:The bridge|x:isn't|k:high|x:enough|n:for the lorry."),ar:'الجسر مو عالي بما يكفي للشاحنة.',why:[`عن المكان الصغير:${FM('not','+','الصفة','+','enough','+','for')}`,'About the small space → not + adjective + enough.']}}},
+  svg:s=>{const g=190,px=m=>g-m*45,eq=Math.abs(s.h-2.9)<1e-6,fits=s.h>2.9-1e-6,sh=fits?150:0;let b=grd(g)+rc(240,px(s.h)-22,130,22,gry,{rx:2})+rc(240,px(s.h),16,g-px(s.h),lgt,{rx:0})+rc(354,px(s.h),16,g-px(s.h),lgt,{rx:0})+tx(305,px(s.h)-28,(+s.h).toFixed(1)+' m',{fs:14,c:blu});
+   b+=`<g transform="translate(${sh},0)">${lorry(30,g,170,2.9*45,grn)}${tx(92,g-62,'2.9 m',{fs:15,c:'#fff'})}</g>`;b+=fits?ok(370,30,1.2)+(eq?tx(200,30,'2.9 m = 2.9 m',{fs:18,c:'#b37d00'}):''):no(370,30,1.2)+tx(200,30,'STOP',{fs:22,c:red});return svg(205,b)},
+  ask:s=>{const fits=s.h>2.9-1e-6;return fits?{q:['تمر الشاحنة؟','Can the lorry go under?'],opts:['yes','no'],a:'yes',hint:Math.abs(s.h-2.9)<1e-6?['متساويين: تمر بالكاد.','They are the same: it just goes under.']:null}:{q:['مين الكبير هنا؟','Which one is too big?'],opts:['the lorry','the bridge'],a:'the lorry',hint:['الشاحنة أعلى من الجسر.','The lorry is higher than the bridge.']}},
+  out:s=>{const fits=s.h>2.9-1e-6,eq=Math.abs(s.h-2.9)<1e-6;if(eq)return{t:S('a:The bridge|q:is|x:just|k:high|x:enough|n:for the lorry.'),ar:'الجسر عالٍ بما يكفي للشاحنة بالكاد — تمر بالكاد.',why:[`متساويين ← تمر بالكاد:${FM('just','+','الصفة','+','enough')}`,'The same height → it just goes under: just + adjective + enough.']};if(fits)return{t:S('a:The bridge|q:is|k:high|x:enough|n:for the lorry.'),ar:'الجسر عالٍ بما يكفي للشاحنة — تمر.',why:[`المكان كافٍ:${FM('الصفة','+','enough')}`,'The space is OK → adjective + enough.']};return s.v==='lorry'?{t:S('a:The lorry|q:is|x:too|k:high|n:for the bridge.'),ar:'الشاحنة عالية زيادة عن اللزوم على الجسر.',why:[`عن الشي الكبير:${FM('too','+','الصفة','+','for')}`,'About the big thing → too + adjective.']}:{t:S("a:The bridge|x:isn't|k:high|x:enough|n:for the lorry."),ar:'الجسر ليس عالياً بما يكفي للشاحنة.',why:[`عن المكان الصغير:${FM('not','+','الصفة','+','enough','+','for')}`,'About the small space → not + adjective + enough.']}}},
  think:[[`مين الكبير؟${FM('too','+','الصفة')}`,'Which is too big? → too + adjective.'],[`مين الصغير (المكان)؟${FM('not','+','الصفة','+','enough')}`,'Which is too small (the space)? → not + adjective + enough.']]};
 
 const PO={want:["Give me a catalogue.","I'd like a catalogue, please.",'ودّي كتالوج لو سمحت.','Saying what you want'],offer:["I send you the table.","Would you like me to send you the table?",'تبي أرسل لك الجدول؟','Offering'],ask:["What's your name?","Could I have your name, please?",'ممكن اسمك لو سمحت؟','Asking someone'],check:["What?","Sorry, could you repeat that, please?",'عفواً، ممكن تعيد لو سمحت؟','Checking']};
@@ -305,12 +305,12 @@ NH['صيغة التفضيل']={
 NH['as … as: التساوي']={
  say:[`لو الشيئين متساويين بالعربي نقول «بنفس القوة». بالإنجليزي: ${E('as')} + الصفة كما هي + ${E('as')}: ${E('as powerful as')}. ولو مو متساويين ونبي نقول إن الأول أقل: ${E('not as … as')}.`,
   `If two things are the same: ${E('as')} + adjective + ${E('as')}: ${E('as powerful as')}. If the first is less: ${E('not as … as')}.`],
- life:[['My son is as tall as me now.','ولدي صار بطولي.'],["Tea isn't as expensive as coffee.",'الشاي مو غالي مثل القهوة.']],
+ life:[['My son is as tall as me now.','ولدي صار بطولي.'],["Tea isn't as expensive as coffee.",'الشاي ليس غالياً مثل القهوة.']],
  scene:{title:['غيّر قوة المحرك C','Change the power of Engine C'],
   ctrl:[{k:'p',label:['قوة C','Power of C'],range:[95,135,5],init:115,unit:'hp'}],
   svg:s=>{const bar=(x,v,n,c)=>rc(x,170-v,80,v,c,{rx:8})+tx(x+40,164-v,v+' hp',{fs:14})+tx(x+40,192,'Engine '+n,{fs:14});return svg(200,bar(90,s.p,'C',s.p===115?grn:s.p<115?yel:blu)+bar(230,115,'E',lgt)+(s.p===115?tx(200,24,'=',{fs:30,c:grn}):''))},
   ask:s=>({q:['متساويين؟','Are they the same?'],opts:['yes','no'],a:s.p===115?'yes':'no'}),
-  out:s=>s.p===115?{t:S('a:Engine C|q:is|x:as|k:powerful|x:as|n:Engine E.'),ar:'المحرك C بنفس قوة المحرك E.',why:['متساويين ← as + الصفة + as.','The same → as + adjective + as.']}:s.p<115?{t:S("a:Engine C|x:isn't as|k:powerful|x:as|n:Engine E."),ar:'المحرك C مو بقوة المحرك E.',why:['الأول أقل ← not as … as.','The first is less → not as … as.']}:{t:S('a:Engine C|q:is|x:more|k:powerful|x:than|n:Engine E.'),ar:'المحرك C أقوى من المحرك E.',why:['الأول أكثر ← more … than.','The first is more → more … than.']}},
+  out:s=>s.p===115?{t:S('a:Engine C|q:is|x:as|k:powerful|x:as|n:Engine E.'),ar:'المحرك C بنفس قوة المحرك E.',why:['متساويين ← as + الصفة + as.','The same → as + adjective + as.']}:s.p<115?{t:S("a:Engine C|x:isn't as|k:powerful|x:as|n:Engine E."),ar:'المحرك C ليس بقوة المحرك E.',why:['الأول أقل ← not as … as.','The first is less → not as … as.']}:{t:S('a:Engine C|q:is|x:more|k:powerful|x:than|n:Engine E.'),ar:'المحرك C أقوى من المحرك E.',why:['الأول أكثر ← more … than.','The first is more → more … than.']}},
  think:[['متساويين؟ ← as + الصفة + as.','The same? → as + adjective + as.'],['الأول أقل؟ ← not as … as.','The first is less? → not as … as.']]};
 
 /* =================== الوحدة 4 =================== */
